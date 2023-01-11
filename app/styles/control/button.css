@@ -1,0 +1,4 @@
+button {
+  height: var(--control-default-height);
+  border: none;
+}

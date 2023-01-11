@@ -1,8 +1,17 @@
 <div class='post'>
-  <div class='post-header'>
-    {{@post.author.name}}
+  <div class='post-details'>
+    <div class='post-details-title'>
+      <p class='post-details-author-name'>{{@post.author.name}}</p>
+      <p class='post-details-date subtitle'>{{this.date}}</p>
+    </div>
+    <Common::Control::Button
+      @icon='ellipsis-vertical'
+      @text='Mehr Funktionen'
+      @size='square'
+      @onClick={{this.handleMenuClick}}
+    />
   </div>
   <div class='post-content'>
-    {{@post.content}}
+    {{this.content}}
   </div>
 </div>

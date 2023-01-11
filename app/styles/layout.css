@@ -1,0 +1,40 @@
+:root {
+  --control-default-height: 40px;
+  --main-nav-height: 45px;
+
+  /* The following variables may change during runtime. */
+  --main-nav-top: unset;
+  --main-nav-bottom: 0px;
+  --page-content-padding-top: unset;
+  --page-content-padding-bottom: var(--control-default-height);
+}
+
+#page-content {
+  padding-top: calc(var(--page-content-padding-top) + 0.5rem);
+  padding-bottom: calc(var(--page-content-padding-bottom) + 0.5rem);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.control-size-square {
+  width: var(--control-default-height);
+}
+
+.control-size-square svg {
+  font-size: x-large;
+}
+
+.control-size-small {
+  width: 4rem;
+  max-width: 100%;
+}
+
+.control-size-medium {
+  width: 6rem;
+  max-width: 100%;
+}
+
+.control-size-large {
+  width: 8rem;
+  max-width: 100%;
+}

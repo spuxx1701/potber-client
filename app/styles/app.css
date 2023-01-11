@@ -1,0 +1,38 @@
+@import "./colors.css";
+@import "./layout.css";
+@import "./text.css";
+
+@import "./board/post.css";
+@import "./board/thread.css";
+
+@import "./control/button.css";
+
+html {
+  background-color: var(--color-application-background);
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: var(--color-text-default);
+}
+
+#main-nav {
+  width: 100vw;
+  height: var(--main-nav-height);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-nav-background);
+  top: var(--main-nav-top);
+  bottom: var(--main-nav-bottom);
+  z-index: 10;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
+}
+
+#main-nav *:first-child {
+  flex-grow: auto;
+}

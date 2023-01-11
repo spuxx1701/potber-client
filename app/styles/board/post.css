@@ -1,0 +1,31 @@
+.post {
+  margin: 0.5rem 0 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-details {
+  background-color: var(--color-post-background-secondary);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-details-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-details-author-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.post-details-date {
+  margin: 0;
+}
+
+.post-content {
+  background-color: var(--color-post-background-primary);
+  padding: 0.5rem;
+}

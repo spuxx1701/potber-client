@@ -1,0 +1,26 @@
+:root {
+  --color-application-background: #060f15;
+  --color-nav-background: #091827;
+  --color-post-background-primary: #394e63;
+  --color-post-background-secondary: #293746;
+
+  --color-control-inactive-primary: #293746;
+
+  --color-text-default: #f1f1f1;
+  --color-text-subtle: #aeaeae;
+}
+
+.control-variant-primary, .control-variant-primary svg {
+  background-color: var(--color-control-inactive-primary);
+  color: var(--color-text-default);
+}
+
+.control-variant-primary-transparent, .control-variant-primary-transparent svg {
+  background-color: transparent;
+  color: var(--color-text-default);
+}
+
+.control-variant-secondary, .color-variant-secondary svg {
+  background-color: transparent;
+  color: var(--color-text-subtle);
+}

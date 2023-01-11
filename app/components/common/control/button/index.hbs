@@ -1,0 +1,14 @@
+<button
+  type={{this.type}}
+  class='control-size-{{this.size}} control-variant-{{this.variant}}'
+  title={{this.title}}
+  ...attributes
+  {{on 'click' this.handleClick}}
+>
+  {{#if @icon}}
+    <FaIcon @icon={{@icon}} @prefix={{this.prefix}} />
+  {{/if}}
+  {{#unless (eq this.size 'square')}}
+    {{@text}}
+  {{/unless}}
+</button>
