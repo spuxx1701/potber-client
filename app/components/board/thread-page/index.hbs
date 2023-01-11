@@ -1,0 +1,10 @@
+<div class='thread-page'>
+  <div class='thread-page-header'>
+    {{@page.pageNumber}}
+  </div>
+  <div class='thread-page-content'>
+    {{#each @page.posts as |post|}}
+      <Board::Post @post={{post}} />
+    {{/each}}
+  </div>
+</div>

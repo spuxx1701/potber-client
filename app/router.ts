@@ -8,4 +8,8 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   // Add route declarations here
+  this.route('');
+  this.route('board');
+  this.route('thread', { path: '/thread/:thread_id' });
+  this.route('not-found', { path: '/*path' });
 });
