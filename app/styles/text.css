@@ -2,3 +2,7 @@
   font-size: small;
   color: var(--color-text-subtle);
 }
+
+a, a:visited {
+  color: var(--colot-text-link);
+}

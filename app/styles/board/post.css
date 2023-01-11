@@ -28,4 +28,9 @@
 .post-content {
   background-color: var(--color-post-background-primary);
   padding: 0.5rem;
+  white-space: pre-wrap;
+}
+
+.post-content img {
+  max-width: 100%;
 }

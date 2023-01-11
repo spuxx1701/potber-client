@@ -8,6 +8,7 @@
 
   --color-text-default: #f1f1f1;
   --color-text-subtle: #aeaeae;
+  --color-text-link: #aeaeae;
 }
 
 .control-variant-primary, .control-variant-primary svg {
