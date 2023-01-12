@@ -9,7 +9,7 @@ interface Signature {
     type?: 'button' | 'submit';
     size?: ControlSize;
     variant?: ControlVariant;
-    onClick?: Function;
+    onClick?: () => void;
   };
 }
 
