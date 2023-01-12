@@ -44,11 +44,11 @@ module.exports = function (environment) {
   }
 
   if (environment === 'integration') {
-    ENV.APP.proxyUrl = 'http://proxy.potber.de';
+    ENV.APP.proxyUrl = 'https://proxy.potber.de';
   }
 
   if (environment === 'production') {
-    ENV.APP.proxyUrl = 'http://proxy.potber.de';
+    ENV.APP.proxyUrl = 'https://proxy.potber.de';
   }
 
   return ENV;
