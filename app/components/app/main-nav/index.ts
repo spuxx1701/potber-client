@@ -3,6 +3,6 @@ import Component from '@glimmer/component';
 
 export default class MainNavComponent extends Component {
   @action handleSidebarClick() {
-    // do somethin
+    // do something
   }
 }
