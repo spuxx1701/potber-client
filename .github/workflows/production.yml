@@ -1,0 +1,24 @@
+name: develop
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  lint:
+    uses: spuxx1701/ci/.github/workflows/npm_lint.yml@v1.2
+
+  docker_deploy:
+    needs: lint
+    uses: spuxx1701/ci/.github/workflows/docker_deploy.yml@v1.2
+    with:
+      username: spuxx
+      repository: potber
+      environment: production
+      dockerfile: Dockerfile.production
+    secrets:
+      token: ${{ secrets.DOCKERHUB_TOKEN }}
+      ssh_host: ${{ secrets.SSH_HOST }}
+      ssh_username: ${{ secrets.SSH_USERNAME }}
+      ssh_password: ${{ secrets.SSH_PASSWORD }}
