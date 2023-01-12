@@ -4,13 +4,7 @@ services:
     image: 'spuxx/potber-client:production-latest'
     restart: always
     networks:
-      - default
       - npm
-  potber-cors-proxy-production:
-    image: 'testcab/cors-anywhere'
-    restart: always
-    networks:
-      - default
 
 networks:
   default:

@@ -44,12 +44,11 @@ module.exports = function (environment) {
   }
 
   if (environment === 'integration') {
-    ENV.APP.proxyUrl = 'http://potber-cors-proxy-integration';
+    ENV.APP.proxyUrl = 'http://proxy.potber.de';
   }
 
   if (environment === 'production') {
-    ENV.APP.proxyUrl = 'http://potber-cors-proxy-production';
-    // here you can enable a production-specific feature
+    ENV.APP.proxyUrl = 'http://proxy.potber.de';
   }
 
   return ENV;

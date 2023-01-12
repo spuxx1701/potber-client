@@ -5,3 +5,5 @@ services:
     restart: always
     ports:
       - '4201:8080'
+    environment:
+      - CORSANYWHERE_WHITELIST=http://localhost:4200

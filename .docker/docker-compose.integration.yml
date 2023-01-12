@@ -5,14 +5,7 @@ services:
     restart: always
     networks:
       - npm
-      - default
-  potber-cors-proxy-integration:
-    image: 'testcab/cors-anywhere'
-    restart: always
-    networks:
-      - default
 
 networks:
-  default:
   npm:
     external: true
