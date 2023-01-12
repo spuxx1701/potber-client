@@ -14,7 +14,7 @@ jobs:
     uses: spuxx1701/ci/.github/workflows/docker_deploy.yml@v1.2
     with:
       username: spuxx
-      repository: potber
+      repository: potber-client
       environment: test
       dockerfile: Dockerfile.test
     secrets:
