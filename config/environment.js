@@ -44,7 +44,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'integration') {
-    ENV.APP.proxyUrl = 'http://potber-cors-proxy-test';
+    ENV.APP.proxyUrl = 'http://potber-cors-proxy-integration';
   }
 
   if (environment === 'production') {
