@@ -4,5 +4,9 @@
 }
 
 a, a:visited {
-  color: var(--colot-text-link);
+  color: var(--color-text-link);
+}
+
+b {
+  color: var(--color-text-highlighted);
 }

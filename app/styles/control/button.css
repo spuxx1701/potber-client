@@ -1,4 +1,9 @@
 button {
   height: var(--control-default-height);
   border: none;
+  font-size: medium;
+}
+
+button:not(.control-size-square) svg {
+  margin-right: 0.25rem;
 }

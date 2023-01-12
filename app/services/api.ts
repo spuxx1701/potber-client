@@ -14,13 +14,25 @@ export default class ApiService extends Service {
   domParser = new window.DOMParser();
   // const parser = xml2js.
 
-  async getThread(threadId: string, pageId?: number) {
+  async getThread(threadId: string, page?: number) {
     let query = `thread.php?TID=${threadId}`;
-    if (pageId) {
-      query += `&PID=${pageId}`;
+    if (page) {
+      query += `&page=${page}`;
     }
     const xmlDocument = await this.fetch(query);
-    return transformThread(xmlDocument);
+    // Throw an error if the thread could not be found
+    if (
+      !xmlDocument.children[0] ||
+      xmlDocument.children[0].nodeName === 'invalid-thread'
+    ) {
+      throw new Error('not-found');
+    }
+    const thread = transformThread(xmlDocument);
+    // Throw an error if the posts count is 0 since that means the page does not exist
+    if (!thread.page || thread.page.posts.length <= 0) {
+      throw new Error('not-found');
+    }
+    return thread;
   }
 
   async fetch(query: string, options?: FetchOptions) {
@@ -28,8 +40,6 @@ export default class ApiService extends Service {
       method: options?.method || 'GET',
       body: options?.body,
     });
-    // console.log(await response.text());
-    console.log(response);
     const xmlObject = await this.parseXml(response);
     return xmlObject;
   }

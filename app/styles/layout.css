@@ -25,16 +25,29 @@
 }
 
 .control-size-small {
-  width: 4rem;
-  max-width: 100%;
-}
-
-.control-size-medium {
   width: 6rem;
   max-width: 100%;
 }
 
-.control-size-large {
+.control-size-medium {
   width: 8rem;
   max-width: 100%;
+}
+
+.control-size-large {
+  width: 12rem;
+  max-width: 100%;
+}
+
+.control-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.control-row>*:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.error-container {
+  padding: 2rem;
 }

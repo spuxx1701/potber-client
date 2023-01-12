@@ -1,4 +1,5 @@
-{{@model.title}}
-{{@model.subTitle}}
-
-<Board::ThreadPage @page={{@model.page}} />
+{{#if @model}}
+  <Board::ThreadPage @page={{@model.page}} />
+{{else}}
+  <App::Error::NotFound />
+{{/if}}
