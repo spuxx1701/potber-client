@@ -1,6 +1,6 @@
 export interface User {
   id: string;
-  groupId: string;
+  groupId: string | undefined;
   name: string;
 }
 

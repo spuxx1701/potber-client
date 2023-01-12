@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import { transformThread } from './api/transformers/thread';
 import ENV from 'potber/config/environment';
+import { transformBoardCategories } from './api/transformers/board';
 
 export interface FetchOptions {
   method?: 'GET' | 'POST';
@@ -11,6 +12,12 @@ const API_URL = `${ENV.APP['proxyUrl']}/${ENV.APP['apiUrl']}`;
 
 export default class ApiService extends Service {
   domParser = new window.DOMParser();
+
+  async getCategories() {
+    const query = `boards.php`;
+    const xmlDocument = await this.fetch(query);
+    return transformBoardCategories(xmlDocument);
+  }
 
   async getThread(threadId: string, page?: number) {
     let query = `thread.php?TID=${threadId}`;

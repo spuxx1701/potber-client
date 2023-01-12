@@ -1,8 +1,8 @@
 import { action } from '@ember/object';
-import { htmlSafe } from '@ember/template';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { Post } from 'potber/services/api/types/post';
-import { parsePostContent } from 'potber/utils/bbcode';
+import BbCodeParserService from 'potber/services/bbcode-parser';
 
 interface Signature {
   Args: {
@@ -11,6 +11,8 @@ interface Signature {
 }
 
 export default class PostComponent extends Component<Signature> {
+  @service declare bbcodeParser: BbCodeParserService;
+
   declare args: Signature['Args'];
 
   get date() {
@@ -18,7 +20,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get content() {
-    return parsePostContent(this.args.post.content);
+    return this.bbcodeParser.parsePostContent(this.args.post.content);
   }
 
   @action handleMenuClick() {

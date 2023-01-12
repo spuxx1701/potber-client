@@ -1,0 +1,38 @@
+.board-category {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.board-category-header {
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.board-category-header-title {
+  margin: 0;
+}
+
+.board-category .subtitle {
+  margin: 0;
+}
+
+.board-item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-post-background-primary);
+  margin: 1px 0px 1px 0px;
+  padding: 0.25rem;
+  width: calc(100% - 0.5rem);
+  color: var(--color-text-default);
+  text-decoration: none;
+}
+
+.board-item-title {
+  font-weight: bold;
+}
+
+.board-item-title, .board-header .subtitle {
+  margin: 0.25rem 0 0.25rem 0;
+  text-align: start;
+  text-decoration: none !important;
+}

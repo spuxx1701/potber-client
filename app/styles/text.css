@@ -1,4 +1,4 @@
-.subtitle {
+.subtitle, .subtitle b {
   font-size: small;
   color: var(--color-text-subtle);
 }

@@ -1,0 +1,9 @@
+<div class='board-category'>
+  <div class='board-category-header'>
+    <h4 class='board-category-header-title'>{{@category.name}}</h4>
+    <p class='subtitle'>{{@category.description}}</p>
+  </div>
+  {{#each @category.boards as |board|}}
+    <Board::BoardItem @board={{board}} />
+  {{/each}}
+</div>

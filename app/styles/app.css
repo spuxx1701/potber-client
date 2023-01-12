@@ -2,6 +2,8 @@
 @import "./layout.css";
 @import "./text.css";
 
+@import "./board/board.css";
+@import "./board/board-overview.css";
 @import "./board/post.css";
 @import "./board/thread.css";
 
@@ -18,6 +20,9 @@ body {
 :root {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: var(--color-text-default);
+
+  /* Customizable */
+  --global-border-radius: 5px;
 }
 
 #main-nav {

@@ -6,6 +6,9 @@
 
   --color-control-inactive-primary: #293746;
 
+  --color-quote-background: #38434e;
+  --color-quote-border: rgb(174, 174, 174, 0.5);
+
   --color-text-default: #f1f1f1;
   --color-text-subtle: #aeaeae;
   --color-text-link: #aeaeae;
