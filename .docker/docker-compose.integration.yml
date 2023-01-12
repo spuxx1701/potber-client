@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   potber-client-integration:
-    image: 'spuxx/new-horizons-client:integration-latest'
+    image: 'spuxx/potber-client:integration-latest'
     restart: always
     networks:
       - npm

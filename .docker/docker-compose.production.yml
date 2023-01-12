@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   potber-client-production:
-    image: 'spuxx/new-horizons-client:production-latest'
+    image: 'spuxx/potber-client:production-latest'
     restart: always
     networks:
       - default
