@@ -1,10 +1,13 @@
 version: '3.3'
 services:
-  new-horizons-client-develop:
+  potber-client-test:
     image: 'spuxx/new-horizons-client:test-latest'
     restart: always
     networks:
       - npm
+  potber-cors-proxy-test:
+    image: 'testcab/cors-anywhere'
+    restart: always
 
 networks:
   default:

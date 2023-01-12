@@ -7,8 +7,7 @@ export interface FetchOptions {
   body?: BodyInit | undefined;
 }
 
-const API_URL =
-  'https://cors-anywhere.herokuapp.com/https://forum.mods.de/bb/xml/';
+const API_URL = 'http://localhost:4201/https://forum.mods.de/bb/xml/';
 
 export default class ApiService extends Service {
   domParser = new window.DOMParser();

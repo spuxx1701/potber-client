@@ -6,6 +6,7 @@ const PREFIX = 'potber-';
 
 export default class LocalStorageService extends Service {
   @tracked mainNavPosition: string = this.getMainNavPosition();
+  @tracked enableBenders: boolean = this.getEnableBenders();
 
   @action getMainNavPosition() {
     this.mainNavPosition =
@@ -16,5 +17,15 @@ export default class LocalStorageService extends Service {
   @action setMainNavPosition(value: 'top' | 'bottom') {
     localStorage.setItem(`${PREFIX}mainNavPosition`, value);
     this.getMainNavPosition();
+  }
+
+  @action getEnableBenders() {
+    this.enableBenders = localStorage.getItem(`${PREFIX}enableBenders`) === '1';
+    return this.enableBenders;
+  }
+
+  @action setEnableBenders(value: boolean) {
+    localStorage.setItem(`${PREFIX}enableBenders`, `${+value}`);
+    this.getEnableBenders();
   }
 }
