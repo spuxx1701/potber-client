@@ -1,17 +1,16 @@
 import Service from '@ember/service';
 import { transformThread } from './api/transformers/thread';
-// import xml2js from 'xml2js';
+import ENV from 'potber/config/environment';
 
 export interface FetchOptions {
   method?: 'GET' | 'POST';
   body?: BodyInit | undefined;
 }
 
-const API_URL = 'http://localhost:4201/https://forum.mods.de/bb/xml/';
+const API_URL = `${ENV.APP['proxyUrl']}/${ENV.APP['apiUrl']}`;
 
 export default class ApiService extends Service {
   domParser = new window.DOMParser();
-  // const parser = xml2js.
 
   async getThread(threadId: string, page?: number) {
     let query = `thread.php?TID=${threadId}`;

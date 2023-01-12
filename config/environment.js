@@ -43,7 +43,12 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
   }
 
+  if (environment === 'integration') {
+    ENV.APP.proxyUrl = 'http://potber-cors-proxy-test';
+  }
+
   if (environment === 'production') {
+    ENV.APP.proxyUrl = 'http://potber-cors-proxy-production';
     // here you can enable a production-specific feature
   }
 
