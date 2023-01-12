@@ -1,7 +1,7 @@
 FROM node:16 as build
 WORKDIR /usr/app/
 COPY ./ ./
-RUN npm ci && npm run build:test
+RUN npm ci && npm run build:integration
 
 FROM nginx:alpine
 COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
