@@ -11,6 +11,7 @@ export default class RendererService extends Service {
 
   @action initialize() {
     this.updateMainNavPosition();
+    this.updateBoxStyle();
   }
 
   @action updateMainNavPosition() {
@@ -31,6 +32,41 @@ export default class RendererService extends Service {
         '--page-content-padding-bottom',
         'var(--main-nav-height)'
       );
+    }
+  }
+
+  @action updateBoxStyle() {
+    const boxStyle = this.localStorage.getBoxStyle();
+    if (boxStyle === 'rect') {
+      this.rootStyle.setProperty('--global-border-radius', '0px');
+    } else {
+      this.rootStyle.setProperty('--global-border-radius', '5px');
+    }
+  }
+
+  @action createClickRipple(event: Event) {
+    // do something
+  }
+
+  @action closeLeftSidebar() {
+    this.leftSidebarExpanded = false;
+    this.updateLeftSidebar();
+  }
+
+  @action toggleLeftSidebar() {
+    this.leftSidebarExpanded = !this.leftSidebarExpanded;
+    this.updateLeftSidebar();
+  }
+
+  @action updateLeftSidebar() {
+    const style = document.documentElement.style;
+    if (this.leftSidebarExpanded) {
+      style.setProperty(
+        '--sidebar-left-width',
+        'var(--sidebar-expanded-width)'
+      );
+    } else {
+      style.setProperty('--sidebar-left-width', '0px');
     }
   }
 }

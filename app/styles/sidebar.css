@@ -31,6 +31,7 @@
 }
 
 #sidebar-left-nav a {
+  color: var(--color-text-default);
   height: var(--control-default-height);
   display: flex;
   align-items: center;

@@ -1,12 +1,14 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import RendererService from './renderer';
 
 const PREFIX = 'potber-';
 
 export default class LocalStorageService extends Service {
   @tracked mainNavPosition: string = this.getMainNavPosition();
-  @tracked enableBenders: boolean = this.getEnableBenders();
+  @tracked benders: string = this.getBenders();
+  @tracked boxStyle: string = this.getBoxStyle();
 
   @action getMainNavPosition() {
     this.mainNavPosition =
@@ -19,13 +21,23 @@ export default class LocalStorageService extends Service {
     this.getMainNavPosition();
   }
 
-  @action getEnableBenders() {
-    this.enableBenders = localStorage.getItem(`${PREFIX}enableBenders`) === '1';
-    return this.enableBenders;
+  @action getBenders() {
+    this.benders = localStorage.getItem(`${PREFIX}benders`) || 'none';
+    return this.benders;
   }
 
-  @action setEnableBenders(value: boolean) {
-    localStorage.setItem(`${PREFIX}enableBenders`, `${+value}`);
-    this.getEnableBenders();
+  @action setBenders(value: 'none' | 'small' | 'large') {
+    localStorage.setItem(`${PREFIX}benders`, `${value}`);
+    this.getBenders();
+  }
+
+  @action getBoxStyle() {
+    this.boxStyle = localStorage.getItem(`${PREFIX}boxStyle`) || 'rect';
+    return this.boxStyle;
+  }
+
+  @action setBoxStyle(value: 'rect' | 'round') {
+    localStorage.setItem(`${PREFIX}boxStyle`, `${value}`);
+    this.getBoxStyle();
   }
 }

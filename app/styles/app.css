@@ -10,6 +10,7 @@
 @import "./board/thread.css";
 
 @import "./control/button.css";
+@import "./control/dropdown.css";
 
 html {
   background-color: var(--color-application-background);

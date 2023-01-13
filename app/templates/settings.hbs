@@ -1,0 +1,27 @@
+{{page-title 'Einstellungen'}}
+
+<MainNav::Settings />
+
+<Common::Control::Dropdown
+  @options={{this.navPositionOptions}}
+  @default={{@model.currentNavPositionOption}}
+  @onSelect={{this.handleNavPositionSelect}}
+  @size='medium'
+  @label='Navigation'
+/>
+
+<Common::Control::Dropdown
+  @options={{this.benderOptions}}
+  @default={{@model.currentBendersOption}}
+  @onSelect={{this.handleBendersSelect}}
+  @size='medium'
+  @label='Bender'
+/>
+
+<Common::Control::Dropdown
+  @options={{this.boxStyleOptions}}
+  @default={{@model.currentBoxStyleOption}}
+  @onSelect={{this.handleBoxStyleSelect}}
+  @size='large'
+  @label='Bist Du kantig?'
+/>

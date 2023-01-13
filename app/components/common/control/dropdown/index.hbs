@@ -1,0 +1,33 @@
+<div class='dropdown {{unless @label "no-label"}}'>
+  <label class='dropdown-label' for='{{this.componentId}}-button'><p
+    >{{@label}}</p>
+  </label>
+  <div class='dropdown-inner control-size-{{this.size}}'>
+    <button
+      id='{{this.componentId}}-button'
+      class='dropdown-toggle'
+      type='button'
+      aria-label={{@label}}
+      aria-haspopup='true'
+      aria-expanded='false'
+      {{on 'click' this.toggle}}
+      {{on 'blur' this.handleBlur}}
+    >
+      <p class='dropdown-toggle-caption'>{{this.caption}}</p>
+      <FaIcon class='dropdown-toggle-icon' @icon='chevron-down' />
+    </button>
+    <div
+      class='dropdown-menu control-size-{{this.size}}
+        {{if this.expanded "dropdown-menu-visible"}}'
+    >
+      {{#each this.options as |option|}}
+        <button
+          class='dropdown-item
+            {{if (eq option this.selectedOption) "dropdown-item-selected"}}'
+          type='button'
+          {{on 'click' (fn this.handleItemClick option)}}
+        >{{option.label}}</button>
+      {{/each}}
+    </div>
+  </div>
+</div>
