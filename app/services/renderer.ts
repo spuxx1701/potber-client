@@ -20,11 +20,11 @@ export default class RendererService extends Service {
         '--page-content-padding-top',
         'var(--main-nav-height)'
       );
-      this.rootStyle.setProperty('--page-content-padding-bottom', 'unset');
+      this.rootStyle.setProperty('--page-content-padding-bottom', '0px');
     } else {
       this.rootStyle.setProperty('--main-nav-top', 'unset');
       this.rootStyle.setProperty('--main-nav-bottom', '0px');
-      this.rootStyle.setProperty('--page-content-padding-top', 'unset');
+      this.rootStyle.setProperty('--page-content-padding-top', '0px');
       this.rootStyle.setProperty(
         '--page-content-padding-bottom',
         'var(--main-nav-height)'

@@ -7,3 +7,7 @@ button {
 button:not(.control-size-square) svg {
   margin-right: 0.25rem;
 }
+
+button:not(:disabled):hover, button:not(:disabled):active {
+  background-color: var(--color-control-hover-primary);
+}

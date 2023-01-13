@@ -1,9 +1,21 @@
 <div class='board-category'>
-  <div class='board-category-header'>
-    <h4 class='board-category-header-title'>{{@category.name}}</h4>
-    <p class='subtitle'>{{@category.description}}</p>
-  </div>
-  {{#each @category.boards as |board|}}
-    <Board::BoardItem @board={{board}} />
-  {{/each}}
+  <button
+    class='board-category-header'
+    type='button'
+    {{on 'click' this.toggleExpanded}}
+  >
+    <div class='board-category-header-details'>
+      <p class='board-category-header-title'>{{@category.name}}</p>
+      <p class='subtitle'>{{@category.description}}</p>
+    </div>
+    <FaIcon
+      class='board-category-header-chevron'
+      @icon={{if this.expanded 'chevron-down' 'chevron-right'}}
+    />
+  </button>
+  {{#if this.expanded}}
+    {{#each @category.boards as |board|}}
+      <Board::BoardItem @board={{board}} />
+    {{/each}}
+  {{/if}}
 </div>

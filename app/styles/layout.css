@@ -5,7 +5,7 @@
   /* The following variables may change during runtime. */
   --main-nav-top: unset;
   --main-nav-bottom: 0px;
-  --page-content-padding-top: unset;
+  --page-content-padding-top: 0px;
   --page-content-padding-bottom: var(--control-default-height);
 }
 
