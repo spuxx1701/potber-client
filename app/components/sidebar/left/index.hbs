@@ -1,0 +1,12 @@
+<div id='sidebar-left' class='sidebar'>
+  {{#if this.navOnTop}}
+    <Sidebar::Left::Nav />
+  {{/if}}
+  <div id='sidebar-left-content'>
+    <p>Foo</p>
+    <p>Bar</p>
+  </div>
+  {{#unless this.navOnTop}}
+    <Sidebar::Left::Nav />
+  {{/unless}}
+</div>

@@ -1,6 +1,8 @@
 @import "./colors.css";
 @import "./layout.css";
 @import "./text.css";
+@import "./main-nav.css";
+@import "./sidebar.css";
 
 @import "./board/board.css";
 @import "./board/board-overview.css";
@@ -22,26 +24,9 @@ body {
   color: var(--color-text-default);
 
   /* Customizable */
-  --global-border-radius: 5px;
+  --global-border-radius: 0px;
 }
 
 .ember-application * {
   transition: color 200ms, background-color 200ms, border-color 200ms, text-shadow 200ms, transform 200ms, scale 200ms, opacity 200ms;
-}
-
-#main-nav {
-  width: 100vw;
-  height: var(--main-nav-height);
-  position: fixed;
-  display: flex;
-  align-items: center;
-  background-color: var(--color-nav-background);
-  top: var(--main-nav-top);
-  bottom: var(--main-nav-bottom);
-  z-index: 10;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
-}
-
-#main-nav *:first-child {
-  flex-grow: auto;
 }

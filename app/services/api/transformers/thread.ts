@@ -32,5 +32,4 @@ export function transformThreadPage(threadPageXml: ThreadPageXml) {
     postCount: parseInt(threadPageXml.attributes.count.value),
     posts,
   } as ThreadPage;
-  return {} as Thread;
 }

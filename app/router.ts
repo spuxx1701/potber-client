@@ -11,5 +11,6 @@ Router.map(function () {
   this.route('/');
   this.route('board');
   this.route('thread');
+  this.route('settings');
   this.route('not-found', { path: '/*path' });
 });

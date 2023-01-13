@@ -10,6 +10,10 @@
 }
 
 #page-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
   padding-top: calc(var(--page-content-padding-top) + 0.5rem);
   padding-bottom: calc(var(--page-content-padding-bottom) + 0.5rem);
   padding-left: 0.5rem;

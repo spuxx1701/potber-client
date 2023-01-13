@@ -4,4 +4,15 @@
   {{outlet}}
 </div>
 
-<App::MainNav />
+<Sidebar::Left />
+
+<div id='main-nav' role='toolbar'>
+  <Common::Control::Button
+    @icon='bars'
+    @text='Navigation'
+    @size='square'
+    @variant='primary-transparent'
+    @onClick={{this.toggleLeftSidebar}}
+  />
+  <PortalTarget @name='main-nav' />
+</div>

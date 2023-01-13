@@ -1,4 +1,6 @@
-{{page-title 'Alle Boards'}}
+{{page-title 'Forenübersicht'}}
+
+<MainNav::BoardOverview />
 
 {{#each @model as |category|}}
   <Board::BoardCategory @category={{category}} />

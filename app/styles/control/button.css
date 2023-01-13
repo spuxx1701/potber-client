@@ -11,3 +11,8 @@ button:not(.control-size-square) svg {
 button:not(:disabled):hover, button:not(:disabled):active {
   background-color: var(--color-control-hover-primary);
 }
+
+.button-link:not(:disabled):hover {
+  opacity: 1;
+  background-color: var(--color-control-hover-primary);
+}

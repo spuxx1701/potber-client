@@ -1,0 +1,42 @@
+:root {
+  --sidebar-expanded-width: 300px;
+  /* Will be modified during runtime */
+  --sidebar-left-width: 0px;
+}
+
+.sidebar {
+  position: fixed;
+  background-color: var(--color-nav-background);
+  height: calc(100vh - var(--main-nav-height));
+  z-index: 10;
+  transition: width 500ms !important;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  top: calc(var(--main-nav-top) + var(--main-nav-height));
+  bottom: calc(var(--main-nav-bottom) + var(--main-nav-height));
+}
+
+#sidebar-left {
+  left: 0;
+  width: var(--sidebar-left-width);
+}
+
+#sidebar-left-nav {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  width: var(--sidebar-expanded-width);
+  height: var(--control-default-height);
+}
+
+#sidebar-left-nav a {
+  height: var(--control-default-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sidebar-left-content {
+  flex-grow: 1;
+}
