@@ -24,6 +24,7 @@ export function transformPost(postXml: PostXml) {
     ),
     threadId: postXml.children[4].attributes.id.value,
     boardId: postXml.children[5].attributes.id.value,
+    avatarUrl: getNode('avatar', postXml).textContent,
   } as Post;
 }
 

@@ -6,7 +6,7 @@ import LocalStorageService from 'potber/services/local-storage';
 import RendererService from 'potber/services/renderer';
 import {
   navPositionOptions,
-  benderOptions,
+  avatarStyleOptions,
   boxStyleOptions,
 } from 'potber/routes/settings';
 
@@ -15,7 +15,7 @@ export default class SettingsController extends Controller {
   @service declare renderer: RendererService;
 
   navPositionOptions = navPositionOptions;
-  benderOptions = benderOptions;
+  avatarStyleOptions = avatarStyleOptions;
   boxStyleOptions = boxStyleOptions;
 
   @action handleNavPositionSelect(option: DropdownOption) {
@@ -23,8 +23,8 @@ export default class SettingsController extends Controller {
     this.renderer.updateMainNavPosition();
   }
 
-  @action handleBendersSelect(option: DropdownOption) {
-    this.localStorage.setBenders(option.data);
+  @action handleAvatarStyleSelect(option: DropdownOption) {
+    this.localStorage.setAvatarStyle(option.data);
   }
 
   @action handleBoxStyleSelect(option: DropdownOption) {

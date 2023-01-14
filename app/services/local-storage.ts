@@ -1,13 +1,12 @@
 import { action } from '@ember/object';
-import Service, { service } from '@ember/service';
+import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import RendererService from './renderer';
 
 const PREFIX = 'potber-';
 
 export default class LocalStorageService extends Service {
   @tracked mainNavPosition: string = this.getMainNavPosition();
-  @tracked benders: string = this.getBenders();
+  @tracked avatarStyle: string = this.getAvatarStyle();
   @tracked boxStyle: string = this.getBoxStyle();
 
   @action getMainNavPosition() {
@@ -18,17 +17,17 @@ export default class LocalStorageService extends Service {
 
   @action setMainNavPosition(value: 'top' | 'bottom') {
     localStorage.setItem(`${PREFIX}mainNavPosition`, value);
-    this.getMainNavPosition();
+    this.mainNavPosition = value;
   }
 
-  @action getBenders() {
-    this.benders = localStorage.getItem(`${PREFIX}benders`) || 'none';
-    return this.benders;
+  @action getAvatarStyle() {
+    this.avatarStyle = localStorage.getItem(`${PREFIX}avatarStyle`) || 'none';
+    return this.avatarStyle;
   }
 
-  @action setBenders(value: 'none' | 'small' | 'large') {
-    localStorage.setItem(`${PREFIX}benders`, `${value}`);
-    this.getBenders();
+  @action setAvatarStyle(value: 'none' | 'small' | 'large') {
+    localStorage.setItem(`${PREFIX}avatarStyle`, `${value}`);
+    this.avatarStyle = value;
   }
 
   @action getBoxStyle() {

@@ -1,8 +1,20 @@
 <div class='post'>
   <div class='post-details'>
+
     <div class='post-details-title'>
-      <b class='post-details-author-name'>{{@post.author.name}}</b>
-      <p class='post-details-date subtitle'>{{this.date}}</p>
+      {{#if this.showSmallAvatar}}
+        <div class='post-avatar-small'>
+          <img
+            src={{this.avatarUrl}}
+            alt={{this.avatarUrl}}
+            aria-hidden='true'
+          />
+        </div>
+      {{/if}}
+      <div class='flex-column justify-content-center'>
+        <b class='post-details-author-name'>{{@post.author.name}}</b>
+        <p class='post-details-date subtitle'>{{this.date}}</p>
+      </div>
     </div>
     <Common::Control::Button
       @icon='ellipsis-vertical'

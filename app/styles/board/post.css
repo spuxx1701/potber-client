@@ -3,7 +3,7 @@
   flex-direction: column;
   border-radius: var(--global-border-radius);
   margin-top: var(--global-gap);
-  margin-bottom: var(--global-gap);
+  margin-bottom: var(--global-);
   overflow: hidden;
 }
 
@@ -20,7 +20,7 @@
 
 .post-details-title {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .post-details-author-name {
@@ -29,6 +29,18 @@
 
 .post-details-date {
   margin: 0;
+}
+
+.post-avatar-small {
+  display: flex;
+  height: 50px;
+  margin-right: 0.5rem;
+}
+
+.post-avatar-small img {
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
 }
 
 .post-content {

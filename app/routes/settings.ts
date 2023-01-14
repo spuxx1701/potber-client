@@ -12,8 +12,8 @@ export default class SettingsRoute extends Route {
       currentNavPositionOption: navPositionOptions.find(
         (option) => option.data === this.localStorage.getMainNavPosition()
       ),
-      currentBendersOption: benderOptions.find(
-        (option) => option.data === this.localStorage.getBenders()
+      currentAvatarStyleOption: avatarStyleOptions.find(
+        (option) => option.data === this.localStorage.getAvatarStyle()
       ),
       currentBoxStyleOption: boxStyleOptions.find(
         (option) => option.data === this.localStorage.getBoxStyle()
@@ -27,7 +27,7 @@ export const navPositionOptions = [
   { label: 'Unten', data: 'bottom' },
 ] as DropdownOption[];
 
-export const benderOptions = [
+export const avatarStyleOptions = [
   {
     label: 'Keine',
     data: 'none',

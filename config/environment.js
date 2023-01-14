@@ -15,15 +15,16 @@ module.exports = function (environment) {
     },
 
     APP: {
-      proxyUrl: 'http://localhost:4201',
-      apiUrl: 'https://forum.mods.de/bb/xml/',
+      PROXY_URL: 'http://localhost:4201',
+      API_URL: 'https://forum.mods.de/bb/xml/',
+      FORUM_URL: 'https://forum.mods.de/bb/',
       // Here you can pass flags/options to your application instance
       // when it is created
     },
   };
 
   if (environment === 'development') {
-    ENV.APP.proxyUrl = 'http://localhost:4201';
+    ENV.APP.PROXY_URL = 'http://localhost:4201';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -44,11 +45,11 @@ module.exports = function (environment) {
   }
 
   if (environment === 'integration') {
-    ENV.APP.proxyUrl = 'https://proxy.potber.de';
+    ENV.APP.PROXY_URL = 'https://proxy.potber.de';
   }
 
   if (environment === 'production') {
-    ENV.APP.proxyUrl = 'https://proxy.potber.de';
+    ENV.APP.PROXY_URL = 'https://proxy.potber.de';
   }
 
   return ENV;

@@ -7,7 +7,7 @@ export interface Post {
   title: string;
   content: string;
   editedCount: number;
-  avatarId: string;
+  avatarUrl?: string;
   threadId: string;
   boardId: string;
 }
@@ -63,6 +63,7 @@ export interface PostXml {
       nodeName: 'avatar';
       attributes: {
         id: { value: string };
+        textContent: string;
       };
     };
     '4': {

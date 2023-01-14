@@ -6,7 +6,10 @@
     @currentPage={{@model.currentPage}}
   />
 
-  <Board::ThreadPage @page={{@model.thread.page}} />
+  <Board::ThreadPage
+    @page={{@model.thread.page}}
+    @avatarStyle={{@model.avatarStyle}}
+  />
 {{else}}
   {{page-title '404'}}
 
