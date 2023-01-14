@@ -1,6 +1,6 @@
 :root {
   --control-default-height: 45px;
-  --main-nav-height: 45px;
+  --main-nav-height: 55px;
 
   /* The following variables may change during runtime. */
   --main-nav-top: unset;
