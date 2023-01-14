@@ -7,6 +7,6 @@ export interface Signature {
   };
 }
 
-export default class BoardItemComponent extends Component<Signature> {
+export default class BoardCategoryItemComponent extends Component<Signature> {
   declare args: Signature['Args'];
 }

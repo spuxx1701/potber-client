@@ -1,9 +1,12 @@
 .post {
-  margin: 0.5rem 0 0.5rem 0;
   display: flex;
   flex-direction: column;
   border-radius: var(--global-border-radius);
   overflow: hidden;
+}
+
+.post:not(:first-child) {
+  margin-top: 1px;
 }
 
 .post-details {

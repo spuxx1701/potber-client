@@ -1,0 +1,31 @@
+<Common::Control::Link
+  class='board-item {{if this.isImportant "board-item-important"}}'
+  @route='thread'
+  @query={{hash TID=@thread.id}}
+>
+  <div class='board-item-header'>
+    <div>
+      <p class='board-item-title'>{{@thread.title}}</p>
+    </div>
+    <div class='board-item-flags'>
+      {{#if @thread.isAnnouncement}}
+        <FaIcon @icon='bullhorn' />
+      {{/if}}
+      {{#if @thread.isImportant}}
+        <FaIcon @icon='circle-exclamation' />
+      {{/if}}
+      {{#if @thread.isSticky}}
+        <FaIcon @icon='thumbtack' />
+      {{/if}}
+      {{#if @thread.isGlobal}}
+        <FaIcon @icon='globe' />
+      {{/if}}
+      {{#if @thread.isClosed}}
+        <FaIcon @icon='lock' />
+      {{/if}}
+    </div>
+  </div>
+  {{#if @thread.subtitle}}
+    <p class='board-item-subtitle subtitle'>{{@thread.subtitle}}</p>
+  {{/if}}
+</Common::Control::Link>

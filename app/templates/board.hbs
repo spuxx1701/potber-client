@@ -1,0 +1,7 @@
+{{page-title this.pageTitle}}
+
+<MainNav::Board @board={{@model.board}} @currentPage={{@model.page}} />
+
+{{#each this.threads as |thread|}}
+  <Board::Thread @thread={{thread}} />
+{{/each}}

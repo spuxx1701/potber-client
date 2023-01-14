@@ -1,15 +1,15 @@
+import { FirstPost, FirstPostXml, LastPost, LastPostXml } from '../types/post';
 import { Thread, ThreadPage, ThreadPageXml, ThreadXml } from '../types/thread';
 import { transformPost } from './post';
 
-export function transformThread(xmlDocument: XMLDocument) {
-  const threadXml = xmlDocument.children[0] as any as ThreadXml;
+export function transformThread(threadXml: ThreadXml) {
   const thread = {
     id: threadXml.id,
     title: threadXml.children[0].textContent,
     subtitle: threadXml.children[1].textContent,
-    numberOfReplies: parseInt(threadXml.children[2].attributes.value),
-    numberOfHits: parseInt(threadXml.children[3].attributes.value),
-    numberOfPages: parseInt(threadXml.children[4].attributes.value),
+    repliesCount: parseInt(threadXml.children[2].attributes.value),
+    hitsCount: parseInt(threadXml.children[3].attributes.value),
+    pagesCount: parseInt(threadXml.children[4].attributes.value),
     isClosed: false,
     isSticky: false,
     isImportant: false,
@@ -22,6 +22,7 @@ export function transformThread(xmlDocument: XMLDocument) {
 }
 
 export function transformThreadPage(threadPageXml: ThreadPageXml) {
+  if (!threadPageXml) return undefined;
   const posts = [];
   for (const postXml of threadPageXml.childNodes) {
     posts.push(transformPost(postXml));
@@ -32,4 +33,12 @@ export function transformThreadPage(threadPageXml: ThreadPageXml) {
     postCount: parseInt(threadPageXml.attributes.count.value),
     posts,
   } as ThreadPage;
+}
+
+export function transformFirstPost(firstPostXml: FirstPostXml) {
+  return {} as FirstPost;
+}
+
+export function transformLastPost(lastPostXml: LastPostXml) {
+  return {} as LastPost;
 }

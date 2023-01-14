@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { BoardCategory } from 'potber/services/api/types/board';
+import { BoardCategory } from 'potber/services/api/types/board-category';
 
 export interface Signature {
   Args: {

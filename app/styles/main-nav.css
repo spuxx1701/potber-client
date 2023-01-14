@@ -31,3 +31,7 @@
 .main-nav-header * {
   margin: 0;
 }
+
+.main-nav-inner-right {
+  display: flex;
+}

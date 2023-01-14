@@ -1,4 +1,4 @@
-button {
+button, .button-link {
   height: var(--control-default-height);
   border: none;
   font-size: medium;
@@ -10,6 +10,21 @@ button:not(.control-size-square) svg {
 
 button:not(:disabled):hover, button:not(:disabled):active {
   background-color: var(--color-control-hover-primary);
+}
+
+.button-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+}
+
+.button-link:not(:disabled) {
+  color: var(--color-text-default);
+}
+
+.button-link:disabled {
+  color: var(--color-control-disabled);
 }
 
 .button-link:not(:disabled):hover {

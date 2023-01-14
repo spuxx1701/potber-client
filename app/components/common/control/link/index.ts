@@ -5,6 +5,8 @@ export interface Signature {
   Args: {
     route: string;
     query?: object;
+    size?: ControlSize;
+    title?: string;
     onClick?: () => void;
   };
 }

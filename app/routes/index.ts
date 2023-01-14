@@ -6,6 +6,6 @@ export default class IndexRoute extends Route {
   @service declare api: ApiService;
 
   async model() {
-    return await this.api.getCategories();
+    return await this.api.getBoardCategories();
   }
 }

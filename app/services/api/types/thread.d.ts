@@ -1,19 +1,20 @@
-import { Post, PostXml } from './post';
+import { FirstPost, LastPost, Post, PostXml } from './post';
 
 export interface Thread {
   id: string;
   title: string;
   subtitle: string;
-  numberOfReplies: number;
-  numberOfHits: number;
-  numberOfPages: number;
+  repliesCount: number;
+  hitsCount: number;
+  pagesCount: number;
   isClosed: boolean;
   isSticky: boolean;
   isImportant: boolean;
   isAnnouncement: boolean;
   isGlobal: boolean;
   boardId: string;
-  page: ThreadPage | null;
+  firstPost?: FirstPost;
+  page?: ThreadPage | null;
 }
 
 export interface ThreadXml {

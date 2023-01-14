@@ -15,7 +15,7 @@
   </button>
   {{#if this.expanded}}
     {{#each @category.boards as |board|}}
-      <Board::BoardItem @board={{board}} />
+      <Board::BoardCategoryItem @board={{board}} />
     {{/each}}
   {{/if}}
 </div>
