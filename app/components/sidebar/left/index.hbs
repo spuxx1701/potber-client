@@ -3,8 +3,12 @@
     <Sidebar::Left::Nav />
   {{/if}}
   <div id='sidebar-left-content'>
-    <p>Foo</p>
-    <p>Bar</p>
+    {{!-- {{#if this.session.authenticated}}
+      <h3 id='news-feed-title'>Neuigkeiten</h3>
+    {{else}}
+      <p class='text-center'>Melde Dich an, um Neuigkeiten zu empfangen.</p>
+    {{/if}} --}}
+    <p class='text-center'>Hier gibt es noch nichts zu sehen. ¯\_(ツ)_/¯</p>
   </div>
   {{#unless this.navOnTop}}
     <Sidebar::Left::Nav />

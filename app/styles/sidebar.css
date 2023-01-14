@@ -40,4 +40,13 @@
 
 #sidebar-left-content {
   flex-grow: 1;
+  width: var(--sidebar-expanded-width);
+}
+
+#sidebar-left-content>* {
+  width: 100%;
+}
+
+#news-feed-title {
+  text-align: center;
 }
