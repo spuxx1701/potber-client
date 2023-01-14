@@ -6,6 +6,12 @@
     />
   </MainNav::Inner::Left>
   <MainNav::Inner::Right>
+    <Common::Control::Link
+      @title='Zurück zum Board'
+      @size='square'
+      @route='board'
+      @query={{hash BID=@thread.boardId}}
+    ><FaIcon @icon='chevron-up' /></Common::Control::Link>
     {{#if this.previousPageVisible}}
       <Common::Control::Link
         @title='Vorherige Seite'
