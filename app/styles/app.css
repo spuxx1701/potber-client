@@ -21,7 +21,7 @@ body {
 }
 
 :root {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: var(--color-text-default);
 }
 

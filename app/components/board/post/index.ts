@@ -22,11 +22,11 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get content() {
-    return this.bbcodeParser.parsePostContent(this.args.post.content);
+    const content = this.bbcodeParser.parsePostContent(this.args.post.content);
+    return content;
   }
 
   get showSmallAvatar() {
-    console.log(this.args.avatarStyle);
     return this.args.post.avatarUrl && this.args.avatarStyle === 'small';
   }
 
