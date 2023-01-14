@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.board-category:not(:first-child) {
+  margin-top: 1px;
+}
+
 .board-category-header {
   display: flex;
   flex-direction: row;
@@ -11,8 +15,7 @@
   justify-content: space-between;
   border: none;
   background-color: var(--color-post-background-secondary);
-  margin: 1px 0 1px 0;
-  padding: 0.25rem;
+  padding: 0.5rem;
   height: unset;
   min-height: var(--default-control-height);
   border-radius: var(--global-border-radius);
@@ -47,14 +50,17 @@
   flex-direction: column;
   border-radius: var(--global-border-radius);
   background-color: var(--color-post-background-primary);
-  margin: 1px 0px 1px 0px;
-  padding: 0.25rem;
-  width: calc(100% - 0.5rem);
-  color: var(--color-text-default);
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
   text-decoration: none;
 }
 
+.board-item:not(:first-child) {
+  margin-top: 1px;
+}
+
 .board-item-title {
+  color: var(--color-text-default);
   font-weight: bold;
 }
 
