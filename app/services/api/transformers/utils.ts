@@ -1,5 +1,4 @@
 export function getNode(nodeName: string, xmlDocument: any) {
-  if (nodeName === 'pages') debugger;
   for (const node of xmlDocument.childNodes) {
     if (node.nodeName === nodeName) {
       return node;
