@@ -1,4 +1,3 @@
-import { getDateFromUnixTimestamp } from 'potber/utils/misc';
 import { Board } from '../types/board';
 import {
   BoardCategory,

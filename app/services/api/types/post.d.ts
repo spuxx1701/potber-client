@@ -13,7 +13,7 @@ export interface Post {
 }
 
 export interface FirstPost {
-  iconId: string;
+  icon: string;
   author: User;
   date: Date;
   threadId: string;
@@ -93,7 +93,7 @@ export interface FirstPostXml {
         '2': {
           nodeName: 'icon';
           attributes: {
-            icon: {
+            id: {
               value: string;
             };
           };

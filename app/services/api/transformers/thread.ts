@@ -1,4 +1,3 @@
-import { FirstPost, FirstPostXml, LastPost, LastPostXml } from '../types/post';
 import { Thread, ThreadPage, ThreadPageXml, ThreadXml } from '../types/thread';
 import { transformPost } from './post';
 
@@ -33,12 +32,4 @@ export function transformThreadPage(threadPageXml: ThreadPageXml) {
     postCount: parseInt(threadPageXml.attributes.count.value),
     posts,
   } as ThreadPage;
-}
-
-export function transformFirstPost(firstPostXml: FirstPostXml) {
-  return {} as FirstPost;
-}
-
-export function transformLastPost(lastPostXml: LastPostXml) {
-  return {} as LastPost;
 }

@@ -1,5 +1,6 @@
 button, .button-link {
   height: var(--control-default-height);
+  min-height: var(--control-default-height);
   border: none;
   font-size: medium;
 }
@@ -8,8 +9,9 @@ button:not(.control-size-square) svg {
   margin-right: 0.25rem;
 }
 
-button:not(:disabled):hover, button:not(:disabled):active {
-  background-color: var(--color-control-hover-primary);
+button:not(:disabled):hover, button:not(:disabled):active,
+.button-link:not(:disabled):hover, .button-link:not(:disabled):active {
+  opacity: 0.8;
 }
 
 .button-link {
@@ -25,9 +27,4 @@ button:not(:disabled):hover, button:not(:disabled):active {
 
 .button-link:disabled {
   color: var(--color-control-disabled);
-}
-
-.button-link:not(:disabled):hover {
-  opacity: 1;
-  background-color: var(--color-control-hover-primary);
 }

@@ -4,13 +4,13 @@
 @import "./main-nav.css";
 @import "./sidebar.css";
 
+@import "./control/button.css";
+@import "./control/dropdown.css";
+
 @import "./board/board.css";
 @import "./board/board-overview.css";
 @import "./board/post.css";
 @import "./board/thread.css";
-
-@import "./control/button.css";
-@import "./control/dropdown.css";
 
 html {
   background-color: var(--color-application-background);

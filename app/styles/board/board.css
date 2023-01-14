@@ -1,4 +1,5 @@
 .board-item {
+  height: auto;
   flex-direction: column;
   border-radius: var(--global-border-radius);
   background-color: var(--color-post-background-primary);
@@ -23,8 +24,18 @@
 }
 
 .board-item-title {
+  display: flex;
+  align-items: center;
   color: var(--color-text-default);
   font-weight: bold;
+}
+
+.board-item-title img {
+  margin-right: 0.25rem;
+}
+
+.board-item-title p {
+  margin: 0;
 }
 
 .board-item-title, .board-item-subtitle {

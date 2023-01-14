@@ -1,4 +1,4 @@
-import { FirstPost, LastPost, Post, PostXml } from './post';
+import { FirstPost, Post, PostXml } from './post';
 
 export interface Thread {
   id: string;

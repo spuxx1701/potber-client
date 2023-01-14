@@ -4,8 +4,11 @@
   @query={{hash TID=@thread.id}}
 >
   <div class='board-item-header'>
-    <div>
-      <p class='board-item-title'>{{@thread.title}}</p>
+    <div class='board-item-title'>
+      {{#if this.icon}}
+        <Board::PostIcon @icon={{this.icon}} />
+      {{/if}}
+      <p>{{@thread.title}}</p>
     </div>
     <div class='board-item-flags'>
       {{#if @thread.isAnnouncement}}

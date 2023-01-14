@@ -4,8 +4,8 @@
   @query={{hash BID=@board.id}}
 >
   <p class='board-category-item-title'>{{@board.name}}</p>
-  <p class='subtitle'>{{this.description}}</p>
-  <p class='board-item subtitle subtitle'>Letzter Post von
+  <p class='subtitle'>{{@board.description}}</p>
+  <p class='subtitle'>Letzter Post von
     <b>{{@board.lastPost.author.name}}</b>
     ({{date @board.lastPost.date}})</p>
 </Common::Control::Link>

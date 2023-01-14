@@ -18,4 +18,8 @@ export default class ThreadComponent extends Component<Signature> {
       this.args.thread.isSticky
     );
   }
+
+  get icon() {
+    return this.args.thread.firstPost.icon || undefined;
+  }
 }

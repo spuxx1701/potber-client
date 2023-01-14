@@ -1,6 +1,5 @@
 import { Board, BoardItem, BoardItemXml, BoardXml } from '../types/board';
-import { transformLastPost } from './post';
-import { transformFirstPost } from './thread';
+import { transformLastPost, transformFirstPost } from './post';
 
 export function transformBoard(boardXml: BoardXml) {
   const threads: BoardItem[] = [];

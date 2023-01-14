@@ -8,6 +8,7 @@ import {
 } from '../types/post';
 import { UserXml } from '../types/user';
 import { transformUser } from './user';
+import { getAttributeValue, getNode } from './utils';
 
 export function transformPost(postXml: PostXml) {
   return {
@@ -27,6 +28,7 @@ export function transformPost(postXml: PostXml) {
 }
 
 export function transformFirstPost(firstPostXml: FirstPostXml) {
+  const post = firstPostXml.children[0];
   return {
     author: transformUser(
       firstPostXml.children[0].children[0] as any as UserXml
@@ -36,14 +38,15 @@ export function transformFirstPost(firstPostXml: FirstPostXml) {
         firstPostXml.children[0].children[1].attributes.timestamp.value
       ) * 1000
     ),
-    iconId: firstPostXml.children[0].children[2].attributes.icon.value,
-    threadId: firstPostXml.children[0].children[3].attributes.id.value,
-    boardId: firstPostXml.children[0].children[4].attributes.id.value,
+    icon: getAttributeValue('id', getNode('icon', post)),
+    threadId: getAttributeValue('id', getNode('in-thread', post)),
+    boardId: getAttributeValue('id', getNode('in-board', post)),
   } as FirstPost;
 }
 
 export function transformLastPost(lastPostXml: LastPostXml) {
   if (!lastPostXml) return undefined;
+  const post = lastPostXml.children[0];
   return {
     author: transformUser(
       lastPostXml.children[0].children[0] as any as UserXml
@@ -52,7 +55,7 @@ export function transformLastPost(lastPostXml: LastPostXml) {
       parseInt(lastPostXml.children[0].children[1].attributes.timestamp.value) *
         1000
     ),
-    threadId: lastPostXml.children[0].children[2].attributes.id.value,
-    boardId: lastPostXml.children[0].children[3].attributes.id.value,
+    threadId: getAttributeValue('id', getNode('in-thread', post)),
+    boardId: getAttributeValue('id', getNode('in-board', post)),
   } as LastPost;
 }
