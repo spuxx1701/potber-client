@@ -30,10 +30,6 @@ export default class PostComponent extends Component<Signature> {
     return this.args.post.avatarUrl && this.args.avatarStyle === 'small';
   }
 
-  get showLargeAvatar() {
-    return this.args.post.avatarUrl && this.args.avatarStyle === 'large';
-  }
-
   get avatarUrl() {
     if (this.args.post.avatarUrl) {
       // Remove './' from avatarUrl

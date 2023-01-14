@@ -25,7 +25,7 @@ export default class LocalStorageService extends Service {
     return this.avatarStyle;
   }
 
-  @action setAvatarStyle(value: 'none' | 'small' | 'large') {
+  @action setAvatarStyle(value: 'none' | 'small') {
     localStorage.setItem(`${PREFIX}avatarStyle`, `${value}`);
     this.avatarStyle = value;
   }

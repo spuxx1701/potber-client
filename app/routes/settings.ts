@@ -36,10 +36,6 @@ export const avatarStyleOptions = [
     label: 'Klein',
     data: 'small',
   },
-  {
-    label: 'Groß',
-    data: 'large',
-  },
 ] as DropdownOption[];
 
 export const boxStyleOptions = [
