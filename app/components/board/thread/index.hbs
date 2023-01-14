@@ -29,6 +29,14 @@
     </div>
   </div>
   {{#if @thread.subtitle}}
-    <p class='board-item-subtitle subtitle'>{{@thread.subtitle}}</p>
+    <p class='subtitle'>{{@thread.subtitle}}</p>
   {{/if}}
+  <div class='flex-row full-width justify-content-space-between'>
+    <p class='subtitle'>
+      {{this.lastPostLabel}}
+    </p>
+    <p class='subtitle'>
+      {{this.pagesLabel}}
+    </p>
+  </div>
 </Common::Control::Link>
