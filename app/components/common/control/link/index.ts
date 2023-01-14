@@ -6,6 +6,7 @@ export interface Signature {
     route: string;
     query?: object;
     size?: ControlSize;
+    variant?: ControlVariant;
     title?: string;
     onClick?: () => void;
   };
@@ -18,6 +19,10 @@ export default class CommonControlLinkComponent extends Component<Signature> {
     if (this.args.onClick) {
       this.args.onClick();
     }
+  }
+
+  get variant() {
+    return this.args.variant || 'secondary';
   }
 
   get query() {

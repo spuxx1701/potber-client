@@ -13,5 +13,7 @@ Router.map(function () {
   this.route('thread');
   this.route('create-thread');
   this.route('settings');
+  this.route('changelog');
+  this.route('about');
   this.route('not-found', { path: '/*path' });
 });

@@ -14,3 +14,11 @@ a:hover {
 b {
   color: var(--color-text-highlighted);
 }
+
+hr {
+  color: var(--color-text-subtle);
+  border-radius: 50%;
+  opacity: 0.2;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

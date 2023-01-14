@@ -2,26 +2,52 @@
 
 <MainNav::Settings />
 
-<Common::Control::Dropdown
-  @options={{this.navPositionOptions}}
-  @default={{@model.currentNavPositionOption}}
-  @onSelect={{this.handleNavPositionSelect}}
-  @size='medium'
-  @label='Navigation'
-/>
+<div class='padding-medium'>
 
-<Common::Control::Dropdown
-  @options={{this.benderOptions}}
-  @default={{@model.currentBendersOption}}
-  @onSelect={{this.handleBendersSelect}}
-  @size='medium'
-  @label='Bender'
-/>
+  <Common::Control::Dropdown
+    @options={{this.navPositionOptions}}
+    @default={{@model.currentNavPositionOption}}
+    @onSelect={{this.handleNavPositionSelect}}
+    @size='medium'
+    @label='Navigation'
+  />
 
-<Common::Control::Dropdown
-  @options={{this.boxStyleOptions}}
-  @default={{@model.currentBoxStyleOption}}
-  @onSelect={{this.handleBoxStyleSelect}}
-  @size='large'
-  @label="Wie kantig magst Du's?"
-/>
+  <Common::Control::Dropdown
+    @options={{this.benderOptions}}
+    @default={{@model.currentBendersOption}}
+    @onSelect={{this.handleBendersSelect}}
+    @size='medium'
+    @label='Bender'
+  />
+
+  <Common::Control::Dropdown
+    @options={{this.boxStyleOptions}}
+    @default={{@model.currentBoxStyleOption}}
+    @onSelect={{this.handleBoxStyleSelect}}
+    @size='large'
+    @label="Wie kantig magst Du's?"
+  />
+
+  <hr />
+
+  <Common::Control::Link
+    @route='about'
+    @size='large'
+    @variant='primary'
+    class='margin-auto margin-vertical-x-small'
+  >
+    <FaIcon @icon='star' @prefix='fas' />
+    <p class='margin-left-x-small'>Changelog</p>
+  </Common::Control::Link>
+
+  <Common::Control::Link
+    @route='changelog'
+    @size='large'
+    @variant='primary'
+    class='margin-auto margin-vertical-small'
+  >
+    <FaIcon @icon='info-circle' @prefix='fas' />
+    <p class='margin-left-x-small'>Über die App</p>
+  </Common::Control::Link>
+
+</div>
