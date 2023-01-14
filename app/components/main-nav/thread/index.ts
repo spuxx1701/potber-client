@@ -11,8 +11,12 @@ export interface Signature {
 export default class MainNavThreadComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
+  get subtitle() {
+    return `Seite ${this.currentPage} von ${this.args.thread.pagesCount}`;
+  }
+
   get nextPageVisible() {
-    return true;
+    return this.currentPage < this.args.thread.pagesCount;
   }
 
   get currentPage() {

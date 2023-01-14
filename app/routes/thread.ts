@@ -15,6 +15,16 @@ export interface ThreadRouteModel {
 }
 
 export default class ThreadRoute extends Route {
+  // We need to tell the route to refresh the model after the query parameters have changed
+  queryParams = {
+    TID: {
+      refreshModel: true,
+    },
+    page: {
+      refreshModel: true,
+    },
+  };
+
   @service declare api: ApiService;
 
   async model(params: Params) {

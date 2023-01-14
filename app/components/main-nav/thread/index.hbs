@@ -2,7 +2,7 @@
   <MainNav::Inner::Left>
     <MainNav::Inner::Header
       @title={{@thread.title}}
-      @subtitle={{@thread.subtitle}}
+      @subtitle={{this.subtitle}}
     />
   </MainNav::Inner::Left>
   <MainNav::Inner::Right>
@@ -18,7 +18,7 @@
       <Common::Control::Link
         @title='Nächste Seite'
         @size='square'
-        @route='board'
+        @route='thread'
         @query={{hash TID=@thread.id page=this.nextPage}}
       ><FaIcon @icon='chevron-right' /></Common::Control::Link>
     {{/if}}

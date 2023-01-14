@@ -30,6 +30,10 @@
 
 .main-nav-header * {
   margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .main-nav-inner-right {
