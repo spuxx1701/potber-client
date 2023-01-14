@@ -3,7 +3,7 @@
   flex-direction: column;
   border-radius: var(--global-border-radius);
   margin-top: var(--global-gap);
-  margin-bottom: var(--global-);
+  margin-bottom: var(--global-gap);
   overflow: hidden;
 }
 
