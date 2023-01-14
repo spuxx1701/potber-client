@@ -83,3 +83,7 @@
 .full-width {
   width: 100%;
 }
+
+img {
+  max-width: 100%;
+}

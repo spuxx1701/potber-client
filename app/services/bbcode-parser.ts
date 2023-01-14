@@ -19,17 +19,17 @@ export default class BbCodeParserService extends Service {
    * @returns
    */
   registerCustomTags(parser: yabbcode) {
-    parser.registerTag('img', {
-      type: 'content',
-      replace: (attr: string, content: string) => {
-        return `<div class="image-container">
-        <label class="image-container-label">
-        <input class="image-container-input" type="checkbox"/>
-        <img src="${content}" class="image-container-img"/>
-        </label>
-        </div>`;
-      },
-    });
+    // parser.registerTag('img', {
+    //   type: 'content',
+    //   replace: (attr: string, content: string) => {
+    //     return `<div class="image-container">
+    //     <label class="image-container-label">
+    //     <input class="image-container-input" type="checkbox"/>
+    //     <img src="${content}" class="image-container-img"/>
+    //     </label>
+    //     </div>`;
+    //   },
+    // });
     return parser;
   }
 }
