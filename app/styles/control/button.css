@@ -5,13 +5,18 @@ button, .button-link {
   font-size: medium;
 }
 
+button:not(:disabled), .button-link:not(:disabled) {
+  cursor: pointer;
+}
+
 button:not(.control-size-square) svg {
   margin-right: 0.25rem;
 }
 
 button:not(:disabled):hover, button:not(:disabled):active,
 .button-link:not(:disabled):hover, .button-link:not(:disabled):active {
-  opacity: 0.8;
+  opacity: 1;
+  background-color: var(--color-control-hover-primary);
 }
 
 .button-link {

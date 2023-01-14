@@ -12,6 +12,10 @@
   background-color: var(--color-post-background-secondary);
 }
 
+.board-item-important:hover {
+  background-color: var(--color-control-hover-secondary) !important;
+}
+
 .board-item:not(:first-child) {
   margin-top: 1px;
 }

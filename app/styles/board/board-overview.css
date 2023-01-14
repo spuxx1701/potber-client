@@ -24,6 +24,10 @@
   cursor: pointer;
 }
 
+.board-category-header:hover {
+  background-color: var(--color-control-hover-secondary) !important;
+}
+
 .board-category-header-details {
   display: flex;
   flex-direction: column;

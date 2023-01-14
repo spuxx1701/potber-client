@@ -5,9 +5,10 @@
   --color-post-background-secondary: #293746;
 
   --color-control-inactive-primary: #293746;
-  --color-control-hover-primary: #394e63;
+  --color-control-hover-primary: #3c5974;
+  --color-control-hover-secondary: #304459;
 
-  --color-quote-background: #38434e;
+  --color-quote-background: #21354C;
   --color-quote-border: rgb(174, 174, 174, 0.5);
 
   --color-text-default: #f1f1f1;
