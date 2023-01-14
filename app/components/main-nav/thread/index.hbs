@@ -1,0 +1,29 @@
+<Portal @target='main-nav'>
+  <MainNav::Inner::Left>
+    <MainNav::Inner::Header
+      @title={{@thread.title}}
+      @subtitle={{@thread.subtitle}}
+    />
+  </MainNav::Inner::Left>
+  <MainNav::Inner::Right>
+    {{#if this.previousPageVisible}}
+      <Common::Control::Link
+        @title='Vorherige Seite'
+        @size='square'
+        @route='thread'
+        @query={{hash TID=@thread.id page=this.previousPage}}
+      ><FaIcon @icon='chevron-left' /></Common::Control::Link>
+    {{/if}}
+    {{#if this.nextPageVisible}}
+      <Common::Control::Link
+        @title='Nächste Seite'
+        @size='square'
+        @route='board'
+        @query={{hash TID=@thread.id page=this.nextPage}}
+      ><FaIcon @icon='chevron-right' /></Common::Control::Link>
+    {{/if}}
+    <Common::Control::Link @title='Antworten' @size='square'><FaIcon
+        @route='create-thread'
+      /><FaIcon @icon='comment-dots' /></Common::Control::Link>
+  </MainNav::Inner::Right>
+</Portal>

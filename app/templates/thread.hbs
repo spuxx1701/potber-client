@@ -1,5 +1,14 @@
-{{#if @model}}
-  <Board::ThreadPage @page={{@model.page}} />
+{{#if @model.thread}}
+  {{page-title this.pageTitle}}
+
+  <MainNav::Thread
+    @thread={{@model.thread}}
+    @currentPage={{@model.currentPage}}
+  />
+
+  <Board::ThreadPage @page={{@model.thread.page}} />
 {{else}}
+  {{page-title '404'}}
+
   <Error::NotFound />
 {{/if}}

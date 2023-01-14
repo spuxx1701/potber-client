@@ -30,15 +30,15 @@ export interface ThreadXml {
     };
     '2': {
       nodeName: 'number-of-replies';
-      attributes: { value: string };
+      attributes: { value: { value: string } };
     };
     '3': {
       nodeName: 'number-of-hits';
-      attributes: { value: string };
+      attributes: { value: { value: string } };
     };
     '4': {
       nodeName: 'number-of-pages';
-      attributes: { value: string };
+      attributes: { value: { value: string } };
     };
     '5': {
       nodeName: 'flags';
@@ -46,16 +46,19 @@ export interface ThreadXml {
     };
     '6': {
       nodeName: 'in-board';
-      attributes: { value: string };
+      attributes: { id: { value: string } };
     };
     '7': {
       nodeName: 'first-post';
-      attributes: { value: string };
       children: [PostXml];
     };
     '8': {
       nodeName: 'posts';
-      attributes: { page: string; offset: string; count: string };
+      attributes: {
+        page: { value: string };
+        offset: { value: string };
+        count: { value: string };
+      };
       children: PostXml[];
     };
   };
