@@ -121,15 +121,15 @@ export interface BoardItemXml {
     };
     '2': {
       nodeName: 'number-of-replies';
-      attributes: { value: string };
+      attributes: { value: { value: string } };
     };
     '3': {
       nodeName: 'number-of-hits';
-      attributes: { value: string };
+      attributes: { value: { value: string } };
     };
     '4': {
       nodeName: 'number-of-pages';
-      attributes: { value: string };
+      attributes: { value: { value: string } };
     };
     '5': {
       nodeName: 'flags';
