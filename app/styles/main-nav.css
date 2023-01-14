@@ -35,3 +35,7 @@
 .main-nav-inner-right {
   display: flex;
 }
+
+#main-nav button, #main-nav .button-link {
+  height: var(--main-nav-height);
+}
