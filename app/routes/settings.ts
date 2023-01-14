@@ -44,11 +44,11 @@ export const benderOptions = [
 
 export const boxStyleOptions = [
   {
-    label: 'Sehr kantig.',
+    label: 'Kantholz',
     data: 'rect',
   },
   {
-    label: 'Gar nicht!',
+    label: 'Hobelware',
     data: 'round',
   },
 ] as DropdownOption[];
