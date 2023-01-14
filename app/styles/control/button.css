@@ -2,6 +2,7 @@ button, .button-link {
   height: var(--control-default-height);
   min-height: var(--control-default-height);
   border: none;
+  border-radius: var(--global-border-radius);
   font-size: medium;
 }
 

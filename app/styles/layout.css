@@ -7,6 +7,8 @@
   --main-nav-bottom: 0px;
   --page-content-padding-top: 0px;
   --page-content-padding-bottom: var(--control-default-height);
+  --global-border-radius: 0px;
+  --global-gap: unset;
 }
 
 #page-content {
@@ -16,6 +18,8 @@
   margin: 0 auto 0 auto;
   padding-top: var(--page-content-padding-top);
   padding-bottom: var(--page-content-padding-bottom);
+  padding-left: var(--global-gap);
+  padding-right: var(--global-gap);
 }
 
 .control-size-square {

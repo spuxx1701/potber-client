@@ -39,8 +39,10 @@ export default class RendererService extends Service {
     const boxStyle = this.localStorage.getBoxStyle();
     if (boxStyle === 'rect') {
       this.rootStyle.setProperty('--global-border-radius', '0px');
+      this.rootStyle.setProperty('--global-gap', 'unset');
     } else {
       this.rootStyle.setProperty('--global-border-radius', '5px');
+      this.rootStyle.setProperty('--global-gap', '0.25rem');
     }
   }
 

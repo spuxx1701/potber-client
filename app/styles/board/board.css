@@ -1,11 +1,16 @@
+.board-item:not(:first-child) {
+  margin-top: 1px;
+}
+
 .board-item {
   height: auto;
   flex-direction: column;
-  border-radius: var(--global-border-radius);
   background-color: var(--color-post-background-primary);
   padding: 0.5rem;
   width: calc(100% - 1rem);
   align-items: flex-start !important;
+  margin-top: var(--global-gap);
+  margin-bottom: var(--global-gap);
 }
 
 .board-item-important {
@@ -14,10 +19,6 @@
 
 .board-item-important:hover {
   background-color: var(--color-control-hover-secondary) !important;
-}
-
-.board-item:not(:first-child) {
-  margin-top: 1px;
 }
 
 .board-item-header {
