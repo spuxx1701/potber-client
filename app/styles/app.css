@@ -26,5 +26,6 @@ body {
 }
 
 .ember-application * {
+  scrollbar-width: thin;
   transition: color 200ms, background-color 200ms, border-color 200ms, text-shadow 200ms, transform 200ms, scale 200ms, opacity 200ms;
 }
