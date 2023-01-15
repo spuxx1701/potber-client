@@ -17,8 +17,10 @@
   background-color: var(--color-post-background-secondary);
 }
 
-.board-item-important:hover {
-  background-color: var(--color-control-hover-secondary) !important;
+@media (hover: hover) {
+  .board-item-important:hover {
+    background-color: var(--color-control-hover-secondary) !important;
+  }
 }
 
 .board-item-header {

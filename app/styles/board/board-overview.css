@@ -28,8 +28,10 @@
   margin-top: 1px;
 }
 
-.board-category-header:hover {
-  background-color: var(--color-control-hover-secondary) !important;
+@media (hover: hover) {
+  .board-category-header:hover {
+    background-color: var(--color-control-hover-secondary) !important;
+  }
 }
 
 .board-category-header-details {
