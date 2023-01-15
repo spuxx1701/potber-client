@@ -68,6 +68,7 @@ blockquote {
   overflow: hidden;
 }
 
-.post-content video {
+.post-content video, .post-content .youtube-player {
+  width: 100%;
   max-width: 100%;
 }

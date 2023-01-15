@@ -1,3 +1,4 @@
+import { action } from '@ember/object';
 import Service from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import yabbcode from 'ya-bbcode'; // https://github.com/nodecraft/ya-bbcode
@@ -31,9 +32,7 @@ export default class BbCodeParserService extends Service {
     });
     parser.registerTag('video', {
       type: 'content',
-      replace: (attr: string, content: string) => {
-        return `<video src="${content}" controls/>`;
-      },
+      replace: this.parseVideo,
     });
     return parser;
   }
@@ -47,5 +46,18 @@ export default class BbCodeParserService extends Service {
       );
     }
     return output;
+  }
+
+  parseVideo(attr: string, content: string) {
+    // YouTube links need to be embedded using their propietary player
+    if (content.match(/youtu.be/g) || content.match(/youtube.com/g)) {
+      const split = content.split('/');
+      const videoId = split[split.length - 1];
+      return `<iframe class="youtube-player" type="text/html"
+          src="http://www.youtube.com/embed/${videoId}?&origin=${window.location.host}"
+          frameborder="0"/>`;
+    } else {
+      return `<video src="${content}" controls/>`;
+    }
   }
 }
