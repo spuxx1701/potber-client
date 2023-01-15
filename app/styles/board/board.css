@@ -3,11 +3,12 @@
 }
 
 .board-item {
+  box-sizing: border-box;
   height: auto;
   flex-direction: column;
   background-color: var(--color-post-background-primary);
   padding: 0.5rem;
-  width: calc(100% - 1rem);
+  width: 100%;
   align-items: flex-start !important;
   margin-top: var(--global-gap);
   margin-bottom: var(--global-gap);

@@ -43,3 +43,7 @@
 #main-nav button, #main-nav .button-link {
   height: var(--main-nav-height);
 }
+
+#main-nav .menu-button {
+  color: var(--color-text-default);
+}

@@ -84,8 +84,13 @@
   text-align: start;
 }
 
+.dropdown-item:focus, .dropdown-item:active, .dropdown-item-selected {
+  background-color: var(--color-control-hover);
+  color: var(--color-text-default);
+}
+
 @media (hover: hover) {
-  .dropdown-item:hover, .dropdown-item:focus, .dropdown-item:active, .dropdown-item-selected {
+  .dropdown-item:hover {
     background-color: var(--color-control-hover);
     color: var(--color-text-default);
   }

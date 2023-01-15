@@ -63,12 +63,9 @@ export default class RendererService extends Service {
   @action updateLeftSidebar() {
     const style = document.documentElement.style;
     if (this.leftSidebarExpanded) {
-      style.setProperty(
-        '--sidebar-left-width',
-        'var(--sidebar-expanded-width)'
-      );
+      style.setProperty('--sidebar-width', 'var(--sidebar-expanded-width)');
     } else {
-      style.setProperty('--sidebar-left-width', '0px');
+      style.setProperty('--sidebar-width', '0px');
     }
   }
 }

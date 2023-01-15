@@ -1,0 +1,17 @@
+<button
+  type='button'
+  class='menu-button control-size-square control-variant-secondary'
+  title={{this.title}}
+  {{on 'click' this.handleClick}}
+  {{on 'blur' this.handleBlur}}
+>
+  <FaIcon @icon='ellipsis-vertical' />
+  <div
+    class='menu-dropdown menu-dropdown-{{this.position}}
+      {{if this.visible "menu-dropdown-visible"}}'
+  >
+    <menu class='menu-content'>
+      {{yield}}
+    </menu>
+  </div>
+</button>

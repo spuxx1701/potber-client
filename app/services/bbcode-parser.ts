@@ -26,7 +26,7 @@ export default class BbCodeParserService extends Service {
     parser.registerTag('url', {
       type: 'content',
       replace: (attr: string, content: string) => {
-        return `<a href="${attr}">${content || attr}</a>}`;
+        return `<a href="${attr}">${content || attr}</a>`;
       },
     });
     // parser.registerTag('img', {

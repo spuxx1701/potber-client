@@ -14,10 +14,13 @@ button:not(.control-size-square) svg {
   margin-right: 0.25rem;
 }
 
+button:not(:disabled):active, .button-link:not(:disabled):active {
+  background-color: var(--color-control-hover-primary);
+}
+
 @media (hover: hover) {
 
-  button:not(:disabled):hover, button:not(:disabled):active,
-  .button-link:not(:disabled):hover, .button-link:not(:disabled):active {
+  button:not(:disabled):hover, .button-link:not(:disabled):hover {
     opacity: 1;
     background-color: var(--color-control-hover-primary);
   }

@@ -22,6 +22,19 @@
         @query={{hash BID=@board.id page=this.nextPage}}
       ><FaIcon @icon='chevron-right' /></Common::Control::Link>
     {{/if}}
+    <Common::Control::Menu
+      @position={{if this.isTopNav 'bottom-left' 'top-left'}}
+    >
+      <Common::Control::Menu::Button
+        @text='Zu Favoriten hinzufügen'
+        @onClick={{this.addToFavorites}}
+      />
+      <Common::Control::Menu::Link
+        @href={{this.originalUrl}}
+        @text='Original öffnen'
+        target='_blank'
+      />
+    </Common::Control::Menu>
     <Common::Control::Link
       @title='Neuer Thread'
       @size='square'

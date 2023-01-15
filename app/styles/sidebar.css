@@ -1,10 +1,10 @@
 :root {
   --sidebar-expanded-width: 300px;
   /* Will be modified during runtime */
-  --sidebar-left-width: 0px;
+  --sidebar-width: 0px;
 }
 
-.sidebar {
+#sidebar {
   position: fixed;
   background-color: var(--color-nav-background);
   height: calc(100vh - var(--main-nav-height));
@@ -15,14 +15,16 @@
   flex-direction: column;
   top: calc(var(--main-nav-top) + var(--main-nav-height));
   bottom: calc(var(--main-nav-bottom) + var(--main-nav-height));
+  left: -5;
+  width: var(--sidebar-width);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
 }
 
-#sidebar-left {
-  left: 0;
-  width: var(--sidebar-left-width);
+#sidebar * {
+  text-decoration: none;
 }
 
-#sidebar-left-nav {
+#sidebar-nav {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 1fr);
@@ -30,7 +32,7 @@
   height: var(--control-default-height);
 }
 
-#sidebar-left-nav a {
+#sidebar-nav a {
   color: var(--color-text-default);
   height: var(--control-default-height);
   display: flex;
@@ -38,15 +40,61 @@
   justify-content: center;
 }
 
-#sidebar-left-content {
+#sidebar-content {
   flex-grow: 1;
   width: var(--sidebar-expanded-width);
 }
 
-#sidebar-left-content>* {
+#sidebar-content>* {
   width: 100%;
 }
 
 #news-feed-title {
+  text-align: center;
+}
+
+#sidebar-content hr {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-width: calc(var(--sidebar-expanded-width) - 2rem);
+}
+
+#sidebar-content .title {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-content-element>button, .sidebar-content-element>.button-link {
+  min-height: 60px;
+  height: 60px;
+}
+
+.sidebar-content-element>.button-link:first-child {
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.sidebar-content-element>.button-link:first-child>* {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.sidebar-content-element>.button-link:first-child>.title {
+  margin: 0 0 0.25rem 0 !important;
+}
+
+.sidebar-error-text {
+  margin: 0.5rem;
+  width: calc(100% - 1rem) !important;
   text-align: center;
 }

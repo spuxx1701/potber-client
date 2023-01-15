@@ -1,0 +1,70 @@
+.menu-button {
+  position: relative;
+}
+
+.menu-dropdown {
+  position: absolute;
+  display: none;
+  z-index: 30;
+}
+
+.menu-dropdown-visible {
+  display: block;
+}
+
+.menu-dropdown-top-left {
+  bottom: 100%;
+  right: 0;
+}
+
+.menu-dropdown-top-right {
+  bottom: 100%;
+  left: 0;
+}
+
+.menu-dropdown-bottom-left {
+  top: 100%;
+  right: 0
+}
+
+.menu-dropdown-bottom-right {
+  top: 100%;
+  left: 0;
+}
+
+.menu-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border-radius: var(--global-border-radius);
+  background-color: var(--color-control-inactive-primary);
+  max-width: 200px;
+}
+
+.menu-content>* {
+  box-sizing: border-box;
+  background-color: transparent;
+  color: var(--color-text-default);
+  padding: 0 0.5rem 0 0.5rem;
+  width: max-content;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.menu-content>*:not(:disabled):active, .menu-content>*:not(:disabled):focus {
+  background-color: var(--color-control-hover-primary);
+}
+
+@media (hover:hover) {
+  .menu-button-item:not(:disabled):hover {
+    background-color: var(--color-control-hover-primary);
+  }
+}
+
+.menu-content>*>* {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

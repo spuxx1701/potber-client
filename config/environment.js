@@ -18,6 +18,7 @@ module.exports = function (environment) {
       PROXY_URL: 'http://localhost:4201',
       API_URL: 'https://forum.mods.de/bb/xml/',
       FORUM_URL: 'https://forum.mods.de/bb/',
+      DEBUG: false,
       // Here you can pass flags/options to your application instance
       // when it is created
     },
@@ -25,6 +26,7 @@ module.exports = function (environment) {
 
   if (environment === 'development') {
     ENV.APP.PROXY_URL = 'http://localhost:4201';
+    ENV.APP.DEBUG = true;
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -46,6 +48,7 @@ module.exports = function (environment) {
 
   if (environment === 'integration') {
     ENV.APP.PROXY_URL = 'https://proxy.potber.de';
+    ENV.APP.DEBUG = true;
   }
 
   if (environment === 'production') {
