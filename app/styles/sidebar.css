@@ -7,7 +7,7 @@
 #sidebar {
   position: fixed;
   background-color: var(--color-nav-background);
-  height: calc(100vh - var(--main-nav-height));
+  height: calc(100dvh - var(--main-nav-height));
   z-index: 10;
   transition: width 500ms !important;
   overflow-x: hidden;
