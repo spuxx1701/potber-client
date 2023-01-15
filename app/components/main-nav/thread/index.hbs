@@ -6,12 +6,6 @@
     />
   </MainNav::Inner::Left>
   <MainNav::Inner::Right>
-    <Common::Control::Link
-      @title='Zurück zum Board'
-      @size='square'
-      @route='board'
-      @query={{hash BID=@thread.boardId}}
-    ><FaIcon @icon='chevron-up' /></Common::Control::Link>
     {{#if this.previousPageVisible}}
       <Common::Control::Link
         @title='Vorherige Seite'
@@ -28,6 +22,20 @@
         @query={{hash TID=@thread.id page=this.nextPage}}
       ><FaIcon @icon='chevron-right' /></Common::Control::Link>
     {{/if}}
+    <Common::Control::Menu
+      @position={{if this.isTopNav 'bottom-left' 'top-left'}}
+    >
+      <Common::Control::Menu::Link
+        @href={{this.originalUrl}}
+        @text='Original öffnen'
+        target='_blank'
+      />
+      <Common::Control::Menu::LinkTo
+        @text='Zurück zum Board'
+        @route='board'
+        @query={{hash BID=@thread.boardId}}
+      />
+    </Common::Control::Menu>
     <Common::Control::Link @title='Antworten' @size='square'><FaIcon
         @route='create-thread'
       /><FaIcon @icon='comment-dots' /></Common::Control::Link>

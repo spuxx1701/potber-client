@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { Thread } from 'potber/services/api/types/thread';
+import ENV from 'potber/config/environment';
 
 export interface Signature {
   Args: {
@@ -33,5 +34,9 @@ export default class MainNavThreadComponent extends Component<Signature> {
 
   get previousPage() {
     return this.currentPage - 1;
+  }
+
+  get originalUrl() {
+    return `${ENV.APP['FORUM_URL']}thread.php?TID=${this.args.thread.id}`;
   }
 }

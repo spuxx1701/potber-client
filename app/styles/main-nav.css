@@ -13,24 +13,32 @@
 }
 
 #main-nav>div {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   margin-left: 0.5rem;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.main-nav-header {
-  max-width: 200px;
+.main-nav-inner-left {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  max-width: 100%;
   align-items: start;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 0;
+  flex-grow: 1;
+  width: 0px;
 }
 
-.main-nav-header * {
-  margin: 0;
+.main-nav-inner-left * {
   max-width: 100%;
+  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -38,6 +46,9 @@
 
 .main-nav-inner-right {
   display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: center;
 }
 
 #main-nav button, #main-nav .button-link {

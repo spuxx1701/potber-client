@@ -46,7 +46,7 @@ export default class MainNavBoardComponent extends Component<Signature> {
   }
 
   get originalUrl() {
-    return `${ENV.APP['FORUM_URL']}board.php?BID=${this.args.board.id}`;
+    return `${ENV.APP['FORUM_URL']}board.php?BID=${this.args.board.id}&page=${this.currentPage}`;
   }
 
   @action addToFavorites() {
