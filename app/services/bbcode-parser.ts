@@ -26,20 +26,15 @@ export default class BbCodeParserService extends Service {
     parser.registerTag('url', {
       type: 'content',
       replace: (attr: string, content: string) => {
-        return `<a href="${attr}">${content || attr}</a>`;
+        return `<a href="${attr}">${content}</a>`;
       },
     });
-    // parser.registerTag('img', {
-    //   type: 'content',
-    //   replace: (attr: string, content: string) => {
-    //     return `<div class="image-container">
-    //     <label class="image-container-label">
-    //     <input class="image-container-input" type="checkbox"/>
-    //     <img src="${content}" class="image-container-img"/>
-    //     </label>
-    //     </div>`;
-    //   },
-    // });
+    parser.registerTag('video', {
+      type: 'content',
+      replace: (attr: string, content: string) => {
+        return `<video src="${content}" controls/>`;
+      },
+    });
     return parser;
   }
 
