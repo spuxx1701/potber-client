@@ -1,0 +1,13 @@
+<h3 class='title text-center'>Board-Favoriten</h3>
+{{#if (eq this.status 'error')}}
+  <p class='subtitle sidebar-error-text'>(╯°□°)╯︵ ┻━┻<br /><br />Beim Laden
+    Deiner Board-Favoriten ist etwas schiefgegangen. Wenn Das Problem bestehen
+    bleibt, setze am Besten Deine Einstellungen zurück.</p>
+{{else if (eq this.status 'empty')}}
+  <p class='subtitle sidebar-error-text'>Du hast noch keine Board-Favoriten
+    hinzugefügt.</p>
+{{else}}
+  {{#each @boards as |board|}}
+    <Sidebar::BoardFavorite @board={{board}} />
+  {{/each}}
+{{/if}}

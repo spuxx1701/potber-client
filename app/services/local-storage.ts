@@ -86,10 +86,12 @@ export default class LocalStorageService extends Service {
   @action async getBoardFavorites() {
     const string = localStorage.getItem(`${PREFIX}boardFavorites`);
     try {
-      const ids = string?.split(',') || [];
       const boards: Board[] = [];
-      for (const id of ids) {
-        boards.push(await this.api.getBoard(id));
+      if (string) {
+        const ids = string?.split(',') || [];
+        for (const id of ids) {
+          boards.push(await this.api.getBoard(id));
+        }
       }
       this.boardFavorites = boards;
     } catch (error) {

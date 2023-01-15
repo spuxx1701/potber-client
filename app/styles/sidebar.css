@@ -15,7 +15,7 @@
   flex-direction: column;
   top: calc(var(--main-nav-top) + var(--main-nav-height));
   bottom: calc(var(--main-nav-bottom) + var(--main-nav-height));
-  left: -5;
+  left: 0;
   width: var(--sidebar-width);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
 }
