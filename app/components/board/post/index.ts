@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { Post } from 'potber/services/api/types/post';
-import BbCodeParserService from 'potber/services/bbcode-parser';
+import ContentParserService from 'potber/services/content-parser';
 import ENV from 'potber/config/environment';
 
 interface Signature {
@@ -13,7 +13,7 @@ interface Signature {
 }
 
 export default class PostComponent extends Component<Signature> {
-  @service declare bbcodeParser: BbCodeParserService;
+  @service declare contentParser: ContentParserService;
 
   declare args: Signature['Args'];
 
@@ -26,7 +26,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get content() {
-    const content = this.bbcodeParser.parsePostContent(this.args.post.content);
+    const content = this.contentParser.parsePostContent(this.args.post.content);
     return content;
   }
 
