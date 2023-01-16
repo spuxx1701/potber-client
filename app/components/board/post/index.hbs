@@ -10,6 +10,7 @@
       <div class='flex-column justify-content-center'>
         <b class='post-details-author-name'>{{@post.author.name}}</b>
         <a
+          id='reply_{{@post.id}}'
           href={{this.href}}
           class='post-details-date subtitle'
         >{{this.date}}<FaIcon @icon='link' /></a>
