@@ -17,6 +17,12 @@
   right: 0;
 }
 
+.menu-dropdown-top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .menu-dropdown-top-right {
   bottom: 100%;
   left: 0;
@@ -25,6 +31,12 @@
 .menu-dropdown-bottom-left {
   top: 100%;
   right: 0
+}
+
+.menu-dropdown-bottom {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .menu-dropdown-bottom-right {

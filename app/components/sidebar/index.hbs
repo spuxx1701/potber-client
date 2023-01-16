@@ -1,7 +1,7 @@
 <div id='sidebar' role='navigation'>
-  {{#if this.navOnTop}}
-    <Sidebar::Nav />
-  {{/if}}
+  {{!-- {{#if this.navOnTop}} --}}
+  <Sidebar::Nav />
+  {{!-- {{/if}} --}}
   <div id='sidebar-content'>
     {{!-- {{#if this.session.authenticated}}
       <h3 id='news-feed-title'>Neuigkeiten</h3>
@@ -11,7 +11,7 @@
     <hr />
     <Sidebar::BoardFavorites @boards={{this.boardFavorites}} />
   </div>
-  {{#unless this.navOnTop}}
+  {{!-- {{#unless this.navOnTop}}
     <Sidebar::Nav />
-  {{/unless}}
+  {{/unless}} --}}
 </div>

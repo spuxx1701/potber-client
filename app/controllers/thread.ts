@@ -7,7 +7,7 @@ export default class ThreadController extends Controller {
   queryParams = ['TID', 'page'];
 
   get pageTitle() {
-    return `${this.model.thread.title} [${this.model.currentPage}]`;
+    return `${this.model.thread.title} [${this.model.page}]`;
   }
 
   get threads() {

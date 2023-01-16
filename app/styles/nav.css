@@ -1,0 +1,58 @@
+:root {
+  --top-nav-height: 55px;
+  --bottom-nav-height: 55px;
+  /* The following variables may change during runtime */
+  --bottom-nav-display: none;
+}
+
+.nav {
+  width: 100dvw;
+  position: fixed;
+  background-color: var(--color-nav-background);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
+}
+
+.nav, .nav-portal-target {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#top-nav {
+  height: var(--top-nav-height);
+  top: 0;
+  z-index: 20;
+}
+
+#bottom-nav {
+  display: var(--bottom-nav-display);
+  height: var(--bottom-nav-height);
+  bottom: 0;
+  z-index: 10;
+}
+
+#bottom-nav>.nav-portal-target {
+  width: 100%;
+}
+
+.nav>*, .nav-portal-target>*, .nav-element>* {
+  height: 100% !important;
+}
+
+.nav-element {
+  display: flex;
+  align-items: center;
+}
+
+.nav-header {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-header * {
+  margin: 0;
+}

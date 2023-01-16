@@ -1,12 +1,13 @@
 @import "./colors.css";
 @import "./layout.css";
 @import "./text.css";
-@import "./main-nav.css";
+/* @import "./main-nav.css"; */
+@import "./nav.css";
 @import "./sidebar.css";
 
 @import "./control/button.css";
 @import "./control/dropdown.css";
-@import "./control/menu-button.css";
+@import "./control/menu.css";
 
 @import "./board/board.css";
 @import "./board/board-overview.css";
@@ -24,9 +25,26 @@ body {
 :root {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: var(--color-text-default);
+  /* The following variables may change during runtime. */
+  --loading-indicator-opacity: 0;
 }
 
 .ember-application * {
   scrollbar-width: thin;
   transition: color 200ms, background-color 200ms, border-color 200ms, text-shadow 200ms, transform 200ms, scale 200ms, opacity 200ms;
+}
+
+#loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: var(--color-loading-indicator-background);
+  width: 60px;
+  height: 60px;
+  opacity: var(--loading-indicator-opacity);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

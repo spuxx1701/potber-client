@@ -4,15 +4,18 @@ import { Board } from 'potber/services/api/types/board';
 import LocalStorageService from 'potber/services/local-storage';
 import ENV from 'potber/config/environment';
 import { action } from '@ember/object';
+import { getOwner } from '@ember/application';
+import RendererService from 'potber/services/renderer';
 
 export interface Signature {
   Args: {
     board: Board;
-    currentPage?: number;
+    page?: number;
   };
 }
 
-export default class MainNavBoardComponent extends Component<Signature> {
+export default class NavBoardComponent extends Component<Signature> {
+  @service declare renderer: RendererService;
   @service declare localStorage: LocalStorageService;
 
   declare args: Signature['Args'];
@@ -21,16 +24,8 @@ export default class MainNavBoardComponent extends Component<Signature> {
     return `Seite ${this.currentPage}`;
   }
 
-  get nextPageVisible() {
-    return true;
-  }
-
   get currentPage() {
-    return this.args.currentPage || 1;
-  }
-
-  get nextPage() {
-    return this.currentPage + 1;
+    return this.args.page || 1;
   }
 
   get previousPageVisible() {
@@ -39,6 +34,19 @@ export default class MainNavBoardComponent extends Component<Signature> {
 
   get previousPage() {
     return this.currentPage - 1;
+  }
+
+  get nextPageVisible() {
+    return true;
+  }
+
+  get nextPage() {
+    console.log('next: ' + (this.currentPage + 1));
+    return this.currentPage + 1;
+  }
+
+  get isTopNav() {
+    return this.localStorage.mainNavPosition === 'top';
   }
 
   get originalUrl() {
@@ -50,5 +58,18 @@ export default class MainNavBoardComponent extends Component<Signature> {
     const ids = boards.map((board) => board.id);
     ids.push(this.args.board.id);
     this.localStorage.setBoardFavorites(ids);
+  }
+
+  @action async reload() {
+    this.renderer.showLoadingIndicator();
+    (getOwner(this as unknown) as any)
+      .lookup('route:board')
+      .refresh()
+      .then(() => {
+        this.renderer.hideLoadingIndicator();
+      })
+      .catch(() => {
+        this.renderer.hideLoadingIndicator();
+      });
   }
 }

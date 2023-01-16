@@ -1,6 +1,6 @@
 {{page-title this.pageTitle}}
 
-<MainNav::Board @board={{@model.board}} @currentPage={{@model.page}} />
+<Nav::Routes::Board @board={{@model.board}} @page={{@model.page}} />
 
 {{#each this.threads as |thread|}}
   <Board::Thread @thread={{thread}} />

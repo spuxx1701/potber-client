@@ -12,7 +12,7 @@ interface Params {
 
 export interface ThreadRouteModel {
   thread: Thread;
-  currentPage: number;
+  page: number;
   avatarStyle: string;
 }
 
@@ -30,7 +30,6 @@ export default class ThreadRoute extends Route {
   };
 
   @service declare api: ApiService;
-
   async model(params: Params) {
     try {
       const thread = await this.api.getThread(
@@ -39,7 +38,7 @@ export default class ThreadRoute extends Route {
       );
       return RSVP.hash({
         thread,
-        currentPage: thread.page?.pageNumber || 1,
+        page: thread.page?.pageNumber || 1,
         avatarStyle: this.localStorage.avatarStyle,
       } as ThreadRouteModel);
     } catch (error: any) {

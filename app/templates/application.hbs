@@ -6,7 +6,9 @@
 
 <Sidebar />
 
-<div id='main-nav' role='toolbar'>
+<Misc::LoadingIndicator />
+
+<div id='top-nav' class='nav' role='toolbar'>
   <Common::Control::Button
     @icon={{if this.renderer.leftSidebarExpanded 'chevron-left' 'bars'}}
     @text='Navigation'
@@ -14,5 +16,14 @@
     @variant='primary-transparent'
     @onClick={{this.toggleLeftSidebar}}
   />
-  <PortalTarget @name='main-nav' />
+  <PortalTarget @name='top-nav' class='nav-portal-target' />
+  <span class='control-size-square' />
+</div>
+
+<div id='bottom-nav' class='nav' role='toolbar'>
+  <PortalTarget
+    @name='bottom-nav'
+    class='nav-portal-target'
+    @onChange={{this.handleBottomNavPortalchange}}
+  />
 </div>

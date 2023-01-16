@@ -7,14 +7,13 @@
 #sidebar {
   position: fixed;
   background-color: var(--color-nav-background);
-  height: calc(100dvh - var(--main-nav-height));
-  z-index: 10;
+  height: calc(100dvh - var(--top-nav-height));
+  z-index: 15;
   transition: width 500ms !important;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  top: calc(var(--main-nav-top) + var(--main-nav-height));
-  bottom: calc(var(--main-nav-bottom) + var(--main-nav-height));
+  top: var(--top-nav-height);
   left: 0;
   width: var(--sidebar-width);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)

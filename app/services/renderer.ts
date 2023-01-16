@@ -1,11 +1,11 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { sleep } from 'potber/utils/misc';
 import LocalStorageService from './local-storage';
 
 export default class RendererService extends Service {
   @service declare localStorage: LocalStorageService;
-
   @tracked leftSidebarExpanded = false;
   rootStyle = document.documentElement.style;
 
@@ -61,11 +61,22 @@ export default class RendererService extends Service {
   }
 
   @action updateLeftSidebar() {
-    const style = document.documentElement.style;
     if (this.leftSidebarExpanded) {
-      style.setProperty('--sidebar-width', 'var(--sidebar-expanded-width)');
+      this.rootStyle.setProperty(
+        '--sidebar-width',
+        'var(--sidebar-expanded-width)'
+      );
     } else {
-      style.setProperty('--sidebar-width', '0px');
+      this.rootStyle.setProperty('--sidebar-width', '0px');
     }
+  }
+
+  @action async showLoadingIndicator() {
+    this.rootStyle.setProperty('--loading-indicator-opacity', '1');
+  }
+
+  @action async hideLoadingIndicator() {
+    await sleep(200);
+    this.rootStyle.setProperty('--loading-indicator-opacity', '0');
   }
 }

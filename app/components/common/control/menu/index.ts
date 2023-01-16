@@ -6,7 +6,14 @@ import RendererService from 'potber/services/renderer';
 
 export interface Signature {
   Args: {
-    position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+    position:
+      | 'top-left'
+      | 'top'
+      | 'top-right'
+      | 'bottom-left'
+      | 'bottom'
+      | 'bottom-right';
+    variant?: ControlVariant;
   };
 }
 
@@ -17,6 +24,10 @@ export default class MenuComponent extends Component<Signature> {
 
   get position() {
     return this.args.position || 'bottom-left';
+  }
+
+  get variant() {
+    return this.args.variant || 'secondary';
   }
 
   @action handleClick(event: any) {

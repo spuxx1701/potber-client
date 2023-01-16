@@ -3,10 +3,10 @@
   --main-nav-height: 55px;
 
   /* The following variables may change during runtime. */
-  --main-nav-top: unset;
-  --main-nav-bottom: 0px;
-  --page-content-padding-top: 0px;
-  --page-content-padding-bottom: var(--control-default-height);
+  /* --main-nav-top: unset;
+  --main-nav-bottom: 0px; */
+  /* --page-content-padding-top: 0px;
+  --page-content-padding-bottom: var(--control-default-height); */
   --global-border-radius: 0px;
   --global-gap: unset;
 }
@@ -16,8 +16,10 @@
   flex-direction: column;
   max-width: 1000px;
   margin: 0 auto 0 auto;
-  padding-top: var(--page-content-padding-top);
-  padding-bottom: var(--page-content-padding-bottom);
+  padding-top: var(--top-nav-height);
+  padding-bottom: var(--bottom-nav-height);
+  /* padding-top: var(--page-content-padding-top); */
+  /* padding-bottom: var(--page-content-padding-bottom); */
   padding-left: var(--global-gap);
   padding-right: var(--global-gap);
 }
@@ -99,7 +101,11 @@
 }
 
 .full-width {
-  width: 100%;
+  width: 100% !important;
+}
+
+.full-height {
+  height: 100% !important;
 }
 
 img {

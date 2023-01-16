@@ -1,0 +1,53 @@
+<Portal @target='top-nav'>
+  <Nav::Component::Header @title={{@board.name}} @subtitle={{this.subtitle}} />
+</Portal>
+
+<Portal @target='bottom-nav'>
+  <Common::Control::Link
+    @title='Forenübersicht'
+    @size='square'
+    @route='/'
+  ><FaIcon @icon='arrow-left' /></Common::Control::Link>
+
+  <div class='nav-element'>
+    {{#if this.previousPageVisible}}
+      <Common::Control::Link
+        @title='Vorherige Seite'
+        @size='square'
+        @route='board'
+        @query={{hash BID=@board.id page=this.previousPage}}
+      ><FaIcon @icon='chevron-left' /></Common::Control::Link>
+    {{else}}
+      <Common::Control::Button
+        @size='square'
+        @icon='rotate-right'
+        @variant='primary-transparent'
+        @onClick={{this.reload}}
+      />
+    {{/if}}
+
+    <Common::Control::Menu @position='top' @variant='primary-transparent'>
+      <Common::Control::Menu::Button
+        @text='Zu Favoriten hinzufügen'
+        @onClick={{this.addToFavorites}}
+      />
+      <Common::Control::Menu::Link
+        @href={{this.originalUrl}}
+        @text='Original öffnen'
+        target='_blank'
+      />
+    </Common::Control::Menu>
+
+    {{#if this.nextPageVisible}}
+      <Common::Control::Link
+        @title='Nächste Seite'
+        @size='square'
+        @route='board'
+        @query={{hash BID=@board.id page=this.nextPage}}
+      ><FaIcon @icon='chevron-right' /></Common::Control::Link>
+    {{/if}}
+  </div>
+
+  {{! TODO: Replace with new thread button }}
+  <span class='hidden control-size-square' />
+</Portal>

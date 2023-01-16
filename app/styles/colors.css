@@ -4,6 +4,8 @@
   --color-post-background-primary: #394e63;
   --color-post-background-secondary: #293746;
 
+  --color-loading-indicator-background: rgba(41, 55, 70, 0.7);
+
   --color-control-inactive-primary: #293746;
   --color-control-hover-primary: #3c5974;
   --color-control-hover-secondary: #304459;
