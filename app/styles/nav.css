@@ -1,8 +1,6 @@
 :root {
   --top-nav-height: 55px;
   --bottom-nav-height: 55px;
-  /* The following variables may change during runtime */
-  --bottom-nav-display: none;
 }
 
 .nav {
@@ -26,7 +24,7 @@
 }
 
 #bottom-nav {
-  display: var(--bottom-nav-display);
+  display: flex;
   height: var(--bottom-nav-height);
   bottom: 0;
   z-index: 10;
