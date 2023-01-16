@@ -19,7 +19,7 @@
         @title='Vorherige Seite'
         @size='square'
         @route='thread'
-        @query={{hash TID=@thread.id page=this.previousPage}}
+        @query={{hash TID=@thread.id PID='' page=this.previousPage}}
       ><FaIcon @icon='chevron-left' /></Common::Control::Link>
     {{else}}
       <span class='hidden control-size-square' />
@@ -42,7 +42,7 @@
         @title='Nächste Seite'
         @size='square'
         @route='thread'
-        @query={{hash TID=@thread.id page=this.nextPage}}
+        @query={{hash TID=@thread.id PID='' page=this.nextPage}}
       ><FaIcon @icon='chevron-right' /></Common::Control::Link>
     {{else}}
       <Common::Control::Button
