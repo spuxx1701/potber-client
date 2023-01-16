@@ -36,6 +36,8 @@ export default class ThreadRoute extends Route {
         params.TID,
         parseInt(params.page)
       );
+      // Reset scroll position
+      window.scrollTo({ top: 0, behavior: 'auto' });
       return RSVP.hash({
         thread,
         page: thread.page?.pageNumber || 1,

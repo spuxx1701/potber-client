@@ -30,8 +30,9 @@ export default class BoardRoute extends Route {
   async model(params: Params) {
     try {
       const page = parseInt(params.page) || 1;
-      console.log(params);
       const board = await this.api.getBoard(params.BID, page);
+      // Reset scroll position
+      window.scrollTo({ top: 0, behavior: 'auto' });
       return RSVP.hash({
         board: board,
         page: page,
