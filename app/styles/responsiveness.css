@@ -6,17 +6,17 @@
     opacity: 0.8;
   }
 
+  button:not(:disabled):hover, .button-link:not(:disabled):hover {
+    opacity: 1;
+    background-color: var(--color-control-hover-primary);
+  }
+
   .board-category-header:hover {
     background-color: var(--color-control-hover-secondary);
   }
 
   .board-item-important:hover {
     background-color: var(--color-control-hover-secondary);
-  }
-
-  button:not(:disabled):hover, .button-link:not(:disabled):hover {
-    opacity: 1;
-    background-color: var(--color-control-hover-primary);
   }
 
   .dropdown-item:hover {
