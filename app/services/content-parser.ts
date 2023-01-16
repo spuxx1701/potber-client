@@ -26,11 +26,11 @@ export default class ContentParserService extends Service {
    * @returns The modified yabbcode parser instance.
    */
   private registerCustomTags(parser: yabbcode) {
-    // parser.registerTag('url', {
-    //   type: 'replace',
-    //   open: (attr: string) => `<a href="${attr}">`,
-    //   close: '</a>',
-    // });
+    parser.registerTag('s', {
+      type: 'replace',
+      open: '<s>',
+      close: '</s>',
+    });
     parser.registerTag('url', {
       type: 'content',
       replace: this.parseUrl,
