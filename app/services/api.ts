@@ -37,9 +37,16 @@ export default class ApiService extends Service {
     return board;
   }
 
-  async getThread(threadId: string, page?: number) {
+  async getThread(
+    threadId: string,
+    options?: { postId?: string; page?: number }
+  ) {
     let query = `thread.php?TID=${threadId}`;
-    if (page) query += `&page=${page}`;
+    if (options?.postId) {
+      query += `&PID=${options?.postId}`;
+    } else if (options?.page) {
+      query += `&page=${options?.page}`;
+    }
     const xmlDocument = await this.fetch(query);
     // Throw an error if the thread could not be found
     if (

@@ -21,6 +21,10 @@ export default class PostComponent extends Component<Signature> {
     return this.args.post.date.toLocaleString();
   }
 
+  get href() {
+    return `${window.location.protocol}//${window.location.host}/thread?TID=${this.args.post.threadId}&PID=${this.args.post.id}#reply_${this.args.post.id}`;
+  }
+
   get content() {
     const content = this.bbcodeParser.parsePostContent(this.args.post.content);
     return content;

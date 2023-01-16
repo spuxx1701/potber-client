@@ -6,7 +6,7 @@ import RSVP, { reject } from 'rsvp';
 
 interface Params {
   BID: string;
-  page: string;
+  page?: string;
 }
 
 export interface BoardRouteModel {
@@ -29,7 +29,7 @@ export default class BoardRoute extends Route {
 
   async model(params: Params) {
     try {
-      const page = parseInt(params.page) || 1;
+      const page = parseInt(params.page || '1') || 1;
       const board = await this.api.getBoard(params.BID, page);
       // Reset scroll position
       window.scrollTo({ top: 0, behavior: 'auto' });

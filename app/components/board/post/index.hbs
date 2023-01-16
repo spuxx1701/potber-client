@@ -9,7 +9,10 @@
       {{/if}}
       <div class='flex-column justify-content-center'>
         <b class='post-details-author-name'>{{@post.author.name}}</b>
-        <p class='post-details-date subtitle'>{{this.date}}</p>
+        <a
+          href={{this.href}}
+          class='post-details-date subtitle'
+        >{{this.date}}<FaIcon @icon='link' /></a>
       </div>
     </div>
     {{!-- <Common::Control::Button

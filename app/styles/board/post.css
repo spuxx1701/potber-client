@@ -29,6 +29,11 @@
 
 .post-details-date {
   margin: 0;
+  text-decoration: none;
+}
+
+.post-details-date svg {
+  margin-left: 0.25rem;
 }
 
 .post-avatar-small {
@@ -52,7 +57,6 @@
   flex-direction: column;
   background-color: var(--color-post-background-primary);
   padding: 0.5rem;
-  /* white-space: pre-line; */
 }
 
 .post-content p {

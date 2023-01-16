@@ -7,7 +7,8 @@ import RSVP, { reject } from 'rsvp';
 
 interface Params {
   TID: string;
-  page: string;
+  PID?: string;
+  page?: string;
 }
 
 export interface ThreadRouteModel {
@@ -18,10 +19,14 @@ export interface ThreadRouteModel {
 
 export default class ThreadRoute extends Route {
   @service declare localStorage: LocalStorageService;
+  @service declare api: ApiService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
     TID: {
+      refreshModel: true,
+    },
+    PID: {
       refreshModel: true,
     },
     page: {
@@ -29,18 +34,20 @@ export default class ThreadRoute extends Route {
     },
   };
 
-  @service declare api: ApiService;
   async model(params: Params) {
     try {
-      const thread = await this.api.getThread(
-        params.TID,
-        parseInt(params.page)
-      );
+      // Attempt to parse the page
+      let page: number | undefined;
+      if (params.page) page = parseInt(params.page) || 1;
+      const thread = await this.api.getThread(params.TID, {
+        postId: params.PID,
+        page,
+      });
       // Reset scroll position
       window.scrollTo({ top: 0, behavior: 'auto' });
       return RSVP.hash({
         thread,
-        page: thread.page?.pageNumber || 1,
+        page: thread.page?.pageNumber || page,
         avatarStyle: this.localStorage.avatarStyle,
       } as ThreadRouteModel);
     } catch (error: any) {
