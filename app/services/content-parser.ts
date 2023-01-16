@@ -12,7 +12,8 @@ export default class ContentParserService extends Service {
    * @returns The HTML output.
    */
   parsePostContent(input: string) {
-    let output = this.parser.parse(input);
+    let output = input;
+    output = this.parser.parse(input);
     output = this.parseEmojis(output);
     return htmlSafe(output);
   }
@@ -30,12 +31,10 @@ export default class ContentParserService extends Service {
     //   open: (attr: string) => `<a href="${attr}">`,
     //   close: '</a>',
     // });
-    // parser.registerTag('url', {
-    //   type: 'content',
-    //   replace: (attr: string, content: string) => {
-    //     return `<a href="${attr}">${content}</a>`;
-    //   },
-    // });
+    parser.registerTag('url', {
+      type: 'content',
+      replace: this.parseUrl,
+    });
     parser.registerTag('video', {
       type: 'content',
       replace: this.parseVideo,
@@ -52,6 +51,11 @@ export default class ContentParserService extends Service {
       );
     }
     return output;
+  }
+
+  private parseUrl(attr: string, content: string) {
+    if (!attr) attr = `"${content}"`;
+    return `<a href=${attr} target="_blank">${content}</a>`;
   }
 
   private parseVideo(attr: string, content: string) {
