@@ -26,7 +26,11 @@
       />
     {{/if}}
 
-    <Common::Control::Menu @position='top' @variant='primary-transparent'>
+    <Common::Control::Menu
+      @position='top'
+      @variant='primary-transparent'
+      @icon='ellipsis'
+    >
       <Common::Control::Menu::Button
         @text='Zu Favoriten hinzufügen'
         @onClick={{this.addToFavorites}}

@@ -5,7 +5,7 @@
   {{on 'click' this.handleClick}}
   {{on 'blur' this.handleBlur}}
 >
-  <FaIcon @icon='ellipsis-vertical' />
+  <FaIcon @icon={{this.icon}} />
   <div
     class='menu-dropdown menu-dropdown-{{this.position}}
       {{if this.visible "menu-dropdown-visible"}}'

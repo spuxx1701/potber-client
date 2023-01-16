@@ -14,6 +14,7 @@ export interface Signature {
       | 'bottom'
       | 'bottom-right';
     variant?: ControlVariant;
+    icon?: string;
   };
 }
 
@@ -28,6 +29,10 @@ export default class MenuComponent extends Component<Signature> {
 
   get variant() {
     return this.args.variant || 'secondary';
+  }
+
+  get icon() {
+    return this.args.icon || 'ellipsis-vertical';
   }
 
   @action handleClick(event: any) {

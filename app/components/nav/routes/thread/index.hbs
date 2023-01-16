@@ -25,7 +25,11 @@
       <span class='hidden control-size-square' />
     {{/if}}
 
-    <Common::Control::Menu @position='top' @variant='primary-transparent'>
+    <Common::Control::Menu
+      @position='top'
+      @variant='primary-transparent'
+      @icon='ellipsis'
+    >
       <Common::Control::Menu::Link
         @href={{this.originalUrl}}
         @text='Original öffnen'
