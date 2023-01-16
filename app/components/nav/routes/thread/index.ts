@@ -46,6 +46,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   }
 
   @action async reload() {
+    this.renderer.preventNextScrollReset();
     this.renderer.showLoadingIndicator();
     (getOwner(this as unknown) as any)
       .lookup('route:thread')

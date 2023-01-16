@@ -9,6 +9,8 @@ export default class RendererService extends Service {
   @tracked leftSidebarExpanded = false;
   rootStyle = document.documentElement.style;
 
+  preventScrollReset = false;
+
   @action initialize() {
     this.updateMainNavPosition();
     this.updateBoxStyle();
@@ -78,5 +80,26 @@ export default class RendererService extends Service {
   @action async hideLoadingIndicator() {
     await sleep(200);
     this.rootStyle.setProperty('--loading-indicator-opacity', '0');
+  }
+
+  /**
+   * Prevents the next reset of the scroll position that would otherwise be
+   * triggered by calling RendererService.tryResetScrollPosition().
+   */
+  @action preventNextScrollReset() {
+    this.preventScrollReset = true;
+  }
+
+  /**
+   * Attempts to reset the window's scroll position. Will not do anything if
+   * RendererService.preventScrollReset has been set earlier. However, setting this
+   * property will only prevent a scroll reset one single time.
+   */
+  @action tryResetScrollPosition() {
+    if (this.preventScrollReset) {
+      this.preventScrollReset = false;
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }
 }

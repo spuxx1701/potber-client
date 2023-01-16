@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import ApiService from 'potber/services/api';
 import { Board } from 'potber/services/api/types/board';
+import RendererService from 'potber/services/renderer';
 import RSVP, { reject } from 'rsvp';
 
 interface Params {
@@ -16,6 +17,7 @@ export interface BoardRouteModel {
 
 export default class BoardRoute extends Route {
   @service declare api: ApiService;
+  @service declare renderer: RendererService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -31,8 +33,7 @@ export default class BoardRoute extends Route {
     try {
       const page = parseInt(params.page || '1') || 1;
       const board = await this.api.getBoard(params.BID, page);
-      // Reset scroll position
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      this.renderer.tryResetScrollPosition();
       return RSVP.hash({
         board: board,
         page: page,
