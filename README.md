@@ -2,7 +2,25 @@
 
 This is a mobile-first web client for the german internet forum [forum.mods.de](https://foru.mods.de) built with [ember.js](https://emberjs.com/).
 
-## Prerequisites
+## How to use
+
+### Location
+
+Visit https://www.potber.de (or https://test.potber.de for the test environment) to use the app.
+
+### Browser support
+
+Potber supports the following browsers. Other browser might work, but are not supported. The app might still behave and display differently on different devices.
+
+- Chrome >= 108
+- Chrome for Android >= 108
+- Firefox >= 107
+- Firefox for Android >= 107
+- Safari on iOS >= 16.1
+
+## How to develop or build the app
+
+### Prerequisites
 
 You will need the following things properly installed on your computer.
 
@@ -12,42 +30,32 @@ You will need the following things properly installed on your computer.
 - [Docker Engine](https://docs.docker.com/engine/release-notes/)
 - [Docker Compose](https://docs.docker.com/compose/release-notes/)
 
-## Installation
+### Installation
 
 - `git clone https://github.com/spuxx1701/potber.git`
 - `cd potber`
 - `npm install`
 
-## Running / Development
+### Running / Development
 
-- `npm start`
+- Start up the CORS proxy server with `cd .cors-proxy && docker-compose up`.
+- Start up the development server with `npm start`.
 - Visit the app at [http://localhost:4200](http://localhost:4200).
-- Visit the tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
-### Linting
+#### Linting
 
 - `npm run lint`
 - `npm run lint:fix`
 
-### Building
+#### Building
 
 - `ember build` (development)
 - `ember build --environment integration` (integration)
 - `ember build --environment production` (production)
 
-### Deploying
+#### Deploying
 
 Specify what it takes to deploy your app.
-
-## Browser support
-
-Potber supports the following browsers. Other browser might work, but are not supported. The app might still behave and display differently on different devices.
-
-- Chrome >= 108
-- Chrome for Android >= 108
-- Firefox >= 107
-- Firefox for Android >= 107
-- Safari on iOS >= 16.1
 
 ## Further Reading / Useful Links
 
