@@ -13,12 +13,6 @@ a, a:visited {
   color: var(--color-text-link);
 }
 
-@media(hover: hover) {
-  a:hover {
-    opacity: 0.8;
-  }
-}
-
 b {
   color: var(--color-text-highlighted);
 }

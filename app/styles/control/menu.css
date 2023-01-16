@@ -70,12 +70,6 @@
   background-color: var(--color-control-hover-primary);
 }
 
-@media (hover:hover) {
-  .menu-button-item:not(:disabled):hover {
-    background-color: var(--color-control-hover-primary);
-  }
-}
-
 .menu-content>*>* {
   margin-left: 0.5rem;
   margin-right: 0.5rem;

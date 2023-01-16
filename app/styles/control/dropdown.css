@@ -89,13 +89,6 @@
   color: var(--color-text-default);
 }
 
-@media (hover: hover) {
-  .dropdown-item:hover {
-    background-color: var(--color-control-hover);
-    color: var(--color-text-default);
-  }
-}
-
 .dropdown-item:first-child {
   border-radius: var(--global-border-radius) var(--global-border-radius) 0px 0px;
 }

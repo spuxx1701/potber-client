@@ -14,7 +14,6 @@
 #page-content {
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
   margin: 0 auto 0 auto;
   padding-top: var(--top-nav-height);
   padding-bottom: var(--bottom-nav-height);

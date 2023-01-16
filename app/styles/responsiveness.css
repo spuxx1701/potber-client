@@ -1,0 +1,30 @@
+/* Large tablets and desktops */
+@media only screen and (min-width: 768px) {
+
+  /* Hover effects */
+  a:hover {
+    opacity: 0.8;
+  }
+
+  .board-category-header:hover {
+    background-color: var(--color-control-hover-secondary);
+  }
+
+  .board-item-important:hover {
+    background-color: var(--color-control-hover-secondary);
+  }
+
+  button:not(:disabled):hover, .button-link:not(:disabled):hover {
+    opacity: 1;
+    background-color: var(--color-control-hover-primary);
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--color-control-hover);
+    color: var(--color-text-default);
+  }
+
+  .menu-button-item:not(:disabled):hover {
+    background-color: var(--color-control-hover-primary);
+  }
+}

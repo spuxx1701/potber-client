@@ -18,12 +18,6 @@
   background-color: var(--color-post-background-secondary);
 }
 
-@media (hover: hover) {
-  .board-item-important:hover {
-    background-color: var(--color-control-hover-secondary) !important;
-  }
-}
-
 .board-item-header {
   display: grid;
   grid-auto-flow: column;
