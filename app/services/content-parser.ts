@@ -63,8 +63,6 @@ export default class ContentParserService extends Service {
     return `<a href=${attr} target="_blank">${content}</a>`;
   }
 
-  private parseSpoiler(attr: string, content: string) {}
-
   private parseVideo(attr: string, content: string) {
     // YouTube links need to be embedded using their propietary player
     if (content.match(/youtu.be/g) || content.match(/youtube.com/g)) {
