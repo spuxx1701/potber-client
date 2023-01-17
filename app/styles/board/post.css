@@ -64,12 +64,32 @@
   margin: 0;
 }
 
-blockquote {
+.quote {
+  display: flex;
+  flex-direction: column;
   border-radius: var(--global-border-radius);
   background-color: var(--color-quote-background);
   margin: 0.5rem 0 0.5rem 0.5rem;
-  padding: 0.5rem;
   overflow: hidden;
+}
+
+.quote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-quote-header);
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+.quote-header p:first-child {
+  color: var(--color-text-default);
+  font-weight: normal !important;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0.5rem;
 }
 
 code {
@@ -95,25 +115,6 @@ video {
   height: 360px;
   max-width: 100%;
 }
-
-/* .spoiler {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  border-radius: var(--global-border-radius);
-  overflow: hidden;
-}
-
-.spoiler-header {
-  background-color: var(--color-control-inactive-primary);
-  padding: 0.5rem;
-}
-
-.spoiler-content {
-  padding: 0.5rem;
-  background-color: var(--color-spoiler-background);
-  color: var(--color-spoiler-background);
-} */
 
 .spoiler {
   display: flex;

@@ -10,8 +10,8 @@
   --color-control-hover-primary: #3c5974;
   --color-control-hover-secondary: #304459;
 
-  --color-quote-background: #21354C;
-  --color-spoiler-background: #091827;
+  --color-quote-header: #091827;
+  --color-quote-background: rgba(20, 35, 55, 0.5);
 
   --color-text-default: #f1f1f1;
   --color-text-subtle: #aeaeae;

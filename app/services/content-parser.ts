@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import { htmlSafe } from '@ember/template';
-import yabbcode from 'ya-bbcode';
+// import yabbcode from 'ya-bbcode';
+import yabbcode from './bbcode/ya-bbcode';
 import { emojis } from './bbcode/emoji';
 
 export default class ContentParserService extends Service {
@@ -13,7 +14,10 @@ export default class ContentParserService extends Service {
    */
   parsePostContent(input: string) {
     let output = input;
-    output = this.parser.parse(input);
+    // if (output.match(/Admiral Bohm/g))
+    // output = output.replaceAll(/Admiral Bohm/g, 'Admiral_Bohm');
+    // if (output.match(/Admiral Bohm/g)) debugger;
+    output = this.parser.parse(output);
     output = this.parseEmojis(output);
     return htmlSafe(output);
   }
@@ -26,6 +30,10 @@ export default class ContentParserService extends Service {
    * @returns The modified yabbcode parser instance.
    */
   private registerCustomTags(parser: yabbcode) {
+    parser.registerTag('quote', {
+      type: 'content',
+      replace: this.parseQuote,
+    });
     parser.registerTag('s', {
       type: 'replace',
       open: '<s>',
@@ -39,8 +47,6 @@ export default class ContentParserService extends Service {
       type: 'replace',
       open: '<label class="spoiler"><input class="spoiler-input" type="checkbox"/><p class="spoiler-header">👀 Spoiler anzeigen</p><span class="spoiler-content">',
       close: '</span></label>',
-      // open: '<span class="spoiler"><span class="spoiler-header">Spoiler - markieren, um zu lesen:</span><span class="spoiler-content">',
-      // close: '</span></span>',
     });
     parser.registerTag('video', {
       type: 'content',
@@ -76,5 +82,26 @@ export default class ContentParserService extends Service {
     } else {
       return `<video src="${content}" controls/>`;
     }
+  }
+
+  private parseQuote(attr: string, content: string) {
+    if (!attr) {
+      return `<span class="quote"><blockquote>${content}</blockquote></span>`;
+    }
+    const userNameMatches = attr.match(/(?<=")(.*)(?=")/);
+    let userName = '';
+    if (userNameMatches && userNameMatches.length > 0) {
+      userName = userNameMatches[0];
+    } else {
+      userName = 'Unknown';
+    }
+    const ids = attr.replace(/[^0-9,]/g, '').split(',');
+    if (ids.length >= 2) {
+      const threadId = ids[0];
+      const postId = ids[1];
+      const url = `${window.location.protocol}//${window.location.host}/thread?TID=${threadId}&PID=${postId}#reply_${postId}`;
+      return `<span class="quote"><a class="quote-header" href="${url}"><p>${userName}</p></a><blockquote>${content}</blockquote></span>`;
+    }
+    return `<span class="quote"><span class="quote-header"><p>${userName}</p></span><blockquote>${content}</blockquote></span>`;
   }
 }
