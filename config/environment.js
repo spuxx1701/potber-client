@@ -15,8 +15,6 @@ module.exports = function (environment) {
     },
 
     APP: {
-      // PROXY_URL: 'http://localhost:4201',
-      PROXY_URL: 'https://proxy.potber.de',
       API_URL: 'https://forum.mods.de/bb/xml/',
       FORUM_URL: 'https://forum.mods.de/bb/',
       DEBUG: false,
@@ -27,7 +25,6 @@ module.exports = function (environment) {
   };
 
   if (environment === 'development') {
-    ENV.APP.PROXY_URL = 'http://localhost:4201';
     ENV.APP.DEBUG = true;
     ENV.APP.NO_CACHE = true;
     // ENV.APP.LOG_RESOLVER = true;
@@ -50,13 +47,11 @@ module.exports = function (environment) {
   }
 
   if (environment === 'integration') {
-    ENV.APP.PROXY_URL = 'https://proxy.potber.de';
     ENV.APP.NO_CACHE = true;
     ENV.APP.DEBUG = true;
   }
 
   if (environment === 'production') {
-    ENV.APP.PROXY_URL = 'https://proxy.potber.de';
   }
 
   return ENV;

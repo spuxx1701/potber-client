@@ -1,9 +1,0 @@
-version: '3.3'
-services:
-  potber-cors-proxy:
-    image: 'testcab/cors-anywhere'
-    restart: always
-    ports:
-      - '4201:8080'
-    environment:
-      - CORSANYWHERE_WHITELIST=http://localhost:4200

@@ -11,7 +11,7 @@ export interface FetchOptions {
   body?: BodyInit | undefined;
 }
 
-const API_URL = `${ENV.APP['PROXY_URL']}/${ENV.APP['API_URL']}`;
+const API_URL = `${ENV.APP['API_URL']}`;
 
 export default class ApiService extends Service {
   domParser = new window.DOMParser();
