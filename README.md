@@ -1,8 +1,15 @@
 # potber
 
-This is a mobile-first web client for the german internet forum [forum.mods.de](https://foru.mods.de) built with [ember.js](https://emberjs.com/).
+This is a mobile-first web client for the german internet forum [forum.mods.de](https://foru.mods.de) built with [ember.js](https://emberjs.com/). You can find the application at
+
+- https://potber.de/ - Productive environment
+- https://test.potber.de/ - Test environment
 
 ## How to use
+
+Visit https://potber.de/ and browse away!
+
+## Core features
 
 ### Location
 
