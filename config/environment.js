@@ -52,6 +52,8 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
+    ENV.APP.NO_CACHE = false;
+    ENV.APP.DEBUG = false;
   }
 
   return ENV;
