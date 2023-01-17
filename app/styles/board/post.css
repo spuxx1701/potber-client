@@ -96,7 +96,7 @@ video {
   max-width: 100%;
 }
 
-.spoiler {
+/* .spoiler {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -113,4 +113,35 @@ video {
   padding: 0.5rem;
   background-color: var(--color-spoiler-background);
   color: var(--color-spoiler-background);
+} */
+
+.spoiler {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: var(--global-border-radius);
+  overflow: hidden;
+  width: 100%;
+  min-height: var(--control-default-height);
+  background-color: var(--color-control-inactive-primary);
+  cursor: pointer;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.spoiler-header {
+  color: var(--color-text-subtle);
+}
+
+.spoiler-input, .spoiler-content {
+  display: none;
+}
+
+.spoiler-input:checked+.spoiler-header {
+  display: none;
+}
+
+.spoiler-input:checked+.spoiler-header+.spoiler-content {
+  display: block;
 }

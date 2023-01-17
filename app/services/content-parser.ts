@@ -37,8 +37,10 @@ export default class ContentParserService extends Service {
     });
     parser.registerTag('spoiler', {
       type: 'replace',
-      open: '<span class="spoiler"><span class="spoiler-header">Spoiler - markieren, um zu lesen:</span><span class="spoiler-content">',
-      close: '</span></span>',
+      open: '<label class="spoiler"><input class="spoiler-input" type="checkbox"/><p class="spoiler-header">👀 Spoiler anzeigen</p><span class="spoiler-content">',
+      close: '</span></label>',
+      // open: '<span class="spoiler"><span class="spoiler-header">Spoiler - markieren, um zu lesen:</span><span class="spoiler-content">',
+      // close: '</span></span>',
     });
     parser.registerTag('video', {
       type: 'content',
