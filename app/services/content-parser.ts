@@ -35,6 +35,11 @@ export default class ContentParserService extends Service {
       type: 'content',
       replace: this.parseUrl,
     });
+    parser.registerTag('spoiler', {
+      type: 'replace',
+      open: '<span class="spoiler"><span class="spoiler-header">Spoiler - markieren, um zu lesen:</span><span class="spoiler-content">',
+      close: '</span></span>',
+    });
     parser.registerTag('video', {
       type: 'content',
       replace: this.parseVideo,
@@ -57,6 +62,8 @@ export default class ContentParserService extends Service {
     if (!attr) attr = `"${content}"`;
     return `<a href=${attr} target="_blank">${content}</a>`;
   }
+
+  private parseSpoiler(attr: string, content: string) {}
 
   private parseVideo(attr: string, content: string) {
     // YouTube links need to be embedded using their propietary player

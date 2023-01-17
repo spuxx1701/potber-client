@@ -93,3 +93,22 @@ video {
   height: 360px;
   max-width: 100%;
 }
+
+.spoiler {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: var(--global-border-radius);
+  overflow: hidden;
+}
+
+.spoiler-header {
+  background-color: var(--color-quote-background);
+  padding: 0.5rem;
+}
+
+.spoiler-content {
+  padding: 0.5rem;
+  background-color: var(--color-spoiler-background);
+  color: var(--color-spoiler-background);
+}
