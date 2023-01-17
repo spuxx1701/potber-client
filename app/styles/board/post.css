@@ -103,7 +103,7 @@ video {
 }
 
 .spoiler-header {
-  background-color: var(--color-quote-background);
+  background-color: var(--color-control-inactive-primary);
   padding: 0.5rem;
 }
 
