@@ -309,7 +309,6 @@ export default class yabbcode {
   }
 
   parse(bbcInput) {
-    if (bbcInput.match(/Admiral Bohm/g)) debugger;
     if (
       typeof bbcInput === 'boolean' ||
       (typeof bbcInput !== 'string' && Number.isNaN(Number(bbcInput)))
