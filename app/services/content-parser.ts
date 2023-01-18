@@ -14,11 +14,10 @@ export default class ContentParserService extends Service {
    */
   parsePostContent(input: string) {
     let output = input;
-    // if (output.match(/Admiral Bohm/g))
-    // output = output.replaceAll(/Admiral Bohm/g, 'Admiral_Bohm');
-    // if (output.match(/Admiral Bohm/g)) debugger;
+    output = this.parseQuoteUsernames(output);
     output = this.parser.parse(output);
     output = this.parseEmojis(output);
+    output = this.cleanup(output);
     return htmlSafe(output);
   }
 
@@ -84,6 +83,24 @@ export default class ContentParserService extends Service {
     }
   }
 
+  /**
+   * Quotes can contain usernames which again can contain square brackets, which
+   * will make yabbcode misinterpret the end of the opening tag. We will need
+   * to prepare those so that yabbcode will have a easier time parsing them.
+   */
+  private parseQuoteUsernames(input: string) {
+    const quoteAttributesRegex = RegExp(/(?<=(\[quote=))(.*)(?<=("))/g);
+    const matches = input.match(quoteAttributesRegex);
+    if (!matches || matches.length === 0) return input;
+    let output = input;
+    for (const match of matches) {
+      const replacement = match.replace('[', '<SQBO>').replace(']', '<SQBC>');
+      console.log(replacement);
+      output = output.replace(match, replacement);
+    }
+    return output;
+  }
+
   private parseQuote(attr: string, content: string) {
     if (!attr) {
       return `<span class="quote"><blockquote>${content}</blockquote></span>`;
@@ -103,5 +120,11 @@ export default class ContentParserService extends Service {
       return `<span class="quote"><a class="quote-header" href="${url}"><p>${userName}</p></a><blockquote>${content}</blockquote></span>`;
     }
     return `<span class="quote"><span class="quote-header"><p>${userName}</p></span><blockquote>${content}</blockquote></span>`;
+  }
+
+  cleanup(input: string) {
+    let output = input;
+    output = output.replaceAll('<SQBO>', '[').replaceAll('<SQBC>', ']');
+    return output;
   }
 }
