@@ -89,7 +89,8 @@ export default class ContentParserService extends Service {
    * to prepare those so that yabbcode will have a easier time parsing them.
    */
   private parseQuoteUsernames(input: string) {
-    const quoteAttributesRegex = RegExp(/(?<=(\[quote=))(.*)(?<=("))/g);
+    // eslint-disable-next-line no-useless-escape
+    const quoteAttributesRegex = RegExp(/(?:(\")(.*)(\"))/g);
     const matches = input.match(quoteAttributesRegex);
     if (!matches || matches.length === 0) return input;
     let output = input;
