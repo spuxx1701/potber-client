@@ -21,8 +21,8 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
     "start": "ember serve",
-    "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
-    "test:ember": "ember test"
+    "test": "ember test",
+    "test:coverage": "COVERAGE=true ember test"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
@@ -73,6 +73,7 @@
     "ember-cli": "~4.9.2",
     "ember-cli-app-version": "^5.0.0",
     "ember-cli-babel": "^7.26.11",
+    "ember-cli-code-coverage": "^2.0.0",
     "ember-cli-dependency-checker": "^3.3.1",
     "ember-cli-htmlbars": "^6.1.1",
     "ember-cli-inject-live-reload": "^2.1.0",
