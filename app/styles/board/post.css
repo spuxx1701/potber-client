@@ -146,3 +146,17 @@ video {
 .spoiler-input:checked+.spoiler-header+.spoiler-content {
   display: block;
 }
+
+.post-content table {
+  border: none;
+}
+
+.post-content td {
+  background-color: var(--color-quote-background);
+  border: 2px solid var(--color-post-background-primary);
+  padding: 0.5rem;
+}
+
+.post-content br:first-child {
+  display: none;
+}

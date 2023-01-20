@@ -41,7 +41,6 @@ export default class NavBoardComponent extends Component<Signature> {
   }
 
   get nextPage() {
-    console.log('next: ' + (this.currentPage + 1));
     return this.currentPage + 1;
   }
 

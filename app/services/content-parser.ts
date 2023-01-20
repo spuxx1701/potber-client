@@ -1,10 +1,13 @@
-import Service from '@ember/service';
+import Service, { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 // import yabbcode from 'ya-bbcode';
 import yabbcode from './bbcode/ya-bbcode';
 import { emojis } from './bbcode/emoji';
+import LoggerService from './logger';
 
 export default class ContentParserService extends Service {
+  @service declare logger: LoggerService;
+
   parser = this.registerCustomTags(new yabbcode());
 
   /**
@@ -14,11 +17,72 @@ export default class ContentParserService extends Service {
    */
   parsePostContent(input: string) {
     let output = input;
+    output = this.parseTable(output);
+    output = this.parseList(output);
     output = this.parseQuoteUsernames(output);
     output = this.parser.parse(output);
     output = this.parseEmojis(output);
     output = this.cleanup(output);
     return htmlSafe(output);
+  }
+
+  /**
+   * Pares [table] tags. Does not support tag nesting.
+   * @param input The input string.
+   * @returns The output string.
+   */
+  parseTable(input: string) {
+    if (!new RegExp(/\[table\]/).test(input)) return input;
+    let output = input;
+    output = output.replaceAll(/\[table\]/g, '<table><tr><td>');
+    output = output.replaceAll(/\[\|\|\]/g, '</td><td>');
+    output = output.replaceAll(/\[--\]/g, '</td></tr><tr><td>');
+    output = output.replaceAll(/\[\/table\]/g, '</td></tr></table>');
+    return output;
+  }
+
+  /**
+   * Parses [list] tags. Does not support tag nesting.
+   * @param input The input string.
+   * @returns The output string.
+   */
+  parseList(input: string) {
+    const regex = new RegExp(/(?:(\[list\])(.|\n)*?(\[\/list\]))/g);
+    if (!regex.test(input)) return input;
+    let output = input;
+    const matches = input.match(regex);
+    if (matches) {
+      for (const match of matches) {
+        let replacement = match;
+        replacement = replacement.replace(/\[list\]/, '<ul>');
+        const listItemMatches = replacement.match(/\[\*\]/g);
+        if (!listItemMatches) {
+          // If the list does not contain any list items, add ending tag right away and return
+          replacement = replacement.replace(/\[\/list\]/, '</ul>');
+          output.replace(match, replacement);
+          break;
+        } else {
+          for (const i in listItemMatches) {
+            if (i === '0') {
+              // Add no ending tag before first list item
+              replacement = replacement.replace(
+                listItemMatches[i] as string,
+                '<li>'
+              );
+            } else {
+              // Add ending tags before all other list items
+              replacement = replacement.replace(
+                listItemMatches[i] as string,
+                '</li><li>'
+              );
+            }
+          }
+        }
+        replacement = replacement.replace(/\[\/list\]/, '</li></ul>');
+        output = output.replace(match, replacement);
+      }
+    }
+    return output;
   }
 
   /**
@@ -29,6 +93,12 @@ export default class ContentParserService extends Service {
    * @returns The modified yabbcode parser instance.
    */
   private registerCustomTags(parser: yabbcode) {
+    parser.registerTag('table', {
+      type: 'ignore',
+    });
+    parser.registerTag('list', {
+      type: 'ignore',
+    });
     parser.registerTag('quote', {
       type: 'content',
       replace: this.parseQuote,
@@ -96,7 +166,6 @@ export default class ContentParserService extends Service {
     let output = input;
     for (const match of matches) {
       const replacement = match.replace('[', '<SQBO>').replace(']', '<SQBC>');
-      console.log(replacement);
       output = output.replace(match, replacement);
     }
     return output;
@@ -106,7 +175,7 @@ export default class ContentParserService extends Service {
     if (!attr) {
       return `<span class="quote"><blockquote>${content}</blockquote></span>`;
     }
-    const userNameMatches = attr.match(/(?:["](.*)["])/);
+    const userNameMatches = attr.match(/(?:["](.|\n)["])/);
     let userName = '';
     if (userNameMatches && userNameMatches.length > 0) {
       userName = userNameMatches[0].replaceAll('"', '');
