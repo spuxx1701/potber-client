@@ -4,10 +4,10 @@ import {
   BoardCategoryItemXml,
   BoardOverviewXml,
 } from '../types/board-category';
-import { LastPostXml } from '../types/post';
 import { User } from '../types/user';
 import { transformLastPost } from './post';
 import { transformUser } from './user';
+import { getNode } from './utils';
 
 export function transformBoardCategories(xmlDocument: XMLDocument) {
   const boardCategoriesXml = (xmlDocument as any as BoardOverviewXml)
@@ -35,8 +35,11 @@ export function transformBoardCategoryItem(
   boardCategoryItemXml: BoardCategoryItemXml
 ) {
   const moderators: User[] = [];
-  for (const moderatorXml of boardCategoryItemXml.children[6].childNodes) {
-    moderators.push(transformUser(moderatorXml));
+  const moderatorNode = getNode('moderators', boardCategoryItemXml);
+  if (moderatorNode) {
+    for (const moderatorXml of moderatorNode.childNodes) {
+      moderators.push(transformUser(moderatorXml));
+    }
   }
   return {
     id: boardCategoryItemXml.id,
@@ -52,9 +55,7 @@ export function transformBoardCategoryItem(
       id: boardCategoryItemXml.children[4].attributes.id.value,
       name: boardCategoryItemXml.children[4].textContent,
     },
-    lastPost: transformLastPost(
-      boardCategoryItemXml.children[5] as any as LastPostXml
-    ),
+    lastPost: transformLastPost(getNode('lastpost', boardCategoryItemXml)),
     moderators,
   } as Board;
 }
