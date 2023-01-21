@@ -12,6 +12,7 @@ Router.map(function () {
   // Add route declarations here
   this.route('/');
   this.route('login');
+  this.route('session');
   this.route('board');
   this.route('thread');
   this.route('create-thread');

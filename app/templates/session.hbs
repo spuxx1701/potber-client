@@ -1,0 +1,12 @@
+{{page-title 'Sitzung'}}
+
+<Nav::Routes::Generic @title='Sitzung' />
+
+<Common::Container @size='small'>
+  {{#if @model.authenticated}}
+    <p class='title'>Du bist derzeit angemeldet.</p>
+    <p>Username: {{@model.username}}</p>
+  {{else}}
+    <p>Keine laufende Sitzung.</p>
+  {{/if}}
+</Common::Container>
