@@ -4,11 +4,16 @@ import { service } from '@ember/service';
 import LocalStorageService from 'potber/services/local-storage';
 import RendererService from 'potber/services/renderer';
 import ENV from 'potber/config/environment';
+import RSVP from 'rsvp';
+import ApiService from 'potber/services/api';
+import SessionService from 'potber/services/session';
 
 export default class ApplicationRoute extends Route {
   @service declare router: RouterService;
   @service declare renderer: RendererService;
   @service declare localStorage: LocalStorageService;
+  @service declare api: ApiService;
+  @service declare session: SessionService;
 
   async beforeModel() {
     // Delete cache
@@ -22,5 +27,12 @@ export default class ApplicationRoute extends Route {
     // Initialization
     this.localStorage.initialize();
     this.renderer.initialize();
+    this.session.initialize();
+  }
+
+  async model() {
+    return RSVP.hash({
+      bookmarks: await this.api.getBookmarks(),
+    });
   }
 }

@@ -5,6 +5,7 @@ import { transformBoardCategories } from './api/transformers/board-category';
 import { transformBoard } from './api/transformers/board';
 import { BoardXml } from './api/types/board';
 import { ThreadXml } from './api/types/thread';
+import { parseBookmarks } from './api/transformers/bookmark';
 
 export interface FetchOptions {
   method?: 'GET' | 'POST';
@@ -63,10 +64,16 @@ export default class ApiService extends Service {
     return thread;
   }
 
+  async getBookmarks() {
+    const xmlDocument = await this.fetch(`bookmarks.php`);
+    return parseBookmarks(xmlDocument);
+  }
+
   async fetch(query: string, options?: FetchOptions) {
     const response = await fetch(`${API_URL}${query}`, {
       method: options?.method || 'GET',
       body: options?.body,
+      credentials: 'include',
     });
     const xmlObject = await this.parseXml(response);
     return xmlObject;
