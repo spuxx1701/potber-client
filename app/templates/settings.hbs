@@ -2,13 +2,13 @@
 
 <Nav::Routes::Generic @title='Einstellungen' />
 
-<div class='padding-medium'>
+<Common::Container @size='small'>
 
   <Common::Control::Dropdown
     @options={{this.avatarStyleOptions}}
     @default={{@model.currentAvatarStyleOption}}
     @onSelect={{this.handleAvatarStyleSelect}}
-    @size='medium'
+    @size='max'
     @label='Bender'
   />
 
@@ -16,7 +16,7 @@
     @options={{this.boxStyleOptions}}
     @default={{@model.currentBoxStyleOption}}
     @onSelect={{this.handleBoxStyleSelect}}
-    @size='large'
+    @size='max'
     @label='Design'
   />
 
@@ -42,4 +42,4 @@
     <p class='margin-left-x-small'>Über die App</p>
   </Common::Control::Link>
 
-</div>
+</Common::Container>

@@ -1,10 +1,11 @@
 <div id={{this.componentId}} class='input-container'>
   <input
     id='{{this.componentId}}-input'
-    class='control-size{{this.size}}'
-    value={{@value}}
+    class='control-size-{{this.size}}'
+    value={{this.value}}
     placeholder=' '
     aria-placeholder={{@label}}
+    {{on 'change' this.handleChange}}
     ...attributes
   />
   <label for='{{this.componentId}}-input'>{{@label}}</label>

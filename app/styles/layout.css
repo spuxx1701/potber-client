@@ -30,15 +30,15 @@
 }
 
 .container-size-small {
-  width: 400px;
+  width: 320px;
 }
 
 .container-size-medium {
-  width: 650px;
+  width: 450px;
 }
 
 .container-size-large {
-  width: 800px;
+  width: 600px;
 }
 
 .container-size-max {
@@ -65,8 +65,13 @@
 }
 
 .control-size-large {
-  width: 200px;
+  width: 180px;
   max-width: min(200px, 100%);
+}
+
+.control-size-max {
+  width: 100%;
+  max-width: 100%;
 }
 
 .control-row {
