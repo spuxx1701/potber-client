@@ -77,4 +77,12 @@ export default class MessagesService extends Service {
         this.notifications.info(message, notificationOptions);
     }
   }
+
+  /**
+   * Removes the given notification.
+   * @param notification The notification.
+   */
+  removeNotification(notification: any) {
+    this.notifications.removeNotification(notification);
+  }
 }
