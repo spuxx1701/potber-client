@@ -1,7 +1,5 @@
 :root {
   --control-default-height: 45px;
-  --main-nav-height: 55px;
-
   /* The following variables may change during runtime. */
   --global-border-radius: 0px;
   --global-gap: unset;
