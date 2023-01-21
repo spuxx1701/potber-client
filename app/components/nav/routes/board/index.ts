@@ -6,6 +6,7 @@ import ENV from 'potber/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import RendererService from 'potber/services/renderer';
+import MessagesService from 'potber/services/messages';
 
 export interface Signature {
   Args: {
@@ -17,6 +18,7 @@ export interface Signature {
 export default class NavBoardComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare localStorage: LocalStorageService;
+  @service declare messages: MessagesService;
 
   declare args: Signature['Args'];
 
@@ -57,6 +59,10 @@ export default class NavBoardComponent extends Component<Signature> {
     const ids = boards.map((board) => board.id);
     ids.push(this.args.board.id);
     this.localStorage.setBoardFavorites(ids);
+    this.messages.showNotification(
+      'Board wurde zu Deinen Favoriten hinzugefügt.',
+      'success'
+    );
   }
 
   @action async reload() {

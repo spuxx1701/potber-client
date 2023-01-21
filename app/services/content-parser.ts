@@ -3,11 +3,10 @@ import { htmlSafe } from '@ember/template';
 // import yabbcode from 'ya-bbcode';
 import yabbcode from './bbcode/ya-bbcode';
 import { emojis } from './bbcode/emoji';
-import LoggerService from './logger';
+import MessagesService from './messages';
 
 export default class ContentParserService extends Service {
-  @service declare logger: LoggerService;
-
+  @service declare messages: MessagesService;
   parser = this.registerCustomTags(new yabbcode());
 
   /**

@@ -20,7 +20,6 @@ export default class SettingsController extends Controller {
 
   @action handleNavPositionSelect(option: DropdownOption) {
     this.localStorage.setMainNavPosition(option.data);
-    this.renderer.updateMainNavPosition();
   }
 
   @action handleAvatarStyleSelect(option: DropdownOption) {

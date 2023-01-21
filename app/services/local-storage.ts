@@ -3,13 +3,13 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { Board } from './api/types/board';
 import ApiService from 'potber/services/api';
-import LoggerService from './logger';
+import MessagesService from './messages';
 
 const PREFIX = 'potber-';
 
 export default class LocalStorageService extends Service {
   @service declare api: ApiService;
-  @service declare logger: LoggerService;
+  @service declare messages: MessagesService;
 
   @tracked mainNavPosition: string = this.getMainNavPosition();
   @tracked avatarStyle: string = this.getAvatarStyle();
@@ -95,7 +95,7 @@ export default class LocalStorageService extends Service {
       }
       this.boardFavorites = boards;
     } catch (error) {
-      this.logger.log(
+      this.messages.log(
         `Error while attempting to fetch board-favorites: ${error}`,
         { type: 'error', context: this.constructor.name }
       );

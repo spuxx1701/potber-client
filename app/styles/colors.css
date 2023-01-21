@@ -17,6 +17,11 @@
   --color-text-subtle: #aeaeae;
   --color-text-link: #aeaeae;
   --color-text-highlighted: white;
+
+  --color-info: #091827;
+  --color-success: #21922b;
+  --color-warning: #c89832;
+  --color-error: #c83232;
 }
 
 .control-variant-primary, .control-variant-primary svg {
