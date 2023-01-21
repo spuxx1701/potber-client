@@ -33,6 +33,7 @@
 
 input:focus {
   outline: none;
+  background-color: var(--color-control-inactive);
   border-bottom: 2px solid var(--color-input-accent);
 }
 

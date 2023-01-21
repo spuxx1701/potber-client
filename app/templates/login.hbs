@@ -1,20 +1,33 @@
-<Common::Container @title='Anmelden' @size='small'>
+{{page-title 'Login'}}
+
+<Nav::Routes::Generic @title='Login' />
+
+<Common::Container
+  @title='Anmelden'
+  @size='small'
+  {{on 'submit' this.handleSubmit}}
+>
   <form id='login-form' class='flex-column align-items-center'>
     <Common::Control::Input
       @value={{@model.username}}
       @label='Username'
       type='text'
+      required={{true}}
+      maxLength='30'
     />
     <Common::Control::Input
       @value={{@model.password}}
       @label='Passwort'
       type='password'
+      required={{true}}
+      maxLength='50'
     />
     <Common::Control::Button
       @icon='right-to-bracket'
       @text='Anmelden'
       @variant='primary'
       @size='large'
+      @type='submit'
     />
   </form>
 </Common::Container>

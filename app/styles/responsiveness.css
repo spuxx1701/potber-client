@@ -8,15 +8,15 @@
 
   button:not(:disabled):hover, .button-link:not(:disabled):hover {
     opacity: 1;
-    background-color: var(--color-control-hover-primary);
+    background-color: var(--color-control-hover);
   }
 
   .board-category-header:hover {
-    background-color: var(--color-control-hover-secondary);
+    background-color: var(--color-control-hover);
   }
 
   .board-item-important:hover {
-    background-color: var(--color-control-hover-secondary);
+    background-color: var(--color-control-hover);
   }
 
   .dropdown-item:hover {
@@ -25,6 +25,10 @@
   }
 
   .menu-button-item:not(:disabled):hover {
-    background-color: var(--color-control-hover-primary);
+    background-color: var(--color-control-hover);
+  }
+
+  input:hover {
+    background-color: var(--color-control-hover);
   }
 }

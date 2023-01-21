@@ -7,11 +7,9 @@
 
   --color-loading-indicator-background: rgba(41, 55, 70, 0.7);
 
-  --color-control-inactive-primary: #293746;
-  --color-control-hover-primary: #3c5974;
-  --color-control-hover-secondary: #304459;
+  --color-control-inactive: #122130;
+  --color-control-hover: #1b3149;
   --color-input-inactive: #122130;
-  --color-input-active: #182838;
   --color-input-accent: #3a73a8;
 
   --color-quote-header: #091827;
@@ -28,8 +26,12 @@
   --color-error: #c83232;
 }
 
-.control-variant-primary, .control-variant-primary svg {
-  background-color: var(--color-control-inactive-primary);
+.control-variant-primary {
+  background-color: var(--color-control-inactive);
+  color: var(--color-text-default);
+}
+
+.control-variant-primary svg {
   color: var(--color-text-default);
 }
 

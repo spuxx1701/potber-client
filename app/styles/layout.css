@@ -22,8 +22,6 @@
   box-sizing: border-box;
   max-width: 100%;
   margin: 1rem auto auto auto;
-  background-color: var(--color-container-background);
-  border-radius: var(--global-border-radius);
   padding: 1rem;
 }
 

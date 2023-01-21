@@ -124,7 +124,7 @@ video {
   overflow: hidden;
   width: 100%;
   min-height: var(--control-default-height);
-  background-color: var(--color-control-inactive-primary);
+  background-color: var(--color-control-inactive);
   cursor: pointer;
   padding: 0.5rem;
   align-items: center;

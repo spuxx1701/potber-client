@@ -37,7 +37,7 @@
   width: 100%;
   border-radius: var(--global-border-radius);
   padding: 0px 10px 0px 10px;
-  background-color: var(--color-control-inactive-primary);
+  background-color: var(--color-control-inactive);
   color: var(--color-text-default);
 }
 
@@ -58,7 +58,7 @@
 
 .dropdown-menu {
   border-radius: var(--global-border-radius);
-  background-color: var(--color-control-inactive-primary);
+  background-color: var(--color-control-inactive);
   padding: 0px;
   border: none;
   max-height: 280px;
