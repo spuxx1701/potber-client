@@ -1,6 +1,7 @@
 :root {
   --color-application-background: #060f15;
   --color-nav-background: #091827;
+  --color-container-background: #091827;
   --color-post-background-primary: #394e63;
   --color-post-background-secondary: #293746;
 
@@ -9,6 +10,9 @@
   --color-control-inactive-primary: #293746;
   --color-control-hover-primary: #3c5974;
   --color-control-hover-secondary: #304459;
+  --color-input-inactive: #122130;
+  --color-input-active: #182838;
+  --color-input-accent: #3a73a8;
 
   --color-quote-header: #091827;
   --color-quote-background: rgba(20, 35, 55, 0.5);

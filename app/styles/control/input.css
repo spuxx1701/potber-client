@@ -1,0 +1,47 @@
+.input-container {
+  position: relative;
+}
+
+.input-container>*, form>* {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  box-sizing: border-box;
+}
+
+.input-container input {
+  box-sizing: border-box;
+  min-height: calc(var(--control-default-height) + 0.5rem);
+  background-color: var(--color-input-inactive);
+  border: 0px solid transparent;
+  border-radius: var(--global-border-radius);
+  padding: 1rem 1rem 0 1rem;
+  color: var(--color-text-default);
+  font-size: medium;
+}
+
+.input-container label {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-35%);
+  transform-origin: left top;
+  user-select: none;
+  pointer-events: none;
+  color: var(--color-text-subtle)
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--color-input-accent);
+}
+
+input:focus+label {
+  color: var(--color-input-accent);
+}
+
+input:focus+label,
+input:not(:placeholder-shown)+label {
+  transform: translateY(-150%);
+  font-size: small;
+}

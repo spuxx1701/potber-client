@@ -11,6 +11,7 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   // Add route declarations here
   this.route('/');
+  this.route('login');
   this.route('board');
   this.route('thread');
   this.route('create-thread');

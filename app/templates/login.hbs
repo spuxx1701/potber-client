@@ -1,0 +1,20 @@
+<Common::Container @title='Anmelden' @size='small'>
+  <form id='login-form' class='flex-column align-items-center'>
+    <Common::Control::Input
+      @value={{@model.username}}
+      @label='Username'
+      type='text'
+    />
+    <Common::Control::Input
+      @value={{@model.password}}
+      @label='Passwort'
+      type='password'
+    />
+    <Common::Control::Button
+      @icon='right-to-bracket'
+      @text='Anmelden'
+      @variant='primary'
+      @size='large'
+    />
+  </form>
+</Common::Container>
