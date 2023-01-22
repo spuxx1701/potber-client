@@ -4,6 +4,7 @@
   --ecn-green: var(--color-success);
   --ecn-orange: var(--color-warning);
   --ecn-red: var(--color-error);
+  --ecn-notification-border-radius: var(--global-border-radius);
 }
 
 .ember-cli-notifications-notification__container--bottom {
