@@ -1,10 +1,13 @@
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import ApiService from 'potber/services/api';
 import { Thread } from 'potber/services/api/types/thread';
 import LocalStorageService from 'potber/services/local-storage';
 import RendererService from 'potber/services/renderer';
+import { sleep } from 'potber/utils/misc';
 import RSVP, { reject } from 'rsvp';
+import { scrollToHash } from 'ember-url-hash-polyfill';
 
 interface Params {
   TID: string;
@@ -57,6 +60,24 @@ export default class ThreadRoute extends Route {
       } else {
         return reject(error);
       }
+    }
+  }
+
+  @action async didTransition() {
+    await sleep(250);
+    // If PID was supplied, we also need to add the anchor
+    const params = new URL(window.location.href).searchParams;
+    if (params.has('PID')) {
+      // Set the hash without triggering without triggering a browser scroll action
+      const currentState = { ...history.state };
+      history.replaceState(
+        currentState,
+        'unused',
+        `#reply_${params.get('PID')}`
+      );
+    }
+    if (window.location.hash) {
+      scrollToHash(`reply_${params.get('PID')}`);
     }
   }
 }

@@ -5,6 +5,7 @@
   margin-top: var(--global-gap);
   margin-bottom: var(--global-gap);
   overflow: hidden;
+  scroll-margin-top: calc(var(--top-nav-height));
 }
 
 .post:not(:first-child) {
@@ -30,7 +31,6 @@
 .post-details-date {
   margin: 0;
   text-decoration: none;
-  scroll-margin-top: calc(var(--top-nav-height) + 2rem);
 }
 
 .post-details-date svg {
