@@ -13,6 +13,7 @@
       @variant='primary'
       @size='large'
       @onClick={{this.handleSignOut}}
+      @busy={{this.terminationInProgress}}
     />
   {{else}}
     <p>Keine laufende Sitzung.</p>
