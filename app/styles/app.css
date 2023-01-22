@@ -3,6 +3,7 @@
 @import "./text.css";
 @import "./nav.css";
 @import "./sidebar.css";
+@import "./modal.css";
 
 @import "./control/button.css";
 @import "./control/input.css";

@@ -1,0 +1,74 @@
+:root {
+  /* The following variables may change during runtime. */
+  --modal-opacity: 0;
+  --modal-scale: 0;
+}
+
+#modal {
+  display: block;
+  position: fixed;
+  width: 400px;
+  max-width: 90vw;
+  border-radius: var(--global-border-radius);
+  border: none;
+  padding: 0;
+  background-color: var(--color-container-background);
+  color: var(--color-text-default);
+  opacity: var(--modal-opacity);
+  scale: var(--modal-scale);
+  z-index: 79;
+}
+
+#modal::backdrop {
+  opacity: var(--modal-opacity);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: var(--control-default-height);
+}
+
+.modal-header svg {
+  font-size: large;
+  margin: auto 0.75rem;
+}
+
+.modal-header-default {
+  background-color: var(--color-info);
+}
+
+.modal-header-success {
+  background-color: var(--color-success);
+}
+
+.modal-header-warning {
+  background-color: var(--color-warning);
+}
+
+.modal-header-error {
+  background-color: var(--color-error);
+}
+
+.modal-content {
+  padding: 0.5rem;
+}
+
+.modal-content p {
+  margin: 0;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--color-control-inactive-secondary);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.modal-footer button {
+  padding: 0 1rem 0 1rem;
+  margin-left: 0.5rem;
+}
