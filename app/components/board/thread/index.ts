@@ -1,11 +1,11 @@
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
-import { BoardItem } from 'potber/services/api/types/board';
+import { Thread } from 'potber/services/api/types/thread';
 import { FirstPost, LastPost } from 'potber/services/api/types/post';
 
 export interface Signature {
   Args: {
-    thread: BoardItem;
+    thread: Thread;
   };
 }
 
@@ -22,7 +22,7 @@ export default class ThreadComponent extends Component<Signature> {
   }
 
   get icon() {
-    return this.args.thread.firstPost.icon || undefined;
+    return this.args.thread.firstPost?.icon || undefined;
   }
 
   get subtitle() {
@@ -41,9 +41,9 @@ export default class ThreadComponent extends Component<Signature> {
     let post: FirstPost | LastPost;
     if (this.args.thread.lastPost) {
       post = this.args.thread.lastPost;
-    } else {
+    } else if (this.args.thread.firstPost) {
       post = this.args.thread.firstPost;
-    }
+    } else return undefined;
     return htmlSafe(
       `<b>${post.author.name}</b> am ${post.date.toLocaleString()}`
     );

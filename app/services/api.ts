@@ -3,8 +3,6 @@ import { transformThread } from './api/transformers/thread';
 import ENV from 'potber/config/environment';
 import { transformBoardCategories } from './api/transformers/board-category';
 import { transformBoard } from './api/transformers/board';
-import { BoardXml } from './api/types/board';
-import { ThreadXml } from './api/types/thread';
 import { parseBookmarks } from './api/transformers/bookmark';
 
 export interface FetchOptions {
@@ -34,7 +32,7 @@ export default class ApiService extends Service {
     ) {
       throw new Error('not-found');
     }
-    const board = transformBoard(xmlDocument.children[0] as any as BoardXml);
+    const board = transformBoard(xmlDocument.children[0]);
     return board;
   }
 
@@ -56,7 +54,7 @@ export default class ApiService extends Service {
     ) {
       throw new Error('not-found');
     }
-    const thread = transformThread(xmlDocument.children[0] as any as ThreadXml);
+    const thread = transformThread(xmlDocument.children[0]);
     // Throw an error if the posts count is 0 since that means the page does not exist
     if (!thread.page || thread.page.posts.length <= 0) {
       throw new Error('not-found');

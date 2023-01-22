@@ -11,6 +11,9 @@ import { start } from 'ember-qunit';
 
 setApplication(Application.create(config.APP));
 
+QUnit.config.maxDepth = 12;
+QUnit.dump.maxDepth = 12;
+
 setup(QUnit.assert);
 
 start();

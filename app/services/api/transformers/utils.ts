@@ -1,13 +1,21 @@
-export function getNode(nodeName: string, xmlDocument: any) {
-  for (const node of xmlDocument.childNodes) {
+export function getNode(nodeName: string, element: any): any {
+  for (const node of element.childNodes) {
     if (node.nodeName === nodeName) {
       return node;
     }
   }
+  return undefined;
 }
 
-export function getAttributeValue(attributeName: string, node: any) {
-  if (node?.attributes[attributeName]) {
-    return node.attributes[attributeName].value;
+export function getNodeTextContent(nodeName: string, element: any) {
+  const node = getNode(nodeName, element);
+  if (node) return node.textContent;
+  return undefined;
+}
+
+export function getAttributeValue(attributeName: string, element: any) {
+  if (element?.attributes[attributeName]) {
+    return element.attributes[attributeName].value;
   }
+  return undefined;
 }

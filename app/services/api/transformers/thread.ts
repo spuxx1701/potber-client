@@ -1,35 +1,53 @@
-import { Thread, ThreadPage, ThreadPageXml, ThreadXml } from '../types/thread';
-import { transformPost } from './post';
+import { Thread, ThreadPage } from '../types/thread';
+import { transformFirstPost, transformLastPost, transformPost } from './post';
+import { getAttributeValue, getNode, getNodeTextContent } from './utils';
 
-export function transformThread(threadXml: ThreadXml) {
+export function transformThread(threadXml: any) {
   const thread = {
-    id: threadXml.id,
-    title: threadXml.children[0].textContent,
-    subtitle: threadXml.children[1].textContent,
-    repliesCount: parseInt(threadXml.children[2].attributes.value.value),
-    hitsCount: parseInt(threadXml.children[3].attributes.value.value),
-    pagesCount: parseInt(threadXml.children[4].attributes.value.value),
-    isClosed: false,
-    isSticky: false,
-    isImportant: false,
-    isAnnouncement: false,
-    isGlobal: false,
-    boardId: threadXml.children[6].attributes.id.value,
-    page: transformThreadPage(threadXml.children[8] as any as ThreadPageXml),
+    id: getAttributeValue('id', threadXml),
+    title: getNodeTextContent('title', threadXml),
+    subtitle: getNodeTextContent('subtitle', threadXml),
+    repliesCount: parseInt(
+      getAttributeValue('value', getNode('number-of-replies', threadXml))
+    ),
+    hitsCount: parseInt(
+      getAttributeValue('value', getNode('number-of-hits', threadXml))
+    ),
+    pagesCount: parseInt(
+      getAttributeValue('value', getNode('number-of-pages', threadXml))
+    ),
+    isClosed: getPostFlag('is-closed', threadXml),
+    isSticky: getPostFlag('is-sticky', threadXml),
+    isImportant: getPostFlag('is-important', threadXml),
+    isAnnouncement: getPostFlag('is-announcement', threadXml),
+    isGlobal: getPostFlag('is-global', threadXml),
+    boardId: getAttributeValue('id', getNode('in-board', threadXml)),
+    firstPost: transformFirstPost(getNode('firstpost', threadXml)),
+    lastPost: transformLastPost(getNode('lastpost', threadXml)),
+    page: transformThreadPage(getNode('posts', threadXml)),
   } as Thread;
   return thread;
 }
 
-export function transformThreadPage(threadPageXml: ThreadPageXml) {
+function transformThreadPage(threadPageXml: Element) {
   if (!threadPageXml) return undefined;
   const posts = [];
   for (const postXml of threadPageXml.childNodes) {
-    posts.push(transformPost(postXml));
+    posts.push(transformPost(postXml as Element));
   }
   return {
-    pageNumber: parseInt(threadPageXml.attributes.page.value),
-    offset: parseInt(threadPageXml.attributes.offset.value),
-    postCount: parseInt(threadPageXml.attributes.count.value),
+    pageNumber: parseInt(getAttributeValue('page', threadPageXml)),
+    offset: parseInt(getAttributeValue('offset', threadPageXml)),
+    postCount: parseInt(getAttributeValue('count', threadPageXml)),
     posts,
   } as ThreadPage;
+}
+
+function getPostFlag(flag: string, threadXml: Element) {
+  const flagsNode = getNode('flags', threadXml);
+  if (flagsNode && flagsNode.childNodes?.length > 0) {
+    const flagValue = getAttributeValue('value', getNode(flag, flagsNode));
+    if (flagValue) return flagValue === '1';
+  }
+  return undefined;
 }

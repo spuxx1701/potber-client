@@ -1,62 +1,68 @@
-import {
-  FirstPost,
-  FirstPostXml,
-  LastPost,
-  LastPostXml,
-  Post,
-  PostXml,
-} from '../types/post';
-import { UserXml } from '../types/user';
+import { FirstPost, LastPost, Post } from '../types/post';
 import { transformUser } from './user';
-import { getAttributeValue, getNode } from './utils';
+import { getAttributeValue, getNode, getNodeTextContent } from './utils';
 
-export function transformPost(postXml: PostXml) {
-  return {
-    id: postXml.attributes.id.value,
-    author: transformUser(postXml.children[0] as any as UserXml),
+export function transformPost(postXml: Element) {
+  const post = {
+    id: getAttributeValue('id', postXml),
+    author: transformUser(getNode('user', postXml)),
     date: new Date(
-      parseInt(postXml.children[1].attributes.timestamp.value) * 1000
+      parseInt(getAttributeValue('timestamp', getNode('date', postXml))) * 1000
     ),
-    title: postXml.children[2].children[2].textContent,
-    content: postXml.children[2].children[1].textContent,
+    title: getNodeTextContent('title', getNode('message', postXml)),
+    icon: getAttributeValue('id', getNode('icon', postXml)),
+    content: getNodeTextContent('content', getNode('message', postXml)),
     editedCount: parseInt(
-      postXml.children[2].children[0].attributes.count.value
+      getAttributeValue('count', getNode('edited', getNode('message', postXml)))
     ),
-    threadId: postXml.children[4].attributes.id.value,
-    boardId: postXml.children[5].attributes.id.value,
-    avatarUrl: getNode('avatar', postXml).textContent,
+    lastEdit: transformLastEdit(getNode('message', postXml)),
+    threadId: getAttributeValue('id', getNode('in-thread', postXml)),
+    boardId: getAttributeValue('id', getNode('in-board', postXml)),
+    avatarUrl: getNodeTextContent('avatar', postXml),
   } as Post;
+  return post;
 }
 
-export function transformFirstPost(firstPostXml: FirstPostXml) {
-  const post = firstPostXml.children[0];
+export function transformFirstPost(firstPostXml: Element) {
+  const postXml = firstPostXml.children[0];
   return {
-    author: transformUser(
-      firstPostXml.children[0].children[0] as any as UserXml
-    ),
+    author: transformUser(getNode('user', postXml)),
     date: new Date(
-      parseInt(
-        firstPostXml.children[0].children[1].attributes.timestamp.value
-      ) * 1000
+      parseInt(getAttributeValue('timestamp', getNode('date', postXml))) * 1000
     ),
-    icon: getAttributeValue('id', getNode('icon', post)),
-    threadId: getAttributeValue('id', getNode('in-thread', post)),
-    boardId: getAttributeValue('id', getNode('in-board', post)),
+    icon: getAttributeValue('id', getNode('icon', postXml)),
+    threadId: getAttributeValue('id', getNode('in-thread', postXml)),
+    boardId: getAttributeValue('id', getNode('in-board', postXml)),
   } as FirstPost;
 }
 
-export function transformLastPost(lastPostXml: LastPostXml) {
+export function transformLastPost(lastPostXml: Element) {
   if (!lastPostXml) return undefined;
-  const post = lastPostXml.children[0];
+  const postXml = lastPostXml.children[0];
   return {
-    author: transformUser(
-      lastPostXml.children[0].children[0] as any as UserXml
-    ),
+    author: transformUser(getNode('user', postXml)),
     date: new Date(
-      parseInt(lastPostXml.children[0].children[1].attributes.timestamp.value) *
-        1000
+      parseInt(getAttributeValue('timestamp', getNode('date', postXml))) * 1000
     ),
-    threadId: getAttributeValue('id', getNode('in-thread', post)),
-    boardId: getAttributeValue('id', getNode('in-board', post)),
+    threadId: getAttributeValue('id', getNode('in-thread', postXml)),
+    boardId: getAttributeValue('id', getNode('in-board', postXml)),
   } as LastPost;
+}
+
+function transformLastEdit(messageXml: Element) {
+  const editedNode = getNode('edited', messageXml);
+  if (editedNode) {
+    const lastEditNode = getNode('lastedit', editedNode);
+    if (lastEditNode) {
+      return {
+        user: transformUser(getNode('user', lastEditNode)),
+        date: new Date(
+          parseInt(
+            getAttributeValue('timestamp', getNode('date', lastEditNode))
+          ) * 1000
+        ),
+      };
+    }
+  }
+  return undefined;
 }
