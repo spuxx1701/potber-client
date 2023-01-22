@@ -60,7 +60,7 @@ export default class MessagesService extends Service {
   ) {
     const notificationOptions = {
       autoClear: true,
-      clearDuration: 7000,
+      clearDuration: 5000,
       onClick: options?.callback,
     };
     switch (type) {
