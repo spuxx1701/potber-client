@@ -69,7 +69,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
       text: `Gib eine Seite zwischen 1 und ${this.args.thread.pagesCount} ein.`,
       icon: 'arrow-right',
       label: `Seite`,
-      inputType: 'number',
+      type: 'number',
       minLength: 1,
       maxLength: 5,
       min: 1,

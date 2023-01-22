@@ -1,4 +1,8 @@
-<Modal::Component::Header @title={{@options.title}} @icon={{@options.icon}} />
+<Modal::Component::Header
+  @title={{@options.title}}
+  @icon={{@options.icon}}
+  @variant={{@options.variant}}
+/>
 <Modal::Component::Content>
   {{#if @options.text}}
     <p>{{@options.text}}</p>
@@ -9,7 +13,7 @@
       @size='max'
       @value={{this.value}}
       @onChange={{this.handleChange}}
-      type={{this.inputType}}
+      type={{this.type}}
       minLength={{@options.minLength}}
       maxLength={{@options.maxLength}}
       min={{@options.min}}

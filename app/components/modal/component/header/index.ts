@@ -5,7 +5,7 @@ interface Signature {
     title: string;
     icon?: string;
     prefix?: string;
-    type?: 'default' | 'success' | 'warning' | 'error';
+    variant?: ModalVariant;
   };
 }
 
@@ -20,7 +20,7 @@ export default class InputModalComponent extends Component<Signature> {
     return this.args.prefix || 'fas';
   }
 
-  get type() {
-    return this.args.type || 'default';
+  get variant() {
+    return this.args.variant || 'default';
   }
 }

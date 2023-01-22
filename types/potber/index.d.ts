@@ -9,6 +9,7 @@ declare global {
 
   type ControlSize = 'square' | 'small' | 'medium' | 'large' | 'x-large';
   type ControlVariant = 'primary' | 'primary-transparent' | 'secondary';
+  type ModalVariant = 'default' | 'success' | 'warning' | 'error';
 }
 
 export {};

@@ -5,12 +5,13 @@ import ModalService from 'potber/services/modal';
 
 export interface InputModalOptions {
   title: string;
+  variant?: ModalVariant;
   icon?: string;
   prefix?: string;
   text?: string;
   label: string;
   value?: string;
-  inputType?: 'text' | 'number';
+  type?: 'text' | 'number';
   minLength?: number;
   maxLength?: number;
   min?: number;
@@ -29,8 +30,8 @@ export default class InputModalComponent extends Component<Signature> {
   declare args: Signature['Args'];
   value = this.args.options.value || '';
 
-  get inputType() {
-    return this.args.options.inputType || 'text';
+  get type() {
+    return this.args.options.type || 'text';
   }
 
   @action handleChange(value: string) {
