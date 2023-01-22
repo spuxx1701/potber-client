@@ -41,8 +41,14 @@ export default class SessionService extends Service {
       this.messages.log(`Attemting to sign in user '${username}'.`, {
         context: this.constructor.name,
       });
-      const url = `${ENV.APP['LOGIN_URL']}?login_username=${username}&login_password=${password}&login_lifetime=${lifetime}`;
-      const response = await fetch(url);
+      const url = `${ENV.APP['LOGIN_URL']}`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        },
+        body: `login_username=${username}&login_password=${password}&login_lifetime=${lifetime}`,
+      });
       const text = await response.text();
       if (new RegExp(/Fehler beim Einloggen/).test(text)) {
         throw new Error('Login rejected.');
