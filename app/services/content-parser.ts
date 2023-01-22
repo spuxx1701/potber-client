@@ -174,10 +174,10 @@ export default class ContentParserService extends Service {
     if (!attr) {
       return `<span class="quote"><blockquote>${content}</blockquote></span>`;
     }
-    const userNameMatches = attr.match(/(?:["](.|\n)["])/);
+    const userNameMatches = attr.match(/(?:[\\"](.*)[\\"])/);
     let userName = '';
-    if (userNameMatches && userNameMatches.length > 0) {
-      userName = userNameMatches[0].replaceAll('"', '');
+    if (userNameMatches && userNameMatches.length > 1) {
+      userName = userNameMatches[1] as string;
     } else {
       userName = 'Unknown';
     }
