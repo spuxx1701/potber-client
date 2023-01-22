@@ -41,7 +41,7 @@ export default class ApplicationRoute extends Route {
 
   async model() {
     return RSVP.hash({
-      bookmarks: await this.api.getBookmarks(),
+      bookmarksSummary: await this.api.getBookmarksSummary(),
     });
   }
 }

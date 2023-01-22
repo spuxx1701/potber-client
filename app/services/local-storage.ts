@@ -28,9 +28,6 @@ export default class LocalStorageService extends Service {
    */
   @action getAvatarStyle() {
     this.avatarStyle = localStorage.getItem(`${PREFIX}avatarStyle`) || 'none';
-    this.messages.log(`${PREFIX}avatarStyle retrieved.`, {
-      context: this.constructor.name,
-    });
     return this.avatarStyle;
   }
 
@@ -52,9 +49,6 @@ export default class LocalStorageService extends Service {
    */
   @action getBoxStyle() {
     this.boxStyle = localStorage.getItem(`${PREFIX}boxStyle`) || 'rect';
-    this.messages.log(`${PREFIX}boxStyle retrieved.`, {
-      context: this.constructor.name,
-    });
     return this.boxStyle;
   }
 
@@ -93,9 +87,6 @@ export default class LocalStorageService extends Service {
       );
       this.boardFavorites = null;
     }
-    this.messages.log(`${PREFIX}boardFavorites retrieved.`, {
-      context: this.constructor.name,
-    });
     return this.boardFavorites;
   }
 

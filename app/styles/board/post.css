@@ -31,6 +31,10 @@
 .post-details-date {
   margin: 0;
   text-decoration: none;
+  background-color: transparent;
+  padding: unset;
+  min-height: unset;
+  height: unset;
 }
 
 .post-details-date svg {

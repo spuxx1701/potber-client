@@ -35,6 +35,7 @@ module('Unit | Service | API | Transformer | Thread', function (hooks) {
         icon: '37',
         threadId: '219289',
       } as FirstPost,
+      lastPost: undefined,
       page: {
         pageNumber: 1,
         postCount: 2,

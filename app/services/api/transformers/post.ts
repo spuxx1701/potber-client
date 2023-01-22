@@ -24,7 +24,7 @@ export function transformPost(postXml: Element) {
 }
 
 export function transformFirstPost(firstPostXml: Element) {
-  const postXml = firstPostXml.children[0];
+  const postXml = firstPostXml.children[0] as Element;
   return {
     author: transformUser(getNode('user', postXml)),
     date: new Date(
@@ -38,7 +38,7 @@ export function transformFirstPost(firstPostXml: Element) {
 
 export function transformLastPost(lastPostXml: Element) {
   if (!lastPostXml) return undefined;
-  const postXml = lastPostXml.children[0];
+  const postXml = lastPostXml.children[0] as Element;
   return {
     author: transformUser(getNode('user', postXml)),
     date: new Date(

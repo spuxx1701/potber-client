@@ -26,9 +26,6 @@ export default class RendererService extends Service {
       this.rootStyle.setProperty('--global-border-radius', '5px');
       this.rootStyle.setProperty('--global-gap', '0.25rem');
     }
-    this.messages.log(`BoxStyle set to '${boxStyle}'.`, {
-      context: this.constructor.name,
-    });
   }
 
   @action createClickRipple(event: Event) {

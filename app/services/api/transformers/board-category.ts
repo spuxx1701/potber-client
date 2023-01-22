@@ -35,10 +35,13 @@ export function transformBoardCategoryItem(
   boardCategoryItemXml: BoardCategoryItemXml
 ) {
   const moderators: User[] = [];
-  const moderatorNode = getNode('moderators', boardCategoryItemXml);
+  const moderatorNode = getNode(
+    'moderators',
+    boardCategoryItemXml as unknown as Element
+  );
   if (moderatorNode) {
     for (const moderatorXml of moderatorNode.childNodes) {
-      moderators.push(transformUser(moderatorXml));
+      moderators.push(transformUser(moderatorXml as unknown as Element));
     }
   }
   return {
@@ -55,7 +58,9 @@ export function transformBoardCategoryItem(
       id: boardCategoryItemXml.children[4].attributes.id.value,
       name: boardCategoryItemXml.children[4].textContent,
     },
-    lastPost: transformLastPost(getNode('lastpost', boardCategoryItemXml)),
+    lastPost: transformLastPost(
+      getNode('lastpost', boardCategoryItemXml as unknown as Element)
+    ),
     moderators,
   } as Board;
 }

@@ -5,7 +5,7 @@
 {{else if (eq this.status 'empty')}}
   <p class='subtitle sidebar-error-text'>Es gibt keine Neuigkeiten.</p>
 {{else}}
-  {{#each @boards as |board|}}
-    <Sidebar::BoardFavorite @board={{board}} />
+  {{#each this.unreadBookmarks as |bookmark|}}
+    <Sidebar::NewsFeed::Bookmark @bookmark={{bookmark}} />
   {{/each}}
 {{/if}}
