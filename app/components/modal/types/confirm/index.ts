@@ -10,7 +10,9 @@ export interface ConfirmModalOptions {
   prefix?: string;
   text: string;
   submitLabel?: string;
+  submitIcon?: string;
   cancelLabel?: string;
+  cancelIcon?: string;
   onSubmit?: () => void;
 }
 

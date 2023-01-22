@@ -17,7 +17,9 @@ export interface InputModalOptions {
   min?: number;
   max?: number;
   submitLabel?: string;
+  submitIcon?: string;
   cancelLabel?: string;
+  cancelIcon?: string;
   onSubmit?: (value: string) => void;
 }
 
