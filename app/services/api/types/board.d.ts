@@ -1,4 +1,4 @@
-import { FirstPost, LastPost } from './post';
+import { LastPost } from './post';
 import { Thread } from './thread';
 import { User } from './user';
 
