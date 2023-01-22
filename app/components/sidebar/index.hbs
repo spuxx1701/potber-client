@@ -3,6 +3,9 @@
   <div id='sidebar-content'>
     {{#if this.authenticated}}
       <Sidebar::NewsFeed @bookmarksSummary={{@bookmarksSummary}} />
+    {{else}}
+      <p class='subtitle text-center'>Melde Dich an, um Neuigkeiten zu
+        empfangen.</p>
     {{/if}}
     <hr />
     <Sidebar::BoardFavorites @boards={{this.boardFavorites}} />
