@@ -35,6 +35,20 @@
         @text='Original öffnen'
         target='_blank'
       />
+      <Common::Control::Menu::LinkTo
+        @route='thread'
+        @query={{hash TID=@thread.id page='1'}}
+        @text='Zur ersten Seite'
+      />
+      <Common::Control::Menu::Button
+        @text='Zur Seite...'
+        @onClick={{this.handleGoToPage}}
+      />
+      <Common::Control::Menu::LinkTo
+        @route='thread'
+        @query={{hash TID=@thread.id page=@thread.pagesCount}}
+        @text='Zur letzten Seite'
+      />
     </Common::Control::Menu>
 
     {{#if this.nextPageVisible}}

@@ -5,6 +5,8 @@ import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
 import RendererService from 'potber/services/renderer';
+import ModalService from 'potber/services/modal';
+import RouterService from '@ember/routing/router-service';
 
 export interface Signature {
   Args: {
@@ -15,6 +17,8 @@ export interface Signature {
 
 export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare renderer: RendererService;
+  @service declare modal: ModalService;
+  @service declare router: RouterService;
   declare args: Signature['Args'];
 
   get subtitle() {
@@ -57,5 +61,28 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
       .catch(() => {
         this.renderer.hideLoadingIndicator();
       });
+  }
+
+  @action handleGoToPage() {
+    this.modal.input({
+      title: 'Gehe zu Seite...',
+      text: `Gib eine Seite zwischen 1 und ${this.args.thread.pagesCount} ein.`,
+      icon: 'arrow-right',
+      label: `Seite`,
+      inputType: 'number',
+      minLength: 1,
+      maxLength: 5,
+      min: 1,
+      max: this.args.thread.pagesCount,
+      onSubmit: (value) => {
+        this.router.transitionTo('thread', {
+          queryParams: {
+            TID: this.args.thread.id,
+            page: value,
+          },
+        });
+        this.modal.close();
+      },
+    });
   }
 }
