@@ -1,5 +1,6 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { ConfirmModalOptions } from 'potber/components/modal/types/confirm';
 import { InputModalOptions } from 'potber/components/modal/types/input';
 import { sleep } from 'potber/utils/misc';
 
@@ -21,10 +22,26 @@ export default class ModalService extends Service {
     options: null,
   };
 
+  /**
+   * Calls a confirm modal.
+   * @param options The confirm modal options.
+   */
+  confirm(options: ConfirmModalOptions) {
+    this.show(ModalType.confirm, options);
+  }
+
+  /**
+   * Calls an input modal.
+   * @param options The input modal options.
+   */
   input(options: InputModalOptions) {
     this.show(ModalType.input, options);
   }
 
+  /**
+   * Returns the modal container or throws an error if it cannot be found.
+   * @returns The modal container.
+   */
   getModalContainer() {
     const modal = document.getElementById('modal');
     if (!modal) {
@@ -33,6 +50,11 @@ export default class ModalService extends Service {
     return modal as HTMLDialogElement;
   }
 
+  /**
+   * Shows the modal dialog of the given type.
+   * @param type The modal type.
+   * @param options The modal options.
+   */
   show(type: ModalType, options: object) {
     this.activeModal = { type, options };
     document.documentElement.style.setProperty('--modal-opacity', '1');
@@ -40,6 +62,9 @@ export default class ModalService extends Service {
     this.getModalContainer().showModal();
   }
 
+  /**
+   * Closes the modal dialog.
+   */
   async close() {
     document.documentElement.style.setProperty('--modal-opacity', '0');
     document.documentElement.style.setProperty('--modal-scale', '0');
