@@ -8,6 +8,7 @@
   --color-loading-indicator-background: rgba(41, 55, 70, 0.7);
 
   --color-control-inactive: #122130;
+  --color-control-disabled: #333d4b;
   --color-control-hover: #1b3149;
   --color-input-inactive: #122130;
   --color-input-accent: #3a73a8;
@@ -29,6 +30,10 @@
 .control-variant-primary {
   background-color: var(--color-control-inactive);
   color: var(--color-text-default);
+}
+
+.control-variant-primary:disabled {
+  background-color: var(--color-control-disabled);
 }
 
 .control-variant-primary svg {

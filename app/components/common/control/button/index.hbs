@@ -2,10 +2,13 @@
   type={{this.type}}
   class='control-size-{{this.size}} control-variant-{{this.variant}}'
   title={{this.title}}
+  disabled={{this.disabled}}
   ...attributes
   {{on 'click' this.handleClick}}
 >
-  {{#if @icon}}
+  {{#if @busy}}
+    <FaIcon @icon='circle-notch' @spin={{true}} />
+  {{else if @icon}}
     <FaIcon @icon={{@icon}} @prefix={{this.prefix}} />
   {{/if}}
   {{#unless (eq this.size 'square')}}

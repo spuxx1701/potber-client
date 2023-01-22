@@ -9,6 +9,8 @@ interface Signature {
     type?: 'button' | 'submit';
     size?: ControlSize;
     variant?: ControlVariant;
+    busy?: boolean;
+    disabled?: boolean;
     onClick?: () => void;
   };
 }
@@ -34,6 +36,10 @@ export default class CommonButtonComponent extends Component<Signature> {
 
   get variant() {
     return this.args.variant || 'secondary';
+  }
+
+  get disabled() {
+    return this.args.disabled || this.args.busy;
   }
 
   @action handleClick() {
