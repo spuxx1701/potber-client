@@ -1,4 +1,5 @@
 button, .button-link {
+  position: relative;
   height: var(--control-default-height);
   min-height: var(--control-default-height);
   border: none;

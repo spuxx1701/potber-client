@@ -1,0 +1,27 @@
+.click-ripple-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: click-ripple 500ms linear;
+  background-color: var(--color-click-ripple);
+  opacity: 0.5;
+}
+
+@keyframes click-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}

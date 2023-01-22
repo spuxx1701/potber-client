@@ -13,10 +13,16 @@ export default class RendererService extends Service {
 
   preventScrollReset = false;
 
+  /**
+   * Initializes the service.
+   */
   @action initialize() {
     this.updateBoxStyle();
   }
 
+  /**
+   * Updates the current box style.
+   */
   @action updateBoxStyle() {
     const boxStyle = this.localStorage.getBoxStyle();
     if (boxStyle === 'rect') {
@@ -28,20 +34,51 @@ export default class RendererService extends Service {
     }
   }
 
+  /**
+   * Creates a ripple animation on the event target.
+   * @param event The event.
+   */
   @action createClickRipple(event: Event) {
-    // do something
+    // Clean up existing ripples
+    const existingRipples = document.body.getElementsByClassName(
+      'click-ripple-container'
+    );
+    for (const ripple of existingRipples) {
+      ripple.remove();
+    }
+    // Create new ripple
+    const control = event.currentTarget as HTMLElement;
+    if (control) {
+      const rippleContainer = document.createElement('span');
+      rippleContainer.classList.add('click-ripple-container');
+      const ripple = document.createElement('span');
+      const diameter = Math.max(control.clientWidth, control.clientHeight);
+      ripple.style.width = ripple.style.height = `${diameter}px`;
+      ripple.classList.add('click-ripple');
+      rippleContainer.appendChild(ripple);
+      control.appendChild(rippleContainer);
+    }
   }
 
+  /**
+   * Closes the left sidebar.
+   */
   @action closeLeftSidebar() {
     this.leftSidebarExpanded = false;
     this.updateLeftSidebar();
   }
 
+  /**
+   * Toggles the left sidebar.
+   */
   @action toggleLeftSidebar() {
     this.leftSidebarExpanded = !this.leftSidebarExpanded;
     this.updateLeftSidebar();
   }
 
+  /*
+   * Updates the state of the left sidebar.
+   */
   @action updateLeftSidebar() {
     if (this.leftSidebarExpanded) {
       this.rootStyle.setProperty(
@@ -53,10 +90,16 @@ export default class RendererService extends Service {
     }
   }
 
+  /**
+   * Shows the loading indicator.
+   */
   @action async showLoadingIndicator() {
     this.rootStyle.setProperty('--loading-indicator-opacity', '1');
   }
 
+  /**
+   * Hides the loading indicator.
+   */
   @action async hideLoadingIndicator() {
     await sleep(200);
     this.rootStyle.setProperty('--loading-indicator-opacity', '0');
