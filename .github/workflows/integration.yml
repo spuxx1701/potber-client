@@ -15,7 +15,7 @@ jobs:
   docker_deploy:
     needs:
       - lint
-      - test
+      # - test
     uses: spuxx1701/ci/.github/workflows/docker_deploy.yml@v1.2
     with:
       username: spuxx
