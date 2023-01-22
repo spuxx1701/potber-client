@@ -9,6 +9,9 @@ jobs:
   lint:
     uses: spuxx1701/ci/.github/workflows/npm_lint.yml@v1.2
 
+  test:
+    uses: spuxx1701/ci/.github/workflows/npm_test-coverage.yml@v1.2
+
   docker_deploy:
     needs: lint
     uses: spuxx1701/ci/.github/workflows/docker_deploy.yml@v1.2
