@@ -12,5 +12,6 @@ export default class ModalComponent extends Component {
 
   @action handleModalCancel(event: Event) {
     event.preventDefault();
+    this.modal.close();
   }
 }
