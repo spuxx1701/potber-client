@@ -8,10 +8,12 @@
       {{/if}}
       <div class='flex-column justify-content-center'>
         <b class='post-details-author-name'>{{@post.author.name}}</b>
-        <a
+        <button
           href={{this.href}}
-          class='post-details-date subtitle'
-        >{{this.date}}<FaIcon @icon='link' /></a>
+          type='button'
+          class='color-variant-secondary post-details-date subtitle'
+          {{on 'click' this.copyLink}}
+        >{{this.date}}<FaIcon @icon='link' /></button>
       </div>
     </div>
     {{!-- <Common::Control::Button

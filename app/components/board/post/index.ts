@@ -4,6 +4,7 @@ import Component from '@glimmer/component';
 import { Post } from 'potber/services/api/types/post';
 import ContentParserService from 'potber/services/content-parser';
 import ENV from 'potber/config/environment';
+import MessagesService from 'potber/services/messages';
 
 interface Signature {
   Args: {
@@ -14,6 +15,7 @@ interface Signature {
 
 export default class PostComponent extends Component<Signature> {
   @service declare contentParser: ContentParserService;
+  @service declare messages: MessagesService;
 
   declare args: Signature['Args'];
 
@@ -43,6 +45,14 @@ export default class PostComponent extends Component<Signature> {
       );
       return `${ENV.APP['FORUM_URL']}${url}`;
     }
+  }
+
+  @action copyLink() {
+    navigator.clipboard.writeText(this.href);
+    this.messages.showNotification(
+      'Link in Zwischenablage kopiert.',
+      'success'
+    );
   }
 
   @action handleMenuClick() {
