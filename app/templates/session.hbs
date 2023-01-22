@@ -6,6 +6,14 @@
   {{#if @model.authenticated}}
     <p class='title'>Du bist derzeit angemeldet.</p>
     <p>Username: {{@model.username}}</p>
+    <hr />
+    <Common::Control::Button
+      @text='Abmelden'
+      @icon='right-from-bracket'
+      @variant='primary'
+      @size='large'
+      @onClick={{this.handleSignOut}}
+    />
   {{else}}
     <p>Keine laufende Sitzung.</p>
   {{/if}}

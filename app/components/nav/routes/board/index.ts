@@ -46,10 +46,6 @@ export default class NavBoardComponent extends Component<Signature> {
     return this.currentPage + 1;
   }
 
-  get isTopNav() {
-    return this.localStorage.mainNavPosition === 'top';
-  }
-
   get originalUrl() {
     return `${ENV.APP['FORUM_URL']}board.php?BID=${this.args.board.id}&page=${this.currentPage}`;
   }

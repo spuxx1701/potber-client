@@ -3,9 +3,11 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { sleep } from 'potber/utils/misc';
 import LocalStorageService from './local-storage';
+import MessagesService from './messages';
 
 export default class RendererService extends Service {
   @service declare localStorage: LocalStorageService;
+  @service declare messages: MessagesService;
   @tracked leftSidebarExpanded = false;
   rootStyle = document.documentElement.style;
 
@@ -24,6 +26,9 @@ export default class RendererService extends Service {
       this.rootStyle.setProperty('--global-border-radius', '5px');
       this.rootStyle.setProperty('--global-gap', '0.25rem');
     }
+    this.messages.log(`BoxStyle set to '${boxStyle}'.`, {
+      context: this.constructor.name,
+    });
   }
 
   @action createClickRipple(event: Event) {

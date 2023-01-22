@@ -11,7 +11,6 @@ export default class LocalStorageService extends Service {
   @service declare api: ApiService;
   @service declare messages: MessagesService;
 
-  @tracked mainNavPosition: string = this.getMainNavPosition();
   @tracked avatarStyle: string = this.getAvatarStyle();
   @tracked boxStyle: string = this.getBoxStyle();
   @tracked boardFavorites: Board[] | null = [];
@@ -24,30 +23,14 @@ export default class LocalStorageService extends Service {
   }
 
   /**
-   * Gets 'mainNavPosition' from localStorage.
-   * @returns The position of the main nav.
-   */
-  @action getMainNavPosition() {
-    this.mainNavPosition =
-      localStorage.getItem(`${PREFIX}mainNavPosition`) || 'bottom';
-    return this.mainNavPosition;
-  }
-
-  /**
-   * Saves 'mainNavPosition' to localStorage.
-   * @param value The new value for 'mainNavPosition'.
-   */
-  @action setMainNavPosition(value: 'top' | 'bottom') {
-    localStorage.setItem(`${PREFIX}mainNavPosition`, value);
-    this.mainNavPosition = value;
-  }
-
-  /**
    * Gets 'avatarStyle' from localStorage.
    * @returns The way avatars should be displayed.
    */
   @action getAvatarStyle() {
     this.avatarStyle = localStorage.getItem(`${PREFIX}avatarStyle`) || 'none';
+    this.messages.log(`${PREFIX}avatarStyle retrieved.`, {
+      context: this.constructor.name,
+    });
     return this.avatarStyle;
   }
 
@@ -57,6 +40,9 @@ export default class LocalStorageService extends Service {
    */
   @action setAvatarStyle(value: 'none' | 'small') {
     localStorage.setItem(`${PREFIX}avatarStyle`, `${value}`);
+    this.messages.log(`${PREFIX}avatarStyle set to '${value}'.`, {
+      context: this.constructor.name,
+    });
     this.avatarStyle = value;
   }
 
@@ -66,6 +52,9 @@ export default class LocalStorageService extends Service {
    */
   @action getBoxStyle() {
     this.boxStyle = localStorage.getItem(`${PREFIX}boxStyle`) || 'rect';
+    this.messages.log(`${PREFIX}boxStyle retrieved.`, {
+      context: this.constructor.name,
+    });
     return this.boxStyle;
   }
 
@@ -75,6 +64,9 @@ export default class LocalStorageService extends Service {
    */
   @action setBoxStyle(value: 'rect' | 'round') {
     localStorage.setItem(`${PREFIX}boxStyle`, `${value}`);
+    this.messages.log(`${PREFIX}boxStyle set to: '${value}'.`, {
+      context: this.constructor.name,
+    });
     this.boxStyle = value;
   }
 
@@ -101,6 +93,9 @@ export default class LocalStorageService extends Service {
       );
       this.boardFavorites = null;
     }
+    this.messages.log(`${PREFIX}boardFavorites retrieved.`, {
+      context: this.constructor.name,
+    });
     return this.boardFavorites;
   }
 
@@ -112,6 +107,9 @@ export default class LocalStorageService extends Service {
     // Remove duplicates
     const unqiueIds = [...new Set(ids)];
     localStorage.setItem(`${PREFIX}boardFavorites`, unqiueIds.toString());
+    this.messages.log(`${PREFIX}boardFavorites set to: '${unqiueIds}'.`, {
+      context: this.constructor.name,
+    });
     this.getBoardFavorites();
   }
 }

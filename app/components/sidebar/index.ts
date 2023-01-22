@@ -18,10 +18,6 @@ export default class SidebarComponent extends Component<Signature> {
     return this.session.session.authenticated;
   }
 
-  get navOnTop() {
-    return this.localStorage.mainNavPosition === 'top';
-  }
-
   get boardFavorites() {
     if (this.localStorage.boardFavorites) {
       return this.localStorage.boardFavorites?.sort((a, b) => {

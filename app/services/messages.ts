@@ -42,7 +42,7 @@ export default class MessagesService extends Service {
       } else if (options?.type === 'warning') {
         console.warn(message);
       } else {
-        console.log(message);
+        console.debug(message);
       }
     }
   }

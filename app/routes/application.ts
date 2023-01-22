@@ -7,6 +7,7 @@ import ENV from 'potber/config/environment';
 import RSVP from 'rsvp';
 import ApiService from 'potber/services/api';
 import SessionService from 'potber/services/session';
+import MessagesService from 'potber/services/messages';
 
 export default class ApplicationRoute extends Route {
   @service declare router: RouterService;
@@ -14,8 +15,12 @@ export default class ApplicationRoute extends Route {
   @service declare localStorage: LocalStorageService;
   @service declare api: ApiService;
   @service declare session: SessionService;
+  @service declare messages: MessagesService;
 
   async beforeModel() {
+    this.messages.log(`Initializing app.`, {
+      context: this.constructor.name,
+    });
     // Delete cache
     if (ENV.APP['NO_CACHE'] && 'caches' in window) {
       caches.keys().then((names) => {
@@ -27,7 +32,11 @@ export default class ApplicationRoute extends Route {
     // Initialization
     this.localStorage.initialize();
     this.renderer.initialize();
-    this.session.initialize();
+    await this.session.initialize();
+    this.messages.log(`App successfully initialized.`, {
+      type: 'success',
+      context: this.constructor.name,
+    });
   }
 
   async model() {

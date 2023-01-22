@@ -9,9 +9,6 @@ export default class SettingsRoute extends Route {
 
   model() {
     return RSVP.hash({
-      currentNavPositionOption: navPositionOptions.find(
-        (option) => option.data === this.localStorage.getMainNavPosition()
-      ),
       currentAvatarStyleOption: avatarStyleOptions.find(
         (option) => option.data === this.localStorage.getAvatarStyle()
       ),
@@ -21,11 +18,6 @@ export default class SettingsRoute extends Route {
     });
   }
 }
-
-export const navPositionOptions = [
-  { label: 'Oben', data: 'top' },
-  { label: 'Unten', data: 'bottom' },
-] as DropdownOption[];
 
 export const avatarStyleOptions = [
   {

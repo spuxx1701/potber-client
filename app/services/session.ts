@@ -16,20 +16,41 @@ export default class SessionService extends Service {
   @service declare api: ApiService;
   @tracked session: Session = { authenticated: false, username: null };
 
-  @action initialize() {
-    this.updateState();
+  /**
+   * Initializes the session service.
+   */
+  @action async initialize() {
+    await this.updateState();
   }
 
+  /**
+   * Attempts to sign the given user in.
+   * @param username The username.
+   * @param password The password.
+   * @param lifetime The session lifetime.
+   * @returns Whether the user was signed in successfully.
+   */
   @action async signIn(username: string, password: string, lifetime: number) {
     try {
+      this.messages.log(`Attemting to sign in user '${username}'.`, {
+        context: this.constructor.name,
+      });
       const url = `${ENV.APP['LOGIN_URL']}?login_username=${username}&login_password=${password}&login_lifetime=${lifetime}`;
       const response = await fetch(url);
       const text = await response.text();
       if (new RegExp(/Fehler beim Einloggen/).test(text)) {
         throw new Error('Login rejected.');
       }
+      this.messages.log(`Login successful.`, {
+        type: 'success',
+        context: this.constructor.name,
+      });
       this.getSessionCookie(text);
       await this.updateState();
+      if (!this.session.authenticated)
+        throw new Error(
+          'Updating session state did not result in an authenticated state.'
+        );
     } catch (error) {
       this.messages.log('Login failed: ' + error, {
         context: this.constructor.name,
@@ -37,10 +58,13 @@ export default class SessionService extends Service {
       });
       return false;
     }
-    return true;
+    return this.session.authenticated;
   }
 
   getSessionCookie(text: string) {
+    this.messages.log(`Retrieving session cookie.`, {
+      context: this.constructor.name,
+    });
     const iframeMatches = text.match(/(?:(<iframe)(.|\n)*?(<\/iframe>))/);
     if (iframeMatches && iframeMatches.length > 0) {
       const iframe = iframeMatches[0];
@@ -50,6 +74,10 @@ export default class SessionService extends Service {
           'https:' + srcMatches[0].replace("src='", '').replace("'", '');
         const tempWindow = window.open(src);
         tempWindow?.close();
+        this.messages.log(`Session cookie successfully retrieved.`, {
+          type: 'success',
+          context: this.constructor.name,
+        });
       } else {
         throw new Error('Unable to find iframe src within text response.');
       }
@@ -59,7 +87,13 @@ export default class SessionService extends Service {
   }
 
   @action signOut() {
-    console.log('implement me');
+    if (!this.session.authenticated) return;
+    this.messages.log(
+      `Attempting to sign out user '${this.session.username}'.`,
+      {
+        context: this.constructor.name,
+      }
+    );
   }
 
   /**
@@ -91,12 +125,12 @@ export default class SessionService extends Service {
         } else {
           throw new Error('Could not retrieve usename.');
         }
+        this.messages.log(`Updated session state.`, {
+          context: this.constructor.name,
+        });
       }
     } catch (error) {
-      this.messages.log('Unable to update session state: ' + error, {
-        type: 'error',
-        context: this.constructor.name,
-      });
+      throw new Error('Unable to update session state: ' + error);
     }
   }
 }
