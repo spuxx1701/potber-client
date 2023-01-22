@@ -74,6 +74,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
       maxLength: 5,
       min: 1,
       max: this.args.thread.pagesCount,
+      submitLabel: 'Los',
       onSubmit: (value) => {
         this.router.transitionTo('thread', {
           queryParams: {

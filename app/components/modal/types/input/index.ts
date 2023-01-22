@@ -16,6 +16,8 @@ export interface InputModalOptions {
   maxLength?: number;
   min?: number;
   max?: number;
+  submitLabel?: string;
+  cancelLabel?: string;
   onSubmit?: (value: string) => void;
 }
 
@@ -32,6 +34,14 @@ export default class InputModalComponent extends Component<Signature> {
 
   get type() {
     return this.args.options.type || 'text';
+  }
+
+  get submitLabel() {
+    return this.args.options.submitLabel || 'OK';
+  }
+
+  get cancelLabel() {
+    return this.args.options.cancelLabel || 'Abbrechen';
   }
 
   @action handleChange(value: string) {

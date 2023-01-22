@@ -23,13 +23,13 @@
 </Modal::Component::Content>
 <Modal::Component::Footer>
   <Common::Control::Button
-    @text='Abbrechen'
+    @text={{this.cancelLabel}}
     @variant='secondary'
     @size='small'
     @onClick={{this.handleCancel}}
   />
   <Common::Control::Button
-    @text='Los'
+    @text={{this.submitLabel}}
     @type='submit'
     @variant='primary'
     @size='small'
