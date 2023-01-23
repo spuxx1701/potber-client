@@ -60,3 +60,18 @@ body {
 .c-notification {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, .5)
 }
+
+.message-item {
+  padding: 0.5rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.message-item p {
+  margin: 0.25rem 0;
+}
+
+.message-item svg {
+  margin-right: 0.25rem;
+}
