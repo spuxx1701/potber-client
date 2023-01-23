@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import { getOwner } from '@ember/application';
 import { action } from '@ember/object';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
@@ -6,6 +7,7 @@ import { tracked } from '@glimmer/tracking';
 import { LoginRouteModel, LOGIN_LIFETIME_OPTIONS } from 'potber/routes/login';
 import MessagesService from 'potber/services/messages';
 import SessionService from 'potber/services/session';
+import Route from '@ember/routing/route';
 
 export default class AboutController extends Controller {
   @service declare router: RouterService;
@@ -35,6 +37,8 @@ export default class AboutController extends Controller {
     ) {
       this.messages.showNotification(`Anmeldung erfolgreich.`, 'success');
       this.router.transitionTo('/');
+      // Refresh the application model
+      (getOwner(this).lookup('route:application') as Route).refresh();
     } else {
       this.model.password = '';
       this.messages.showNotification(

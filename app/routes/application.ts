@@ -17,17 +17,10 @@ export default class ApplicationRoute extends Route {
   @service declare messages: MessagesService;
 
   async beforeModel() {
-    this.messages.log(`Initializing app.`, {
-      context: this.constructor.name,
-    });
     // Initialization
     this.localStorage.initialize();
     this.renderer.initialize();
     await this.session.initialize();
-    this.messages.log(`App successfully initialized.`, {
-      type: 'success',
-      context: this.constructor.name,
-    });
   }
 
   async model() {
