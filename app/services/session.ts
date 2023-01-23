@@ -47,7 +47,11 @@ export default class SessionService extends Service {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         },
-        body: `login_username=${username}&login_password=${password}&login_lifetime=${lifetime}`,
+        body: `login_username=${encodeURIComponent(
+          username
+        )}&login_password=${encodeURIComponent(
+          password
+        )}&login_lifetime=${lifetime}`,
       });
       const text = await response.text();
       if (new RegExp(/Fehler beim Einloggen/).test(text)) {
