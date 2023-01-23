@@ -1,6 +1,7 @@
 <div id='sidebar' role='navigation'>
   <Sidebar::Nav />
   <div id='sidebar-content'>
+    <h3 class='title text-center'>Neuigkeiten</h3>
     {{#if this.authenticated}}
       <Sidebar::NewsFeed @bookmarksSummary={{@bookmarksSummary}} />
     {{else}}
