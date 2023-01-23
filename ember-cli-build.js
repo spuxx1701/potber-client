@@ -9,7 +9,9 @@ module.exports = function (defaults) {
       plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
     },
     fingerprint: {
-      enabled: app.env === 'production' || app.env === 'integration',
+      enabled:
+        process.env.EMBER_ENV === 'production' ||
+        process.env.EMBER_ENV === 'integration',
     },
   });
 
