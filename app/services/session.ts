@@ -111,13 +111,11 @@ export default class SessionService extends Service {
     try {
       // We need to call the main page to check our status and also retrieve
       // some session details
-      const text = (
-        await (
-          await fetch('https://forum.mods.de/', {
-            credentials: 'include',
-          })
-        ).text()
-      ).substring(0, 2000);
+      const text = await (
+        await fetch('https://forum.mods.de/', {
+          credentials: 'include',
+        })
+      ).text();
       if (new RegExp(/Du bist nicht eingeloggt!/).test(text)) {
         // If the page says that we're not logged in, update state accordingly
         this.session = {
