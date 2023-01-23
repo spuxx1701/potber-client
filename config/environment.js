@@ -21,7 +21,6 @@ module.exports = function (environment) {
       LOGOUT_URL: 'https://login.mods.de/logout',
       USER_PAGE_URL: 'https://my.mods.de/',
       DEBUG: false,
-      NO_CACHE: false,
       // Here you can pass flags/options to your application instance
       // when it is created
     },
@@ -29,7 +28,6 @@ module.exports = function (environment) {
 
   if (environment === 'development') {
     ENV.APP.DEBUG = true;
-    ENV.APP.NO_CACHE = true;
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -50,12 +48,10 @@ module.exports = function (environment) {
   }
 
   if (environment === 'integration') {
-    ENV.APP.NO_CACHE = true;
     ENV.APP.DEBUG = true;
   }
 
   if (environment === 'production') {
-    ENV.APP.NO_CACHE = false;
     ENV.APP.DEBUG = false;
   }
 

@@ -145,7 +145,7 @@ export default class ContentParserService extends Service {
       const split = content.split('/');
       const videoId = split[split.length - 1];
       return `<iframe class="youtube-player" type="text/html"
-          src="https://www.youtube.com/embed/${videoId}?&origin=${window.location.host}"
+          src="https://www.youtube.com/embed/${videoId}?&origin=${window.location.protocol}//${window.location.host}"
           frameborder="0"/>`;
     } else {
       return `<video src="${content}" controls/>`;

@@ -1,9 +1,11 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import ENV from 'potber/config/environment';
 import { Board } from './api/types/board';
 import ApiService from 'potber/services/api';
 import MessagesService from './messages';
+import { clean, valid, gt } from 'semver';
 
 const PREFIX = 'potber-';
 
@@ -102,5 +104,36 @@ export default class LocalStorageService extends Service {
       context: this.constructor.name,
     });
     this.getBoardFavorites();
+  }
+
+  /**
+   * Reads the last encounted app version and returns the current unencounted version
+   * if it is higher than the last encounted version.
+   */
+  getUnencountedVersion() {
+    const encounteredVersion = localStorage.getItem(
+      `${PREFIX}lastEncountedVersion`
+    );
+    if (!valid(encounteredVersion)) return undefined;
+    if (
+      gt(
+        clean(ENV.APP['version'] as string) as string,
+        clean(encounteredVersion as string) as string
+      )
+    ) {
+      return clean(ENV.APP['version'] as string) as string;
+    }
+    return undefined;
+  }
+
+  /**
+   * Sets the last encounted app version to the current app version and stores it.
+   */
+  setEncounteredVersion() {
+    const version = (clean(ENV.APP['version'] as string) as string) || '';
+    localStorage.setItem(`${PREFIX}lastEncountedVersion`, version);
+    this.messages.log(`${PREFIX}lastEncountedVersion set to: '${version}'.`, {
+      context: this.constructor.name,
+    });
   }
 }
