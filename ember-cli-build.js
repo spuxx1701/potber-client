@@ -8,12 +8,12 @@ module.exports = function (defaults) {
     babel: {
       plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
     },
-    fingerprint: {
-      enabled:
-        process.env.EMBER_ENV === 'production' ||
-        process.env.EMBER_ENV === 'integration',
-      exclude: ['images/*'],
-    },
+    // fingerprint: {
+    //   enabled:
+    //     process.env.EMBER_ENV === 'production' ||
+    //     process.env.EMBER_ENV === 'integration',
+    //   exclude: ['images/*'],
+    // },
   });
 
   // Use `app.import` to add additional libraries to the generated
