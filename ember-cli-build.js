@@ -12,7 +12,7 @@ module.exports = function (defaults) {
       enabled:
         process.env.EMBER_ENV === 'production' ||
         process.env.EMBER_ENV === 'integration',
-      exclude: ['assets/*'],
+      // exclude: ['assets/*'],
     },
   });
 
