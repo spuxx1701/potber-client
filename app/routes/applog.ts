@@ -6,6 +6,8 @@ export default class ApplogRoute extends Route {
   @service declare messages: MessagesService;
 
   model() {
-    return this.messages.messages;
+    return this.messages.messages.sort((a, b) => {
+      return b.date.getTime() - a.date.getTime();
+    });
   }
 }

@@ -5,7 +5,7 @@ import Service, { service } from '@ember/service';
 export type MessageType = 'info' | 'success' | 'warning' | 'error';
 
 export interface Message {
-  timestamp: string;
+  date: Date;
   type: MessageType;
   text: string;
   context?: string;
@@ -30,7 +30,7 @@ export default class MessagesService extends Service {
     this.messages.push({
       text,
       type: options?.type || 'info',
-      timestamp: new Date().toISOString(),
+      date: new Date(),
       context: options?.context || this.constructor.name,
     });
     if (ENV.APP['DEBUG']) {

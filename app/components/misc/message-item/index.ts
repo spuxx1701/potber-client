@@ -10,7 +10,7 @@ export default class MessageItemComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
   get icon() {
-    switch (this.args.message.text) {
+    switch (this.args.message.type) {
       case 'success':
         return 'circle-check';
       case 'warning':
@@ -23,6 +23,6 @@ export default class MessageItemComponent extends Component<Signature> {
   }
 
   get date() {
-    return new Date(this.args.message.timestamp).toLocaleString();
+    return this.args.message.date.toLocaleString();
   }
 }
