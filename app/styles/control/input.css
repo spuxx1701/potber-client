@@ -9,6 +9,7 @@
 }
 
 .input-container input {
+  width: 100%;
   box-sizing: border-box;
   min-height: calc(var(--control-default-height) + 0.5rem);
   background-color: var(--color-input-inactive);
