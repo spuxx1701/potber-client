@@ -20,6 +20,14 @@
     @label='Design'
   />
 
+  <Common::Control::Dropdown
+    @options={{this.landingPageOptions}}
+    @default={{@model.currentLandingPageOption}}
+    @onSelect={{this.handleLandingPageSelect}}
+    @size='max'
+    @label='Startseite'
+  />
+
   <hr />
 
   <Common::Control::Link

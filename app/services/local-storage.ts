@@ -67,6 +67,23 @@ export default class LocalStorageService extends Service {
   }
 
   /**
+   * Gets 'landingPage' from localStorage.
+   * @returns The page that should be shown when the index route
+   * is initially displayed.
+   */
+  getLandingPage(): string {
+    return localStorage.getItem(`${PREFIX}landingPage`) || 'board-overview';
+  }
+
+  /**
+   * Sets and stores 'landingPage'.
+   * @param value The new value.
+   */
+  setLandingPage(value: 'board-overview' | 'pot') {
+    localStorage.setItem(`${PREFIX}landingPage`, value);
+  }
+
+  /**
    * Gets the board favorite IDs from localStorage and triggers an async update of
    * the board favorites.
    * @returns {Promise<Board[]>} A promise of the board favorites.

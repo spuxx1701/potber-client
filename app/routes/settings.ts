@@ -15,6 +15,9 @@ export default class SettingsRoute extends Route {
       currentBoxStyleOption: boxStyleOptions.find(
         (option) => option.data === this.localStorage.getBoxStyle()
       ),
+      currentLandingPageOption: landingPageOptions.find(
+        (option) => option.data === this.localStorage.getLandingPage()
+      ),
     });
   }
 }
@@ -40,3 +43,14 @@ export const boxStyleOptions = [
     data: 'round',
   },
 ] as DropdownOption[];
+
+export const landingPageOptions = [
+  {
+    label: 'Forenübersicht',
+    data: 'board-overview',
+  },
+  {
+    label: 'Public Offtopic',
+    data: 'pot',
+  },
+];
