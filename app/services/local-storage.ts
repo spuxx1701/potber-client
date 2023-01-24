@@ -16,6 +16,7 @@ export default class LocalStorageService extends Service {
   @tracked avatarStyle: string = this.getAvatarStyle();
   @tracked boxStyle: string = this.getBoxStyle();
   @tracked boardFavorites: Board[] | null = [];
+  @tracked landingPage: string = this.getLandingPage();
 
   /**
    * Initializes the localStorage service.
@@ -81,6 +82,7 @@ export default class LocalStorageService extends Service {
    */
   setLandingPage(value: 'board-overview' | 'pot') {
     localStorage.setItem(`${PREFIX}landingPage`, value);
+    this.landingPage = value;
   }
 
   /**

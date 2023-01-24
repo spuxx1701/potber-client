@@ -2,6 +2,14 @@
   <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
     <FaIcon @icon='house' />
   </Common::Control::Link>
+  {{#if this.showBoardOverviewButton}}
+    <Common::Control::Link
+      @route='board-overview'
+      @onClick={{this.handleNavLinkClick}}
+    >
+      <FaIcon @icon='bars-staggered' />
+    </Common::Control::Link>
+  {{/if}}
   {{!-- <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
     <FaIcon @icon='envelope' />
   </Common::Control::Link>
