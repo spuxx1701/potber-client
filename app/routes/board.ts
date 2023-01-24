@@ -1,9 +1,12 @@
 import Route from '@ember/routing/route';
+import RouterService from '@ember/routing/router-service';
+import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import ApiService from 'potber/services/api';
 import { Board } from 'potber/services/api/types/board';
+import MessagesService from 'potber/services/messages';
 import RendererService from 'potber/services/renderer';
-import RSVP, { reject } from 'rsvp';
+import RSVP from 'rsvp';
 
 interface Params {
   BID: string;
@@ -18,6 +21,8 @@ export interface BoardRouteModel {
 export default class BoardRoute extends Route {
   @service declare api: ApiService;
   @service declare renderer: RendererService;
+  @service declare messages: MessagesService;
+  @service declare router: RouterService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -29,7 +34,7 @@ export default class BoardRoute extends Route {
     },
   };
 
-  async model(params: Params) {
+  async model(params: Params, transition: Transition<unknown>) {
     try {
       const page = parseInt(params.page || '1') || 1;
       const board = await this.api.getBoard(params.BID, page);
@@ -41,9 +46,13 @@ export default class BoardRoute extends Route {
     } catch (error: any) {
       if (error.message === 'not-found') {
         return null;
-      } else {
-        return reject(error);
+      } else if (error.message === 'no-access') {
+        this.messages.showNotification(
+          'Du hast keine Zugriffsberechtigung für dieses Board.',
+          'error'
+        );
       }
+      transition.abort();
     }
   }
 }

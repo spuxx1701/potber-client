@@ -43,13 +43,7 @@ export default class ApiService extends Service {
     let query = `board.php?BID=${boardId}`;
     if (page) query += `&page=${page}`;
     const xmlDocument = await this.fetch(query);
-    // Throw an error if the board could not be found
-    if (
-      !xmlDocument.children[0] ||
-      xmlDocument.children[0].nodeName === 'invalid-board'
-    ) {
-      throw new Error('not-found');
-    }
+    if (!xmlDocument.children[0]) throw new Error('not-found');
     const board = transformBoard(xmlDocument.children[0]);
     return board;
   }

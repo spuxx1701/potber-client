@@ -1,7 +1,12 @@
-{{page-title this.pageTitle}}
+{{#if @model}}
+  {{page-title this.pageTitle}}
+  <Nav::Routes::Board @board={{@model.board}} @page={{@model.page}} />
 
-<Nav::Routes::Board @board={{@model.board}} @page={{@model.page}} />
+  {{#each this.threads as |thread|}}
+    <Board::Thread @thread={{thread}} />
+  {{/each}}
+{{else}}
+  {{page-title '404'}}
 
-{{#each this.threads as |thread|}}
-  <Board::Thread @thread={{thread}} />
-{{/each}}
+  <Error::NotFound />
+{{/if}}
