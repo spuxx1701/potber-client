@@ -66,6 +66,7 @@ body {
   width: 100%;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+  border-radius: var(--global-border-radius);
 }
 
 .message-item p {
