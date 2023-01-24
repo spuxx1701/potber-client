@@ -40,7 +40,6 @@ export default class AboutController extends Controller {
       // Refresh the application model
       (getOwner(this).lookup('route:application') as Route).refresh();
     } else {
-      this.model.password = '';
       this.messages.showNotification(
         'Das hat leider nicht geklappt. Versuche es nochmal.',
         'error'
