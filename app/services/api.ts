@@ -1,7 +1,7 @@
 import Service, { service } from '@ember/service';
 import { transformThread } from './api/transformers/thread';
 import ENV from 'potber/config/environment';
-import { transformBoardCategories } from './api/transformers/board-category';
+import { transformBoardOverview } from './api/transformers/board-overview';
 import { transformBoard } from './api/transformers/board';
 import MessagesService from './messages';
 import { transformBookmarksSummary } from './api/transformers/bookmark';
@@ -27,7 +27,7 @@ export default class ApiService extends Service {
     });
     const query = `boards.php`;
     const xmlDocument = await this.fetch(query);
-    return transformBoardCategories(xmlDocument);
+    return transformBoardOverview(xmlDocument);
   }
 
   /**

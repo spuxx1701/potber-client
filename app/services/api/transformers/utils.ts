@@ -1,4 +1,7 @@
-export function getNode(nodeName: string, element: Element | XMLDocument): any {
+export function getNode(
+  nodeName: string,
+  element: Element | ChildNode | XMLDocument
+): any {
   for (const node of element.childNodes) {
     if (node.nodeName === nodeName) {
       return node;
@@ -7,7 +10,10 @@ export function getNode(nodeName: string, element: Element | XMLDocument): any {
   return undefined;
 }
 
-export function getNodeTextContent(nodeName: string, element: Element) {
+export function getNodeTextContent(
+  nodeName: string,
+  element: Element | ChildNode
+) {
   const node = getNode(nodeName, element);
   if (node) return node.textContent;
   return undefined;

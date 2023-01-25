@@ -1,4 +1,4 @@
-import { Board } from '../types/board';
+import { Board, BoardPage } from '../types/board';
 import { Thread } from '../types/thread';
 import { transformThread } from './thread';
 import { getAttributeValue, getNode, getNodeTextContent } from './utils';
@@ -8,11 +8,24 @@ export function transformBoard(boardXml: Element): Board {
   if (getNode('invalid-board', boardXml)) throw new Error('not-found');
   // Check whether we have access to the given board and throw an error if we don't
   if (boardXml.nodeName === 'no-access') throw new Error('no-access');
-  const threads: Thread[] = [];
+  let page: BoardPage | undefined;
   const pageNode = getNode('threads', boardXml);
   if (pageNode) {
+    page = {
+      page: parseInt(getAttributeValue('page', getNode('page', pageNode))),
+      stickiesCount: parseInt(
+        getAttributeValue('with-stickies', getNode('threads', boardXml))
+      ),
+      globalsCount: parseInt(
+        getAttributeValue('with-globals', getNode('threads', boardXml))
+      ),
+      threadsCount: parseInt(
+        getAttributeValue('count', getNode('threads', boardXml))
+      ),
+      threads: [],
+    };
     for (const xml of pageNode.childNodes) {
-      threads.push(transformThread(xml) as unknown as Thread);
+      page.threads.push(transformThread(xml) as unknown as Thread);
     }
   }
   const board = {
@@ -27,21 +40,9 @@ export function transformBoard(boardXml: Element): Board {
     ),
     category: {
       id: getAttributeValue('id', getNode('in-category', boardXml)),
-      name: getNodeTextContent('in-category', boardXml),
+      name: getNodeTextContent('in-category', boardXml) || undefined,
     },
-    page: {
-      page: parseInt(getAttributeValue('page', getNode('page', pageNode))),
-      stickiesCount: parseInt(
-        getAttributeValue('with-stickies', getNode('threads', boardXml))
-      ),
-      globalsCount: parseInt(
-        getAttributeValue('with-globals', getNode('threads', boardXml))
-      ),
-      threadsCount: parseInt(
-        getAttributeValue('count', getNode('threads', boardXml))
-      ),
-      threads,
-    },
+    page,
   } as Board;
   return board;
 }

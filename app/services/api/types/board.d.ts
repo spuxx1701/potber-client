@@ -10,7 +10,7 @@ export interface Board {
   repliesCount: number;
   category: {
     id: string;
-    name: string;
+    name?: string;
   };
   lastPost?: LastPost;
   moderators?: User[];

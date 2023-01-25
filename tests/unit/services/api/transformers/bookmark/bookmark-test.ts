@@ -5,7 +5,7 @@ import { parseXmlString } from 'potber/tests/test-utils';
 import { module, test } from 'qunit';
 import mockData from './mock-data';
 
-module('Unit | Service | API | Transformer | User', function (hooks) {
+module('Unit | Service | API | Transformer | Bookmark', function (hooks) {
   setupTest(hooks);
 
   test('Transforms the bookmarks summary.', function (assert) {
