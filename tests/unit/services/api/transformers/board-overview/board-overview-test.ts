@@ -22,10 +22,7 @@ module('Unit | Service | API | Transformer | Board Overview', function (hooks) {
             description: 'Alles rund um 3D Supply',
             threadsCount: 0,
             repliesCount: 0,
-            category: {
-              id: '6',
-              name: undefined,
-            },
+            categoryId: '6',
             page: undefined,
           },
           {
@@ -35,10 +32,7 @@ module('Unit | Service | API | Transformer | Board Overview', function (hooks) {
               'fÃŒr das was nicht passt und sonstige geistige HÃ¶henflÃŒge',
             threadsCount: 46587,
             repliesCount: 13987787,
-            category: {
-              id: '6',
-              name: undefined,
-            },
+            categoryId: '6',
             page: undefined,
           },
         ],
@@ -54,10 +48,7 @@ module('Unit | Service | API | Transformer | Board Overview', function (hooks) {
             description: 'Alles rund ums Thema Counter-Strike!',
             threadsCount: 11771,
             repliesCount: 133645,
-            category: {
-              id: '7',
-              name: undefined,
-            },
+            categoryId: '7',
             page: undefined,
           },
         ],

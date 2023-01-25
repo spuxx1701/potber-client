@@ -8,10 +8,7 @@ export interface Board {
   description: string;
   threadsCount: number;
   repliesCount: number;
-  category: {
-    id: string;
-    name?: string;
-  };
+  categoryId: string;
   lastPost?: LastPost;
   moderators?: User[];
   page?: BoardPage;

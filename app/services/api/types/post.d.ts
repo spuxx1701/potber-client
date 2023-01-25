@@ -18,7 +18,7 @@ export interface Post {
 }
 
 export interface FirstPost {
-  icon: string;
+  icon?: string;
   author: User;
   date: Date;
   threadId: string;

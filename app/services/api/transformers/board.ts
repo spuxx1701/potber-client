@@ -9,23 +9,17 @@ export function transformBoard(boardXml: Element): Board {
   // Check whether we have access to the given board and throw an error if we don't
   if (boardXml.nodeName === 'no-access') throw new Error('no-access');
   let page: BoardPage | undefined;
-  const pageNode = getNode('threads', boardXml);
-  if (pageNode) {
+  const threadsNode = getNode('threads', boardXml);
+  if (threadsNode) {
     page = {
-      page: parseInt(getAttributeValue('page', getNode('page', pageNode))),
-      stickiesCount: parseInt(
-        getAttributeValue('with-stickies', getNode('threads', boardXml))
-      ),
-      globalsCount: parseInt(
-        getAttributeValue('with-globals', getNode('threads', boardXml))
-      ),
-      threadsCount: parseInt(
-        getAttributeValue('count', getNode('threads', boardXml))
-      ),
+      page: parseInt(getAttributeValue('page', threadsNode)),
+      stickiesCount: parseInt(getAttributeValue('with-stickies', threadsNode)),
+      globalsCount: parseInt(getAttributeValue('with-globals', threadsNode)),
+      threadsCount: parseInt(getAttributeValue('count', threadsNode)),
       threads: [],
     };
-    for (const xml of pageNode.childNodes) {
-      page.threads.push(transformThread(xml) as unknown as Thread);
+    for (const threadXml of threadsNode.childNodes) {
+      page.threads.push(transformThread(threadXml) as unknown as Thread);
     }
   }
   const board = {
@@ -38,10 +32,7 @@ export function transformBoard(boardXml: Element): Board {
     repliesCount: parseInt(
       getAttributeValue('value', getNode('number-of-replies', boardXml))
     ),
-    category: {
-      id: getAttributeValue('id', getNode('in-category', boardXml)),
-      name: getNodeTextContent('in-category', boardXml) || undefined,
-    },
+    categoryId: getAttributeValue('id', getNode('in-category', boardXml)),
     page,
   } as Board;
   return board;
