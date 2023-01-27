@@ -12,7 +12,7 @@ export interface Signature {
   };
 }
 
-export default class SidebarBoardFavoriteComponent extends Component<Signature> {
+export default class SidebarBoardFavoritesItemComponent extends Component<Signature> {
   @service declare localStorage: LocalStorageService;
   @service declare renderer: RendererService;
   declare args: Signature['Args'];
