@@ -12,6 +12,7 @@ Router.map(function () {
   this.route('board-overview');
   this.route('login');
   this.route('session');
+  this.route('bookmarks');
   this.route('board');
   this.route('thread');
   this.route('create-thread');

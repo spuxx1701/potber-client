@@ -10,12 +10,17 @@
       <FaIcon @icon='bars-staggered' />
     </Common::Control::Link>
   {{/if}}
-  {{!-- <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
+  {{#if this.authenticated}}
+    {{!-- <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
     <FaIcon @icon='envelope' />
-  </Common::Control::Link>
-  <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
-    <FaIcon @icon='bookmark' /> 
   </Common::Control::Link>--}}
+    <Common::Control::Link
+      @route='bookmarks'
+      @onClick={{this.handleNavLinkClick}}
+    >
+      <FaIcon @icon='bookmark' />
+    </Common::Control::Link>
+  {{/if}}
   <Common::Control::Link @route='settings' @onClick={{this.handleNavLinkClick}}>
     <FaIcon @icon='gear' />
   </Common::Control::Link>

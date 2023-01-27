@@ -15,6 +15,7 @@
 @import "./board/board-overview.css";
 @import "./board/post.css";
 @import "./board/thread.css";
+@import "./board/bookmark.css";
 
 @import "./responsiveness.css";
 
