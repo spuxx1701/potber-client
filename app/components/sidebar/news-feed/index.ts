@@ -11,10 +11,15 @@ export default class SidebarNewsFeedComponent extends Component<Signature> {
   get status() {
     if (!this.args.bookmarksSummary) {
       return 'error';
-    } else if (this.args.bookmarksSummary.bookmarks.length === 0) {
-      return 'empty';
     } else {
-      return 'ok';
+      const unreadBookmarks = this.args.bookmarksSummary.bookmarks.filter(
+        (bookmark) => bookmark.newPostsCount > 0
+      );
+      if (unreadBookmarks.length === 0) {
+        return 'empty';
+      } else {
+        return 'ok';
+      }
     }
   }
 
