@@ -1,21 +1,15 @@
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { BookmarksSummary } from 'potber/services/api/types/bookmark';
+import NewsFeedService from 'potber/services/news-feed';
 
-export interface Signature {
-  Args: {
-    bookmarksSummary: BookmarksSummary | null;
-  };
-}
+export default class SidebarNewsFeedComponent extends Component {
+  @service declare newsFeed: NewsFeedService;
 
-export default class SidebarNewsFeedComponent extends Component<Signature> {
   get status() {
-    if (!this.args.bookmarksSummary) {
+    if (!this.unreadBookmarks) {
       return 'error';
     } else {
-      const unreadBookmarks = this.args.bookmarksSummary.bookmarks.filter(
-        (bookmark) => bookmark.newPostsCount > 0
-      );
-      if (unreadBookmarks.length === 0) {
+      if (this.unreadBookmarks.length === 0) {
         return 'empty';
       } else {
         return 'ok';
@@ -24,13 +18,6 @@ export default class SidebarNewsFeedComponent extends Component<Signature> {
   }
 
   get unreadBookmarks() {
-    const bookmarks = [];
-    if (this.args.bookmarksSummary) {
-      for (const bookmark of this.args.bookmarksSummary?.bookmarks) {
-        if (bookmark.newPostsCount === 0) continue;
-        bookmarks.push(bookmark);
-      }
-    }
-    return bookmarks;
+    return this.newsFeed.unreadBookmarks;
   }
 }

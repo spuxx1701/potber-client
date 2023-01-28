@@ -7,7 +7,6 @@ import RendererService from 'potber/services/renderer';
 import { sleep } from 'potber/utils/misc';
 import RSVP, { reject } from 'rsvp';
 import { scrollToHash } from 'ember-url-hash-polyfill';
-import ApiThreadsService from 'potber/services/threads';
 import ThreadsService from 'potber/services/threads';
 
 interface Params {

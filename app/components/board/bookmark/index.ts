@@ -1,5 +1,9 @@
+import { action } from '@ember/object';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { Bookmark } from 'potber/services/api/types/bookmark';
+import BookmarksService from 'potber/services/bookmarks';
+import MessagesService from 'potber/services/messages';
 
 interface Signature {
   Args: {
@@ -8,6 +12,8 @@ interface Signature {
 }
 
 export default class BoardBookmarkComponent extends Component<Signature> {
+  @service declare bookmarks: BookmarksService;
+  @service declare messages: MessagesService;
   declare args: Signature['Args'];
 
   get hasNewPosts() {
@@ -20,5 +26,10 @@ export default class BoardBookmarkComponent extends Component<Signature> {
     } else {
       return `${this.args.bookmark.newPostsCount} neue Posts`;
     }
+  }
+
+  @action async handleDelete() {
+    await this.bookmarks.deleteBookmark(this.args.bookmark);
+    this.messages.showNotification('Lesezeichen wurde entfernt.', 'success');
   }
 }
