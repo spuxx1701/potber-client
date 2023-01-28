@@ -1,13 +1,14 @@
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import ApiService from 'potber/services/api';
 import { Thread } from 'potber/services/api/types/thread';
 import LocalStorageService from 'potber/services/local-storage';
 import RendererService from 'potber/services/renderer';
 import { sleep } from 'potber/utils/misc';
 import RSVP, { reject } from 'rsvp';
 import { scrollToHash } from 'ember-url-hash-polyfill';
+import ApiThreadsService from 'potber/services/threads';
+import ThreadsService from 'potber/services/threads';
 
 interface Params {
   TID: string;
@@ -23,7 +24,7 @@ export interface ThreadRouteModel {
 
 export default class ThreadRoute extends Route {
   @service declare localStorage: LocalStorageService;
-  @service declare api: ApiService;
+  @service declare threads: ThreadsService;
   @service declare renderer: RendererService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
@@ -44,7 +45,7 @@ export default class ThreadRoute extends Route {
       // Attempt to parse the page
       let page: number | undefined;
       if (params.page) page = parseInt(params.page) || 1;
-      const thread = await this.api.getThread(params.TID, {
+      const thread = await this.threads.getThread(params.TID, {
         postId: params.PID,
         page,
       });

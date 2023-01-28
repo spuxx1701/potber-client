@@ -3,14 +3,14 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ENV from 'potber/config/environment';
 import { Board } from './api/types/board';
-import ApiService from 'potber/services/api';
 import MessagesService from './messages';
 import { clean, valid, gt } from 'semver';
+import BoardsService from './boards';
 
 const PREFIX = 'potber-';
 
 export default class LocalStorageService extends Service {
-  @service declare api: ApiService;
+  @service declare boards: BoardsService;
   @service declare messages: MessagesService;
 
   @tracked avatarStyle: string = this.getAvatarStyle();
@@ -97,7 +97,7 @@ export default class LocalStorageService extends Service {
       if (string) {
         const ids = string?.split(',') || [];
         for (const id of ids) {
-          boards.push(await this.api.getBoard(id));
+          boards.push(await this.boards.getBoard(id));
         }
       }
       this.boardFavorites = boards;

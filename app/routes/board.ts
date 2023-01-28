@@ -2,8 +2,8 @@ import Route from '@ember/routing/route';
 import RouterService from '@ember/routing/router-service';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import ApiService from 'potber/services/api';
 import { Board } from 'potber/services/api/types/board';
+import BoardsService from 'potber/services/boards';
 import MessagesService from 'potber/services/messages';
 import RendererService from 'potber/services/renderer';
 import RSVP from 'rsvp';
@@ -19,7 +19,7 @@ export interface BoardRouteModel {
 }
 
 export default class BoardRoute extends Route {
-  @service declare api: ApiService;
+  @service declare boards: BoardsService;
   @service declare renderer: RendererService;
   @service declare messages: MessagesService;
   @service declare router: RouterService;
@@ -37,7 +37,7 @@ export default class BoardRoute extends Route {
   async model(params: Params, transition: Transition<unknown>) {
     try {
       const page = parseInt(params.page || '1') || 1;
-      const board = await this.api.getBoard(params.BID, page);
+      const board = await this.boards.getBoard(params.BID, page);
       this.renderer.tryResetScrollPosition();
       return RSVP.hash({
         board: board,
