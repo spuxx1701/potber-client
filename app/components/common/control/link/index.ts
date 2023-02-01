@@ -10,6 +10,7 @@ export interface Signature {
     size?: ControlSize;
     variant?: ControlVariant;
     title?: string;
+    disabled?: boolean;
     onClick?: () => void;
   };
 }

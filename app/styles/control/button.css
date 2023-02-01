@@ -26,10 +26,11 @@ button:not(:disabled):active, .button-link:not(:disabled):active {
   text-decoration: none !important;
 }
 
-.button-link:not(:disabled) {
+.button-link {
   color: var(--color-text-default);
 }
 
-.button-link:disabled {
+.button-link-disabled {
   color: var(--color-control-disabled);
+  pointer-events: none;
 }

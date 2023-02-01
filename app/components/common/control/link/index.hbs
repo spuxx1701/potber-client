@@ -1,7 +1,10 @@
 <LinkTo
-  class='button-link control-size-{{@size}} control-variant-{{this.variant}}'
+  class='button-link control-size-{{@size}}
+    control-variant-{{this.variant}}
+    {{if @disabled "button-link-disabled"}}'
   @route={{@route}}
   @query={{this.query}}
+  @disabled={{@disabled}}
   {{on 'click' this.handleClick}}
   ...attributes
 >
