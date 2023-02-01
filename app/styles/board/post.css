@@ -8,6 +8,11 @@
   scroll-margin-top: calc(var(--top-nav-height));
 }
 
+
+.post-subtle {
+  opacity: 0.75;
+}
+
 .post:not(:first-child) {
   margin-top: 1px;
 }

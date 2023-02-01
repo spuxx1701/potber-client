@@ -1,7 +1,9 @@
 <div class='thread-page'>
-  <div class='thread-page-content'>
-    {{#each @page.posts as |post|}}
-      <Board::Post @post={{post}} @avatarStyle={{@avatarStyle}} />
+  <div
+    class='thread-page-content {{if this.makeAllPostsSubtle " post-subtle"}}'
+  >
+    {{#each this.posts as |post|}}
+      <Board::Post @post={{post}} @avatarStyle={{this.avatarStyle}} />
     {{/each}}
   </div>
 </div>
