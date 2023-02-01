@@ -1,9 +1,11 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import ApiService from 'potber/services/api';
+import BookmarksService from 'potber/services/bookmarks';
 
-export default class IndexRoute extends Route {
-  // async model() {
-  //   return await this.api.getBookmarkOverview();
-  // }
+export default class BookmarksRoute extends Route {
+  @service declare bookmarks: BookmarksService;
+
+  async model() {
+    return await this.bookmarks.getBookmarksSummary();
+  }
 }

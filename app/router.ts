@@ -12,7 +12,6 @@ Router.map(function () {
   this.route('board-overview');
   this.route('login');
   this.route('session');
-  this.route('bookmarks');
   this.route('board');
   this.route('thread');
   this.route('create-thread');
@@ -20,5 +19,8 @@ Router.map(function () {
   this.route('applog');
   this.route('changelog');
   this.route('about');
+  this.route('authenticated', function () {
+    this.route('bookmarks');
+  });
   this.route('not-found', { path: '/*path' });
 });
