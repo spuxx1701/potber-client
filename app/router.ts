@@ -14,13 +14,15 @@ Router.map(function () {
   this.route('session');
   this.route('board');
   this.route('thread');
-  this.route('create-thread');
   this.route('settings');
   this.route('applog');
   this.route('changelog');
   this.route('about');
   this.route('authenticated', function () {
     this.route('bookmarks');
+    this.route('post', function () {
+      this.route('create');
+    });
   });
   this.route('not-found', { path: '/*path' });
 });

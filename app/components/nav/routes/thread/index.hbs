@@ -68,6 +68,13 @@
     {{/if}}
   </div>
 
-  {{! TODO: Replace with new reply button }}
-  <span class='hidden control-size-square' />
+  <Common::Control::Link
+    @title='Antworten'
+    @size='square'
+    @route='authenticated.post.create'
+    @query={{hash TID=@thread.id page=@thread.pagesCount}}
+    @disabled={{@thread.isClosed}}
+  ><FaIcon
+      @icon={{if @thread.isClosed 'lock' 'comment'}}
+    /></Common::Control::Link>
 </Portal>

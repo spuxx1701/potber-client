@@ -5,6 +5,7 @@ import MessagesService from '../messages';
 export interface FetchOptions {
   method?: 'GET' | 'POST' | 'DELETE';
   body?: BodyInit | undefined;
+  headers?: HeadersInit;
   useForumUrl?: boolean;
 }
 
@@ -24,11 +25,13 @@ export default class ApiService extends Service {
   async fetch(query: string, options?: FetchOptions) {
     let url = `${API_URL}${query}`;
     if (options?.useForumUrl) url = `${FORUM_URL}${query}`;
-    const response = await fetch(url, {
+    const init: RequestInit = {
       method: options?.method || 'GET',
+      headers: options?.headers,
       body: options?.body,
       credentials: 'include',
-    });
+    };
+    const response = await fetch(url, init);
     const xmlObject = await this.parseXml(response);
     return xmlObject;
   }
@@ -42,5 +45,22 @@ export default class ApiService extends Service {
     const text = await response.text();
     const xmlDocument = this.domParser.parseFromString(text, 'text/xml');
     return xmlDocument;
+  }
+
+  /**
+   * Attempts to retrieve a form token from the given uri.
+   * @param uri The uri that points to the form (e.g. 'newreply.php?TID=123').
+   */
+  async retrieveFormToken(uri: string) {
+    const response = await fetch(`${FORUM_URL}${uri}`, {
+      credentials: 'include',
+    });
+    const text = await response.text();
+    const tokenMatches = text.match(/(?:(name='token'\svalue=')(.*)('\s\/>))/);
+    if (tokenMatches && tokenMatches.length > 3) {
+      return tokenMatches[2] as string;
+    } else {
+      throw new Error('Token could not be found in HTML response.');
+    }
   }
 }
