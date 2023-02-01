@@ -27,7 +27,7 @@ export default class CommonControlLinkComponent extends Component<Signature> {
   }
 
   get variant() {
-    return this.args.variant || 'secondary';
+    return this.args.variant || 'primary-transparent';
   }
 
   get query() {
