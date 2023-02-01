@@ -68,6 +68,10 @@
   margin: 0;
 }
 
+.post-content a {
+  overflow-wrap: break-word;
+}
+
 .quote {
   display: flex;
   flex-direction: column;
