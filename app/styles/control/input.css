@@ -8,10 +8,10 @@
   box-sizing: border-box;
 }
 
-.input-container input {
+.input-container input, textarea {
   width: 100%;
   box-sizing: border-box;
-  min-height: calc(var(--control-default-height) + 0.5rem);
+  min-height: var(--control-input-height);
   background-color: var(--color-input-inactive);
   border: 0px solid transparent;
   border-radius: var(--global-border-radius);
@@ -32,7 +32,7 @@
   color: var(--color-text-subtle)
 }
 
-input:focus {
+input:focus, textarea:focus {
   outline: none;
   background-color: var(--color-control-inactive);
   border-bottom: 2px solid var(--color-input-accent);

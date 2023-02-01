@@ -1,5 +1,6 @@
 :root {
   --control-default-height: 45px;
+  --control-input-height: calc(var(--control-default-height) + 0.5rem);
   /* The following variables may change during runtime. */
   --global-border-radius: 0px;
   --global-gap: unset;
@@ -39,6 +40,14 @@
 
 .container-size-large {
   width: 600px;
+}
+
+.container-size-larger {
+  width: 800px;
+}
+
+.container-size-x-large {
+  width: 1000px;
 }
 
 .container-size-max {
