@@ -24,6 +24,11 @@
     /> --}}
   </div>
   <div class='post-content'>
+    {{#if @post.title}}
+      <p class='title post-title'>
+        {{@post.title}}
+      </p>
+    {{/if}}
     <p>
       {{this.content}}
     </p>

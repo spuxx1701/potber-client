@@ -69,8 +69,12 @@
   padding: 0.5rem;
 }
 
-.post-content p {
+.post-content p:not(.post-title) {
   margin: 0;
+}
+
+.post-title {
+  margin: 0 0 0.5rem 0;
 }
 
 .post-content a {
