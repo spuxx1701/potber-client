@@ -26,7 +26,7 @@ button:not(:disabled):active, .button-link:not(:disabled):active {
   text-decoration: none !important;
 }
 
-.button-link {
+.button-link, .button-link:visited {
   color: var(--color-text-default);
 }
 
