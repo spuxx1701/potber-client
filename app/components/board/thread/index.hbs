@@ -1,7 +1,7 @@
 <Common::Control::Link
   class='board-item {{if this.isImportant "board-item-important"}}'
   @route='thread'
-  @query={{hash TID=@thread.id page=@thread.pagesCount}}
+  @query={{hash TID=@thread.id page=@thread.pagesCount PID=''}}
 >
   <div class='board-item-header'>
     <div class='board-item-title'>

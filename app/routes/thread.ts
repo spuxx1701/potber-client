@@ -8,6 +8,7 @@ import { sleep } from 'potber/utils/misc';
 import RSVP, { reject } from 'rsvp';
 import { scrollToHash } from 'ember-url-hash-polyfill';
 import ThreadsService from 'potber/services/threads';
+import ThreadController from 'potber/controllers/thread';
 
 interface Params {
   TID: string;
@@ -39,13 +40,25 @@ export default class ThreadRoute extends Route {
     },
   };
 
+  resetController(controller: ThreadController) {
+    // Query parameters are sticky by default, so we need to reset them
+    controller.set('TID', '');
+    controller.set('page', '');
+    controller.set('PID', '');
+  }
+
   async model(params: Params) {
     try {
       // Attempt to parse the page
       let page: number | undefined;
-      if (params.page) page = parseInt(params.page) || 1;
+      let postId = params.PID;
+      if (params.page) {
+        page = parseInt(params.page) || 1;
+        // If page is supplied, ignore post ID to prevent conflicts
+        postId = undefined;
+      }
       const thread = await this.threads.getThread(params.TID, {
-        postId: params.PID,
+        postId,
         page,
       });
       this.renderer.tryResetScrollPosition();
@@ -67,7 +80,7 @@ export default class ThreadRoute extends Route {
     await sleep(250);
     // If PID was supplied, we also need to add the anchor
     const params = new URL(window.location.href).searchParams;
-    if (params.has('PID')) {
+    if (params.has('PID') && params.get('PID')) {
       // Set the hash without triggering without triggering a browser scroll action
       const currentState = { ...history.state };
       history.replaceState(

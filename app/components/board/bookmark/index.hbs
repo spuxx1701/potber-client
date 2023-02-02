@@ -2,7 +2,7 @@
   <Common::Control::Link
     class='bookmark-link'
     @route='thread'
-    @query={{hash TID=@bookmark.thread.id PID=@bookmark.postId}}
+    @query={{hash TID=@bookmark.thread.id PID=@bookmark.postId page=''}}
     @variant='secondary'
     @onClick={{this.handleLinkClick}}
   >

@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { BoardRouteModel } from 'potber/routes/board';
 
-export default class ThreadController extends Controller {
+export default class BoardController extends Controller {
   declare model: BoardRouteModel;
 
   queryParams = ['BID', 'page'];

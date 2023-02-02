@@ -37,7 +37,7 @@
       />
       <Common::Control::Menu::LinkTo
         @route='thread'
-        @query={{hash TID=@thread.id page='1'}}
+        @query={{hash TID=@thread.id page='1' PID=''}}
         @text='Zur ersten Seite'
       />
       <Common::Control::Menu::Button
@@ -46,7 +46,7 @@
       />
       <Common::Control::Menu::LinkTo
         @route='thread'
-        @query={{hash TID=@thread.id page=@thread.pagesCount}}
+        @query={{hash TID=@thread.id PID='' page=@thread.pagesCount}}
         @text='Zur letzten Seite'
       />
     </Common::Control::Menu>
