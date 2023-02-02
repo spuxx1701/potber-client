@@ -3,7 +3,6 @@ import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import MessagesService from './messages';
-import ApiService from './api';
 
 export interface Session {
   authenticated: boolean;
@@ -14,7 +13,6 @@ export interface Session {
 
 export default class SessionService extends Service {
   @service declare messages: MessagesService;
-  @service declare api: ApiService;
   @tracked session: Session = {
     authenticated: false,
     username: null,
