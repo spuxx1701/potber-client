@@ -1,19 +1,20 @@
 <div id='post-form-container' class='container-size-x-large'>
   <div role='toolbar' id='post-form-toolbar'>
-    <Common::Control::Button
+    {{! <Common::Control::Button
       @icon='face-smile'
       @prefix='far'
       @text='Emojis'
       @variant='primary-transparent'
       @size='square'
       @type='button'
-    />
+    /> }}
     <Common::Control::Button
       @icon='bold'
       @text='Fett'
       @variant='primary-transparent'
       @size='square'
       @type='button'
+      {{on 'click' (fn this.insertTag '[b]' '[/b]')}}
     />
     <Common::Control::Button
       @icon='italic'
@@ -21,6 +22,7 @@
       @variant='primary-transparent'
       @size='square'
       @type='button'
+      {{on 'click' (fn this.insertTag '[i]' '[/i]')}}
     />
     <Common::Control::Button
       @icon='underline'
@@ -28,6 +30,7 @@
       @variant='primary-transparent'
       @size='square'
       @type='button'
+      {{on 'click' (fn this.insertTag '[u]' '[/u]')}}
     />
     <Common::Control::Button
       @icon='strikethrough'
@@ -35,20 +38,22 @@
       @variant='primary-transparent'
       @size='square'
       @type='button'
+      {{on 'click' (fn this.insertTag '[s]' '[/s]')}}
     />
-    <Common::Control::Button
+    {{! <Common::Control::Button
       @icon='link'
       @text='Link einfügen'
       @variant='primary-transparent'
       @size='square'
       @type='button'
-    />
+    /> }}
     <Common::Control::Button
       @icon='code'
       @text='Codeblock'
       @variant='primary-transparent'
       @size='square'
       @type='button'
+      {{on 'click' (fn this.insertTag '[code]' '[/code]')}}
     />
     <Common::Control::Button
       @icon='quote-right'
@@ -56,6 +61,7 @@
       @variant='primary-transparent'
       @size='square'
       @type='button'
+      {{on 'click' (fn this.insertTag '[quote]' '[/quote]')}}
     />
     <Common::Control::Button
       @icon='eye'
@@ -64,6 +70,7 @@
       @variant='primary-transparent'
       @size='square'
       @type='button'
+      {{on 'click' (fn this.insertTag '[spoiler]' '[/spoiler]')}}
     />
   </div>
   <form id='post-form' {{on 'submit' this.handleSubmit}}>
