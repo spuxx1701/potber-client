@@ -16,12 +16,12 @@
         >{{this.date}}<FaIcon @icon='link' /></button>
       </div>
     </div>
-    {{!-- <Common::Control::Button
-      @icon='ellipsis-vertical'
-      @text='Mehr Funktionen'
-      @size='square'
-      @onClick={{this.handleMenuClick}}
-    /> --}}
+    <Common::Control::Menu @position='bottom-left'>
+      <Common::Control::Menu::Button
+        @text='Bookmark entfernen'
+        @onClick={{this.handleDelete}}
+      />
+    </Common::Control::Menu>
   </div>
   <div class='post-content'>
     {{#if @post.title}}

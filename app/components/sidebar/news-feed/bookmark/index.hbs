@@ -2,7 +2,12 @@
   <Common::Control::Link
     class='flex-column flex-grow'
     @route='thread'
-    @query={{hash TID=@bookmark.thread.id PID=@bookmark.postId page=''}}
+    @query={{hash
+      TID=@bookmark.thread.id
+      PID=@bookmark.postId
+      subtleUntilPostId=@bookmark.postId
+      page=''
+    }}
     @variant='secondary'
     @onClick={{this.handleLinkClick}}
   >

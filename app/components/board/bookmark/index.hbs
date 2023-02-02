@@ -2,7 +2,12 @@
   <Common::Control::Link
     class='bookmark-link'
     @route='thread'
-    @query={{hash TID=@bookmark.thread.id PID=@bookmark.postId page=''}}
+    @query={{hash
+      TID=@bookmark.thread.id
+      PID=@bookmark.postId
+      subtleUntilPostId=''
+      page=''
+    }}
     @variant='secondary'
     @onClick={{this.handleLinkClick}}
   >
@@ -11,7 +16,7 @@
   </Common::Control::Link>
   <Common::Control::Menu @position='bottom-left'>
     <Common::Control::Menu::Button
-      @text='Bookmark entfernen'
+      @text='Zitieren'
       @onClick={{this.handleDelete}}
     />
   </Common::Control::Menu>

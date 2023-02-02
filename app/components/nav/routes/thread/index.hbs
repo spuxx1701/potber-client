@@ -19,7 +19,12 @@
         @title='Vorherige Seite'
         @size='square'
         @route='thread'
-        @query={{hash TID=@thread.id PID='' page=this.previousPage}}
+        @query={{hash
+          TID=@thread.id
+          PID=''
+          page=this.previousPage
+          subtleUntilPostId=''
+        }}
       ><FaIcon @icon='chevron-left' /></Common::Control::Link>
     {{else}}
       <span class='hidden control-size-square' />
@@ -37,7 +42,7 @@
       />
       <Common::Control::Menu::LinkTo
         @route='thread'
-        @query={{hash TID=@thread.id page='1' PID=''}}
+        @query={{hash TID=@thread.id page='1' PID='' subtleUntilPostId=''}}
         @text='Zur ersten Seite'
       />
       <Common::Control::Menu::Button
@@ -46,7 +51,12 @@
       />
       <Common::Control::Menu::LinkTo
         @route='thread'
-        @query={{hash TID=@thread.id PID='' page=@thread.pagesCount}}
+        @query={{hash
+          TID=@thread.id
+          PID=''
+          subtleUntilPostId=''
+          page=@thread.pagesCount
+        }}
         @text='Zur letzten Seite'
       />
     </Common::Control::Menu>
@@ -56,7 +66,12 @@
         @title='Nächste Seite'
         @size='square'
         @route='thread'
-        @query={{hash TID=@thread.id PID='' page=this.nextPage}}
+        @query={{hash
+          TID=@thread.id
+          PID=''
+          subtleUntilPostId=''
+          page=this.nextPage
+        }}
       ><FaIcon @icon='chevron-right' /></Common::Control::Link>
     {{else}}
       <Common::Control::Button

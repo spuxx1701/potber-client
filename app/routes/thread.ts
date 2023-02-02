@@ -14,6 +14,7 @@ interface Params {
   TID: string;
   PID?: string;
   page?: string;
+  subtleUntilPostId?: string;
 }
 
 export interface ThreadRouteModel {
@@ -53,10 +54,12 @@ export default class ThreadRoute extends Route {
       // Attempt to parse the page
       let page: number | undefined;
       let postId = params.PID;
+      let subtleUntilPostId = params.subtleUntilPostId;
       if (params.page) {
         page = parseInt(params.page) || 1;
         // If page is supplied, ignore post ID to prevent conflicts
         postId = undefined;
+        subtleUntilPostId = undefined;
       }
       const thread = await this.threads.getThread(params.TID, {
         postId,
@@ -66,7 +69,7 @@ export default class ThreadRoute extends Route {
       return RSVP.hash({
         thread,
         page: thread.page?.pageNumber || page,
-        subtleUntilPostId: postId,
+        subtleUntilPostId: subtleUntilPostId,
         avatarStyle: this.localStorage.avatarStyle,
       } as ThreadRouteModel);
     } catch (error: any) {
