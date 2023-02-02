@@ -162,6 +162,7 @@ video {
 
 .spoiler-input:checked+.spoiler-header+.spoiler-content {
   display: block;
+  width: 100%;
 }
 
 .post-content table {
