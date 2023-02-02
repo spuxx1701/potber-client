@@ -10,6 +10,7 @@ interface Signature {
   Args: {
     post: Post;
     avatarStyle: string;
+    subtle?: boolean;
   };
 }
 

@@ -19,6 +19,7 @@ interface Params {
 export interface ThreadRouteModel {
   thread: Thread;
   page: number;
+  subtleUntilPostId: string;
   avatarStyle: string;
 }
 
@@ -65,6 +66,7 @@ export default class ThreadRoute extends Route {
       return RSVP.hash({
         thread,
         page: thread.page?.pageNumber || page,
+        subtleUntilPostId: postId,
         avatarStyle: this.localStorage.avatarStyle,
       } as ThreadRouteModel);
     } catch (error: any) {

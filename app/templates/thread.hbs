@@ -11,9 +11,9 @@
   <Board::ThreadPage
     @page={{@model.thread.page}}
     @avatarStyle={{@model.avatarStyle}}
+    @subtleUntilPostId={{@model.subtleUntilPostId}}
   />
 {{else}}
   {{page-title '404'}}
-
   <Error::NotFound />
 {{/if}}

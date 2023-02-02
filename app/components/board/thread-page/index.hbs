@@ -3,7 +3,11 @@
     class='thread-page-content {{if this.makeAllPostsSubtle " post-subtle"}}'
   >
     {{#each this.posts as |post|}}
-      <Board::Post @post={{post}} @avatarStyle={{this.avatarStyle}} />
+      <Board::Post
+        @post={{post}}
+        @avatarStyle={{this.avatarStyle}}
+        @subtle={{is-post-subtle post @subtleUntilPostId @page}}
+      />
     {{/each}}
   </div>
 </div>
