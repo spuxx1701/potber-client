@@ -22,7 +22,7 @@ export default class PostsService extends ApiService {
       );
       const body = this.createFormBody(post, token, { threadId });
       console.log(body);
-      await fetch(`${ENV.APP['FORUM_URL']}newreply.php`, {
+      const response = await fetch(`${ENV.APP['FORUM_URL']}newreply.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -30,12 +30,12 @@ export default class PostsService extends ApiService {
         credentials: 'include',
         body,
       });
+      return await this.processResponse(response);
     } catch (error) {
       this.messages.log('Failed to create post: ' + error, {
         type: 'error',
         context: this.constructor.name,
       });
-      this.messages.showNotification('Das hat leider nicht geklappt.', 'error');
     }
   }
 
@@ -64,5 +64,39 @@ export default class PostsService extends ApiService {
     keyValuePairs.push(`post_disablesmilies=${post.disableEmojis ? '1' : '0'}`);
     keyValuePairs.push(`submit=Eintragen`);
     return keyValuePairs.join('&');
+  }
+
+  /**
+   * Process the response after attempting to create or edit a post for signs
+   * of success or failure. Returns true if success could be confirmed and raises
+   * errors if success could not be confirmed. Will also attempt to extract and display
+   * information about why the process failed.
+   * @param response The response object.
+   * @returns Whether the check was successful.
+   */
+  async processResponse(response: Response) {
+    const text = await response.text();
+    if (new RegExp(/Antwort erstellt\s!/).test(text)) {
+      this.messages.showNotification('Post wurde erstellt.', 'success');
+    } else {
+      if (new RegExp(/Du postest zu viel in zu kurzer Zeit/).test(text)) {
+        this.messages.showNotification(
+          'Du postest zu viel in zu kurzer Zeit.',
+          'error'
+        );
+        throw new Error('Too many requests.');
+      } else {
+        this.messages.showNotification(
+          'Das hat leider nicht geklappt.',
+          'error'
+        );
+        throw new Error('Unable to confirm success due to an unknown reason.');
+      }
+    }
+    // Attempt to retrieve and return the post id
+    const postIdMatches = text.match(/(?:(PID=)(\d*)(#))/);
+    if (postIdMatches && postIdMatches.length >= 3) {
+      return postIdMatches[2];
+    } else return null;
   }
 }
