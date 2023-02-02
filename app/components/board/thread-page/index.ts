@@ -24,8 +24,4 @@ export default class ThreadPageComponent extends Component<Signature> {
       return this.args.page.posts;
     }
   }
-
-  get makeAllPostsSubtle() {
-    return this.args.subtleUntilPostId === '*';
-  }
 }
