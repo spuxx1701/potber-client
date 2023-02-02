@@ -77,7 +77,11 @@ export default class PostsService extends ApiService {
   async processResponse(response: Response) {
     const text = await response.text();
     if (new RegExp(/Antwort erstellt\s!/).test(text)) {
-      this.messages.showNotification('Post wurde erstellt.', 'success');
+      // Attempt to retrieve and return the post id
+      const postIdMatches = text.match(/(?:(PID=)(\d*)(#))/);
+      if (postIdMatches && postIdMatches.length >= 3) {
+        return postIdMatches[2];
+      } else return null;
     } else {
       if (new RegExp(/Du postest zu viel in zu kurzer Zeit/).test(text)) {
         this.messages.showNotification(
@@ -93,10 +97,5 @@ export default class PostsService extends ApiService {
         throw new Error('Unable to confirm success due to an unknown reason.');
       }
     }
-    // Attempt to retrieve and return the post id
-    const postIdMatches = text.match(/(?:(PID=)(\d*)(#))/);
-    if (postIdMatches && postIdMatches.length >= 3) {
-      return postIdMatches[2];
-    } else return null;
   }
 }
