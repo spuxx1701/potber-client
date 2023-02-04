@@ -59,8 +59,4 @@ export default class PostComponent extends Component<Signature> {
       'success'
     );
   }
-
-  @action handleMenuClick() {
-    // do something
-  }
 }
