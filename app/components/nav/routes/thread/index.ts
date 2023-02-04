@@ -7,6 +7,7 @@ import { service } from '@ember/service';
 import RendererService from 'potber/services/renderer';
 import ModalService from 'potber/services/modal';
 import RouterService from '@ember/routing/router-service';
+import SessionService from 'potber/services/session';
 
 export interface Signature {
   Args: {
@@ -19,6 +20,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare modal: ModalService;
   @service declare router: RouterService;
+  @service declare session: SessionService;
   declare args: Signature['Args'];
 
   get subtitle() {
@@ -47,6 +49,10 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
 
   get originalUrl() {
     return `${ENV.APP['FORUM_URL']}thread.php?TID=${this.args.thread.id}`;
+  }
+
+  get authenticated() {
+    return this.session.session.authenticated;
   }
 
   @action async reload() {

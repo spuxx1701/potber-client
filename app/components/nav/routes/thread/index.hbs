@@ -83,13 +83,17 @@
     {{/if}}
   </div>
 
-  <Common::Control::Link
-    @title='Antworten'
-    @size='square'
-    @route='authenticated.post.create'
-    @query={{hash TID=@thread.id page=@thread.pagesCount}}
-    @disabled={{@thread.isClosed}}
-  ><FaIcon
-      @icon={{if @thread.isClosed 'lock' 'comment'}}
-    /></Common::Control::Link>
+  {{#if this.authenticated}}
+    <Common::Control::Link
+      @title='Antworten'
+      @size='square'
+      @route='authenticated.post.create'
+      @query={{hash TID=@thread.id page=@thread.pagesCount}}
+      @disabled={{@thread.isClosed}}
+    ><FaIcon
+        @icon={{if @thread.isClosed 'lock' 'comment'}}
+      /></Common::Control::Link>
+  {{else}}
+    <span class='control-size-square' />
+  {{/if}}
 </Portal>
