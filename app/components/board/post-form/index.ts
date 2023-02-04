@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import ModalService from 'potber/services/modal';
 import { getRandomEmojiIcon } from 'potber/utils/icons';
 
@@ -23,6 +24,7 @@ interface Signature {
 
 export default class PostFormComponent extends Component<Signature> {
   @service declare modal: ModalService;
+  @tracked icon = this.args.post.icon;
 
   get randomEmojiIcon() {
     return getRandomEmojiIcon();
@@ -58,6 +60,17 @@ export default class PostFormComponent extends Component<Signature> {
 
   @action handleTitleChange(value: string) {
     this.args.post.title = value;
+  }
+
+  @action handlePostIconClick() {
+    this.modal.iconSelect({
+      type: 'post-icon',
+      onSelect: this.handlePostIconSelect,
+    });
+  }
+
+  @action handlePostIconSelect(key: string) {
+    this.args.post.icon = this.icon = key;
   }
 
   @action handleMessageChange(event: InputEvent) {

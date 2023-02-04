@@ -21,7 +21,6 @@ export default class PostsService extends ApiService {
         `newreply.php?TID=${threadId}`
       );
       const body = this.createFormBody(post, token, { threadId });
-      console.log(body);
       const response = await fetch(`${ENV.APP['FORUM_URL']}newreply.php`, {
         method: 'POST',
         headers: {

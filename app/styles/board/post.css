@@ -74,7 +74,13 @@
 }
 
 .post-title {
+  display: flex;
+  align-items: center;
   margin: 0 0 0.5rem 0;
+}
+
+.post-title>img {
+  margin-right: 0.25rem;
 }
 
 .post-content a {

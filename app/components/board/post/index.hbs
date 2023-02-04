@@ -24,8 +24,13 @@
     </Common::Control::Menu>
   </div>
   <div class='post-content'>
-    {{#if @post.title}}
+    {{#if (or @post.title @post.icon)}}
       <p class='title post-title'>
+        <Board::Icon
+          @key={{@post.icon}}
+          @directory='post-icons'
+          @filename='{{@post.icon}}.gif'
+        />
         {{@post.title}}
       </p>
     {{/if}}

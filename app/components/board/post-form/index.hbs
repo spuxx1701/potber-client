@@ -85,6 +85,23 @@
         form='post-form'
         @onChange={{this.handleTitleChange}}
       />
+      <Common::Control::Button
+        @text='Post-Icon'
+        @variant='primary-transparent'
+        @size='square'
+        @type='button'
+        {{on 'click' this.handlePostIconClick}}
+      >
+        {{#if (eq this.icon '0')}}
+          <FaIcon @icon={{this.randomEmojiIcon}} @prefix='far' />
+        {{else}}
+          <Board::Icon
+            @key={{this.icon}}
+            @directory='post-icons'
+            @filename='{{this.icon}}.gif'
+          />
+        {{/if}}
+      </Common::Control::Button>
     </div>
     <textarea
       id='post-form-textarea'

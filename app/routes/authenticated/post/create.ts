@@ -6,6 +6,7 @@ import { Thread } from 'potber/services/api/types/thread';
 import MessagesService from 'potber/services/messages';
 import RendererService from 'potber/services/renderer';
 import ThreadsService from 'potber/services/threads';
+import RSVP from 'rsvp';
 
 interface Params {
   TID: string;
@@ -30,7 +31,7 @@ export default class PostCreateRoute extends Route {
         updateBookmark: false,
       });
       this.renderer.tryResetScrollPosition();
-      return {
+      return RSVP.hash({
         thread,
         post: {
           title: '',
@@ -40,7 +41,7 @@ export default class PostCreateRoute extends Route {
           disableBbCode: false,
           disableEmojis: false,
         },
-      } as PostCreateRouteModel;
+      } as PostCreateRouteModel);
     } catch (error) {
       this.messages.showNotification(
         'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',

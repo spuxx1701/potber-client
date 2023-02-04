@@ -15,6 +15,7 @@
 
 #post-form-header {
   display: flex;
+  align-items: center;
 }
 
 #post-form-toolbar {

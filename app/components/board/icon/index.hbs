@@ -1,5 +1,7 @@
-<img
-  class='post-icon'
-  src='/images/{{@directory}}/{{@filename}}'
-  alt={{@key}}
-/>
+{{#unless (eq @key '0')}}
+  <img
+    class='post-icon'
+    src='/images/{{@directory}}/{{@filename}}'
+    alt={{@key}}
+  />
+{{/unless}}
