@@ -1,5 +1,8 @@
 button, .button-link {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: var(--control-default-height);
   min-height: var(--control-default-height);
   border: none;
