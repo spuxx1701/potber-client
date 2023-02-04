@@ -1,29 +1,33 @@
 {{page-title 'potber'}}
 
-<div id='page-content'>
-  {{outlet}}
-</div>
+{{#if @model.failure}}
+  <Misc::Error::StartupFailure @error={{@model.error}} />
+{{else}}
+  <div id='page-content'>
+    {{outlet}}
+  </div>
 
-<Sidebar @bookmarksSummary={{@model.bookmarksSummary}} />
+  <Sidebar @bookmarksSummary={{@model.bookmarksSummary}} />
 
-<Misc::LoadingIndicator />
+  <Misc::LoadingIndicator />
 
-<Modal />
+  <Modal />
 
-<NotificationContainer @position='bottom' @zindex='99' />
+  <NotificationContainer @position='bottom' @zindex='99' />
 
-<div id='top-nav' class='nav' role='toolbar'>
-  <Common::Control::Button
-    @icon={{if this.renderer.leftSidebarExpanded 'chevron-left' 'bars'}}
-    @text='Navigation'
-    @size='square'
-    @variant='primary-transparent'
-    @onClick={{this.toggleLeftSidebar}}
-  />
-  <PortalTarget @name='top-nav' class='nav-portal-target' />
-  <span class='control-size-square' />
-</div>
+  <div id='top-nav' class='nav' role='toolbar'>
+    <Common::Control::Button
+      @icon={{if this.renderer.leftSidebarExpanded 'chevron-left' 'bars'}}
+      @text='Navigation'
+      @size='square'
+      @variant='primary-transparent'
+      @onClick={{this.toggleLeftSidebar}}
+    />
+    <PortalTarget @name='top-nav' class='nav-portal-target' />
+    <span class='control-size-square' />
+  </div>
 
-<div id='bottom-nav' class='nav' role='toolbar'>
-  <PortalTarget @name='bottom-nav' class='nav-portal-target' />
-</div>
+  <div id='bottom-nav' class='nav' role='toolbar'>
+    <PortalTarget @name='bottom-nav' class='nav-portal-target' />
+  </div>
+{{/if}}
