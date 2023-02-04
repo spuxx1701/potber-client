@@ -1,0 +1,8 @@
+<Common::Control::Button
+  @icon='strikethrough'
+  @text='Durchgestrichen'
+  @variant='primary-transparent'
+  @size='square'
+  @type='button'
+  {{on 'click' (fn this.insertTag '[s]' '[/s]')}}
+/>

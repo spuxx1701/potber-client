@@ -1,45 +1,40 @@
 <div id='post-form-container' class='container-size-x-large'>
   <div role='toolbar' id='post-form-toolbar'>
-    <Common::Control::Button
-      @icon={{this.randomEmojiIcon}}
-      @prefix='far'
-      @text='Emojis'
-      @variant='primary-transparent'
-      @size='square'
-      @type='button'
-      {{on 'click' this.handlePostEmojiClick}}
+    <Board::PostForm::Control::EmojiSelect
+      @post={{@post}}
+      @textarea={{this.textarea}}
     />
-    <Common::Control::Button
-      @icon='bold'
+    <Board::PostForm::Control::SimpleTag
       @text='Fett'
-      @variant='primary-transparent'
-      @size='square'
-      @type='button'
-      {{on 'click' (fn this.insertTag '[b]' '[/b]')}}
+      @icon='bold'
+      @opening='[b]'
+      @closing='[/b]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
     />
-    <Common::Control::Button
-      @icon='italic'
+    <Board::PostForm::Control::SimpleTag
       @text='Kursiv'
-      @variant='primary-transparent'
-      @size='square'
-      @type='button'
-      {{on 'click' (fn this.insertTag '[i]' '[/i]')}}
+      @icon='italic'
+      @opening='[i]'
+      @closing='[/i]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
     />
-    <Common::Control::Button
-      @icon='underline'
+    <Board::PostForm::Control::SimpleTag
       @text='Unterstrichen'
-      @variant='primary-transparent'
-      @size='square'
-      @type='button'
-      {{on 'click' (fn this.insertTag '[u]' '[/u]')}}
+      @icon='underline'
+      @opening='[u]'
+      @closing='[/u]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
     />
-    <Common::Control::Button
-      @icon='strikethrough'
+    <Board::PostForm::Control::SimpleTag
       @text='Durchgestrichen'
-      @variant='primary-transparent'
-      @size='square'
-      @type='button'
-      {{on 'click' (fn this.insertTag '[s]' '[/s]')}}
+      @icon='strikethrough'
+      @opening='[s]'
+      @closing='[/s]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
     />
     {{! <Common::Control::Button
       @icon='link'
@@ -48,61 +43,36 @@
       @size='square'
       @type='button'
     /> }}
-    <Common::Control::Button
+    <Board::PostForm::Control::SimpleTag
+      @text='Code'
       @icon='code'
-      @text='Codeblock'
-      @variant='primary-transparent'
-      @size='square'
-      @type='button'
-      {{on 'click' (fn this.insertTag '[code]' '[/code]')}}
+      @opening='[code]'
+      @closing='[/code]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
     />
-    <Common::Control::Button
-      @icon='quote-right'
+    <Board::PostForm::Control::SimpleTag
       @text='Zitat'
-      @variant='primary-transparent'
-      @size='square'
-      @type='button'
-      {{on 'click' (fn this.insertTag '[quote]' '[/quote]')}}
+      @icon='quote-right'
+      @opening='[quote]'
+      @closing='[/quote]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
     />
-    <Common::Control::Button
+    <Board::PostForm::Control::SimpleTag
+      @text='Spoiler'
       @icon='eye'
       @prefix='far'
-      @text='Spoiler'
-      @variant='primary-transparent'
-      @size='square'
-      @type='button'
-      {{on 'click' (fn this.insertTag '[spoiler]' '[/spoiler]')}}
+      @opening='[quote]'
+      @closing='[/quote]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
     />
   </div>
   <form id='post-form' {{on 'submit' this.handleSubmit}}>
-    <div role='toolbar' id='post-form-header'>
-      <Common::Control::Input
-        @label='Titel'
-        @size='max'
-        @value={{@post.title}}
-        type='text'
-        maxLength='255'
-        form='post-form'
-        @onChange={{this.handleTitleChange}}
-      />
-      <Common::Control::Button
-        @text='Post-Icon'
-        @variant='primary-transparent'
-        @size='square'
-        @type='button'
-        {{on 'click' this.handlePostIconClick}}
-      >
-        {{#if (eq this.icon '0')}}
-          <FaIcon @icon={{this.randomEmojiIcon}} @prefix='far' />
-        {{else}}
-          <Board::Icon
-            @key={{this.icon}}
-            @directory='post-icons'
-            @filename='{{this.icon}}.gif'
-          />
-        {{/if}}
-      </Common::Control::Button>
-    </div>
+    {{#unless @hideTitle}}
+      <Board::PostForm::Control::Title @post={{@post}} />
+    {{/unless}}
     <textarea
       id='post-form-textarea'
       placeholder='Nachricht eingeben...'
