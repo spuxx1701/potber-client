@@ -21,6 +21,11 @@
         @text='Bookmark entfernen'
         @onClick={{this.handleDelete}}
       />
+      <Common::Control::Menu::Link
+        @text='Original öffnen'
+        @href={{this.originalUrl}}
+        target='_blank'
+      />
     </Common::Control::Menu>
   </div>
   <div class='post-content'>

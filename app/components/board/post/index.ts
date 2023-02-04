@@ -28,6 +28,10 @@ export default class PostComponent extends Component<Signature> {
     return `${window.location.protocol}//${window.location.host}/thread?TID=${this.args.post.threadId}&PID=${this.args.post.id}#reply_${this.args.post.id}`;
   }
 
+  get originalUrl() {
+    return `${ENV.APP['FORUM_URL']}/thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}#reply_${this.args.post.id}`;
+  }
+
   get content() {
     const content = this.contentParser.parsePostContent(this.args.post.content);
     return content;
