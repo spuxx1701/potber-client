@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { ConfirmModalOptions } from 'potber/components/modal/types/confirm';
+import { IconSelectModalOptions } from 'potber/components/modal/types/icon-select';
 import { InputModalOptions } from 'potber/components/modal/types/input';
 import { sleep } from 'potber/utils/misc';
 
@@ -14,6 +15,7 @@ interface ActiveModal {
 export enum ModalType {
   confirm = 'confirm',
   input = 'input',
+  iconSelect = 'icon-select',
 }
 
 export default class ModalService extends Service {
@@ -36,6 +38,14 @@ export default class ModalService extends Service {
    */
   input(options: InputModalOptions) {
     this.show(ModalType.input, options);
+  }
+
+  /**
+   * Calls an icon-select modal.
+   * @param options The icon-select modal options.
+   */
+  iconSelect(options: IconSelectModalOptions) {
+    this.show(ModalType.iconSelect, options);
   }
 
   /**

@@ -11,7 +11,11 @@
   <div class='board-item-header'>
     <div class='board-item-title'>
       {{#if this.icon}}
-        <Board::PostIcon @icon={{this.icon}} />
+        <Board::Icon
+          @key={{this.icon}}
+          @directory='post-icons'
+          @filename={{concat this.icon '.gif'}}
+        />
       {{/if}}
       <p>{{@thread.title}}</p>
     </div>

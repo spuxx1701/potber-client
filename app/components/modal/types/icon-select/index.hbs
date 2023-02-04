@@ -1,0 +1,31 @@
+<Modal::Component::Header
+  @title={{this.title}}
+  @icon={{this.randomEmojiIcon}}
+  @variant='info'
+/>
+<Modal::Component::Content>
+  <div class='modal-select-icon-option-container'>
+
+    {{#each this.options as |option|}}
+      <Common::Control::Button
+        @variant='secondary'
+        @size='square'
+        @onClick={{fn this.handleSelect option}}
+      >
+        <Board::Icon
+          @key={{option.key}}
+          @directory={{option.directory}}
+          @filename={{option.filename}}
+        />
+      </Common::Control::Button>
+    {{/each}}
+  </div>
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @text='Abbrechen'
+    @variant='secondary'
+    @size='small'
+    @onClick={{this.handleCancel}}
+  />
+</Modal::Component::Footer>

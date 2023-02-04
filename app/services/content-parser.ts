@@ -2,7 +2,7 @@ import Service, { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 // import yabbcode from 'ya-bbcode';
 import yabbcode from './bbcode/ya-bbcode';
-import { emojis } from './bbcode/emoji';
+import { emojis } from 'potber/utils/icons';
 import MessagesService from './messages';
 
 export default class ContentParserService extends Service {

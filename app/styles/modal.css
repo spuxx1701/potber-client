@@ -1,3 +1,5 @@
+@import "modal/select-icon.css";
+
 :root {
   /* The following variables may change during runtime. */
   --modal-opacity: 0;

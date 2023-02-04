@@ -1,13 +1,14 @@
 <div id='post-form-container' class='container-size-x-large'>
   <div role='toolbar' id='post-form-toolbar'>
-    {{! <Common::Control::Button
-      @icon='face-smile'
+    <Common::Control::Button
+      @icon={{this.randomEmojiIcon}}
       @prefix='far'
       @text='Emojis'
       @variant='primary-transparent'
       @size='square'
       @type='button'
-    /> }}
+      {{on 'click' this.handlePostEmojiClick}}
+    />
     <Common::Control::Button
       @icon='bold'
       @text='Fett'

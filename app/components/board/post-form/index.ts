@@ -1,5 +1,8 @@
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import ModalService from 'potber/services/modal';
+import { getRandomEmojiIcon } from 'potber/utils/icons';
 
 export interface PostFormContent {
   title: string;
@@ -19,7 +22,11 @@ interface Signature {
 }
 
 export default class PostFormComponent extends Component<Signature> {
-  declare args: Signature['Args'];
+  @service declare modal: ModalService;
+
+  get randomEmojiIcon() {
+    return getRandomEmojiIcon();
+  }
 
   get submitLabel() {
     return this.args.submitLabel || 'Absenden';
@@ -30,6 +37,23 @@ export default class PostFormComponent extends Component<Signature> {
     if (textarea) {
       return textarea as HTMLTextAreaElement;
     } else throw new Error('post-form-textarea could not be found.');
+  }
+
+  @action handlePostEmojiClick() {
+    this.modal.iconSelect({
+      type: 'post-emoji',
+      onSelect: this.handlePostEmojiSelect,
+    });
+  }
+
+  @action handlePostEmojiSelect(key: string) {
+    const message = this.args.post.message;
+    const selectionEnd = this.textarea.selectionEnd;
+    this.args.post.message =
+      message.substring(0, this.textarea.selectionEnd) +
+      key +
+      message.substring(selectionEnd, message.length);
+    this.textarea.value = this.args.post.message;
   }
 
   @action handleTitleChange(value: string) {

@@ -1,10 +1,80 @@
-export interface Emoji {
+export interface PostIcon {
   key: string;
-  pattern: RegExp | string;
-  filename: string;
+  filename: string | null;
 }
 
-export const emojis = [
+export const postIcons: PostIcon[] = [
+  {
+    key: '0',
+    filename: null,
+  },
+  {
+    key: '1',
+    filename: '1.gif',
+  },
+  {
+    key: '2',
+    filename: '2.gif',
+  },
+  {
+    key: '28',
+    filename: '28.gif',
+  },
+  {
+    key: '32',
+    filename: '32.gif',
+  },
+  {
+    key: '33',
+    filename: '33.gif',
+  },
+  {
+    key: '34',
+    filename: '34.gif',
+  },
+  {
+    key: '35',
+    filename: '35.gif',
+  },
+  {
+    key: '36',
+    filename: '36.gif',
+  },
+  {
+    key: '37',
+    filename: '37.gif',
+  },
+  {
+    key: '38',
+    filename: '38.gif',
+  },
+  {
+    key: '39',
+    filename: '39.gif',
+  },
+  {
+    key: '40',
+    filename: '40.gif',
+  },
+  {
+    key: '41',
+    filename: '41.gif',
+  },
+  {
+    key: '42',
+    filename: '42.gif',
+  },
+  {
+    key: '54',
+    filename: '54.gif',
+  },
+];
+
+export interface Emoji extends PostIcon {
+  pattern: RegExp | string;
+}
+
+export const emojis: Emoji[] = [
   {
     key: '8|',
     pattern: /\8\|/g,
@@ -130,4 +200,52 @@ export const emojis = [
     pattern: /\^\^/g,
     filename: 'icon5.gif',
   },
-] as Emoji[];
+];
+
+/**
+ * Returns a random font awesome emoji icon path.
+ * @returns A font awesome icon path.
+ */
+export function getRandomEmojiIcon() {
+  return fontAwesomeEmojiPaths[
+    Math.floor(Math.random() * fontAwesomeEmojiPaths.length)
+  ];
+}
+
+export const fontAwesomeEmojiPaths = [
+  'face-tired',
+  'face-surprise',
+  'face-smile-wink',
+  'face-smile-beam',
+  'face-sad-tear',
+  'face-sad-cry',
+  'face-rolling-eyes',
+  'face-meh-blank',
+  'face-meh',
+  'face-laugh-wink',
+  'face-laugh-squint',
+  'face-laugh-beam',
+  'face-laugh',
+  'face-kiss-wink-heart',
+  'face-kiss-beam',
+  'face-kiss',
+  'face-grin-wink',
+  'face-grin-wide',
+  'face-grin-tongue-wink',
+  'face-grin-tongue-squint',
+  'face-grin-tongue',
+  'face-grin-tears',
+  'face-grin-stars',
+  'face-grin-squint-tears',
+  'face-grin-squint',
+  'face-grin-hearts',
+  'face-grin-beam-sweat',
+  'face-grin-beam',
+  'face-grin',
+  'face-grimace',
+  'face-frown-open',
+  'face-frown',
+  'face-flushed',
+  'face-dizzy',
+  'face-angry',
+];
