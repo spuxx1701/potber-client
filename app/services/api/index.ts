@@ -88,9 +88,15 @@ export default class ApiService extends Service {
     if (selectedIconMatches && selectedIconMatches.length >= 3) {
       result.icon = selectedIconMatches[2] as string;
     }
-    const messageMatches = text.match(
+    let messageMatches = text.match(
       /(?:(<textarea name='message'.*>)((.|\n)*?)(<\/textarea>))/
     );
+    // In case of failure, try again with a better replacement of DOTALL
+    if (!messageMatches) {
+      messageMatches = text.match(
+        /(?:(<textarea name='message'.*>)((.|\n|\s|\S)*?)(<\/textarea>))/
+      );
+    }
     if (messageMatches && messageMatches.length >= 3) {
       result.message = messageMatches[2] as string;
     }
