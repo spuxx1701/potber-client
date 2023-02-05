@@ -41,4 +41,21 @@ export default class AppService extends Service {
     }
     return isWebkit;
   }
+
+  @action registerPwaServiceWorker() {
+    navigator.serviceWorker.register('/pwa/service-worker.js');
+    this.messages.log('PWA service worker registered.', {
+      context: this.constructor.name,
+    });
+  }
+
+  @action async unregisterPwaServiceWorker() {
+    const serviceWorker = await navigator.serviceWorker.getRegistration(
+      '/service-workers/pwa.js'
+    );
+    if (serviceWorker) serviceWorker.unregister();
+    this.messages.log('PWA service worker unregistered.', {
+      context: this.constructor.name,
+    });
+  }
 }

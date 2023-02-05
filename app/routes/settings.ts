@@ -18,11 +18,14 @@ export default class SettingsRoute extends Route {
       currentLandingPageOption: landingPageOptions.find(
         (option) => option.data === this.localStorage.getLandingPage()
       ),
+      currentRunModeOption: runModeOptions.find(
+        (option) => option.data === this.localStorage.getRunMode()
+      ),
     });
   }
 }
 
-export const avatarStyleOptions = [
+export const avatarStyleOptions: DropdownOption[] = [
   {
     label: 'Keine',
     data: 'none',
@@ -31,9 +34,9 @@ export const avatarStyleOptions = [
     label: 'Klein',
     data: 'small',
   },
-] as DropdownOption[];
+];
 
-export const boxStyleOptions = [
+export const boxStyleOptions: DropdownOption[] = [
   {
     label: 'Kantholz',
     data: 'rect',
@@ -42,9 +45,9 @@ export const boxStyleOptions = [
     label: 'Hobelware',
     data: 'round',
   },
-] as DropdownOption[];
+];
 
-export const landingPageOptions = [
+export const landingPageOptions: DropdownOption[] = [
   {
     label: 'Forenübersicht',
     data: 'board-overview',
@@ -52,5 +55,16 @@ export const landingPageOptions = [
   {
     label: 'Public Offtopic',
     data: 'pot',
+  },
+];
+
+export const runModeOptions: DropdownOption[] = [
+  {
+    label: 'Browser (Website-like)',
+    data: 'browser',
+  },
+  {
+    label: 'PWA (App-like)',
+    data: 'pwa',
   },
 ];

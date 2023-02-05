@@ -86,6 +86,23 @@ export default class LocalStorageService extends Service {
   }
 
   /**
+   * Gets 'runMode' from localStorage.
+   * @returns Whether the page runs in browser or in PWA mode.
+   */
+  getRunMode(): string {
+    return localStorage.getItem(`${PREFIX}runMode`) || 'browser';
+  }
+
+  /**
+   * Sets and stores 'landingPage'.
+   * @param value The new value.
+   */
+  setRunMode(value: 'pwa' | 'browser') {
+    localStorage.setItem(`${PREFIX}runMode`, value);
+    this.landingPage = value;
+  }
+
+  /**
    * Gets the board favorite IDs from localStorage and triggers an async update of
    * the board favorites.
    * @returns {Promise<Board[]>} A promise of the board favorites.
