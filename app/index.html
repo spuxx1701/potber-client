@@ -8,10 +8,12 @@
 
     {{content-for "head"}}
 
+    <link rel="manifest" href="{{rootURL}}manifest.webmanifest" />
+    <meta name="msapplication-config" content="{{rootURL}}browserconfig.xml" />
+
     <link integrity="" rel="icon" href="{{rootURL}}favicon.ico" />
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css" />
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/potber.css" />
-    <link rel="manifest" href="{{rootURL}}pwa/manifest.json" />
 
     {{content-for "head-footer"}}
   </head>
