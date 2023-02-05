@@ -75,7 +75,12 @@
 
 .control-size-large {
   width: 180px;
-  max-width: min(200px, 100%);
+  max-width: min(180px, 100%);
+}
+
+.control-size-larger {
+  width: 220px;
+  max-width: min(220px, 100%);
 }
 
 .control-size-max {
