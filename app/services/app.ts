@@ -2,6 +2,7 @@ import RouterService from '@ember/routing/router-service';
 import Service, { service } from '@ember/service';
 import { sleep } from 'potber/utils/misc';
 import LocalStorageService from './local-storage';
+import MessagesService from './messages';
 import ModalService from './modal';
 import NewsFeedService from './news-feed';
 import RendererService from './renderer';
@@ -14,6 +15,7 @@ export default class AppService extends Service {
   @service declare router: RouterService;
   @service declare modal: ModalService;
   @service declare newsFeed: NewsFeedService;
+  @service declare messages: MessagesService;
   initialized = false;
 
   async initialize() {
@@ -21,7 +23,7 @@ export default class AppService extends Service {
     this.localStorage.initialize();
     this.renderer.initialize();
     await this.session.initialize();
-    this.checkForNewVersion();
+    // this.checkForNewVersion();
     this.newsFeed.refresh();
     this.initialized = true;
   }
@@ -43,5 +45,16 @@ export default class AppService extends Service {
       });
     }
     this.localStorage.setEncounteredVersion();
+  }
+
+  get isWebkit() {
+    const userAgent = navigator.userAgent;
+    const isWebkit =
+      /\b(iPad|iPhone|iPod)\b/.test(userAgent) && /WebKit/.test(userAgent);
+    this.messages.log('Webkit recognized.', {
+      type: 'warning',
+      context: this.constructor.name,
+    });
+    return isWebkit;
   }
 }

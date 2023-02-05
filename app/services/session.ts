@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import MessagesService from './messages';
+import AppService from './app';
 
 export interface Session {
   authenticated: boolean;
@@ -12,6 +13,7 @@ export interface Session {
 }
 
 export default class SessionService extends Service {
+  @service declare app: AppService;
   @service declare messages: MessagesService;
   @tracked session: Session = {
     authenticated: false,
@@ -111,6 +113,22 @@ export default class SessionService extends Service {
    */
   @action async updateState() {
     try {
+      // On Safari, we need to ask the user for permission to access third party cookies
+      if (this.app.isWebkit && !document.hasStorageAccess()) {
+        try {
+          await document.requestStorageAccess();
+        } catch (error) {
+          this.messages.showNotification(
+            'Ohne diese Berechtigung funktioniert potber nicht auf iOS-Browsern.',
+            'error'
+          );
+          this.messages.log('Storage access was denied by user.', {
+            type: 'error',
+            context: this.constructor.name,
+          });
+          throw new Error('Storage access denied was by user.');
+        }
+      }
       // We need to call the main page to check our status and also retrieve
       // some session details
       const text = await (
