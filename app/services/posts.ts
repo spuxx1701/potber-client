@@ -75,9 +75,9 @@ export default class PostsService extends ApiService {
       keyValuePairs.push(`PID=${options.postId}`);
     }
     keyValuePairs.push(`token=${post.token}`);
-    keyValuePairs.push(`${prefix}_title=${post.title}`);
+    keyValuePairs.push(`${prefix}_title=${escape(post.title)}`);
     keyValuePairs.push(`${prefix}_icon=${post.icon}`);
-    keyValuePairs.push(`message=${post.message}`);
+    keyValuePairs.push(`message=${escape(post.message)}`);
     keyValuePairs.push(`${prefix}_converturls=${post.convertUrls ? '1' : '0'}`);
     keyValuePairs.push(
       `${prefix}_disablebbcode=${post.disableBbCode ? '1' : '0'}`

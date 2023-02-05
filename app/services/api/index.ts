@@ -68,7 +68,7 @@ export default class ApiService extends Service {
       credentials: 'include',
     });
     const text = await response.text();
-    const tokenMatches = text.match(/(?:(name='token'\svalue=')(.*)('\s\/>))/);
+    const tokenMatches = text.match(/(?:(name='token'\svalue=')(.*?)('\s\/>))/);
     if (tokenMatches && tokenMatches.length >= 3) {
       result.token = tokenMatches[2] as string;
     } else {
@@ -87,10 +87,10 @@ export default class ApiService extends Service {
       result.icon = selectedIconMatches[2] as string;
     }
     const messageMatches = text.match(
-      /(?:(<textarea name='message'(.*)>)((.|\n)*)(<\/textarea>))/
+      /(?:(<textarea name='message'.*>)((.|\s|\S|\n)*?)(<\/textarea>))/
     );
-    if (messageMatches && messageMatches.length >= 4) {
-      result.message = messageMatches[3] as string;
+    if (messageMatches && messageMatches.length >= 3) {
+      result.message = messageMatches[2] as string;
     }
     return result;
   }
