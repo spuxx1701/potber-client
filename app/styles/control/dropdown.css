@@ -79,6 +79,7 @@
   white-space: initial;
   border-radius: 0px;
   text-align: start;
+  justify-content: start;
 }
 
 .dropdown-item:focus, .dropdown-item:active, .dropdown-item-selected {
