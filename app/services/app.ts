@@ -1,3 +1,4 @@
+import { action } from '@ember/object';
 import RouterService from '@ember/routing/router-service';
 import Service, { service } from '@ember/service';
 import { sleep } from 'potber/utils/misc';
@@ -49,7 +50,6 @@ export default class AppService extends Service {
 
   get isWebkit() {
     const userAgent = navigator.userAgent;
-    debugger;
     const isWebkit =
       /\b(iPad|iPhone|iPod)\b/.test(userAgent) && /WebKit/.test(userAgent);
     if (isWebkit) {
@@ -59,5 +59,30 @@ export default class AppService extends Service {
       });
     }
     return isWebkit;
+  }
+
+  @action async requestStorageAccess() {
+    if (!document.hasStorageAccess()) {
+      this.messages.log('Requesting storace access for webkit compatibility.', {
+        context: this.constructor.name,
+      });
+      try {
+        await document.requestStorageAccess();
+        this.messages.log('Storage access was granted.', {
+          type: 'success',
+          context: this.constructor.name,
+        });
+      } catch (error) {
+        this.messages.showNotification(
+          'Ohne diese Berechtigung funktioniert potber nicht auf iOS-Browsern.',
+          'error'
+        );
+        this.messages.log('Storage access was denied by user.', {
+          type: 'error',
+          context: this.constructor.name,
+        });
+        throw new Error('Storage access denied was by user.');
+      }
+    }
   }
 }
