@@ -2,7 +2,7 @@
   "name": "potber",
   "version": "0.2.3",
   "private": true,
-  "description": "Small description for potber goes here",
+  "description": "An SPA client for the german board forum.mods.de built with Ember.js.",
   "repository": "",
   "license": "MIT",
   "author": "",
