@@ -113,10 +113,6 @@ export default class SessionService extends Service {
    */
   @action async updateState() {
     try {
-      // On Safari, we need to ask the user for permission to access third party cookies
-      if (this.app.isWebkit) {
-        await this.app.requestStorageAccess();
-      }
       // We need to call the main page to check our status and also retrieve
       // some session details
       const text = await (

@@ -29,25 +29,6 @@ export default class AppService extends Service {
     this.initialized = true;
   }
 
-  async checkForNewVersion() {
-    const unencountedVersion = this.localStorage.getUnencountedVersion();
-    if (unencountedVersion) {
-      await sleep(1000);
-      this.modal.confirm({
-        title: 'Es gibt Neuigkeiten!',
-        text: `Potber wurde auf Version ${unencountedVersion} aktualisiert. 
-        Tippe auf 'OK', um mehr über die Änderungen zu erfahren.`,
-        icon: 'star',
-        cancelLabel: 'Geh weg!',
-        onSubmit: () => {
-          this.modal.close();
-          this.router.transitionTo('changelog');
-        },
-      });
-    }
-    this.localStorage.setEncounteredVersion();
-  }
-
   get isWebkit() {
     const userAgent = navigator.userAgent;
     const isWebkit =
@@ -59,31 +40,5 @@ export default class AppService extends Service {
       });
     }
     return isWebkit;
-  }
-
-  @action async requestStorageAccess() {
-    alert('checking storage access');
-    if (!document.hasStorageAccess()) {
-      this.messages.log('Requesting storace access for webkit compatibility.', {
-        context: this.constructor.name,
-      });
-      try {
-        await document.requestStorageAccess();
-        this.messages.log('Storage access was granted.', {
-          type: 'success',
-          context: this.constructor.name,
-        });
-      } catch (error) {
-        this.messages.showNotification(
-          'Ohne diese Berechtigung funktioniert potber nicht auf iOS-Browsern.',
-          'error'
-        );
-        this.messages.log('Storage access was denied by user.', {
-          type: 'error',
-          context: this.constructor.name,
-        });
-        throw new Error('Storage access denied was by user.');
-      }
-    }
   }
 }
