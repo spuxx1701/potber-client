@@ -22,6 +22,13 @@
         @href={{this.originalUrl}}
         target='_blank'
       />
+      {{#if this.canEdit}}
+        <Common::Control::Menu::LinkTo
+          @text='Bearbeiten'
+          @route='authenticated.post.edit'
+          @query={{hash TID=@post.threadId PID=@post.id}}
+        />
+      {{/if}}
     </Common::Control::Menu>
   </div>
   <div class='post-content'>

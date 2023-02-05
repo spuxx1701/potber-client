@@ -59,4 +59,8 @@ export default class PostComponent extends Component<Signature> {
       'success'
     );
   }
+
+  get canEdit() {
+    return true;
+  }
 }

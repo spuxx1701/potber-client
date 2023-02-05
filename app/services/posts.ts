@@ -15,10 +15,7 @@ export default class PostsService extends ApiService {
    */
   async createPost(threadId: string, post: PostFormContent) {
     try {
-      const token = await this.retrieveFormToken(
-        `newreply.php?TID=${threadId}`
-      );
-      const body = this.createFormBody(post, token, { threadId });
+      const body = this.createFormBody('post', post, { threadId });
       const response = await fetch(`${ENV.APP['FORUM_URL']}newreply.php`, {
         method: 'POST',
         headers: {
@@ -36,29 +33,58 @@ export default class PostsService extends ApiService {
     }
   }
 
+  async editPost(post: PostFormContent) {
+    if (!post.id)
+      throw new Error('Post ID must be provided when editing a post.');
+    try {
+      const body = this.createFormBody('edit', post, { postId: post.id });
+      const response = await fetch(`${ENV.APP['FORUM_URL']}editreply.php`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        },
+        credentials: 'include',
+        body,
+      });
+      return await this.processResponse(response);
+    } catch (error) {
+      this.messages.log(`Failed to edit post '${post.id}': ${error}`, {
+        type: 'error',
+        context: this.constructor.name,
+      });
+    }
+  }
+
   /**
    * Creats a form body from the given post and other parameters.
+   * @param prefix Whether you want to create a post or an edit request.
    * @param post The post.
-   * @param token The form token.
    * @param options Optional options. Either threadId or postId must be supplied.
    * @returns The form body.
    */
   createFormBody(
+    prefix: 'post' | 'edit',
     post: PostFormContent,
-    token: string,
-    options?: { threadId?: string }
+    options?: { threadId?: string; postId?: string }
   ): string {
     const keyValuePairs = [];
     if (options?.threadId) {
       keyValuePairs.push(`TID=${options.threadId}`);
     }
-    keyValuePairs.push(`token=${token}`);
-    keyValuePairs.push(`post_title=${post.title}`);
-    keyValuePairs.push(`post_icon=${post.icon}`);
+    if (options?.postId) {
+      keyValuePairs.push(`PID=${options.postId}`);
+    }
+    keyValuePairs.push(`token=${post.token}`);
+    keyValuePairs.push(`${prefix}_title=${post.title}`);
+    keyValuePairs.push(`${prefix}_icon=${post.icon}`);
     keyValuePairs.push(`message=${post.message}`);
-    keyValuePairs.push(`post_converturls=${post.convertUrls ? '1' : '0'}`);
-    keyValuePairs.push(`post_disablebbcode=${post.disableBbCode ? '1' : '0'}`);
-    keyValuePairs.push(`post_disablesmilies=${post.disableEmojis ? '1' : '0'}`);
+    keyValuePairs.push(`${prefix}_converturls=${post.convertUrls ? '1' : '0'}`);
+    keyValuePairs.push(
+      `${prefix}_disablebbcode=${post.disableBbCode ? '1' : '0'}`
+    );
+    keyValuePairs.push(
+      `${prefix}_disablesmilies=${post.disableEmojis ? '1' : '0'}`
+    );
     keyValuePairs.push(`submit=Eintragen`);
     return keyValuePairs.join('&');
   }
@@ -71,14 +97,16 @@ export default class PostsService extends ApiService {
    * @param response The response object.
    * @returns Whether the check was successful.
    */
-  async processResponse(response: Response) {
+  async processResponse(response: Response): Promise<string | boolean | null> {
     const text = await response.text();
-    if (new RegExp(/Antwort erstellt\s!/).test(text)) {
+    if (new RegExp(/Antwort erstellt/).test(text)) {
       // Attempt to retrieve and return the post id
       const postIdMatches = text.match(/(?:(PID=)(\d*)(#))/);
       if (postIdMatches && postIdMatches.length >= 3) {
-        return postIdMatches[2];
+        return postIdMatches[2] as string;
       } else return null;
+    } else if (new RegExp(/Antwort wurde editiert/).test(text)) {
+      return true;
     } else {
       if (new RegExp(/Du postest zu viel in zu kurzer Zeit/).test(text)) {
         this.messages.showNotification(

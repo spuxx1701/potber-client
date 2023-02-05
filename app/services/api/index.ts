@@ -1,4 +1,5 @@
 import Service, { service } from '@ember/service';
+import { PostFormContent } from 'potber/components/board/post-form';
 import ENV from 'potber/config/environment';
 import MessagesService from '../messages';
 
@@ -48,19 +49,49 @@ export default class ApiService extends Service {
   }
 
   /**
-   * Attempts to retrieve a form token from the given uri.
+   * Attempts to retrieve several fields and values from the given URI. Required to
+   * create or edit posts and threads.
    * @param uri The uri that points to the form (e.g. 'newreply.php?TID=123').
+   * @returns The initialized post form content.
    */
-  async retrieveFormToken(uri: string) {
+  async initializePostFormContent(uri: string, postId?: string) {
+    const result: any = {
+      id: postId,
+      title: '',
+      icon: '0',
+      message: '',
+      convertUrls: true,
+      disableBbCode: false,
+      disableEmojis: false,
+    } as PostFormContent;
     const response = await fetch(`${FORUM_URL}${uri}`, {
       credentials: 'include',
     });
     const text = await response.text();
     const tokenMatches = text.match(/(?:(name='token'\svalue=')(.*)('\s\/>))/);
-    if (tokenMatches && tokenMatches.length > 3) {
-      return tokenMatches[2] as string;
+    if (tokenMatches && tokenMatches.length >= 3) {
+      result.token = tokenMatches[2] as string;
     } else {
-      throw new Error('Token could not be found in HTML response.');
+      throw new Error(
+        'Post form initilization failed: Token could not be found in HTML response.'
+      );
     }
+    const titleMatches = text.match(/(?:(name='edit_title'\svalue=')(.*?)('))/);
+    if (titleMatches && titleMatches.length >= 3) {
+      result.title = titleMatches[2] as string;
+    }
+    const selectedIconMatches = text.match(
+      /(?:(name='edit_icon'\svalue=')(.*?)('\schecked))/
+    );
+    if (selectedIconMatches && selectedIconMatches.length >= 3) {
+      result.icon = selectedIconMatches[2] as string;
+    }
+    const messageMatches = text.match(
+      /(?:(<textarea name='message'(.*)>)((.|\n)*)(<\/textarea>))/
+    );
+    if (messageMatches && messageMatches.length >= 4) {
+      result.message = messageMatches[3] as string;
+    }
+    return result;
   }
 }

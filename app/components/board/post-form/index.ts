@@ -5,12 +5,14 @@ import { tracked } from '@glimmer/tracking';
 import ModalService from 'potber/services/modal';
 
 export interface PostFormContent {
+  id?: string;
   title: string;
   icon: string;
   message: string;
   convertUrls: boolean;
   disableBbCode: boolean;
   disableEmojis: boolean;
+  token: string;
 }
 
 interface Signature {

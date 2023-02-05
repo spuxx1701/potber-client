@@ -1,0 +1,9 @@
+{{page-title 'Post bearbeiten'}}
+
+<Nav::Routes::Generic @title='Post bearbeiten' />
+
+<Board::PostForm
+  @post={{@model.post}}
+  @onSubmit={{this.handleSubmit}}
+  @busy={{this.busy}}
+/>

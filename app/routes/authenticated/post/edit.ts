@@ -6,41 +6,36 @@ import { Thread } from 'potber/services/api/types/thread';
 import MessagesService from 'potber/services/messages';
 import PostsService from 'potber/services/posts';
 import RendererService from 'potber/services/renderer';
-import ThreadsService from 'potber/services/threads';
 import RSVP from 'rsvp';
 
 interface Params {
   TID: string;
-  page: number;
+  PID: string;
 }
 
-export interface PostCreateRouteModel {
-  thread: Thread;
+export interface PostEditRouteModel {
+  threadId: string;
   post: PostFormContent;
 }
 
-export default class PostCreateRoute extends Route {
+export default class PostEditRoute extends Route {
   @service declare renderer: RendererService;
   @service declare messages: MessagesService;
-  @service declare threads: ThreadsService;
   @service declare posts: PostsService;
 
   async model(params: Params, transition: Transition<unknown>) {
     try {
       this.renderer.tryResetScrollPosition();
-      // Retrieve the thread with its last page so we can display recent posts and other information about the thread
-      const thread = await this.threads.getThread(params.TID, {
-        page: params.page,
-        updateBookmark: false,
-      });
+      // Retrieve the thread with its last page so we can return to the post after editing
       // Initialize the post
       const post = await this.posts.initializePostFormContent(
-        `newreply.php?TID=${params.TID}`
+        `editreply.php?PID=${params.PID}`,
+        params.PID
       );
       return RSVP.hash({
-        thread,
+        threadId: params.TID,
         post,
-      } as PostCreateRouteModel);
+      });
     } catch (error) {
       this.messages.showNotification(
         'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',
