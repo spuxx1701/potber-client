@@ -5,6 +5,7 @@ import { Post } from 'potber/services/api/types/post';
 import ContentParserService from 'potber/services/content-parser';
 import ENV from 'potber/config/environment';
 import MessagesService from 'potber/services/messages';
+import SessionService from 'potber/services/session';
 
 interface Signature {
   Args: {
@@ -17,6 +18,7 @@ interface Signature {
 export default class PostComponent extends Component<Signature> {
   @service declare contentParser: ContentParserService;
   @service declare messages: MessagesService;
+  @service declare session: SessionService;
 
   declare args: Signature['Args'];
 
@@ -61,7 +63,10 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get canEdit() {
-    return true;
+    return (
+      this.session.session.authenticated &&
+      this.session.session.userId === this.args.post.author.id
+    );
   }
 
   get editingInfo() {
