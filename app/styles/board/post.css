@@ -4,7 +4,6 @@
   border-radius: var(--global-border-radius);
   margin-top: var(--global-gap);
   margin-bottom: var(--global-gap);
-  overflow: hidden;
   scroll-margin-top: calc(var(--top-nav-height));
 }
 
@@ -67,6 +66,7 @@
   flex-direction: column;
   background-color: var(--color-post-background-primary);
   padding: 0.5rem;
+  overflow: hidden;
 }
 
 .post-content p:not(.post-title) {
