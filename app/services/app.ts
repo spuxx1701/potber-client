@@ -62,6 +62,7 @@ export default class AppService extends Service {
   }
 
   @action async requestStorageAccess() {
+    alert('checking storage access');
     if (!document.hasStorageAccess()) {
       this.messages.log('Requesting storace access for webkit compatibility.', {
         context: this.constructor.name,
