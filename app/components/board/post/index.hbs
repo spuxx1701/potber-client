@@ -45,5 +45,10 @@
     <p>
       {{this.content}}
     </p>
+    {{#if @post.lastEdit}}
+      <p class='subtitle'>
+        <br /><br />{{this.editingInfo}}
+      </p>
+    {{/if}}
   </div>
 </div>

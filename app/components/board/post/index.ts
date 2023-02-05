@@ -63,4 +63,12 @@ export default class PostComponent extends Component<Signature> {
   get canEdit() {
     return true;
   }
+
+  get editingInfo() {
+    if (this.args.post.editedCount && this.args.post.lastEdit) {
+      return `${this.args.post.editedCount}x bearbeitet, zuletzt von ${
+        this.args.post.lastEdit.user.name
+      } am ${this.args.post.lastEdit.date.toLocaleString()}`;
+    }
+  }
 }
