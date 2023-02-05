@@ -67,7 +67,9 @@ export default class ApiService extends Service {
     const response = await fetch(`${FORUM_URL}${uri}`, {
       credentials: 'include',
     });
-    const text = await response.text();
+    const arrayBuffer = await response.arrayBuffer();
+    const textDecoder = new TextDecoder('iso-8859-1');
+    const text = textDecoder.decode(arrayBuffer);
     const tokenMatches = text.match(/(?:(name='token'\svalue=')(.*?)('\s\/>))/);
     if (tokenMatches && tokenMatches.length >= 3) {
       result.token = tokenMatches[2] as string;
@@ -87,7 +89,7 @@ export default class ApiService extends Service {
       result.icon = selectedIconMatches[2] as string;
     }
     const messageMatches = text.match(
-      /(?:(<textarea name='message'.*>)((.|\s|\S|\n)*?)(<\/textarea>))/
+      /(?:(<textarea name='message'.*>)((.|\n)*?)(<\/textarea>))/
     );
     if (messageMatches && messageMatches.length >= 3) {
       result.message = messageMatches[2] as string;

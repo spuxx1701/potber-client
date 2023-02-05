@@ -41,7 +41,7 @@ export default class PostsService extends ApiService {
       const response = await fetch(`${ENV.APP['FORUM_URL']}editreply.php`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          'Content-Type': 'application/x-www-form-urlencoded;',
         },
         credentials: 'include',
         body,
