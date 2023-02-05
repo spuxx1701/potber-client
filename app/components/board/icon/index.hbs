@@ -1,7 +1,7 @@
-{{#unless (eq @key '0')}}
+{{#if (not (or (eq @key '0') (not @key)))}}
   <img
     class='post-icon'
     src='/images/{{@directory}}/{{@filename}}'
     alt={{@key}}
   />
-{{/unless}}
+{{/if}}
