@@ -49,12 +49,15 @@ export default class AppService extends Service {
 
   get isWebkit() {
     const userAgent = navigator.userAgent;
+    debugger;
     const isWebkit =
       /\b(iPad|iPhone|iPod)\b/.test(userAgent) && /WebKit/.test(userAgent);
-    this.messages.log('Webkit recognized.', {
-      type: 'warning',
-      context: this.constructor.name,
-    });
+    if (isWebkit) {
+      this.messages.log('Webkit recognized.', {
+        type: 'warning',
+        context: this.constructor.name,
+      });
+    }
     return isWebkit;
   }
 }
