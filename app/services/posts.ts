@@ -1,7 +1,5 @@
 import { service } from '@ember/service';
-import PostFormComponent, {
-  PostFormContent,
-} from 'potber/components/board/post-form';
+import { PostFormContent } from 'potber/components/board/post-form';
 import ApiService from './api';
 import MessagesService from './messages';
 import ENV from 'potber/config/environment';
