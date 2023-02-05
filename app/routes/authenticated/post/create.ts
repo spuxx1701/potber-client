@@ -1,3 +1,4 @@
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
@@ -27,7 +28,6 @@ export default class PostCreateRoute extends Route {
 
   async model(params: Params, transition: Transition<unknown>) {
     try {
-      this.renderer.tryResetScrollPosition();
       // Retrieve the thread with its last page so we can display recent posts and other information about the thread
       const thread = await this.threads.getThread(params.TID, {
         page: params.page,
@@ -48,5 +48,9 @@ export default class PostCreateRoute extends Route {
       );
       transition.abort();
     }
+  }
+
+  @action didTransition() {
+    this.renderer.tryResetScrollPosition();
   }
 }

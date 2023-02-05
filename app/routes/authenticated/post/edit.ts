@@ -1,3 +1,4 @@
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
@@ -25,7 +26,6 @@ export default class PostEditRoute extends Route {
 
   async model(params: Params, transition: Transition<unknown>) {
     try {
-      this.renderer.tryResetScrollPosition();
       // Retrieve the thread with its last page so we can return to the post after editing
       // Initialize the post
       const post = await this.posts.initializePostFormContent(
@@ -43,5 +43,9 @@ export default class PostEditRoute extends Route {
       );
       transition.abort();
     }
+  }
+
+  @action didTransition() {
+    this.renderer.tryResetScrollPosition();
   }
 }
