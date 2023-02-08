@@ -12,7 +12,7 @@ module.exports = function (/* environment, appConfig */) {
     scope: '/',
     display: 'standalone',
     background_color: '#060f15',
-    theme_color: '#394e63',
+    theme_color: '#091827',
     icons: [
       {
         src: 'images/logo/192x192.png',
@@ -21,7 +21,7 @@ module.exports = function (/* environment, appConfig */) {
       },
     ],
     ms: {
-      tileColor: '#394e63',
+      tileColor: '#091827',
     },
   };
 };
