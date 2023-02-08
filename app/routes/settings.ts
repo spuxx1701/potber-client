@@ -18,9 +18,6 @@ export default class SettingsRoute extends Route {
       currentLandingPageOption: landingPageOptions.find(
         (option) => option.data === this.localStorage.getLandingPage()
       ),
-      currentRunModeOption: runModeOptions.find(
-        (option) => option.data === this.localStorage.getRunMode()
-      ),
     });
   }
 }
@@ -55,16 +52,5 @@ export const landingPageOptions: DropdownOption[] = [
   {
     label: 'Public Offtopic',
     data: 'pot',
-  },
-];
-
-export const runModeOptions: DropdownOption[] = [
-  {
-    label: 'Browser (Website-like)',
-    data: 'browser',
-  },
-  {
-    label: 'PWA (App-like)',
-    data: 'pwa',
   },
 ];

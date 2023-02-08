@@ -36,7 +36,7 @@ function transformThreadPage(threadPageXml: Element) {
     posts.push(transformPost(postXml as Element));
   }
   return {
-    pageNumber: parseInt(getAttributeValue('page', threadPageXml)),
+    number: parseInt(getAttributeValue('page', threadPageXml)),
     offset: parseInt(getAttributeValue('offset', threadPageXml)),
     postCount: parseInt(getAttributeValue('count', threadPageXml)),
     posts,

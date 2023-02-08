@@ -28,14 +28,6 @@
     @label='Startseite'
   />
 
-  <Common::Control::Dropdown
-    @options={{this.runModeOptions}}
-    @default={{@model.currentRunModeOption}}
-    @onSelect={{this.handleRunModeSelect}}
-    @size='max'
-    @label='Modus'
-  />
-
   <hr />
 
   <Common::Control::Link

@@ -19,7 +19,7 @@ export interface Thread {
 }
 
 export interface ThreadPage {
-  pageNumber: number;
+  number: number;
   postCount: number;
   offset: number;
   posts: Post[];

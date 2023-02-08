@@ -8,21 +8,21 @@ import {
   avatarStyleOptions,
   boxStyleOptions,
   landingPageOptions,
-  runModeOptions,
 } from 'potber/routes/settings';
 import MessagesService from 'potber/services/messages';
 import AppService from 'potber/services/app';
+import ModalService from 'potber/services/modal';
 
 export default class SettingsController extends Controller {
   @service declare localStorage: LocalStorageService;
   @service declare renderer: RendererService;
   @service declare messages: MessagesService;
+  @service declare modal: ModalService;
   @service declare app: AppService;
 
   avatarStyleOptions = avatarStyleOptions;
   boxStyleOptions = boxStyleOptions;
   landingPageOptions = landingPageOptions;
-  runModeOptions = runModeOptions;
 
   @action handleAvatarStyleSelect(option: DropdownOption) {
     this.localStorage.setAvatarStyle(option.data);
@@ -35,25 +35,5 @@ export default class SettingsController extends Controller {
 
   @action handleLandingPageSelect(option: DropdownOption) {
     this.localStorage.setLandingPage(option.data);
-  }
-
-  @action handleRunModeSelect(option: DropdownOption) {
-    if (!('serviceWorker' in navigator)) {
-      this.messages.showNotification(
-        'Dein Browser unterstützt dieses Feature nicht.',
-        'error'
-      );
-      this.messages.log('Browser does not support service workers', {
-        type: 'error',
-        context: this.constructor.name,
-      });
-      return;
-    }
-    if (option.data === 'pwa') {
-      this.app.registerPwaServiceWorker();
-    } else {
-      this.app.unregisterPwaServiceWorker();
-    }
-    this.localStorage.setRunMode(option.data);
   }
 }

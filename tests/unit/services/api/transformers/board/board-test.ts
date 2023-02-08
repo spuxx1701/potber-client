@@ -21,7 +21,7 @@ module('Unit | Service | API | Transformer | Board', function (hooks) {
       repliesCount: 13987822,
       categoryId: '6',
       page: {
-        page: 1,
+        number: 1,
         stickiesCount: 1,
         globalsCount: 1,
         threadsCount: 30,

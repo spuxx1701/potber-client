@@ -1,7 +1,6 @@
 import { action } from '@ember/object';
 import RouterService from '@ember/routing/router-service';
 import Service, { service } from '@ember/service';
-import { sleep } from 'potber/utils/misc';
 import LocalStorageService from './local-storage';
 import MessagesService from './messages';
 import ModalService from './modal';
@@ -18,6 +17,7 @@ export default class AppService extends Service {
   @service declare newsFeed: NewsFeedService;
   @service declare messages: MessagesService;
   initialized = false;
+  deferredInstallPrompt: any = undefined;
 
   async initialize() {
     if (this.initialized) return;
@@ -27,35 +27,5 @@ export default class AppService extends Service {
     // this.checkForNewVersion();
     this.newsFeed.refresh();
     this.initialized = true;
-  }
-
-  get isWebkit() {
-    const userAgent = navigator.userAgent;
-    const isWebkit =
-      /\b(iPad|iPhone|iPod)\b/.test(userAgent) && /WebKit/.test(userAgent);
-    if (isWebkit) {
-      this.messages.log('Webkit recognized.', {
-        type: 'warning',
-        context: this.constructor.name,
-      });
-    }
-    return isWebkit;
-  }
-
-  @action registerPwaServiceWorker() {
-    navigator.serviceWorker.register('/pwa/service-worker.js');
-    this.messages.log('PWA service worker registered.', {
-      context: this.constructor.name,
-    });
-  }
-
-  @action async unregisterPwaServiceWorker() {
-    const serviceWorker = await navigator.serviceWorker.getRegistration(
-      '/service-workers/pwa.js'
-    );
-    if (serviceWorker) serviceWorker.unregister();
-    this.messages.log('PWA service worker unregistered.', {
-      context: this.constructor.name,
-    });
   }
 }

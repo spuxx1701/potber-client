@@ -12,7 +12,7 @@ export function transformBoard(boardXml: Element): Board {
   const threadsNode = getNode('threads', boardXml);
   if (threadsNode) {
     page = {
-      page: parseInt(getAttributeValue('page', threadsNode)),
+      number: parseInt(getAttributeValue('page', threadsNode)),
       stickiesCount: parseInt(getAttributeValue('with-stickies', threadsNode)),
       globalsCount: parseInt(getAttributeValue('with-globals', threadsNode)),
       threadsCount: parseInt(getAttributeValue('count', threadsNode)),

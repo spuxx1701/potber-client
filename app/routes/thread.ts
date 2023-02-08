@@ -68,7 +68,7 @@ export default class ThreadRoute extends Route {
       this.renderer.tryResetScrollPosition();
       return RSVP.hash({
         thread,
-        page: thread.page?.pageNumber || page,
+        page: thread.page?.number || page,
         subtleUntilPostId: subtleUntilPostId,
         avatarStyle: this.localStorage.avatarStyle,
       } as ThreadRouteModel);

@@ -37,7 +37,7 @@ module('Unit | Service | API | Transformer | Thread', function (hooks) {
       } as FirstPost,
       lastPost: undefined,
       page: {
-        pageNumber: 1,
+        number: 1,
         postCount: 2,
         offset: 0,
         posts: [

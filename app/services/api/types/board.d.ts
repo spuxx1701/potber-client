@@ -15,7 +15,7 @@ export interface Board {
 }
 
 export interface BoardPage {
-  page: number;
+  number: number;
   stickiesCount: number;
   globalsCount: number;
   threadsCount: number;
