@@ -34,7 +34,8 @@ export default class AboutController extends Controller {
       await this.session.authenticate(
         'authenticator:oauth2',
         this.model.username,
-        this.model.password
+        this.model.password,
+        this.model.lifetimeOption.data
       );
     } catch (error) {
       this.messages.log(`Login failed. (${error})`, {
