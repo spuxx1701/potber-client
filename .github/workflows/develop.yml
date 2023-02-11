@@ -20,8 +20,8 @@ jobs:
     with:
       username: spuxx
       repository: potber-client
-      environment: integration
-      dockerfile: Dockerfile.integration
+      environment: develop
+      dockerfile: Dockerfile.develop
     secrets:
       token: ${{ secrets.DOCKERHUB_TOKEN }}
       ssh_host: ${{ secrets.SSH_HOST }}

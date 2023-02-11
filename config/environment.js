@@ -15,10 +15,8 @@ module.exports = function (environment) {
     },
 
     APP: {
-      API_URL: 'https://forum.mods.de/bb/xml/',
+      API_URL: 'https://localhost:3000',
       FORUM_URL: 'https://forum.mods.de/bb/',
-      LOGIN_URL: 'https://login.mods.de/',
-      LOGOUT_URL: 'https://login.mods.de/logout',
       USER_PAGE_URL: 'https://my.mods.de/',
       DEBUG: false,
       // Here you can pass flags/options to your application instance
@@ -47,11 +45,13 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
   }
 
-  if (environment === 'integration') {
+  if (environment === 'develop') {
+    ENV.APP.API_URL = 'https://test-api.potber.de';
     ENV.APP.DEBUG = true;
   }
 
   if (environment === 'production') {
+    ENV.APP.API_URL = 'https://api.potber.de';
     ENV.APP.DEBUG = false;
   }
 
