@@ -15,7 +15,7 @@ module.exports = function (environment) {
     },
 
     APP: {
-      API_URL: 'https://localhost:3000/',
+      API_URL: 'http://localhost:3000',
       FORUM_URL: 'https://forum.mods.de/bb/',
       USER_PAGE_URL: 'https://my.mods.de/',
       DEBUG: false,
@@ -46,12 +46,12 @@ module.exports = function (environment) {
   }
 
   if (environment === 'develop') {
-    ENV.APP.API_URL = 'https://test-api.potber.de/';
+    ENV.APP.API_URL = 'https://test-api.potber.de';
     ENV.APP.DEBUG = true;
   }
 
   if (environment === 'production') {
-    ENV.APP.API_URL = 'https://api.potber.de/';
+    ENV.APP.API_URL = 'https://api.potber.de';
     ENV.APP.DEBUG = false;
   }
 
