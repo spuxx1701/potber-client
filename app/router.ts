@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from 'potber/config/environment';
+import config from 'potber-client/config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;
@@ -9,16 +9,16 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   // Add route declarations here
   this.route('/');
-  this.route('board-overview');
-  this.route('login');
-  this.route('session');
-  this.route('board');
-  this.route('thread');
-  this.route('settings');
+  this.route('about');
   this.route('applog');
   this.route('changelog');
-  this.route('about');
+  this.route('login');
   this.route('authenticated', function () {
+    this.route('board-overview');
+    this.route('session');
+    this.route('board');
+    this.route('thread');
+    this.route('settings');
     this.route('bookmarks');
     this.route('post', function () {
       this.route('create');

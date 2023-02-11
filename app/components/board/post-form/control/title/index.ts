@@ -2,8 +2,8 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import ModalService from 'potber/services/modal';
-import { getRandomEmojiIcon } from 'potber/utils/icons';
+import ModalService from 'potber-client/services/modal';
+import { getRandomEmojiIcon } from 'potber-client/utils/icons';
 import { PostFormContent } from '../..';
 
 interface Signature {

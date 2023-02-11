@@ -1,6 +1,6 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import NewsFeedService from 'potber/services/news-feed';
+import NewsFeedService from 'potber-client/services/news-feed';
 
 export default class SidebarNewsFeedComponent extends Component {
   @service declare newsFeed: NewsFeedService;

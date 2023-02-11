@@ -1,11 +1,10 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { Post } from 'potber/services/api/types/post';
-import ContentParserService from 'potber/services/content-parser';
-import ENV from 'potber/config/environment';
-import MessagesService from 'potber/services/messages';
-import SessionService from 'potber/services/session';
+import { Post } from 'potber-client/services/api/types/post';
+import ContentParserService from 'potber-client/services/content-parser';
+import ENV from 'potber-client/config/environment';
+import MessagesService from 'potber-client/services/messages';
 
 interface Signature {
   Args: {
@@ -18,7 +17,7 @@ interface Signature {
 export default class PostComponent extends Component<Signature> {
   @service declare contentParser: ContentParserService;
   @service declare messages: MessagesService;
-  @service declare session: SessionService;
+  @service declare session: any;
 
   declare args: Signature['Args'];
 
@@ -35,8 +34,14 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get content() {
-    const content = this.contentParser.parsePostContent(this.args.post.content);
-    return content;
+    if (typeof this.args.post.content === 'string') {
+      const content = this.contentParser.parsePostContent(
+        this.args.post.content
+      );
+      return content;
+    } else {
+      return null;
+    }
   }
 
   get showSmallAvatar() {

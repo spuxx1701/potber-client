@@ -1,12 +1,12 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { Board } from 'potber/services/api/types/board';
-import LocalStorageService from 'potber/services/local-storage';
-import ENV from 'potber/config/environment';
+import { Board } from 'potber-client/services/api/types/board';
+import LocalStorageService from 'potber-client/services/local-storage';
+import ENV from 'potber-client/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
-import RendererService from 'potber/services/renderer';
-import MessagesService from 'potber/services/messages';
+import RendererService from 'potber-client/services/renderer';
+import MessagesService from 'potber-client/services/messages';
 
 export interface Signature {
   Args: {

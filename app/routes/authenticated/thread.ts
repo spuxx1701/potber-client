@@ -1,14 +1,14 @@
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { Thread } from 'potber/services/api/types/thread';
-import LocalStorageService from 'potber/services/local-storage';
-import RendererService from 'potber/services/renderer';
-import { sleep } from 'potber/utils/misc';
+import { Thread } from 'potber-client/services/api/types/thread';
+import LocalStorageService from 'potber-client/services/local-storage';
+import RendererService from 'potber-client/services/renderer';
+import { sleep } from 'potber-client/utils/misc';
 import RSVP, { reject } from 'rsvp';
 import { scrollToHash } from 'ember-url-hash-polyfill';
-import ThreadsService from 'potber/services/threads';
-import ThreadController from 'potber/controllers/thread';
+import ThreadsService from 'potber-client/services/threads';
+import ThreadController from 'potber-client/controllers/authenticated/thread';
 
 interface Params {
   TID: string;

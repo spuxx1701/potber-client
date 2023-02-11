@@ -1,8 +1,8 @@
-import { transformThread } from 'potber/services/api/transformers/thread';
-import { FirstPost, Post } from 'potber/services/api/types/post';
-import { Thread, ThreadPage } from 'potber/services/api/types/thread';
-import { setupTest } from 'potber/tests/helpers';
-import { parseXmlString } from 'potber/tests/test-utils';
+import { transformThread } from 'potber-client/services/api/transformers/thread';
+import { FirstPost, Post } from 'potber-client/services/api/types/post';
+import { Thread, ThreadPage } from 'potber-client/services/api/types/thread';
+import { setupTest } from 'potber-client/tests/helpers';
+import { parseXmlString } from 'potber-client/tests/test-utils';
 import { module, test } from 'qunit';
 import mockData from './mock-data';
 

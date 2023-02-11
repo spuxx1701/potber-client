@@ -9,8 +9,6 @@ This is a mobile-first web client for the german internet forum [forum.mods.de](
 
 Visit https://potber.de/ and browse away!
 
-If you have trouble logging in, you can simply log in manually on [https://forum.mods.de](https://forum.mods.de). potber and the original forum share a single session.
-
 ## Core features
 
 ### Location
@@ -41,8 +39,8 @@ You will need the following things properly installed on your computer.
 
 ### Installation
 
-- `git clone https://github.com/spuxx1701/potber.git`
-- `cd potber`
+- `git clone https://github.com/spuxx1701/potber-client.git`
+- `cd potber-client`
 - `npm install`
 
 ### Running / Development

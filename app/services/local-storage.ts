@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import ENV from 'potber/config/environment';
+import ENV from 'potber-client/config/environment';
 import { Board } from './api/types/board';
 import MessagesService from './messages';
 import { clean, valid, gt } from 'semver';
@@ -17,13 +17,6 @@ export default class LocalStorageService extends Service {
   @tracked boxStyle: string = this.getBoxStyle();
   @tracked boardFavorites: Board[] | null = [];
   @tracked landingPage: string = this.getLandingPage();
-
-  /**
-   * Initializes the localStorage service.
-   */
-  @action initialize() {
-    this.getBoardFavorites();
-  }
 
   /**
    * Gets 'avatarStyle' from localStorage.

@@ -2,8 +2,8 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { BoardCategory } from 'potber/services/api/types/board-overview';
-import RendererService from 'potber/services/renderer';
+import { BoardCategory } from 'potber-client/services/api/types/board-overview';
+import RendererService from 'potber-client/services/renderer';
 
 export interface Signature {
   Args: {

@@ -1,9 +1,9 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'potber/tests/helpers';
+import { setupTest } from 'potber-client/tests/helpers';
 import mockData from './mock-data';
-import { parseXmlString } from 'potber/tests/test-utils';
-import { transformBoard } from 'potber/services/api/transformers/board';
-import { Board } from 'potber/services/api/types/board';
+import { parseXmlString } from 'potber-client/tests/test-utils';
+import { transformBoard } from 'potber-client/services/api/transformers/board';
+import { Board } from 'potber-client/services/api/types/board';
 
 module('Unit | Service | API | Transformer | Board', function (hooks) {
   setupTest(hooks);

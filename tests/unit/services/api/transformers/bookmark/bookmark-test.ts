@@ -1,7 +1,7 @@
-import { transformBookmarksSummary } from 'potber/services/api/transformers/bookmark';
-import { BookmarksSummary } from 'potber/services/api/types/bookmark';
-import { setupTest } from 'potber/tests/helpers';
-import { parseXmlString } from 'potber/tests/test-utils';
+import { transformBookmarksSummary } from 'potber-client/services/api/transformers/bookmark';
+import { BookmarksSummary } from 'potber-client/services/api/types/bookmark';
+import { setupTest } from 'potber-client/tests/helpers';
+import { parseXmlString } from 'potber-client/tests/test-utils';
 import { module, test } from 'qunit';
 import mockData from './mock-data';
 

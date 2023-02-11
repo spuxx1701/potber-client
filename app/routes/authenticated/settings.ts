@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { DropdownOption } from 'potber/components/common/control/dropdown';
-import LocalStorageService from 'potber/services/local-storage';
+import { DropdownOption } from 'potber-client/components/common/control/dropdown';
+import LocalStorageService from 'potber-client/services/local-storage';
 import RSVP from 'rsvp';
 
 export default class SettingsRoute extends Route {

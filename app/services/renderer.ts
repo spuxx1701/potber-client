@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { sleep } from 'potber/utils/misc';
+import { sleep } from 'potber-client/utils/misc';
 import LocalStorageService from './local-storage';
 import MessagesService from './messages';
 

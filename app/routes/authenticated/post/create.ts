@@ -2,12 +2,12 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import { PostFormContent } from 'potber/components/board/post-form';
-import { Thread } from 'potber/services/api/types/thread';
-import MessagesService from 'potber/services/messages';
-import PostsService from 'potber/services/posts';
-import RendererService from 'potber/services/renderer';
-import ThreadsService from 'potber/services/threads';
+import { PostFormContent } from 'potber-client/components/board/post-form';
+import { Thread } from 'potber-client/services/api/types/thread';
+import MessagesService from 'potber-client/services/messages';
+import PostsService from 'potber-client/services/posts';
+import RendererService from 'potber-client/services/renderer';
+import ThreadsService from 'potber-client/services/threads';
 import RSVP from 'rsvp';
 
 interface Params {

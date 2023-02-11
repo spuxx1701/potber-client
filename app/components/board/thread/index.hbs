@@ -1,6 +1,6 @@
 <Common::Control::Link
   class='board-item {{if this.isImportant "board-item-important"}}'
-  @route='thread'
+  @route='authenticated.thread'
   @query={{hash
     TID=@thread.id
     page=@thread.pagesCount

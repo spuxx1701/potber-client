@@ -1,7 +1,7 @@
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
-import { Thread } from 'potber/services/api/types/thread';
-import { FirstPost, LastPost } from 'potber/services/api/types/post';
+import { Thread } from 'potber-client/services/api/types/thread';
+import { FirstPost, LastPost } from 'potber-client/services/api/types/post';
 
 export interface Signature {
   Args: {

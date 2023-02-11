@@ -1,8 +1,8 @@
 import { service } from '@ember/service';
-import { PostFormContent } from 'potber/components/board/post-form';
+import { PostFormContent } from 'potber-client/components/board/post-form';
 import ApiService from './api';
 import MessagesService from './messages';
-import ENV from 'potber/config/environment';
+import ENV from 'potber-client/config/environment';
 
 export default class PostsService extends ApiService {
   @service declare messages: MessagesService;

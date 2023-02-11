@@ -2,10 +2,10 @@ import Route from '@ember/routing/route';
 import RouterService from '@ember/routing/router-service';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import { Board } from 'potber/services/api/types/board';
-import BoardsService from 'potber/services/boards';
-import MessagesService from 'potber/services/messages';
-import RendererService from 'potber/services/renderer';
+import { Board } from 'potber-client/services/api/types/board';
+import BoardsService from 'potber-client/services/boards';
+import MessagesService from 'potber-client/services/messages';
+import RendererService from 'potber-client/services/renderer';
 import RSVP from 'rsvp';
 
 interface Params {

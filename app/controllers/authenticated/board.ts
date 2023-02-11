@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { BoardRouteModel } from 'potber/routes/board';
+import { BoardRouteModel } from 'potber-client/routes/authenticated/board';
 
 export default class BoardController extends Controller {
   declare model: BoardRouteModel;

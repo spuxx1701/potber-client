@@ -1,13 +1,12 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import LocalStorageService from 'potber/services/local-storage';
-import RendererService from 'potber/services/renderer';
-import SessionService from 'potber/services/session';
+import LocalStorageService from 'potber-client/services/local-storage';
+import RendererService from 'potber-client/services/renderer';
 
 export default class SidebarNavComponent extends Component {
   @service declare renderer: RendererService;
-  @service declare session: SessionService;
+  @service declare session: any;
   @service declare localStorage: LocalStorageService;
 
   @action handleNavLinkClick() {

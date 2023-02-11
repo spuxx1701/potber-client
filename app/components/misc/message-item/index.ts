@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { Message } from 'potber/services/messages';
+import { Message } from 'potber-client/services/messages';
 
 interface Signature {
   Args: {

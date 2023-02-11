@@ -1,9 +1,9 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { ConfirmModalOptions } from 'potber/components/modal/types/confirm';
-import { IconSelectModalOptions } from 'potber/components/modal/types/icon-select';
-import { InputModalOptions } from 'potber/components/modal/types/input';
-import { sleep } from 'potber/utils/misc';
+import { ConfirmModalOptions } from 'potber-client/components/modal/types/confirm';
+import { IconSelectModalOptions } from 'potber-client/components/modal/types/icon-select';
+import { InputModalOptions } from 'potber-client/components/modal/types/input';
+import { sleep } from 'potber-client/utils/misc';
 
 const TIME_TO_DESTROY = 300;
 

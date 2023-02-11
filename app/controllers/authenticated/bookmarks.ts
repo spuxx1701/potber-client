@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { BookmarksSummary } from 'potber/services/api/types/bookmark';
+import { BookmarksSummary } from 'potber-client/services/api/types/bookmark';
 
 export default class BookmarksController extends Controller {
   declare model: BookmarksSummary;

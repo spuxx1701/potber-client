@@ -1,6 +1,6 @@
 <Common::Control::Link
   class='board-category-item'
-  @route='board'
+  @route='authenticated.board'
   @query={{hash BID=@board.id}}
 >
   <p class='board-category-item-title'>{{@board.name}}</p>

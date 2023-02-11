@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { ThreadRouteModel } from 'potber/routes/thread';
+import { ThreadRouteModel } from 'potber-client/routes/authenticated/thread';
 
 export default class ThreadController extends Controller {
   declare model: ThreadRouteModel;

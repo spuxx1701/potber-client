@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import ENV from 'potber/config/environment';
+import ENV from 'potber-client/config/environment';
 import Service, { service } from '@ember/service';
 
 export type MessageType = 'info' | 'success' | 'warning' | 'error';

@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import ModalService from 'potber/services/modal';
+import ModalService from 'potber-client/services/modal';
 
 export interface PostFormContent {
   id?: string;

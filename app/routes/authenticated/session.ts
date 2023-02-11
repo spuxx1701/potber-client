@@ -1,12 +1,10 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import SessionService from 'potber/services/session';
 
 export default class SessionRoute extends Route {
-  @service declare session: SessionService;
+  @service declare session: any;
 
   async model() {
-    await this.session.updateState();
     return this.session.session;
   }
 }

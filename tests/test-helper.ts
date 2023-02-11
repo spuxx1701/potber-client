@@ -1,5 +1,5 @@
-import Application from 'potber/app';
-import config from 'potber/config/environment';
+import Application from 'potber-client/app';
+import config from 'potber-client/config/environment';
 import * as QUnit from 'qunit';
 import {
   forceModulesToBeLoaded,

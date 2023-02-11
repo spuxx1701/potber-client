@@ -1,7 +1,7 @@
 <div class='sidebar-content-element flex-row justify-content-between'>
   <Common::Control::Link
     class='flex-column flex-grow'
-    @route='board'
+    @route='authenticated.board'
     @query={{hash BID=@board.id}}
     @variant='secondary'
     @onClick={{this.handleLinkClick}}

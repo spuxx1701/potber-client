@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { Board } from 'potber/services/api/types/board';
+import { Board } from 'potber-client/services/api/types/board';
 
 export interface Signature {
   Args: {

@@ -1,7 +1,7 @@
-import { transformUser } from 'potber/services/api/transformers/user';
-import { User } from 'potber/services/api/types/user';
-import { setupTest } from 'potber/tests/helpers';
-import { parseXmlString } from 'potber/tests/test-utils';
+import { transformUser } from 'potber-client/services/api/transformers/user';
+import { User } from 'potber-client/services/api/types/user';
+import { setupTest } from 'potber-client/tests/helpers';
+import { parseXmlString } from 'potber-client/tests/test-utils';
 import { module, test } from 'qunit';
 import mockData from './mock-data';
 

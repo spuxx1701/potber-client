@@ -1,7 +1,7 @@
 <div class='sidebar-content-element flex-row justify-content-between'>
   <Common::Control::Link
     class='flex-column flex-grow'
-    @route='thread'
+    @route='authenticated.thread'
     @query={{hash
       TID=@bookmark.thread.id
       PID=@bookmark.postId

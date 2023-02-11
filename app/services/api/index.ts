@@ -1,6 +1,6 @@
 import Service, { service } from '@ember/service';
-import { PostFormContent } from 'potber/components/board/post-form';
-import ENV from 'potber/config/environment';
+import { PostFormContent } from 'potber-client/components/board/post-form';
+import ENV from 'potber-client/config/environment';
 import MessagesService from '../messages';
 
 export interface FetchOptions {

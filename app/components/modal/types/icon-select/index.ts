@@ -1,8 +1,12 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import ModalService from 'potber/services/modal';
-import { postIcons, emojis, getRandomEmojiIcon } from 'potber/utils/icons';
+import ModalService from 'potber-client/services/modal';
+import {
+  postIcons,
+  emojis,
+  getRandomEmojiIcon,
+} from 'potber-client/utils/icons';
 
 export interface IconSelectModalOptions {
   type: 'post-icon' | 'post-emoji';

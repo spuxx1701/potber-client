@@ -3,7 +3,7 @@ import { guidFor } from '@ember/object/internals';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import RendererService from 'potber/services/renderer';
+import RendererService from 'potber-client/services/renderer';
 
 export interface DropdownOption {
   label: string;

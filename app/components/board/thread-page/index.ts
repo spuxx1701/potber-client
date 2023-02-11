@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { ThreadPage } from 'potber/services/api/types/thread';
+import { ThreadPage } from 'potber-client/services/api/types/thread';
 
 interface Signature {
   Args: {

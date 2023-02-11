@@ -1,6 +1,6 @@
 import Helper from '@ember/component/helper';
-import { Post } from 'potber/services/api/types/post';
-import { ThreadPage } from 'potber/services/api/types/thread';
+import { Post } from 'potber-client/services/api/types/post';
+import { ThreadPage } from 'potber-client/services/api/types/thread';
 
 export default class IsPostSubtleHelper extends Helper {
   compute([currentPost, subtleUntilPostId, page]: [Post, string, ThreadPage]) {

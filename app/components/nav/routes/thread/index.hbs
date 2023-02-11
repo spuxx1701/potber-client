@@ -9,7 +9,7 @@
   <Common::Control::Link
     @title='Forenübersicht'
     @size='square'
-    @route='board'
+    @route='authenticated.board'
     @query={{hash BID=@thread.boardId}}
   ><FaIcon @icon='arrow-left' /></Common::Control::Link>
 
@@ -18,7 +18,7 @@
       <Common::Control::Link
         @title='Vorherige Seite'
         @size='square'
-        @route='thread'
+        @route='authenticated.thread'
         @query={{hash
           TID=@thread.id
           PID=''
@@ -41,7 +41,7 @@
         target='_blank'
       />
       <Common::Control::Menu::LinkTo
-        @route='thread'
+        @route='authenticated.thread'
         @query={{hash TID=@thread.id page='1' PID='' subtleUntilPostId=''}}
         @text='Zur ersten Seite'
       />
@@ -50,7 +50,7 @@
         @onClick={{this.handleGoToPage}}
       />
       <Common::Control::Menu::LinkTo
-        @route='thread'
+        @route='authenticated.thread'
         @query={{hash
           TID=@thread.id
           PID=''
@@ -65,7 +65,7 @@
       <Common::Control::Link
         @title='Nächste Seite'
         @size='square'
-        @route='thread'
+        @route='authenticated.thread'
         @query={{hash
           TID=@thread.id
           PID=''

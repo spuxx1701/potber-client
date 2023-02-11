@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import AppService from 'potber/services/app';
+import AppService from 'potber-client/services/app';
 
 export default class ApplicationRoute extends Route {
   @service declare app: AppService;

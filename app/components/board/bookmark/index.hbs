@@ -1,7 +1,7 @@
 <div class='bookmark {{if this.hasNewPosts "bookmark-unread"}}'>
   <Common::Control::Link
     class='bookmark-link'
-    @route='thread'
+    @route='authenticated.thread'
     @query={{hash
       TID=@bookmark.thread.id
       PID=@bookmark.postId

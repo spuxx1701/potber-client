@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import ENV from 'potber/config/environment';
+import ENV from 'potber-client/config/environment';
 import { clean } from 'semver';
 
 export default class AboutController extends Controller {

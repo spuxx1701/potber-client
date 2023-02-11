@@ -1,13 +1,12 @@
 import Component from '@glimmer/component';
-import { Thread } from 'potber/services/api/types/thread';
-import ENV from 'potber/config/environment';
+import { Thread } from 'potber-client/services/api/types/thread';
+import ENV from 'potber-client/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
-import RendererService from 'potber/services/renderer';
-import ModalService from 'potber/services/modal';
+import RendererService from 'potber-client/services/renderer';
+import ModalService from 'potber-client/services/modal';
 import RouterService from '@ember/routing/router-service';
-import SessionService from 'potber/services/session';
 
 export interface Signature {
   Args: {
@@ -20,7 +19,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare modal: ModalService;
   @service declare router: RouterService;
-  @service declare session: SessionService;
+  @service declare session: any;
   declare args: Signature['Args'];
 
   get subtitle() {
@@ -82,7 +81,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
       max: this.args.thread.pagesCount,
       submitLabel: 'Los',
       onSubmit: (value) => {
-        this.router.transitionTo('thread', {
+        this.router.transitionTo('authenticated.thread', {
           queryParams: {
             TID: this.args.thread.id,
             page: value,

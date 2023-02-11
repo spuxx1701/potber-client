@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { DropdownOption } from 'potber/components/common/control/dropdown';
+import { DropdownOption } from 'potber-client/components/common/control/dropdown';
 import RSVP from 'rsvp';
 
 export interface LoginRouteModel {
