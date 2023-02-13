@@ -79,6 +79,20 @@ export default class MessagesService extends Service {
   }
 
   /**
+   * Logs an error and notifies the user.
+   * @param text The notification text.
+   * @param error The error.
+   * @param context The calling context.
+   */
+  logErrorAndNotify(text: string, error: any, context: any) {
+    this.log(error, {
+      type: 'error',
+      context: context,
+    });
+    this.showNotification(text, 'error');
+  }
+
+  /**
    * Removes the given notification.
    * @param notification The notification.
    */

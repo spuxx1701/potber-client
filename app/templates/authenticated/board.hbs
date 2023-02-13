@@ -1,6 +1,6 @@
 {{#if @model}}
   {{page-title this.pageTitle}}
-  <Nav::Routes::Board @board={{@model.board}} @page={{@model.page}} />
+  <Nav::Routes::Board @board={{@model.board}} />
 
   {{#each this.threads as |thread|}}
     <Board::Thread @thread={{thread}} />

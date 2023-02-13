@@ -1,14 +1,15 @@
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { Thread } from 'potber-client/services/api/types/thread';
 import LocalStorageService from 'potber-client/services/local-storage';
 import RendererService from 'potber-client/services/renderer';
 import { sleep } from 'potber-client/utils/misc';
 import RSVP, { reject } from 'rsvp';
 import { scrollToHash } from 'ember-url-hash-polyfill';
-import ThreadsService from 'potber-client/services/threads';
 import ThreadController from 'potber-client/controllers/authenticated/thread';
+import Thread, { ThreadPage } from 'potber-client/models/thread';
+import CustomStore from 'potber-client/services/custom-store';
+import NewsFeedService from 'potber-client/services/news-feed';
 
 interface Params {
   TID: string;
@@ -19,15 +20,15 @@ interface Params {
 
 export interface ThreadRouteModel {
   thread: Thread;
-  page: number;
   subtleUntilPostId: string;
   avatarStyle: string;
 }
 
 export default class ThreadRoute extends Route {
   @service declare localStorage: LocalStorageService;
-  @service declare threads: ThreadsService;
+  @service declare store: CustomStore;
   @service declare renderer: RendererService;
+  @service declare newsFeed: NewsFeedService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -61,14 +62,18 @@ export default class ThreadRoute extends Route {
         postId = undefined;
         subtleUntilPostId = undefined;
       }
-      const thread = await this.threads.getThread(params.TID, {
-        postId,
-        page,
+      const thread = await this.store.findRecord('thread', params.TID, {
+        adapterOptions: {
+          queryParams: {
+            postId,
+            page,
+            updateBookmark: true,
+          },
+        },
       });
       this.renderer.tryResetScrollPosition();
       return RSVP.hash({
         thread,
-        page: thread.page?.number || page,
         subtleUntilPostId: subtleUntilPostId,
         avatarStyle: this.localStorage.avatarStyle,
       } as ThreadRouteModel);
@@ -79,6 +84,12 @@ export default class ThreadRoute extends Route {
         return reject(error);
       }
     }
+  }
+
+  async afterModel() {
+    // Refresh bookmarks after the model hook has resolved since the current transition might
+    // have impacted those.
+    this.newsFeed.refreshBookmarks();
   }
 
   @action async didTransition() {

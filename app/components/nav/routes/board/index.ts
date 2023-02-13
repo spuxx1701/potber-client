@@ -1,17 +1,16 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { Board } from 'potber-client/services/api/types/board';
 import LocalStorageService from 'potber-client/services/local-storage';
 import ENV from 'potber-client/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import RendererService from 'potber-client/services/renderer';
 import MessagesService from 'potber-client/services/messages';
+import Board from 'potber-client/models/board';
 
 export interface Signature {
   Args: {
     board: Board;
-    page?: number;
   };
 }
 
@@ -27,7 +26,7 @@ export default class NavBoardComponent extends Component<Signature> {
   }
 
   get currentPage() {
-    return this.args.page || 1;
+    return this.args.board.page.number || 1;
   }
 
   get previousPageVisible() {
@@ -64,7 +63,7 @@ export default class NavBoardComponent extends Component<Signature> {
   @action async reload() {
     this.renderer.showLoadingIndicator();
     (getOwner(this as unknown) as any)
-      .lookup('route:board')
+      .lookup('route:authenticated.board')
       .refresh()
       .then(() => {
         this.renderer.hideLoadingIndicator();

@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
-import { Thread } from 'potber-client/services/api/types/thread';
 import ENV from 'potber-client/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
@@ -7,11 +6,11 @@ import { service } from '@ember/service';
 import RendererService from 'potber-client/services/renderer';
 import ModalService from 'potber-client/services/modal';
 import RouterService from '@ember/routing/router-service';
+import Thread from 'potber-client/models/thread';
 
 export interface Signature {
   Args: {
     thread: Thread;
-    page?: number;
   };
 }
 
@@ -31,7 +30,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   }
 
   get currentPage() {
-    return this.args.page || 1;
+    return this.args.thread.page?.number || 1;
   }
 
   get nextPage() {
@@ -51,17 +50,18 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   }
 
   get authenticated() {
-    return this.session.session.authenticated;
+    return this.session.isAuthenticated;
   }
 
   @action async reload() {
     this.renderer.preventNextScrollReset();
     this.renderer.showLoadingIndicator();
     (getOwner(this as unknown) as any)
-      .lookup('route:thread')
+      .lookup('route:authenticated.thread')
       .refresh()
       .then(() => {
         this.renderer.hideLoadingIndicator();
+        this.renderer.waitAndScrollToBottom();
       })
       .catch(() => {
         this.renderer.hideLoadingIndicator();

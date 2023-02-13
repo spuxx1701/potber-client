@@ -1,0 +1,59 @@
+import RESTAdapter from '@ember-data/adapter/rest';
+import RouterService from '@ember/routing/router-service';
+import { service } from '@ember/service';
+import DS from 'ember-data';
+import ModelRegistry from 'ember-data/types/registries/model';
+import ENV from 'potber-client/config/environment';
+import CustomStore from 'potber-client/services/custom-store';
+
+export default class ApplicationAdapter extends RESTAdapter {
+  @service declare session: any;
+  @service declare router: RouterService;
+
+  host = ENV.APP['API_URL'] as string;
+  namespace = '';
+
+  get headers() {
+    // Provide authorization headers on all requests.
+    const headers = {} as any;
+    if (this.session.isAuthenticated) {
+      headers[
+        'Authorization'
+      ] = `Bearer ${this.session.data.authenticated.access_token}`;
+    }
+    return headers;
+  }
+
+  handleResponse(
+    status: number,
+    headers: object,
+    payload: object,
+    requestData: object
+  ) {
+    // When the client calls a protected endpoint and the API returns 401,
+    // this likely means that our current session is invalid. In that case,
+    // invalidate the session.
+    if (status === 401) {
+      this.session.invalidate();
+    }
+    return super.handleResponse(status, headers, payload, requestData);
+  }
+
+  /**
+   * Support for custom query parameters on all requests.
+   */
+  buildQuery(
+    snapshot: DS.Snapshot<keyof ModelRegistry>
+  ): Record<string, unknown> {
+    const query = super.buildQuery(snapshot);
+    if (snapshot.adapterOptions) {
+      const { queryParams } = snapshot.adapterOptions;
+      if (queryParams && typeof queryParams === 'object') {
+        for (const key in queryParams) {
+          query[key] = queryParams[key as keyof typeof queryParams] as string;
+        }
+      }
+    }
+    return query;
+  }
+}

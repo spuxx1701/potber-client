@@ -3,8 +3,9 @@
 <Nav::Routes::Generic @title='Sitzung' />
 
 <Common::Container @size='small'>
-  {{#if @model.authenticated}}
+  {{#if @model.userId}}
     <p class='title'>Du bist derzeit angemeldet.</p>
+    <p>User ID: {{@model.userId}}</p>
     <p>Username: {{@model.username}}</p>
     <hr />
     <Common::Control::Button

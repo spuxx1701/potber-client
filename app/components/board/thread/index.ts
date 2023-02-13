@@ -1,7 +1,7 @@
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
-import { Thread } from 'potber-client/services/api/types/thread';
-import { FirstPost, LastPost } from 'potber-client/services/api/types/post';
+import { PostPreview } from 'potber-client/models/post';
+import Thread from 'potber-client/models/thread';
 
 export interface Signature {
   Args: {
@@ -38,7 +38,7 @@ export default class ThreadComponent extends Component<Signature> {
   }
 
   get lastPostLabel() {
-    let post: FirstPost | LastPost;
+    let post: PostPreview;
     if (this.args.thread.lastPost) {
       post = this.args.thread.lastPost;
     } else if (this.args.thread.firstPost) {

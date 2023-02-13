@@ -1,12 +1,7 @@
 {{#if @model.thread}}
   {{page-title this.pageTitle}}
 
-  {{!-- <MainNav::Thread
-    @thread={{@model.thread}}
-    @currentPage={{@model.currentPage}}
-  /> --}}
-
-  <Nav::Routes::Thread @thread={{@model.thread}} @page={{@model.page}} />
+  <Nav::Routes::Thread @thread={{@model.thread}} />
 
   <Board::ThreadPage
     @page={{@model.thread.page}}

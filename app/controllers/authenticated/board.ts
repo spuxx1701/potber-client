@@ -7,7 +7,7 @@ export default class BoardController extends Controller {
   queryParams = ['BID', 'page'];
 
   get pageTitle() {
-    return `${this.model.board.name} [${this.model.page}]`;
+    return `${this.model.board.name} [${this.model.board.page.number}]`;
   }
 
   get threads() {

@@ -1,10 +1,13 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { Post } from 'potber-client/services/api/types/post';
 import ContentParserService from 'potber-client/services/content-parser';
 import ENV from 'potber-client/config/environment';
 import MessagesService from 'potber-client/services/messages';
+import Post from 'potber-client/models/post';
+import Bookmark from 'potber-client/models/bookmark';
+import CustomStore from 'potber-client/services/custom-store';
+import NewsFeedService from 'potber-client/services/news-feed';
 
 interface Signature {
   Args: {
@@ -18,6 +21,8 @@ export default class PostComponent extends Component<Signature> {
   @service declare contentParser: ContentParserService;
   @service declare messages: MessagesService;
   @service declare session: any;
+  @service declare store: CustomStore;
+  @service declare newsFeed: NewsFeedService;
 
   declare args: Signature['Args'];
 
@@ -33,10 +38,10 @@ export default class PostComponent extends Component<Signature> {
     return `${ENV.APP['FORUM_URL']}/thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}#reply_${this.args.post.id}`;
   }
 
-  get content() {
-    if (typeof this.args.post.content === 'string') {
+  get message() {
+    if (typeof this.args.post.message === 'string') {
       const content = this.contentParser.parsePostContent(
-        this.args.post.content
+        this.args.post.message
       );
       return content;
     } else {
@@ -67,10 +72,35 @@ export default class PostComponent extends Component<Signature> {
     );
   }
 
+  @action async setBookmark() {
+    try {
+      const bookmark = this.store.createRecord('bookmark', {
+        postId: this.args.post.id,
+        threadId: this.args.post.threadId,
+      });
+      await bookmark.save();
+      this.messages.showNotification('Bookmark gespeichert', 'success');
+      this.newsFeed.refreshBookmarks();
+    } catch (error: any) {
+      if (error.errors?.find((httpError: any) => httpError.status === '400')) {
+        this.messages.showNotification(
+          'Lesezeichen ist bereits gesetzt.',
+          'error'
+        );
+      } else {
+        this.messages.logErrorAndNotify(
+          'Das hat leider nicht geklappt.',
+          error,
+          this.constructor.name
+        );
+      }
+    }
+  }
+
   get canEdit() {
     return (
-      this.session.session.authenticated &&
-      this.session.session.userId === this.args.post.author.id
+      this.session.isAuthenticated &&
+      this.session.data.userId === this.args.post.author.id
     );
   }
 

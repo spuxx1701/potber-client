@@ -1,11 +1,11 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import BoardsService from 'potber-client/services/boards';
+import Store from '@ember-data/store';
 
 export default class BoardOverviewRoute extends Route {
-  @service declare boards: BoardsService;
+  @service declare store: Store;
 
   async model() {
-    return await this.boards.getBoardCategories();
+    return await this.store.findAll('board-category');
   }
 }

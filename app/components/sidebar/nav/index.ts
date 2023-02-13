@@ -18,6 +18,6 @@ export default class SidebarNavComponent extends Component {
   }
 
   get authenticated() {
-    return this.session.session.authenticated;
+    return this.session.isAuthenticated;
   }
 }

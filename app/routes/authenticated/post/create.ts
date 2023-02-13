@@ -3,11 +3,10 @@ import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import { PostFormContent } from 'potber-client/components/board/post-form';
-import { Thread } from 'potber-client/services/api/types/thread';
+import Thread from 'potber-client/models/thread';
+import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
-import PostsService from 'potber-client/services/posts';
 import RendererService from 'potber-client/services/renderer';
-import ThreadsService from 'potber-client/services/threads';
 import RSVP from 'rsvp';
 
 interface Params {
@@ -23,20 +22,19 @@ export interface PostCreateRouteModel {
 export default class PostCreateRoute extends Route {
   @service declare renderer: RendererService;
   @service declare messages: MessagesService;
-  @service declare threads: ThreadsService;
-  @service declare posts: PostsService;
+  @service declare store: CustomStore;
 
   async model(params: Params, transition: Transition<unknown>) {
     try {
       // Retrieve the thread with its last page so we can display recent posts and other information about the thread
-      const thread = await this.threads.getThread(params.TID, {
-        page: params.page,
-        updateBookmark: false,
+      const thread = await this.store.findRecord('thread', params.TID, {
+        queryParams: {
+          page: params.page,
+          updateBookmark: false,
+        },
       });
       // Initialize the post
-      const post = await this.posts.initializePostFormContent(
-        `newreply.php?TID=${params.TID}`
-      );
+      const post = new PostFormContent();
       return RSVP.hash({
         thread,
         post,

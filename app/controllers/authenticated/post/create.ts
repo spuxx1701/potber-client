@@ -5,12 +5,10 @@ import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { PostFormContent } from 'potber-client/components/board/post-form';
 import { PostCreateRouteModel } from 'potber-client/routes/authenticated/post/create';
-import PostsService from 'potber-client/services/posts';
 
 export default class PostCreateController extends Controller {
   declare model: PostCreateRouteModel;
 
-  @service declare posts: PostsService;
   @service declare router: RouterService;
   @tracked busy = false;
 
@@ -18,7 +16,8 @@ export default class PostCreateController extends Controller {
 
   @action async handleSubmit(post: PostFormContent) {
     this.busy = true;
-    const postId = await this.posts.createPost(this.model.thread.id, post);
+    // const postId = await this.posts.createPost(this.model.thread.id, post);
+    const postId = 'TODO';
     this.busy = false;
     if (postId) {
       this.router.transitionTo('authenticated.thread', {

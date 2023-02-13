@@ -1,8 +1,8 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { Bookmark } from 'potber-client/services/api/types/bookmark';
-import BookmarksService from 'potber-client/services/bookmarks';
+import Bookmark from 'potber-client/models/bookmark';
+import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
 
 interface Signature {
@@ -12,7 +12,7 @@ interface Signature {
 }
 
 export default class BoardBookmarkComponent extends Component<Signature> {
-  @service declare bookmarks: BookmarksService;
+  @service declare store: CustomStore;
   @service declare messages: MessagesService;
   declare args: Signature['Args'];
 
@@ -29,12 +29,15 @@ export default class BoardBookmarkComponent extends Component<Signature> {
   }
 
   @action async handleDelete() {
-    this.messages.showNotification(
-      'Das Löschen von Lesezeichen ist leider noch nicht möglich.',
-      'error'
-    );
-    // TODO: NEEDS CORS HEADERS SET IN ENDPOINT
-    // await this.bookmarks.deleteBookmark(this.args.bookmark);
-    // this.messages.showNotification('Lesezeichen wurde entfernt.', 'success');
+    try {
+      await this.args.bookmark.destroyRecord();
+      this.messages.showNotification('Lesezeichen wurde entfernt.', 'success');
+    } catch (error: any) {
+      this.messages.log(error, {
+        type: 'error',
+        context: this.constructor.name,
+      });
+      this.messages.showNotification('Das hat leider nicht geklappt.', 'error');
+    }
   }
 }

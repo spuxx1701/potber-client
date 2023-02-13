@@ -2,21 +2,25 @@ import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ENV from 'potber-client/config/environment';
-import { Board } from './api/types/board';
+import Board from 'potber-client/models/board';
 import MessagesService from './messages';
 import { clean, valid, gt } from 'semver';
-import BoardsService from './boards';
+import CustomStore from './custom-store';
 
 const PREFIX = 'potber-';
 
 export default class LocalStorageService extends Service {
-  @service declare boards: BoardsService;
+  @service declare store: CustomStore;
   @service declare messages: MessagesService;
 
   @tracked avatarStyle: string = this.getAvatarStyle();
   @tracked boxStyle: string = this.getBoxStyle();
   @tracked boardFavorites: Board[] | null = [];
   @tracked landingPage: string = this.getLandingPage();
+
+  async initialize() {
+    await this.getBoardFavorites();
+  }
 
   /**
    * Gets 'avatarStyle' from localStorage.
@@ -90,7 +94,7 @@ export default class LocalStorageService extends Service {
       if (string) {
         const ids = string?.split(',') || [];
         for (const id of ids) {
-          boards.push(await this.boards.getBoard(id));
+          boards.push(await this.store.findRecord('board', id));
         }
       }
       this.boardFavorites = boards;

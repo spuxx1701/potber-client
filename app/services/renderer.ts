@@ -125,4 +125,14 @@ export default class RendererService extends Service {
     }
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
+
+  /**
+   * Can be used to scroll to the bottom after a certain amount of miliseconds.
+   * Useful when refreshing thread pages.
+   * @param waitTime The wait time in miliseconds.
+   */
+  async waitAndScrollToBottom(waitTime = 500) {
+    await sleep(waitTime);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
 }

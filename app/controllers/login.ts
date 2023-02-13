@@ -50,8 +50,8 @@ export default class AboutController extends Controller {
     this.loginInProcess = false;
     if (this.session.isAuthenticated) {
       this.messages.showNotification(`Anmeldung erfolgreich.`, 'success');
-      this.router.transitionTo('index');
       this.newsFeed.refreshBookmarks();
+      this.router.transitionTo('home');
     }
   }
 }

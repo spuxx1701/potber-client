@@ -1,13 +1,13 @@
 import Controller from '@ember/controller';
-import { BookmarksSummary } from 'potber-client/services/api/types/bookmark';
+import Bookmark from 'potber-client/models/bookmark';
 
 export default class BookmarksController extends Controller {
-  declare model: BookmarksSummary;
+  declare model: Bookmark[];
 
   get status() {
     if (!this.model) {
       return 'error';
-    } else if (this.model.bookmarks.length === 0) {
+    } else if (this.model.length === 0) {
       return 'empty';
     } else {
       return 'ok';

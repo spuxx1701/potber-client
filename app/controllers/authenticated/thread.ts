@@ -11,7 +11,7 @@ export default class ThreadController extends Controller {
   subtleUntilPostId = '';
 
   get pageTitle() {
-    return `${this.model.thread.title} [${this.model.page}]`;
+    return `${this.model.thread.title} [${this.model.thread.page?.number}]`;
   }
 
   get threads() {

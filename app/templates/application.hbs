@@ -13,14 +13,20 @@
 
   <NotificationContainer @position='bottom' @zindex='99' />
 
+  <Sidebar @bookmarksSummary={{@model.bookmarksSummary}} />
+
   <div id='top-nav' class='nav' role='toolbar'>
-    <Common::Control::Button
-      @icon={{if this.renderer.leftSidebarExpanded 'chevron-left' 'bars'}}
-      @text='Navigation'
-      @size='square'
-      @variant='primary-transparent'
-      @onClick={{this.toggleLeftSidebar}}
-    />
+    {{#if this.authenticated}}
+      <Common::Control::Button
+        @icon={{if this.renderer.leftSidebarExpanded 'chevron-left' 'bars'}}
+        @text='Navigation'
+        @size='square'
+        @variant='primary-transparent'
+        @onClick={{this.toggleLeftSidebar}}
+      />
+    {{else}}
+      <span class='control-size-square' />
+    {{/if}}
     <PortalTarget @name='top-nav' class='nav-portal-target' />
     <span class='control-size-square' />
   </div>

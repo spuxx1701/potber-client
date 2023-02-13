@@ -22,6 +22,10 @@
         @href={{this.originalUrl}}
         target='_blank'
       />
+      <Common::Control::Menu::Button
+        @text='Lesezeichen setzen'
+        @onClick={{this.setBookmark}}
+      />
       {{#if this.canEdit}}
         <Common::Control::Menu::LinkTo
           @text='Bearbeiten'
@@ -32,20 +36,23 @@
     </Common::Control::Menu>
   </div>
   <div class='post-content'>
-    {{#if (or @post.title @post.icon)}}
-      <p class='title post-title'>
-        <Board::Icon
-          @key={{@post.icon}}
-          @directory='post-icons'
-          @filename='{{@post.icon}}.gif'
-        />
-        {{@post.title}}
+    {{#if @post.contentHidden}}
+      <p class='subtitle no-margin'>⚠ Inhalt versteckt</p>
+    {{else}}
+      {{#if (or @post.title @post.icon)}}
+        <p class='title post-title'>
+          <Board::Icon
+            @key={{@post.icon}}
+            @directory='post-icons'
+            @filename='{{@post.icon}}.gif'
+          />
+          {{@post.title}}
+        </p>
+      {{/if}}
+      <p>
+        {{this.message}}
       </p>
     {{/if}}
-    {{! TODO: Check whether content was hidden }}
-    <p>
-      {{this.content}}
-    </p>
     {{#if @post.lastEdit}}
       <p class='subtitle'>
         <br /><br />{{this.editingInfo}}

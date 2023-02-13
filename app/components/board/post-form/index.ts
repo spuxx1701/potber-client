@@ -4,15 +4,14 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import ModalService from 'potber-client/services/modal';
 
-export interface PostFormContent {
+export class PostFormContent {
   id?: string;
-  title: string;
-  icon: string;
-  message: string;
-  convertUrls: boolean;
-  disableBbCode: boolean;
-  disableEmojis: boolean;
-  token: string;
+  title = '';
+  icon = '0';
+  message = '';
+  convertUrls = true;
+  disableBbCode = false;
+  disableEmojis = false;
 }
 
 interface Signature {

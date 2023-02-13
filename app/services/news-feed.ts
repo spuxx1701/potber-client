@@ -1,10 +1,10 @@
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { Bookmark } from './api/types/bookmark';
-import BookmarksService from './bookmarks';
+import Bookmark from 'potber-client/models/bookmark';
+import CustomStore from './custom-store';
 
 export default class NewsFeedService extends Service {
-  @service declare bookmarks: BookmarksService;
+  @service declare store: CustomStore;
 
   @tracked unreadBookmarks: Bookmark[] | null = null;
 
@@ -13,13 +13,13 @@ export default class NewsFeedService extends Service {
   }
 
   async refreshBookmarks() {
-    const bookmarksSummary = await this.bookmarks.getBookmarksSummary();
-    if (bookmarksSummary) {
+    try {
+      const bookmarks = await this.store.findAll('bookmark');
       this.unreadBookmarks = [
-        ...bookmarksSummary.bookmarks.filter(
-          (bookmark) => bookmark.newPostsCount > 0
-        ),
+        ...bookmarks.filter((bookmark) => bookmark.newPostsCount > 0),
       ];
-    } else this.unreadBookmarks = null;
+    } catch (error) {
+      this.unreadBookmarks = null;
+    }
   }
 }

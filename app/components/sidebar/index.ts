@@ -1,6 +1,6 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { Bookmark } from 'potber-client/services/api/types/bookmark';
+import Bookmark from 'potber-client/models/bookmark';
 import LocalStorageService from 'potber-client/services/local-storage';
 
 interface Signature {
@@ -14,7 +14,7 @@ export default class SidebarComponent extends Component<Signature> {
   @service declare session: any;
 
   get authenticated() {
-    return this.session.data.authenticated;
+    return this.session.isAuthenticated;
   }
 
   get boardFavorites() {

@@ -3,9 +3,9 @@ import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import LocalStorageService from 'potber-client/services/local-storage';
 
-export default class IndexRoute extends Route {
-  @service declare router: RouterService;
+export default class HomeRoute extends Route {
   @service declare localStorage: LocalStorageService;
+  @service declare router: RouterService;
 
   redirect() {
     const landingPage = this.localStorage.getLandingPage();
