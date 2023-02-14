@@ -1,10 +1,7 @@
 import RESTAdapter from '@ember-data/adapter/rest';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
-import DS from 'ember-data';
-import ModelRegistry from 'ember-data/types/registries/model';
 import ENV from 'potber-client/config/environment';
-import CustomStore from 'potber-client/services/custom-store';
 
 export default class ApplicationAdapter extends RESTAdapter {
   @service declare session: any;
