@@ -19,6 +19,7 @@ export default class AppService extends Service {
     if (this.initialized) return;
     this.renderer.initialize();
     await this.session.setup();
+    await this.session.update();
     if (this.session.isAuthenticated) {
       await this.localStorage.initialize();
       await this.newsFeed.refresh();

@@ -1,11 +1,10 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import CustomStore from 'potber-client/services/custom-store';
 
 export default class SessionRoute extends Route {
-  @service declare store: CustomStore;
+  @service declare session: any;
 
-  async model() {
-    return this.store.queryRecord('session', {});
+  model() {
+    return this.session.sessionData;
   }
 }

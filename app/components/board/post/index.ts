@@ -5,7 +5,6 @@ import ContentParserService from 'potber-client/services/content-parser';
 import ENV from 'potber-client/config/environment';
 import MessagesService from 'potber-client/services/messages';
 import Post from 'potber-client/models/post';
-import Bookmark from 'potber-client/models/bookmark';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsFeedService from 'potber-client/services/news-feed';
 
@@ -98,10 +97,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get canEdit() {
-    return (
-      this.session.isAuthenticated &&
-      this.session.data.userId === this.args.post.author.id
-    );
+    return this.session.sessionData?.userId === this.args.post.author.id;
   }
 
   get editingInfo() {
