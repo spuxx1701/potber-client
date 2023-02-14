@@ -1,6 +1,8 @@
 import RESTAdapter from '@ember-data/adapter/rest';
+import { Snapshot } from '@ember-data/store';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
+import ModelRegistry from 'ember-data/types/registries/model';
 import ENV from 'potber-client/config/environment';
 
 export default class ApplicationAdapter extends RESTAdapter {
@@ -39,9 +41,7 @@ export default class ApplicationAdapter extends RESTAdapter {
   /**
    * Support for custom query parameters on all requests.
    */
-  buildQuery(
-    snapshot: DS.Snapshot<keyof ModelRegistry>
-  ): Record<string, unknown> {
+  buildQuery(snapshot: Snapshot<keyof ModelRegistry>): Record<string, unknown> {
     const query = super.buildQuery(snapshot);
     if (snapshot.adapterOptions) {
       const { queryParams } = snapshot.adapterOptions;
