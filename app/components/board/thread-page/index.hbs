@@ -3,8 +3,9 @@
     {{#each this.posts as |post|}}
       <Board::Post
         @post={{post}}
+        @thread={{@thread}}
         @avatarStyle={{this.avatarStyle}}
-        @subtle={{is-post-subtle post @subtleUntilPostId @page}}
+        @subtle={{is-post-subtle post @subtleUntilPostId @thread.page}}
       />
     {{/each}}
   </div>

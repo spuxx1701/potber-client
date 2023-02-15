@@ -16,7 +16,7 @@ export default class PostCreateController extends Controller {
   @service declare router: RouterService;
   @tracked busy = false;
 
-  queryParams = ['TID', 'page'];
+  queryParams = ['TID', 'page', 'PID'];
 
   @action async handleSubmit(post: Post) {
     this.busy = true;

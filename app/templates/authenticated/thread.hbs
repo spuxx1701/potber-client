@@ -4,7 +4,7 @@
   <Nav::Routes::Thread @thread={{@model.thread}} />
 
   <Board::ThreadPage
-    @page={{@model.thread.page}}
+    @thread={{@model.thread}}
     @avatarStyle={{@model.avatarStyle}}
     @subtleUntilPostId={{@model.subtleUntilPostId}}
   />

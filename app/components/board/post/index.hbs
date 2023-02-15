@@ -32,7 +32,7 @@
         @text='Zitieren'
         @icon='comment-dots'
         @route='authenticated.post.create'
-        @query={{hash TID=@post.threadId PID=@post.id}}
+        @query={{hash TID=@post.threadId page=@thread.pagesCount PID=@post.id}}
       />
       {{#if this.canEdit}}
         <Common::Control::Menu::LinkTo

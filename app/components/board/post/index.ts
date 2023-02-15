@@ -7,10 +7,12 @@ import MessagesService from 'potber-client/services/messages';
 import Post from 'potber-client/models/post';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsFeedService from 'potber-client/services/news-feed';
+import Thread from 'potber-client/models/thread';
 
 interface Signature {
   Args: {
     post: Post;
+    thread: Thread;
     avatarStyle: string;
     subtle?: boolean;
   };
