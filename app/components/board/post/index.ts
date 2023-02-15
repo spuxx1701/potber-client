@@ -28,7 +28,7 @@ export default class PostComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
   get date() {
-    return this.args.post.date.toLocaleString();
+    return new Date(this.args.post.date).toLocaleString();
   }
 
   get href() {
@@ -106,7 +106,7 @@ export default class PostComponent extends Component<Signature> {
     if (this.args.post.editedCount && this.args.post.lastEdit) {
       return `${this.args.post.editedCount}x bearbeitet, zuletzt von ${
         this.args.post.lastEdit.user.name
-      } am ${this.args.post.lastEdit.date.toLocaleString()}`;
+      } am ${new Date(this.args.post.lastEdit.date).toLocaleString()}`;
     }
   }
 }

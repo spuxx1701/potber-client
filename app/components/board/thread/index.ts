@@ -57,7 +57,7 @@ export default class ThreadComponent extends Component<Signature> {
       post = this.args.thread.firstPost;
     } else return undefined;
     return htmlSafe(
-      `<b>${post.author.name}</b> am ${post.date.toLocaleString()}`
+      `<b>${post.author.name}</b> am ${new Date(post.date).toLocaleString()}`
     );
   }
 }

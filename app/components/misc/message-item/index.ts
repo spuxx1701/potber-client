@@ -23,6 +23,6 @@ export default class MessageItemComponent extends Component<Signature> {
   }
 
   get date() {
-    return this.args.message.date.toLocaleString();
+    return new Date(this.args.message.date).toLocaleString();
   }
 }
