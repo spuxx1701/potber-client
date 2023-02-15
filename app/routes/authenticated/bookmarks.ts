@@ -6,6 +6,6 @@ export default class BookmarksRoute extends Route {
   @service declare store: CustomStore;
 
   async model() {
-    return await this.store.findAll('bookmark');
+    return await this.store.getBookmarks();
   }
 }

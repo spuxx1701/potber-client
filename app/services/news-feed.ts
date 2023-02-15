@@ -14,7 +14,7 @@ export default class NewsFeedService extends Service {
 
   async refreshBookmarks() {
     try {
-      const bookmarks = await this.store.findAll('bookmark');
+      const bookmarks = await this.store.getBookmarks();
       this.unreadBookmarks = [
         ...bookmarks.filter((bookmark) => bookmark.newPostsCount > 0),
       ];
