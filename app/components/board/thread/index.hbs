@@ -10,6 +10,9 @@
 >
   <div class='board-item-header'>
     <div class='board-item-title'>
+      {{#if this.bookmark}}
+        <FaIcon @icon='bookmark' class='bookmark-icon' />
+      {{/if}}
       {{#if this.icon}}
         <Board::Icon
           @key={{this.icon}}

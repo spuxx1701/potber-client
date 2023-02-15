@@ -35,11 +35,11 @@
 input:focus, textarea:focus {
   outline: none;
   background-color: var(--color-control-inactive);
-  border-bottom: 2px solid var(--color-input-accent);
+  border-bottom: 2px solid var(--color-accent);
 }
 
 input:focus+label {
-  color: var(--color-input-accent);
+  color: var(--color-accent);
 }
 
 input:focus+label,

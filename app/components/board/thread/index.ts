@@ -1,7 +1,9 @@
+import { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { PostPreview } from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
+import CustomStore from 'potber-client/services/custom-store';
 
 export interface Signature {
   Args: {
@@ -12,6 +14,8 @@ export interface Signature {
 export default class ThreadComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
+  @service declare store: CustomStore;
+
   get isImportant() {
     return (
       this.args.thread.isAnnouncement ||
@@ -19,6 +23,14 @@ export default class ThreadComponent extends Component<Signature> {
       this.args.thread.isImportant ||
       this.args.thread.isSticky
     );
+  }
+
+  get bookmark() {
+    if (this.store.bookmarks) {
+      return this.store.bookmarks.find(
+        (bookmark) => bookmark.thread.id === this.args.thread.id
+      );
+    }
   }
 
   get icon() {

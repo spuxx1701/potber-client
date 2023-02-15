@@ -4,6 +4,7 @@
   --color-nav-background: var(--color-container-background);
   --color-post-background-primary: #394e63;
   --color-post-background-secondary: #293746;
+  --color-accent: #00d9ff;
 
   --color-loading-indicator-background: rgba(41, 55, 70, 0.7);
 
@@ -11,13 +12,11 @@
   --color-text-subtle: #aeaeae;
   --color-text-link: var(--color-text-subtle);
   --color-text-highlighted: white;
-  --color-text-accent: #3a73a8;
 
   --color-control-inactive: #122130;
   --color-control-disabled: #333d4b;
   --color-control-hover: #1b3149;
   --color-input-inactive: var(--color-control-inactive);
-  --color-input-accent: var(--color-text-accent);
 
   --color-quote-header: var(--color-nav-background);
   --color-quote-background: rgba(20, 35, 55, 0.5);
