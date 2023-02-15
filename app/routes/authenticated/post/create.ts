@@ -34,7 +34,7 @@ export default class PostCreateRoute extends Route {
         },
       });
       // Initialize the post
-      const post = new Post({
+      const post = this.store.createRecord('post', {
         threadId: thread.id,
       });
       return RSVP.hash({

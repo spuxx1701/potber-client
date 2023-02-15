@@ -14,7 +14,7 @@ export default class Post extends Model {
   @attr({ defaultValue: '0' })
   icon?: string;
 
-  @attr({ defaultValue: '0' })
+  @attr({ defaultValue: '' })
   message?: string;
 
   @attr()
