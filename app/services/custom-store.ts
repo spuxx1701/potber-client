@@ -14,7 +14,9 @@ export default class CustomStore extends Store {
     reload?: boolean;
   }): Promise<ArrayProxy<Bookmark>> {
     if (!this.bookmarks || options?.reload) {
-      this.bookmarks = await this.findAll('bookmark');
+      this.bookmarks = await this.findAll('bookmark', {
+        reload: true,
+      });
     }
     return this.bookmarks;
   }

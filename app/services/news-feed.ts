@@ -14,10 +14,10 @@ export default class NewsFeedService extends Service {
 
   async refreshBookmarks() {
     try {
-      const bookmarks = await this.store.getBookmarks();
-      this.unreadBookmarks = [
-        ...bookmarks.filter((bookmark) => bookmark.newPostsCount > 0),
-      ];
+      const bookmarks = await this.store.getBookmarks({ reload: true });
+      this.unreadBookmarks = bookmarks.filter(
+        (bookmark) => bookmark.newPostsCount > 0
+      );
     } catch (error) {
       this.unreadBookmarks = null;
     }

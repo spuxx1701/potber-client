@@ -8,3 +8,10 @@
     <Sidebar::NewsFeed::Bookmark @bookmark={{bookmark}} />
   {{/each}}
 {{/if}}
+<Common::Control::Button
+  @icon='arrows-rotate'
+  @text='Akutalisieren'
+  @size='max'
+  @busy={{this.busy}}
+  @onClick={{this.refresh}}
+/>
