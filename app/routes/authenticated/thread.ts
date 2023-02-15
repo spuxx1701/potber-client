@@ -93,7 +93,7 @@ export default class ThreadRoute extends Route {
   }
 
   @action async didTransition() {
-    await sleep(250);
+    await sleep(500);
     // If PID was supplied, we also need to add the anchor
     const params = new URL(window.location.href).searchParams;
     if (params.has('PID') && params.get('PID')) {

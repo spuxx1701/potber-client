@@ -31,7 +31,7 @@
       <Common::Control::Menu::LinkTo
         @text='Zitieren'
         @icon='comment-dots'
-        @route='authenticated.post.create'
+        @route='authenticated.post.quote'
         @query={{hash TID=@post.threadId page=@thread.pagesCount PID=@post.id}}
       />
       {{#if this.canEdit}}

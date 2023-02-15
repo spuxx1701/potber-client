@@ -22,6 +22,16 @@ export default class PostEditRoute extends Route {
   @service declare messages: MessagesService;
   @service declare store: CustomStore;
 
+  // We need to tell the route to refresh the model after the query parameters have changed
+  queryParams = {
+    TID: {
+      refreshModel: true,
+    },
+    PID: {
+      refreshModel: true,
+    },
+  };
+
   async model(params: Params, transition: Transition<unknown>) {
     try {
       const post = await this.store.findRecord('post', params.PID, {

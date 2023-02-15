@@ -22,6 +22,7 @@ Router.map(function () {
     this.route('bookmarks');
     this.route('post', function () {
       this.route('create');
+      this.route('quote');
       this.route('edit');
     });
   });
