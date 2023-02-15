@@ -8,14 +8,14 @@ export default class Post extends Model {
   @attr()
   declare date: Date;
 
-  @attr()
+  @attr({ defaultValue: '' })
   declare title?: string;
 
-  @attr()
-  declare icon?: string;
+  @attr({ defaultValue: '0' })
+  icon?: string;
 
-  @attr()
-  declare message?: string;
+  @attr({ defaultValue: '0' })
+  message?: string;
 
   @attr()
   declare contentHidden?: boolean;
@@ -34,6 +34,15 @@ export default class Post extends Model {
 
   @attr()
   declare boardId: string;
+
+  @attr({ defaultValue: true })
+  convertUrls?: boolean;
+
+  @attr({ defaultValue: false })
+  disableBbCode?: boolean;
+
+  @attr({ defaultValue: false })
+  disableEmojis?: boolean;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.

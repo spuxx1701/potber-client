@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { PostFormContent } from 'potber-client/components/board/post-form';
+import Post from 'potber-client/models/post';
 import { PostEditRouteModel } from 'potber-client/routes/authenticated/post/edit';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
@@ -18,18 +18,24 @@ export default class PostCreateController extends Controller {
 
   queryParams = ['TID', 'PID'];
 
-  @action async handleSubmit(post: PostFormContent) {
-    // this.busy = true;
-    // const success = await this.posts.editPost(post);
-    // this.busy = false;
-    // if (success) {
-    //   this.messages.showNotification('Antwort wurde bearbeitet.', 'success');
-    //   this.router.transitionTo('authenticated.thread', {
-    //     queryParams: {
-    //       TID: this.model.threadId,
-    //       PID: post.id,
-    //     },
-    //   });
-    // }
+  @action async handleSubmit(post: Post) {
+    this.busy = true;
+    try {
+      await post.save();
+      this.messages.showNotification('Antwort wurde bearbeitet.', 'success');
+      this.router.transitionTo('authenticated.thread', {
+        queryParams: {
+          TID: post.threadId,
+          PID: post.id,
+        },
+      });
+    } catch (error) {
+      this.messages.logErrorAndNotify(
+        'Da ist leider etwas schiefgegangen. Probiere es nochmal.',
+        error,
+        this.constructor.name
+      );
+    }
+    this.busy = false;
   }
 }

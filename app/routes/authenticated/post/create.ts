@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import { PostFormContent } from 'potber-client/components/board/post-form';
+import Post from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
@@ -16,7 +16,7 @@ interface Params {
 
 export interface PostCreateRouteModel {
   thread: Thread;
-  post: PostFormContent;
+  post: Post;
 }
 
 export default class PostCreateRoute extends Route {
@@ -34,7 +34,9 @@ export default class PostCreateRoute extends Route {
         },
       });
       // Initialize the post
-      const post = new PostFormContent();
+      const post = new Post({
+        threadId: thread.id,
+      });
       return RSVP.hash({
         thread,
         post,

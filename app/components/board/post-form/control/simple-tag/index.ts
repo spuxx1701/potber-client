@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { PostFormContent } from '../..';
+import Post from 'potber-client/models/post';
 
 interface Signature {
   Args: {
@@ -10,7 +10,7 @@ interface Signature {
     opening: string;
     closing: string;
     textarea: HTMLTextAreaElement;
-    post: PostFormContent;
+    post: Post;
   };
 }
 
@@ -20,7 +20,7 @@ export default class PostFormControlSimpleTagComponent extends Component<Signatu
   }
 
   insertTag() {
-    const message = this.args.post.message;
+    const message = this.args.post.message || '';
     const selectionStart = this.args.textarea.selectionStart;
     const selectionEnd = this.args.textarea.selectionEnd;
     this.args.post.message =

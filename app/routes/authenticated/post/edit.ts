@@ -2,10 +2,10 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import { PostFormContent } from 'potber-client/components/board/post-form';
+import Post from 'potber-client/models/post';
+import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
 import RendererService from 'potber-client/services/renderer';
-import RSVP from 'rsvp';
 
 interface Params {
   TID: string;
@@ -14,30 +14,29 @@ interface Params {
 
 export interface PostEditRouteModel {
   threadId: string;
-  post: PostFormContent;
+  post: Post;
 }
 
 export default class PostEditRoute extends Route {
   @service declare renderer: RendererService;
   @service declare messages: MessagesService;
+  @service declare store: CustomStore;
 
   async model(params: Params, transition: Transition<unknown>) {
     try {
-      // Retrieve the thread with its last page so we can return to the post after editing
-      // Initialize the post
-      // const post = await this.posts.initializePostFormContent(
-      //   `editreply.php?PID=${params.PID}`,
-      //   params.PID
-      // );
-      const post = new PostFormContent();
-      return RSVP.hash({
-        threadId: params.TID,
-        post,
+      const post = await this.store.findRecord('post', params.PID, {
+        adapterOptions: {
+          queryParams: {
+            threadId: params.TID,
+          },
+        },
       });
+      return post;
     } catch (error) {
-      this.messages.showNotification(
+      this.messages.logErrorAndNotify(
         'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',
-        'error'
+        error,
+        this.constructor.name
       );
       transition.abort();
     }

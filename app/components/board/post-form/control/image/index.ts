@@ -1,12 +1,12 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import Post from 'potber-client/models/post';
 import ModalService from 'potber-client/services/modal';
-import { PostFormContent } from '../..';
 
 interface Signature {
   Args: {
-    post: PostFormContent;
+    post: Post;
   };
 }
 

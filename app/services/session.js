@@ -8,14 +8,13 @@ export default class SessionService extends BaseSessionService {
   @tracked sessionData = null;
 
   async update() {
-    // debugger;
     if (!this.isAuthenticated) {
       this.sessionData = null;
     } else {
       try {
         this.sessionData = await this.store.queryRecord('session', {});
       } catch (error) {
-        throw new Error(`Unable to retrieve session information (${error}).`);
+        this.invalidate();
       }
     }
   }

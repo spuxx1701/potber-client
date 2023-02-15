@@ -2,19 +2,19 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import Post from 'potber-client/models/post';
 import ModalService from 'potber-client/services/modal';
 import { getRandomEmojiIcon } from 'potber-client/utils/icons';
-import { PostFormContent } from '../..';
 
 interface Signature {
   Args: {
-    post: PostFormContent;
+    post: Post;
   };
 }
 
 export default class PostFormControlTitleComponent extends Component<Signature> {
   @service declare modal: ModalService;
-  @tracked icon: string = this.args.post.icon;
+  @tracked icon: string = this.args.post.icon || '0';
 
   get randomEmojiIcon() {
     return getRandomEmojiIcon();

@@ -1,13 +1,13 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import Post from 'potber-client/models/post';
 import ModalService from 'potber-client/services/modal';
 import { getRandomEmojiIcon } from 'potber-client/utils/icons';
-import { PostFormContent } from '../..';
 
 interface Signature {
   Args: {
-    post: PostFormContent;
+    post: Post;
     textarea: HTMLTextAreaElement;
   };
 }
@@ -27,7 +27,7 @@ export default class PostFormControlEmojiSelectComponent extends Component<Signa
   }
 
   @action handleSelect(key: string) {
-    const message = this.args.post.message;
+    const message = this.args.post.message || '';
     const selectionEnd = this.args.textarea.selectionEnd;
     this.args.post.message =
       message.substring(0, this.args.textarea.selectionEnd) +

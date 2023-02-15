@@ -2,24 +2,15 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import Post from 'potber-client/models/post';
 import ModalService from 'potber-client/services/modal';
-
-export class PostFormContent {
-  id?: string;
-  title = '';
-  icon = '0';
-  message = '';
-  convertUrls = true;
-  disableBbCode = false;
-  disableEmojis = false;
-}
 
 interface Signature {
   Args: {
-    post: PostFormContent;
+    post: Post;
     hideTitle?: boolean;
     submitLabel: string;
-    onSubmit: (post: PostFormContent) => void;
+    onSubmit: (post: Post) => void;
   };
 }
 
