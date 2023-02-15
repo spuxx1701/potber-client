@@ -19,16 +19,25 @@
     <Common::Control::Menu @position='auto'>
       <Common::Control::Menu::Link
         @text='Original öffnen'
+        @icon='up-right-from-square'
         @href={{this.originalUrl}}
         target='_blank'
       />
       <Common::Control::Menu::Button
         @text='Lesezeichen setzen'
+        @icon='bookmark'
         @onClick={{this.setBookmark}}
+      />
+      <Common::Control::Menu::LinkTo
+        @text='Zitieren'
+        @icon='comment-dots'
+        @route='authenticated.post.create'
+        @query={{hash TID=@post.threadId PID=@post.id}}
       />
       {{#if this.canEdit}}
         <Common::Control::Menu::LinkTo
           @text='Bearbeiten'
+          @icon='edit'
           @route='authenticated.post.edit'
           @query={{hash TID=@post.threadId PID=@post.id}}
         />

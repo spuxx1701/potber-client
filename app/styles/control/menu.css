@@ -53,7 +53,7 @@
   margin: 0;
   border-radius: var(--global-border-radius);
   background-color: var(--color-control-inactive);
-  max-width: 200px;
+  max-width: 320px;
 }
 
 .menu-content>* {

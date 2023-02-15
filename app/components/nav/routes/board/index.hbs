@@ -33,11 +33,13 @@
     >
       <Common::Control::Menu::Button
         @text='Zu Favoriten hinzufügen'
+        @icon='star'
         @onClick={{this.addToFavorites}}
       />
       <Common::Control::Menu::Link
-        @href={{this.originalUrl}}
         @text='Original öffnen'
+        @icon='up-right-from-square'
+        @href={{this.originalUrl}}
         target='_blank'
       />
     </Common::Control::Menu>

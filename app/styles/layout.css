@@ -59,7 +59,7 @@
   min-width: var(--control-default-height);
 }
 
-.control-size-square svg {
+.control-size-square>svg {
   font-size: x-large;
 }
 

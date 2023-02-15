@@ -36,20 +36,25 @@
       @icon='ellipsis'
     >
       <Common::Control::Menu::Link
-        @href={{this.originalUrl}}
         @text='Original öffnen'
+        @icon='up-right-from-square'
+        @href={{this.originalUrl}}
         target='_blank'
       />
       <Common::Control::Menu::LinkTo
+        @text='Zur ersten Seite'
+        @icon='backward-step'
         @route='authenticated.thread'
         @query={{hash TID=@thread.id page='1' PID='' subtleUntilPostId=''}}
-        @text='Zur ersten Seite'
       />
       <Common::Control::Menu::Button
         @text='Zur Seite...'
+        @icon='magnifying-glass'
         @onClick={{this.handleGoToPage}}
       />
       <Common::Control::Menu::LinkTo
+        @text='Zur letzten Seite'
+        @icon='forward-step'
         @route='authenticated.thread'
         @query={{hash
           TID=@thread.id
@@ -57,7 +62,6 @@
           subtleUntilPostId=''
           page=@thread.pagesCount
         }}
-        @text='Zur letzten Seite'
       />
     </Common::Control::Menu>
 

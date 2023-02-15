@@ -12,11 +12,13 @@
   <Common::Control::Menu @position='bottom-left'>
     <Common::Control::Menu::Button
       @text='Favorit entfernen'
+      @icon='trash'
       @onClick={{this.remove}}
     />
     <Common::Control::Menu::Link
-      @href={{this.originalUrl}}
       @text='Original öffnen'
+      @icon='up-right-from-square'
+      @href={{this.originalUrl}}
       target='_blank'
     />
   </Common::Control::Menu>

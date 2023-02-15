@@ -1,4 +1,5 @@
-<Common::Control::Link
-  @route={{@route}}
-  @query={{@query}}
->{{@text}}</Common::Control::Link>
+<Common::Control::Link @route={{@route}} @query={{@query}}>
+  {{#if @icon}}
+    <FaIcon @icon={{@icon}} />
+  {{/if}}
+  {{@text}}</Common::Control::Link>
