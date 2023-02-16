@@ -5,23 +5,6 @@ import { module, test } from 'qunit';
 module('Unit | Service | DeviceManager', function (hooks) {
   setupTest(hooks);
 
-  test('Service is instantiated.', function (assert) {
-    const deviceManager = this.owner.lookup(
-      'service:device-manager'
-    ) as DeviceManagerService;
-    assert.ok(deviceManager);
-  });
-
-  test('Properly sets operatingSystem and browser.', function (assert) {
-    const deviceManager = this.owner.lookup(
-      'service:device-manager'
-    ) as DeviceManagerService;
-    deviceManager.userAgent =
-      'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1';
-    assert.strictEqual(deviceManager.operatingSystem, 'Linux');
-    assert.strictEqual(deviceManager.browser, 'Firefox');
-  });
-
   test('Properly recognizes all supported operating systems.', function (assert) {
     const deviceManager = this.owner.lookup(
       'service:device-manager'
