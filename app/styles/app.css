@@ -19,6 +19,7 @@
 @import "./board/bookmark.css";
 
 @import "./responsiveness.css";
+@import "./devices.css";
 
 @import "./overrides.css";
 

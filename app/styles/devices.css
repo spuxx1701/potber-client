@@ -1,0 +1,5 @@
+:root {
+  /* iOS compatibility */
+  --bottom-nav-bottom-border: 0px;
+  --bottom-nav-bottom-border-ios: 0.25rem;
+}

@@ -25,6 +25,9 @@ export default class DeviceManagerService extends Service {
         context: this.constructor.name,
       }
     );
+    if (this.operatingSystem === 'iOS') {
+      this.enableiOSCompatibility();
+    }
   }
 
   /**
@@ -61,5 +64,16 @@ export default class DeviceManagerService extends Service {
       return 'WebKit';
     }
     return 'unknown';
+  }
+
+  /**
+   * Enables iOS compatibility mode.
+   */
+  enableiOSCompatibility() {
+    // Add a bottom border to the bottom nav to make room for the home button
+    document.documentElement.style.setProperty(
+      '--bottom-nav-bottom-border',
+      'var(--bottom-nav-bottom-border-ios)'
+    );
   }
 }

@@ -1,6 +1,6 @@
 :root {
   --top-nav-height: 55px;
-  --bottom-nav-height: 55px;
+  --bottom-nav-height: calc(55px + var(--bottom-nav-bottom-border));
 }
 
 .nav {
@@ -28,6 +28,7 @@
   height: var(--bottom-nav-height);
   bottom: 0;
   z-index: 10;
+  border-bottom: var(--bottom-nav-bottom-border) solid var(--color-nav-background);
 }
 
 #bottom-nav>.nav-portal-target {
