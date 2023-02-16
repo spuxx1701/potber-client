@@ -58,13 +58,13 @@
           {{@post.title}}
         </p>
       {{/if}}
-      <p>
+      <p class='post-content-message'>
         {{this.message}}
       </p>
     {{/if}}
     {{#if @post.lastEdit}}
-      <p class='subtitle'>
-        <br /><br />{{this.editingInfo}}
+      <p class='post-content-footer subtitle'>
+        {{this.editingInfo}}
       </p>
     {{/if}}
   </div>

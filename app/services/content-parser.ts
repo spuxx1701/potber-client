@@ -4,6 +4,8 @@ import { htmlSafe } from '@ember/template';
 import yabbcode from './bbcode/ya-bbcode';
 import { emojis } from 'potber-client/utils/icons';
 import MessagesService from './messages';
+import { parseMod } from './content-parser/mod';
+import { parseTex } from './content-parser/tex';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -16,6 +18,9 @@ export default class ContentParserService extends Service {
    */
   parsePostContent(input: string) {
     let output = input;
+    // Simple formatting tags
+    output = parseMod(output);
+    output = parseTex(output);
     output = this.parseTable(output);
     output = this.parseList(output);
     output = this.parseQuoteUsernames(output);
@@ -26,7 +31,7 @@ export default class ContentParserService extends Service {
   }
 
   /**
-   * Pares [table] tags. Does not support tag nesting.
+   * Parses [table] tags. Does not support tag nesting.
    * @param input The input string.
    * @returns The output string.
    */
