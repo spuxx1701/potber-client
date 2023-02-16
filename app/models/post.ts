@@ -6,7 +6,7 @@ export default class Post extends Model {
   declare author: User;
 
   @attr()
-  declare date: Date;
+  declare date: string;
 
   @attr({ defaultValue: '' })
   declare title?: string;
@@ -54,13 +54,13 @@ declare module 'ember-data/types/registries/model' {
 
 export interface LastEdit {
   user: User;
-  date: Date;
+  date: string;
 }
 
 export interface PostPreview {
   icon?: string;
   author: User;
-  date: Date;
+  date: string;
   threadId: string;
   boardId: string;
 }
