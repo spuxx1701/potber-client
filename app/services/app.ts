@@ -1,5 +1,6 @@
 import RouterService from '@ember/routing/router-service';
 import Service, { service } from '@ember/service';
+import DeviceManagerService from './device-manager';
 import LocalStorageService from './local-storage';
 import ModalService from './modal';
 import NewsFeedService from './news-feed';
@@ -7,6 +8,7 @@ import RendererService from './renderer';
 
 export default class AppService extends Service {
   @service declare renderer: RendererService;
+  @service declare deviceManager: DeviceManagerService;
   @service declare router: RouterService;
   @service declare modal: ModalService;
   @service declare localStorage: LocalStorageService;
@@ -18,6 +20,7 @@ export default class AppService extends Service {
   async initialize() {
     if (this.initialized) return;
     this.renderer.initialize();
+    this.deviceManager.initialize();
     await this.session.setup();
     if (this.session.isAuthenticated) {
       this.session.update();
