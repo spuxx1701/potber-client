@@ -21,9 +21,10 @@
         @route='authenticated.thread'
         @query={{hash
           TID=@thread.id
-          PID=''
           page=this.previousPage
-          subtleUntilPostId=''
+          PID=undefined
+          subtleUntilPostId=undefined
+          scrollToBottom=undefined
         }}
       ><FaIcon @icon='chevron-left' /></Common::Control::Link>
     {{else}}
@@ -45,7 +46,13 @@
         @text='Zur ersten Seite'
         @icon='backward-step'
         @route='authenticated.thread'
-        @query={{hash TID=@thread.id page='1' PID='' subtleUntilPostId=''}}
+        @query={{hash
+          TID=@thread.id
+          page='1'
+          PID=undefined
+          subtleUntilPostId=undefined
+          scrollToBottom=undefined
+        }}
       />
       <Common::Control::Menu::Button
         @text='Zur Seite...'
@@ -58,9 +65,10 @@
         @route='authenticated.thread'
         @query={{hash
           TID=@thread.id
-          PID=''
-          subtleUntilPostId=''
           page=@thread.pagesCount
+          PID=undefined
+          subtleUntilPostId=undefined
+          scrollToBottom=undefined
         }}
       />
     </Common::Control::Menu>
@@ -72,9 +80,10 @@
         @route='authenticated.thread'
         @query={{hash
           TID=@thread.id
-          PID=''
-          subtleUntilPostId=''
           page=this.nextPage
+          PID=undefined
+          subtleUntilPostId=undefined
+          scrollToBottom=undefined
         }}
       ><FaIcon @icon='chevron-right' /></Common::Control::Link>
     {{else}}
