@@ -15,6 +15,7 @@
   background-color: var(--color-input-inactive);
   border: 0px solid transparent;
   border-radius: var(--global-border-radius);
+  margin: 0;
   padding: 1rem 1rem 0 1rem;
   color: var(--color-text-default);
   font-size: medium;
