@@ -7,7 +7,7 @@ import { sleep } from 'potber-client/utils/misc';
 import RSVP, { reject } from 'rsvp';
 import { scrollToHash } from 'ember-url-hash-polyfill';
 import ThreadController from 'potber-client/controllers/authenticated/thread';
-import Thread, { ThreadPage } from 'potber-client/models/thread';
+import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsFeedService from 'potber-client/services/news-feed';
 
@@ -16,6 +16,7 @@ interface Params {
   PID?: string;
   page?: string;
   subtleUntilPostId?: string;
+  scrollToBottom?: string;
 }
 
 export interface ThreadRouteModel {
@@ -48,6 +49,7 @@ export default class ThreadRoute extends Route {
     controller.set('TID', '');
     controller.set('page', '');
     controller.set('PID', '');
+    controller.set('scrollToBottom', '');
   }
 
   async model(params: Params) {
@@ -94,9 +96,9 @@ export default class ThreadRoute extends Route {
 
   @action async didTransition() {
     await sleep(500);
-    // If PID was supplied, we also need to add the anchor
     const params = new URL(window.location.href).searchParams;
     if (params.has('PID') && params.get('PID')) {
+      // If PID was supplied, we also need to add the anchor
       // Set the hash without triggering without triggering a browser scroll action
       const currentState = { ...history.state };
       history.replaceState(
@@ -104,9 +106,12 @@ export default class ThreadRoute extends Route {
         'unused',
         `#reply_${params.get('PID')}`
       );
-    }
-    if (window.location.hash) {
-      scrollToHash(`reply_${params.get('PID')}`);
+      if (window.location.hash) {
+        scrollToHash(`reply_${params.get('PID')}`);
+      }
+    } else if (params.get('scrollToBottom') === 'true') {
+      // if scrollToBottom was supplied, scroll to bottom
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
   }
 }
