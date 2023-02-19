@@ -1,8 +1,9 @@
 <Common::Control::Button
-  @icon='strikethrough'
-  @text='Durchgestrichen'
+  @icon='image'
+  @prefix='far'
   @variant='primary-transparent'
+  @text='Link einfügen'
   @size='square'
   @type='button'
-  {{on 'click' (fn this.insertTag '[s]' '[/s]')}}
+  @onClick={{this.handleClick}}
 />

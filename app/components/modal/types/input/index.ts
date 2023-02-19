@@ -11,7 +11,7 @@ export interface InputModalOptions {
   text?: string;
   label: string;
   value?: string;
-  type?: 'text' | 'number';
+  type?: 'text' | 'number' | 'url';
   minLength?: number;
   maxLength?: number;
   min?: number;
