@@ -5,6 +5,15 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     // Add options here
+    babel: {
+      plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
+    },
+    fingerprint: {
+      enabled:
+        process.env.EMBER_ENV === 'production' ||
+        process.env.EMBER_ENV === 'integration',
+      exclude: ['images'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

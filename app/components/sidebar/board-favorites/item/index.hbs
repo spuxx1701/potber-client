@@ -1,0 +1,25 @@
+<div class='sidebar-content-element flex-row justify-content-between'>
+  <Common::Control::Link
+    class='flex-column flex-grow'
+    @route='authenticated.board'
+    @query={{hash BID=@board.id}}
+    @variant='secondary'
+    @onClick={{this.handleLinkClick}}
+  >
+    <p class='title'> {{@board.name}}</p>
+    <p class='subtitle'> {{@board.description}}</p>
+  </Common::Control::Link>
+  <Common::Control::Menu @position='bottom-left'>
+    <Common::Control::Menu::Button
+      @text='Favorit entfernen'
+      @icon='trash'
+      @onClick={{this.remove}}
+    />
+    <Common::Control::Menu::Link
+      @text='Original öffnen'
+      @icon='up-right-from-square'
+      @href={{this.originalUrl}}
+      target='_blank'
+    />
+  </Common::Control::Menu>
+</div>

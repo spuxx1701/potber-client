@@ -1,0 +1,17 @@
+{{#if (eq this.status 'error')}}
+  <p class='subtitle sidebar-error-text'>(╯°□°)╯︵ ┻━┻<br /><br />Beim Laden
+    Deiner Neugigkeiten ist etwas schiefgegangen.</p>
+{{else if (eq this.status 'empty')}}
+  <p class='subtitle sidebar-error-text'>Es gibt keine Neuigkeiten.</p>
+{{else}}
+  {{#each this.unreadBookmarks as |bookmark|}}
+    <Sidebar::NewsFeed::Bookmark @bookmark={{bookmark}} />
+  {{/each}}
+{{/if}}
+<Common::Control::Button
+  @icon='arrows-rotate'
+  @text='Akutalisieren'
+  @size='max'
+  @busy={{this.busy}}
+  @onClick={{this.refresh}}
+/>

@@ -1,0 +1,14 @@
+{{page-title 'Lesezeichen'}}
+
+<Nav::Routes::Generic @title='Lesezeichen' />
+
+{{#if (eq this.status 'error')}}
+  <p class='subtitle'>(╯°□°)╯︵ ┻━┻<br /><br />Beim Laden Deiner Lesezeichen ist
+    etwas schiefgegangen. Probier es später nochmal.</p>
+{{else if (eq this.status 'empty')}}
+  <p class='subtitle'>Du hast keine Lesezeichen gespeichert.</p>
+{{else}}
+  {{#each @model as |bookmark|}}
+    <Board::Bookmark @bookmark={{bookmark}} />
+  {{/each}}
+{{/if}}

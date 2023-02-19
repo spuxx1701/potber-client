@@ -1,0 +1,63 @@
+{{page-title 'Einstellungen'}}
+
+<Nav::Routes::Generic @title='Einstellungen' />
+
+<Common::Container @size='small'>
+
+  <Common::Control::Dropdown
+    @options={{this.avatarStyleOptions}}
+    @default={{@model.currentAvatarStyleOption}}
+    @onSelect={{this.handleAvatarStyleSelect}}
+    @size='max'
+    @label='Bender'
+  />
+
+  <Common::Control::Dropdown
+    @options={{this.boxStyleOptions}}
+    @default={{@model.currentBoxStyleOption}}
+    @onSelect={{this.handleBoxStyleSelect}}
+    @size='max'
+    @label='Design'
+  />
+
+  <Common::Control::Dropdown
+    @options={{this.landingPageOptions}}
+    @default={{@model.currentLandingPageOption}}
+    @onSelect={{this.handleLandingPageSelect}}
+    @size='max'
+    @label='Startseite'
+  />
+
+  <hr />
+
+  <Common::Control::Link
+    @route='applog'
+    @size='large'
+    @variant='primary'
+    class='margin-auto margin-vertical-x-small'
+  >
+    <FaIcon @icon='rectangle-list' />
+    <p class='margin-left-x-small'>Applog</p>
+  </Common::Control::Link>
+
+  <Common::Control::Link
+    @route='changelog'
+    @size='large'
+    @variant='primary'
+    class='margin-auto margin-vertical-x-small'
+  >
+    <FaIcon @icon='star' @prefix='fas' />
+    <p class='margin-left-x-small'>Changelog</p>
+  </Common::Control::Link>
+
+  <Common::Control::Link
+    @route='about'
+    @size='large'
+    @variant='primary'
+    class='margin-auto margin-vertical-x-small'
+  >
+    <FaIcon @icon='info-circle' @prefix='fas' />
+    <p class='margin-left-x-small'>Über die App</p>
+  </Common::Control::Link>
+
+</Common::Container>

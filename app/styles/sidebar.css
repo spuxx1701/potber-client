@@ -53,8 +53,6 @@
 }
 
 #sidebar-content hr {
-  margin-left: 1rem;
-  margin-right: 1rem;
   max-width: calc(var(--sidebar-expanded-width) - 2rem);
 }
 

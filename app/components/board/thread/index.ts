@@ -1,16 +1,20 @@
+import { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
-import { BoardItem } from 'potber/services/api/types/board';
-import { FirstPost, LastPost } from 'potber/services/api/types/post';
+import { PostPreview } from 'potber-client/models/post';
+import Thread from 'potber-client/models/thread';
+import CustomStore from 'potber-client/services/custom-store';
 
 export interface Signature {
   Args: {
-    thread: BoardItem;
+    thread: Thread;
   };
 }
 
 export default class ThreadComponent extends Component<Signature> {
   declare args: Signature['Args'];
+
+  @service declare store: CustomStore;
 
   get isImportant() {
     return (
@@ -21,8 +25,16 @@ export default class ThreadComponent extends Component<Signature> {
     );
   }
 
+  get bookmark() {
+    if (this.store.bookmarks) {
+      return this.store.bookmarks.find(
+        (bookmark) => bookmark.thread.id === this.args.thread.id
+      );
+    }
+  }
+
   get icon() {
-    return this.args.thread.firstPost.icon || undefined;
+    return this.args.thread.firstPost?.icon || undefined;
   }
 
   get subtitle() {
@@ -38,14 +50,14 @@ export default class ThreadComponent extends Component<Signature> {
   }
 
   get lastPostLabel() {
-    let post: FirstPost | LastPost;
+    let post: PostPreview;
     if (this.args.thread.lastPost) {
       post = this.args.thread.lastPost;
-    } else {
+    } else if (this.args.thread.firstPost) {
       post = this.args.thread.firstPost;
-    }
+    } else return undefined;
     return htmlSafe(
-      `<b>${post.author.name}</b> am ${post.date.toLocaleString()}`
+      `<b>${post.author.name}</b> am ${new Date(post.date).toLocaleString()}`
     );
   }
 }

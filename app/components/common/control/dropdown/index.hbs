@@ -1,7 +1,4 @@
-<div class='dropdown {{unless @label "no-label"}}'>
-  <label class='dropdown-label' for='{{this.componentId}}-button'><p
-    >{{@label}}</p>
-  </label>
+<div class='dropdown'>
   <div class='dropdown-inner control-size-{{this.size}}'>
     <button
       id='{{this.componentId}}-button'
@@ -16,10 +13,10 @@
       <p class='dropdown-toggle-caption'>{{this.caption}}</p>
       <FaIcon class='dropdown-toggle-icon' @icon='chevron-down' />
     </button>
-    <div
-      class='dropdown-menu control-size-{{this.size}}
-        {{if this.expanded "dropdown-menu-visible"}}'
-    >
+    <label class='dropdown-label' for='{{this.componentId}}-button'>
+      {{@label}}
+    </label>
+    <div class='dropdown-menu {{if this.expanded "dropdown-menu-visible"}}'>
       {{#each this.options as |option|}}
         <button
           class='dropdown-item

@@ -1,45 +1,25 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { Board } from './api/types/board';
-import ApiService from 'potber/services/api';
-import LoggerService from './logger';
+import ENV from 'potber-client/config/environment';
+import Board from 'potber-client/models/board';
+import MessagesService from './messages';
+import { clean, valid, gt } from 'semver';
+import CustomStore from './custom-store';
 
 const PREFIX = 'potber-';
 
 export default class LocalStorageService extends Service {
-  @service declare api: ApiService;
-  @service declare logger: LoggerService;
+  @service declare store: CustomStore;
+  @service declare messages: MessagesService;
 
-  @tracked mainNavPosition: string = this.getMainNavPosition();
   @tracked avatarStyle: string = this.getAvatarStyle();
   @tracked boxStyle: string = this.getBoxStyle();
   @tracked boardFavorites: Board[] | null = [];
+  @tracked landingPage: string = this.getLandingPage();
 
-  /**
-   * Initializes the localStorage service.
-   */
-  @action initialize() {
-    this.getBoardFavorites();
-  }
-
-  /**
-   * Gets 'mainNavPosition' from localStorage.
-   * @returns The position of the main nav.
-   */
-  @action getMainNavPosition() {
-    this.mainNavPosition =
-      localStorage.getItem(`${PREFIX}mainNavPosition`) || 'bottom';
-    return this.mainNavPosition;
-  }
-
-  /**
-   * Saves 'mainNavPosition' to localStorage.
-   * @param value The new value for 'mainNavPosition'.
-   */
-  @action setMainNavPosition(value: 'top' | 'bottom') {
-    localStorage.setItem(`${PREFIX}mainNavPosition`, value);
-    this.mainNavPosition = value;
+  async initialize() {
+    await this.getBoardFavorites();
   }
 
   /**
@@ -57,6 +37,9 @@ export default class LocalStorageService extends Service {
    */
   @action setAvatarStyle(value: 'none' | 'small') {
     localStorage.setItem(`${PREFIX}avatarStyle`, `${value}`);
+    this.messages.log(`${PREFIX}avatarStyle set to '${value}'.`, {
+      context: this.constructor.name,
+    });
     this.avatarStyle = value;
   }
 
@@ -75,7 +58,28 @@ export default class LocalStorageService extends Service {
    */
   @action setBoxStyle(value: 'rect' | 'round') {
     localStorage.setItem(`${PREFIX}boxStyle`, `${value}`);
+    this.messages.log(`${PREFIX}boxStyle set to: '${value}'.`, {
+      context: this.constructor.name,
+    });
     this.boxStyle = value;
+  }
+
+  /**
+   * Gets 'landingPage' from localStorage.
+   * @returns The page that should be shown when the index route
+   * is initially displayed.
+   */
+  getLandingPage(): string {
+    return localStorage.getItem(`${PREFIX}landingPage`) || 'board-overview';
+  }
+
+  /**
+   * Sets and stores 'landingPage'.
+   * @param value The new value.
+   */
+  setLandingPage(value: 'board-overview' | 'pot') {
+    localStorage.setItem(`${PREFIX}landingPage`, value);
+    this.landingPage = value;
   }
 
   /**
@@ -90,12 +94,12 @@ export default class LocalStorageService extends Service {
       if (string) {
         const ids = string?.split(',') || [];
         for (const id of ids) {
-          boards.push(await this.api.getBoard(id));
+          boards.push(await this.store.findRecord('board', id));
         }
       }
       this.boardFavorites = boards;
     } catch (error) {
-      this.logger.log(
+      this.messages.log(
         `Error while attempting to fetch board-favorites: ${error}`,
         { type: 'error', context: this.constructor.name }
       );
@@ -112,6 +116,40 @@ export default class LocalStorageService extends Service {
     // Remove duplicates
     const unqiueIds = [...new Set(ids)];
     localStorage.setItem(`${PREFIX}boardFavorites`, unqiueIds.toString());
+    this.messages.log(`${PREFIX}boardFavorites set to: '${unqiueIds}'.`, {
+      context: this.constructor.name,
+    });
     this.getBoardFavorites();
+  }
+
+  /**
+   * Reads the last encounted app version and returns the current unencounted version
+   * if it is higher than the last encounted version.
+   */
+  getUnencountedVersion() {
+    const encounteredVersion = localStorage.getItem(
+      `${PREFIX}lastEncountedVersion`
+    );
+    if (!valid(encounteredVersion)) return undefined;
+    if (
+      gt(
+        clean(ENV.APP['version'] as string) as string,
+        clean(encounteredVersion as string) as string
+      )
+    ) {
+      return clean(ENV.APP['version'] as string) as string;
+    }
+    return undefined;
+  }
+
+  /**
+   * Sets the last encounted app version to the current app version and stores it.
+   */
+  setEncounteredVersion() {
+    const version = (clean(ENV.APP['version'] as string) as string) || '';
+    localStorage.setItem(`${PREFIX}lastEncountedVersion`, version);
+    this.messages.log(`${PREFIX}lastEncountedVersion set to: '${version}'.`, {
+      context: this.constructor.name,
+    });
   }
 }

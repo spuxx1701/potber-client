@@ -1,0 +1,112 @@
+import { action } from '@ember/object';
+import Route from '@ember/routing/route';
+import { service } from '@ember/service';
+import LocalStorageService from 'potber-client/services/local-storage';
+import RendererService from 'potber-client/services/renderer';
+import { sleep } from 'potber-client/utils/misc';
+import RSVP, { reject } from 'rsvp';
+import { scrollToHash } from 'ember-url-hash-polyfill';
+import ThreadController from 'potber-client/controllers/authenticated/thread';
+import Thread, { ThreadPage } from 'potber-client/models/thread';
+import CustomStore from 'potber-client/services/custom-store';
+import NewsFeedService from 'potber-client/services/news-feed';
+
+interface Params {
+  TID: string;
+  PID?: string;
+  page?: string;
+  subtleUntilPostId?: string;
+}
+
+export interface ThreadRouteModel {
+  thread: Thread;
+  subtleUntilPostId: string;
+  avatarStyle: string;
+}
+
+export default class ThreadRoute extends Route {
+  @service declare localStorage: LocalStorageService;
+  @service declare store: CustomStore;
+  @service declare renderer: RendererService;
+  @service declare newsFeed: NewsFeedService;
+
+  // We need to tell the route to refresh the model after the query parameters have changed
+  queryParams = {
+    TID: {
+      refreshModel: true,
+    },
+    PID: {
+      refreshModel: true,
+    },
+    page: {
+      refreshModel: true,
+    },
+  };
+
+  resetController(controller: ThreadController) {
+    // Query parameters are sticky by default, so we need to reset them
+    controller.set('TID', '');
+    controller.set('page', '');
+    controller.set('PID', '');
+  }
+
+  async model(params: Params) {
+    try {
+      // Attempt to parse the page
+      let page: number | undefined;
+      let postId = params.PID;
+      let subtleUntilPostId = params.subtleUntilPostId;
+      if (params.page) {
+        page = parseInt(params.page) || 1;
+        // If page is supplied, ignore post ID to prevent conflicts
+        postId = undefined;
+        subtleUntilPostId = undefined;
+      }
+      const thread = await this.store.findRecord('thread', params.TID, {
+        adapterOptions: {
+          queryParams: {
+            postId,
+            page,
+            updateBookmark: true,
+          },
+        },
+      });
+      this.renderer.tryResetScrollPosition();
+      return RSVP.hash({
+        thread,
+        subtleUntilPostId: subtleUntilPostId,
+        avatarStyle: this.localStorage.avatarStyle,
+      } as ThreadRouteModel);
+    } catch (error: any) {
+      if (error.message === 'not-found') {
+        return null;
+      } else {
+        return reject(error);
+      }
+    }
+  }
+
+  async afterModel() {
+    // Refresh bookmarks after the model hook has resolved since the current transition might
+    // have impacted those.
+    this.newsFeed.refreshBookmarks();
+  }
+
+  @action async didTransition() {
+    await sleep(500);
+    // If PID was supplied, we also need to add the anchor
+    const params = new URL(window.location.href).searchParams;
+    if (params.has('PID') && params.get('PID')) {
+      // Set the hash without triggering without triggering a browser scroll action
+      const currentState = { ...history.state };
+      history.replaceState(
+        currentState,
+        'unused',
+        `#reply_${params.get('PID')}`
+      );
+    }
+    if (window.location.hash) {
+      scrollToHash(`reply_${params.get('PID')}`);
+    }
+  }
+}

@@ -1,19 +1,51 @@
 {{page-title 'Über die App'}}
 
-<Nav::Routes::About />
+<Nav::Routes::Generic @title='Über die App' />
 
-<div class='padding-medium'>
-  potber | Version
-  {{this.version}}
+<Common::Container>
+  <h3>
+    potber | Version
+    {{this.version}}
+  </h3>
+  <p>
+    entwickelt von
+    <a
+      href='https://www.leopoldhock.de'
+      target='_blank'
+      rel='noopener noreferrer'
+    >Leopold Hock</a>
+  </p>
 
-  <br />
-  entwickelt von
-  <a href='https://www.leopoldhock.de'>Leopold Hock</a>
-  <br /><br />
-  ▶
-  <a href='https://my.mods.de/1268185'>Profil</a>
-  <br />
-  ▶
-  <a href='https://github.com/spuxx1701/potber'>GitHub</a>
+  <a
+    class='button-link control-size-large control-variant-primary margin-vertical-x-small'
+    href='https://my.mods.de/1268185'
+    target='_blank'
+    rel='noopener noreferrer'
+  >
+    <FaIcon @icon='user' />
+    <p class='margin-left-x-small'>Profil</p>
+  </a>
 
-</div>
+  <a
+    class='button-link control-size-large control-variant-primary margin-vertical-x-small'
+    href='https://github.com/spuxx1701/potber-client'
+    target='_blank'
+    rel='noopener noreferrer'
+  >
+    <FaIcon @icon='github' @prefix='fab' />
+    <p class='margin-left-x-small'>GitHub</p>
+  </a>
+
+  <p class='text-center'><b>Feedback?</b><br />Schau doch mal im Thread vorbei.
+    :)</p>
+
+  <Common::Control::Link
+    @route='authenticated.thread'
+    @query={{hash TID='219289'}}
+    @size='large'
+    @variant='primary'
+  >
+    <FaIcon @icon='table-list' />
+    <p class='margin-left-x-small'>Thread</p>
+  </Common::Control::Link>
+</Common::Container>

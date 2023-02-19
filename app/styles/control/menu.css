@@ -52,8 +52,8 @@
   padding: 0;
   margin: 0;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-control-inactive-primary);
-  max-width: 200px;
+  background-color: var(--color-control-inactive);
+  max-width: 320px;
 }
 
 .menu-content>* {

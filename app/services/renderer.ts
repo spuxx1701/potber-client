@@ -1,42 +1,28 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { sleep } from 'potber/utils/misc';
+import { sleep } from 'potber-client/utils/misc';
 import LocalStorageService from './local-storage';
+import MessagesService from './messages';
 
 export default class RendererService extends Service {
   @service declare localStorage: LocalStorageService;
+  @service declare messages: MessagesService;
   @tracked leftSidebarExpanded = false;
   rootStyle = document.documentElement.style;
 
   preventScrollReset = false;
 
+  /**
+   * Initializes the service.
+   */
   @action initialize() {
-    this.updateMainNavPosition();
     this.updateBoxStyle();
   }
 
-  @action updateMainNavPosition() {
-    const mainNavPosition = this.localStorage.getMainNavPosition();
-    if (mainNavPosition === 'top') {
-      this.rootStyle.setProperty('--main-nav-top', '0px');
-      this.rootStyle.setProperty('--main-nav-bottom', 'unset');
-      this.rootStyle.setProperty(
-        '--page-content-padding-top',
-        'var(--main-nav-height)'
-      );
-      this.rootStyle.setProperty('--page-content-padding-bottom', '0px');
-    } else {
-      this.rootStyle.setProperty('--main-nav-top', 'unset');
-      this.rootStyle.setProperty('--main-nav-bottom', '0px');
-      this.rootStyle.setProperty('--page-content-padding-top', '0px');
-      this.rootStyle.setProperty(
-        '--page-content-padding-bottom',
-        'var(--main-nav-height)'
-      );
-    }
-  }
-
+  /**
+   * Updates the current box style.
+   */
   @action updateBoxStyle() {
     const boxStyle = this.localStorage.getBoxStyle();
     if (boxStyle === 'rect') {
@@ -48,20 +34,51 @@ export default class RendererService extends Service {
     }
   }
 
+  /**
+   * Creates a ripple animation on the event target.
+   * @param event The event.
+   */
   @action createClickRipple(event: Event) {
-    // do something
+    // Clean up existing ripples
+    const existingRipples = document.body.getElementsByClassName(
+      'click-ripple-container'
+    );
+    for (const ripple of existingRipples) {
+      ripple.remove();
+    }
+    // Create new ripple
+    const control = event.currentTarget as HTMLElement;
+    if (control) {
+      const rippleContainer = document.createElement('span');
+      rippleContainer.classList.add('click-ripple-container');
+      const ripple = document.createElement('span');
+      const diameter = Math.max(control.clientWidth, control.clientHeight);
+      ripple.style.width = ripple.style.height = `${diameter}px`;
+      ripple.classList.add('click-ripple');
+      rippleContainer.appendChild(ripple);
+      control.appendChild(rippleContainer);
+    }
   }
 
+  /**
+   * Closes the left sidebar.
+   */
   @action closeLeftSidebar() {
     this.leftSidebarExpanded = false;
     this.updateLeftSidebar();
   }
 
+  /**
+   * Toggles the left sidebar.
+   */
   @action toggleLeftSidebar() {
     this.leftSidebarExpanded = !this.leftSidebarExpanded;
     this.updateLeftSidebar();
   }
 
+  /*
+   * Updates the state of the left sidebar.
+   */
   @action updateLeftSidebar() {
     if (this.leftSidebarExpanded) {
       this.rootStyle.setProperty(
@@ -73,10 +90,16 @@ export default class RendererService extends Service {
     }
   }
 
+  /**
+   * Shows the loading indicator.
+   */
   @action async showLoadingIndicator() {
     this.rootStyle.setProperty('--loading-indicator-opacity', '1');
   }
 
+  /**
+   * Hides the loading indicator.
+   */
   @action async hideLoadingIndicator() {
     await sleep(200);
     this.rootStyle.setProperty('--loading-indicator-opacity', '0');
@@ -101,5 +124,15 @@ export default class RendererService extends Service {
       return;
     }
     window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  /**
+   * Can be used to scroll to the bottom after a certain amount of miliseconds.
+   * Useful when refreshing thread pages.
+   * @param waitTime The wait time in miliseconds.
+   */
+  async waitAndScrollToBottom(waitTime = 500) {
+    await sleep(waitTime);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
 }

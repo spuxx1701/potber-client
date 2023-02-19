@@ -1,0 +1,8 @@
+<dialog id='modal' {{on 'cancel' this.handleModalCancel}}>
+  {{#if this.activeModal.type}}
+    {{component
+      (concat 'modal/types/' this.activeModal.type)
+      options=this.activeModal.options
+    }}
+  {{/if}}
+</dialog>

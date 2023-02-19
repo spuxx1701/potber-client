@@ -1,14 +1,20 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import LocalStorageService from 'potber/services/local-storage';
-import SessionService from 'potber/services/session';
+import Bookmark from 'potber-client/models/bookmark';
+import LocalStorageService from 'potber-client/services/local-storage';
 
-export default class SidebarComponent extends Component {
+interface Signature {
+  Args: {
+    bookmarks: Bookmark[] | null;
+  };
+}
+
+export default class SidebarComponent extends Component<Signature> {
   @service declare localStorage: LocalStorageService;
-  @service declare session: SessionService;
+  @service declare session: any;
 
-  get navOnTop() {
-    return this.localStorage.mainNavPosition === 'top';
+  get authenticated() {
+    return this.session.isAuthenticated;
   }
 
   get boardFavorites() {

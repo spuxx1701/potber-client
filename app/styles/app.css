@@ -1,20 +1,27 @@
+@import "./animations.css";
 @import "./colors.css";
 @import "./layout.css";
 @import "./text.css";
-/* @import "./main-nav.css"; */
 @import "./nav.css";
 @import "./sidebar.css";
+@import "./modal.css";
 
 @import "./control/button.css";
+@import "./control/input.css";
 @import "./control/dropdown.css";
 @import "./control/menu.css";
 
 @import "./board/board.css";
 @import "./board/board-overview.css";
 @import "./board/post.css";
+@import "./board/post-form.css";
 @import "./board/thread.css";
+@import "./board/bookmark.css";
 
 @import "./responsiveness.css";
+@import "./devices.css";
+
+@import "./overrides.css";
 
 
 html {
@@ -34,7 +41,7 @@ body {
 
 .ember-application * {
   scrollbar-width: thin;
-  transition: color 200ms, background-color 200ms, border-color 200ms, text-shadow 200ms, transform 200ms, scale 200ms, opacity 200ms;
+  transition: color 200ms, background-color 200ms, border 200ms, border-color 200ms, font-size 200ms, text-shadow 200ms, transform 200ms, scale 200ms, opacity 200ms;
 }
 
 #loading-indicator {
@@ -51,4 +58,24 @@ body {
   justify-content: center;
   align-items: center;
   pointer-events: none;
+}
+
+.c-notification {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .5)
+}
+
+.message-item {
+  padding: 0.5rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-radius: var(--global-border-radius);
+}
+
+.message-item p {
+  margin: 0.25rem 0;
+}
+
+.message-item svg {
+  margin-right: 0.25rem;
 }

@@ -1,0 +1,25 @@
+<Modal::Component::Header
+  @title={{@options.title}}
+  @icon={{@options.icon}}
+  @variant={{@options.variant}}
+/>
+<Modal::Component::Content>
+  <p>{{@options.text}}</p>
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @icon={{this.cancelIcon}}
+    @text={{this.cancelLabel}}
+    @variant='secondary'
+    @size='small'
+    @onClick={{this.handleCancel}}
+  />
+  <Common::Control::Button
+    @icon={{@options.submitIcon}}
+    @text={{this.submitLabel}}
+    @type='submit'
+    @variant='primary'
+    @size='small'
+    @onClick={{this.handleSubmit}}
+  />
+</Modal::Component::Footer>

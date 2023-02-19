@@ -1,5 +1,7 @@
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import RendererService from 'potber-client/services/renderer';
 
 interface Signature {
   Args: {
@@ -9,11 +11,14 @@ interface Signature {
     type?: 'button' | 'submit';
     size?: ControlSize;
     variant?: ControlVariant;
+    busy?: boolean;
+    disabled?: boolean;
     onClick?: () => void;
   };
 }
 
 export default class CommonButtonComponent extends Component<Signature> {
+  @service declare renderer: RendererService;
   declare args: Signature['Args'];
 
   get prefix() {
@@ -36,7 +41,12 @@ export default class CommonButtonComponent extends Component<Signature> {
     return this.args.variant || 'secondary';
   }
 
-  @action handleClick() {
+  get disabled() {
+    return this.args.disabled || this.args.busy;
+  }
+
+  @action handleClick(event: MouseEvent) {
+    this.renderer.createClickRipple(event);
     if (this.args.onClick) {
       this.args.onClick();
     }

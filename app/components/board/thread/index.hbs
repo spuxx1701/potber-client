@@ -1,12 +1,24 @@
 <Common::Control::Link
   class='board-item {{if this.isImportant "board-item-important"}}'
-  @route='thread'
-  @query={{hash TID=@thread.id page=@thread.pagesCount}}
+  @route='authenticated.thread'
+  @query={{hash
+    TID=@thread.id
+    page=@thread.pagesCount
+    PID=''
+    subtleUntilPostId=''
+  }}
 >
   <div class='board-item-header'>
     <div class='board-item-title'>
+      {{#if this.bookmark}}
+        <FaIcon @icon='bookmark' class='bookmark-icon' />
+      {{/if}}
       {{#if this.icon}}
-        <Board::PostIcon @icon={{this.icon}} />
+        <Board::Icon
+          @key={{this.icon}}
+          @directory='post-icons'
+          @filename='{{this.icon}}.gif'
+        />
       {{/if}}
       <p>{{@thread.title}}</p>
     </div>
@@ -29,13 +41,13 @@
     </div>
   </div>
   {{#if @thread.subtitle}}
-    <p class='subtitle'>{{@thread.subtitle}}</p>
+    <p class='subtitle no-margin'>{{@thread.subtitle}}</p>
   {{/if}}
   <div class='flex-row full-width justify-content-between'>
-    <p class='subtitle'>
+    <p class='subtitle text-end no-margin'>
       {{this.lastPostLabel}}
     </p>
-    <p class='subtitle'>
+    <p class='subtitle no-margin'>
       {{this.pagesLabel}}
     </p>
   </div>

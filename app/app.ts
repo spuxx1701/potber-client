@@ -3,7 +3,7 @@
 import Application from '@ember/application';
 import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
-import config from 'potber/config/environment';
+import config from 'potber-client/config/environment';
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix;

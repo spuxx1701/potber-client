@@ -1,0 +1,63 @@
+.input-container {
+  position: relative;
+}
+
+.input-container>*, form>* {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  box-sizing: border-box;
+}
+
+.input-container input, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: var(--control-input-height);
+  background-color: var(--color-input-inactive);
+  border: 0px solid transparent;
+  border-radius: var(--global-border-radius);
+  margin: 0;
+  padding: 1rem 1rem 0 1rem;
+  color: var(--color-text-default);
+  font-size: medium;
+}
+
+.input-container label {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-35%);
+  transform-origin: left top;
+  user-select: none;
+  pointer-events: none;
+  color: var(--color-text-subtle)
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  background-color: var(--color-control-inactive);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+input:focus+label {
+  color: var(--color-accent);
+}
+
+input:focus+label,
+input:not(:placeholder-shown)+label {
+  transform: translateY(-150%);
+  font-size: small;
+}
+
+/* Hide input carets */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+}

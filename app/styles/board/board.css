@@ -46,7 +46,7 @@
   text-decoration: none !important;
 }
 
-.board-item-flags {
+.board-item-flags svg {
   color: var(--color-text-subtle);
   font-size: small;
 }

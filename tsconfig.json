@@ -7,8 +7,8 @@
     // work with TypeScript.
     "baseUrl": ".",
     "paths": {
-      "potber/tests/*": ["tests/*"],
-      "potber/*": ["app/*"],
+      "potber-client/tests/*": ["tests/*"],
+      "potber-client/*": ["app/*"],
       "*": ["types/*"]
     }
   },

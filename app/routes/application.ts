@@ -1,26 +1,32 @@
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
-import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
-import LocalStorageService from 'potber/services/local-storage';
-import RendererService from 'potber/services/renderer';
-import ENV from 'potber/config/environment';
+import AppService from 'potber-client/services/app';
+import RendererService from 'potber-client/services/renderer';
 
 export default class ApplicationRoute extends Route {
-  @service declare router: RouterService;
+  @service declare app: AppService;
   @service declare renderer: RendererService;
-  @service declare localStorage: LocalStorageService;
 
-  async beforeModel() {
-    // Delete cache
-    if (ENV.APP['NO_CACHE'] && 'caches' in window) {
-      caches.keys().then((names) => {
-        names.forEach(async (name) => {
-          await caches.delete(name);
-        });
-      });
+  async model() {
+    try {
+      await this.app.initialize();
+      return {
+        failure: false,
+        failureReason: null,
+      };
+    } catch (error) {
+      return {
+        failure: true,
+        error,
+      };
     }
-    // Initialization
-    this.localStorage.initialize();
-    this.renderer.initialize();
+  }
+
+  @action loading(transition: any) {
+    this.renderer.showLoadingIndicator();
+    transition.promise.finally(() => {
+      this.renderer.hideLoadingIndicator();
+    });
   }
 }

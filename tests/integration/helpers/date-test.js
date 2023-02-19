@@ -1,17 +1,18 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'potber/tests/helpers';
+import { setupRenderingTest } from 'potber-client/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Helper | date', function (hooks) {
   setupRenderingTest(hooks);
 
-  // TODO: Replace this with your real tests.
-  test('it renders', async function (assert) {
-    this.set('inputValue', '1234');
+  test('Properly displays a date in local format.', async function (assert) {
+    const date = new Date();
+    const localeString = date.toLocaleString();
+    this.set('inputValue', date);
 
     await render(hbs`{{date this.inputValue}}`);
 
-    assert.dom(this.element).hasText('1234');
+    assert.dom(this.element).hasText(localeString);
   });
 });

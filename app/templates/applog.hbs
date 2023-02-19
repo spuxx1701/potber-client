@@ -1,0 +1,9 @@
+{{page-title 'Applog'}}
+
+<Nav::Routes::Generic @title='Applog' />
+
+<Common::Container @size='medium'>
+  {{#each @model as |message|}}
+    <Misc::MessageItem @message={{message}} />
+  {{/each}}
+</Common::Container>

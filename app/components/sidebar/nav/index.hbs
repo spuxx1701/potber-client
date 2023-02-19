@@ -1,17 +1,42 @@
 <div id='sidebar-nav'>
-  <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
+  <Common::Control::Link @route='home' @onClick={{this.handleNavLinkClick}}>
     <FaIcon @icon='house' />
   </Common::Control::Link>
-  {{!-- <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
+  {{#if this.showBoardOverviewButton}}
+    <Common::Control::Link
+      @route='authenticated.board-overview'
+      @onClick={{this.handleNavLinkClick}}
+    >
+      <FaIcon @icon='bars-staggered' />
+    </Common::Control::Link>
+  {{/if}}
+  {{#if this.authenticated}}
+    {{!-- <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
     <FaIcon @icon='envelope' />
-  </Common::Control::Link>
-  <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
-    <FaIcon @icon='bookmark' /> 
   </Common::Control::Link>--}}
-  <Common::Control::Link @route='settings' @onClick={{this.handleNavLinkClick}}>
+    <Common::Control::Link
+      @route='authenticated.bookmarks'
+      @onClick={{this.handleNavLinkClick}}
+    >
+      <FaIcon @icon='bookmark' />
+    </Common::Control::Link>
+  {{/if}}
+  <Common::Control::Link
+    @route='authenticated.settings'
+    @onClick={{this.handleNavLinkClick}}
+  >
     <FaIcon @icon='gear' />
   </Common::Control::Link>
-  {{!-- <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
-    <FaIcon @icon='user' @prefix='far' /> 
-  </Common::Control::Link>--}}
+  {{#if this.authenticated}}
+    <Common::Control::Link
+      @route='authenticated.session'
+      @onClick={{this.handleNavLinkClick}}
+    >
+      <FaIcon @icon='user' @prefix='fas' />
+    </Common::Control::Link>
+  {{else}}
+    <Common::Control::Link @route='login' @onClick={{this.handleNavLinkClick}}>
+      <FaIcon @icon='user' @prefix='far' />
+    </Common::Control::Link>
+  {{/if}}
 </div>

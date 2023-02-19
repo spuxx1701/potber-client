@@ -1,7 +1,0 @@
-{{page-title this.pageTitle}}
-
-<Nav::Routes::Board @board={{@model.board}} @page={{@model.page}} />
-
-{{#each this.threads as |thread|}}
-  <Board::Thread @thread={{thread}} />
-{{/each}}

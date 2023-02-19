@@ -1,0 +1,43 @@
+<Modal::Component::Header
+  @title={{@options.title}}
+  @icon={{@options.icon}}
+  @prefix={{@options.prefix}}
+  @variant={{@options.variant}}
+/>
+<Modal::Component::Content>
+  {{#if @options.text}}
+    <p>{{@options.text}}</p>
+  {{/if}}
+  <form id='input-modal-form' {{on 'submit' this.handleSubmit}}>
+    <Common::Control::Input
+      @label={{@options.label}}
+      @size='max'
+      @value={{this.value}}
+      @onChange={{this.handleChange}}
+      @selectAllOnFocus={{true}}
+      @required={{true}}
+      type={{this.type}}
+      minLength={{@options.minLength}}
+      maxLength={{@options.maxLength}}
+      min={{@options.min}}
+      max={{@options.max}}
+    />
+  </form>
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @icon={{this.cancelIcon}}
+    @text={{this.cancelLabel}}
+    @variant='secondary'
+    @size='small'
+    @onClick={{this.handleCancel}}
+  />
+  <Common::Control::Button
+    @icon={{this.submitIcon}}
+    @text={{this.submitLabel}}
+    @type='submit'
+    @variant='primary'
+    @size='small'
+    form='input-modal-form'
+  />
+</Modal::Component::Footer>

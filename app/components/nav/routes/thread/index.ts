@@ -1,20 +1,24 @@
 import Component from '@glimmer/component';
-import { Thread } from 'potber/services/api/types/thread';
-import ENV from 'potber/config/environment';
+import ENV from 'potber-client/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
-import RendererService from 'potber/services/renderer';
+import RendererService from 'potber-client/services/renderer';
+import ModalService from 'potber-client/services/modal';
+import RouterService from '@ember/routing/router-service';
+import Thread from 'potber-client/models/thread';
 
 export interface Signature {
   Args: {
     thread: Thread;
-    page?: number;
   };
 }
 
 export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare renderer: RendererService;
+  @service declare modal: ModalService;
+  @service declare router: RouterService;
+  @service declare session: any;
   declare args: Signature['Args'];
 
   get subtitle() {
@@ -26,7 +30,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   }
 
   get currentPage() {
-    return this.args.page || 1;
+    return this.args.thread.page?.number || 1;
   }
 
   get nextPage() {
@@ -45,17 +49,46 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
     return `${ENV.APP['FORUM_URL']}thread.php?TID=${this.args.thread.id}`;
   }
 
+  get authenticated() {
+    return this.session.isAuthenticated;
+  }
+
   @action async reload() {
     this.renderer.preventNextScrollReset();
     this.renderer.showLoadingIndicator();
     (getOwner(this as unknown) as any)
-      .lookup('route:thread')
+      .lookup('route:authenticated.thread')
       .refresh()
       .then(() => {
         this.renderer.hideLoadingIndicator();
+        this.renderer.waitAndScrollToBottom();
       })
       .catch(() => {
         this.renderer.hideLoadingIndicator();
       });
+  }
+
+  @action handleGoToPage() {
+    this.modal.input({
+      title: 'Gehe zu Seite...',
+      text: `Gib eine Seite zwischen 1 und ${this.args.thread.pagesCount} ein.`,
+      icon: 'arrow-right',
+      label: `Seite`,
+      type: 'number',
+      minLength: 1,
+      maxLength: 5,
+      min: 1,
+      max: this.args.thread.pagesCount,
+      submitLabel: 'Los',
+      onSubmit: (value) => {
+        this.router.transitionTo('authenticated.thread', {
+          queryParams: {
+            TID: this.args.thread.id,
+            page: value,
+          },
+        });
+        this.modal.close();
+      },
+    });
   }
 }

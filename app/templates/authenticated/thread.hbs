@@ -1,0 +1,14 @@
+{{#if @model.thread}}
+  {{page-title this.pageTitle}}
+
+  <Nav::Routes::Thread @thread={{@model.thread}} />
+
+  <Board::ThreadPage
+    @thread={{@model.thread}}
+    @avatarStyle={{@model.avatarStyle}}
+    @subtleUntilPostId={{@model.subtleUntilPostId}}
+  />
+{{else}}
+  {{page-title '404'}}
+  <Misc::Error::NotFound />
+{{/if}}

@@ -1,22 +1,23 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { Board } from 'potber/services/api/types/board';
-import LocalStorageService from 'potber/services/local-storage';
-import ENV from 'potber/config/environment';
+import LocalStorageService from 'potber-client/services/local-storage';
+import ENV from 'potber-client/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
-import RendererService from 'potber/services/renderer';
+import RendererService from 'potber-client/services/renderer';
+import MessagesService from 'potber-client/services/messages';
+import Board from 'potber-client/models/board';
 
 export interface Signature {
   Args: {
     board: Board;
-    page?: number;
   };
 }
 
 export default class NavBoardComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare localStorage: LocalStorageService;
+  @service declare messages: MessagesService;
 
   declare args: Signature['Args'];
 
@@ -25,7 +26,7 @@ export default class NavBoardComponent extends Component<Signature> {
   }
 
   get currentPage() {
-    return this.args.page || 1;
+    return this.args.board.page.number || 1;
   }
 
   get previousPageVisible() {
@@ -41,12 +42,7 @@ export default class NavBoardComponent extends Component<Signature> {
   }
 
   get nextPage() {
-    console.log('next: ' + (this.currentPage + 1));
     return this.currentPage + 1;
-  }
-
-  get isTopNav() {
-    return this.localStorage.mainNavPosition === 'top';
   }
 
   get originalUrl() {
@@ -58,12 +54,16 @@ export default class NavBoardComponent extends Component<Signature> {
     const ids = boards.map((board) => board.id);
     ids.push(this.args.board.id);
     this.localStorage.setBoardFavorites(ids);
+    this.messages.showNotification(
+      'Board wurde zu Deinen Favoriten hinzugefügt.',
+      'success'
+    );
   }
 
   @action async reload() {
     this.renderer.showLoadingIndicator();
     (getOwner(this as unknown) as any)
-      .lookup('route:board')
+      .lookup('route:authenticated.board')
       .refresh()
       .then(() => {
         this.renderer.hideLoadingIndicator();

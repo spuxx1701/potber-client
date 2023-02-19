@@ -2,4 +2,9 @@
   class='menu-item control-variant-secondary button-link'
   href={{@href}}
   ...attributes
->{{@text}}</a>
+>
+  {{#if @icon}}
+    <FaIcon @icon={{@icon}} />
+  {{/if}}
+  {{@text}}
+</a>

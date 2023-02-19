@@ -1,0 +1,42 @@
+{{page-title 'Anmelden'}}
+
+<Nav::Routes::Generic @title='Anmelden' />
+
+<Common::Container @size='small' {{on 'submit' this.handleSubmit}}>
+  <form id='login-form' class='flex-column align-items-center'>
+    <Common::Control::Input
+      @value={{@model.username}}
+      @label='Username'
+      @size='max'
+      @onChange={{this.handleUsernameChange}}
+      type='text'
+      @required={{true}}
+      maxLength='30'
+    />
+    <Common::Control::Input
+      @value={{@model.password}}
+      @label='Passwort'
+      @size='max'
+      @onChange={{this.handlePasswordChange}}
+      type='password'
+      @required={{true}}
+      maxLength='50'
+    />
+    <Common::Control::Dropdown
+      @options={{this.lifetimeOptions}}
+      @default={{@model.lifetimeOption}}
+      @onSelect={{this.handleLifetimeSelect}}
+      @size='max'
+      @label='Sitzungsdauer'
+    />
+
+    <Common::Control::Button
+      @icon='right-to-bracket'
+      @text='Anmelden'
+      @variant='primary'
+      @size='large'
+      @type='submit'
+      @busy={{this.loginInProcess}}
+    />
+  </form>
+</Common::Container>

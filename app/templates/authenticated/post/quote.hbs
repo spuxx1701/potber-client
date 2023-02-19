@@ -1,0 +1,18 @@
+{{page-title 'Post erstellen'}}
+
+<Nav::Routes::Generic
+  @title='Post erstellen'
+  @subtitle={{@model.thread.title}}
+/>
+
+<Board::PostForm
+  @post={{@model.post}}
+  @onSubmit={{this.handleSubmit}}
+  @busy={{this.busy}}
+/>
+
+<Board::ThreadPage
+  @thread={{@model.thread}}
+  @reverseOrder={{true}}
+  @subtleUntilPostId='*'
+/>

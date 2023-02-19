@@ -8,9 +8,16 @@
 
     {{content-for "head"}}
 
-    <link integrity="" rel="icon" href="{{rootURL}}/favicon.ico" />
+    <link rel="manifest" href="{{rootURL}}manifest.webmanifest" />
+    <meta name="msapplication-config" content="{{rootURL}}browserconfig.xml" />
+
+    <link integrity="" rel="icon" href="{{rootURL}}favicon.png" />
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css" />
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/potber.css" />
+    <link
+      integrity=""
+      rel="stylesheet"
+      href="{{rootURL}}assets/potber-client.css"
+    />
 
     {{content-for "head-footer"}}
   </head>
@@ -18,7 +25,7 @@
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>
-    <script src="{{rootURL}}assets/potber.js"></script>
+    <script src="{{rootURL}}assets/potber-client.js"></script>
 
     {{content-for "body-footer"}}
   </body>

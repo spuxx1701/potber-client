@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="post">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="message"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="edited"
+                minOccurs="0"
+                maxOccurs="1">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="lastedit"
+                      minOccurs="0"
+                      maxOccurs="1">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element ref="user"
+                            minOccurs="1"
+                            maxOccurs="1"/>
+                          <xs:element ref="date"
+                            minOccurs="1"
+                            maxOccurs="1"/>
+                        </xs:all>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                  <xs:attribute name="count"
+                    type="xs:nonNegativeInteger"
+                    use="required"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="content"
+                type="xs:string"
+                minOccurs="1"
+                maxOccurs="1"/>
+              <xs:element name="title"
+                type="xs:string"
+                minOccurs="1"
+                maxOccurs="1"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="user"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element ref="date"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element ref="avatar"
+          minOccurs="0"
+          maxOccurs="1"/>
+        <xs:element ref="icon"
+          minOccurs="0"
+          maxOccurs="1"/>
+        <xs:element ref="in-thread"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element ref="in-board"
+          minOccurs="1"
+          maxOccurs="1"/>
+      </xs:all>
+      <xs:attribute name="id"
+        type="xs:positiveInteger"
+        use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="thread">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="title"
+          type="xs:string"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element name="subtitle"
+          type="xs:string"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element name="number-of-replies"
+          minOccurs="1"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="value"
+              type="xs:nonNegativeInteger"
+              use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="number-of-hits"
+          minOccurs="1"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="value"
+              type="xs:nonNegativeInteger"
+              use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="flags"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element ref="in-board"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element name="firstpost"
+          minOccurs="0">
+          <xs:complexType>
+            <xs:all>
+              <xs:element ref="post"
+                minOccurs="1"
+                maxOccurs="1"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="posts"/>
+      </xs:all>
+      <xs:attribute name="id"
+        type="xs:positiveInteger"
+        use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="board">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="name"
+          type="xs:string"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element name="description"
+          type="xs:string"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element name="number-of-threads"
+          minOccurs="1"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="value"
+              type="xs:nonNegativeInteger"
+              use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="number-of-replies"
+          minOccurs="1"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="value"
+              type="xs:nonNegativeInteger"
+              use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="in-category"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element name="lastpost"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element ref="post"
+                minOccurs="1"
+                maxOccurs="1"/>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="moderators"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="user"
+                minOccurs="0"
+                maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="count"
+              type="xs:nonNegativeInteger"
+              use="optional"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="threads"
+          minOccurs="0"
+          maxOccurs="1"/>
+      </xs:all>
+      <xs:attribute name="id"
+        type="xs:positiveInteger"
+        use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="category">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="name"
+          type="xs:string"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element name="description"
+          type="xs:string"
+          minOccurs="1"
+          maxOccurs="1"/>
+        <xs:element name="boards"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="board"
+                minOccurs="0"
+                maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+      <xs:attribute name="id"
+        type="xs:positiveInteger"
+        use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="posts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="post"
+          minOccurs="0"
+          maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="count"/>
+      <xs:attributeGroup ref="paged"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="threads">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="thread"
+          minOccurs="0"
+          maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="count"
+        type="xs:nonNegativeInteger"
+        use="optional"/>
+      <xs:attribute name="with-stickies"
+        type="xs:boolean"
+        use="optional"/>
+      <xs:attribute name="with-globals"
+        type="xs:boolean"
+        use="optional"/>
+      <xs:attributeGroup ref="paged"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="boards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="board"
+          minOccurs="0"
+          maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="count"
+        type="xs:nonNegativeInteger"
+        use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="categories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="category"
+          minOccurs="0"
+          maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="count"
+        type="xs:nonNegativeInteger"
+        use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="paged">
+    <xs:attribute name="page"
+      type="xs:positiveInteger"
+      use="optional"/>
+    <xs:attribute name="offset"
+      type="xs:nonNegativeInteger"
+      use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="flag">
+    <xs:attribute name="value"
+      type="xs:boolean"/>
+  </xs:attributeGroup>
+  <xs:element name="in-thread">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="id"
+            type="xs:positiveInteger"
+            use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="in-board">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="id"
+            type="xs:positiveInteger"
+            use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="in-category">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="id"
+            type="xs:positiveInteger"
+            use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="flags">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="is-closed"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attributeGroup ref="flag"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="is-hidden"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attributeGroup ref="flag"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="is-sticky"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attributeGroup ref="flag"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="is-important"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attributeGroup ref="flag"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="is-announcement"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attributeGroup ref="flag"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="is-global"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attributeGroup ref="flag"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="is-unread"
+          minOccurs="0"
+          maxOccurs="1">
+          <xs:complexType>
+            <xs:attributeGroup ref="flag"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="user">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="id"
+            type="xs:positiveInteger"
+            use="required"/>
+          <xs:attribute name="group-id"
+            type="xs:nonNegativeInteger"
+            use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date">
+    <xs:complexType>
+      <xs:attribute name="timestamp"
+        type="xs:nonNegativeInteger"
+        use="required"/>
+      <xs:attribute name="str"
+        type="xs:string"
+        use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="avatar">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:anyURI">
+          <xs:attribute name="id"
+            type="xs:nonNegativeInteger"
+            use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="icon">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:anyURI">
+          <xs:attribute name="id"
+            type="xs:positiveInteger"
+            use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <style id="autoconsent-prehide"/>
+</xs:schema>

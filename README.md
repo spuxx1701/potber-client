@@ -1,12 +1,12 @@
 # potber
 
-This is a mobile-first web client for the german internet forum [forum.mods.de](https://foru.mods.de) built with [ember.js](https://emberjs.com/).
+This is a mobile-first web client for the german internet forum [forum.mods.de](https://foru.mods.de) built with [ember.js](https://emberjs.com/). If you're looking for the potber API, you can find it [here](https://github.com/spuxx1701/potber-api).
 
 ## How to use
 
-### Location
-
 Visit https://www.potber.de (or https://test.potber.de for the test environment) to use the app.
+
+## Core features
 
 ### Browser support
 
@@ -17,6 +17,10 @@ Potber supports the following browsers. Other browser might work, but are not su
 - Firefox >= 107
 - Firefox for Android >= 107
 - Safari on iOS >= 16.1
+
+### Standalone mode (PWA)
+
+The app supports standalone mode ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)). In stadalone mode, the website behaves almost exactly like an App. Whether your browser supports standalone mode and how to enable it highly depends on your browser. Android Chrome offers an option to "Install app" in your website settings, while iOS Safari has an option to "Add website to home screen". If you're having trouble, maybe [this article](https://web.dev/learn/pwa/installation/) can be of help.
 
 ## How to develop or build the app
 
@@ -32,8 +36,8 @@ You will need the following things properly installed on your computer.
 
 ### Installation
 
-- `git clone https://github.com/spuxx1701/potber.git`
-- `cd potber`
+- `git clone https://github.com/spuxx1701/potber-client.git`
+- `cd potber-client`
 - `npm install`
 
 ### Running / Development

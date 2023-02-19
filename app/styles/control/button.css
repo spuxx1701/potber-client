@@ -1,4 +1,8 @@
 button, .button-link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: var(--control-default-height);
   min-height: var(--control-default-height);
   border: none;
@@ -25,10 +29,11 @@ button:not(:disabled):active, .button-link:not(:disabled):active {
   text-decoration: none !important;
 }
 
-.button-link:not(:disabled) {
+.button-link, .button-link:visited {
   color: var(--color-text-default);
 }
 
-.button-link:disabled {
+.button-link-disabled {
   color: var(--color-control-disabled);
+  pointer-events: none;
 }

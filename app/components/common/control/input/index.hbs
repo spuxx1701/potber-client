@@ -1,0 +1,13 @@
+<div id={{this.componentId}} class='input-container control-size-{{this.size}}'>
+  <input
+    id='{{this.componentId}}-input'
+    value={{@value}}
+    placeholder=' '
+    aria-placeholder={{this.title}}
+    required={{@required}}
+    {{on 'change' this.handleChange}}
+    {{on 'focus' this.handleFocus}}
+    ...attributes
+  />
+  <label for='{{this.componentId}}-input'>{{this.label}}</label>
+</div>

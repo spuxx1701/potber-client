@@ -1,6 +1,5 @@
-<div class='post'>
+<div id='reply_{{@post.id}}' class='post {{if @subtle " post-subtle"}}'>
   <div class='post-details'>
-
     <div class='post-details-title'>
       {{#if this.showSmallAvatar}}
         <div class='post-avatar-small'>
@@ -9,23 +8,64 @@
       {{/if}}
       <div class='flex-column justify-content-center'>
         <b class='post-details-author-name'>{{@post.author.name}}</b>
-        <a
-          id='reply_{{@post.id}}'
+        <button
           href={{this.href}}
-          class='post-details-date subtitle'
-        >{{this.date}}<FaIcon @icon='link' /></a>
+          type='button'
+          class='color-variant-secondary post-details-date subtitle'
+          {{on 'click' this.copyLink}}
+        >{{this.date}}<FaIcon @icon='link' /></button>
       </div>
     </div>
-    {{!-- <Common::Control::Button
-      @icon='ellipsis-vertical'
-      @text='Mehr Funktionen'
-      @size='square'
-      @onClick={{this.handleMenuClick}}
-    /> --}}
+    <Common::Control::Menu @position='auto'>
+      <Common::Control::Menu::Link
+        @text='Original öffnen'
+        @icon='up-right-from-square'
+        @href={{this.originalUrl}}
+        target='_blank'
+      />
+      <Common::Control::Menu::Button
+        @text='Lesezeichen setzen'
+        @icon='bookmark'
+        @onClick={{this.setBookmark}}
+      />
+      <Common::Control::Menu::LinkTo
+        @text='Zitieren'
+        @icon='comment-dots'
+        @route='authenticated.post.quote'
+        @query={{hash TID=@post.threadId page=@thread.pagesCount PID=@post.id}}
+      />
+      {{#if this.canEdit}}
+        <Common::Control::Menu::LinkTo
+          @text='Bearbeiten'
+          @icon='edit'
+          @route='authenticated.post.edit'
+          @query={{hash TID=@post.threadId PID=@post.id}}
+        />
+      {{/if}}
+    </Common::Control::Menu>
   </div>
   <div class='post-content'>
-    <p>
-      {{this.content}}
-    </p>
+    {{#if @post.contentHidden}}
+      <p class='subtitle no-margin'>⚠ Inhalt versteckt</p>
+    {{else}}
+      {{#if (or @post.title @post.icon)}}
+        <p class='title post-title'>
+          <Board::Icon
+            @key={{@post.icon}}
+            @directory='post-icons'
+            @filename='{{@post.icon}}.gif'
+          />
+          {{@post.title}}
+        </p>
+      {{/if}}
+      <p class='post-content-message'>
+        {{this.message}}
+      </p>
+    {{/if}}
+    {{#if @post.lastEdit}}
+      <p class='post-content-footer subtitle'>
+        {{this.editingInfo}}
+      </p>
+    {{/if}}
   </div>
 </div>

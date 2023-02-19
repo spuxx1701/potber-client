@@ -8,6 +8,6 @@
     hinzugefügt.</p>
 {{else}}
   {{#each @boards as |board|}}
-    <Sidebar::BoardFavorite @board={{board}} />
+    <Sidebar::BoardFavorites::Item @board={{board}} />
   {{/each}}
 {{/if}}

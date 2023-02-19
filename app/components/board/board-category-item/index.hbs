@@ -1,11 +1,13 @@
 <Common::Control::Link
   class='board-category-item'
-  @route='board'
+  @route='authenticated.board'
   @query={{hash BID=@board.id}}
 >
   <p class='board-category-item-title'>{{@board.name}}</p>
   <p class='subtitle'>{{@board.description}}</p>
-  <p class='subtitle'>Letzter Post von
-    <b>{{@board.lastPost.author.name}}</b>
-    ({{date @board.lastPost.date}})</p>
+  {{#if @board.lastPost}}
+    <p class='subtitle'>Letzter Post von
+      <b>{{@board.lastPost.author.name}}</b>
+      ({{date @board.lastPost.date}})</p>
+  {{/if}}
 </Common::Control::Link>
