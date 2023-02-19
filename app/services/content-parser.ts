@@ -160,7 +160,6 @@ export default class ContentParserService extends Service {
         const result = `<iframe class="youtube-player" type="text/html"
       src="https://www.youtube.com/embed/${videoId}?&origin=${window.location.protocol}//${window.location.host}"
       frameborder="0"/>`;
-        console.log(result);
         return result;
       } else {
         return `<video src="${content}" controls/>`;
