@@ -1,0 +1,38 @@
+<Modal::Component::Header @title='URL einfügen' @icon='link' />
+<Modal::Component::Content>
+  <form id='link-insert-modal-form' {{on 'submit' this.handleSubmit}}>
+    <Common::Control::Input
+      @label='URL'
+      @size='max'
+      @value={{this.url}}
+      @onChange={{this.handleUrlchange}}
+      @selectAllOnFocus={{true}}
+      @required={{true}}
+      type='url'
+    />
+    <Common::Control::Input
+      @label='Text'
+      @size='max'
+      @value={{this.text}}
+      @onChange={{this.handleTextchange}}
+      @selectAllOnFocus={{true}}
+      @required={{true}}
+      type='text'
+    />
+  </form>
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @text='Abbrechen'
+    @variant='secondary'
+    @size='small'
+    @onClick={{this.handleCancel}}
+  />
+  <Common::Control::Button
+    @text='OK'
+    @type='submit'
+    @variant='primary'
+    @size='small'
+    form='link-insert-modal-form'
+  />
+</Modal::Component::Footer>

@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { ConfirmModalOptions } from 'potber-client/components/modal/types/confirm';
 import { IconSelectModalOptions } from 'potber-client/components/modal/types/icon-select';
 import { InputModalOptions } from 'potber-client/components/modal/types/input';
+import { LinkInsertModalOptions } from 'potber-client/components/modal/types/link-insert';
 import { sleep } from 'potber-client/utils/misc';
 
 const TIME_TO_DESTROY = 300;
@@ -16,6 +17,7 @@ export enum ModalType {
   confirm = 'confirm',
   input = 'input',
   iconSelect = 'icon-select',
+  linkInsert = 'link-insert',
 }
 
 export default class ModalService extends Service {
@@ -46,6 +48,14 @@ export default class ModalService extends Service {
    */
   iconSelect(options: IconSelectModalOptions) {
     this.show(ModalType.iconSelect, options);
+  }
+
+  /**
+   * Calls an link-insert modal.
+   * @param options The link-insert modal options.
+   */
+  linkInsert(options: LinkInsertModalOptions) {
+    this.show(ModalType.linkInsert, options);
   }
 
   /**
