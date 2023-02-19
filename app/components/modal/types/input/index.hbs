@@ -1,6 +1,7 @@
 <Modal::Component::Header
   @title={{@options.title}}
   @icon={{@options.icon}}
+  @prefix={{@options.prefix}}
   @variant={{@options.variant}}
 />
 <Modal::Component::Content>
@@ -13,6 +14,8 @@
       @size='max'
       @value={{this.value}}
       @onChange={{this.handleChange}}
+      @selectAllOnFocus={{true}}
+      @required={{true}}
       type={{this.type}}
       minLength={{@options.minLength}}
       maxLength={{@options.maxLength}}
