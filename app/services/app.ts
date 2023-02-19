@@ -1,5 +1,6 @@
 import RouterService from '@ember/routing/router-service';
 import Service, { service } from '@ember/service';
+import { sleep } from 'potber-client/utils/misc';
 import DeviceManagerService from './device-manager';
 import LocalStorageService from './local-storage';
 import ModalService from './modal';
@@ -27,26 +28,26 @@ export default class AppService extends Service {
       this.localStorage.initialize();
       this.newsFeed.refresh();
     }
-    // this.checkForNewVersion();
+    this.checkForNewVersion();
     this.initialized = true;
   }
 
-  // async checkForNewVersion() {
-  //   const unencountedVersion = this.localStorage.getUnencountedVersion();
-  //   if (unencountedVersion) {
-  //     await sleep(1000);
-  //     this.modal.confirm({
-  //       title: 'Es gibt Neuigkeiten!',
-  //       text: `Potber wurde auf Version ${unencountedVersion} aktualisiert.
-  //       Tippe auf 'OK', um mehr über die Änderungen zu erfahren.`,
-  //       icon: 'star',
-  //       cancelLabel: 'Geh weg!',
-  //       onSubmit: () => {
-  //         this.modal.close();
-  //         this.router.transitionTo('changelog');
-  //       },
-  //     });
-  //   }
-  //   this.localStorage.setEncounteredVersion();
-  // }
+  async checkForNewVersion() {
+    const unencountedVersion = this.localStorage.getUnencountedVersion();
+    if (unencountedVersion) {
+      await sleep(1000);
+      this.modal.confirm({
+        title: 'Es gibt Neuigkeiten!',
+        text: `Potber wurde auf Version ${unencountedVersion} aktualisiert.
+        Tippe auf 'OK', um mehr über die Änderungen zu erfahren.`,
+        icon: 'star',
+        cancelLabel: 'Geh weg!',
+        onSubmit: () => {
+          this.modal.close();
+          this.router.transitionTo('changelog');
+        },
+      });
+    }
+    this.localStorage.setEncounteredVersion();
+  }
 }
