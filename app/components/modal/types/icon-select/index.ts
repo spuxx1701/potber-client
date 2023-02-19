@@ -56,7 +56,6 @@ export default class IconSelectModalComponent extends Component<Signature> {
 
   @action handleSelect(option: IconOption) {
     this.args.options.onSelect(option.key);
-    this.modal.close();
   }
 
   @action handleCancel() {

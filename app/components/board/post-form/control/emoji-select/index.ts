@@ -34,5 +34,13 @@ export default class PostFormControlEmojiSelectComponent extends Component<Signa
       key +
       message.substring(selectionEnd, message.length);
     this.args.textarea.value = this.args.post.message;
+    // Close the dialog and...
+    this.modal.close(() => {
+      // ...reselect the textarea and update the caret position to match
+      // the inserted emoji so the user can continue typing
+      const newCaretPosition = selectionEnd + key.length;
+      this.args.textarea.select();
+      this.args.textarea.setSelectionRange(newCaretPosition, newCaretPosition);
+    });
   }
 }

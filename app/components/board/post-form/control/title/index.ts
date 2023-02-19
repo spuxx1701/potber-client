@@ -33,5 +33,6 @@ export default class PostFormControlTitleComponent extends Component<Signature> 
 
   @action handleSelect(key: string) {
     this.args.post.icon = this.icon = key;
+    this.modal.close();
   }
 }

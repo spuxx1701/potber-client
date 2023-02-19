@@ -30,5 +30,10 @@ export default class PostFormControlSimpleTagComponent extends Component<Signatu
       this.args.closing +
       message.substring(selectionEnd, message.length);
     this.args.textarea.value = this.args.post.message;
+    // Reselect the textarea and update the caret position to match
+    // the inserted tag so the user can continue typing
+    const newCaretPosition = selectionEnd + this.args.opening.length;
+    this.args.textarea.select();
+    this.args.textarea.setSelectionRange(newCaretPosition, newCaretPosition);
   }
 }

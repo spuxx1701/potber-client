@@ -74,8 +74,9 @@ export default class ModalService extends Service {
 
   /**
    * Closes the modal dialog.
+   * @param afterClose (optional) Fires after the dialog has closed.
    */
-  async close() {
+  async close(afterClose?: () => void) {
     document.documentElement.style.setProperty('--modal-opacity', '0');
     document.documentElement.style.setProperty('--modal-scale', '0');
     await sleep(TIME_TO_DESTROY);
@@ -84,5 +85,8 @@ export default class ModalService extends Service {
       type: null,
       options: null,
     };
+    if (afterClose) {
+      afterClose();
+    }
   }
 }
