@@ -3,5 +3,7 @@
 <Nav::Routes::Generic @title='Changelog' />
 
 <Common::Container>
-  Hier gibt es noch nichts zu sehen. ¯\_(ツ)_/¯
+  {{#each @model as |changelogItem|}}
+    <Misc::ChangelogItem @item={{changelogItem}} />
+  {{/each}}
 </Common::Container>

@@ -79,3 +79,32 @@ body {
 .message-item svg {
   margin-right: 0.25rem;
 }
+
+.changelog-item {
+  padding: 1rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-radius: var(--global-border-radius);
+  background-color: var(--color-container-background);
+}
+
+.changelog-item * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.changelog-item-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.changelog-item-header>svg {
+  margin-right: 0.5rem;
+}
+
+.changelog-item>.title {
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
