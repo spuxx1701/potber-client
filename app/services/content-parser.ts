@@ -145,15 +145,28 @@ export default class ContentParserService extends Service {
   }
 
   private parseVideo(attr: string, content: string) {
-    // YouTube links need to be embedded using their propietary player
-    if (content.match(/youtu.be/g) || content.match(/youtube.com/g)) {
-      const split = content.split('/');
-      const videoId = split[split.length - 1];
-      return `<iframe class="youtube-player" type="text/html"
-          src="https://www.youtube.com/embed/${videoId}?&origin=${window.location.protocol}//${window.location.host}"
-          frameborder="0"/>`;
-    } else {
-      return `<video src="${content}" controls/>`;
+    try {
+      // YouTube links need to be embedded using their propietary player
+      if (content.match(/youtu.be/) || content.match(/youtube.com/)) {
+        const split = content.split('/');
+        const uri = split[split.length - 1] as string;
+        let videoId = uri;
+        if (/v=/.test(uri)) {
+          const idMatches = uri.match(
+            /(?=(v=)((\w|-)*)(?!\w))/
+          ) as RegExpMatchArray;
+          videoId = idMatches[2] as string;
+        }
+        const result = `<iframe class="youtube-player" type="text/html"
+      src="https://www.youtube.com/embed/${videoId}?&origin=${window.location.protocol}//${window.location.host}"
+      frameborder="0"/>`;
+        console.log(result);
+        return result;
+      } else {
+        return `<video src="${content}" controls/>`;
+      }
+    } catch (error) {
+      return `[video]${content}[/video]`;
     }
   }
 
