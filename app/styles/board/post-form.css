@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+#post-form-header>* {
+  height: 100%;
+}
+
 #post-form-toolbar {
   height: var(--control-default-height);
   display: flex;
