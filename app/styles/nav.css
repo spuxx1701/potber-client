@@ -24,6 +24,7 @@
 }
 
 #bottom-nav {
+  box-sizing: border-box;
   display: flex;
   height: var(--bottom-nav-height);
   bottom: 0;
