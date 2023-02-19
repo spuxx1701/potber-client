@@ -68,6 +68,14 @@
       @textarea={{this.textarea}}
       @post={{@post}}
     />
+    <Board::PostForm::Control::SimpleTag
+      @text='tex'
+      @icon='t'
+      @opening='[tex]'
+      @closing='[/tex]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
+    />
   </div>
   <form id='post-form' {{on 'submit' this.handleSubmit}}>
     {{#unless @hideTitle}}
