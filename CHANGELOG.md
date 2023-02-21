@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Fixed an issue where embedded videos would prevent the following post content from rendering properly.
 - Fixed an issue where BBCode code blocks and tables were not scrollable horizontally.
 - Fixed an issue where posts would not display properly in 'Hobelware' design mode.
 
