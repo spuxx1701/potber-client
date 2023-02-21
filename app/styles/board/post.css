@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--global-border-radius);
+  overflow: hidden;
   margin-top: var(--global-gap);
   margin-bottom: var(--global-gap);
   scroll-margin-top: calc(var(--top-nav-height));
@@ -148,9 +149,10 @@ code {
   margin-bottom: 0.5rem;
   display: inline-block;
   width: 100%;
-  background-color: var();
   font-size: large;
   white-space: pre;
+  overflow: auto;
+  text-overflow: ellipsis;
 }
 
 video {
@@ -193,6 +195,12 @@ video {
 .spoiler-input:checked+.spoiler-header+.spoiler-content {
   display: block;
   width: 100%;
+}
+
+.table-container {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow: auto;
 }
 
 .post-content-message table {

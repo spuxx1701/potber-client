@@ -1,5 +1,14 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.0.2',
+    type: 'patch',
+    fixed: [
+      'Eingebundene Videos führen nun nicht mehr dazu, dass nachfolgende Postinhalte nicht sichtbar sind.',
+      'Code-Blöcke und Tabellen erlauben nun horizontales scrollen.',
+      'Posts werden im "Hobelware"-Design nun korrekt angezeigt.',
+    ],
+  },
+  {
     version: '1.0.1',
     type: 'patch',
     fixed: [
