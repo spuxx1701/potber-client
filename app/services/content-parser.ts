@@ -38,10 +38,13 @@ export default class ContentParserService extends Service {
   parseTable(input: string) {
     if (!new RegExp(/\[table\]/).test(input)) return input;
     let output = input;
-    output = output.replaceAll(/\[table\]/g, '<table><tr><td>');
+    output = output.replaceAll(
+      /\[table\]/g,
+      '<div class="table-container"><table><tr><td>'
+    );
     output = output.replaceAll(/\[\|\|\]/g, '</td><td>');
     output = output.replaceAll(/\[--\]/g, '</td></tr><tr><td>');
-    output = output.replaceAll(/\[\/table\]/g, '</td></tr></table>');
+    output = output.replaceAll(/\[\/table\]/g, '</td></tr></table></div>');
     return output;
   }
 
