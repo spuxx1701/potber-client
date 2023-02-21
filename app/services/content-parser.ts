@@ -160,9 +160,7 @@ export default class ContentParserService extends Service {
           ) as RegExpMatchArray;
           videoId = idMatches[2] as string;
         }
-        const result = `<iframe class="youtube-player" type="text/html"
-      src="https://www.youtube.com/embed/${videoId}?&origin=${window.location.protocol}//${window.location.host}"
-      frameborder="0"/>`;
+        const result = `<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/${videoId}?&origin=${window.location.protocol}//${window.location.host}" frameborder="0"></iframe>`;
         return result;
       } else {
         return `<video src="${content}" controls/>`;
