@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.1.0',
+    type: 'minor',
+    changed: [
+      '⚠ Einstellungen werden nun auf eine andere Art und Weise gespeichert. Bereits gesetzte Einstellungen wurden zurückgesetzt.',
+    ],
+  },
+  {
     version: '1.0.3',
     type: 'patch',
     fixed: ['Das Post-Kontextmenü wird nun nicht mehr abgeschnitten.'],

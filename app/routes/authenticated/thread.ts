@@ -1,7 +1,6 @@
 import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import LocalStorageService from 'potber-client/services/local-storage';
 import RendererService from 'potber-client/services/renderer';
 import { sleep } from 'potber-client/utils/misc';
 import RSVP, { reject } from 'rsvp';
@@ -10,6 +9,7 @@ import ThreadController from 'potber-client/controllers/authenticated/thread';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsFeedService from 'potber-client/services/news-feed';
+import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
 
 interface Params {
   TID: string;
@@ -22,11 +22,11 @@ interface Params {
 export interface ThreadRouteModel {
   thread: Thread;
   subtleUntilPostId: string;
-  avatarStyle: string;
+  avatarStyle: AvatarStyle;
 }
 
 export default class ThreadRoute extends Route {
-  @service declare localStorage: LocalStorageService;
+  @service declare settings: SettingsService;
   @service declare store: CustomStore;
   @service declare renderer: RendererService;
   @service declare newsFeed: NewsFeedService;
@@ -77,7 +77,7 @@ export default class ThreadRoute extends Route {
       return RSVP.hash({
         thread,
         subtleUntilPostId: subtleUntilPostId,
-        avatarStyle: this.localStorage.avatarStyle,
+        avatarStyle: this.settings.avatarStyle,
       } as ThreadRouteModel);
     } catch (error: any) {
       if (error.message === 'not-found') {

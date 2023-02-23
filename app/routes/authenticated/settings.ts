@@ -1,22 +1,26 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown';
-import LocalStorageService from 'potber-client/services/local-storage';
+import SettingsService, {
+  AvatarStyle,
+  BoxStyle,
+  LandingPage,
+} from 'potber-client/services/settings';
 import RSVP from 'rsvp';
 
 export default class SettingsRoute extends Route {
-  @service declare localStorage: LocalStorageService;
+  @service declare settings: SettingsService;
 
   model() {
     return RSVP.hash({
       currentAvatarStyleOption: avatarStyleOptions.find(
-        (option) => option.data === this.localStorage.getAvatarStyle()
+        (option) => option.data === this.settings.avatarStyle
       ),
       currentBoxStyleOption: boxStyleOptions.find(
-        (option) => option.data === this.localStorage.getBoxStyle()
+        (option) => option.data === this.settings.boxStyle
       ),
       currentLandingPageOption: landingPageOptions.find(
-        (option) => option.data === this.localStorage.getLandingPage()
+        (option) => option.data === this.settings.landingPage
       ),
     });
   }
@@ -25,32 +29,32 @@ export default class SettingsRoute extends Route {
 export const avatarStyleOptions: DropdownOption[] = [
   {
     label: 'Keine',
-    data: 'none',
+    data: AvatarStyle.none,
   },
   {
     label: 'Klein',
-    data: 'small',
+    data: AvatarStyle.small,
   },
 ];
 
 export const boxStyleOptions: DropdownOption[] = [
   {
     label: 'Kantholz',
-    data: 'rect',
+    data: BoxStyle.rect,
   },
   {
     label: 'Hobelware',
-    data: 'round',
+    data: BoxStyle.round,
   },
 ];
 
 export const landingPageOptions: DropdownOption[] = [
   {
     label: 'Forenübersicht',
-    data: 'board-overview',
+    data: LandingPage.boardOverview,
   },
   {
     label: 'Public Offtopic',
-    data: 'pot',
+    data: LandingPage.pot,
   },
 ];

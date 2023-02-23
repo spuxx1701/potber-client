@@ -2,11 +2,11 @@ import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { sleep } from 'potber-client/utils/misc';
-import LocalStorageService from './local-storage';
 import MessagesService from './messages';
+import SettingsService, { BoxStyle } from './settings';
 
 export default class RendererService extends Service {
-  @service declare localStorage: LocalStorageService;
+  @service declare settings: SettingsService;
   @service declare messages: MessagesService;
   @tracked leftSidebarExpanded = false;
   rootStyle = document.documentElement.style;
@@ -24,8 +24,7 @@ export default class RendererService extends Service {
    * Updates the current box style.
    */
   @action updateBoxStyle() {
-    const boxStyle = this.localStorage.getBoxStyle();
-    if (boxStyle === 'rect') {
+    if (this.settings.boxStyle === BoxStyle.rect) {
       this.rootStyle.setProperty('--global-border-radius', '0px');
       this.rootStyle.setProperty('--global-gap', 'unset');
     } else {
