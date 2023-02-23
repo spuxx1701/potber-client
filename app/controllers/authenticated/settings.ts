@@ -8,6 +8,7 @@ import {
   avatarStyleOptions,
   boxStyleOptions,
   landingPageOptions,
+  SettingsRouteModel,
 } from 'potber-client/routes/authenticated/settings';
 import MessagesService from 'potber-client/services/messages';
 import AppService from 'potber-client/services/app';
@@ -15,7 +16,10 @@ import ModalService from 'potber-client/services/modal';
 import SettingsService from 'potber-client/services/settings';
 
 export default class SettingsController extends Controller {
+  declare model: SettingsRouteModel;
+
   @service declare settings: SettingsService;
+  @service declare session: any;
   @service declare renderer: RendererService;
   @service declare messages: MessagesService;
   @service declare modal: ModalService;
@@ -41,5 +45,9 @@ export default class SettingsController extends Controller {
 
   @action handleAutoRefreshSidebarSelect(option: DropdownOption) {
     this.settings.autoRefreshSidebar = option.data;
+  }
+
+  @action async handleSignOut() {
+    this.session.invalidate();
   }
 }

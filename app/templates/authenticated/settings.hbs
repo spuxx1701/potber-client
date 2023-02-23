@@ -74,4 +74,17 @@
     <p class='margin-left-x-small'>Über die App</p>
   </Common::Control::Link>
 
+  <hr />
+
+  <h3>Sitzung</h3>
+  <p class='no-margin'>User ID: {{@model.session.userId}}</p>
+  <p>Username: {{@model.session.username}}</p>
+  <Common::Control::Button
+    @text='Abmelden'
+    @icon='right-from-bracket'
+    @variant='primary'
+    @size='large'
+    @onClick={{this.handleSignOut}}
+  />
+
 </Common::Container>

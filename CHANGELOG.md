@@ -8,11 +8,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Changed
 
+- Moves session view to settings route.
 - Settings are now stored as a single localStorage property.
 
 ### Added
 
 - Expanding the sidebar now also refreshes the newsfeed.
+
+### Removed
+
+- Removed session route.
 
 ## [1.0.3] - 2023-02-23
 

@@ -27,16 +27,4 @@
   >
     <FaIcon @icon='gear' />
   </Common::Control::Link>
-  {{#if this.authenticated}}
-    <Common::Control::Link
-      @route='authenticated.session'
-      @onClick={{this.handleNavLinkClick}}
-    >
-      <FaIcon @icon='user' @prefix='fas' />
-    </Common::Control::Link>
-  {{else}}
-    <Common::Control::Link @route='login' @onClick={{this.handleNavLinkClick}}>
-      <FaIcon @icon='user' @prefix='far' />
-    </Common::Control::Link>
-  {{/if}}
 </div>

@@ -15,7 +15,6 @@ Router.map(function () {
   this.route('changelog');
   this.route('authenticated', { path: '/' }, function () {
     this.route('board-overview');
-    this.route('session');
     this.route('board');
     this.route('thread');
     this.route('settings');

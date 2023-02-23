@@ -1,6 +1,8 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown';
+import Session from 'potber-client/models/session';
+import SessionService from 'potber-client/services/session';
 import SettingsService, {
   AvatarStyle,
   BoxStyle,
@@ -8,11 +10,22 @@ import SettingsService, {
 } from 'potber-client/services/settings';
 import RSVP from 'rsvp';
 
+export interface SettingsRouteModel {
+  session: Session | null;
+  currentAvatarStyleOption: DropdownOption;
+  currentBoxStyleOption: DropdownOption;
+  currentLandingPageOption: DropdownOption;
+  currentAutoRefreshSidebarOption: DropdownOption;
+}
+
 export default class SettingsRoute extends Route {
+  @service declare session: SessionService;
   @service declare settings: SettingsService;
 
-  model() {
+  async model() {
+    if (!this.session.sessionData) await this.session.update();
     return RSVP.hash({
+      session: this.session.sessionData,
       currentAvatarStyleOption: avatarStyleOptions.find(
         (option) => option.data === this.settings.avatarStyle
       ),
@@ -25,7 +38,7 @@ export default class SettingsRoute extends Route {
       currentAutoRefreshSidebarOption: autoRefreshSidebarOptions.find(
         (option) => option.data === this.settings.autoRefreshSidebar
       ),
-    });
+    } as SettingsRouteModel);
   }
 }
 
