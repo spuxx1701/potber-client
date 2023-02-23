@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.0.3',
+    type: 'patch',
+    fixed: ['Das Post-Kontextmenü wird nun nicht mehr abgeschnitten.'],
+  },
+  {
     version: '1.0.2',
     type: 'patch',
     fixed: [
