@@ -4,6 +4,7 @@ import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown';
 import RendererService from 'potber-client/services/renderer';
 import {
+  autoRefreshSidebarOptions,
   avatarStyleOptions,
   boxStyleOptions,
   landingPageOptions,
@@ -23,6 +24,7 @@ export default class SettingsController extends Controller {
   avatarStyleOptions = avatarStyleOptions;
   boxStyleOptions = boxStyleOptions;
   landingPageOptions = landingPageOptions;
+  autoRefreshSidebarOptions = autoRefreshSidebarOptions;
 
   @action handleAvatarStyleSelect(option: DropdownOption) {
     this.settings.avatarStyle = option.data;

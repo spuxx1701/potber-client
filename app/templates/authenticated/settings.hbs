@@ -4,6 +4,8 @@
 
 <Common::Container @size='small'>
 
+  <h3>Anzeige</h3>
+
   <Common::Control::Dropdown
     @options={{this.avatarStyleOptions}}
     @default={{@model.currentAvatarStyleOption}}
@@ -19,6 +21,18 @@
     @size='max'
     @label='Design'
   />
+
+  <h3>Daten & Netzwerk</h3>
+
+  <Common::Control::Dropdown
+    @options={{this.autoRefreshSidebarOptions}}
+    @default={{@model.currentAutoRefreshSidebarOption}}
+    @onSelect={{this.handleAutoRefreshSidebarSelect}}
+    @size='max'
+    @label='Automatischer Sidebar-Refresh'
+  />
+
+  <h3>Personalisierung</h3>
 
   <Common::Control::Dropdown
     @options={{this.landingPageOptions}}

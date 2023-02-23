@@ -5,6 +5,9 @@ export const changelog: ChangelogItem[] = [
     changed: [
       '⚠ Einstellungen werden nun auf eine andere Art und Weise gespeichert. Bereits gesetzte Einstellungen wurden zurückgesetzt.',
     ],
+    fixed: [
+      'Wird die Sidebar ausgeklappt, werden die Neuigkeiten nun automatisch aktualisiert. Das Verhalten lässt sich in den Einstellungen abstellen.',
+    ],
   },
   {
     version: '1.0.3',

@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Settings are now stored as a single localStorage property.
 
+### Added
+
+- Expanding the sidebar now also refreshes the newsfeed.
+
 ## [1.0.3] - 2023-02-23
 
 ### Fixed

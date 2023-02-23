@@ -22,6 +22,9 @@ export default class SettingsRoute extends Route {
       currentLandingPageOption: landingPageOptions.find(
         (option) => option.data === this.settings.landingPage
       ),
+      currentAutoRefreshSidebarOption: autoRefreshSidebarOptions.find(
+        (option) => option.data === this.settings.autoRefreshSidebar
+      ),
     });
   }
 }
@@ -56,5 +59,16 @@ export const landingPageOptions: DropdownOption[] = [
   {
     label: 'Public Offtopic',
     data: LandingPage.pot,
+  },
+];
+
+export const autoRefreshSidebarOptions: DropdownOption[] = [
+  {
+    label: 'An',
+    data: true,
+  },
+  {
+    label: 'Aus',
+    data: false,
   },
 ];
