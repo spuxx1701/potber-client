@@ -1,7 +1,9 @@
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown';
 import Session from 'potber-client/models/session';
+import RendererService from 'potber-client/services/renderer';
 import SessionService from 'potber-client/services/session';
 import SettingsService, {
   AvatarStyle,
@@ -21,6 +23,7 @@ export interface SettingsRouteModel {
 export default class SettingsRoute extends Route {
   @service declare session: SessionService;
   @service declare settings: SettingsService;
+  @service declare renderer: RendererService;
 
   async model() {
     if (!this.session.sessionData) await this.session.update();
@@ -39,6 +42,10 @@ export default class SettingsRoute extends Route {
         (option) => option.data === this.settings.autoRefreshSidebar
       ),
     } as SettingsRouteModel);
+  }
+
+  @action didTransition() {
+    this.renderer.tryResetScrollPosition();
   }
 }
 
