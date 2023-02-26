@@ -13,27 +13,9 @@
 
   <NotificationContainer @position='bottom' @zindex='99' />
 
+  <Nav />
+
   {{#if this.authenticated}}
     <Sidebar />
   {{/if}}
-
-  <div id='top-nav' class='nav' role='toolbar'>
-    {{#if this.authenticated}}
-      <Common::Control::Button
-        @icon={{if this.renderer.leftSidebarExpanded 'chevron-left' 'bars'}}
-        @text='Navigation'
-        @size='square'
-        @variant='primary-transparent'
-        @onClick={{this.toggleLeftSidebar}}
-      />
-    {{else}}
-      <span class='control-size-square' />
-    {{/if}}
-    <PortalTarget @name='top-nav' class='nav-portal-target' />
-    <span class='control-size-square' />
-  </div>
-
-  <div id='bottom-nav' class='nav' role='toolbar'>
-    <PortalTarget @name='bottom-nav' class='nav-portal-target' />
-  </div>
 {{/if}}

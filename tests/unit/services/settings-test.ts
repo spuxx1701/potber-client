@@ -4,6 +4,7 @@ import SettingsService, {
   BoxStyle,
   LandingPage,
   Settings,
+  SidebarLayout,
 } from 'potber-client/services/settings';
 import { setupTest } from 'potber-client/tests/helpers';
 import { module, test } from 'qunit';
@@ -13,6 +14,7 @@ const mockedSettings: Settings = {
   boxStyle: BoxStyle.rect,
   landingPage: LandingPage.pot,
   autoRefreshSidebar: false,
+  sidebarLayout: SidebarLayout.leftTop,
 };
 
 module('Unit | Service | Settings', function (hooks) {

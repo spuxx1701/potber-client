@@ -1,6 +1,9 @@
 :root {
   --top-nav-height: 55px;
   --bottom-nav-height: calc(55px + var(--bottom-nav-bottom-border));
+  /* May change during runtime */
+  --bottom-nav-left-gap: 0px;
+  --bottom-nav-right-gap: 0px;
 }
 
 .nav {
@@ -10,17 +13,17 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
 }
 
-.nav, .nav-portal-target {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
 #top-nav {
   height: var(--top-nav-height);
   top: 0;
   z-index: 20;
+}
+
+#top-nav .nav-portal-target {
+  position: absolute;
+  width: calc(100% - 2 * var(--control-default-height));
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #bottom-nav {
@@ -32,15 +35,30 @@
   border-bottom: var(--bottom-nav-bottom-border) solid var(--color-nav-background);
 }
 
-#bottom-nav>.nav-portal-target {
+#bottom-nav .nav-portal-target {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.nav>*, .nav-portal-target>*, .nav-element>* {
+.nav>*, .nav-portal-target>*, .nav-element-center>* {
   height: 100% !important;
 }
 
-.nav-element {
+.nav-element-left {
+  left: var(--bottom-nav-left-gap);
+}
+
+.nav-element-right {
+  right: var(--bottom-nav-right-gap);
+}
+
+.nav-element-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
 }
@@ -59,4 +77,10 @@
 
 .nav-header * {
   margin: 0;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  left: var(--sidebar-left);
+  right: var(--sidebar-right);
 }

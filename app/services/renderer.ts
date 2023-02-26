@@ -3,7 +3,7 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { sleep } from 'potber-client/utils/misc';
 import MessagesService from './messages';
-import SettingsService, { BoxStyle } from './settings';
+import SettingsService, { BoxStyle, SidebarLayout } from './settings';
 
 export default class RendererService extends Service {
   @service declare settings: SettingsService;
@@ -18,18 +18,58 @@ export default class RendererService extends Service {
    */
   @action initialize() {
     this.updateBoxStyle();
+    this.updateSidebarLayout();
   }
 
   /**
    * Updates the current box style.
    */
-  @action updateBoxStyle() {
+  updateBoxStyle() {
     if (this.settings.boxStyle === BoxStyle.rect) {
       this.rootStyle.setProperty('--global-border-radius', '0px');
       this.rootStyle.setProperty('--global-gap', 'unset');
     } else {
       this.rootStyle.setProperty('--global-border-radius', '5px');
       this.rootStyle.setProperty('--global-gap', '0.25rem');
+    }
+  }
+
+  /**
+   * Updates the sidebar layout. Affects whether the sidebar is rendered on the left
+   * or ride side as well as the position of the sidebar toggle button.
+   */
+  updateSidebarLayout() {
+    console.log('updating layout');
+    switch (this.settings.sidebarLayout) {
+      case SidebarLayout.rightBottom:
+        this.rootStyle.setProperty('--sidebar-left', 'unset');
+        this.rootStyle.setProperty('--sidebar-right', '0px');
+        this.rootStyle.setProperty('--bottom-nav-left-gap', '0px');
+        this.rootStyle.setProperty(
+          '--bottom-nav-right-gap',
+          'var(--control-default-height)'
+        );
+        break;
+      case SidebarLayout.rightTop:
+        this.rootStyle.setProperty('--sidebar-left', 'unset');
+        this.rootStyle.setProperty('--sidebar-right', '0px');
+        this.rootStyle.setProperty('--bottom-nav-left-gap', '0px');
+        this.rootStyle.setProperty('--bottom-nav-right-gap', '0px');
+        break;
+      case SidebarLayout.leftBottom:
+        this.rootStyle.setProperty('--sidebar-left', '0px');
+        this.rootStyle.setProperty('--sidebar-right', 'unset');
+        this.rootStyle.setProperty(
+          '--bottom-nav-left-gap',
+          'var(--control-default-height)'
+        );
+        this.rootStyle.setProperty('--bottom-nav-right-gap', '0px');
+        break;
+      default:
+        this.rootStyle.setProperty('--sidebar-left', '0px');
+        this.rootStyle.setProperty('--sidebar-right', 'unset');
+        this.rootStyle.setProperty('--bottom-nav-left-gap', '0px');
+        this.rootStyle.setProperty('--bottom-nav-right-gap', '0px');
     }
   }
 

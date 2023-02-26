@@ -9,6 +9,7 @@ import {
   boxStyleOptions,
   landingPageOptions,
   SettingsRouteModel,
+  sidebarLayoutOptions,
 } from 'potber-client/routes/authenticated/settings';
 import MessagesService from 'potber-client/services/messages';
 import AppService from 'potber-client/services/app';
@@ -27,6 +28,7 @@ export default class SettingsController extends Controller {
 
   avatarStyleOptions = avatarStyleOptions;
   boxStyleOptions = boxStyleOptions;
+  sidebarLayoutOptions = sidebarLayoutOptions;
   landingPageOptions = landingPageOptions;
   autoRefreshSidebarOptions = autoRefreshSidebarOptions;
 
@@ -37,6 +39,11 @@ export default class SettingsController extends Controller {
   @action handleBoxStyleSelect(option: DropdownOption) {
     this.settings.boxStyle = option.data;
     this.renderer.updateBoxStyle();
+  }
+
+  @action handleSidebarLayoutSelect(option: DropdownOption) {
+    this.settings.sidebarLayout = option.data;
+    this.renderer.updateSidebarLayout();
   }
 
   @action handleLandingPageSelect(option: DropdownOption) {

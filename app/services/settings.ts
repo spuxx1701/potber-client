@@ -8,6 +8,7 @@ export interface Settings {
   boxStyle: BoxStyle;
   landingPage: LandingPage;
   autoRefreshSidebar: boolean;
+  sidebarLayout: SidebarLayout;
 }
 
 export enum AvatarStyle {
@@ -26,6 +27,13 @@ export enum LandingPage {
   pot,
 }
 
+export enum SidebarLayout {
+  leftTop,
+  leftBottom,
+  rightTop,
+  rightBottom,
+}
+
 export default class SettingsService extends Service {
   @service declare localStorage: LocalStorageService;
 
@@ -35,6 +43,7 @@ export default class SettingsService extends Service {
     boxStyle: BoxStyle.rect,
     landingPage: LandingPage.boardOverview,
     autoRefreshSidebar: true,
+    sidebarLayout: SidebarLayout.leftTop,
   };
 
   /**
@@ -43,6 +52,7 @@ export default class SettingsService extends Service {
    * @returns The settings.
    */
   load(): Settings {
+    console.log('loading');
     const settings = { ...this.default };
     const storedSettings = this.localStorage.readSettings();
     if (storedSettings) {
@@ -54,6 +64,10 @@ export default class SettingsService extends Service {
       }
       if (Object.values(LandingPage).includes(storedSettings.landingPage)) {
         settings.landingPage = storedSettings.landingPage;
+      }
+
+      if (Object.values(SidebarLayout).includes(storedSettings.sidebarLayout)) {
+        settings.sidebarLayout = storedSettings.sidebarLayout;
       }
       if (typeof storedSettings.autoRefreshSidebar === 'boolean') {
         settings.autoRefreshSidebar = storedSettings.autoRefreshSidebar;
@@ -88,6 +102,15 @@ export default class SettingsService extends Service {
 
   set boxStyle(boxStyle: BoxStyle) {
     this.active = { ...this.active, boxStyle };
+    this.save();
+  }
+
+  get sidebarLayout() {
+    return this.active.sidebarLayout;
+  }
+
+  set sidebarLayout(sidebarLayout: SidebarLayout) {
+    this.active = { ...this.active, sidebarLayout };
     this.save();
   }
 

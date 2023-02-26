@@ -1,6 +1,11 @@
 <div id='sidebar' role='navigation'>
-  <Sidebar::Nav />
+  {{#if (eq this.navVerticalPosition 'top')}}
+    <Sidebar::Nav />
+  {{/if}}
   <div id='sidebar-content'>
     <Features::Quickstart @inSidebar={{true}} />
   </div>
+  {{#if (eq this.navVerticalPosition 'bottom')}}
+    <Sidebar::Nav />
+  {{/if}}
 </div>

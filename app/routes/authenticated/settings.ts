@@ -9,6 +9,7 @@ import SettingsService, {
   AvatarStyle,
   BoxStyle,
   LandingPage,
+  SidebarLayout,
 } from 'potber-client/services/settings';
 import RSVP from 'rsvp';
 
@@ -16,6 +17,7 @@ export interface SettingsRouteModel {
   session: Session | null;
   currentAvatarStyleOption: DropdownOption;
   currentBoxStyleOption: DropdownOption;
+  currentSidebarLayoutOption: DropdownOption;
   currentLandingPageOption: DropdownOption;
   currentAutoRefreshSidebarOption: DropdownOption;
 }
@@ -34,6 +36,9 @@ export default class SettingsRoute extends Route {
       ),
       currentBoxStyleOption: boxStyleOptions.find(
         (option) => option.data === this.settings.boxStyle
+      ),
+      currentSidebarLayoutOption: sidebarLayoutOptions.find(
+        (option) => option.data === this.settings.sidebarLayout
       ),
       currentLandingPageOption: landingPageOptions.find(
         (option) => option.data === this.settings.landingPage
@@ -68,6 +73,25 @@ export const boxStyleOptions: DropdownOption[] = [
   {
     label: 'Hobelware',
     data: BoxStyle.round,
+  },
+];
+
+export const sidebarLayoutOptions: DropdownOption[] = [
+  {
+    label: 'Links (oben)',
+    data: SidebarLayout.leftTop,
+  },
+  {
+    label: 'Links (unten)',
+    data: SidebarLayout.leftBottom,
+  },
+  {
+    label: 'Rechts (oben)',
+    data: SidebarLayout.rightTop,
+  },
+  {
+    label: 'Rechts (unten)',
+    data: SidebarLayout.rightBottom,
   },
 ];
 

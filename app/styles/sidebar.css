@@ -1,26 +1,31 @@
 :root {
   --sidebar-expanded-width: 300px;
   /* Will be modified during runtime */
+  --sidebar-height: calc(100dvh - var(--top-nav-height) - var(--bottom-nav-height));
   --sidebar-width: 0px;
+  --sidebar-left: 0px;
+  --sidebar-right: unset;
 }
 
 #sidebar {
   position: fixed;
   background-color: var(--color-nav-background);
-  height: calc(100dvh - var(--top-nav-height));
+  height: var(--sidebar-height);
   z-index: 15;
   transition: width 500ms !important;
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   top: var(--top-nav-height);
-  left: 0;
   width: var(--sidebar-width);
+  left: var(--sidebar-left);
+  right: var(--sidebar-right);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
 }
 
 #sidebar * {
   text-decoration: none;
+  direction: ltr;
 }
 
 #sidebar-nav {
@@ -40,8 +45,9 @@
 }
 
 #sidebar-content {
-  flex-grow: 1;
+  height: calc(var(--sidebar-height) - var(--control-default-height));
   width: var(--sidebar-expanded-width);
+  overflow-y: auto;
 }
 
 #sidebar-content>* {

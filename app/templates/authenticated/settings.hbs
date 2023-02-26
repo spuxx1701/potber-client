@@ -22,6 +22,14 @@
     @label='Design'
   />
 
+  <Common::Control::Dropdown
+    @options={{this.sidebarLayoutOptions}}
+    @default={{@model.currentSidebarLayoutOption}}
+    @onSelect={{this.handleSidebarLayoutSelect}}
+    @size='max'
+    @label='Sidebar'
+  />
+
   <h3>Daten & Netzwerk</h3>
 
   <Common::Control::Dropdown
