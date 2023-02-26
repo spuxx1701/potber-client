@@ -10,10 +10,6 @@ button, .button-link {
   font-size: medium;
 }
 
-button:focus, .button-link:focus {
-  -webkit-tap-highlight-color: transparent;
-}
-
 button:not(:disabled), .button-link:not(:disabled) {
   cursor: pointer;
 }
