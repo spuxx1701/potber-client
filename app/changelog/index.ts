@@ -2,13 +2,14 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.1.0',
     type: 'minor',
+    added: [
+      'Es gibt nun eine neue optionale Startseite ("Home"), auf der Lesezeichen und Board-Favoriten angezeigt werden.',
+      'Wird die Sidebar ausgeklappt, werden die Neuigkeiten nun automatisch aktualisiert. Das Verhalten lässt sich in den Einstellungen abstellen.',
+    ],
     changed: [
       'Informationen über die laufende Sitzung finden sich nun in den Einstellungen.',
       'Die Einstellungen sind nun übersichtlicher strukturiert.',
       '⚠ Einstellungen werden nun auf eine andere Art und Weise gespeichert. Bereits gesetzte Einstellungen wurden zurückgesetzt.',
-    ],
-    fixed: [
-      'Wird die Sidebar ausgeklappt, werden die Neuigkeiten nun automatisch aktualisiert. Das Verhalten lässt sich in den Einstellungen abstellen.',
     ],
     removed: ['Die Seite "Laufende Sitzung" wurde entfernt.'],
   },
