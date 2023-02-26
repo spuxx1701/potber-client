@@ -155,7 +155,6 @@ code {
   font-size: large;
   white-space: pre;
   overflow: auto;
-  text-overflow: ellipsis;
 }
 
 video {
