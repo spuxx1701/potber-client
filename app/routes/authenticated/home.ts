@@ -4,6 +4,7 @@ import { service } from '@ember/service';
 import Bookmark from 'potber-client/models/bookmark';
 import CustomStore from 'potber-client/services/custom-store';
 import LocalStorageService from 'potber-client/services/local-storage';
+import NewsfeedService from 'potber-client/services/newsfeed';
 import SessionService from 'potber-client/services/session';
 import SettingsService, { LandingPage } from 'potber-client/services/settings';
 import RSVP from 'rsvp';
@@ -16,8 +17,8 @@ export default class HomeRoute extends Route {
   @service declare session: SessionService;
   @service declare settings: SettingsService;
   @service declare router: RouterService;
-  @service declare store: CustomStore;
   @service declare localStorage: LocalStorageService;
+  @service declare newsfeed: NewsfeedService;
 
   beforeModel() {
     const landingPage = this.settings.landingPage;
@@ -37,15 +38,11 @@ export default class HomeRoute extends Route {
 
   async model() {
     const session = await this.session.getSessionData();
-    const bookmarks = await this.store.findAll('bookmark');
-    const unreadBookmarks = bookmarks.filter(
-      (bookmark) => bookmark.newPostsCount > 0
-    );
-    await this.localStorage.getBoardFavorites();
+    this.localStorage.getBoardFavorites();
+    this.newsfeed.refresh();
 
     return RSVP.hash({
       session,
-      unreadBookmarks,
     });
   }
 }
