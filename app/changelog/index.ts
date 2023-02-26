@@ -15,6 +15,7 @@ export const changelog: ChangelogItem[] = [
       '⚠ Einstellungen werden nun auf eine andere Art und Weise gespeichert. Bereits gesetzte Einstellungen wurden zurückgesetzt.',
     ],
     removed: ['Die Seite "Laufende Sitzung" wurde entfernt.'],
+    fixed: ['Diverse kleinere Fixes.'],
   },
   {
     version: '1.0.3',

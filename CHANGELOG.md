@@ -22,6 +22,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Removed session route.
 
+### Fixed
+
+- Fixed multiple mostly visual bugs.
+
 ## [1.0.3] - 2023-02-23
 
 ### Fixed
