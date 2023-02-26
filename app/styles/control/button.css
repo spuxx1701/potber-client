@@ -14,7 +14,7 @@ button:not(:disabled), .button-link:not(:disabled) {
   cursor: pointer;
 }
 
-button:not(.control-size-square) svg {
+button:not(.control-size-square) svg, .button-link:not(.control-size-square) svg {
   margin-right: 0.25rem;
 }
 
