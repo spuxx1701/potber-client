@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
+- Added function to navigate back to various pages.
 - Added a new home page that displays the same quickstart menu as the sidebar does.
 - Expanding the sidebar now also refreshes the newsfeed.
 
