@@ -6,8 +6,8 @@
     @variant='secondary'
     @onClick={{this.handleLinkClick}}
   >
-    <p class='title'> {{@board.name}}</p>
-    <p class='subtitle'> {{@board.description}}</p>
+    <p class='title max-lines-1'> {{@board.name}}</p>
+    <p class='subtitle max-lines-1'> {{@board.description}}</p>
   </Common::Control::Link>
   <Common::Control::Menu @position='bottom-left'>
     <Common::Control::Menu::Button

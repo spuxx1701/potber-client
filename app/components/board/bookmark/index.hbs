@@ -12,7 +12,7 @@
     @variant='secondary'
     @onClick={{this.handleLinkClick}}
   >
-    <p class='title bookmark-title'>{{@bookmark.thread.title}}</p>
+    <p class='title bookmark-title max-lines-1'>{{@bookmark.thread.title}}</p>
     <p class='subtitle bookmark-subtitle'>{{this.subtitle}}</p>
   </Common::Control::Link>
   <Common::Control::Menu @position='bottom-left'>
