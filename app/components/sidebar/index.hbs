@@ -1,14 +1,6 @@
 <div id='sidebar' role='navigation'>
   <Sidebar::Nav />
   <div id='sidebar-content'>
-    <h3 class='title text-center'>Neuigkeiten</h3>
-    {{#if this.authenticated}}
-      <Sidebar::NewsFeed @bookmarksSummary={{@bookmarksSummary}} />
-    {{else}}
-      <p class='subtitle text-center'>Melde Dich an, um Neuigkeiten zu
-        empfangen.</p>
-    {{/if}}
-    <hr />
-    <Sidebar::BoardFavorites @boards={{this.boardFavorites}} />
+    <Features::Quickstart @inSidebar={{true}} />
   </div>
 </div>

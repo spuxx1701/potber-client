@@ -22,7 +22,7 @@ export enum BoxStyle {
 
 export enum LandingPage {
   boardOverview,
-  newsFeed,
+  home,
   pot,
 }
 

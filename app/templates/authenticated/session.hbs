@@ -1,0 +1,22 @@
+{{page-title 'Sitzung'}}
+
+<Nav::Routes::Generic @title='Sitzung' />
+
+<Common::Container @size='small'>
+  {{#if @model.userId}}
+    <p class='title'>Du bist derzeit angemeldet.</p>
+    <p>User ID: {{@model.userId}}</p>
+    <p>Username: {{@model.username}}</p>
+    <hr />
+    <Common::Control::Button
+      @text='Abmelden'
+      @icon='right-from-bracket'
+      @variant='primary'
+      @size='large'
+      @onClick={{this.handleSignOut}}
+      @busy={{this.terminationInProgress}}
+    />
+  {{else}}
+    <p>Keine laufende Sitzung.</p>
+  {{/if}}
+</Common::Container>

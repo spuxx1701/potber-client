@@ -16,7 +16,7 @@ export default class AuthenticatedRoute extends Route {
 
   redirect(model: undefined, transition: any) {
     if (transition.targetName === 'authenticated.index') {
-      this.router.transitionTo('home');
+      this.router.transitionTo('authenticated.home');
     }
   }
 }

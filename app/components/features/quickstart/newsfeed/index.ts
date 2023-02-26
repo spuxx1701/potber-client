@@ -1,11 +1,11 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import NewsFeedService from 'potber-client/services/news-feed';
+import NewsfeedService from 'potber-client/services/newsfeed';
 import RendererService from 'potber-client/services/renderer';
 
-export default class SidebarNewsFeedComponent extends Component {
-  @service declare newsFeed: NewsFeedService;
+export default class QuickstartNewsfeedComponent extends Component {
+  @service declare newsfeed: NewsfeedService;
   @service declare renderer: RendererService;
 
   get status() {
@@ -21,14 +21,14 @@ export default class SidebarNewsFeedComponent extends Component {
   }
 
   get unreadBookmarks() {
-    return this.newsFeed.unreadBookmarks;
+    return this.newsfeed.unreadBookmarks;
   }
 
   get busy() {
-    return this.newsFeed.isUpdating;
+    return this.newsfeed.isUpdating;
   }
 
   @action async refresh() {
-    await this.newsFeed.refresh();
+    await this.newsfeed.refresh();
   }
 }

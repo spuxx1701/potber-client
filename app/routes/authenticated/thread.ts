@@ -8,7 +8,7 @@ import { scrollToHash } from 'ember-url-hash-polyfill';
 import ThreadController from 'potber-client/controllers/authenticated/thread';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
-import NewsFeedService from 'potber-client/services/news-feed';
+import NewsfeedService from 'potber-client/services/newsfeed';
 import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
 
 interface Params {
@@ -29,7 +29,7 @@ export default class ThreadRoute extends Route {
   @service declare settings: SettingsService;
   @service declare store: CustomStore;
   @service declare renderer: RendererService;
-  @service declare newsFeed: NewsFeedService;
+  @service declare newsfeed: NewsfeedService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -91,7 +91,7 @@ export default class ThreadRoute extends Route {
   async afterModel() {
     // Refresh bookmarks after the model hook has resolved since the current transition might
     // have impacted those.
-    this.newsFeed.refreshBookmarks();
+    this.newsfeed.refreshBookmarks();
   }
 
   @action async didTransition() {

@@ -7,10 +7,11 @@ import RendererService from 'potber-client/services/renderer';
 interface Signature {
   Args: {
     bookmark: Bookmark;
+    inSidebar: boolean;
   };
 }
 
-export default class SidebarNewsFeedBookmarkComponent extends Component<Signature> {
+export default class QuickstartNewsfeedBookmarkComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   declare args: Signature['Args'];
 
@@ -23,6 +24,8 @@ export default class SidebarNewsFeedBookmarkComponent extends Component<Signatur
   }
 
   @action handleLinkClick() {
-    this.renderer.closeLeftSidebar();
+    if (this.args.inSidebar) {
+      this.renderer.closeLeftSidebar();
+    }
   }
 }

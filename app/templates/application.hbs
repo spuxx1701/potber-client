@@ -13,7 +13,9 @@
 
   <NotificationContainer @position='bottom' @zindex='99' />
 
-  <Sidebar @bookmarksSummary={{@model.bookmarksSummary}} />
+  {{#if this.authenticated}}
+    <Sidebar />
+  {{/if}}
 
   <div id='top-nav' class='nav' role='toolbar'>
     {{#if this.authenticated}}

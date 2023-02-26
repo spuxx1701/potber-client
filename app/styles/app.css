@@ -11,6 +11,8 @@
 @import "./control/dropdown.css";
 @import "./control/menu.css";
 
+@import "./features/quickstart.css";
+
 @import "./board/board.css";
 @import "./board/board-overview.css";
 @import "./board/post.css";

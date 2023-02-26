@@ -9,7 +9,7 @@ import CustomStore from './custom-store';
 // update actions.
 const MINIMUM_UPDATE_DURATION = 500;
 
-export default class NewsFeedService extends Service {
+export default class NewsfeedService extends Service {
   @service declare store: CustomStore;
 
   @tracked unreadBookmarks: Bookmark[] | null = null;

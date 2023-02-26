@@ -77,6 +77,10 @@ export const landingPageOptions: DropdownOption[] = [
     data: LandingPage.boardOverview,
   },
   {
+    label: 'Home',
+    data: LandingPage.home,
+  },
+  {
     label: 'Public Offtopic',
     data: LandingPage.pot,
   },

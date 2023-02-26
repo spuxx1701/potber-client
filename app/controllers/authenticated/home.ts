@@ -1,21 +1,9 @@
+import Controller from '@ember/controller';
 import { service } from '@ember/service';
-import Component from '@glimmer/component';
-import Bookmark from 'potber-client/models/bookmark';
 import LocalStorageService from 'potber-client/services/local-storage';
 
-interface Signature {
-  Args: {
-    bookmarks: Bookmark[] | null;
-  };
-}
-
-export default class SidebarComponent extends Component<Signature> {
+export default class HomeController extends Controller {
   @service declare localStorage: LocalStorageService;
-  @service declare session: any;
-
-  get authenticated() {
-    return this.session.isAuthenticated;
-  }
 
   get boardFavorites() {
     if (this.localStorage.boardFavorites) {
