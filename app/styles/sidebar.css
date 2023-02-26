@@ -5,6 +5,8 @@
   --sidebar-width: 0px;
   --sidebar-left: 0px;
   --sidebar-right: unset;
+  --sidebar-backdrop-opacity: 0;
+  --sidebar-backdrop-pointer-events: none;
 }
 
 #sidebar {
@@ -21,6 +23,18 @@
   left: var(--sidebar-left);
   right: var(--sidebar-right);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
+}
+
+#sidebar-backdrop {
+  position: fixed;
+  z-index: 14;
+  top: var(--top-nav-height);
+  height: var(--sidebar-height);
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: var(--sidebar-backdrop-opacity);
+  cursor: default;
+  pointer-events: var(--sidebar-backdrop-pointer-events);
 }
 
 #sidebar * {

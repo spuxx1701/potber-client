@@ -9,3 +9,9 @@
     <Sidebar::Nav />
   {{/if}}
 </div>
+<button
+  id='sidebar-backdrop'
+  type='button'
+  aria-hidden='true'
+  {{on 'click' this.handleSidebarBackdropClick}}
+/>

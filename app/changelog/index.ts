@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.1.0',
     type: 'minor',
     added: [
+      'Die Sidebar und alle Dialoge können nun durch Tippen in den Bereich außerhalb der Sidebar geschlossen werden.',
       'Position und Layout der Sidebar können nun in den Einstellungen angepasst werden.',
       'Verschiedene Seiten (Post erstellen u.a.) beinhalten nun einen Button zum Zurückkehren auf die vorherige Seite.',
       'Es gibt nun eine neue optionale Startseite ("Home"), auf der Lesezeichen und Board-Favoriten angezeigt werden.',

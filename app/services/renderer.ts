@@ -124,8 +124,12 @@ export default class RendererService extends Service {
         '--sidebar-width',
         'var(--sidebar-expanded-width)'
       );
+      this.rootStyle.setProperty('--sidebar-backdrop-opacity', '1');
+      this.rootStyle.setProperty('--sidebar-backdrop-pointer-events', 'all');
     } else {
       this.rootStyle.setProperty('--sidebar-width', '0px');
+      this.rootStyle.setProperty('--sidebar-backdrop-opacity', '0');
+      this.rootStyle.setProperty('--sidebar-backdrop-pointer-events', 'none');
     }
   }
 
