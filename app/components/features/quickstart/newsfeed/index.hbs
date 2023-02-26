@@ -6,7 +6,10 @@
   <p class='subtitle text-center'>Es gibt keine Neuigkeiten.</p>
 {{else}}
   {{#each this.unreadBookmarks as |bookmark|}}
-    <Features::Quickstart::Newsfeed::Bookmark @bookmark={{bookmark}} />
+    <Features::Quickstart::Newsfeed::Bookmark
+      @bookmark={{bookmark}}
+      @inSidebar={{@inSidebar}}
+    />
   {{/each}}
 {{/if}}
 <Common::Control::Button
