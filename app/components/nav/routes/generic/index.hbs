@@ -1,3 +1,15 @@
 <Portal @target='top-nav'>
   <Nav::Component::Header @title={{@title}} @subtitle={{@subtitle}} />
 </Portal>
+
+{{#if @enableBackNavigation}}
+  <Portal @target='bottom-nav'>
+    <Common::Control::Button
+      @title='Zurück'
+      @icon='arrow-left'
+      @size='square'
+      @variant='primary-transparent'
+      @onClick={{this.handleBackClick}}
+    />
+  </Portal>
+{{/if}}
