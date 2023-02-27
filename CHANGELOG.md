@@ -4,7 +4,31 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.1.0] - 2022-02-27
+
+### Added
+
+- Sidebar layout and position is now customizable.
+- Added function to navigate back to various pages.
+- Added a new home page that displays the same quickstart menu as the sidebar does.
+- Expanding the sidebar now also refreshes the newsfeed.
+
+### Changed
+
+- Moves session view to settings route.
+- Settings are now stored as a single localStorage property.
+
+### Removed
+
+- Removed session route.
+
+### Fixed
+
+- Fixed multiple mostly visual bugs.
+
 ## [1.0.3] - 2023-02-23
+
+### Fixed
 
 - Fixed an issue where the post context menu was being clipped.
 

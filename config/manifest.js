@@ -7,7 +7,7 @@ module.exports = function (/* environment, appConfig */) {
   return {
     name: 'potber',
     short_name: 'potber',
-    description: '',
+    description: 'A modern client for forum.mods.de',
     start_url: '/',
     scope: '/',
     display: 'standalone',

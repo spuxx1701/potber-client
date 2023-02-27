@@ -8,13 +8,13 @@ import {
   LOGIN_LIFETIME_OPTIONS,
 } from 'potber-client/routes/login';
 import MessagesService from 'potber-client/services/messages';
-import NewsFeedService from 'potber-client/services/news-feed';
+import NewsfeedService from 'potber-client/services/newsfeed';
 
 export default class AboutController extends Controller {
   @service declare router: RouterService;
   @service declare session: any;
   @service declare messages: MessagesService;
-  @service declare newsFeed: NewsFeedService;
+  @service declare newsfeed: NewsfeedService;
   declare model: LoginRouteModel;
   @tracked loginInProcess = false;
   lifetimeOptions = LOGIN_LIFETIME_OPTIONS;
@@ -50,8 +50,8 @@ export default class AboutController extends Controller {
     this.loginInProcess = false;
     if (this.session.isAuthenticated) {
       this.messages.showNotification(`Anmeldung erfolgreich.`, 'success');
-      this.newsFeed.refreshBookmarks();
-      this.router.transitionTo('home');
+      this.newsfeed.refreshBookmarks();
+      this.router.transitionTo('authenticated.home');
     }
   }
 }

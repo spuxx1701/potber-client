@@ -11,9 +11,10 @@
     @size='square'
     @route='authenticated.board'
     @query={{hash BID=@thread.boardId}}
+    class='nav-element-left'
   ><FaIcon @icon='arrow-left' /></Common::Control::Link>
 
-  <div class='nav-element'>
+  <div class='nav-element-center'>
     {{#if this.previousPageVisible}}
       <Common::Control::Link
         @title='Vorherige Seite'
@@ -96,17 +97,14 @@
     {{/if}}
   </div>
 
-  {{#if this.authenticated}}
-    <Common::Control::Link
-      @title='Antworten'
-      @size='square'
-      @route='authenticated.post.create'
-      @query={{hash TID=@thread.id page=@thread.pagesCount}}
-      @disabled={{@thread.isClosed}}
-    ><FaIcon
-        @icon={{if @thread.isClosed 'lock' 'comment'}}
-      /></Common::Control::Link>
-  {{else}}
-    <span class='control-size-square' />
-  {{/if}}
+  <Common::Control::Link
+    @title='Antworten'
+    @size='square'
+    @route='authenticated.post.create'
+    @query={{hash TID=@thread.id page=@thread.pagesCount}}
+    @disabled={{@thread.isClosed}}
+    class='nav-element-right'
+  ><FaIcon
+      @icon={{if @thread.isClosed 'lock' 'comment'}}
+    /></Common::Control::Link>
 </Portal>

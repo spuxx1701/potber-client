@@ -1,14 +1,17 @@
 <div id='sidebar' role='navigation'>
-  <Sidebar::Nav />
+  {{#if (eq this.navVerticalPosition 'top')}}
+    <Sidebar::Nav />
+  {{/if}}
   <div id='sidebar-content'>
-    <h3 class='title text-center'>Neuigkeiten</h3>
-    {{#if this.authenticated}}
-      <Sidebar::NewsFeed @bookmarksSummary={{@bookmarksSummary}} />
-    {{else}}
-      <p class='subtitle text-center'>Melde Dich an, um Neuigkeiten zu
-        empfangen.</p>
-    {{/if}}
-    <hr />
-    <Sidebar::BoardFavorites @boards={{this.boardFavorites}} />
+    <Features::Quickstart @inSidebar={{true}} />
   </div>
+  {{#if (eq this.navVerticalPosition 'bottom')}}
+    <Sidebar::Nav />
+  {{/if}}
 </div>
+<button
+  id='sidebar-backdrop'
+  type='button'
+  aria-hidden='true'
+  {{on 'click' this.handleSidebarBackdropClick}}
+/>

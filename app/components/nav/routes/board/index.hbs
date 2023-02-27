@@ -7,9 +7,10 @@
     @title='Forenübersicht'
     @size='square'
     @route='authenticated.board-overview'
+    class='nav-element-left'
   ><FaIcon @icon='arrow-left' /></Common::Control::Link>
 
-  <div class='nav-element'>
+  <div class='nav-element-center'>
     {{#if this.previousPageVisible}}
       <Common::Control::Link
         @title='Vorherige Seite'
@@ -53,7 +54,4 @@
       ><FaIcon @icon='chevron-right' /></Common::Control::Link>
     {{/if}}
   </div>
-
-  {{! TODO: Replace with new thread button }}
-  <span class='hidden control-size-square' />
 </Portal>

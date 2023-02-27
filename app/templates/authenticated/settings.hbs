@@ -4,6 +4,8 @@
 
 <Common::Container @size='small'>
 
+  <h3>Anzeige</h3>
+
   <Common::Control::Dropdown
     @options={{this.avatarStyleOptions}}
     @default={{@model.currentAvatarStyleOption}}
@@ -19,6 +21,26 @@
     @size='max'
     @label='Design'
   />
+
+  <Common::Control::Dropdown
+    @options={{this.sidebarLayoutOptions}}
+    @default={{@model.currentSidebarLayoutOption}}
+    @onSelect={{this.handleSidebarLayoutSelect}}
+    @size='max'
+    @label='Sidebar'
+  />
+
+  <h3>Daten & Netzwerk</h3>
+
+  <Common::Control::Dropdown
+    @options={{this.autoRefreshSidebarOptions}}
+    @default={{@model.currentAutoRefreshSidebarOption}}
+    @onSelect={{this.handleAutoRefreshSidebarSelect}}
+    @size='max'
+    @label='Automatischer Newsfeed-Refresh'
+  />
+
+  <h3>Personalisierung</h3>
 
   <Common::Control::Dropdown
     @options={{this.landingPageOptions}}
@@ -37,7 +59,7 @@
     class='margin-auto margin-vertical-x-small'
   >
     <FaIcon @icon='rectangle-list' />
-    <p class='margin-left-x-small'>Applog</p>
+    <p>Applog</p>
   </Common::Control::Link>
 
   <Common::Control::Link
@@ -47,7 +69,7 @@
     class='margin-auto margin-vertical-x-small'
   >
     <FaIcon @icon='star' @prefix='fas' />
-    <p class='margin-left-x-small'>Changelog</p>
+    <p>Changelog</p>
   </Common::Control::Link>
 
   <Common::Control::Link
@@ -57,7 +79,20 @@
     class='margin-auto margin-vertical-x-small'
   >
     <FaIcon @icon='info-circle' @prefix='fas' />
-    <p class='margin-left-x-small'>Über die App</p>
+    <p>Über die App</p>
   </Common::Control::Link>
+
+  <hr />
+
+  <h3>Sitzung</h3>
+  <p class='no-margin'>User ID: {{@model.session.userId}}</p>
+  <p>Username: {{@model.session.username}}</p>
+  <Common::Control::Button
+    @text='Abmelden'
+    @icon='right-from-bracket'
+    @variant='primary'
+    @size='large'
+    @onClick={{this.handleSignOut}}
+  />
 
 </Common::Container>

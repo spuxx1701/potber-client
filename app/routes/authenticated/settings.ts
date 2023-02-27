@@ -1,56 +1,122 @@
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown';
-import LocalStorageService from 'potber-client/services/local-storage';
+import Session from 'potber-client/models/session';
+import RendererService from 'potber-client/services/renderer';
+import SessionService from 'potber-client/services/session';
+import SettingsService, {
+  AvatarStyle,
+  BoxStyle,
+  LandingPage,
+  SidebarLayout,
+} from 'potber-client/services/settings';
 import RSVP from 'rsvp';
 
-export default class SettingsRoute extends Route {
-  @service declare localStorage: LocalStorageService;
+export interface SettingsRouteModel {
+  session: Session | null;
+  currentAvatarStyleOption: DropdownOption;
+  currentBoxStyleOption: DropdownOption;
+  currentSidebarLayoutOption: DropdownOption;
+  currentLandingPageOption: DropdownOption;
+  currentAutoRefreshSidebarOption: DropdownOption;
+}
 
-  model() {
+export default class SettingsRoute extends Route {
+  @service declare session: SessionService;
+  @service declare settings: SettingsService;
+  @service declare renderer: RendererService;
+
+  async model() {
+    if (!this.session.sessionData) await this.session.update();
     return RSVP.hash({
+      session: this.session.sessionData,
       currentAvatarStyleOption: avatarStyleOptions.find(
-        (option) => option.data === this.localStorage.getAvatarStyle()
+        (option) => option.data === this.settings.avatarStyle
       ),
       currentBoxStyleOption: boxStyleOptions.find(
-        (option) => option.data === this.localStorage.getBoxStyle()
+        (option) => option.data === this.settings.boxStyle
+      ),
+      currentSidebarLayoutOption: sidebarLayoutOptions.find(
+        (option) => option.data === this.settings.sidebarLayout
       ),
       currentLandingPageOption: landingPageOptions.find(
-        (option) => option.data === this.localStorage.getLandingPage()
+        (option) => option.data === this.settings.landingPage
       ),
-    });
+      currentAutoRefreshSidebarOption: autoRefreshSidebarOptions.find(
+        (option) => option.data === this.settings.autoRefreshSidebar
+      ),
+    } as SettingsRouteModel);
+  }
+
+  @action didTransition() {
+    this.renderer.tryResetScrollPosition();
   }
 }
 
 export const avatarStyleOptions: DropdownOption[] = [
   {
     label: 'Keine',
-    data: 'none',
+    data: AvatarStyle.none,
   },
   {
     label: 'Klein',
-    data: 'small',
+    data: AvatarStyle.small,
   },
 ];
 
 export const boxStyleOptions: DropdownOption[] = [
   {
     label: 'Kantholz',
-    data: 'rect',
+    data: BoxStyle.rect,
   },
   {
     label: 'Hobelware',
-    data: 'round',
+    data: BoxStyle.round,
+  },
+];
+
+export const sidebarLayoutOptions: DropdownOption[] = [
+  {
+    label: 'Links (oben)',
+    data: SidebarLayout.leftTop,
+  },
+  {
+    label: 'Links (unten)',
+    data: SidebarLayout.leftBottom,
+  },
+  {
+    label: 'Rechts (oben)',
+    data: SidebarLayout.rightTop,
+  },
+  {
+    label: 'Rechts (unten)',
+    data: SidebarLayout.rightBottom,
   },
 ];
 
 export const landingPageOptions: DropdownOption[] = [
   {
     label: 'Forenübersicht',
-    data: 'board-overview',
+    data: LandingPage.boardOverview,
+  },
+  {
+    label: 'Home',
+    data: LandingPage.home,
   },
   {
     label: 'Public Offtopic',
-    data: 'pot',
+    data: LandingPage.pot,
+  },
+];
+
+export const autoRefreshSidebarOptions: DropdownOption[] = [
+  {
+    label: 'An',
+    data: true,
+  },
+  {
+    label: 'Aus',
+    data: false,
   },
 ];

@@ -32,8 +32,6 @@
 }
 
 .bookmark-title {
-  display: flex;
-  align-items: center;
   color: var(--color-text-default);
   font-weight: bold;
 }
@@ -42,10 +40,6 @@
   margin: 0;
   text-align: start;
   text-decoration: none !important;
-}
-
-.bookmark-title {
-  margin: 0 0 0.25rem 0;
 }
 
 .bookmark-icon {

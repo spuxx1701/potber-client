@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
 import { service } from '@ember/service';
 import RendererService from 'potber-client/services/renderer';
 
@@ -13,9 +12,5 @@ export default class ApplicationController extends Controller {
 
   get authenticated() {
     return this.session.isAuthenticated;
-  }
-
-  @action toggleLeftSidebar() {
-    this.renderer.toggleLeftSidebar();
   }
 }

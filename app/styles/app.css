@@ -11,6 +11,8 @@
 @import "./control/dropdown.css";
 @import "./control/menu.css";
 
+@import "./features/quickstart.css";
+
 @import "./board/board.css";
 @import "./board/board-overview.css";
 @import "./board/post.css";
@@ -42,6 +44,7 @@ body {
 .ember-application * {
   scrollbar-width: thin;
   transition: color 200ms, background-color 200ms, border 200ms, border-color 200ms, font-size 200ms, text-shadow 200ms, transform 200ms, scale 200ms, opacity 200ms;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 #loading-indicator {

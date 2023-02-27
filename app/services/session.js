@@ -7,6 +7,13 @@ export default class SessionService extends BaseSessionService {
   @service store;
   @tracked sessionData = null;
 
+  async getSessionData() {
+    if (!this.sessionData) {
+      await this.update();
+    }
+    return this.sessionData;
+  }
+
   async update() {
     if (!this.isAuthenticated) {
       this.sessionData = null;

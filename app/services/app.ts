@@ -4,7 +4,7 @@ import { sleep } from 'potber-client/utils/misc';
 import DeviceManagerService from './device-manager';
 import LocalStorageService from './local-storage';
 import ModalService from './modal';
-import NewsFeedService from './news-feed';
+import NewsfeedService from './newsfeed';
 import RendererService from './renderer';
 
 export default class AppService extends Service {
@@ -13,7 +13,7 @@ export default class AppService extends Service {
   @service declare router: RouterService;
   @service declare modal: ModalService;
   @service declare localStorage: LocalStorageService;
-  @service declare newsFeed: NewsFeedService;
+  @service declare newsfeed: NewsfeedService;
   @service declare session: any;
   initialized = false;
   deferredInstallPrompt: any = undefined;
@@ -26,7 +26,7 @@ export default class AppService extends Service {
     if (this.session.isAuthenticated) {
       this.session.update();
       this.localStorage.initialize();
-      this.newsFeed.refresh();
+      this.newsfeed.refresh();
     }
     this.checkForNewVersion();
     this.initialized = true;

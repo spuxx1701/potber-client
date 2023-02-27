@@ -1,0 +1,21 @@
+<h3 class='title text-center'>Neuigkeiten</h3>
+{{#if (eq this.status 'error')}}
+  <p class='subtitle text-center'>(╯°□°)╯︵ ┻━┻<br /><br />Beim Laden Deiner
+    Neugigkeiten ist etwas schiefgegangen.</p>
+{{else if (eq this.status 'empty')}}
+  <p class='subtitle text-center'>Es gibt keine Neuigkeiten.</p>
+{{else}}
+  {{#each this.unreadBookmarks as |bookmark|}}
+    <Features::Quickstart::Newsfeed::Bookmark
+      @bookmark={{bookmark}}
+      @inSidebar={{@inSidebar}}
+    />
+  {{/each}}
+{{/if}}
+<Common::Control::Button
+  @icon='arrows-rotate'
+  @text='Aktualisieren'
+  @size='max'
+  @busy={{this.busy}}
+  @onClick={{this.refresh}}
+/>

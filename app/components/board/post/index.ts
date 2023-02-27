@@ -6,7 +6,7 @@ import ENV from 'potber-client/config/environment';
 import MessagesService from 'potber-client/services/messages';
 import Post from 'potber-client/models/post';
 import CustomStore from 'potber-client/services/custom-store';
-import NewsFeedService from 'potber-client/services/news-feed';
+import NewsfeedService from 'potber-client/services/newsfeed';
 import Thread from 'potber-client/models/thread';
 
 interface Signature {
@@ -23,7 +23,7 @@ export default class PostComponent extends Component<Signature> {
   @service declare messages: MessagesService;
   @service declare session: any;
   @service declare store: CustomStore;
-  @service declare newsFeed: NewsFeedService;
+  @service declare newsfeed: NewsfeedService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -82,7 +82,7 @@ export default class PostComponent extends Component<Signature> {
       });
       await bookmark.save();
       this.messages.showNotification('Bookmark gespeichert', 'success');
-      this.newsFeed.refreshBookmarks();
+      this.newsfeed.refreshBookmarks();
     } catch (error: any) {
       if (error.errors?.find((httpError: any) => httpError.status === '400')) {
         this.messages.showNotification(

@@ -9,10 +9,11 @@ import Board from 'potber-client/models/board';
 export interface Signature {
   Args: {
     board: Board;
+    inSidebar: boolean;
   };
 }
 
-export default class SidebarBoardFavoritesItemComponent extends Component<Signature> {
+export default class QuickstartBoardFavoriteComponent extends Component<Signature> {
   @service declare localStorage: LocalStorageService;
   @service declare renderer: RendererService;
   declare args: Signature['Args'];
@@ -22,7 +23,9 @@ export default class SidebarBoardFavoritesItemComponent extends Component<Signat
   }
 
   @action handleLinkClick() {
-    this.renderer.closeLeftSidebar();
+    if (this.args.inSidebar) {
+      this.renderer.closeLeftSidebar();
+    }
   }
 
   @action remove() {

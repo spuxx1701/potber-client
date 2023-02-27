@@ -114,16 +114,17 @@
 }
 
 .margin-auto {
-  margin: auto;
-}
-
-.margin-left-x-small {
-  margin-left: 0.5rem;
+  margin: auto !important;
 }
 
 .margin-vertical-x-small {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.margin-horizontal-x-small {
+  margin-left: 0.25rem !important;
+  margin-right: 0.25rem !important;
 }
 
 .margin-small {

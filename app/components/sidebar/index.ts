@@ -1,28 +1,26 @@
+import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import Bookmark from 'potber-client/models/bookmark';
-import LocalStorageService from 'potber-client/services/local-storage';
+import RendererService from 'potber-client/services/renderer';
+import SettingsService, {
+  SidebarLayout,
+} from 'potber-client/services/settings';
 
-interface Signature {
-  Args: {
-    bookmarks: Bookmark[] | null;
-  };
-}
+export default class SidebarComponent extends Component {
+  @service declare settings: SettingsService;
+  @service declare renderer: RendererService;
 
-export default class SidebarComponent extends Component<Signature> {
-  @service declare localStorage: LocalStorageService;
-  @service declare session: any;
-
-  get authenticated() {
-    return this.session.isAuthenticated;
+  get navVerticalPosition(): 'top' | 'bottom' {
+    if (
+      this.settings.sidebarLayout === SidebarLayout.leftBottom ||
+      this.settings.sidebarLayout === SidebarLayout.rightBottom
+    ) {
+      return 'bottom';
+    }
+    return 'top';
   }
 
-  get boardFavorites() {
-    if (this.localStorage.boardFavorites) {
-      return this.localStorage.boardFavorites?.sort((a, b) => {
-        return a.name.localeCompare(b.name);
-      });
-    }
-    return null;
+  @action handleSidebarBackdropClick() {
+    this.renderer.closeLeftSidebar();
   }
 }

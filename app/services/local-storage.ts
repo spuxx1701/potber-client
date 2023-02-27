@@ -6,6 +6,7 @@ import Board from 'potber-client/models/board';
 import MessagesService from './messages';
 import { clean, valid, gt } from 'semver';
 import CustomStore from './custom-store';
+import { Settings } from './settings';
 
 const PREFIX = 'potber-';
 
@@ -13,73 +14,34 @@ export default class LocalStorageService extends Service {
   @service declare store: CustomStore;
   @service declare messages: MessagesService;
 
-  @tracked avatarStyle: string = this.getAvatarStyle();
-  @tracked boxStyle: string = this.getBoxStyle();
   @tracked boardFavorites: Board[] | null = [];
-  @tracked landingPage: string = this.getLandingPage();
 
   async initialize() {
     await this.getBoardFavorites();
   }
 
   /**
-   * Gets 'avatarStyle' from localStorage.
-   * @returns The way avatars should be displayed.
+   * Reads 'settings' from localStorage.
+   * @returns The raw settings object or null.
    */
-  @action getAvatarStyle() {
-    this.avatarStyle = localStorage.getItem(`${PREFIX}avatarStyle`) || 'none';
-    return this.avatarStyle;
+  readSettings(): Settings | null {
+    try {
+      const jsonString = localStorage.getItem(`${PREFIX}settings`);
+      const rawSettings: Settings = JSON.parse(jsonString || '{}');
+      return rawSettings;
+    } catch (error) {
+      // Return null in case of any issues during load.
+      return null;
+    }
   }
 
   /**
-   * Saves 'avatarStyle' to localStorage.
-   * @param value The new value for 'avatarStyle'.
+   * Writes 'settings' to localStorage.
+   * @param settings The settings object.
    */
-  @action setAvatarStyle(value: 'none' | 'small') {
-    localStorage.setItem(`${PREFIX}avatarStyle`, `${value}`);
-    this.messages.log(`${PREFIX}avatarStyle set to '${value}'.`, {
-      context: this.constructor.name,
-    });
-    this.avatarStyle = value;
-  }
-
-  /**
-   * Gets 'boxStyle' from localStorage.
-   * @returns The general design of the app.
-   */
-  @action getBoxStyle() {
-    this.boxStyle = localStorage.getItem(`${PREFIX}boxStyle`) || 'rect';
-    return this.boxStyle;
-  }
-
-  /**
-   * Saves 'boxStyle' to localStorage.
-   * @param value The new value for 'boxStyle'.
-   */
-  @action setBoxStyle(value: 'rect' | 'round') {
-    localStorage.setItem(`${PREFIX}boxStyle`, `${value}`);
-    this.messages.log(`${PREFIX}boxStyle set to: '${value}'.`, {
-      context: this.constructor.name,
-    });
-    this.boxStyle = value;
-  }
-
-  /**
-   * Gets 'landingPage' from localStorage.
-   * @returns The page that should be shown when the index route
-   * is initially displayed.
-   */
-  getLandingPage(): string {
-    return localStorage.getItem(`${PREFIX}landingPage`) || 'board-overview';
-  }
-
-  /**
-   * Sets and stores 'landingPage'.
-   * @param value The new value.
-   */
-  setLandingPage(value: 'board-overview' | 'pot') {
-    localStorage.setItem(`${PREFIX}landingPage`, value);
-    this.landingPage = value;
+  writeSettings(settings: Settings) {
+    const jsonString = JSON.stringify(settings);
+    localStorage.setItem(`${PREFIX}settings`, jsonString);
   }
 
   /**

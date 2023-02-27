@@ -1,20 +1,20 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import LocalStorageService from 'potber-client/services/local-storage';
 import RendererService from 'potber-client/services/renderer';
+import SettingsService, { LandingPage } from 'potber-client/services/settings';
 
 export default class SidebarNavComponent extends Component {
   @service declare renderer: RendererService;
   @service declare session: any;
-  @service declare localStorage: LocalStorageService;
+  @service declare settings: SettingsService;
 
   @action handleNavLinkClick() {
     this.renderer.closeLeftSidebar();
   }
 
   get showBoardOverviewButton() {
-    return this.localStorage.landingPage !== 'board-overview';
+    return this.settings.landingPage !== LandingPage.boardOverview;
   }
 
   get authenticated() {
