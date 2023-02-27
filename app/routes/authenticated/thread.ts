@@ -9,7 +9,6 @@ import ThreadController from 'potber-client/controllers/authenticated/thread';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
-import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
 
 interface Params {
   TID: string;
@@ -22,11 +21,9 @@ interface Params {
 export interface ThreadRouteModel {
   thread: Thread;
   subtleUntilPostId: string;
-  avatarStyle: AvatarStyle;
 }
 
 export default class ThreadRoute extends Route {
-  @service declare settings: SettingsService;
   @service declare store: CustomStore;
   @service declare renderer: RendererService;
   @service declare newsfeed: NewsfeedService;
@@ -77,7 +74,6 @@ export default class ThreadRoute extends Route {
       return RSVP.hash({
         thread,
         subtleUntilPostId: subtleUntilPostId,
-        avatarStyle: this.settings.avatarStyle,
       } as ThreadRouteModel);
     } catch (error: any) {
       if (error.message === 'not-found') {

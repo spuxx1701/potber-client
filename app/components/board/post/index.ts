@@ -8,12 +8,12 @@ import Post from 'potber-client/models/post';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import Thread from 'potber-client/models/thread';
+import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
 
 interface Signature {
   Args: {
     post: Post;
     thread: Thread;
-    avatarStyle?: string;
     subtle?: boolean;
   };
 }
@@ -24,6 +24,7 @@ export default class PostComponent extends Component<Signature> {
   @service declare session: any;
   @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
+  @service declare settings: SettingsService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -55,7 +56,10 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get showSmallAvatar() {
-    return this.args.post.avatarUrl && this.args.avatarStyle === 'small';
+    return (
+      this.args.post.avatarUrl &&
+      this.settings.avatarStyle === AvatarStyle.small
+    );
   }
 
   get avatarUrl() {

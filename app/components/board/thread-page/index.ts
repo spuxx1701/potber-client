@@ -4,7 +4,6 @@ import Thread, { ThreadPage } from 'potber-client/models/thread';
 interface Signature {
   Args: {
     thread: Thread;
-    avatarStyle?: 'nome' | 'small';
     reverseOrder?: boolean;
     subtleUntilPostId?: string;
   };
@@ -15,10 +14,6 @@ export default class ThreadPageComponent extends Component<Signature> {
 
   get page() {
     return this.args.thread.page as ThreadPage;
-  }
-
-  get avatarStyle() {
-    return this.args.avatarStyle || 'none';
   }
 
   get posts() {

@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.1.1',
+    type: 'patch',
+    fixed: ['Bender werden nun wieder korrekt angezeigt.'],
+  },
+  {
     version: '1.1.0',
     type: 'minor',
     added: [
