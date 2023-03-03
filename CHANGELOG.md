@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.1.2] - unreleased
+
+### Fixed
+
+- Fixed multiple mostly visual bugs.
+
 ## [1.1.1] - 2022-02-27
 
 ### Fixed
