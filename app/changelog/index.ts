@@ -2,7 +2,10 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.1.2',
     type: 'patch',
-    fixed: ['Diverse kleine fixes.'],
+    fixed: [
+      'Der Spoiler-Button fügt nun die korrekten tags ein.',
+      'Diverse kleine fixes.',
+    ],
   },
   {
     version: '1.1.1',

@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Spoiler button now uses the correct tags.
 - Fixed multiple mostly visual bugs.
 
 ## [1.1.1] - 2022-02-27
