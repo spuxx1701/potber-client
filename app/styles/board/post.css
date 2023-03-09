@@ -214,7 +214,3 @@ video {
   border: 2px solid var(--color-post-background-primary);
   padding: 0.5rem;
 }
-
-.post-content-message br:first-child {
-  display: none;
-}
