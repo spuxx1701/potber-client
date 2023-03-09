@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.1.2',
     type: 'patch',
     fixed: [
+      'Beim Wechseln auf ein anderes Board wird nun nicht nun auch die Seitennummer zurückgesetzt.',
       'Der Spoiler-Button fügt nun die korrekten tags ein.',
       'Diverse kleine fixes.',
     ],

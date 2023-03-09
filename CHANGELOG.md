@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- When switching boards, the page is no longer being persisted.
 - Spoiler button now uses the correct tags.
 - Fixed multiple mostly visual bugs.
 
