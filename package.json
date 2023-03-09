@@ -63,7 +63,7 @@
     "@types/qunit": "^2.19.4",
     "@types/rsvp": "^4.0.4",
     "@types/semver": "^7.3.13",
-    "@types/uuid": "^9.0.0",
+    "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.1",
     "bootstrap": "^5.2.3",
