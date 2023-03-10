@@ -1,5 +1,4 @@
 import { action } from '@ember/object';
-import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { sleep } from 'potber-client/utils/misc';
 import RSVP, { reject } from 'rsvp';
@@ -7,6 +6,7 @@ import ThreadController from 'potber-client/controllers/authenticated/thread';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
+import SlowRoute from '../slow';
 
 interface Params {
   TID: string;
@@ -21,7 +21,7 @@ export interface ThreadRouteModel {
   subtleUntilPostId: string;
 }
 
-export default class ThreadRoute extends Route {
+export default class ThreadRoute extends SlowRoute {
   @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
 

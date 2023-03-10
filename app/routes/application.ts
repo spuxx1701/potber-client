@@ -22,11 +22,4 @@ export default class ApplicationRoute extends Route {
       };
     }
   }
-
-  @action loading(transition: any) {
-    this.renderer.showLoadingIndicator();
-    transition.promise.finally(() => {
-      this.renderer.hideLoadingIndicator();
-    });
-  }
 }

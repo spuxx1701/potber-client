@@ -5,6 +5,8 @@ import { sleep } from 'potber-client/utils/misc';
 import MessagesService from './messages';
 import SettingsService, { BoxStyle, SidebarLayout } from './settings';
 
+const LOADING_INDICATOR_DELAY = 500;
+
 export default class RendererService extends Service {
   @service declare settings: SettingsService;
   @service declare messages: MessagesService;
@@ -144,7 +146,7 @@ export default class RendererService extends Service {
    * Hides the loading indicator.
    */
   @action async hideLoadingIndicator() {
-    await sleep(200);
+    await sleep(LOADING_INDICATOR_DELAY);
     this.rootStyle.setProperty('--loading-indicator-opacity', '0');
   }
 
