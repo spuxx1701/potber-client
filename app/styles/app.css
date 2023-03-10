@@ -12,6 +12,7 @@
 @import "./control/menu.css";
 
 @import "./features/quickstart.css";
+@import "./features/newsfeed.css";
 
 @import "./board/board.css";
 @import "./board/board-overview.css";

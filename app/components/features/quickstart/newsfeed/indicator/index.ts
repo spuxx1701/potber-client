@@ -6,27 +6,31 @@ import SettingsService, {
   SidebarLayout,
 } from 'potber-client/services/settings';
 
-export default class NavComponent extends Component {
+export default class NewsfeedIndicatorComponent extends Component {
   @service declare renderer: RendererService;
-  @service declare session: any;
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
 
-  get sidebarToggleVerticalPosition(): 'top' | 'bottom' {
+  get status(): 'none' | 'info' | 'important' {
+    if (!this.renderer.leftSidebarExpanded) {
+      if (
+        this.newsfeed.unreadBookmarks &&
+        this.newsfeed.unreadBookmarks.length > 0
+      ) {
+        return 'info';
+      }
+    }
+    return 'none';
+  }
+
+  get position(): 'left' | 'right' {
     if (
-      this.settings.sidebarLayout === SidebarLayout.leftBottom ||
+      this.settings.sidebarLayout === SidebarLayout.rightTop ||
       this.settings.sidebarLayout === SidebarLayout.rightBottom
     ) {
-      return 'bottom';
+      return 'left';
+    } else {
+      return 'right';
     }
-    return 'top';
-  }
-
-  get authenticated() {
-    return this.session.isAuthenticated;
-  }
-
-  get leftSidebarExpanded() {
-    return this.renderer.leftSidebarExpanded;
   }
 }

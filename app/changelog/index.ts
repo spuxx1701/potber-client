@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.2.0',
     type: 'patch',
     added: [
+      'Ein kleiner Punkt über dem Sidebar-Button verrät nun, ob es Neugikeiten gibt.',
       'Das Board-Kontextmenü enthält nun einen Button zum Navigieren zur ersten Seite.',
     ],
     changed: [
