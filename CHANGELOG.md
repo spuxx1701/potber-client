@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.1.2] - unreleased
+## [1.2.0] - unreleased
+
+### Changed
+
+- When navigating to board and thread pages, the scroll position will no longer reset before the entire page has rendered.
+- The loading indicator will now only be shown for slow transitions.
 
 ### Fixed
 

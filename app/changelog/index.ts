@@ -1,7 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
-    version: '1.1.2',
+    version: '1.2.0',
     type: 'patch',
+    changed: [
+      'Verbesserungen beim Navigieren zwischen Board- und Threadseiten.',
+    ],
     fixed: [
       'Beim Wechseln auf ein anderes Board wird nun nicht nun auch die Seitennummer zurückgesetzt.',
       'Der Spoiler-Button fügt nun die korrekten tags ein.',
