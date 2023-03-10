@@ -1,0 +1,17 @@
+<div class='accordion control-size-{{this.size}}'>
+  <Common::Control::Button
+    @text={{@title}}
+    @size='max'
+    @variant={{this.variant}}
+    @onClick={{this.toggle}}
+    class='accordion-toggle'
+    data-test-accordion-toggle
+  >
+    <FaIcon @icon={{this.icon}} />
+  </Common::Control::Button>
+  <div class='accordion-content' data-test-accordion-content>
+    {{#if this.expanded}}
+      {{yield}}
+    {{/if}}
+  </div>
+</div>
