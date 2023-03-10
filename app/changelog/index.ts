@@ -2,6 +2,9 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.2.0',
     type: 'patch',
+    added: [
+      'Das Board-Kontextmenü enthält nun einen Button zum Navigieren zur ersten Seite.',
+    ],
     changed: [
       'Verbesserungen beim Navigieren zwischen Board- und Threadseiten.',
     ],

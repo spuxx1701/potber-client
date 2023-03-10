@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.2.0] - unreleased
 
+### Added
+
+- The board dropdown menu does now contain a button for navigating to the first page.
+
 ### Changed
 
 - When navigating to board and thread pages, the scroll position will no longer reset before the entire page has rendered.
