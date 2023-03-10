@@ -59,12 +59,9 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
     (getOwner(this as unknown) as any)
       .lookup('route:authenticated.thread')
       .refresh()
-      .then(() => {
+      .finally(() => {
         this.renderer.hideLoadingIndicator();
         this.renderer.waitAndScrollToBottom();
-      })
-      .catch(() => {
-        this.renderer.hideLoadingIndicator();
       });
   }
 
