@@ -150,23 +150,23 @@ export default class RendererService extends Service {
 
   /**
    * Prevents the next reset of the scroll position that would otherwise be
-   * triggered by calling RendererService.tryResetScrollPosition().
+   * triggered by calling RendererService.trySetScrollPosition().
    */
   @action preventNextScrollReset() {
     this.preventScrollReset = true;
   }
 
   /**
-   * Attempts to reset the window's scroll position. Will not do anything if
+   * Attempts to set the window's scroll position. Will not do anything if
    * RendererService.preventScrollReset has been set earlier. However, setting this
    * property will only prevent a scroll reset one single time.
    */
-  @action tryResetScrollPosition() {
+  @action trySetScrollPosition(options?: Partial<ScrollToOptions>) {
     if (this.preventScrollReset) {
       this.preventScrollReset = false;
       return;
     }
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, behavior: 'auto', ...options });
   }
 
   /**

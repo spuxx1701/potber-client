@@ -9,12 +9,15 @@ import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import Thread from 'potber-client/models/thread';
 import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
+import RendererService from 'potber-client/services/renderer';
+import { scrollToHash } from 'ember-url-hash-polyfill';
 
 interface Signature {
   Args: {
     post: Post;
     thread: Thread;
     subtle?: boolean;
+    isFinalElement?: boolean;
   };
 }
 
@@ -25,6 +28,7 @@ export default class PostComponent extends Component<Signature> {
   @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
+  @service declare renderer: RendererService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -112,6 +116,33 @@ export default class PostComponent extends Component<Signature> {
       return `${this.args.post.editedCount}x bearbeitet, zuletzt von ${
         this.args.post.lastEdit.user.name
       } am ${new Date(this.args.post.lastEdit.date).toLocaleString()}`;
+    }
+  }
+
+  @action updateScrollPosition() {
+    // Check whether the URL contains a post id that matches this post
+    const params = new URL(window.location.href).searchParams;
+    if (params.has('PID') && params.get('PID')) {
+      // If post id was supplied, we also need to add the anchor
+      // Set the hash without triggering without triggering a browser scroll action
+      const currentState = { ...history.state };
+      history.replaceState(
+        currentState,
+        'unused',
+        `#reply_${params.get('PID')}`
+      );
+      if (window.location.hash) {
+        scrollToHash(`reply_${params.get('PID')}`);
+      }
+    } else if (params.get('scrollToBottom') === 'true') {
+      // if scrollToBottom was supplied, scroll to bottom
+      this.renderer.trySetScrollPosition({
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
+    } else if (this.args.isFinalElement) {
+      // Else, we will reset the scroll position after the last post has been rendered
+      this.renderer.trySetScrollPosition();
     }
   }
 }

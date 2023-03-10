@@ -5,6 +5,7 @@
         @post={{post}}
         @thread={{@thread}}
         @subtle={{is-post-subtle post @subtleUntilPostId @thread.page}}
+        @isFinalElement={{is-final-element post this.posts}}
       />
     {{/each}}
   </div>

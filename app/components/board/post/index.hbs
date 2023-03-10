@@ -1,4 +1,8 @@
-<div id='reply_{{@post.id}}' class='post {{if @subtle " post-subtle"}}'>
+<div
+  id='reply_{{@post.id}}'
+  class='post {{if @subtle " post-subtle"}}'
+  {{did-insert this.updateScrollPosition}}
+>
   <div class='post-details'>
     <div class='post-details-title'>
       {{#if this.showSmallAvatar}}

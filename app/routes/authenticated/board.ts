@@ -5,7 +5,6 @@ import { service } from '@ember/service';
 import Board from 'potber-client/models/board';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
-import RendererService from 'potber-client/services/renderer';
 import RSVP from 'rsvp';
 
 interface Params {
@@ -19,7 +18,6 @@ export interface BoardRouteModel {
 
 export default class BoardRoute extends Route {
   @service declare store: CustomStore;
-  @service declare renderer: RendererService;
   @service declare messages: MessagesService;
   @service declare router: RouterService;
 
@@ -43,7 +41,6 @@ export default class BoardRoute extends Route {
           },
         },
       });
-      this.renderer.tryResetScrollPosition();
       return RSVP.hash({
         board: board,
       });
