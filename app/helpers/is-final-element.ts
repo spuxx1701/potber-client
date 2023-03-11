@@ -2,7 +2,6 @@ import { helper } from '@ember/component/helper';
 
 export function isFinalElement([element, array]: [any, any[]]) {
   if (!element || !array || !Array.isArray(array)) {
-    debugger;
     throw new Error(
       'is-final-element helper requires exactly two arguments with the second argument being an array.'
     );
