@@ -51,10 +51,6 @@ export const memeCategories: MemeCategory[] = [
         url: 'https://i.imgur.com/lACa4fI.png',
       },
       {
-        id: 'FerdUhr',
-        url: 'https://i.imgur.com/Yt2FA0x.png',
-      },
-      {
         id: 'FerdWas',
         url: 'https://i.imgur.com/275ayFn.png',
       },
@@ -116,6 +112,7 @@ export const memeCategories: MemeCategory[] = [
       {
         id: 'alleverwarnt',
         url: 'http://potsmilies.hetscher.de/alleverwarnt.gif',
+        width: 2,
       },
       {
         id: 'wastun',
@@ -128,6 +125,7 @@ export const memeCategories: MemeCategory[] = [
       {
         id: 'benderwelle',
         url: 'http://potsmilies.hetscher.de/benderwelle.gif',
+        width: 2,
       },
       {
         id: 'orly',
@@ -164,6 +162,96 @@ export const memeCategories: MemeCategory[] = [
       {
         id: 'naughty',
         url: 'http://potsmilies.hetscher.de/naughty.gif',
+      },
+    ],
+  },
+  {
+    name: 'pOT-Galerie',
+    memes: [
+      {
+        id: 'breakglass',
+        url: 'https://i.imgur.com/9dzR3Kc.png',
+        width: 3,
+      },
+      {
+        id: 'creepydude',
+        url: 'https://i.imgur.com/pYyQu0Q.jpeg',
+        width: 3,
+      },
+      {
+        id: 'confused',
+        url: 'https://i.imgur.com/Cpa8ZWr.jpeg',
+        width: 3,
+      },
+      {
+        id: 'ptsd',
+        url: 'https://i.imgur.com/71zzXCc.png',
+        width: 3,
+      },
+      {
+        id: 'rausausdemthreaddupenner',
+        url: 'https://i.imgur.com/60DMB32.png',
+        width: 3,
+      },
+      {
+        id: 'triggeredolaf',
+        url: 'https://i.imgur.com/VPXKe3I.gif',
+        width: 2,
+      },
+      {
+        id: 'bravodude',
+        url: 'https://i.imgur.com/QLW2Ogl.png',
+        width: 2,
+      },
+      {
+        id: 'erazorpolice',
+        url: 'https://i.imgur.com/ibPydYc.gif',
+        width: 2,
+      },
+      {
+        id: 'sharkupolice',
+        url: 'https://i.imgur.com/EwIb9wm.gif',
+        width: 2,
+      },
+      {
+        id: 'olafballaugenzucken',
+        url: 'https://i.imgur.com/QUneJ4r.gif',
+        width: 2,
+      },
+    ],
+  },
+  {
+    name: 'Bayern',
+    memes: [
+      {
+        id: 'wostnetsogst',
+        url: 'https://i.imgur.com/KoazE.jpeg',
+        width: 2,
+      },
+      {
+        id: 'schaublossdasstlandgwinnst',
+        url: 'https://i.imgur.com/Tf0aK.png',
+        width: 2,
+      },
+      {
+        id: 'tableflip',
+        url: 'https://i.imgur.com/lFMhF.jpeg',
+        width: 2,
+      },
+      {
+        id: 'desdaugtma',
+        url: 'https://i.imgur.com/wXKIy.jpeg',
+        width: 2,
+      },
+      {
+        id: 'jetzbusslts',
+        url: 'https://i.imgur.com/a9ubE.jpeg',
+        width: 2,
+      },
+      {
+        id: 'jofrly',
+        url: 'https://i.imgur.com/EZ3hP.jpeg',
+        width: 2,
       },
     ],
   },
