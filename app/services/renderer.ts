@@ -41,7 +41,6 @@ export default class RendererService extends Service {
    * or ride side as well as the position of the sidebar toggle button.
    */
   updateSidebarLayout() {
-    console.log('updating layout');
     switch (this.settings.sidebarLayout) {
       case SidebarLayout.rightBottom:
         this.rootStyle.setProperty('--sidebar-left', 'unset');

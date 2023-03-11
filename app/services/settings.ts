@@ -52,7 +52,6 @@ export default class SettingsService extends Service {
    * @returns The settings.
    */
   load(): Settings {
-    console.log('loading');
     const settings = { ...this.default };
     const storedSettings = this.localStorage.readSettings();
     if (storedSettings) {
