@@ -7,7 +7,13 @@ declare global {
   interface Array<T> extends Ember.ArrayPrototypeExtensions<T> {}
   // interface Function extends Ember.FunctionPrototypeExtensions {}
 
-  type ControlSize = 'square' | 'small' | 'medium' | 'large' | 'x-large';
+  type ControlSize =
+    | 'square'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'x-large'
+    | 'max';
   type ControlVariant = 'primary' | 'primary-transparent' | 'secondary';
   type ModalVariant = 'default' | 'success' | 'warning' | 'error';
 }
