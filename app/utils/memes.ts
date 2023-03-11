@@ -6,8 +6,7 @@ export interface MemeCategory {
 export interface Meme {
   id: string;
   url: string;
-  width?: 1 | 2 | 3;
-  height?: 1 | 2;
+  width?: 1 | 2 | 3 | 4 | 5;
 }
 
 export const memeCategories: MemeCategory[] = [
