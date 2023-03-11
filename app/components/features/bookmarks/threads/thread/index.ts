@@ -11,7 +11,7 @@ interface Signature {
   };
 }
 
-export default class BoardBookmarkComponent extends Component<Signature> {
+export default class BookmarksThreadcomponent extends Component<Signature> {
   @service declare store: CustomStore;
   @service declare messages: MessagesService;
   declare args: Signature['Args'];

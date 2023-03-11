@@ -11,6 +11,7 @@ import Thread from 'potber-client/models/thread';
 import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
 import RendererService from 'potber-client/services/renderer';
 import { scrollToHash } from 'ember-url-hash-polyfill';
+import LocalStorageService from 'potber-client/services/local-storage';
 
 interface Signature {
   Args: {
@@ -29,6 +30,7 @@ export default class PostComponent extends Component<Signature> {
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
   @service declare renderer: RendererService;
+  @service declare localStorage: LocalStorageService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -104,6 +106,30 @@ export default class PostComponent extends Component<Signature> {
           this.constructor.name
         );
       }
+    }
+  }
+
+  @action async savePost() {
+    try {
+      const savedPosts = [
+        ...((await this.localStorage.getSavedPosts()) as Post[]),
+      ];
+      if (savedPosts.find((post) => post.id === this.args.post.id)) {
+        this.messages.showNotification(
+          'Du hast diesen Post bereits gespeichert.',
+          'error'
+        );
+        return;
+      }
+      savedPosts.push(this.args.post);
+      this.localStorage.setSavedPosts(savedPosts);
+      this.messages.showNotification('Post gespeichert', 'success');
+    } catch (error) {
+      this.messages.logErrorAndNotify(
+        'Das hat leider nicht geklappt.',
+        error,
+        this.constructor.name
+      );
     }
   }
 

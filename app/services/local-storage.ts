@@ -7,6 +7,8 @@ import MessagesService from './messages';
 import { clean, valid, gt } from 'semver';
 import CustomStore from './custom-store';
 import { Settings } from './settings';
+import Post from 'potber-client/models/post';
+import { PersistedSavedPost } from 'potber-client/components/features/bookmarks/saved-posts/post';
 
 const PREFIX = 'potber-';
 
@@ -15,6 +17,7 @@ export default class LocalStorageService extends Service {
   @service declare messages: MessagesService;
 
   @tracked boardFavorites: Board[] | null = [];
+  @tracked savedPosts: Post[] | null = [];
 
   async initialize() {
     await this.getBoardFavorites();
@@ -82,6 +85,61 @@ export default class LocalStorageService extends Service {
       context: this.constructor.name,
     });
     this.getBoardFavorites();
+  }
+
+  /**
+   * Gets the saved posts from local storage and fetches their contents from the API.
+   * @param options (optional) More options.
+   * @returns The saved posts.
+   */
+  @action async getSavedPosts(options?: { reload?: boolean }) {
+    if (!this.savedPosts || this.savedPosts.length === 0 || options?.reload) {
+      const string = localStorage.getItem(`${PREFIX}savedPosts`);
+      try {
+        const posts: Post[] = [];
+        if (string) {
+          const persistedPosts: PersistedSavedPost[] = JSON.parse(string);
+          for (const persistedPost of persistedPosts) {
+            posts.push(
+              await this.store.findRecord('post', persistedPost.id, {
+                adapterOptions: {
+                  queryParams: {
+                    threadId: persistedPost.threadId,
+                  },
+                },
+              })
+            );
+          }
+        }
+        this.savedPosts = posts;
+      } catch (error) {
+        this.messages.log(
+          `Error while attempting to fetch saved posts: ${error}`,
+          { type: 'error', context: this.constructor.name }
+        );
+        this.savedPosts = null;
+      }
+    }
+    return this.savedPosts;
+  }
+
+  /**
+   * Saves the given posts to localStorage and updates the savedPosts property.
+   * @param posts The posts to save.
+   */
+  @action setSavedPosts(posts: Post[]) {
+    const keys: PersistedSavedPost[] = [];
+    for (const post of posts) {
+      keys.push({ id: post.id, threadId: post.threadId });
+    }
+    localStorage.setItem(`${PREFIX}savedPosts`, JSON.stringify(keys));
+    this.messages.log(
+      `${PREFIX}savedPosts set to: '${JSON.stringify(keys)}'.`,
+      {
+        context: this.constructor.name,
+      }
+    );
+    this.savedPosts = [...posts];
   }
 
   /**

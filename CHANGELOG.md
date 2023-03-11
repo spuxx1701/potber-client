@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
+- Added the ability to save posts locally.
 - Added a dialog to post form for adding specific memes.
 - The sidebar toggle now displays a small dot indicating whether there are any news.
 - The board dropdown menu does now contain a button for navigating to the first page.

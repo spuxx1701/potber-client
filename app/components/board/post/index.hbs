@@ -32,6 +32,11 @@
         @icon='bookmark'
         @onClick={{this.setBookmark}}
       />
+      <Common::Control::Menu::Button
+        @text='Post speichern'
+        @icon='floppy-disk'
+        @onClick={{this.savePost}}
+      />
       <Common::Control::Menu::LinkTo
         @text='Zitieren'
         @icon='comment-dots'
