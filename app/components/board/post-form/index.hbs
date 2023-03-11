@@ -4,6 +4,10 @@
       @post={{@post}}
       @textarea={{this.textarea}}
     />
+    <Board::PostForm::Control::MemeSelect
+      @post={{@post}}
+      @textarea={{this.textarea}}
+    />
     <Board::PostForm::Control::SimpleTag
       @text='Fett'
       @icon='bold'
@@ -68,8 +72,8 @@
       @text='Spoiler'
       @icon='eye'
       @prefix='far'
-      @opening='[quote]'
-      @closing='[/quote]'
+      @opening='[spoiler]'
+      @closing='[/spoiler]'
       @textarea={{this.textarea}}
       @post={{@post}}
     />

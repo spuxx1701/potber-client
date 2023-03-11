@@ -25,7 +25,7 @@ export default class HomeRoute extends Route {
     switch (landingPage) {
       case LandingPage.pot:
         this.router.transitionTo('authenticated.board', {
-          queryParams: { BID: '14' },
+          queryParams: { BID: '14', page: undefined },
         });
         break;
       case LandingPage.boardOverview:

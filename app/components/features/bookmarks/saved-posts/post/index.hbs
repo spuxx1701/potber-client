@@ -1,0 +1,25 @@
+<div class='bookmark'>
+  <Common::Control::Link
+    class='bookmark-link'
+    @route='authenticated.thread'
+    @query={{hash
+      TID=@post.threadId
+      PID=@post.id
+      subtleUntilPostId=undefined
+      page=undefined
+      scrollToBottom=undefined
+    }}
+    @variant='secondary'
+    @onClick={{this.handleLinkClick}}
+  >
+    <p class='title bookmark-title max-lines-1'>{{this.title}}</p>
+    <p class='subtitle bookmark-subtitle'>{{this.subtitle}}</p>
+  </Common::Control::Link>
+  <Common::Control::Menu @position='bottom-left'>
+    <Common::Control::Menu::Button
+      @text='Gespeicherten Post entfernen'
+      @icon='trash'
+      @onClick={{this.handleDelete}}
+    />
+  </Common::Control::Menu>
+</div>

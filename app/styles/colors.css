@@ -28,6 +28,9 @@
   --color-success: #21922b;
   --color-warning: #c3771a;
   --color-error: #c83232;
+
+  --color-newsfeed-indicator-info: var(--color-accent);
+  --color-newsfeed-indicator-important: var(--color-error);
 }
 
 .control-variant-primary {

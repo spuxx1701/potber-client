@@ -3,7 +3,10 @@
   <Nav::Routes::Board @board={{@model.board}} />
 
   {{#each this.threads as |thread|}}
-    <Board::Thread @thread={{thread}} />
+    <Board::Thread
+      @thread={{thread}}
+      @isFinalElement={{is-final-element thread this.threads}}
+    />
   {{/each}}
 {{else}}
   {{page-title '404'}}

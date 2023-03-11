@@ -1,17 +1,6 @@
 <div id='top-nav' class='nav' role='toolbar'>
   {{#if (and this.authenticated (eq this.sidebarToggleVerticalPosition 'top'))}}
-    <Common::Control::Button
-      class='sidebar-toggle'
-      @icon={{if
-        this.renderer.leftSidebarExpanded
-        this.sidebarCollapseIcon
-        'bars'
-      }}
-      @text='Navigation'
-      @size='square'
-      @variant='primary-transparent'
-      @onClick={{this.toggleLeftSidebar}}
-    />
+    <Nav::SidebarToggle />
   {{/if}}
   <PortalTarget @name='top-nav' class='nav-portal-target' />
   <span class='control-size-square' />
@@ -21,18 +10,7 @@
   {{#if
     (and this.authenticated (eq this.sidebarToggleVerticalPosition 'bottom'))
   }}
-    <Common::Control::Button
-      class='sidebar-toggle'
-      @icon={{if
-        this.renderer.leftSidebarExpanded
-        this.sidebarCollapseIcon
-        'bars'
-      }}
-      @text='Navigation'
-      @size='square'
-      @variant='primary-transparent'
-      @onClick={{this.toggleLeftSidebar}}
-    />
+    <Nav::SidebarToggle />
   {{/if}}
   <PortalTarget @name='bottom-nav' class='nav-portal-target' />
 </div>

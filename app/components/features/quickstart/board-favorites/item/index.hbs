@@ -2,7 +2,7 @@
   <Common::Control::Link
     class='flex-column flex-grow'
     @route='authenticated.board'
-    @query={{hash BID=@board.id}}
+    @query={{hash BID=@board.id page=undefined}}
     @variant='secondary'
     @onClick={{this.handleLinkClick}}
   >

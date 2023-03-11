@@ -1,4 +1,3 @@
-import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import NewsfeedService from 'potber-client/services/newsfeed';
@@ -23,28 +22,11 @@ export default class NavComponent extends Component {
     return 'top';
   }
 
-  get sidebarCollapseIcon() {
-    if (
-      this.settings.sidebarLayout === SidebarLayout.rightTop ||
-      this.settings.sidebarLayout === SidebarLayout.rightBottom
-    ) {
-      return 'chevron-right';
-    }
-    return 'chevron-left';
-  }
-
   get authenticated() {
     return this.session.isAuthenticated;
   }
 
   get leftSidebarExpanded() {
     return this.renderer.leftSidebarExpanded;
-  }
-
-  @action toggleLeftSidebar() {
-    this.renderer.toggleLeftSidebar();
-    if (this.renderer.leftSidebarExpanded && this.settings.autoRefreshSidebar) {
-      this.newsfeed.refresh();
-    }
   }
 }

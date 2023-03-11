@@ -1,13 +1,17 @@
+import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
+import Board from 'potber-client/models/board';
 import { PostPreview } from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
+import RendererService from 'potber-client/services/renderer';
 
 export interface Signature {
   Args: {
     thread: Thread;
+    isFinalElement?: boolean;
   };
 }
 
@@ -15,6 +19,7 @@ export default class ThreadComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
   @service declare store: CustomStore;
+  @service declare renderer: RendererService;
 
   get isImportant() {
     return (
@@ -59,5 +64,11 @@ export default class ThreadComponent extends Component<Signature> {
     return htmlSafe(
       `<b>${post.author.name}</b> am ${new Date(post.date).toLocaleString()}`
     );
+  }
+
+  @action updateScrollPosition() {
+    if (this.args.isFinalElement) {
+      this.renderer.trySetScrollPosition();
+    }
   }
 }

@@ -49,4 +49,5 @@
 .board-item-flags svg {
   color: var(--color-text-subtle);
   font-size: small;
+  margin: 0 !important;
 }

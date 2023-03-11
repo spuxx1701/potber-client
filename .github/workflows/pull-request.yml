@@ -1,0 +1,12 @@
+name: pull-request
+
+on:
+  pull_request:
+    types: [opened, reopened, edited]
+
+jobs:
+  lint:
+    uses: spuxx1701/ci/.github/workflows/npm_lint.yml@v1.2
+
+  test:
+    uses: spuxx1701/ci/.github/workflows/npm_test-coverage.yml@v1.2

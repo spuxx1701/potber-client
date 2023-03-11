@@ -65,10 +65,7 @@ export default class NavBoardComponent extends Component<Signature> {
     (getOwner(this as unknown) as any)
       .lookup('route:authenticated.board')
       .refresh()
-      .then(() => {
-        this.renderer.hideLoadingIndicator();
-      })
-      .catch(() => {
+      .finally(() => {
         this.renderer.hideLoadingIndicator();
       });
   }

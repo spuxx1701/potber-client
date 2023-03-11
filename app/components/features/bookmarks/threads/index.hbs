@@ -1,0 +1,12 @@
+<h3 class='text-center'>Lesezeichen</h3>
+
+{{#if (eq this.status 'error')}}
+  <p class='subtitle'>(╯°□°)╯︵ ┻━┻<br /><br />Beim Laden Deiner Lesezeichen ist
+    etwas schiefgegangen. Probier es später nochmal.</p>
+{{else if (eq this.status 'empty')}}
+  <p class='subtitle'>Du hast keine Lesezeichen gespeichert.</p>
+{{else}}
+  {{#each this.bookmarks as |bookmark|}}
+    <Features::Bookmarks::Threads::Thread @bookmark={{bookmark}} />
+  {{/each}}
+{{/if}}

@@ -53,6 +53,6 @@ export default class PostEditRoute extends Route {
   }
 
   @action didTransition() {
-    this.renderer.tryResetScrollPosition();
+    this.renderer.trySetScrollPosition();
   }
 }

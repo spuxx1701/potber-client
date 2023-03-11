@@ -65,6 +65,6 @@ export default class PostCreateRoute extends Route {
   }
 
   @action didTransition() {
-    this.renderer.tryResetScrollPosition();
+    this.renderer.trySetScrollPosition();
   }
 }

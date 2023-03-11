@@ -1,5 +1,23 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.2.0',
+    type: 'patch',
+    added: [
+      'Posts können jetzt lokal gespeichert werden. Deine gespeicherten Posts findest Du unter Deinen Lesezeichen.',
+      'Das Post-Formular enthält nun eine Funktion zum schnellen Einfügen von pOT-Memes. Wünsche für neue Kategorien & Memes immer willkommen!',
+      'Ein kleiner Punkt über dem Sidebar-Button verrät nun, ob es Neugikeiten gibt.',
+      'Das Board-Kontextmenü enthält nun einen Button zum Navigieren zur ersten Seite.',
+    ],
+    changed: [
+      'Verbesserungen beim Navigieren zwischen Board- und Threadseiten.',
+    ],
+    fixed: [
+      'Beim Wechseln auf ein anderes Board wird nun nicht nun auch die Seitennummer zurückgesetzt.',
+      'Der Spoiler-Button fügt nun die korrekten tags ein.',
+      'Diverse kleine fixes.',
+    ],
+  },
+  {
     version: '1.1.1',
     type: 'patch',
     fixed: ['Bender werden nun wieder korrekt angezeigt.'],

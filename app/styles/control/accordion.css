@@ -1,0 +1,14 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-toggle {
+  justify-content: start;
+  padding: 0 0.5rem;
+  justify-content: space-between;
+}
+
+button.control-variant-primary+.accordion-content {
+  background-color: var(--color-control-inactive);
+}

@@ -1,4 +1,8 @@
-<div id='reply_{{@post.id}}' class='post {{if @subtle " post-subtle"}}'>
+<div
+  id='reply_{{@post.id}}'
+  class='post {{if @subtle " post-subtle"}}'
+  {{did-insert this.updateScrollPosition}}
+>
   <div class='post-details'>
     <div class='post-details-title'>
       {{#if this.showSmallAvatar}}
@@ -27,6 +31,11 @@
         @text='Lesezeichen setzen'
         @icon='bookmark'
         @onClick={{this.setBookmark}}
+      />
+      <Common::Control::Menu::Button
+        @text='Post speichern'
+        @icon='floppy-disk'
+        @onClick={{this.savePost}}
       />
       <Common::Control::Menu::LinkTo
         @text='Zitieren'
