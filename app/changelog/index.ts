@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.2.0',
     type: 'patch',
     added: [
+      'Das Post-Formular enthält nun eine Funktion zum schnellen Einfügen von pOT-Memes. Wünsche für neue Kategorien & Memes immer willkommen!',
       'Ein kleiner Punkt über dem Sidebar-Button verrät nun, ob es Neugikeiten gibt.',
       'Das Board-Kontextmenü enthält nun einen Button zum Navigieren zur ersten Seite.',
     ],
