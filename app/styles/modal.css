@@ -77,6 +77,8 @@
 
 .modal-content {
   padding: 0.5rem 1rem;
+  max-height: 50vh;
+  overflow: auto;
 }
 
 .modal-content p {
