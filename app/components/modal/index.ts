@@ -14,20 +14,4 @@ export default class ModalComponent extends Component {
     event.preventDefault();
     this.modal.close();
   }
-
-  @action handleModalClick(event: MouseEvent) {
-    // Close the modal if clicked anywhere outside the dialog
-    const dialog = event.target as HTMLElement;
-    const rect = dialog.getBoundingClientRect();
-    const minX = rect.left + dialog.clientLeft;
-    const minY = rect.top + dialog.clientTop;
-    if (
-      event.clientX < minX ||
-      event.clientX >= minX + dialog.clientWidth ||
-      event.clientY < minY ||
-      event.clientY >= minY + dialog.clientHeight
-    ) {
-      this.modal.close();
-    }
-  }
 }

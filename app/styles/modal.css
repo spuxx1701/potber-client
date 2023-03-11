@@ -1,14 +1,11 @@
 @import "modal/select-icon.css";
-
-:root {
-  /* The following variables may change during runtime. */
-  --modal-opacity: 0;
-  --modal-scale: 0;
-}
+@import "modal/select-meme.css";
 
 #modal {
   display: block;
   position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
   width: 400px;
   max-width: 90vw;
   border-radius: var(--global-border-radius);
@@ -16,14 +13,34 @@
   padding: 0;
   background-color: var(--color-container-background);
   color: var(--color-text-default);
-  opacity: var(--modal-opacity);
-  scale: var(--modal-scale);
+  scale: 0;
+  opacity: 0;
   z-index: 79;
 }
 
-#modal::backdrop {
-  opacity: var(--modal-opacity);
+#modal.show {
+  scale: 1;
+  opacity: 1;
+}
+
+#modal-backdrop {
+  display: none;
+  z-index: 78;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
   background-color: rgba(0, 0, 0, 0.9);
+  cursor: default;
+}
+
+#modal[open]+#modal-backdrop {
+  display: block;
+}
+
+#modal.show+#modal-backdrop {
+  opacity: 1;
 }
 
 .modal-header {

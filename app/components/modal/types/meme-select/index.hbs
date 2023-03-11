@@ -1,0 +1,30 @@
+<Modal::Component::Header @title='Memes' @icon='fire' @variant='info' />
+<Modal::Component::Content>
+  {{#each this.memeCategories as |memeCategory|}}
+    <Common::Control::Accordion
+      @title={{memeCategory.name}}
+      @variant='primary-transparent'
+    >
+      <div class='modal-select-meme-container'>
+        {{#each memeCategory.memes as |meme|}}
+          <Common::Control::Button
+            @variant='secondary'
+            @onClick={{fn this.handleSelect meme}}
+            class='modal-select-meme-element modal-select-meme-element-width-{{meme.width}}
+              modal-select-meme-element-height-{{meme.height}}'
+          >
+            <img src={{meme.url}} alt={{meme.id}} />
+          </Common::Control::Button>
+        {{/each}}
+      </div>
+    </Common::Control::Accordion>
+  {{/each}}
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @text='Abbrechen'
+    @variant='secondary'
+    @size='small'
+    @onClick={{this.handleCancel}}
+  />
+</Modal::Component::Footer>

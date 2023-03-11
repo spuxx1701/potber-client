@@ -1,0 +1,33 @@
+.modal-select-meme-container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(calc(2 * var(--control-default-height)), 1fr));
+  grid-auto-flow: dense;
+}
+
+.modal-select-meme-element {
+  width: unset !important;
+  max-width: unset !important;
+}
+
+.modal-select-meme-element * {
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.modal-select-meme-element-width-2 {
+  grid-column-end: span 2;
+}
+
+.modal-select-meme-element-width-3 {
+  grid-column-end: span 3
+}
+
+.modal-select-meme-element-height-2 {
+  grid-row-end: span 2;
+}
+
+.modal-select-meme-element-height-3 {
+  grid-row-end: span 3
+}
