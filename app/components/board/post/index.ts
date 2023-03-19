@@ -17,6 +17,7 @@ interface Signature {
     post: Post;
     thread: Thread;
     subtle?: boolean;
+    isPreview?: boolean;
   };
 }
 
@@ -41,6 +42,9 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get date() {
+    if (this.args.isPreview) {
+      return new Date().toLocaleString();
+    }
     return new Date(this.args.post.date).toLocaleString();
   }
 
@@ -79,6 +83,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   @action copyLink() {
+    if (this.args.isPreview) return;
     navigator.clipboard.writeText(this.href);
     this.messages.showNotification(
       'Link in Zwischenablage kopiert.',

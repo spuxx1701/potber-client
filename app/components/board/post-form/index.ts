@@ -39,4 +39,8 @@ export default class PostFormComponent extends Component<Signature> {
       this.args.onSubmit(this.args.post);
     }
   }
+
+  @action handlePreview() {
+    this.modal.postPreview({ post: this.args.post });
+  }
 }

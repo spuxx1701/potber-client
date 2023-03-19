@@ -5,6 +5,7 @@ import { IconSelectModalOptions } from 'potber-client/components/modal/types/ico
 import { InputModalOptions } from 'potber-client/components/modal/types/input';
 import { LinkInsertModalOptions } from 'potber-client/components/modal/types/link-insert';
 import { MemeSelectModalOptions } from 'potber-client/components/modal/types/meme-select';
+import { PostPreviewModalOptions } from 'potber-client/components/modal/types/post-preview';
 import { sleep } from 'potber-client/utils/misc';
 
 const TIME_TO_DESTROY = 300;
@@ -20,6 +21,7 @@ export enum ModalType {
   iconSelect = 'icon-select',
   memeSelect = 'meme-select',
   linkInsert = 'link-insert',
+  postPreview = 'post-preview',
 }
 
 export default class ModalService extends Service {
@@ -73,6 +75,10 @@ export default class ModalService extends Service {
    */
   linkInsert(options: LinkInsertModalOptions) {
     this.show(ModalType.linkInsert, options);
+  }
+
+  postPreview(options: PostPreviewModalOptions) {
+    this.show(ModalType.postPreview, options);
   }
 
   /**

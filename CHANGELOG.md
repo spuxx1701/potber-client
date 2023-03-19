@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
+- The post form now includes a preview function.
 - Added the ability to save posts locally.
 - Added a dialog to post form for adding specific memes.
 - The sidebar toggle now displays a small dot indicating whether there are any news.

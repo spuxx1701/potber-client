@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.2.0',
     type: 'patch',
     added: [
+      'Das Post-Formular enthält nun eine Vorschaufunktion.',
       'Posts können jetzt lokal gespeichert werden. Deine gespeicherten Posts findest Du unter Deinen Lesezeichen.',
       'Das Post-Formular enthält nun eine Funktion zum schnellen Einfügen von pOT-Memes. Wünsche für neue Kategorien & Memes immer willkommen!',
       'Ein kleiner Punkt über dem Sidebar-Button verrät nun, ob es Neugikeiten gibt.',

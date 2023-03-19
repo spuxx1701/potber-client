@@ -3,10 +3,12 @@ import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import Post from 'potber-client/models/post';
+import Session from 'potber-client/models/session';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
 import RendererService from 'potber-client/services/renderer';
+import SessionService from 'potber-client/services/session';
 import RSVP from 'rsvp';
 
 interface Params {
@@ -23,6 +25,7 @@ export default class PostCreateRoute extends Route {
   @service declare renderer: RendererService;
   @service declare messages: MessagesService;
   @service declare store: CustomStore;
+  @service declare session: SessionService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -46,7 +49,13 @@ export default class PostCreateRoute extends Route {
         },
       });
       // Initialize the post
+      const session =
+        (await this.session.getSessionData()) as unknown as Session;
       const post = this.store.createRecord('post', {
+        author: {
+          name: session.username,
+        },
+        avatarUrl: session.avatarUrl,
         threadId: thread.id,
         icon: '0',
         message: '',
