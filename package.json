@@ -96,7 +96,7 @@
     "ember-truth-helpers": "^3.1.1",
     "ember-url-hash-polyfill": "^1.0.8",
     "ember-web-app": "^5.0.1",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-ember": "^11.2.1",
     "eslint-plugin-node": "^11.1.0",
