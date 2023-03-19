@@ -6,6 +6,9 @@ on:
       - master
 
 jobs:
+  types:
+    uses: spuxx1701/ci/.github/workflows/npm_types.yml@v1.2
+
   lint:
     uses: spuxx1701/ci/.github/workflows/npm_lint.yml@v1.2
 
