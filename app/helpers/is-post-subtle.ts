@@ -1,13 +1,18 @@
-import Helper from '@ember/component/helper';
+import { helper } from '@ember/component/helper';
 import Post from 'potber-client/models/post';
 import { ThreadPage } from 'potber-client/models/thread';
 
-export default class IsPostSubtleHelper extends Helper {
-  compute([currentPost, subtleUntilPostId, page]: [Post, string, ThreadPage]) {
-    if (!subtleUntilPostId) return false;
-    for (const post of page.posts) {
-      if (post.id === subtleUntilPostId) return false;
-      else if (post.id === currentPost.id) return true;
-    }
+export function isPostSubtle([post, subtleUntilPostId]: [
+  Post,
+  string,
+  ThreadPage
+]) {
+  if (!subtleUntilPostId) return false;
+  const postIdAsNumber = parseInt(post.id);
+  const subtlePostIdAsNumber = parseInt(subtleUntilPostId);
+  if (postIdAsNumber <= subtlePostIdAsNumber) {
+    return true;
   }
 }
+
+export default helper(isPostSubtle);
