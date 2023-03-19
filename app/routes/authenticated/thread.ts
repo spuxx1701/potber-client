@@ -1,6 +1,4 @@
-import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { sleep } from 'potber-client/utils/misc';
 import RSVP, { reject } from 'rsvp';
 import ThreadController from 'potber-client/controllers/authenticated/thread';
 import Thread from 'potber-client/models/thread';
@@ -80,7 +78,7 @@ export default class ThreadRoute extends SlowRoute {
     }
   }
 
-  async afterModel() {
+  afterModel() {
     // Refresh bookmarks after the model hook has resolved since the current transition might
     // have impacted those.
     this.newsfeed.refreshBookmarks();

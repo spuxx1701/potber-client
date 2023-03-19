@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Various improvements and fixes to the scroll behavior after page changes.
 - When switching boards, the page is no longer being persisted.
 - Spoiler button now uses the correct tags.
 - Fixed multiple mostly visual bugs.

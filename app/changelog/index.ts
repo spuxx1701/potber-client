@@ -12,6 +12,7 @@ export const changelog: ChangelogItem[] = [
       'Verbesserungen beim Navigieren zwischen Board- und Threadseiten.',
     ],
     fixed: [
+      'Verschiedene Verbesserungen & Fixes beim Scroll-Verhalten nach Seitenwechseln.',
       'Beim Wechseln auf ein anderes Board wird nun nicht nun auch die Seitennummer zurückgesetzt.',
       'Der Spoiler-Button fügt nun die korrekten tags ein.',
       'Diverse kleine fixes.',
