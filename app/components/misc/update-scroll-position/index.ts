@@ -3,26 +3,18 @@ import { guidFor } from '@ember/object/internals';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
+import { sleep } from 'potber-client/utils/misc';
 
-interface Signature {
-  Args: {
-    behavior: 'auto' | 'smooth';
-  };
-}
-
-export default class UpdateScrollPositionComponent extends Component<Signature> {
+export default class UpdateScrollPositionComponent extends Component {
   @service declare renderer: RendererService;
 
   elementId = guidFor(this);
 
-  get behavior() {
-    return this.args.behavior || 'auto';
-  }
-
-  @action updateScrollPosition() {
+  @action async updateScrollPosition() {
     // Read URL parameters
     const params = new URLSearchParams(window.location.search);
     if (params.has('PID')) {
+      await sleep(100);
       const anchorId = `post-${params.get('PID')}`;
       // If a PID has been provided, we're likely in a thread context and
       // need to scroll to the corresponding post
@@ -33,19 +25,19 @@ export default class UpdateScrollPositionComponent extends Component<Signature> 
           .clientHeight;
         this.renderer.trySetScrollPosition({
           top: rect.top - topNavHeight,
-          behavior: this.behavior,
+          behavior: 'smooth',
         });
       }
     } else if (params.has('scrollToBottom')) {
       // If 'scrollToBottom' to bottom has been provided, scroll to bottom
       this.renderer.trySetScrollPosition({
         top: document.body.scrollHeight,
-        behavior: this.behavior,
+        behavior: 'auto',
       });
     } else {
       // By default, rscroll to top
       this.renderer.trySetScrollPosition({
-        behavior: this.behavior,
+        behavior: 'auto',
       });
     }
   }
