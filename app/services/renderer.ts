@@ -5,6 +5,8 @@ import { sleep } from 'potber-client/utils/misc';
 import MessagesService from './messages';
 import SettingsService, { BoxStyle, SidebarLayout } from './settings';
 
+const LOADING_INDICATOR_DELAY = 500;
+
 export default class RendererService extends Service {
   @service declare settings: SettingsService;
   @service declare messages: MessagesService;
@@ -39,7 +41,6 @@ export default class RendererService extends Service {
    * or ride side as well as the position of the sidebar toggle button.
    */
   updateSidebarLayout() {
-    console.log('updating layout');
     switch (this.settings.sidebarLayout) {
       case SidebarLayout.rightBottom:
         this.rootStyle.setProperty('--sidebar-left', 'unset');
@@ -144,29 +145,29 @@ export default class RendererService extends Service {
    * Hides the loading indicator.
    */
   @action async hideLoadingIndicator() {
-    await sleep(200);
+    await sleep(LOADING_INDICATOR_DELAY);
     this.rootStyle.setProperty('--loading-indicator-opacity', '0');
   }
 
   /**
    * Prevents the next reset of the scroll position that would otherwise be
-   * triggered by calling RendererService.tryResetScrollPosition().
+   * triggered by calling RendererService.trySetScrollPosition().
    */
   @action preventNextScrollReset() {
     this.preventScrollReset = true;
   }
 
   /**
-   * Attempts to reset the window's scroll position. Will not do anything if
+   * Attempts to set the window's scroll position. Will not do anything if
    * RendererService.preventScrollReset has been set earlier. However, setting this
    * property will only prevent a scroll reset one single time.
    */
-  @action tryResetScrollPosition() {
+  @action trySetScrollPosition(options?: Partial<ScrollToOptions>) {
     if (this.preventScrollReset) {
       this.preventScrollReset = false;
       return;
     }
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, behavior: 'auto', ...options });
   }
 
   /**

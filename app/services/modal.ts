@@ -4,27 +4,39 @@ import { ConfirmModalOptions } from 'potber-client/components/modal/types/confir
 import { IconSelectModalOptions } from 'potber-client/components/modal/types/icon-select';
 import { InputModalOptions } from 'potber-client/components/modal/types/input';
 import { LinkInsertModalOptions } from 'potber-client/components/modal/types/link-insert';
+import { MemeSelectModalOptions } from 'potber-client/components/modal/types/meme-select';
+import { PostPreviewModalOptions } from 'potber-client/components/modal/types/post-preview';
 import { sleep } from 'potber-client/utils/misc';
 
 const TIME_TO_DESTROY = 300;
 
 interface ActiveModal {
   type: ModalType | null;
-  options: object | null;
+  options?: object;
 }
 
 export enum ModalType {
   confirm = 'confirm',
   input = 'input',
   iconSelect = 'icon-select',
+  memeSelect = 'meme-select',
   linkInsert = 'link-insert',
+  postPreview = 'post-preview',
 }
 
 export default class ModalService extends Service {
   @tracked activeModal: ActiveModal = {
     type: null,
-    options: null,
+    options: undefined,
   };
+
+  get modal() {
+    const modal = document.getElementById('modal');
+    if (!modal) {
+      throw new Error('Unable to find modal container.');
+    }
+    return modal as HTMLDialogElement;
+  }
 
   /**
    * Calls a confirm modal.
@@ -51,6 +63,13 @@ export default class ModalService extends Service {
   }
 
   /**
+   * Calls the meme-select modal.
+   */
+  memeSelect(options: MemeSelectModalOptions) {
+    this.show(ModalType.memeSelect, options);
+  }
+
+  /**
    * Calls an link-insert modal.
    * @param options The link-insert modal options.
    */
@@ -58,16 +77,8 @@ export default class ModalService extends Service {
     this.show(ModalType.linkInsert, options);
   }
 
-  /**
-   * Returns the modal container or throws an error if it cannot be found.
-   * @returns The modal container.
-   */
-  getModalContainer() {
-    const modal = document.getElementById('modal');
-    if (!modal) {
-      throw new Error('Unable to find modal container.');
-    }
-    return modal as HTMLDialogElement;
+  postPreview(options: PostPreviewModalOptions) {
+    this.show(ModalType.postPreview, options);
   }
 
   /**
@@ -75,11 +86,13 @@ export default class ModalService extends Service {
    * @param type The modal type.
    * @param options The modal options.
    */
-  show(type: ModalType, options: object) {
+  async show(type: ModalType, options?: object) {
     this.activeModal = { type, options };
-    document.documentElement.style.setProperty('--modal-opacity', '1');
-    document.documentElement.style.setProperty('--modal-scale', '1');
-    this.getModalContainer().showModal();
+    this.modal.show();
+    // Wait for the DOM to have updated the 'display' CSS property. The amount of time doesn't matter,
+    // but it needs to happen asynchronously.
+    await sleep(1);
+    this.modal.classList.add('show');
   }
 
   /**
@@ -87,13 +100,12 @@ export default class ModalService extends Service {
    * @param afterClose (optional) Fires after the dialog has closed.
    */
   async close(afterClose?: () => void) {
-    document.documentElement.style.setProperty('--modal-opacity', '0');
-    document.documentElement.style.setProperty('--modal-scale', '0');
+    this.modal.classList.remove('show');
     await sleep(TIME_TO_DESTROY);
-    this.getModalContainer().close();
+    this.modal.close();
     this.activeModal = {
       type: null,
-      options: null,
+      options: undefined,
     };
     if (afterClose) {
       afterClose();

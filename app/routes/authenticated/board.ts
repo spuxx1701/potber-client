@@ -1,12 +1,11 @@
-import Route from '@ember/routing/route';
 import RouterService from '@ember/routing/router-service';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import Board from 'potber-client/models/board';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
-import RendererService from 'potber-client/services/renderer';
 import RSVP from 'rsvp';
+import SlowRoute from '../slow';
 
 interface Params {
   BID: string;
@@ -17,9 +16,8 @@ export interface BoardRouteModel {
   board: Board;
 }
 
-export default class BoardRoute extends Route {
+export default class BoardRoute extends SlowRoute {
   @service declare store: CustomStore;
-  @service declare renderer: RendererService;
   @service declare messages: MessagesService;
   @service declare router: RouterService;
 
@@ -43,7 +41,6 @@ export default class BoardRoute extends Route {
           },
         },
       });
-      this.renderer.tryResetScrollPosition();
       return RSVP.hash({
         board: board,
       });

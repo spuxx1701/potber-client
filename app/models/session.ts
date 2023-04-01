@@ -5,7 +5,10 @@ export default class Session extends Model {
   declare userId: string;
 
   @attr()
-  declare username?: string;
+  declare username: string;
+
+  @attr()
+  declare avatarUrl: string;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.

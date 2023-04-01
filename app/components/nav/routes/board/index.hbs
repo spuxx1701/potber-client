@@ -43,6 +43,12 @@
         @href={{this.originalUrl}}
         target='_blank'
       />
+      <Common::Control::Menu::LinkTo
+        @text='Zur ersten Seite'
+        @icon='backward-step'
+        @route='authenticated.board'
+        @query={{hash BID=@board.id page='1'}}
+      />
     </Common::Control::Menu>
 
     {{#if this.nextPageVisible}}

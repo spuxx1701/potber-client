@@ -4,8 +4,11 @@
       <Board::Post
         @post={{post}}
         @thread={{@thread}}
-        @subtle={{is-post-subtle post @subtleUntilPostId @thread.page}}
+        @subtle={{is-post-subtle post @subtleUntilPostId}}
       />
+      {{#if (is-final-element post this.posts)}}
+        <Misc::UpdateScrollPosition />
+      {{/if}}
     {{/each}}
   </div>
 </div>

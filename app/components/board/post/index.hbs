@@ -1,4 +1,4 @@
-<div id='reply_{{@post.id}}' class='post {{if @subtle " post-subtle"}}'>
+<div id={{this.elementId}} class='post {{if @subtle " post-subtle"}}'>
   <div class='post-details'>
     <div class='post-details-title'>
       {{#if this.showSmallAvatar}}
@@ -16,33 +16,44 @@
         >{{this.date}}<FaIcon @icon='link' /></button>
       </div>
     </div>
-    <Common::Control::Menu @position='auto'>
-      <Common::Control::Menu::Link
-        @text='Original öffnen'
-        @icon='up-right-from-square'
-        @href={{this.originalUrl}}
-        target='_blank'
-      />
-      <Common::Control::Menu::Button
-        @text='Lesezeichen setzen'
-        @icon='bookmark'
-        @onClick={{this.setBookmark}}
-      />
-      <Common::Control::Menu::LinkTo
-        @text='Zitieren'
-        @icon='comment-dots'
-        @route='authenticated.post.quote'
-        @query={{hash TID=@post.threadId page=@thread.pagesCount PID=@post.id}}
-      />
-      {{#if this.canEdit}}
-        <Common::Control::Menu::LinkTo
-          @text='Bearbeiten'
-          @icon='edit'
-          @route='authenticated.post.edit'
-          @query={{hash TID=@post.threadId PID=@post.id}}
+    {{#unless @isPreview}}
+      <Common::Control::Menu @position='auto'>
+        <Common::Control::Menu::Link
+          @text='Original öffnen'
+          @icon='up-right-from-square'
+          @href={{this.originalUrl}}
+          target='_blank'
         />
-      {{/if}}
-    </Common::Control::Menu>
+        <Common::Control::Menu::Button
+          @text='Lesezeichen setzen'
+          @icon='bookmark'
+          @onClick={{this.setBookmark}}
+        />
+        <Common::Control::Menu::Button
+          @text='Post speichern'
+          @icon='floppy-disk'
+          @onClick={{this.savePost}}
+        />
+        <Common::Control::Menu::LinkTo
+          @text='Zitieren'
+          @icon='comment-dots'
+          @route='authenticated.post.quote'
+          @query={{hash
+            TID=@post.threadId
+            page=@thread.pagesCount
+            PID=@post.id
+          }}
+        />
+        {{#if this.canEdit}}
+          <Common::Control::Menu::LinkTo
+            @text='Bearbeiten'
+            @icon='edit'
+            @route='authenticated.post.edit'
+            @query={{hash TID=@post.threadId PID=@post.id}}
+          />
+        {{/if}}
+      </Common::Control::Menu>
+    {{/unless}}
   </div>
   <div class='post-content'>
     {{#if @post.contentHidden}}

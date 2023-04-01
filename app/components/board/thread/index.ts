@@ -4,6 +4,7 @@ import Component from '@glimmer/component';
 import { PostPreview } from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
+import RendererService from 'potber-client/services/renderer';
 
 export interface Signature {
   Args: {
@@ -15,6 +16,7 @@ export default class ThreadComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
   @service declare store: CustomStore;
+  @service declare renderer: RendererService;
 
   get isImportant() {
     return (

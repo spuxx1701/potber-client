@@ -50,7 +50,7 @@ export default class SettingsRoute extends Route {
   }
 
   @action didTransition() {
-    this.renderer.tryResetScrollPosition();
+    this.renderer.trySetScrollPosition();
   }
 }
 

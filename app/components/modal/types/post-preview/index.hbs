@@ -1,0 +1,12 @@
+<Modal::Component::Header @title='Vorschau' @icon='eye' />
+<Modal::Component::Content>
+  <Board::Post @post={{@options.post}} @isPreview={{true}} />
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @text='Schließen'
+    @variant='secondary'
+    @size='small'
+    @onClick={{this.handleClose}}
+  />
+</Modal::Component::Footer>

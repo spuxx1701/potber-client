@@ -6,17 +6,21 @@ on:
       - develop
 
 jobs:
+  types:
+    uses: spuxx1701/ci-cd/.github/workflows/npm_types.yml@v1.2
+
   lint:
-    uses: spuxx1701/ci/.github/workflows/npm_lint.yml@v1.2
+    uses: spuxx1701/ci-cd/.github/workflows/npm_lint.yml@v1.2
 
   test:
-    uses: spuxx1701/ci/.github/workflows/npm_test-coverage.yml@v1.2
+    uses: spuxx1701/ci-cd/.github/workflows/npm_test-coverage.yml@v1.2
 
   docker_deploy:
     needs:
+      - types
       - lint
       - test
-    uses: spuxx1701/ci/.github/workflows/docker_deploy.yml@v1.2
+    uses: spuxx1701/ci-cd/.github/workflows/docker_deploy.yml@v1.2
     with:
       username: spuxx
       repository: potber-client

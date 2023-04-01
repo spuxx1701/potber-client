@@ -1,14 +1,10 @@
-import { action } from '@ember/object';
-import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import RendererService from 'potber-client/services/renderer';
-import { sleep } from 'potber-client/utils/misc';
 import RSVP, { reject } from 'rsvp';
-import { scrollToHash } from 'ember-url-hash-polyfill';
 import ThreadController from 'potber-client/controllers/authenticated/thread';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
+import SlowRoute from '../slow';
 
 interface Params {
   TID: string;
@@ -23,9 +19,8 @@ export interface ThreadRouteModel {
   subtleUntilPostId: string;
 }
 
-export default class ThreadRoute extends Route {
+export default class ThreadRoute extends SlowRoute {
   @service declare store: CustomStore;
-  @service declare renderer: RendererService;
   @service declare newsfeed: NewsfeedService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
@@ -70,7 +65,6 @@ export default class ThreadRoute extends Route {
           },
         },
       });
-      this.renderer.tryResetScrollPosition();
       return RSVP.hash({
         thread,
         subtleUntilPostId: subtleUntilPostId,
@@ -84,30 +78,9 @@ export default class ThreadRoute extends Route {
     }
   }
 
-  async afterModel() {
+  afterModel() {
     // Refresh bookmarks after the model hook has resolved since the current transition might
     // have impacted those.
     this.newsfeed.refreshBookmarks();
-  }
-
-  @action async didTransition() {
-    await sleep(500);
-    const params = new URL(window.location.href).searchParams;
-    if (params.has('PID') && params.get('PID')) {
-      // If PID was supplied, we also need to add the anchor
-      // Set the hash without triggering without triggering a browser scroll action
-      const currentState = { ...history.state };
-      history.replaceState(
-        currentState,
-        'unused',
-        `#reply_${params.get('PID')}`
-      );
-      if (window.location.hash) {
-        scrollToHash(`reply_${params.get('PID')}`);
-      }
-    } else if (params.get('scrollToBottom') === 'true') {
-      // if scrollToBottom was supplied, scroll to bottom
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
   }
 }

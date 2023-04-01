@@ -1,9 +1,5 @@
 {{! template-lint-disable no-invalid-interactive }}
-<dialog
-  id='modal'
-  {{on 'cancel' this.handleModalCancel}}
-  {{on 'click' this.handleModalClick}}
->
+<dialog id='modal' {{on 'cancel' this.handleModalCancel}}>
   {{#if this.activeModal.type}}
     {{component
       (concat 'modal/types/' this.activeModal.type)
@@ -11,3 +7,9 @@
     }}
   {{/if}}
 </dialog>
+<button
+  id='modal-backdrop'
+  type='button'
+  {{on 'click' this.handleModalCancel}}
+  aria-hidden='true'
+/>

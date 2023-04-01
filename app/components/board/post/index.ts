@@ -9,12 +9,15 @@ import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import Thread from 'potber-client/models/thread';
 import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
+import RendererService from 'potber-client/services/renderer';
+import LocalStorageService from 'potber-client/services/local-storage';
 
 interface Signature {
   Args: {
     post: Post;
     thread: Thread;
     subtle?: boolean;
+    isPreview?: boolean;
   };
 }
 
@@ -25,6 +28,8 @@ export default class PostComponent extends Component<Signature> {
   @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
+  @service declare renderer: RendererService;
+  @service declare localStorage: LocalStorageService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -32,7 +37,14 @@ export default class PostComponent extends Component<Signature> {
 
   declare args: Signature['Args'];
 
+  get elementId() {
+    return `post-${this.args.post.id}`;
+  }
+
   get date() {
+    if (this.args.isPreview) {
+      return new Date().toLocaleString();
+    }
     return new Date(this.args.post.date).toLocaleString();
   }
 
@@ -71,6 +83,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   @action copyLink() {
+    if (this.args.isPreview) return;
     navigator.clipboard.writeText(this.href);
     this.messages.showNotification(
       'Link in Zwischenablage kopiert.',
@@ -100,6 +113,30 @@ export default class PostComponent extends Component<Signature> {
           this.constructor.name
         );
       }
+    }
+  }
+
+  @action async savePost() {
+    try {
+      const savedPosts = [
+        ...((await this.localStorage.getSavedPosts()) as Post[]),
+      ];
+      if (savedPosts.find((post) => post.id === this.args.post.id)) {
+        this.messages.showNotification(
+          'Du hast diesen Post bereits gespeichert.',
+          'error'
+        );
+        return;
+      }
+      savedPosts.push(this.args.post);
+      this.localStorage.setSavedPosts(savedPosts);
+      this.messages.showNotification('Post gespeichert', 'success');
+    } catch (error) {
+      this.messages.logErrorAndNotify(
+        'Das hat leider nicht geklappt.',
+        error,
+        this.constructor.name
+      );
     }
   }
 

@@ -2,7 +2,7 @@
   <div class='dropdown-inner control-size-{{this.size}}'>
     <button
       id='{{this.componentId}}-button'
-      class='dropdown-toggle'
+      class='dropdown-toggle {{if this.expanded "dropdown-toggle-expanded"}}'
       type='button'
       aria-label={{@label}}
       aria-haspopup='true'

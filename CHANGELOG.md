@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.2.0] - unreleased
+
+### Added
+
+- The post form now includes a preview function.
+- Added the ability to save posts locally.
+- Added a dialog to post form for adding specific memes.
+- The sidebar toggle now displays a small dot indicating whether there are any news.
+- The board dropdown menu does now contain a button for navigating to the first page.
+
+### Changed
+
+- When navigating to board and thread pages, the scroll position will no longer reset before the entire page has rendered.
+- The loading indicator will now only be shown for slow transitions.
+
+### Fixed
+
+- When opening bookmarks, the correct number of posts are now being faded out.
+- Various improvements and fixes to the scroll behavior after page changes.
+- When switching boards, the page is no longer being persisted.
+- Spoiler button now uses the correct tags.
+- Fixed multiple mostly visual bugs.
+
 ## [1.1.1] - 2022-02-27
 
 ### Fixed
