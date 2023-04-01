@@ -10,11 +10,10 @@ export default class UpdateScrollPositionComponent extends Component {
 
   elementId = guidFor(this);
 
-  @action async updateScrollPosition() {
+  @action updateScrollPosition() {
     // Read URL parameters
     const params = new URLSearchParams(window.location.search);
     if (params.has('PID')) {
-      await sleep(100);
       const anchorId = `post-${params.get('PID')}`;
       // If a PID has been provided, we're likely in a thread context and
       // need to scroll to the corresponding post
