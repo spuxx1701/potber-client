@@ -54,4 +54,9 @@ export default class ApplicationAdapter extends RESTAdapter {
     }
     return query;
   }
+
+  // Globally disable shouldBackgroundReloadRecord
+  shouldBackgroundReloadRecord() {
+    return false;
+  }
 }
