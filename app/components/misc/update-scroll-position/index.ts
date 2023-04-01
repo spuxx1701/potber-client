@@ -3,7 +3,6 @@ import { guidFor } from '@ember/object/internals';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
-import { sleep } from 'potber-client/utils/misc';
 
 export default class UpdateScrollPositionComponent extends Component {
   @service declare renderer: RendererService;
@@ -19,11 +18,15 @@ export default class UpdateScrollPositionComponent extends Component {
       // need to scroll to the corresponding post
       const anchorElement = document.getElementById(anchorId);
       if (anchorElement) {
+        const currentScrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
         const rect = anchorElement.getBoundingClientRect();
         const topNavHeight = (document.getElementById('top-nav') as HTMLElement)
           .clientHeight;
+        console.log(currentScrollTop);
+        console.log(rect.top);
         this.renderer.trySetScrollPosition({
-          top: rect.top - topNavHeight,
+          top: currentScrollTop + rect.top - topNavHeight,
           behavior: 'smooth',
         });
       }

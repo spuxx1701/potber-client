@@ -163,6 +163,7 @@ export default class RendererService extends Service {
    * property will only prevent a scroll reset one single time.
    */
   @action trySetScrollPosition(options?: Partial<ScrollToOptions>) {
+    console.log(options);
     if (this.preventScrollReset) {
       this.preventScrollReset = false;
       return;
