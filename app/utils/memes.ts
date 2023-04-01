@@ -72,7 +72,7 @@ export const memeCategories: MemeCategory[] = [
       },
       {
         id: 'nutella',
-        url: 'image.png',
+        url: 'https://i.imgur.com/dYHwCy4.png',
       },
       {
         id: 'nutella2',
