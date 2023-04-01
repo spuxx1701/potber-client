@@ -61,7 +61,7 @@ export default class ThreadRoute extends SlowRoute {
           queryParams: {
             postId,
             page,
-            updateBookmark: false,
+            updateBookmark: true,
           },
         },
       });
