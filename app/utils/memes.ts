@@ -68,99 +68,99 @@ export const memeCategories: MemeCategory[] = [
     memes: [
       {
         id: 'hallocain',
-        url: 'http://potsmilies.hetscher.de/hallocain.gif',
+        url: 'https://i.imgur.com/HcqkZMe.png',
       },
       {
         id: 'nutella',
-        url: 'http://potsmilies.hetscher.de/nutella.gif',
+        url: 'image.png',
       },
       {
         id: 'nutella2',
-        url: 'http://potsmilies.hetscher.de/nutella2.gif',
+        url: 'https://i.imgur.com/nVWiTye.png',
       },
       {
         id: 'cunth0lz',
-        url: 'http://potsmilies.hetscher.de/cunth0lz.gif',
+        url: 'https://i.imgur.com/4qQIfTq.gif',
       },
       {
         id: 'needpics',
-        url: 'http://potsmilies.hetscher.de/needpics.gif',
+        url: 'https://i.imgur.com/t9NNm2C.gif',
         width: 3,
       },
       {
         id: 'thisthreadisworthlesswithoutarzt',
-        url: 'http://potsmilies.hetscher.de/thisthreadisworthlesswithoutarzt.gif',
+        url: 'https://i.imgur.com/En0PkOJ.gif',
         width: 3,
       },
       {
         id: 'oktolon',
-        url: 'http://potsmilies.hetscher.de/oktolon.gif',
+        url: 'https://i.imgur.com/xodIrtZ.gif',
       },
       {
         id: 'pwnedbypot',
-        url: 'http://potsmilies.hetscher.de/pwnedbypot.gif',
+        url: 'https://i.imgur.com/BWv3Wmw.gif',
       },
       {
         id: 'hacki',
-        url: 'http://potsmilies.hetscher.de/hacki.gif',
+        url: 'https://i.imgur.com/G2p4Mix.gif',
       },
       {
         id: 'fresse',
-        url: 'http://potsmilies.hetscher.de/fresse.gif',
+        url: 'https://i.imgur.com/3w8e25U.gif',
       },
       {
         id: 'alleverwarnt',
-        url: 'http://potsmilies.hetscher.de/alleverwarnt.gif',
+        url: 'https://i.imgur.com/W8GkHxa.gif',
         width: 2,
       },
       {
         id: 'wastun',
-        url: 'http://potsmilies.hetscher.de/wastun.gif',
+        url: 'https://i.imgur.com/H3lE1mI.gif',
       },
       {
         id: 'aehm',
-        url: 'http://potsmilies.hetscher.de/aehm.gif',
+        url: 'https://i.imgur.com/SCSozbd.gif',
       },
       {
         id: 'benderwelle',
-        url: 'http://potsmilies.hetscher.de/benderwelle.gif',
+        url: 'https://i.imgur.com/4vEMArc.gif',
         width: 2,
       },
       {
         id: 'orly',
-        url: 'http://potsmilies.hetscher.de/orly.gif',
+        url: 'https://i.imgur.com/U4BjiDD.gif',
       },
       {
         id: 'shisha',
-        url: 'http://potsmilies.hetscher.de/shisha.gif',
+        url: 'https://i.imgur.com/faMQNx0.gif',
       },
       {
         id: 'peng',
-        url: 'http://potsmilies.hetscher.de/peng.gif',
+        url: 'https://i.imgur.com/KdZkhch.gif',
       },
       {
         id: 'tock',
-        url: 'http://potsmilies.hetscher.de/tock.gif',
+        url: 'https://i.imgur.com/YSRDe1y.gif',
       },
       {
         id: 'balla',
-        url: 'http://potsmilies.hetscher.de/balla.gif',
+        url: 'https://i.imgur.com/vNYL8rW.gif',
       },
       {
         id: 'kitt',
-        url: 'http://potsmilies.hetscher.de/kitt.gif',
+        url: 'https://i.imgur.com/OIK7RGF.gif',
       },
       {
         id: 'rollugly',
-        url: 'http://potsmilies.hetscher.de/rollugly.gif',
+        url: 'https://i.imgur.com/ONbZFgn.gif',
       },
       {
         id: 'winner',
-        url: 'http://potsmilies.hetscher.de/winner.gif',
+        url: 'https://i.imgur.com/4vI82Zo.gif',
       },
       {
         id: 'naughty',
-        url: 'http://potsmilies.hetscher.de/naughty.gif',
+        url: 'https://i.imgur.com/6fnZzrJ.gif',
       },
     ],
   },
