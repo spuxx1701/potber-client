@@ -55,7 +55,11 @@ export default class ApplicationAdapter extends RESTAdapter {
     return query;
   }
 
-  // Globally disable shouldBackgroundReloadRecord
+  // Don't cache any model states
+  shouldReloadRecord() {
+    return true;
+  }
+
   shouldBackgroundReloadRecord() {
     return false;
   }
