@@ -1,7 +1,14 @@
 export const changelog: ChangelogItem[] = [
   {
-    version: '1.2.1',
+    version: '1.3.0',
     type: 'minor',
+    added: [
+      'Nutzerprofile hinzugefügt (z.B. beim Klick auf den Nutzernamen in der Kopfzeile von Posts).',
+    ],
+  },
+  {
+    version: '1.2.1',
+    type: 'patch',
     fixed: [
       'Beim Zitieren wird die Scroll-Position nun korrekt zurückgesetzt.',
     ],

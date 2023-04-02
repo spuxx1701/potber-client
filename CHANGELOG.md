@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.3.0] - unreleased
+
+### Added
+
+- Added user profiles.
+
 ## [1.2.1] - 2023-04-02
 
 ### Fixed
