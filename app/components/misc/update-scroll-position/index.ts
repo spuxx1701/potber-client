@@ -6,16 +6,20 @@ import RendererService from 'potber-client/services/renderer';
 
 export default class UpdateScrollPositionComponent extends Component {
   @service declare renderer: RendererService;
+  @service declare router: any;
 
   elementId = guidFor(this);
 
   @action updateScrollPosition() {
     // Read URL parameters
     const params = new URLSearchParams(window.location.search);
-    if (params.has('PID')) {
-      const anchorId = `post-${params.get('PID')}`;
-      // If a PID has been provided, we're likely in a thread context and
+    if (
+      params.has('PID') &&
+      this.router.currentRouteName === 'authenticated.thread'
+    ) {
+      // If a PID has been provided and we're on /thread, we
       // need to scroll to the corresponding post
+      const anchorId = `post-${params.get('PID')}`;
       const anchorElement = document.getElementById(anchorId);
       if (anchorElement) {
         const currentScrollTop =
