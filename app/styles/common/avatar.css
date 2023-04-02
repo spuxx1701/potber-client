@@ -1,0 +1,23 @@
+.avatar {
+  display: flex;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-post-background-primary);
+}
+
+.avatar>img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.avatar-size-small {
+  height: 50px;
+  width: 50px;
+}
+
+.avatar-size-large {
+  height: 125px;
+  width: 125px;
+}

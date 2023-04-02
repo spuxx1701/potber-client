@@ -11,6 +11,7 @@ import Thread from 'potber-client/models/thread';
 import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
 import RendererService from 'potber-client/services/renderer';
 import LocalStorageService from 'potber-client/services/local-storage';
+import ModalService from 'potber-client/services/modal';
 
 interface Signature {
   Args: {
@@ -30,6 +31,7 @@ export default class PostComponent extends Component<Signature> {
   @service declare settings: SettingsService;
   @service declare renderer: RendererService;
   @service declare localStorage: LocalStorageService;
+  @service declare modal: ModalService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -72,6 +74,11 @@ export default class PostComponent extends Component<Signature> {
       this.args.post.avatarUrl &&
       this.settings.avatarStyle === AvatarStyle.small
     );
+  }
+
+  @action async showAuthorProfile() {
+    const user = await this.store.findRecord('user', this.args.post.author.id);
+    this.modal.userProfile({ user });
   }
 
   @action copyLink() {

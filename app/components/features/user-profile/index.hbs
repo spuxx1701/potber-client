@@ -1,0 +1,48 @@
+<div class='user-profile'>
+  <Common::Avatar @url={{@user.avatarUrl}} @size='large' class='margin-auto' />
+  <hr />
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <p>Name (ID):</p>
+        </td>
+        <td class='flex-row'>
+          <b>{{@user.name}}</b><p>&nbsp;(<a
+              href={{this.originalUrl}}
+              target='_blank'
+              rel='noopener noreferrer'
+            >{{@user.id}}</a>)</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Letzter Login:</p>
+        </td>
+        <td>
+          {{#if @user.lastLogin}}
+            <b>{{@user.lastLogin}}</b>
+          {{else}}
+            <i>privat</i>
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Aktivität:</p>
+        </td>
+        <td>
+          <b>{{@user.activity}}</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Accountstatus:</p>
+        </td>
+        <td>
+          <b>{{@user.status}}</b>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

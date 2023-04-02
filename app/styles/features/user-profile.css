@@ -1,0 +1,8 @@
+.user-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile td {
+  vertical-align: text-top;
+}

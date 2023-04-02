@@ -6,6 +6,7 @@ import { InputModalOptions } from 'potber-client/components/modal/types/input';
 import { LinkInsertModalOptions } from 'potber-client/components/modal/types/link-insert';
 import { MemeSelectModalOptions } from 'potber-client/components/modal/types/meme-select';
 import { PostPreviewModalOptions } from 'potber-client/components/modal/types/post-preview';
+import { UserProfileModalOptions } from 'potber-client/components/modal/types/user-profile';
 import { sleep } from 'potber-client/utils/misc';
 
 const TIME_TO_DESTROY = 300;
@@ -22,6 +23,7 @@ export enum ModalType {
   memeSelect = 'meme-select',
   linkInsert = 'link-insert',
   postPreview = 'post-preview',
+  userProfile = 'user-profile',
 }
 
 export default class ModalService extends Service {
@@ -70,15 +72,27 @@ export default class ModalService extends Service {
   }
 
   /**
-   * Calls an link-insert modal.
+   * Calls a link-insert modal.
    * @param options The link-insert modal options.
    */
   linkInsert(options: LinkInsertModalOptions) {
     this.show(ModalType.linkInsert, options);
   }
 
+  /**
+   * Calls a post-preview modal.
+   * @param options The post-preview modal options.
+   */
   postPreview(options: PostPreviewModalOptions) {
     this.show(ModalType.postPreview, options);
+  }
+
+  /**
+   * Calls a user-profile modal.
+   * @param options The user-profile modal options.
+   */
+  userProfile(options: UserProfileModalOptions) {
+    this.show(ModalType.userProfile, options);
   }
 
   /**

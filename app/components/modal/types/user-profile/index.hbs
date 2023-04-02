@@ -1,0 +1,12 @@
+<Modal::Component::Header @title={{@options.user.name}} @icon='user' />
+<Modal::Component::Content>
+  <Features::UserProfile @user={{@options.user}} />
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @text='Schließen'
+    @variant='secondary'
+    @size='small'
+    @onClick={{this.handleClose}}
+  />
+</Modal::Component::Footer>
