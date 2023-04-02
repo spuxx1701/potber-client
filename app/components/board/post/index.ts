@@ -74,14 +74,6 @@ export default class PostComponent extends Component<Signature> {
     );
   }
 
-  get avatarUrl() {
-    if (this.args.post.avatarUrl) {
-      // Remove './' from avatarUrl
-      const url = this.args.post.avatarUrl?.replace(/^\.\//, '');
-      return `${ENV.APP['FORUM_URL']}${url}`;
-    }
-  }
-
   @action copyLink() {
     if (this.args.isPreview) return;
     navigator.clipboard.writeText(this.href);
