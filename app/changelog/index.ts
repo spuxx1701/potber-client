@@ -1,7 +1,14 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.2.1',
+    type: 'minor',
+    fixed: [
+      'Beim Zitieren wird die Scroll-Position nun korrekt zurückgesetzt.',
+    ],
+  },
+  {
     version: '1.2.0',
-    type: 'patch',
+    type: 'minor',
     added: [
       'Das Post-Formular enthält nun eine Vorschaufunktion.',
       'Posts können jetzt lokal gespeichert werden. Deine gespeicherten Posts findest Du unter Deinen Lesezeichen.',
