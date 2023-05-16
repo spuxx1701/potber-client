@@ -1,7 +1,7 @@
 FROM node:16 AS build
 WORKDIR /usr/app/
 COPY ./ ./
-RUN npm ci && npm run build:develop
+RUN npm ci && npm run build:staging
 
 FROM nginxinc/nginx-unprivileged:alpine AS RUNTIME
 COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
