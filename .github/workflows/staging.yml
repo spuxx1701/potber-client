@@ -15,6 +15,15 @@ jobs:
   test:
     uses: spuxx1701/ci-cd/.github/workflows/npm_test-coverage.yml@v2.0
 
+  release_image:
+    needs:
+      - types
+      - lint
+      - test
+    uses: spuxx1701/ci-cd/.github/workflows/release_image.yml@v2.0
+    secrets:
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+
   # docker_deploy:
   #   needs:
   #     - types
