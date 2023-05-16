@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - The application was moved to a kubernetes environment. By that, the application gained several beneficial features like high availability or rolling updates.
 - Deployment is now handled via Flux GitOps pipelines. Prior environments have been replaced with a staging and a production environment. Deployment to staging is triggerd via commits to master. Deployment to production is triggered via releasing semantic versioning tags.
 
+### Fixed
+
+- Fixed multiple mostly visual bugs.
+
 ## [1.2.1] - 2023-04-02
 
 ### Fixed

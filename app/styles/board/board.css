@@ -6,7 +6,7 @@
   box-sizing: border-box;
   height: auto;
   flex-direction: column;
-  background-color: var(--color-post-background-primary);
+  background-color: var(--color-post-background-primary) !important;
   padding: 0.5rem;
   width: 100%;
   align-items: flex-start !important;
@@ -15,7 +15,7 @@
 }
 
 .board-item-important {
-  background-color: var(--color-post-background-secondary);
+  background-color: var(--color-post-background-secondary) !important;
 }
 
 .board-item-header {
@@ -40,7 +40,8 @@
   margin: 0;
 }
 
-.board-item-title, .board-item .subtitle {
+.board-item-title,
+.board-item .subtitle {
   margin: 0 0 0.25rem 0;
   text-align: start;
   text-decoration: none !important;
