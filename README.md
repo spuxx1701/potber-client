@@ -31,8 +31,6 @@ You will need the following things properly installed on your computer.
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) (with npm)
 - [Ember CLI](https://cli.emberjs.com/release/)
-- [Docker Engine](https://docs.docker.com/engine/release-notes/)
-- [Docker Compose](https://docs.docker.com/compose/release-notes/)
 
 ### Installation
 
@@ -42,7 +40,7 @@ You will need the following things properly installed on your computer.
 
 ### Running / Development
 
-- Start up the CORS proxy server with `cd .cors-proxy && docker-compose up`.
+- Clone [potber-api](https://github.com/spuxx1701/potber-api) and start up a local instance.
 - Start up the development server with `npm start`.
 - Visit the app at [http://localhost:4200](http://localhost:4200).
 
