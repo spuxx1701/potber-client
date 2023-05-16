@@ -22,6 +22,6 @@ jobs:
       - test
     uses: spuxx1701/ci-cd/.github/workflows/release_image.yml@v2.0
     with:
-      dockerfile: Dockerfile.staging
+      dockerfile: Dockerfile.production
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
