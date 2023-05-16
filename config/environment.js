@@ -45,13 +45,13 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
   }
 
-  if (environment === 'develop') {
-    ENV.APP.API_URL = 'https://test-api.potber.de';
+  if (environment === 'staging') {
+    ENV.APP.API_URL = 'https://potber-api-test.spuxx.dev';
     ENV.APP.DEBUG = true;
   }
 
   if (environment === 'production') {
-    ENV.APP.API_URL = 'https://api.potber.de';
+    ENV.APP.API_URL = 'https://potber-api.spuxx.dev';
     ENV.APP.DEBUG = false;
   }
 
