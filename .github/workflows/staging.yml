@@ -26,20 +26,3 @@ jobs:
       dockerfile: Dockerfile.staging
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-
-  # docker_deploy:
-  #   needs:
-  #     - types
-  #     - lint
-  #     - test
-  #   uses: spuxx1701/ci-cd/.github/workflows/docker_deploy.yml@v1.2
-  #   with:
-  #     username: spuxx
-  #     repository: potber-client
-  #     environment: develop
-  #     dockerfile: Dockerfile.develop
-  #   secrets:
-  #     token: ${{ secrets.DOCKERHUB_TOKEN }}
-  #     ssh_host: ${{ secrets.SSH_HOST }}
-  #     ssh_username: ${{ secrets.SSH_USERNAME }}
-  #     ssh_password: ${{ secrets.SSH_PASSWORD }}

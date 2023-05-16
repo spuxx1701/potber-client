@@ -1,4 +1,4 @@
-name: develop
+name: production
 
 on:
   push:
@@ -15,19 +15,13 @@ jobs:
   test:
     uses: spuxx1701/ci-cd/.github/workflows/npm_test-coverage.yml@v2.0
 
-  # docker_deploy:
-  #   needs:
-  #     - types
-  #     - lint
-  #     - test
-  #   uses: spuxx1701/ci-cd/.github/workflows/docker_deploy.yml@v1.2
-  #   with:
-  #     username: spuxx
-  #     repository: potber-client
-  #     environment: production
-  #     dockerfile: Dockerfile.production
-  #   secrets:
-  #     token: ${{ secrets.DOCKERHUB_TOKEN }}
-  #     ssh_host: ${{ secrets.SSH_HOST }}
-  #     ssh_username: ${{ secrets.SSH_USERNAME }}
-  #     ssh_password: ${{ secrets.SSH_PASSWORD }}
+  release_image:
+    needs:
+      - types
+      - lint
+      - test
+    uses: spuxx1701/ci-cd/.github/workflows/release_image.yml@v2.0
+    with:
+      dockerfile: Dockerfile.staging
+    secrets:
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}

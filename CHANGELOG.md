@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.3.0] - unreleased
 
+### Changed
+
+- The application was moved to a kubernetes environment. By that, the application gained several beneficial features like high availability or rolling updates.
+- Deployment is now handled via Flux GitOps pipelines. Prior environments have been replaced with a staging and a production environment. Deployment to staging is triggerd via commits to master. Deployment to production is triggered via releasing semantic versioning tags.
+
 ### Added
 
 - Added user profiles.
