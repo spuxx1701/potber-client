@@ -4,5 +4,6 @@
 }
 
 .user-profile td {
+  display: table-cell;
   vertical-align: text-top;
 }
