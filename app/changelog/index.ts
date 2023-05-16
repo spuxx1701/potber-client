@@ -3,7 +3,10 @@ export const changelog: ChangelogItem[] = [
     version: '1.3.0',
     type: 'minor',
     added: [
-      'Nutzerprofile hinzugefügt (z.B. beim Klick auf den Nutzernamen in der Kopfzeile von Posts).',
+      'Du kannst nun auf den Autorennamen eines Posts klicken, um das Profil anzusehen.',
+    ],
+    changed: [
+      'Potber wird nun auf einer neuen Infrastruktur betrieben. Das bringt für Dich einige konkrete Vorteile, darunter Hochverfügbarkeit der Anwendung (Ausfälle sind nun erheblich unwahrscheinlicher) und Updates ohne Downtimes.',
     ],
   },
   {

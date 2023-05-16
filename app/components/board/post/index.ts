@@ -77,8 +77,26 @@ export default class PostComponent extends Component<Signature> {
   }
 
   @action async showAuthorProfile() {
-    const user = await this.store.findRecord('user', this.args.post.author.id);
-    this.modal.userProfile({ user });
+    try {
+      const user = await this.store.findRecord(
+        'user',
+        this.args.post.author.id
+      );
+      this.modal.userProfile({ user });
+    } catch (error: any) {
+      if (error.errors && error.errors[0]?.status === '404') {
+        this.messages.showNotification(
+          'Dieser User existiert nicht (mehr).',
+          'error'
+        );
+      } else {
+        this.messages.logErrorAndNotify(
+          'Das hat leider nicht geklappt.',
+          error,
+          this.constructor.name
+        );
+      }
+    }
   }
 
   @action copyLink() {

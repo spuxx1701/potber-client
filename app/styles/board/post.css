@@ -32,7 +32,7 @@
 .post-details-author-name {
   padding: 0;
   margin: 0;
-  background-color: transparent;
+  background-color: transparent !important;
   justify-content: start;
   height: auto;
   min-height: unset;
@@ -71,14 +71,13 @@
   margin: 0 0 0.5rem 0;
 }
 
-.post-title>img {
+.post-title > img {
   margin-right: 0.25rem;
 }
 
 .post-content-footer {
   margin: 0.5rem 0 0 0;
 }
-
 
 .post-content-message {
   margin: 0;
@@ -179,15 +178,16 @@ video {
   color: var(--color-text-subtle);
 }
 
-.spoiler-input, .spoiler-content {
+.spoiler-input,
+.spoiler-content {
   display: none;
 }
 
-.spoiler-input:checked+.spoiler-header {
+.spoiler-input:checked + .spoiler-header {
   display: none;
 }
 
-.spoiler-input:checked+.spoiler-header+.spoiler-content {
+.spoiler-input:checked + .spoiler-header + .spoiler-content {
   display: block;
   width: 100%;
 }
