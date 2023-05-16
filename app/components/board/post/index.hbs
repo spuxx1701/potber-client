@@ -2,12 +2,14 @@
   <div class='post-details'>
     <div class='post-details-title'>
       {{#if this.showSmallAvatar}}
-        <div class='post-avatar-small'>
-          <img src={{this.avatarUrl}} alt='☉‿⚆​​' aria-hidden='true' />
-        </div>
+        <Common::Avatar @url={{@post.avatarUrl}} />
       {{/if}}
       <div class='flex-column justify-content-center'>
-        <b class='post-details-author-name'>{{@post.author.name}}</b>
+        <button
+          type='button'
+          class='post-details-author-name'
+          {{on 'click' this.showAuthorProfile}}
+        ><b>{{@post.author.name}}</b></button>
         <button
           href={{this.href}}
           type='button'

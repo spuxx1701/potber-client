@@ -30,7 +30,12 @@
 }
 
 .post-details-author-name {
+  padding: 0;
   margin: 0;
+  background-color: transparent;
+  justify-content: start;
+  height: auto;
+  min-height: unset;
 }
 
 .post-details-date {
@@ -46,20 +51,8 @@
   margin-left: 0.25rem;
 }
 
-.post-avatar-small {
-  display: flex;
-  height: 50px;
-  width: 50px;
+.post-details .avatar {
   margin-right: 0.5rem;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: var(--color-post-background-primary);
-}
-
-.post-avatar-small img {
-  max-height: 100%;
-  max-width: 100%;
-  margin: auto;
 }
 
 .post-content {

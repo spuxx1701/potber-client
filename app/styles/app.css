@@ -12,9 +12,12 @@
 @import "./control/dropdown.css";
 @import "./control/menu.css";
 
+@import "./common/avatar.css";
+
 @import "./features/quickstart.css";
 @import "./features/newsfeed.css";
 @import "./features/bookmarks.css";
+@import "./features/user-profile.css";
 
 @import "./board/board.css";
 @import "./board/board-overview.css";

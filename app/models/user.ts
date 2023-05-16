@@ -5,6 +5,18 @@ export default class User extends Model {
   declare name: string;
 
   @attr()
+  declare lastLogin?: string;
+
+  @attr()
+  declare activity?: string;
+
+  @attr()
+  declare status?: string;
+
+  @attr()
+  declare avatarUrl?: string;
+
+  @attr()
   declare groupId?: string;
 }
 
