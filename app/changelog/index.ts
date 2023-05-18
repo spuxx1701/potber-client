@@ -6,8 +6,9 @@ export const changelog: ChangelogItem[] = [
       'Du kannst nun auf den Autorennamen eines Posts klicken, um das Profil anzusehen.',
     ],
     changed: [
-      'Potber wird nun auf einer neuen Infrastruktur betrieben. Das bringt für Dich einige konkrete Vorteile, darunter Hochverfügbarkeit der Anwendung (Ausfälle sind nun erheblich unwahrscheinlicher) und Updates ohne Downtimes.',
+      'potber wird nun auf einer neuen Infrastruktur betrieben. Das bringt für Dich einige konkrete Vorteile, darunter Hochverfügbarkeit der Anwendung (Ausfälle sind nun erheblich unwahrscheinlicher) und Updates ohne Downtimes.',
     ],
+    fixed: ['Diverse kleinere Fixes.'],
   },
   {
     version: '1.2.1',
