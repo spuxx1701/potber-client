@@ -85,9 +85,9 @@
     "ember-load-initializers": "^2.1.2",
     "ember-page-title": "^7.0.0",
     "ember-qunit": "^6.2.0",
-    "ember-resolver": "^10.0.0",
-    "ember-simple-auth": "^4.2.2",
-    "ember-source": "~4.12.0",
+    "ember-resolver": "^10.1.0",
+    "ember-simple-auth": "^5.0.0",
+    "ember-source": "~4.8.5",
     "ember-stargate": "^0.4.3",
     "ember-template-lint": "^5.7.3",
     "ember-test-selectors": "^6.0.0",
@@ -106,7 +106,7 @@
     "semver": "^7.5.1",
     "typescript": "^5.0.4",
     "uuid": "^9.0.0",
-    "webpack": "^5.76.3"
+    "webpack": "^5.83.1"
   },
   "engines": {
     "node": "14.* || 16.* || >= 18"
