@@ -14,6 +14,11 @@ export default class NewsfeedIndicatorComponent extends Component {
   get status(): 'none' | 'info' | 'important' {
     if (!this.renderer.leftSidebarExpanded) {
       if (
+        this.newsfeed.unreadPrivateMessages &&
+        this.newsfeed.unreadPrivateMessages.length > 0
+      ) {
+        return 'important';
+      } else if (
         this.newsfeed.unreadBookmarks &&
         this.newsfeed.unreadBookmarks.length > 0
       ) {

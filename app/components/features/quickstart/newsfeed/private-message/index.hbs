@@ -1,0 +1,14 @@
+<div class='quickstart-item flex-column justify-content-center'>
+  <Common::Control::Button
+    class='full-height flex-row justify-content-start align-items-center'
+    @size='max'
+    @variant='secondary'
+    @onClick={{this.handleClick}}
+  >
+    <FaIcon @icon='envelope' class='fg-error' />
+    <div class='text-start'>
+      <p class='title max-lines-2'> {{@privateMessage.title}}</p>
+      <p class='subtitle'>{{this.subtitle}}</p>
+    </div>
+  </Common::Control::Button>
+</div>

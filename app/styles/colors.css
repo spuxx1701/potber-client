@@ -46,12 +46,14 @@
   color: var(--color-text-default);
 }
 
-.control-variant-primary-transparent, .control-variant-primary-transparent svg {
+.control-variant-primary-transparent,
+.control-variant-primary-transparent svg {
   background-color: transparent;
   color: var(--color-text-default);
 }
 
-.control-variant-secondary, .color-variant-secondary svg {
+.control-variant-secondary,
+.color-variant-secondary svg {
   background-color: transparent;
   color: var(--color-text-subtle);
 }
@@ -74,4 +76,12 @@
 
 .bg-error {
   background-color: var(--color-error);
+}
+
+.fg-error {
+  color: var(--color-error);
+}
+
+.fg-accent {
+  color: var(--color-accent);
 }

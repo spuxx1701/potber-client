@@ -9,6 +9,7 @@ import SettingsService, {
   SidebarLayout,
 } from 'potber-client/services/settings';
 import RendererService from 'potber-client/services/renderer';
+import PrivateMessage from 'potber-client/models/private-message';
 
 interface Context extends TestContext {
   element: HTMLElement;
@@ -47,6 +48,20 @@ module(
         .hasStyle({ display: 'none' });
     });
 
+    test("should have class 'newsfeed-indicator-important' when there are unread private messages", async function (this: Context, assert) {
+      class NewsfeedStub extends NewsfeedService {
+        unreadPrivateMessages: PrivateMessage[] = [
+          newsfeedMocks.unreadPrivateMessages,
+        ];
+      }
+      this.owner.register('service:newsfeed', NewsfeedStub);
+      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+
+      assert
+        .dom('[data-test-newsfeed-indicator')
+        .hasClass('newsfeed-indicator-important');
+    });
+
     test("should have class 'newsfeed-indicator-info' when there are unread bookmarks", async function (this: Context, assert) {
       class NewsfeedStub extends NewsfeedService {
         unreadBookmarks: Bookmark[] = [newsfeedMocks.unreadBookmark];
@@ -57,6 +72,21 @@ module(
       assert
         .dom('[data-test-newsfeed-indicator')
         .hasClass('newsfeed-indicator-info');
+    });
+
+    test("should have class 'newsfeed-indicator-important' when there are both unread private messages and unread bookmarks", async function (this: Context, assert) {
+      class NewsfeedStub extends NewsfeedService {
+        unreadBookmarks: Bookmark[] = [newsfeedMocks.unreadBookmark];
+        unreadPrivateMessages: PrivateMessage[] = [
+          newsfeedMocks.unreadPrivateMessages,
+        ];
+      }
+      this.owner.register('service:newsfeed', NewsfeedStub);
+      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+
+      assert
+        .dom('[data-test-newsfeed-indicator')
+        .hasClass('newsfeed-indicator-important');
     });
 
     test("should have class 'newsfeed-indicator-position-right' when left-sided sidebar layout is selected", async function (this: Context, assert) {

@@ -1,15 +1,17 @@
 .title {
   font-size: medium;
   font-weight: bold;
-  color: var(--color-text-highlighted)
+  color: var(--color-text-highlighted);
 }
 
-.subtitle, .subtitle b {
+.subtitle,
+.subtitle b {
   font-size: small;
   color: var(--color-text-subtle);
 }
 
-a, a:visited {
+a,
+a:visited {
   color: var(--color-text-link);
 }
 
@@ -26,6 +28,10 @@ hr {
   margin: 1rem;
 }
 
+.text-start {
+  text-align: start;
+}
+
 .text-center {
   text-align: center;
 }
@@ -34,7 +40,8 @@ hr {
   text-align: end;
 }
 
-.max-lines-1, .max-lines-2 {
+.max-lines-1,
+.max-lines-2 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;

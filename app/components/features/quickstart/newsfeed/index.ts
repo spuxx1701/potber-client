@@ -9,15 +9,22 @@ export default class QuickstartNewsfeedComponent extends Component {
   @service declare renderer: RendererService;
 
   get status() {
-    if (!this.unreadBookmarks) {
+    if (!this.unreadBookmarks && !this.unreadPrivateMessages) {
       return 'error';
     } else {
-      if (this.unreadBookmarks.length === 0) {
+      if (
+        this.unreadBookmarks?.length === 0 &&
+        this.unreadPrivateMessages?.length === 0
+      ) {
         return 'empty';
       } else {
         return 'ok';
       }
     }
+  }
+
+  get unreadPrivateMessages() {
+    return this.newsfeed.unreadPrivateMessages;
   }
 
   get unreadBookmarks() {

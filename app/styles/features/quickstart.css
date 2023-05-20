@@ -5,15 +5,15 @@
   align-items: center;
 }
 
-.quickstart>hr {
+.quickstart > hr {
   margin: 0.5rem auto;
 }
 
-.quickstart>h3 {
+.quickstart > h3 {
   margin: 0.5rem auto;
 }
 
-.quickstart>p {
+.quickstart > p {
   margin: 0.5rem auto;
 }
 
@@ -30,12 +30,13 @@
   border-radius: var(--global-border-radius);
 }
 
-.quickstart-item>.button-link, .quickstart-item>.menu-button {
+.quickstart-item > .button-link,
+.quickstart-item > .menu-button {
   box-sizing: border-box;
   height: 100%;
 }
 
-.quickstart-item>.button-link {
+.quickstart-item > .button-link {
   width: 100%;
   padding: 0.25rem 0.5rem;
   align-items: start;
@@ -44,4 +45,8 @@
 
 .quickstart-item p {
   margin: 0;
+}
+
+.quickstart-item svg {
+  margin: 0.5rem !important;
 }

@@ -5,6 +5,12 @@
 {{else if (eq this.status 'empty')}}
   <p class='subtitle text-center'>Es gibt keine Neuigkeiten.</p>
 {{else}}
+  {{#each this.unreadPrivateMessages as |privateMessage|}}
+    <Features::Quickstart::Newsfeed::PrivateMessage
+      @privateMessage={{privateMessage}}
+      @inSidebar={{@inSidebar}}
+    />
+  {{/each}}
   {{#each this.unreadBookmarks as |bookmark|}}
     <Features::Quickstart::Newsfeed::Bookmark
       @bookmark={{bookmark}}
