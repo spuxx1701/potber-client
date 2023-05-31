@@ -68,7 +68,7 @@ export const memeCategories: MemeCategory[] = [
     memes: [
       {
         id: 'FrogeAngry',
-        url: 'froge/froge-angry.png',
+        url: 'froge/froge-angry.webp',
       },
       {
         id: 'FrogeBonk',
@@ -183,8 +183,8 @@ export const memeCategories: MemeCategory[] = [
         url: 'froge/froge-whirl.webp',
       },
       {
-        id: 'FrogeYay',
-        url: 'froge/froge-yay.webp',
+        id: 'FrogeYah',
+        url: 'froge/froge-yah.webp',
       },
     ],
   },

@@ -36,6 +36,8 @@ module.exports = function (environment) {
   }
 
   if (environment === 'test') {
+    ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
+
     // Testem prefers this...
     ENV.locationType = 'none';
 

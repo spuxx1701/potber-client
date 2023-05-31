@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { parseMemeUrl } from 'potber-client/helpers/parse-meme-url';
 import ModalService from 'potber-client/services/modal';
 import { Meme, memeCategories } from 'potber-client/utils/memes';
 
@@ -22,7 +23,8 @@ export default class MemeSelectModalComponent extends Component<Signature> {
   }
 
   @action handleSelect(meme: Meme) {
-    this.args.options.onSelect(meme.url);
+    const url = parseMemeUrl([meme.url]);
+    this.args.options.onSelect(url);
   }
 
   @action handleCancel() {
