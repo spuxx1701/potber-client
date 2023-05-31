@@ -85,3 +85,7 @@
 .fg-accent {
   color: var(--color-accent);
 }
+
+.fg-text-subtle {
+  color: var(--color-text-subtle);
+}
