@@ -17,6 +17,9 @@ export default class User extends Model {
   declare avatarUrl?: string;
 
   @attr()
+  declare rank?: string;
+
+  @attr()
   declare groupId?: string;
 }
 
