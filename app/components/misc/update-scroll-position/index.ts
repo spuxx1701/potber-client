@@ -27,8 +27,6 @@ export default class UpdateScrollPositionComponent extends Component {
         const rect = anchorElement.getBoundingClientRect();
         const topNavHeight = (document.getElementById('top-nav') as HTMLElement)
           .clientHeight;
-        console.log(currentScrollTop);
-        console.log(rect.top);
         this.renderer.trySetScrollPosition({
           top: currentScrollTop + rect.top - topNavHeight,
           behavior: 'smooth',
