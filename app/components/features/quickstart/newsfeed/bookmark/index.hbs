@@ -1,19 +1,21 @@
-<Common::Control::Link
-  class='quickstart-item'
-  @route='authenticated.thread'
-  @query={{hash
-    TID=@bookmark.thread.id
-    PID=@bookmark.postId
-    subtleUntilPostId=@bookmark.postId
-    page=undefined
-    scrollToBottom=undefined
-  }}
-  @variant='secondary'
-  @onClick={{this.handleLinkClick}}
->
-  <FaIcon @icon='bookmark' class='fg-text-subtle' />
-  <div class='text-start'>
-    <p class='title max-lines-2'> {{@bookmark.thread.title}}</p>
-    <p class='subtitle'>{{this.subtitle}}</p>
-  </div>
-</Common::Control::Link>
+<div class='quickstart-item'>
+  <Common::Control::Link
+    class='flex-row align-items-center justify-content-start'
+    @route='authenticated.thread'
+    @query={{hash
+      TID=@bookmark.thread.id
+      PID=@bookmark.postId
+      subtleUntilPostId=@bookmark.postId
+      page=undefined
+      scrollToBottom=undefined
+    }}
+    @variant='secondary'
+    @onClick={{this.handleLinkClick}}
+  >
+    <FaIcon @icon='bookmark' class='fg-text-subtle' />
+    <div class='text-start'>
+      <p class='title max-lines-2'> {{@bookmark.thread.title}}</p>
+      <p class='subtitle'>{{this.subtitle}}</p>
+    </div>
+  </Common::Control::Link>
+</div>

@@ -1,12 +1,14 @@
-<Common::Control::Button
-  class='quickstart-item'
-  @size='max'
-  @variant='secondary'
-  @onClick={{this.handleClick}}
->
-  <FaIcon @icon='envelope' class='fg-text-subtle' />
-  <div class='text-start'>
-    <p class='title max-lines-2'> {{@privateMessage.title}}</p>
-    <p class='subtitle'>{{this.subtitle}}</p>
-  </div>
-</Common::Control::Button>
+<div class='quickstart-item'>
+  <Common::Control::Button
+    class='flex-row align-items-center justify-content-start'
+    @size='max'
+    @variant='secondary'
+    @onClick={{this.handleClick}}
+  >
+    <FaIcon @icon='envelope' class='fg-text-subtle' />
+    <div class='text-start'>
+      <p class='title max-lines-2'> {{@privateMessage.title}}</p>
+      <p class='subtitle'>{{this.subtitle}}</p>
+    </div>
+  </Common::Control::Button>
+</div>
