@@ -17,9 +17,10 @@ export default class CustomStore extends Store {
     reload?: boolean;
   }): Promise<ArrayProxy<Bookmark>> {
     if (!this.bookmarks || options?.reload) {
-      this.bookmarks = await this.findAll('bookmark', {
-        reload: true,
-      });
+      if (options?.reload) {
+        this.unloadAll('bookmark');
+      }
+      this.bookmarks = await this.findAll('bookmark');
     }
     return this.bookmarks;
   }
@@ -28,12 +29,17 @@ export default class CustomStore extends Store {
    * Returns private messages.
    * @param options.unread (optional) Filters using the 'unread' status.
    * @param options.folder (optional) Filters using the private message folder.
+   * @param options.reload (optional) Whether a reload should be forced.
    * @returns The bookmarks.
    */
   async getPrivateMessages(options?: {
     unread?: boolean;
     folder?: PrivateMessageFolder;
+    reload?: boolean;
   }): Promise<ArrayProxy<PrivateMessage>> {
+    if (options?.reload) {
+      this.unloadAll('privateMessage');
+    }
     const privateMessages = await this.findAll('privateMessage', {
       adapterOptions: {
         queryParams: {

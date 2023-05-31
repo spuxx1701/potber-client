@@ -43,8 +43,9 @@ export default class NewsfeedService extends Service {
       const privateMessages = await this.store.getPrivateMessages({
         unread: true,
         folder: PrivateMessageFolder.inbound,
+        reload: true,
       });
-      this.unreadPrivateMessages = privateMessages.toArray();
+      this.unreadPrivateMessages = [...privateMessages.toArray()];
     } catch (error) {
       this.unreadPrivateMessages = null;
     }
