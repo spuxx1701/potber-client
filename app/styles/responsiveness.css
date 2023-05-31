@@ -1,14 +1,19 @@
 /* Large tablets and desktops */
 @media only screen and (min-width: 768px) {
-
   /* Hover effects */
   a:hover {
     opacity: 0.8;
   }
 
-  button:not(:disabled):hover, .button-link:not(:disabled):hover {
+  button:not(:disabled):hover,
+  .button-link:not(:disabled):hover {
     opacity: 1;
     background-color: var(--color-control-hover);
+  }
+
+  button:not(:disabled):active,
+  .button-link:not(:disabled):active {
+    background-color: var(--color-control-hover-primary);
   }
 
   .board-category-header:hover {
