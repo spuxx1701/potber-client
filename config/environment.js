@@ -18,6 +18,7 @@ module.exports = function (environment) {
       API_URL: 'http://localhost:3000',
       FORUM_URL: 'https://forum.mods.de/bb/',
       USER_PAGE_URL: 'https://my.mods.de/',
+      MEME_HOST_URL: `https://potber.de`,
       DEBUG: false,
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -26,6 +27,7 @@ module.exports = function (environment) {
 
   if (environment === 'development') {
     ENV.APP.DEBUG = true;
+    ENV.APP.MEME_HOST_URL = 'https://potber-test.spuxx.dev';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -47,11 +49,13 @@ module.exports = function (environment) {
 
   if (environment === 'staging') {
     ENV.APP.API_URL = 'https://potber-api-test.spuxx.dev';
+    ENV.APP.MEME_HOST_URL = 'https://potber-test.spuxx.dev';
     ENV.APP.DEBUG = true;
   }
 
   if (environment === 'production') {
     ENV.APP.API_URL = 'https://potber-api.spuxx.dev';
+    ENV.APP.MEME_HOST_URL = 'https://potber.spuxx.dev';
     ENV.APP.DEBUG = false;
   }
 

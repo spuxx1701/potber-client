@@ -64,6 +64,131 @@ export const memeCategories: MemeCategory[] = [
     ],
   },
   {
+    name: 'Froge',
+    memes: [
+      {
+        id: 'FrogeAngry',
+        url: 'froge/froge-angry.png',
+      },
+      {
+        id: 'FrogeBonk',
+        url: 'froge/froge-bonk.gif',
+      },
+      {
+        id: 'FrogeClown',
+        url: 'froge/froge-clown.webp',
+      },
+      {
+        id: 'FrogeCalm',
+        url: 'froge/froge-calm.webp',
+      },
+      {
+        id: 'FrogeCross',
+        url: 'froge/froge-cross.webp',
+      },
+      {
+        id: 'FrogeDealWithIt',
+        url: 'froge/froge-deal-with-it.webp',
+      },
+      {
+        id: 'FrogeDetective',
+        url: 'froge/froge-detective.webp',
+      },
+      {
+        id: 'FrogeDodge',
+        url: 'froge/froge-dodge.webp',
+      },
+      {
+        id: 'FrogeFinger',
+        url: 'froge/froge-finger.webp',
+      },
+      {
+        id: 'FrogeHappy',
+        url: 'froge/froge-happy.webp',
+      },
+      {
+        id: 'FrogeHug',
+        url: 'froge/froge-hug.webp',
+      },
+      {
+        id: 'FrogeHugging',
+        url: 'froge/froge-hugging.webp',
+      },
+      {
+        id: 'FrogeJuice',
+        url: 'froge/froge-juice.webp',
+      },
+      {
+        id: 'FrogeKing',
+        url: 'froge/froge-king.webp',
+      },
+      {
+        id: 'FrogeLick',
+        url: 'froge/froge-lick.gif',
+      },
+      {
+        id: 'FrogeNod',
+        url: 'froge/froge-nod.gif',
+      },
+      {
+        id: 'FrogePet',
+        url: 'froge/froge-pet.gif',
+      },
+      {
+        id: 'FrogePopcorn',
+        url: 'froge/froge-popcorn.gif',
+      },
+      {
+        id: 'FrogePray',
+        url: 'froge/froge-pray.webp',
+      },
+      {
+        id: 'FrogeRamen',
+        url: 'froge/froge-ramen.gif',
+      },
+      {
+        id: 'FrogeRating',
+        url: 'froge/froge-rating.webp',
+      },
+      {
+        id: 'FrogeRope',
+        url: 'froge/froge-rope.webp',
+      },
+      {
+        id: 'FrogeSad',
+        url: 'froge/froge-sad.webp',
+      },
+      {
+        id: 'FrogeShrug',
+        url: 'froge/froge-shrug.webp',
+      },
+      {
+        id: 'FrogeStab',
+        url: 'froge/froge-stab.gif',
+      },
+      {
+        id: 'FrogeSus',
+        url: 'froge/froge-sus.webp',
+      },
+      {
+        id: 'FrogeSweatGun',
+        url: 'froge/froge-sweat-gun.webp',
+      },
+      {
+        id: 'FrogeWave',
+        url: 'froge/froge-wave.gif',
+      },
+      {
+        id: 'FrogeWhirl',
+        url: 'froge/froge-whirl.webp',
+      },
+      {
+        id: 'FrogeYay',
+        url: 'froge/froge-yay.webp',
+      },
+    ],
+  },
+  {
     name: 'Smiley-Galerie',
     memes: [
       {

@@ -45,7 +45,7 @@ export default class NewsfeedService extends Service {
         folder: PrivateMessageFolder.inbound,
         reload: true,
       });
-      this.unreadPrivateMessages = [...privateMessages.toArray()];
+      this.unreadPrivateMessages = [...privateMessages.slice()];
     } catch (error) {
       this.unreadPrivateMessages = null;
     }

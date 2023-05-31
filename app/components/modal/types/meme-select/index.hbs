@@ -13,7 +13,7 @@
             class='modal-select-meme-element modal-select-meme-element-width-{{meme.width}}
               modal-select-meme-element-height-{{meme.height}}'
           >
-            <img src={{meme.url}} alt={{meme.id}} />
+            <img src={{parse-meme-url meme.url}} alt={{meme.id}} />
           </Common::Control::Button>
         {{/each}}
       </div>
