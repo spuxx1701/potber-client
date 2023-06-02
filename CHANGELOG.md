@@ -4,10 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.3.0] - unreleased
+## [1.3.0] - 2023-06-02
 
 ### Added
 
+- The newsfeed now displays and links to unread incoming private messages. A red indicator on top of sidebar toggle indicates unread messages.
 - Froge memes are now available.
 - The PWA now supports landscape orientation.
 - You can now tap on a post author's name to see their profile.

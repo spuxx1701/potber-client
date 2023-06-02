@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.3.0',
     type: 'minor',
     added: [
+      'Der Newsfeed zeigt nun ungelesene eingehende Privatnachrichten an und verlinkt dorthin. Ein roter Punkt über dem Sidebar-Button zeigt ungelesene Nachrichten an.',
       'Froge memes!',
       'Die PWA unterstützt nun landscape orientation. Sollte das bei Dir nicht klappen, installiere bitte die PWA neu oder warte ein paar Tage.',
       'Du kannst nun auf den Autorennamen eines Posts klicken, um das Profil anzusehen.',
