@@ -136,7 +136,7 @@ export const memeCategories: MemeCategory[] = [
       },
       {
         id: 'FrogePopcorn',
-        url: 'froge/froge-popcorn.gif',
+        url: 'froge/froge-popcorn.webp',
       },
       {
         id: 'FrogePray',
