@@ -4,7 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
     added: [
       'Froge memes!',
-      'Die Anwendung unterstützt nun landscape orientation.',
+      'Die PWA unterstützt nun landscape orientation. Sollte das bei Dir nicht klappen, installiere bitte die PWA neu oder warte ein paar Tage.',
       'Du kannst nun auf den Autorennamen eines Posts klicken, um das Profil anzusehen.',
     ],
     changed: [
