@@ -27,7 +27,7 @@ module.exports = function (environment) {
 
   if (environment === 'development') {
     ENV.APP.DEBUG = true;
-    ENV.APP.MEME_HOST_URL = 'https://potber-test.spuxx.dev';
+    ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -50,14 +50,14 @@ module.exports = function (environment) {
   }
 
   if (environment === 'staging') {
-    ENV.APP.API_URL = 'https://potber-api-test.spuxx.dev';
-    ENV.APP.MEME_HOST_URL = 'https://potber-test.spuxx.dev';
+    ENV.APP.API_URL = 'https://test-api.potber.de';
+    ENV.APP.MEME_HOST_URL = 'https://potber.de';
     ENV.APP.DEBUG = true;
   }
 
   if (environment === 'production') {
-    ENV.APP.API_URL = 'https://potber-api.spuxx.dev';
-    ENV.APP.MEME_HOST_URL = 'https://potber.spuxx.dev';
+    ENV.APP.API_URL = 'https://api.potber.de';
+    ENV.APP.MEME_HOST_URL = 'https://potber.de';
     ENV.APP.DEBUG = false;
   }
 
