@@ -15,7 +15,7 @@ module.exports = function (environment) {
     },
 
     APP: {
-      API_URL: 'http://localhost:3000',
+      API_URL: 'https://api.potber.de',
       FORUM_URL: 'https://forum.mods.de/bb/',
       USER_PAGE_URL: 'https://my.mods.de/',
       MEME_HOST_URL: `https://potber.de`,
@@ -26,6 +26,7 @@ module.exports = function (environment) {
   };
 
   if (environment === 'development') {
+    ENV.APP.API_URL = 'http://localhost:3000';
     ENV.APP.DEBUG = true;
     ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
     // ENV.APP.LOG_RESOLVER = true;
