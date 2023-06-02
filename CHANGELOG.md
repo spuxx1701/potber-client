@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
+- Froge memes are now available.
 - The application now supports landscape orientation.
 - You can now tap on a post author's name to see their profile.
 
