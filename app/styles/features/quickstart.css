@@ -48,8 +48,7 @@
   margin: 0;
 }
 
-.quickstart-item svg {
-  box-sizing: border-box;
+.quickstart-item > *:not(.menu-button) > svg {
   min-width: 16px;
   margin-right: 0.5rem !important;
 }

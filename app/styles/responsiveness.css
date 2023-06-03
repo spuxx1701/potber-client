@@ -1,39 +1,37 @@
 /* Large tablets and desktops */
 @media only screen and (min-width: 768px) {
-  /* Hover effects */
-  a:hover {
-    opacity: 0.8;
-  }
-
-  button:not(:disabled):hover,
-  .button-link:not(:disabled):hover {
-    opacity: 1;
+  .control-variant-primary:not(:disabled):hover,
+  .dropdown-toggle:not(:disabled):hover,
+  .menu-button-item:not(:disabled):hover,
+  .dropdown-item:not(:disabled):hover,
+  input:not(:disabled):hover {
     background-color: var(--color-control-hover);
   }
 
-  button:not(:disabled):active,
-  .button-link:not(:disabled):active {
-    background-color: var(--color-control-hover-primary);
-  }
-
-  .board-category-header:hover {
-    background-color: var(--color-control-hover);
-  }
-
-  .board-item-important:hover {
-    background-color: var(--color-control-hover);
+  .control-variant-primary-transparent:not(:disabled):hover,
+  .control-variant-secondary:not(:disabled):hover {
+    background-color: var(--color-control-hover-transparent);
   }
 
   .dropdown-item:hover {
-    background-color: var(--color-control-hover);
     color: var(--color-text-default);
   }
 
-  .menu-button-item:not(:disabled):hover {
-    background-color: var(--color-control-hover);
+  .board-category-header:hover,
+  .board-category-item:hover,
+  .board-item:hover,
+  .quickstart-item > a:hover,
+  .quickstart-item > button:hover {
+    opacity: 0.8;
   }
 
-  input:hover {
-    background-color: var(--color-control-hover);
+  .board-category-header:hover,
+  .board-item-important:hover {
+    background-color: var(--color-post-background-secondary) !important;
+  }
+
+  .board-category-item:hover,
+  .board-item {
+    background-color: var(--color-post-background-primary) !important;
   }
 }

@@ -17,6 +17,7 @@
   --color-control-inactive: #122130;
   --color-control-disabled: #333d4b;
   --color-control-hover: #1b3149;
+  --color-control-hover-transparent: rgba(255, 255, 255, 0.1);
   --color-input-inactive: var(--color-control-inactive);
 
   --color-quote-header: var(--color-nav-background);

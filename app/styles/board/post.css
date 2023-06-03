@@ -41,7 +41,7 @@
 .post-details-date {
   margin: 0;
   text-decoration: none;
-  background-color: transparent;
+  background-color: transparent !important;
   padding: unset;
   min-height: unset;
   height: unset;

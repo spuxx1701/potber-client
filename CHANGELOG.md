@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Improved visual appearance on desktop and large screens.
 - Added missing 'FrogeLove' meme.
 
 ## [1.3.0] - 2023-06-02

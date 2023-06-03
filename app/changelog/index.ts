@@ -2,7 +2,10 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.3.1',
     type: 'minor',
-    fixed: ["Fehlendes 'FrogeLove' meme hinzugefügt."],
+    fixed: [
+      "Fehlendes 'FrogeLove' meme hinzugefügt.",
+      'Kleinere visuelle Verbesserungen auf Desktop und anderen großen Screens.',
+    ],
   },
   {
     version: '1.3.0',
