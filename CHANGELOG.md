@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Worked on fixing the BBCode parsing. Unfortunately, this is not noticable by the user yet.
 - The PWA now respects both the device's orientation and rotation lock.
 - Added missing 'FrogeLove' meme.
 - Fixed some unit tests not being executed properly.
