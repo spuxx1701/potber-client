@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.3.1',
+    type: 'minor',
+    fixed: ["Fehlendes 'FrogeLove' meme hinzugefügt."],
+  },
+  {
     version: '1.3.0',
     type: 'minor',
     added: [

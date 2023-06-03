@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.3.1] - unreleased
+
+### Fixed
+
+- Added missing 'FrogeLove' meme.
+
 ## [1.3.0] - 2023-06-02
 
 ### Added

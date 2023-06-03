@@ -127,6 +127,10 @@ export const memeCategories: MemeCategory[] = [
         url: 'froge/froge-lick.gif',
       },
       {
+        id: 'FrogeLove',
+        url: 'froge/froge-love.webp',
+      },
+      {
         id: 'FrogeNod',
         url: 'froge/froge-nod.gif',
       },
