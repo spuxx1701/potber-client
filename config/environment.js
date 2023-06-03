@@ -20,8 +20,6 @@ module.exports = function (environment) {
       USER_PAGE_URL: 'https://my.mods.de/',
       MEME_HOST_URL: `https://potber.de`,
       DEBUG: false,
-      // Here you can pass flags/options to your application instance
-      // when it is created
     },
   };
 
@@ -57,9 +55,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.API_URL = 'https://api.potber.de';
-    ENV.APP.MEME_HOST_URL = 'https://potber.de';
-    ENV.APP.DEBUG = false;
+    // Production configuration is the default
   }
 
   return ENV;
