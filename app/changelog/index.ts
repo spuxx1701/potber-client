@@ -5,7 +5,10 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'Die Anwendung lässt sich nun auf Desktops und anderen großen Monitoren erheblich besser bedienen.',
     ],
-    fixed: ["Fehlendes 'FrogeLove' meme hinzugefügt."],
+    fixed: [
+      'Die PWA respektiert nun die Rotationssperre des Endgeräts.',
+      "Fehlendes 'FrogeLove' meme hinzugefügt.",
+    ],
   },
   {
     version: '1.3.0',
