@@ -4,11 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.3.1] - unreleased
+## [1.4.0] - unreleased
+
+### Changed
+
+- Significantly improved desktop experience.
 
 ### Fixed
 
-- Improved visual appearance on desktop and large screens.
 - Added missing 'FrogeLove' meme.
 
 ## [1.3.0] - 2023-06-02

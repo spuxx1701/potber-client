@@ -4,13 +4,23 @@
   {{/if}}
   <PortalTarget @name='top-nav' class='nav-portal-target' />
   <span class='control-size-square' />
+  {{#if this.isDesktop}}
+    {{#if
+      (and this.authenticated (eq this.sidebarToggleVerticalPosition 'bottom'))
+    }}
+      <Nav::SidebarToggle />
+    {{/if}}
+    <PortalTarget @name='bottom-nav' class='nav-portal-target' />
+  {{/if}}
 </div>
 
-<div id='bottom-nav' class='nav' role='toolbar'>
-  {{#if
-    (and this.authenticated (eq this.sidebarToggleVerticalPosition 'bottom'))
-  }}
-    <Nav::SidebarToggle />
-  {{/if}}
-  <PortalTarget @name='bottom-nav' class='nav-portal-target' />
-</div>
+{{#unless this.isDesktop}}
+  <div id='bottom-nav' class='nav' role='toolbar'>
+    {{#if
+      (and this.authenticated (eq this.sidebarToggleVerticalPosition 'bottom'))
+    }}
+      <Nav::SidebarToggle />
+    {{/if}}
+    <PortalTarget @name='bottom-nav' class='nav-portal-target' />
+  </div>
+{{/unless}}

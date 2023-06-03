@@ -12,8 +12,9 @@ export default class SidebarComponent extends Component {
 
   get navVerticalPosition(): 'top' | 'bottom' {
     if (
-      this.settings.sidebarLayout === SidebarLayout.leftBottom ||
-      this.settings.sidebarLayout === SidebarLayout.rightBottom
+      (this.settings.sidebarLayout === SidebarLayout.leftBottom ||
+        this.settings.sidebarLayout === SidebarLayout.rightBottom) &&
+      !this.renderer.isDesktop
     ) {
       return 'bottom';
     }

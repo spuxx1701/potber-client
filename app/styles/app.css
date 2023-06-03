@@ -1,36 +1,35 @@
-@import "./animations.css";
-@import "./colors.css";
-@import "./layout.css";
-@import "./text.css";
-@import "./nav.css";
-@import "./sidebar.css";
-@import "./modal.css";
+@import './animations.css';
+@import './colors.css';
+@import './layout.css';
+@import './text.css';
+@import './nav.css';
+@import './sidebar.css';
+@import './modal.css';
 
-@import "./control/button.css";
-@import "./control/input.css";
-@import "./control/accordion.css";
-@import "./control/dropdown.css";
-@import "./control/menu.css";
+@import './control/button.css';
+@import './control/input.css';
+@import './control/accordion.css';
+@import './control/dropdown.css';
+@import './control/menu.css';
 
-@import "./common/avatar.css";
+@import './common/avatar.css';
 
-@import "./features/quickstart.css";
-@import "./features/newsfeed.css";
-@import "./features/bookmarks.css";
-@import "./features/user-profile.css";
+@import './features/quickstart.css';
+@import './features/newsfeed.css';
+@import './features/bookmarks.css';
+@import './features/user-profile.css';
 
-@import "./board/board.css";
-@import "./board/board-overview.css";
-@import "./board/post.css";
-@import "./board/post-form.css";
-@import "./board/thread.css";
-@import "./board/bookmark.css";
+@import './board/board.css';
+@import './board/board-overview.css';
+@import './board/post.css';
+@import './board/post-form.css';
+@import './board/thread.css';
+@import './board/bookmark.css';
 
-@import "./responsiveness.css";
-@import "./devices.css";
+@import './responsiveness.css';
+@import './devices.css';
 
-@import "./overrides.css";
-
+@import './overrides.css';
 
 html {
   background-color: var(--color-application-background);
@@ -49,7 +48,9 @@ body {
 
 .ember-application * {
   scrollbar-width: thin;
-  transition: color 200ms, background-color 200ms, border 200ms, border-color 200ms, font-size 200ms, text-shadow 200ms, transform 200ms, scale 200ms, opacity 200ms;
+  transition: color 200ms, background-color 200ms, border 200ms,
+    border-color 200ms, font-size 200ms, text-shadow 200ms, transform 200ms,
+    scale 200ms, opacity 200ms;
   -webkit-tap-highlight-color: transparent !important;
 }
 
@@ -70,7 +71,7 @@ body {
 }
 
 .c-notification {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, .5)
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .message-item {
@@ -109,11 +110,11 @@ body {
   margin-bottom: 1rem;
 }
 
-.changelog-item-header>svg {
+.changelog-item-header > svg {
   margin-right: 0.5rem;
 }
 
-.changelog-item>.title {
+.changelog-item > .title {
   margin-top: 1rem;
   margin-bottom: 0.25rem;
 }

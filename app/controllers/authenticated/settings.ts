@@ -42,6 +42,14 @@ export default class SettingsController extends Controller {
   }
 
   @action handleSidebarLayoutSelect(option: DropdownOption) {
+    if (this.renderer.isDesktop) {
+      this.modal.confirm({
+        title: 'Desktopmodus',
+        icon: 'desktop',
+        text: 'Aufgrund der Größe Deines Monitors läuft die Anwendung im Desktopmodus. Eine Änderung des Sidebarlayouts hat im Desktopmodus keine Auswirkungen.',
+        onSubmit: () => this.modal.close(),
+      });
+    }
     this.settings.sidebarLayout = option.data;
     this.renderer.updateSidebarLayout();
   }

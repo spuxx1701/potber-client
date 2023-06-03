@@ -36,7 +36,7 @@ export default class QuickstartNewsfeedPrivateMessageComponent extends Component
         this.modal.close();
       },
     });
-    if (this.args.inSidebar) {
+    if (this.args.inSidebar && !this.renderer.isDesktop) {
       this.renderer.closeLeftSidebar();
     }
   }

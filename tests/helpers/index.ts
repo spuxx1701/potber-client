@@ -1,9 +1,13 @@
+import { find, render } from '@ember/test-helpers';
+import { hbs } from 'ember-cli-htmlbars';
 import {
   setupApplicationTest as upstreamSetupApplicationTest,
   setupRenderingTest as upstreamSetupRenderingTest,
   setupTest as upstreamSetupTest,
   SetupTestOptions,
 } from 'ember-qunit';
+import ModalService from 'potber-client/services/modal';
+import { sleep } from 'potber-client/utils/misc';
 
 // This file exists to provide wrappers around ember-qunit's / ember-mocha's
 // test setup functions. This way, you can easily extend the setup that is
@@ -28,10 +32,23 @@ function setupApplicationTest(hooks: NestedHooks, options?: SetupTestOptions) {
   // setupMirage(hooks); // ember-cli-mirage
 }
 
-function setupRenderingTest(hooks: NestedHooks, options?: SetupTestOptions) {
+interface SetupRenderingTestOptions extends SetupTestOptions {
+  includeModals?: boolean;
+}
+
+function setupRenderingTest(
+  hooks: NestedHooks,
+  options?: SetupRenderingTestOptions
+) {
   upstreamSetupRenderingTest(hooks, options);
 
   // Additional setup for rendering tests can be done here.
+  hooks.beforeEach(async function () {
+    if (options?.includeModals) {
+      await render(hbs`<Modal />`);
+      this.owner.register('service:modal', ModalService);
+    }
+  });
 }
 
 function setupTest(hooks: NestedHooks, options?: SetupTestOptions) {

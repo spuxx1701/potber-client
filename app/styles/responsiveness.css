@@ -1,5 +1,67 @@
 /* Large tablets and desktops */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1280px) {
+  :root {
+    --max-content-width: 1200px;
+    --bottom-nav-height: 0px;
+    --sidebar-left: 0px !important;
+    --sidebar-right: unset !important;
+  }
+
+  /* Page layout */
+  #page-content {
+    transition: margin 500ms !important;
+    margin-left: var(--sidebar-width);
+  }
+
+  /* Sidebar */
+  #sidebar-backdrop {
+    display: none;
+  }
+
+  /* Nav */
+
+  #top-nav .nav-portal-target {
+    left: 0;
+    width: 100vw;
+    transform: unset;
+  }
+
+  #top-nav .sidebar-toggle {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+  }
+
+  #top-nav .nav-element-left {
+    position: absolute;
+    left: var(--control-default-height);
+  }
+
+  #top-nav .nav-header {
+    position: absolute;
+    left: calc(2 * var(--control-default-height) + 0.5rem);
+    width: auto;
+    align-items: start;
+  }
+
+  #top-nav .nav-element-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #top-nav .nav-element-center .menu-dropdown {
+    position: fixed;
+    top: var(--top-nav-height);
+  }
+
+  #top-nav .nav-element-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  /* Hover effects */
   .control-variant-primary:not(:disabled):hover,
   .dropdown-toggle:not(:disabled):hover,
   .menu-button-item:not(:disabled):hover,
@@ -11,10 +73,6 @@
   .control-variant-primary-transparent:not(:disabled):hover,
   .control-variant-secondary:not(:disabled):hover {
     background-color: var(--color-control-hover-transparent);
-  }
-
-  .dropdown-item:hover {
-    color: var(--color-text-default);
   }
 
   .board-category-header:hover,
@@ -31,7 +89,7 @@
   }
 
   .board-category-item:hover,
-  .board-item {
+  .board-item:hover {
     background-color: var(--color-post-background-primary) !important;
   }
 }

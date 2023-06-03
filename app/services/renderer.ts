@@ -6,11 +6,13 @@ import MessagesService from './messages';
 import SettingsService, { BoxStyle, SidebarLayout } from './settings';
 
 const LOADING_INDICATOR_DELAY = 500;
+const DESKTOP_MIN_WIDTH = 1280;
 
 export default class RendererService extends Service {
   @service declare settings: SettingsService;
   @service declare messages: MessagesService;
   @tracked leftSidebarExpanded = false;
+  @tracked isDesktop = false;
   rootStyle = document.documentElement.style;
 
   preventScrollReset = false;
@@ -21,6 +23,18 @@ export default class RendererService extends Service {
   @action initialize() {
     this.updateBoxStyle();
     this.updateSidebarLayout();
+    addEventListener('resize', this.updateIsDesktop);
+    this.updateIsDesktop();
+    if (this.isDesktop) {
+      this.toggleLeftSidebar();
+    }
+  }
+
+  /**
+   * Handles window resize events and updates renderer.isDesktop.
+   */
+  @action updateIsDesktop() {
+    this.isDesktop = window.innerWidth >= DESKTOP_MIN_WIDTH;
   }
 
   /**

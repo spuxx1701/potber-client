@@ -24,7 +24,7 @@ export default class QuickstartNewsfeedBookmarkComponent extends Component<Signa
   }
 
   @action handleLinkClick() {
-    if (this.args.inSidebar) {
+    if (this.args.inSidebar && !this.renderer.isDesktop) {
       this.renderer.closeLeftSidebar();
     }
   }

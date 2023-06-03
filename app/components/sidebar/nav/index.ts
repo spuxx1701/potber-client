@@ -10,6 +10,7 @@ export default class SidebarNavComponent extends Component {
   @service declare settings: SettingsService;
 
   @action handleNavLinkClick() {
+    if (this.renderer.isDesktop) return;
     this.renderer.closeLeftSidebar();
   }
 

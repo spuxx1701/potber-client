@@ -14,8 +14,9 @@ export default class NavComponent extends Component {
 
   get sidebarToggleVerticalPosition(): 'top' | 'bottom' {
     if (
-      this.settings.sidebarLayout === SidebarLayout.leftBottom ||
-      this.settings.sidebarLayout === SidebarLayout.rightBottom
+      (this.settings.sidebarLayout === SidebarLayout.leftBottom ||
+        this.settings.sidebarLayout === SidebarLayout.rightBottom) &&
+      !this.renderer.isDesktop
     ) {
       return 'bottom';
     }
@@ -28,5 +29,9 @@ export default class NavComponent extends Component {
 
   get leftSidebarExpanded() {
     return this.renderer.leftSidebarExpanded;
+  }
+
+  get isDesktop() {
+    return this.renderer.isDesktop;
   }
 }
