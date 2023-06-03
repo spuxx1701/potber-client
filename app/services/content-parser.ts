@@ -6,6 +6,8 @@ import { emojis } from 'potber-client/utils/icons';
 import MessagesService from './messages';
 import { parseMod } from './content-parser/mod';
 import { parseTex } from './content-parser/tex';
+import { parseVideo } from './content-parser/video';
+import { parseUrl } from './content-parser/url';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -21,6 +23,8 @@ export default class ContentParserService extends Service {
     // Simple formatting tags
     output = parseMod(output);
     output = parseTex(output);
+    output = parseVideo(output, window.location);
+    output = parseUrl(output);
     output = this.parseTable(output);
     output = this.parseList(output);
     output = this.parseQuoteUsernames(output);
@@ -100,10 +104,16 @@ export default class ContentParserService extends Service {
    * @returns The modified yabbcode parser instance.
    */
   private registerCustomTags(parser: yabbcode) {
+    parser.registerTag('video', {
+      type: 'ignore',
+    });
     parser.registerTag('table', {
       type: 'ignore',
     });
     parser.registerTag('list', {
+      type: 'ignore',
+    });
+    parser.registerTag('url', {
       type: 'ignore',
     });
     parser.registerTag('quote', {
@@ -115,18 +125,10 @@ export default class ContentParserService extends Service {
       open: '<s>',
       close: '</s>',
     });
-    parser.registerTag('url', {
-      type: 'content',
-      replace: this.parseUrl,
-    });
     parser.registerTag('spoiler', {
       type: 'replace',
       open: '<label class="spoiler"><input class="spoiler-input" type="checkbox"/><p class="spoiler-header">👀 Spoiler anzeigen</p><span class="spoiler-content">',
       close: '</span></label>',
-    });
-    parser.registerTag('video', {
-      type: 'content',
-      replace: this.parseVideo,
     });
     return parser;
   }
@@ -140,34 +142,6 @@ export default class ContentParserService extends Service {
       );
     }
     return output;
-  }
-
-  private parseUrl(attr: string, content: string) {
-    if (!attr) attr = `"${content}"`;
-    return `<a href=${attr} target="_blank">${content}</a>`;
-  }
-
-  private parseVideo(attr: string, content: string) {
-    try {
-      // YouTube links need to be embedded using their propietary player
-      if (content.match(/youtu.be/) || content.match(/youtube.com/)) {
-        const split = content.split('/');
-        const uri = split[split.length - 1] as string;
-        let videoId = uri;
-        if (/v=/.test(uri)) {
-          const idMatches = uri.match(
-            /(?=(v=)((\w|-)*)(?!\w))/
-          ) as RegExpMatchArray;
-          videoId = idMatches[2] as string;
-        }
-        const result = `<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/${videoId}?&origin=${window.location.protocol}//${window.location.host}" frameborder="0"></iframe>`;
-        return result;
-      } else {
-        return `<video src="${content}" controls/>`;
-      }
-    } catch (error) {
-      return `[video]${content}[/video]`;
-    }
   }
 
   /**

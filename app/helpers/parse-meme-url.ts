@@ -13,7 +13,6 @@ export function parseMemeUrl([url]: [string]) {
   } else {
     // If the URL is a relative one, we will output the URL that points to the live application server
     const fullUrl = `${ENV.APP['MEME_HOST_URL']}/images/memes/${url}`;
-    console.log(fullUrl);
     return fullUrl;
   }
 }

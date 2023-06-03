@@ -16,6 +16,11 @@ declare global {
     | 'max';
   type ControlVariant = 'primary' | 'primary-transparent' | 'secondary';
   type ModalVariant = 'default' | 'success' | 'warning' | 'error';
+
+  interface ContentParserMock {
+    input: string;
+    expected: string;
+  }
 }
 
 export {};
