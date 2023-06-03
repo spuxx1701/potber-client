@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Added missing 'FrogeLove' meme.
+- Fixed some unit tests not being executed properly.
 
 ## [1.3.0] - 2023-06-02
 

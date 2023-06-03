@@ -10,7 +10,7 @@ module('Unit | Helper | is-final-element', function (hooks) {
   });
 
   test('returns false if given element is not the final element', function (assert) {
-    assert.true(isFinalElement([3, [1, 2, 3, 4]]));
+    assert.false(isFinalElement([3, [1, 2, 3, 4]]));
   });
 
   test('throws an exception if helper is not being used properly', function (assert) {
