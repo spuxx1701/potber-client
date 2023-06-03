@@ -6,7 +6,7 @@ export const changelog: ChangelogItem[] = [
       'Die Anwendung lässt sich nun auf Desktops und anderen großen Monitoren erheblich besser bedienen.',
     ],
     fixed: [
-      'Die PWA respektiert nun die Rotationssperre des Endgeräts.',
+      'Die PWA respektiert nun die Rotationssperre des Endgeräts. Hinweis für Chrome-Nutzer: Chrome cached das PWA-Manifest sehr lange. Es kann dauern, bis diese Einstellung wirksam wird.',
       "Fehlendes 'FrogeLove' meme hinzugefügt.",
     ],
   },
