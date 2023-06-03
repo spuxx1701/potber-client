@@ -1,4 +1,4 @@
-import { find, render } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import {
   setupApplicationTest as upstreamSetupApplicationTest,
@@ -7,7 +7,6 @@ import {
   SetupTestOptions,
 } from 'ember-qunit';
 import ModalService from 'potber-client/services/modal';
-import { sleep } from 'potber-client/utils/misc';
 
 // This file exists to provide wrappers around ember-qunit's / ember-mocha's
 // test setup functions. This way, you can easily extend the setup that is
