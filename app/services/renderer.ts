@@ -25,9 +25,6 @@ export default class RendererService extends Service {
     this.updateSidebarLayout();
     addEventListener('resize', this.updateIsDesktop);
     this.updateIsDesktop();
-    if (this.isDesktop) {
-      this.toggleLeftSidebar();
-    }
   }
 
   /**
