@@ -1,10 +1,10 @@
 # potber
 
-This is a mobile-first web client for the german internet forum [forum.mods.de](https://foru.mods.de) built with [ember.js](https://emberjs.com/). If you're looking for the potber API, you can find it [here](https://github.com/spuxx1701/potber-api).
+This is a mobile-first web client for the german internet forum [forum.mods.de](https://forum.mods.de) built with [ember.js](https://emberjs.com/). If you're looking for the potber API, you can find it [here](https://github.com/spuxx1701/potber-api).
 
 ## How to use
 
-Visit https://www.potber.de (or https://test.potber.de for the test environment) to use the app.
+Visit https://www.potber.de (or https://test.potber.de for the staging environment) to use the app.
 
 ## Core features
 
@@ -31,6 +31,7 @@ You will need the following things properly installed on your computer.
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) (with npm)
 - [Ember CLI](https://cli.emberjs.com/release/)
+- [potber-api](ttps://github.com/spuxx1701/potber-api) - Without this web server, potber-client does not function.
 
 ### Installation
 
@@ -52,14 +53,20 @@ You will need the following things properly installed on your computer.
 #### Building
 
 - `ember build` (development)
-- `ember build --environment integration` (integration)
+- `ember build --environment staging` (staging)
 - `ember build --environment production` (production)
 
 #### Deploying
 
-Specify what it takes to deploy your app.
+The application can be deployed via [Docker](https://docker.com). The application provides two different Dockerfiles for the staging and production environments:
+
+- [staging](Dockerfile.staging)
+- [production](Dockerfile.production)
+
+After building the Docker image, you can run it locally or on a remote host. In case you're curious about how `potber.de` is hosted: Both the [test](https://test.potber.de) and [production](https://potber.de) environments run on a [Flux](https://fluxcd.io)-controlled [MicroK8s](https://microk8s.io) cluster. The infrastructure is documented [here](https://github.com/spuxx1701/flux/tree/master/cluster/apps/potber).
 
 ## Further Reading / Useful Links
 
-- [ember.js](https://emberjs.com/)
-- [ember-cli](https://cli.emberjs.com/release/)
+- [ember.js](https://emberjs.com/) - The framework.
+- [potber-api](https://github.com/spuxx1701/potber-api) - The web server that potber-client utilizes.
+- [dockerhub](https://hub.docker.com/repository/docker/spuxx/potber-client/general) - The dockerhub repository.
