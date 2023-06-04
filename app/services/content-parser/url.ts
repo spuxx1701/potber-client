@@ -1,15 +1,16 @@
-const URL_REGEX = /\[url.*?\](.*?)\[\/url\]/gi;
-const URL_PATH_REGEX = /\[url=(.*?)\]/i;
-const URL_LABEL_REGEX = /\[url.*?\](.*?)\[\/url\]/i;
-
 /**
  * Parses [url] tags. Does not support tag nesting.
  * @param input The input string.
  * @returns The output string.
  */
 export function parseUrl(input: string) {
+  const URL_REGEX = /\[url.*?\](.*?)\[\/url\]/gi;
+  const URL_PATH_REGEX = /\[url=(.*?)\]/i;
+  const URL_LABEL_REGEX = /\[url.*?\](.*?)\[\/url\]/i;
+
+  if (!URL_REGEX.test(input)) return input;
   let output = input;
-  const matches = output.matchAll(URL_REGEX);
+  const matches = output.matchAll(new RegExp(URL_REGEX));
   for (const match of matches) {
     try {
       const full = match[0] as string;

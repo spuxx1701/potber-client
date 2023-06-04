@@ -1,14 +1,15 @@
-const VIDEO_REGEX = /\[video\](.*)\[\/video\]/gi;
-const YOUTUBE_REGEX = /(youtu\.be)|(youtube\.com)/;
-
 /**
  * Parses [video] tags. Does not support tag nesting.
  * @param input The input string.
  * @returns The output string.
  */
 export function parseVideo(input: string, location: Partial<Location>) {
+  const VIDEO_REGEX = /\[video\](.*)\[\/video\]/gi;
+  const YOUTUBE_REGEX = /(youtu\.be)|(youtube\.com)/;
+
+  if (!VIDEO_REGEX.test(input)) return input;
   let output = input;
-  const matches = input.matchAll(VIDEO_REGEX);
+  const matches = input.matchAll(new RegExp(VIDEO_REGEX));
   for (const match of matches) {
     try {
       const full = match[0] as string;

@@ -1,16 +1,16 @@
-const QUOTE_OPEN_REGEX = /(?:\[quote\]|\[quote(?:.*?)"\])/gi;
-const QUOTE_CLOSE_REGEX = /\[\/quote\]/gi;
-const AUTHOR_REGEX = /(\d*),(\d*),"(.*?)"/;
-
 /**
  * Parses [quote] tags.
  * @param input The input string.
  * @returns The output string.
  */
 export function parseQuote(input: string, location: Partial<Location>) {
+  const QUOTE_OPEN_REGEX = /(?:\[quote\]|\[quote(?:.*?)"\])/gi;
+  const QUOTE_CLOSE_REGEX = /\[\/quote\]/gi;
+  const AUTHOR_REGEX = /(\d*),(\d*),"(.*?)"/;
+
   if (!QUOTE_OPEN_REGEX.test(input)) return input;
   let output = input;
-  const openingTagMatches = input.match(QUOTE_OPEN_REGEX);
+  const openingTagMatches = input.match(new RegExp(QUOTE_OPEN_REGEX));
   const closingTagMatches = input.match(QUOTE_CLOSE_REGEX);
   if (!openingTagMatches || !closingTagMatches) return input;
   openingTagMatches.forEach((openingTag, index) => {

@@ -35,4 +35,8 @@ export const imgTagMocks: ContentParserMock[] = [
     
     Fucking Aliens.`,
   },
+  {
+    input: `du meinst der gierige goblin, der sich eine yacht leisten will, hat nichts mit dem kotick zu tun?\r\n\r\n[img]https://i.imgur.com/AmFYJIk.png[/img]`,
+    expected: `du meinst der gierige goblin, der sich eine yacht leisten will, hat nichts mit dem kotick zu tun?\r\n\r\n<img src="https://i.imgur.com/AmFYJIk.png"/>`,
+  },
 ];

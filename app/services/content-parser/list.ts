@@ -1,14 +1,14 @@
-const LIST_REGEX = /(?:(\[list\])(.|\n)*?(\[\/list\]))/gi;
-
 /**
  * Parses [list] tags.
  * @param input The input string.
  * @returns The output string.
  */
 export function parseList(input: string) {
+  const LIST_REGEX = /(?:(\[list\])(.|\n)*?(\[\/list\]))/gi;
+
   if (!LIST_REGEX.test(input)) return input;
   let output = input;
-  const matches = input.match(LIST_REGEX);
+  const matches = input.match(new RegExp(LIST_REGEX));
   if (matches) {
     for (const match of matches) {
       let replacement = match;
