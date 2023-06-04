@@ -5,11 +5,6 @@ import { module, test } from 'qunit';
 module('Unit | Service | ContentParser', (hooks) => {
   setupTest(hooks);
 
-  test('should be ok', function (assert) {
-    const service = this.owner.lookup('service:contentParser');
-    assert.ok(service);
-  });
-
   test("should replace line breaks with '<br/>' tags", function (assert) {
     const service = this.owner.lookup(
       'service:contentParser'

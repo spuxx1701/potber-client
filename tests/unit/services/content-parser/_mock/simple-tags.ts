@@ -35,4 +35,9 @@ export const simpleTagMocks: ContentParserMock[] = [
     input: '[code]hello world[/code]',
     expected: '<code>hello world</code>',
   },
+  {
+    input: '[spoiler]hello world[/spoiler]',
+    expected:
+      '<label class="spoiler"><input class="spoiler-input" type="checkbox"/><p class="spoiler-header">👀 Spoiler anzeigen</p><span class="spoiler-content">hello world</span></label>',
+  },
 ];

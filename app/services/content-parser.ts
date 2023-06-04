@@ -8,6 +8,7 @@ import { parseSimpleTags } from './content-parser/simple-tags';
 import { parseImg } from './content-parser/img';
 import { parseQuote } from './content-parser/quote';
 import { parseList } from './content-parser/list';
+import { parseTable } from './content-parser/table';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -25,28 +26,10 @@ export default class ContentParserService extends Service {
     output = parseUrl(output);
     output = parseQuote(output, window.location);
     output = parseList(output);
-    output = this.parseTable(output);
+    output = parseTable(output);
     output = this.parseEmojis(output);
     output = this.format(output);
     return htmlSafe(output);
-  }
-
-  /**
-   * Parses [table] tags. Does not support tag nesting.
-   * @param input The input string.
-   * @returns The output string.
-   */
-  parseTable(input: string) {
-    if (!new RegExp(/\[table\]/).test(input)) return input;
-    let output = input;
-    output = output.replaceAll(
-      /\[table\]/g,
-      '<div class="table-container"><table><tr><td>'
-    );
-    output = output.replaceAll(/\[\|\|\]/g, '</td><td>');
-    output = output.replaceAll(/\[--\]/g, '</td></tr><tr><td>');
-    output = output.replaceAll(/\[\/table\]/g, '</td></tr></table></div>');
-    return output;
   }
 
   /**

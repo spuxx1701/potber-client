@@ -117,4 +117,15 @@ const simpleTags: SimpleTag[] = [
       replacement: '</code>',
     },
   },
+  {
+    open: {
+      regex: /\[spoiler\]/gi,
+      replacement:
+        '<label class="spoiler"><input class="spoiler-input" type="checkbox"/><p class="spoiler-header">👀 Spoiler anzeigen</p><span class="spoiler-content">',
+    },
+    close: {
+      regex: /\[\/spoiler\]/gi,
+      replacement: '</span></label>',
+    },
+  },
 ];
