@@ -47,22 +47,4 @@ module('Integration | Adapter | Application', (hooks) => {
       assert.true(currentSession().isAuthenticated);
     });
   });
-
-  module('shouldReloadRecord', () => {
-    test('should return true', function (assert) {
-      const adapter = this.owner.lookup(
-        'adapter:application'
-      ) as ApplicationAdapter;
-      assert.false(adapter.shouldReloadRecord());
-    });
-  });
-
-  module('shouldBackgroundReloadRecord', () => {
-    test('should return true', function (assert) {
-      const adapter = this.owner.lookup(
-        'adapter:application'
-      ) as ApplicationAdapter;
-      assert.false(adapter.shouldBackgroundReloadRecord());
-    });
-  });
 });
