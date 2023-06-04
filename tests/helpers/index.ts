@@ -6,23 +6,28 @@ import {
   setupTest as upstreamSetupTest,
   SetupTestOptions,
 } from 'ember-qunit';
+import { authenticateSession } from 'ember-simple-auth/test-support';
 import ModalService from 'potber-client/services/modal';
 
 // This file exists to provide wrappers around ember-qunit's / ember-mocha's
 // test setup functions. This way, you can easily extend the setup that is
 // needed per test type.
 
-function setupApplicationTest(hooks: NestedHooks, options?: SetupTestOptions) {
+interface ApplicationTestOptions extends SetupTestOptions {
+  authenticate?: boolean;
+}
+
+function setupApplicationTest(
+  hooks: NestedHooks,
+  options?: ApplicationTestOptions
+) {
   upstreamSetupApplicationTest(hooks, options);
 
-  // Additional setup for application tests can be done here.
-  //
-  // For example, if you need an authenticated session for each
-  // application test, you could do:
-  //
-  // hooks.beforeEach(async function () {
-  //   await authenticateSession(); // ember-simple-auth
-  // });
+  hooks.beforeEach(async function () {
+    if (options?.authenticate) {
+      await authenticateSession();
+    }
+  });
   //
   // This is also a good place to call test setup functions coming
   // from other addons:
@@ -31,17 +36,16 @@ function setupApplicationTest(hooks: NestedHooks, options?: SetupTestOptions) {
   // setupMirage(hooks); // ember-cli-mirage
 }
 
-interface SetupRenderingTestOptions extends SetupTestOptions {
+interface RenderingTestOptions extends SetupTestOptions {
   includeModals?: boolean;
 }
 
 function setupRenderingTest(
   hooks: NestedHooks,
-  options?: SetupRenderingTestOptions
+  options?: RenderingTestOptions
 ) {
   upstreamSetupRenderingTest(hooks, options);
 
-  // Additional setup for rendering tests can be done here.
   hooks.beforeEach(async function () {
     if (options?.includeModals) {
       await render(hbs`<Modal />`);
@@ -50,10 +54,17 @@ function setupRenderingTest(
   });
 }
 
-function setupTest(hooks: NestedHooks, options?: SetupTestOptions) {
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface TestOptions extends SetupTestOptions {}
+
+function setupTest(hooks: NestedHooks, options?: TestOptions) {
   upstreamSetupTest(hooks, options);
 
-  // Additional setup for unit tests can be done here.
+  // hooks.beforeEach(async function () {
+  //   // if (options?.authenticate) {
+  //   await authenticateSession();
+  //   // }
+  // });
 }
 
 export { setupApplicationTest, setupRenderingTest, setupTest };

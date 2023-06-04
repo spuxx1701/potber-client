@@ -24,7 +24,7 @@ export default class ApplicationAdapter extends RESTAdapter {
     return headers;
   }
 
-  handleResponse(
+  async handleResponse(
     status: number,
     headers: object,
     payload: object,
@@ -34,7 +34,7 @@ export default class ApplicationAdapter extends RESTAdapter {
     // this likely means that our current session is invalid. In that case,
     // invalidate the session.
     if (status === 401) {
-      this.session.invalidate();
+      await this.session.invalidate();
     }
     return super.handleResponse(status, headers, payload, requestData);
   }
