@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.4.0] - unreleased
+## [1.5.0] - unreleased
+
+## Added
+
+- Added support for `[trigger]` tag.
+
+## [1.4.0] - 2023-06-04
 
 ### Changed
 

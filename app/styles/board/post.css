@@ -103,6 +103,11 @@ p.tex {
   color: var(--color-text-subtle);
 }
 
+p.trigger {
+  font-size: x-small;
+  cursor: pointer;
+}
+
 .post-content-message a {
   overflow-wrap: break-word;
 }

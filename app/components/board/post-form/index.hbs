@@ -85,6 +85,14 @@
       @textarea={{this.textarea}}
       @post={{@post}}
     />
+    <Board::PostForm::Control::SimpleTag
+      @text='trigger'
+      @icon='magnifying-glass-minus'
+      @opening='[trigger]'
+      @closing='[/trigger]'
+      @textarea={{this.textarea}}
+      @post={{@post}}
+    />
   </div>
   <form id='post-form' {{on 'submit' this.handleSubmit}}>
     {{#unless @hideTitle}}

@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.5.0',
+    type: 'minor',
+    added: [
+      'Der [trigger] tag wird nun unterstützt und kann im Postformular verwendet werden.',
+    ],
+  },
+  {
     version: '1.4.0',
     type: 'minor',
     changed: [
