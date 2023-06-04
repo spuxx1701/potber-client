@@ -3,7 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.4.0',
     type: 'minor',
     changed: [
-      'Die Anwendung lässt sich nun auf Desktops und anderen großen Monitoren erheblich besser bedienen.',
+      'Die Anwendung lässt sich nun auf großen Monitoren erheblich besser bedienen.',
     ],
     fixed: [
       'Die PWA respektiert nun die Rotationssperre des Endgeräts. Hinweis für Chrome-Nutzer: Chrome cached das PWA-Manifest sehr lange. Es kann dauern, bis diese Einstellung wirksam wird.',
