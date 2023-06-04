@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Added support for `[trigger]` tag.
 
+## Changed
+
+- The BBCode parser has been rewritten from the ground up. BBCode parsing should now work much better.
+
 ## [1.4.0] - 2023-06-04
 
 ### Changed

@@ -11,7 +11,6 @@ export function parseUrl(input: string) {
   let output = input;
   const matches = output.matchAll(URL_REGEX);
   for (const match of matches) {
-    console.log(match);
     try {
       const full = match[0] as string;
       const urlMatches = full.match(URL_PATH_REGEX);

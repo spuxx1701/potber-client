@@ -1,4 +1,4 @@
-const VIDEO_REGEX = /\[video\](.*)\[\/video\]/g;
+const VIDEO_REGEX = /\[video\](.*)\[\/video\]/gi;
 const YOUTUBE_REGEX = /(youtu\.be)|(youtube\.com)/;
 
 /**

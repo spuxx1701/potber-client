@@ -5,6 +5,9 @@ export const changelog: ChangelogItem[] = [
     added: [
       'Der [trigger] tag wird nun unterstützt und kann im Postformular verwendet werden.',
     ],
+    changed: [
+      'Der BBCode-Parser wurde von Grund auf neugeschrieben. Das BBCode-Parsing sollte nun erheblich besser funktionieren. Fehlerhafte Posts bitte melden!',
+    ],
   },
   {
     version: '1.4.0',

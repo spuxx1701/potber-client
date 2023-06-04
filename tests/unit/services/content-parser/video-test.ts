@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import { videoTagMocks } from './_mock/video';
 import { parseVideo } from 'potber-client/services/content-parser/video';
 
-module('Unit | Service | ContentParser', (hooks) => {
+module('Unit | Service | ContentParser | [video]', (hooks) => {
   setupTest(hooks);
 
   test('Parses all [video] tags.', (assert) => {
