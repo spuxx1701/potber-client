@@ -2,27 +2,19 @@
 
 This is a mobile-first web client for the german internet forum [forum.mods.de](https://forum.mods.de) built with [ember.js](https://emberjs.com/). If you're looking for the potber API, you can find it [here](https://github.com/spuxx1701/potber-api).
 
-<!-- vscode-markdown-toc -->
-
-- 1. [How to use](#Howtouse)
-- 2. [Core features](#Corefeatures)
-  - 2.1. [Browser support](#Browsersupport)
-  - 2.2. [Standalone mode (PWA)](#StandalonemodePWA)
-- 3. [How to develop or build the app](#Howtodeveloporbuildtheapp)
-  - 3.1. [Prerequisites](#Prerequisites)
-  - 3.2. [Installation](#Installation)
-  - 3.3. [Running / Development](#RunningDevelopment)
-    - 3.3.1. [Linting](#Linting)
-    - 3.3.2. [Building](#Building)
-    - 3.3.3. [Deploying](#Deploying)
-- 4. [BBCode parser](#BBCodeparser)
-- 5. [Further Reading / Useful Links](#FurtherReadingUsefulLinks)
-
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
+1. [How to use](#Howtouse)
+2. [Core features](#Corefeatures)
+   2.1. [Browser support](#Browsersupport)
+   2.2. [Standalone mode (PWA)](#StandalonemodePWA)
+3. [How to develop or build the app](#Howtodeveloporbuildtheapp)
+   3.1. [Prerequisites](#Prerequisites)
+   3.2. [Installation](#Installation)
+   3.3. [Running / Development](#RunningDevelopment)
+   3.3.1. [Linting](#Linting)
+   3.3.2. [Building](#Building)
+   3.3.3. [Deploying](#Deploying)
+4. [BBCode parser](#BBCodeparser)
+5. [Further Reading / Useful Links](#FurtherReadingUsefulLinks)
 
 ## 1. <a name='Howtouse'></a>How to use
 
