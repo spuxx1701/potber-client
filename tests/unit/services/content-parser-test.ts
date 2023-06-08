@@ -1,9 +1,24 @@
 import ContentParserService from 'potber-client/services/content-parser';
 import { setupTest } from 'potber-client/tests/helpers';
 import { module, test } from 'qunit';
+import { postContentMocks } from './_mock/post-content';
+import { htmlSafe } from '@ember/template';
 
 module('Unit | Service | ContentParser', (hooks) => {
   setupTest(hooks);
+
+  test('should properly parse all post contents', function (assert) {
+    const service = this.owner.lookup(
+      'service:contentParser'
+    ) as ContentParserService;
+    assert.expect(postContentMocks.length);
+    for (const mock of postContentMocks) {
+      assert.deepEqual(
+        service.parsePostContent(mock.input),
+        htmlSafe(mock.expected)
+      );
+    }
+  });
 
   test("should replace line breaks with '<br/>' tags", function (assert) {
     const service = this.owner.lookup(

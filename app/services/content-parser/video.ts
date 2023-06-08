@@ -37,7 +37,7 @@ export function parseVideo(input: string, location: Partial<Location>) {
         output = output.replace(match[0], replacement);
       } else {
         // Other links can be embedded using the <video> tag
-        const replacement = `<video src="${url}" controls/>`;
+        const replacement = `<video src="${url}" controls></video>`;
         output = output.replace(match[0], replacement);
       }
     } catch (error) {

@@ -9,7 +9,7 @@ export const videoTagMocks: ContentParserMock[] = [
     
     [quote]Russian and Ukrainian representatives broke out into physical fights while attending a conference in Turkey on Thursday, footage and social media posts show. Videos from the scene appears to show a Russian delegate ripping the Ukrainian flag away from a representative on the sidelines of the Summit of the Parliamentary Assembly of the Black Sea Economic Cooperation (PABSEC), leading to a fistfight between him and Ukrainian official Oleksandr Marikovskyi, who tried to take the flag back. Another clip shared by Anadolu Agency shows members of Ukrainian parliament trying to display the flag while Russian representative Ola Timofeeva was speaking, prompting another scuffle between attendees. “Paws off our flag, paws off Ukraine, Russian bastard,” Marikovskyi later said in a social media post.[/quote]
     [URL]https://www.thedailybeast.com/russian-and-ukrainian-delegates-brawl-over-ukrainian-flag-at-summit-in-turkey?utm_campaign=owned_social&utm_medium=socialflow&via=twitter_page&utm_source=twitter_owned_tdb[/URL]`,
-    expected: `<video src="https://video.twimg.com/ext_tw_video/1654245265388322820/pu/vid/480x848/giPQ-V_G5ydzW01q.mp4?tag=12" controls/>
+    expected: `<video src="https://video.twimg.com/ext_tw_video/1654245265388322820/pu/vid/480x848/giPQ-V_G5ydzW01q.mp4?tag=12" controls></video>
     [URL]https://twitter.com/Phil_Lewis_/status/1654245302642126851[/URL]
     
     [quote]Russian and Ukrainian representatives broke out into physical fights while attending a conference in Turkey on Thursday, footage and social media posts show. Videos from the scene appears to show a Russian delegate ripping the Ukrainian flag away from a representative on the sidelines of the Summit of the Parliamentary Assembly of the Black Sea Economic Cooperation (PABSEC), leading to a fistfight between him and Ukrainian official Oleksandr Marikovskyi, who tried to take the flag back. Another clip shared by Anadolu Agency shows members of Ukrainian parliament trying to display the flag while Russian representative Ola Timofeeva was speaking, prompting another scuffle between attendees. “Paws off our flag, paws off Ukraine, Russian bastard,” Marikovskyi later said in a social media post.[/quote]
@@ -23,12 +23,12 @@ export const videoTagMocks: ContentParserMock[] = [
     [video]https://i.imgur.com/hryNUcS.mp4[/video]
     [video]https://i.imgur.com/MvdqRZa.mp4[/video]
     The difference a year makes.`,
-    expected: `<video src="https://i.imgur.com/3L4B6FD.mp4" controls/>
+    expected: `<video src="https://i.imgur.com/3L4B6FD.mp4" controls></video>
     Funny? Impressive?
     Both!
     
-    <video src="https://i.imgur.com/hryNUcS.mp4" controls/>
-    <video src="https://i.imgur.com/MvdqRZa.mp4" controls/>
+    <video src="https://i.imgur.com/hryNUcS.mp4" controls></video>
+    <video src="https://i.imgur.com/MvdqRZa.mp4" controls></video>
     The difference a year makes.`,
   },
   {
@@ -45,19 +45,19 @@ export const videoTagMocks: ContentParserMock[] = [
     
     
     [video]https://i.imgur.com/hiUieas.mp4[/video]`,
-    expected: `<video src="https://i.imgur.com/MbpN77F.mp4" controls/>
+    expected: `<video src="https://i.imgur.com/MbpN77F.mp4" controls></video>
 
 
 
-    <video src="https://i.imgur.com/6zzsiYM.mp4" controls/>
+    <video src="https://i.imgur.com/6zzsiYM.mp4" controls></video>
     
     
     
-    <video src="https://i.imgur.com/pQWWFJy.mp4" controls/>
+    <video src="https://i.imgur.com/pQWWFJy.mp4" controls></video>
     
     
     
-    <video src="https://i.imgur.com/hiUieas.mp4" controls/>`,
+    <video src="https://i.imgur.com/hiUieas.mp4" controls></video>`,
   },
   {
     input: `[video]https://www.youtube.com/watch?v=--y3Rw3a4Zs[/video]`,
