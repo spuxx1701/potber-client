@@ -12,6 +12,7 @@ import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
 import RendererService from 'potber-client/services/renderer';
 import LocalStorageService from 'potber-client/services/local-storage';
 import ModalService from 'potber-client/services/modal';
+import CustomSession from 'potber-client/services/custom-session';
 
 interface Signature {
   Args: {
@@ -25,7 +26,7 @@ interface Signature {
 export default class PostComponent extends Component<Signature> {
   @service declare contentParser: ContentParserService;
   @service declare messages: MessagesService;
-  @service declare session: any;
+  @service declare session: CustomSession;
   @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;

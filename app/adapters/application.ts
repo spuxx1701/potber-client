@@ -5,9 +5,10 @@ import { service } from '@ember/service';
 // eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import ModelRegistry from 'ember-data/types/registries/model';
 import ENV from 'potber-client/config/environment';
+import CustomSession from 'potber-client/services/custom-session';
 
 export default class ApplicationAdapter extends RESTAdapter {
-  @service declare session: any;
+  @service declare session: CustomSession;
   @service declare router: RouterService;
 
   host = ENV.APP['API_URL'] as string;

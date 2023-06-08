@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.5.1] - unreleased
+
+## Changed
+
+- Some minor changes to session management in preparation for `v6` of `ember-simple-auth`.
+
 ## [1.5.0] - 2023-06-04
 
 ## Added

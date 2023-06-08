@@ -1,9 +1,10 @@
 import Route from '@ember/routing/route';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
+import CustomSession from 'potber-client/services/custom-session';
 
 export default class AuthenticatedRoute extends Route {
-  @service declare session: any;
+  @service declare session: CustomSession;
   @service declare router: RouterService;
 
   async beforeModel(transition: any) {

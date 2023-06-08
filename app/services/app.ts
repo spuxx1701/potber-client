@@ -6,6 +6,7 @@ import LocalStorageService from './local-storage';
 import ModalService from './modal';
 import NewsfeedService from './newsfeed';
 import RendererService from './renderer';
+import CustomSession from './custom-session';
 
 export default class AppService extends Service {
   @service declare renderer: RendererService;
@@ -14,7 +15,7 @@ export default class AppService extends Service {
   @service declare modal: ModalService;
   @service declare localStorage: LocalStorageService;
   @service declare newsfeed: NewsfeedService;
-  @service declare session: any;
+  @service declare session: CustomSession;
   initialized = false;
   deferredInstallPrompt: any = undefined;
 

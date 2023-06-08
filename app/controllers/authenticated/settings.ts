@@ -15,12 +15,13 @@ import MessagesService from 'potber-client/services/messages';
 import AppService from 'potber-client/services/app';
 import ModalService from 'potber-client/services/modal';
 import SettingsService from 'potber-client/services/settings';
+import CustomSession from 'potber-client/services/custom-session';
 
 export default class SettingsController extends Controller {
   declare model: SettingsRouteModel;
 
   @service declare settings: SettingsService;
-  @service declare session: any;
+  @service declare session: CustomSession;
   @service declare renderer: RendererService;
   @service declare messages: MessagesService;
   @service declare modal: ModalService;

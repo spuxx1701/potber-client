@@ -7,6 +7,7 @@ import RendererService from 'potber-client/services/renderer';
 import ModalService from 'potber-client/services/modal';
 import RouterService from '@ember/routing/router-service';
 import Thread from 'potber-client/models/thread';
+import CustomSession from 'potber-client/services/custom-session';
 
 export interface Signature {
   Args: {
@@ -18,7 +19,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare modal: ModalService;
   @service declare router: RouterService;
-  @service declare session: any;
+  @service declare session: CustomSession;
   declare args: Signature['Args'];
 
   get subtitle() {

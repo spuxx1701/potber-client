@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown';
+import CustomSession from 'potber-client/services/custom-session';
 import RSVP from 'rsvp';
 
 export interface LoginRouteModel {
@@ -18,7 +19,7 @@ export const LOGIN_LIFETIME_OPTIONS: DropdownOption[] = [
 ];
 
 export default class LoginRoute extends Route {
-  @service declare session: any;
+  @service declare session: CustomSession;
   @service declare router: RouterService;
 
   model() {

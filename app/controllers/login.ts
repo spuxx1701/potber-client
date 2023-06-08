@@ -7,12 +7,13 @@ import {
   LoginRouteModel,
   LOGIN_LIFETIME_OPTIONS,
 } from 'potber-client/routes/login';
+import CustomSession from 'potber-client/services/custom-session';
 import MessagesService from 'potber-client/services/messages';
 import NewsfeedService from 'potber-client/services/newsfeed';
 
 export default class AboutController extends Controller {
   @service declare router: RouterService;
-  @service declare session: any;
+  @service declare session: CustomSession;
   @service declare messages: MessagesService;
   @service declare newsfeed: NewsfeedService;
   declare model: LoginRouteModel;

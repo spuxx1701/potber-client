@@ -10,7 +10,7 @@ export default class SessionAdapter extends ApplicationAdapter {
   }
 
   /**
-   * '/account' is a singular resource. As such, we need to manipulate
+   * '/session' is a singular resource. As such, we need to manipulate
    * how Ember data builds the URL for this resource a bit.
    */
   buildSingularUrl(modelName: any) {

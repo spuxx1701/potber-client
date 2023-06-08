@@ -2,7 +2,6 @@ import { makeArray } from '@ember/array';
 import { run } from '@ember/runloop';
 import { isEmpty } from '@ember/utils';
 import OAuth2PasswordGrantAuthenticator from 'ember-simple-auth/authenticators/oauth2-password-grant';
-import assign from 'ember-simple-auth/utils/assign';
 import ENV from 'potber-client/config/environment';
 import RSVP from 'rsvp';
 
@@ -43,7 +42,7 @@ export default class OAuth2Authenticator extends OAuth2PasswordGrantAuthenticato
               response['refresh_token']
             );
             if (!isEmpty(expiresAt)) {
-              response = assign(response, { expires_at: expiresAt });
+              response = Object.assign(response, { expires_at: expiresAt });
             }
 
             resolve(response);

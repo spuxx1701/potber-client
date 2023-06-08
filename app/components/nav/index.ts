@@ -1,5 +1,6 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import CustomSession from 'potber-client/services/custom-session';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import RendererService from 'potber-client/services/renderer';
 import SettingsService, {
@@ -8,7 +9,7 @@ import SettingsService, {
 
 export default class NavComponent extends Component {
   @service declare renderer: RendererService;
-  @service declare session: any;
+  @service declare session: CustomSession;
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
 
