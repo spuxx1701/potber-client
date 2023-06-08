@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.5.1] - unreleased
+## [1.5.1] - 2023-06-08
+
+## Fixed
+
+- Video tags now use valid HTML and no longer prevent successive content from rendering.
 
 ## Changed
 

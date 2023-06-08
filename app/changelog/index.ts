@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.5.1',
+    type: 'patch',
+    fixed: [
+      'Videos verhindern nun nicht mehr, dass nachfolgende Inhalte angezeigt werden.',
+    ],
+  },
+  {
     version: '1.5.0',
     type: 'minor',
     added: [
