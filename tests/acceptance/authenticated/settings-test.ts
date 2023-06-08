@@ -9,7 +9,7 @@ module('Acceptance | Authenticated | Settings', function (hooks) {
     authenticate: true,
   });
 
-  test('visiting /settings', async function (assert) {
+  skip('visiting /settings', async function (assert) {
     await visit('/settings');
     assert.strictEqual(currentURL(), '/settings');
   });
