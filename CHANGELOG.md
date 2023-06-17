@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.5.2] - 2023-06-17
+
+- Post content is now being sanitized and all HTML is being escaped before parsing BBCode.
+
 ## [1.5.1] - 2023-06-08
 
 ## Fixed

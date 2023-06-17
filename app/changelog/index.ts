@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.5.2',
+    type: 'patch',
+    fixed: [
+      'Postinhalte werden nun vor dem Parsen von potentiellem HTML bereinigt.',
+    ],
+  },
+  {
     version: '1.5.1',
     type: 'patch',
     fixed: [

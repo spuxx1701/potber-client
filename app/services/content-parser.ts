@@ -1,5 +1,4 @@
 import Service, { service } from '@ember/service';
-import { htmlSafe } from '@ember/template';
 import { emojis } from 'potber-client/utils/icons';
 import MessagesService from './messages';
 import { parseVideo } from './content-parser/video';
@@ -9,6 +8,7 @@ import { parseImg } from './content-parser/img';
 import { parseQuote } from './content-parser/quote';
 import { parseList } from './content-parser/list';
 import { parseTable } from './content-parser/table';
+import { sanitize } from './content-parser/sanitize';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -20,6 +20,7 @@ export default class ContentParserService extends Service {
    */
   parsePostContent(input: string) {
     let output = input;
+    output = sanitize(output);
     output = parseSimpleTags(output);
     output = parseImg(output);
     output = parseVideo(output, window.location);
@@ -29,7 +30,7 @@ export default class ContentParserService extends Service {
     output = parseTable(output);
     output = this.parseEmojis(output);
     output = this.format(output);
-    return htmlSafe(output);
+    return output;
   }
 
   /**

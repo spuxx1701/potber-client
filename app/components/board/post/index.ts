@@ -13,6 +13,7 @@ import RendererService from 'potber-client/services/renderer';
 import LocalStorageService from 'potber-client/services/local-storage';
 import ModalService from 'potber-client/services/modal';
 import CustomSession from 'potber-client/services/custom-session';
+import { htmlSafe } from '@ember/template';
 
 interface Signature {
   Args: {
@@ -64,7 +65,7 @@ export default class PostComponent extends Component<Signature> {
       const content = this.contentParser.parsePostContent(
         this.args.post.message
       );
-      return content;
+      return htmlSafe(content);
     } else {
       return null;
     }

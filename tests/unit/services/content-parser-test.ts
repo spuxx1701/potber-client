@@ -2,7 +2,6 @@ import ContentParserService from 'potber-client/services/content-parser';
 import { setupTest } from 'potber-client/tests/helpers';
 import { module, test } from 'qunit';
 import { postContentMocks } from './_mock/post-content';
-import { htmlSafe } from '@ember/template';
 
 module('Unit | Service | ContentParser', (hooks) => {
   setupTest(hooks);
@@ -13,10 +12,7 @@ module('Unit | Service | ContentParser', (hooks) => {
     ) as ContentParserService;
     assert.expect(postContentMocks.length);
     for (const mock of postContentMocks) {
-      assert.deepEqual(
-        service.parsePostContent(mock.input),
-        htmlSafe(mock.expected)
-      );
+      assert.deepEqual(service.parsePostContent(mock.input), mock.expected);
     }
   });
 
