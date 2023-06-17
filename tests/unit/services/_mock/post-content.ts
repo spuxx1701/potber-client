@@ -11,6 +11,6 @@ export const postContentMocks: ContentParserMock[] = [
   },
   {
     input: `<oh nein! Irgendweg.gif>`,
-    expected: `<oh nein! Irgendweg.gif>`,
+    expected: `&ltoh nein! Irgendweg.gif&gt`,
   },
 ];
