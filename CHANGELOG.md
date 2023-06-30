@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.5.3] - unreleased
+
+## Fixed
+
+- BBCode that is contained in [code] tags will no longer be parsed to HTML.
+
 ## [1.5.2] - 2023-06-17
+
+## Fixed
 
 - Post content is now being sanitized and all HTML is being escaped before parsing BBCode.
 

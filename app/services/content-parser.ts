@@ -9,6 +9,7 @@ import { parseQuote } from './content-parser/quote';
 import { parseList } from './content-parser/list';
 import { parseTable } from './content-parser/table';
 import { sanitize } from './content-parser/sanitize';
+import { parseCode } from './content-parser/code';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -19,8 +20,10 @@ export default class ContentParserService extends Service {
    * @returns The HTML output.
    */
   parsePostContent(input: string) {
+    console.log(input);
     let output = input;
     output = sanitize(output);
+    output = parseCode(output);
     output = parseSimpleTags(output);
     output = parseImg(output);
     output = parseVideo(output, window.location);

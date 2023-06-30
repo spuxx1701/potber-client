@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.5.3',
+    type: 'patch',
+    fixed: ['BBCode-Inhalte in [code]-Tags werden nun korrekt dargestellt.'],
+  },
+  {
     version: '1.5.2',
     type: 'patch',
     fixed: [
