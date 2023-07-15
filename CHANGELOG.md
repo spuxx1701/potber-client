@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.6.1] - 2023-07-15
+
+## Fixed
+
+- Fixed a bug where editing a post was not possible.
+
 ## [1.6.0] - 2023-07-15
 
 ## Added

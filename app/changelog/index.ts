@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.6.1',
+    type: 'patch',
+    changed: ['Editieren von Posts ist nun wieder möglich.'],
+  },
+  {
     version: '1.6.0',
     type: 'minor',
     changed: [

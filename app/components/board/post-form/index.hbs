@@ -123,6 +123,7 @@
       @required={{true}}
       @size='max'
       @height='large'
+      @value={{@post.message}}
       placeholder='Nachricht eingeben...'
       maxLength='15000'
       {{on 'change' this.handleMessageChange}}
