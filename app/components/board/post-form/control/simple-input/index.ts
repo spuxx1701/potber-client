@@ -12,6 +12,7 @@ interface Signature {
     opening: string;
     closing: string;
     post: Post;
+    useTextarea?: boolean;
     type?: 'text' | 'number' | 'url';
     textarea: HTMLTextAreaElement;
   };
@@ -31,6 +32,7 @@ export default class PostFormControlSimpleInputComponent extends Component<Signa
       prefix: this.args.prefix,
       label: this.args.text,
       type: this.type,
+      useTextarea: this.args.useTextarea,
       onSubmit: this.handleSubmit,
     });
   }

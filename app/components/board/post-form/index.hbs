@@ -62,6 +62,7 @@
       @icon='code'
       @opening='[code]'
       @closing='[/code]'
+      @useTextarea={{true}}
       @post={{@post}}
       @textarea={{this.textarea}}
     />
@@ -70,15 +71,17 @@
       @icon='quote-right'
       @opening='[quote]'
       @closing='[/quote]'
+      @useTextarea={{true}}
       @post={{@post}}
       @textarea={{this.textarea}}
     />
-    <Board::PostForm::Control::SimpleTag
-      @text='Spoiler'
+    <Board::PostForm::Control::SimpleInput
+      @text='Spoiler einfügen'
       @icon='eye'
       @prefix='far'
       @opening='[spoiler]'
       @closing='[/spoiler]'
+      @useTextarea={{true}}
       @textarea={{this.textarea}}
       @post={{@post}}
     />
@@ -103,14 +106,15 @@
     {{#unless @hideTitle}}
       <Board::PostForm::Control::Title @post={{@post}} />
     {{/unless}}
-    <textarea
-      id='post-form-textarea'
-      placeholder='Nachricht eingeben...'
-      type='text'
-      required={{true}}
+    <Common::Control::Textarea
+      @id='textarea-post-form'
+      @label='Nachricht'
+      @required={{true}}
+      @size='max'
+      @height='large'
       maxLength='15000'
       {{on 'change' this.handleMessageChange}}
-    >{{@post.message}}</textarea>
+    />
     <Common::Control::Button
       @icon='right-to-bracket'
       @text={{this.submitLabel}}

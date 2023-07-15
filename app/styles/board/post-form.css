@@ -8,7 +8,10 @@
 }
 
 #post-form {
-  height: calc(100dvh - var(--top-nav-height) - var(--bottom-nav-height) - var(--control-default-height) - 0.5rem);
+  height: calc(
+    100dvh - var(--top-nav-height) - var(--bottom-nav-height) -
+      var(--control-default-height) - 0.5rem
+  );
   display: flex;
   flex-direction: column;
 }
@@ -18,7 +21,7 @@
   align-items: center;
 }
 
-#post-form-header>* {
+#post-form-header > * {
   height: 100%;
 }
 
@@ -26,9 +29,4 @@
   height: var(--control-default-height);
   display: flex;
   overflow-x: auto;
-}
-
-#post-form textarea {
-  height: 500px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

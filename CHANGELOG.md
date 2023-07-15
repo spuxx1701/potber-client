@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.5.4] - 2023-07-15
+## [1.6.0] - 2023-07-15
+
+## Added
+
+- Custom `<textarea>` component added. The component may also be used via the `input` modal.
+
+## Changed
+
+- `[code]`, `[quote]` and `[spoiler]` tag buttons in the post form now use textarea modals.
+- `<textarea>` and `<input`> now appear and behave similarly.
 
 ## Fixed
 

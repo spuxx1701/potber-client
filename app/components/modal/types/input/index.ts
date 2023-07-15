@@ -20,6 +20,7 @@ export interface InputModalOptions {
   submitIcon?: string;
   cancelLabel?: string;
   cancelIcon?: string;
+  useTextarea?: boolean;
   onSubmit?: (value: string) => void;
 }
 

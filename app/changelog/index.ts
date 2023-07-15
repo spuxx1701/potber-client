@@ -1,5 +1,13 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.6.0',
+    type: 'minor',
+    changed: [
+      'Buttons zum Einfügen von code, quote und spoiler tags verwenden nun ein Dialogfenster mit einem Eingabefeld.',
+      'Einzeilige (input) und mehrzeilige (textarea) Eingabefelder verhalten sich nun in ähnlicher Weise.',
+    ],
+  },
+  {
     version: '1.5.3',
     type: 'patch',
     fixed: ['BBCode-Inhalte in [code]-Tags werden nun korrekt dargestellt.'],

@@ -2,13 +2,15 @@
   position: relative;
 }
 
-.input-container>*, form>* {
+.input-container > *,
+form > * {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   box-sizing: border-box;
 }
 
-.input-container input, textarea {
+.input-container input,
+.input-container textarea {
   width: 100%;
   box-sizing: border-box;
   min-height: var(--control-input-height);
@@ -16,36 +18,44 @@
   border: 0px solid transparent;
   border-radius: var(--global-border-radius);
   margin: 0;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1.1rem 1rem 0 1rem;
   color: var(--color-text-default);
   font-size: medium;
+}
+
+.input-container textarea {
+  padding-top: 1.6rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .input-container label {
   display: block;
   position: absolute;
-  top: 50%;
+  top: 1.35rem;
   left: 1rem;
-  transform: translateY(-35%);
   transform-origin: left top;
   user-select: none;
   pointer-events: none;
-  color: var(--color-text-subtle)
+  color: var(--color-text-subtle);
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   background-color: var(--color-control-inactive);
   border-bottom: 2px solid var(--color-accent);
 }
 
-input:focus+label {
+input:focus + label,
+textarea:focus + label {
   color: var(--color-accent);
 }
 
-input:focus+label,
-input:not(:placeholder-shown)+label {
-  transform: translateY(-150%);
+input:focus + label,
+input:not(:placeholder-shown) + label,
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label {
+  transform: translateY(-1.1rem);
   font-size: small;
 }
 
@@ -58,6 +68,18 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   appearance: textfield;
+}
+
+.textarea-height-small {
+  height: 100px;
+}
+
+.textarea-height-medium {
+  height: 250px;
+}
+
+.textarea-height-large {
+  height: 500px;
 }

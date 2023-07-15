@@ -9,19 +9,32 @@
     <p>{{@options.text}}</p>
   {{/if}}
   <form id='input-modal-form' {{on 'submit' this.handleSubmit}}>
-    <Common::Control::Input
-      @label={{@options.label}}
-      @size='max'
-      @value={{this.value}}
-      @onChange={{this.handleChange}}
-      @selectAllOnFocus={{true}}
-      @required={{true}}
-      type={{this.type}}
-      minLength={{@options.minLength}}
-      maxLength={{@options.maxLength}}
-      min={{@options.min}}
-      max={{@options.max}}
-    />
+    {{#if @options.useTextarea}}
+      <Common::Control::Textarea
+        @label={{@options.label}}
+        @size='max'
+        @value={{this.value}}
+        @onChange={{this.handleChange}}
+        @selectAllOnFocus={{true}}
+        @required={{true}}
+        minLength={{@options.minLength}}
+        maxLength={{@options.maxLength}}
+      />
+    {{else}}
+      <Common::Control::Input
+        @label={{@options.label}}
+        @size='max'
+        @value={{this.value}}
+        @onChange={{this.handleChange}}
+        @selectAllOnFocus={{true}}
+        @required={{true}}
+        type={{this.type}}
+        minLength={{@options.minLength}}
+        maxLength={{@options.maxLength}}
+        min={{@options.min}}
+        max={{@options.max}}
+      />
+    {{/if}}
   </form>
 </Modal::Component::Content>
 <Modal::Component::Footer>

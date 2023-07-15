@@ -23,10 +23,10 @@ export default class PostFormComponent extends Component<Signature> {
   }
 
   get textarea() {
-    const textarea = document.getElementById('post-form-textarea');
+    const textarea = document.getElementById('textarea-post-form-textarea');
     if (textarea) {
       return textarea as HTMLTextAreaElement;
-    } else throw new Error('post-form-textarea could not be found.');
+    } else throw new Error('textarea-post-form-textarea could not be found.');
   }
 
   @action handleMessageChange(event: InputEvent) {
