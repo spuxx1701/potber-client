@@ -6,21 +6,31 @@ import ModalService from 'potber-client/services/modal';
 
 interface Signature {
   Args: {
+    text: string;
+    icon: string;
+    prefix?: string;
+    opening: string;
+    closing: string;
     post: Post;
+    type?: 'text' | 'number' | 'url';
     textarea: HTMLTextAreaElement;
   };
 }
 
-export default class PostFormControlVideoComponent extends Component<Signature> {
+export default class PostFormControlSimpleInputComponent extends Component<Signature> {
   @service declare modal: ModalService;
+
+  get type() {
+    return this.args.type || 'text';
+  }
 
   @action handleClick() {
     this.modal.input({
-      title: 'Video einfügen',
-      icon: 'youtube',
-      prefix: 'fab',
-      label: 'URL',
-      type: 'url',
+      title: this.args.text,
+      icon: this.args.icon,
+      prefix: this.args.prefix,
+      label: this.args.text,
+      type: this.type,
       onSubmit: this.handleSubmit,
     });
   }
@@ -28,7 +38,7 @@ export default class PostFormControlVideoComponent extends Component<Signature> 
   @action handleSubmit(value: string) {
     const message = this.args.post.message || '';
     const selectionEnd = this.args.textarea.selectionEnd;
-    const insertion = `[video]${value}[/video]`;
+    const insertion = `${this.args.opening}${value}${this.args.closing}`;
     this.args.post.message = `${message.substring(
       0,
       selectionEnd

@@ -48,25 +48,30 @@
       @post={{@post}}
       @textarea={{this.textarea}}
     />
-    <Board::PostForm::Control::Video
+    <Board::PostForm::Control::SimpleInput
+      @text='Video einfügen'
+      @icon='youtube'
+      @prefix='fab'
+      @opening='[video]'
+      @closing='[/video]'
       @post={{@post}}
       @textarea={{this.textarea}}
     />
-    <Board::PostForm::Control::SimpleTag
-      @text='Code'
+    <Board::PostForm::Control::SimpleInput
+      @text='Code einfügen'
       @icon='code'
       @opening='[code]'
       @closing='[/code]'
-      @textarea={{this.textarea}}
       @post={{@post}}
+      @textarea={{this.textarea}}
     />
-    <Board::PostForm::Control::SimpleTag
-      @text='Zitat'
+    <Board::PostForm::Control::SimpleInput
+      @text='Zitat einfügen'
       @icon='quote-right'
       @opening='[quote]'
       @closing='[/quote]'
-      @textarea={{this.textarea}}
       @post={{@post}}
+      @textarea={{this.textarea}}
     />
     <Board::PostForm::Control::SimpleTag
       @text='Spoiler'
