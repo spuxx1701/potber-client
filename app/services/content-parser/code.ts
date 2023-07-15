@@ -29,7 +29,6 @@ export function parseCode(input: string) {
       for (const character of unallowedCharacters) {
         content = content.replaceAll(character.input, character.replacement);
       }
-      console.log(content);
       const replacement = `<code>${content}</code>`;
       output = output.replace(full, replacement);
     } catch (error) {

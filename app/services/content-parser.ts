@@ -20,7 +20,6 @@ export default class ContentParserService extends Service {
    * @returns The HTML output.
    */
   parsePostContent(input: string) {
-    console.log(input);
     let output = input;
     output = sanitize(output);
     output = parseCode(output);

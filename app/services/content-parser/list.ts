@@ -6,7 +6,6 @@
 export function parseList(input: string) {
   const LIST_REGEX = /(?:(\[list\])(?:\s|\S)*?(\[\/list\]))/gi;
   if (!LIST_REGEX.test(input)) return input;
-  console.log(input);
   let output = input;
   const matches = input.matchAll(new RegExp(LIST_REGEX));
   for (const match of matches) {
