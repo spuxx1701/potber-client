@@ -44,22 +44,32 @@
       @post={{@post}}
       @textarea={{this.textarea}}
     />
-    <Board::PostForm::Control::Image
+    <Board::PostForm::Control::SimpleInput
+      @title='Bild einfügen'
+      @icon='image'
+      @label='URL'
+      @prefix='far'
+      @opening='[img]'
+      @closing='[/img]'
+      @type='url'
       @post={{@post}}
       @textarea={{this.textarea}}
     />
     <Board::PostForm::Control::SimpleInput
-      @text='Video einfügen'
+      @title='Video einfügen'
       @icon='youtube'
+      @label='URL'
       @prefix='fab'
       @opening='[video]'
       @closing='[/video]'
+      @type='url'
       @post={{@post}}
       @textarea={{this.textarea}}
     />
     <Board::PostForm::Control::SimpleInput
-      @text='Code einfügen'
+      @title='Code einfügen'
       @icon='code'
+      @label='Code eingeben...'
       @opening='[code]'
       @closing='[/code]'
       @useTextarea={{true}}
@@ -67,8 +77,9 @@
       @textarea={{this.textarea}}
     />
     <Board::PostForm::Control::SimpleInput
-      @text='Zitat einfügen'
+      @title='Zitat einfügen'
       @icon='quote-right'
+      @label='Zitat eingeben...'
       @opening='[quote]'
       @closing='[/quote]'
       @useTextarea={{true}}
@@ -76,9 +87,10 @@
       @textarea={{this.textarea}}
     />
     <Board::PostForm::Control::SimpleInput
-      @text='Spoiler einfügen'
+      @title='Spoiler einfügen'
       @icon='eye'
       @prefix='far'
+      @label='Spoiler eingeben...'
       @opening='[spoiler]'
       @closing='[/spoiler]'
       @useTextarea={{true}}
@@ -108,10 +120,10 @@
     {{/unless}}
     <Common::Control::Textarea
       @id='textarea-post-form'
-      @label='Nachricht'
       @required={{true}}
       @size='max'
       @height='large'
+      placeholder='Nachricht eingeben...'
       maxLength='15000'
       {{on 'change' this.handleMessageChange}}
     />

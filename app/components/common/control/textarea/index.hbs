@@ -2,12 +2,9 @@
   <textarea
     id='{{this.componentId}}-textarea'
     class='textarea-height-{{this.height}}'
-    placeholder=' '
-    aria-placeholder={{this.label}}
     required={{@required}}
     {{on 'change' this.handleChange}}
     {{on 'focus' this.handleFocus}}
     ...attributes
   >{{this.value}}</textarea>
-  <label for='{{this.componentId}}-textarea'>{{this.label}}</label>
 </div>

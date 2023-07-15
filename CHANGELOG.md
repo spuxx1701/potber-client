@@ -13,11 +13,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## Changed
 
 - `[code]`, `[quote]` and `[spoiler]` tag buttons in the post form now use textarea modals.
-- `<textarea>` and `<input`> now appear and behave similarly.
 
 ## Fixed
 
-- Remvoved some `console.log()`s.
+- Removed some `console.log()`s.
 
 ## [1.5.3] - 2023-06-30
 

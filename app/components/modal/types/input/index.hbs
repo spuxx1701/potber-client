@@ -11,12 +11,12 @@
   <form id='input-modal-form' {{on 'submit' this.handleSubmit}}>
     {{#if @options.useTextarea}}
       <Common::Control::Textarea
-        @label={{@options.label}}
         @size='max'
         @value={{this.value}}
         @onChange={{this.handleChange}}
         @selectAllOnFocus={{true}}
         @required={{true}}
+        placeholder={{@options.label}}
         minLength={{@options.minLength}}
         maxLength={{@options.maxLength}}
       />

@@ -6,7 +6,7 @@ interface Signature {
   Args: {
     value: string;
     id?: string;
-    label?: string;
+    textarea?: string;
     size?: ControlSize;
     required?: boolean;
     selectAllOnFocus?: boolean;
@@ -30,8 +30,8 @@ export default class CommonTextareaComponent extends Component<Signature> {
     return this.args.size || 'medium';
   }
 
-  get label() {
-    return this.args.label;
+  get textarea() {
+    return this.args.textarea;
   }
 
   get height() {

@@ -4,7 +4,6 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
     changed: [
       'Buttons zum Einfügen von code, quote und spoiler tags verwenden nun ein Dialogfenster mit einem Eingabefeld.',
-      'Einzeilige (input) und mehrzeilige (textarea) Eingabefelder verhalten sich nun in ähnlicher Weise.',
     ],
   },
   {

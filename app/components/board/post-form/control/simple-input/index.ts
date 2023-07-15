@@ -6,7 +6,8 @@ import ModalService from 'potber-client/services/modal';
 
 interface Signature {
   Args: {
-    text: string;
+    title: string;
+    label: string;
     icon: string;
     prefix?: string;
     opening: string;
@@ -27,10 +28,10 @@ export default class PostFormControlSimpleInputComponent extends Component<Signa
 
   @action handleClick() {
     this.modal.input({
-      title: this.args.text,
+      title: this.args.title,
       icon: this.args.icon,
       prefix: this.args.prefix,
-      label: this.args.text,
+      label: this.args.label,
       type: this.type,
       useTextarea: this.args.useTextarea,
       onSubmit: this.handleSubmit,

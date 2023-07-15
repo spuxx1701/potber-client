@@ -24,7 +24,7 @@ form > * {
 }
 
 .input-container textarea {
-  padding-top: 1.6rem;
+  padding-top: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -46,15 +46,12 @@ textarea:focus {
   border-bottom: 2px solid var(--color-accent);
 }
 
-input:focus + label,
-textarea:focus + label {
+input:focus + label {
   color: var(--color-accent);
 }
 
 input:focus + label,
-input:not(:placeholder-shown) + label,
-textarea:focus + label,
-textarea:not(:placeholder-shown) + label {
+input:not(:placeholder-shown) + label {
   transform: translateY(-1.1rem);
   font-size: small;
 }
