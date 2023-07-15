@@ -1,7 +1,10 @@
-<div id={{this.componentId}} class='input-container control-size-{{this.size}}'>
+<div
+  id={{this.componentId}}
+  class='input-container control-size-{{this.size}}
+    textarea-height-{{this.height}}'
+>
   <textarea
     id='{{this.componentId}}-textarea'
-    class='textarea-height-{{this.height}}'
     required={{@required}}
     {{on 'change' this.handleChange}}
     {{on 'focus' this.handleFocus}}
