@@ -4,55 +4,61 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.6.2] - unreleased
+
+### Fixed
+
+- `<textarea>` now inherits font settings.
+
 ## [1.6.1] - 2023-07-15
 
-## Fixed
+### Fixed
 
 - Fixed a bug where editing a post was not possible.
 
 ## [1.6.0] - 2023-07-15
 
-## Added
+### Added
 
 - Custom `<textarea>` component added. The component may also be used via the `input` modal.
 
-## Changed
+### Changed
 
 - `[code]`, `[quote]` and `[spoiler]` tag buttons in the post form now use textarea modals.
 
-## Fixed
+### Fixed
 
 - Removed some `console.log()`s.
 
 ## [1.5.3] - 2023-06-30
 
-## Fixed
+### Fixed
 
 - BBCode that is contained in [code] tags will no longer be parsed to HTML.
 
 ## [1.5.2] - 2023-06-17
 
-## Fixed
+### Fixed
 
 - Post content is now being sanitized and all HTML is being escaped before parsing BBCode.
 
 ## [1.5.1] - 2023-06-08
 
-## Fixed
+### Fixed
 
 - Video tags now use valid HTML and no longer prevent successive content from rendering.
 
-## Changed
+### Changed
 
 - Some minor changes to session management in preparation for `v6` of `ember-simple-auth`.
 
 ## [1.5.0] - 2023-06-04
 
-## Added
+### Added
 
 - Added support for `[trigger]` tag.
 
-## Changed
+### Changed
 
 - The BBCode parser has been rewritten from the ground up. BBCode parsing should now work much better.
 

@@ -24,9 +24,8 @@ form > * {
 }
 
 .input-container textarea {
-  height: 100% !important;
+  height: 100%;
   padding-top: 1rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
 
 .input-container label {

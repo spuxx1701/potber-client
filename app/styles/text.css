@@ -57,3 +57,8 @@ hr {
   -webkit-line-clamp: 2;
   line-clamp: 2;
 }
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
