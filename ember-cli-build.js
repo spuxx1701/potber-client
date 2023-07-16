@@ -11,7 +11,7 @@ module.exports = function (defaults) {
     fingerprint: {
       enabled:
         process.env.EMBER_ENV === 'production' ||
-        process.env.EMBER_ENV === 'develop',
+        process.env.EMBER_ENV === 'staging',
       exclude: ['images'],
     },
   });

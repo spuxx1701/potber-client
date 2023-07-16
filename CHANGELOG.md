@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - `<textarea>` now inherits font settings.
+- `staging` build process now properly fingerprints.
 
 ## [1.6.1] - 2023-07-15
 
