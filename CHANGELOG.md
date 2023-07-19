@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.6.2] - unreleased
+## [1.7.0] - unreleased
+
+### Added
+
+- User profiles now include information about the account age.
 
 ### Fixed
 

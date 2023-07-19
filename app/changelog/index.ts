@@ -1,5 +1,13 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.7.0',
+    type: 'patch',
+    added: [
+      'Nutzerprofile enthalten nun Informationen zum Alter des Accounts.',
+    ],
+    fixed: ['Umlaute in Nutzerprofilen werden nun korekt dargestellt.'],
+  },
+  {
     version: '1.6.1',
     type: 'patch',
     changed: ['Editieren von Posts ist nun wieder möglich.'],

@@ -20,6 +20,9 @@ export default class User extends Model {
   declare rank?: string;
 
   @attr()
+  declare age?: string;
+
+  @attr()
   declare groupId?: string;
 }
 
