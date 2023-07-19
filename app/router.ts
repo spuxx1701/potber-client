@@ -24,6 +24,12 @@ Router.map(function () {
       this.route('quote');
       this.route('edit');
     });
+    this.route('private-messages', function () {
+      this.route('inbound');
+      this.route('outbound');
+      this.route('system');
+      this.route('read', { path: '/read/:id' });
+    });
   });
   this.route('not-found', { path: '/*path' });
 });

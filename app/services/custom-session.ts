@@ -35,7 +35,7 @@ export default class CustomSession extends BaseSessionService {
       try {
         this.sessionData = await this.store.queryRecord('session', {});
       } catch (error) {
-        // this.invalidate();
+        this.invalidate();
       }
     }
   }

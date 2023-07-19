@@ -1,0 +1,10 @@
+<div class='private-messages-list-item'>
+  <Common::Control::Link
+    class='private-messages-list-item-link'
+    @route='authenticated.private-messages.read'
+    @model={{@message.id}}
+  >
+    <p class='title'>{{@message.title}}</p>
+    <p class='subtitle'>{{this.subtitle}}</p>
+  </Common::Control::Link>
+</div>

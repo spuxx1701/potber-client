@@ -14,9 +14,12 @@
     </Common::Control::Link>
   {{/if}}
   {{#if this.authenticated}}
-    {{!-- <Common::Control::Link @route='/' @onClick={{this.handleNavLinkClick}}>
-    <FaIcon @icon='envelope' />
-  </Common::Control::Link>--}}
+    <Common::Control::Link
+      @route='authenticated.private-messages.inbound'
+      @onClick={{this.handleNavLinkClick}}
+    >
+      <FaIcon @icon='envelope' />
+    </Common::Control::Link>
     <Common::Control::Link
       @route='authenticated.bookmarks'
       @onClick={{this.handleNavLinkClick}}

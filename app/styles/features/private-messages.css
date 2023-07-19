@@ -1,4 +1,9 @@
-.bookmark {
+.private-messages-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.private-messages-list-item {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -9,15 +14,15 @@
   background-color: var(--color-post-background-secondary);
 }
 
-.bookmark-unread {
+.private-messages-list-item-unread {
   background-color: var(--color-post-background-primary);
 }
 
-.bookmark > * {
+.private-messages-list-item > * {
   height: 100%;
 }
 
-.bookmark-link {
+.private-messages-list-item-link {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -26,23 +31,6 @@
   align-items: start;
 }
 
-.bookmark:not(:first-child) {
-  margin-top: 1px;
-}
-
-.bookmark-title {
-  color: var(--color-text-default);
-  font-weight: bold;
-}
-
-.bookmark-title,
-.bookmark-subtitle {
+.private-messages-list-item-link p {
   margin: 0;
-  text-align: start;
-  text-decoration: none !important;
-}
-
-.bookmark-icon {
-  color: var(--color-accent) !important;
-  margin-right: 0.25rem;
 }

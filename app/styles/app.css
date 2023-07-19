@@ -17,6 +17,7 @@
 @import './features/quickstart.css';
 @import './features/newsfeed.css';
 @import './features/bookmarks.css';
+@import './features/private-messages.css';
 @import './features/user-profile.css';
 
 @import './board/board.css';
