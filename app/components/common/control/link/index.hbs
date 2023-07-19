@@ -1,12 +1,28 @@
-<LinkTo
-  class='button-link control-size-{{@size}}
-    control-variant-{{this.variant}}
-    {{if @disabled "button-link-disabled"}}'
-  @route={{@route}}
-  @query={{this.query}}
-  @disabled={{@disabled}}
-  {{on 'click' this.handleClick}}
-  ...attributes
->
-  {{yield}}
-</LinkTo>
+{{#if @model}}
+  <LinkTo
+    class='button-link control-size-{{@size}}
+      control-variant-{{this.variant}}
+      {{if @disabled "button-link-disabled"}}'
+    @route={{@route}}
+    @query={{this.query}}
+    @model={{@model}}
+    @disabled={{@disabled}}
+    {{on 'click' this.handleClick}}
+    ...attributes
+  >
+    {{yield}}
+  </LinkTo>
+{{else}}
+  <LinkTo
+    class='button-link control-size-{{@size}}
+      control-variant-{{this.variant}}
+      {{if @disabled "button-link-disabled"}}'
+    @route={{@route}}
+    @query={{this.query}}
+    @disabled={{@disabled}}
+    {{on 'click' this.handleClick}}
+    ...attributes
+  >
+    {{yield}}
+  </LinkTo>
+{{/if}}

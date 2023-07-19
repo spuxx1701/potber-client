@@ -6,6 +6,7 @@ import RendererService from 'potber-client/services/renderer';
 export interface Signature {
   Args: {
     route: string;
+    model?: string;
     query?: object;
     size?: ControlSize;
     variant?: ControlVariant;
