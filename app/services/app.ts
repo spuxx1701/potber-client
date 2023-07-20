@@ -34,21 +34,26 @@ export default class AppService extends Service {
   }
 
   async checkForNewVersion() {
-    const unencountedVersion = this.localStorage.getUnencountedVersion();
-    if (unencountedVersion) {
-      await sleep(1000);
-      this.modal.confirm({
-        title: 'Es gibt Neuigkeiten!',
-        text: `Potber wurde auf Version ${unencountedVersion} aktualisiert.
-        Tippe auf 'OK', um mehr über die Änderungen zu erfahren.`,
-        icon: 'star',
-        cancelLabel: 'Geh weg!',
-        onSubmit: () => {
-          this.modal.close();
-          this.router.transitionTo('changelog');
-        },
-      });
+    try {
+      const unencountedVersion = this.localStorage.getUnencountedVersion();
+      if (unencountedVersion) {
+        await sleep(1000);
+        this.modal.confirm({
+          title: 'Es gibt Neuigkeiten!',
+          text: `Potber wurde auf Version ${unencountedVersion} aktualisiert.
+          Tippe auf 'OK', um mehr über die Änderungen zu erfahren.`,
+          icon: 'star',
+          cancelLabel: 'Geh weg!',
+          onSubmit: () => {
+            this.modal.close();
+            this.router.transitionTo('changelog');
+          },
+        });
+      }
+      this.localStorage.setEncounteredVersion();
+    } catch (error) {
+      // Occasionally this check might fail on cold starts of the PWA.
+      // If it does, we simply move on.
     }
-    this.localStorage.setEncounteredVersion();
   }
 }
