@@ -55,3 +55,37 @@
 .private-message-important-indicator {
   color: var(--color-warning) !important;
 }
+
+.private-message-view {
+  box-sizing: border-box;
+  background-color: var(--color-post-background-secondary);
+  align-items: start;
+  padding: 0;
+  margin: var(--global-gap);
+  border-radius: var(--global-border-radius);
+}
+
+.private-message-view-header {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem;
+}
+
+.private-message-view table {
+  width: 100%;
+}
+
+.private-message-view table p {
+  margin: 0.25rem 0;
+}
+
+.private-message-view-content {
+  box-sizing: border-box;
+  background-color: var(--color-post-background-primary);
+  width: 100%;
+  padding: 1rem;
+}
+
+.private-message-view-content p {
+  margin: 0;
+}

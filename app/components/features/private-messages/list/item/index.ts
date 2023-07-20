@@ -2,6 +2,7 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import PrivateMessage from 'potber-client/models/private-message';
 import CustomSession from 'potber-client/services/custom-session';
+import { createPrivateMessageSubtitle } from 'potber-client/utils/private-messages';
 
 interface Signature {
   Args: {
@@ -12,23 +13,7 @@ interface Signature {
 export default class PrivateMessageListItemComponent extends Component<Signature> {
   @service declare session: CustomSession;
 
-  /**
-   * The subtitle is being created dynamically depending on whether
-   * this is an inbound, outgoung or system message.
-   */
   get subtitle() {
-    let subtitle = '';
-    if (
-      (!this.args.message.sender && !this.args.message.recipient) ||
-      this.args.message.sender?.id === '0'
-    ) {
-      subtitle += 'Systemnachricht';
-    } else if (this.args.message.recipient?.name) {
-      subtitle += `an ${this.args.message.recipient?.name}`;
-    } else {
-      subtitle += `von ${this.args.message.sender?.name}`;
-    }
-    subtitle += ` (${this.args.message.date})`;
-    return subtitle;
+    return createPrivateMessageSubtitle(this.args.message);
   }
 }

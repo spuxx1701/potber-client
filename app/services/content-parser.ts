@@ -10,6 +10,7 @@ import { parseList } from './content-parser/list';
 import { parseTable } from './content-parser/table';
 import { sanitize } from './content-parser/sanitize';
 import { parseCode } from './content-parser/code';
+import { parsePrivateMessageHtml } from './content-parser/private-message';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -59,6 +60,14 @@ export default class ContentParserService extends Service {
   format(input: string): string {
     let output = input;
     output = output.replaceAll(/\n/g, '<br/>');
+    return output;
+  }
+
+  parsePrivateMessageContent(input: string): string {
+    let output = input;
+    output = parsePrivateMessageHtml(output);
+    output = sanitize(output);
+    output = this.format(output);
     return output;
   }
 }

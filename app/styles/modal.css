@@ -1,6 +1,6 @@
-@import "modal/select-icon.css";
-@import "modal/select-meme.css";
-@import "modal/post-preview.css";
+@import 'modal/select-icon.css';
+@import 'modal/select-meme.css';
+@import 'modal/post-preview.css';
 
 #modal {
   display: block;
@@ -12,7 +12,7 @@
   border-radius: var(--global-border-radius);
   border: none;
   padding: 0;
-  background-color: var(--color-container-background);
+  background-color: var(--color-modal-background);
   color: var(--color-text-default);
   scale: 0;
   opacity: 0;
@@ -36,11 +36,11 @@
   cursor: default;
 }
 
-#modal[open]+#modal-backdrop {
+#modal[open] + #modal-backdrop {
   display: block;
 }
 
-#modal.show+#modal-backdrop {
+#modal.show + #modal-backdrop {
   opacity: 1;
 }
 

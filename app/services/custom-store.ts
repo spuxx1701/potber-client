@@ -50,4 +50,9 @@ export default class CustomStore extends Store {
     });
     return privateMessages;
   }
+
+  async getPrivateMessage(id: string) {
+    const privateMessage = await this.findRecord('privateMessage', id);
+    return privateMessage;
+  }
 }

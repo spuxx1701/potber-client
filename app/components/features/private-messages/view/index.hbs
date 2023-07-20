@@ -1,0 +1,45 @@
+<div class='private-message-view'>
+  <div class='private-message-view-header'>
+    {{!-- <Common::Avatar @url={{@user.avatarUrl}} @size='large' class='margin-auto' /> --}}
+    <hr />
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <p>Betreff: </p>
+          </td>
+          <td class='flex-row'>
+            <p><b>{{@message.title}}</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Absender: </p>
+          </td>
+          <td class='flex-row'>
+            <p><b>{{@message.sender.name}}</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Gesendet: </p>
+          </td>
+          <td class='flex-row'>
+            <p><b>{{@message.date}}</b></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Ordner: </p>
+          </td>
+          <td class='flex-row'>
+            <p><b>{{this.folder}}</b></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class='private-message-view-content'>
+    <p>{{this.content}}</p>
+  </div>
+</div>

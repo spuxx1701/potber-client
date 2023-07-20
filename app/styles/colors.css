@@ -1,7 +1,7 @@
 :root {
   --color-application-background: #060f15;
-  --color-container-background: #091827;
-  --color-nav-background: var(--color-container-background);
+  /* --color-nav-background: #091827; */
+  --color-nav-background: #0c1c2c;
   --color-post-background-primary: #394e63;
   --color-post-background-secondary: #293746;
   --color-accent: #00d9ff;
@@ -14,7 +14,8 @@
   --color-text-highlighted: white;
   --color-text-mod: yellow;
 
-  --color-control-inactive: #122130;
+  --color-container-background: var(--color-nav-background);
+  --color-control-inactive: #142637;
   --color-control-disabled: #333d4b;
   --color-control-hover: #1b3149;
   --color-control-hover-transparent: rgba(255, 255, 255, 0.1);
@@ -25,7 +26,9 @@
 
   --color-click-ripple: var(--color-text-default);
 
-  --color-info: var(--color-nav-background);
+  --color-modal-background: var(--color-nav-background);
+
+  --color-info: var(--color-modal-background);
   --color-success: #21922b;
   --color-warning: #e08e2a;
   --color-error: #c83232;
