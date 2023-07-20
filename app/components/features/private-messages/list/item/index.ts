@@ -18,7 +18,10 @@ export default class PrivateMessageListItemComponent extends Component<Signature
    */
   get subtitle() {
     let subtitle = '';
-    if (!this.args.message.sender && !this.args.message.recipient) {
+    if (
+      (!this.args.message.sender && !this.args.message.recipient) ||
+      this.args.message.sender?.id === '0'
+    ) {
       subtitle += 'Systemnachricht';
     } else if (this.args.message.recipient?.name) {
       subtitle += `an ${this.args.message.recipient?.name}`;
