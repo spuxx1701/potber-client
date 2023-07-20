@@ -89,16 +89,20 @@
 }
 
 .nav-tabs {
-  width: 100%;
+  width: calc(100% - var(--bottom-nav-right-gap) - var(--bottom-nav-left-gap));
   display: flex;
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+  margin-left: var(--bottom-nav-left-gap);
   margin-right: var(--bottom-nav-right-gap);
+  overflow-x: auto;
 }
 
 .nav-tabs > a {
   flex-grow: 1;
+  padding: 0 0.25rem;
+  min-width: fit-content;
   max-width: 10rem;
 }
 
