@@ -15,6 +15,9 @@ export default class PrivateMessage extends Model {
   declare unread?: boolean;
 
   @attr()
+  declare important?: boolean;
+
+  @attr()
   declare recipient?: User;
 
   @attr()

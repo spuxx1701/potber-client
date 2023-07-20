@@ -9,10 +9,13 @@ export default class PrivateMessagesOutboundRoute extends Route {
   async model() {
     const messages = await this.store.getPrivateMessages({
       folder: PrivateMessageFolder.outbound,
+      reload: true,
     });
-    const filteredMessages = messages.filter(
-      (message) => message.folder === PrivateMessageFolder.outbound
-    );
+    const filteredMessages = [
+      ...messages.filter(
+        (message) => message.folder === PrivateMessageFolder.outbound
+      ),
+    ];
     return filteredMessages;
   }
 }

@@ -9,6 +9,7 @@ export default class PrivateMessagesSystemRoute extends Route {
   async model() {
     const messages = await this.store.getPrivateMessages({
       folder: PrivateMessageFolder.system,
+      reload: true,
     });
     const filteredMessages = messages.filter(
       (message) => message.folder === PrivateMessageFolder.system

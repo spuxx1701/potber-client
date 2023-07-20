@@ -14,6 +14,10 @@
   background-color: var(--color-post-background-secondary);
 }
 
+.private-messages-list-item:not(:first-child) {
+  margin-top: 1px;
+}
+
 .private-messages-list-item-unread {
   background-color: var(--color-post-background-primary);
 }
@@ -23,14 +27,31 @@
 }
 
 .private-messages-list-item-link {
-  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  box-sizing: border-box;
   padding: 0.5rem;
   flex-grow: 1;
-  align-items: start;
+  align-items: center;
 }
 
 .private-messages-list-item-link p {
   margin: 0;
+}
+
+.private-messages-list-item-link > svg {
+  margin-right: 0.5rem !important;
+}
+
+.private-messages-list-item-title {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.private-message-unread-indicator {
+  color: var(--color-text-subtle) !important;
+}
+
+.private-message-important-indicator {
+  color: var(--color-warning) !important;
 }

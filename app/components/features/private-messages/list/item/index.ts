@@ -1,8 +1,6 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import PrivateMessage, {
-  PrivateMessageFolder,
-} from 'potber-client/models/private-message';
+import PrivateMessage from 'potber-client/models/private-message';
 import CustomSession from 'potber-client/services/custom-session';
 
 interface Signature {
