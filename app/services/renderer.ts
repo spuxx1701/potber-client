@@ -190,4 +190,18 @@ export default class RendererService extends Service {
     await sleep(waitTime);
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
+
+  /**
+   * Looks for the `app-skeleton` node in the document and removes it.
+   * This function may be called once the application has loaded and
+   * the skeleton is no longer needed.
+   * @param delay The delay after which the skeleton should be removed.
+   */
+  async removeAppSkeleton(delay: number) {
+    await sleep(delay);
+    const skeleton = document.getElementById('app-skeleton');
+    if (skeleton) {
+      skeleton.remove();
+    }
+  }
 }

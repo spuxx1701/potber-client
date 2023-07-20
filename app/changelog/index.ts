@@ -4,6 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'patch',
     added: [
       'Nutzerprofile enthalten nun Informationen zum Alter des Accounts.',
+      'Verschiedene visuelle Verbesserungen.',
     ],
     fixed: ['Umlaute in Nutzerprofilen werden nun korekt dargestellt.'],
   },

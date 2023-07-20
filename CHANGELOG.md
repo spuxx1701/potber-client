@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - User profiles now include information about the account age.
+- The application now has a loading skeleton that improves perceived responsiveness.
 
 ### Fixed
 

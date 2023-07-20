@@ -9,11 +9,15 @@
 #page-content {
   display: flex;
   flex-direction: column;
+  position: relative;
   margin: 0 auto 0 auto;
+  min-height: calc(100vh - var(--top-nav-height) - var(--bottom-nav-height));
+  background-color: var(--color-application-background);
   padding-top: var(--top-nav-height);
   padding-bottom: var(--bottom-nav-height);
   padding-left: var(--global-gap);
   padding-right: var(--global-gap);
+  z-index: 5;
 }
 
 .container {

@@ -12,6 +12,7 @@
     <meta name="msapplication-config" content="{{rootURL}}browserconfig.xml" />
 
     <link integrity="" rel="icon" href="{{rootURL}}favicon.png" />
+    <!-- <link integrity="" rel="stylesheet" href="{{rootURL}}assets/skeleton.css" /> -->
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css" />
     <link
       integrity=""
@@ -22,6 +23,54 @@
     {{content-for "head-footer"}}
   </head>
   <body>
+    <span id="app-skeleton">
+      <span id="app-skeleton-top-nav">
+        <span class="skeleton-text">&emsp;&emsp;&emsp;</span>
+        <span class="skeleton-text">&emsp;</span>
+      </span>
+      <span id="app-skeleton-content">
+        <span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;&emsp;</span>
+        </span>
+        <span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;</span>
+        </span>
+        <span>
+          <span class="skeleton-text">&emsp;&emsp;</span>
+          <span class="skeleton-text"
+            >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span
+          >
+          <span class="skeleton-text">&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+        </span>
+        <span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;</span>
+        </span>
+        <span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;</span>
+        </span>
+        <span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;</span>
+        </span>
+        <span>
+          <span class="skeleton-text">&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;</span>
+        </span>
+        <span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;&emsp;</span>
+          <span class="skeleton-text">&emsp;&emsp;&emsp;</span>
+        </span>
+      </span>
+      <span id="app-skeleton-bottom-nav"></span>
+    </span>
+
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>

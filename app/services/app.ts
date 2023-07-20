@@ -23,13 +23,14 @@ export default class AppService extends Service {
     if (this.initialized) return;
     this.renderer.initialize();
     this.deviceManager.initialize();
-    await this.session.setup();
+    this.session.setup();
     if (this.session.isAuthenticated) {
       this.session.update();
       this.localStorage.initialize();
       this.newsfeed.refresh();
     }
     this.checkForNewVersion();
+    this.renderer.removeAppSkeleton(3000);
     this.initialized = true;
   }
 
