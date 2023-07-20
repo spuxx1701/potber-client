@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - `<textarea>` now inherits font settings.
 - `staging` build process now properly fingerprints.
+- Occasionally, the version check fails on cold starts of the PWA. If that happens, the application no longer breaks.
 
 ## [1.6.1] - 2023-07-15
 
