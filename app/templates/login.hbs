@@ -11,7 +11,7 @@
       @onChange={{this.handleUsernameChange}}
       type='text'
       @required={{true}}
-      maxLength='30'
+      maxLength='50'
     />
     <Common::Control::Input
       @value={{@model.password}}
@@ -20,7 +20,7 @@
       @onChange={{this.handlePasswordChange}}
       type='password'
       @required={{true}}
-      maxLength='50'
+      maxLength='100'
     />
     <Common::Control::Dropdown
       @options={{this.lifetimeOptions}}
