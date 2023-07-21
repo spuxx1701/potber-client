@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.6.2',
+    type: 'patch',
+    changed: ['Passwörter dürfen nun bis zu 100 Zeichen lang sein.'],
+  },
+  {
     version: '1.6.1',
     type: 'patch',
     changed: ['Editieren von Posts ist nun wieder möglich.'],
