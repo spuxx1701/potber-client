@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - User profiles now include information about the account age.
 - The application now has a loading skeleton that improves perceived responsiveness.
 
+### Changed
+
+- The application now uses `potber-api`'s new `posts/:id/quote` route when quoting messages.
+
 ### Fixed
 
 - `<textarea>` now inherits font settings.

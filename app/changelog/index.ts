@@ -7,7 +7,13 @@ export const changelog: ChangelogItem[] = [
       'Nutzerprofile enthalten nun Informationen zum Alter des Accounts.',
       'Verschiedene visuelle Verbesserungen.',
     ],
-    fixed: ['Umlaute in Nutzerprofilen werden nun korekt dargestellt.'],
+    changed: [
+      'Beim Zitierten werden IMG- und VIDEO-Tags nun in URL-Tags konvertiert.',
+    ],
+    fixed: [
+      'Umlaute in Nutzerprofilen werden nun korekt dargestellt.',
+      'Diverse kleinere Fixes.',
+    ],
   },
   {
     version: '1.6.2',

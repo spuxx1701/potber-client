@@ -1,5 +1,5 @@
 import Transition from '@ember/routing/transition';
-import Post from 'potber-client/models/post';
+import Post, { PostQuote } from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
 import PostCreateRoute from './create';
 
@@ -32,16 +32,12 @@ export default class PostQuoteRoute extends PostCreateRoute {
     const model = await super.model(params, transition);
     try {
       // Prepare the quote
-      const quotedPost = await this.store.findRecord('post', params.PID, {
-        reload: true,
-        adapterOptions: {
-          queryParams: {
-            threadId: params.TID,
-            quote: true,
-          },
-        },
+      const postToQuote = this.store.createRecord('post', {
+        id: params.PID,
       });
-      if (model) model.post.message = `${quotedPost.message}\n\n`;
+      const quotedPost = await postToQuote?.quote(undefined);
+      postToQuote.unloadRecord();
+      if (model) model.post.message = quotedPost?.message;
       return model;
     } catch (error) {
       this.messages.showNotification(
