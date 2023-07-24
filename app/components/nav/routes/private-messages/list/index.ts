@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { NavHeaderTab } from '../../../component/tabs';
 
-export default class NavRoutesPrivateMessagesComponent extends Component {
+export default class NavRoutesPrivateMessagesListComponent extends Component {
   tabs: NavHeaderTab[] = [
     {
       title: 'Eingang',

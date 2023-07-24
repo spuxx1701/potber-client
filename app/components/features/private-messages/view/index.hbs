@@ -1,7 +1,13 @@
 <div class='private-message-view'>
   <div class='private-message-view-header'>
-    {{!-- <Common::Avatar @url={{@user.avatarUrl}} @size='large' class='margin-auto' /> --}}
-    <hr />
+    {{#if @message.sender.avatarUrl}}
+      <Common::Avatar
+        @url={{@message.sender.avatarUrl}}
+        @size='large'
+        class='margin-auto'
+      />
+      <hr />
+    {{/if}}
     <table>
       <tbody>
         <tr>
@@ -12,14 +18,26 @@
             <p><b>{{@message.title}}</b></p>
           </td>
         </tr>
-        <tr>
-          <td>
-            <p>Absender: </p>
-          </td>
-          <td class='flex-row'>
-            <p><b>{{@message.sender.name}}</b></p>
-          </td>
-        </tr>
+        {{#if @message.sender}}
+          <tr>
+            <td>
+              <p>Absender: </p>
+            </td>
+            <td class='flex-row'>
+              <p><b>{{@message.sender.name}}</b></p>
+            </td>
+          </tr>
+        {{/if}}
+        {{#if @message.recipient}}
+          <tr>
+            <td>
+              <p>Empfänger: </p>
+            </td>
+            <td class='flex-row'>
+              <p><b>{{@message.recipient.name}}</b></p>
+            </td>
+          </tr>
+        {{/if}}
         <tr>
           <td>
             <p>Gesendet: </p>

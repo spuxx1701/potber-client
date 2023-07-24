@@ -1,5 +1,5 @@
 /* Large tablets and desktops */
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1200px) {
   :root {
     --max-content-width: 1200px;
     --bottom-nav-height: 0px;
@@ -16,6 +16,28 @@
   /* Sidebar */
   #sidebar-backdrop {
     display: none;
+  }
+
+  /* Private messages */
+  .private-message-view-header {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .private-message-view-header .avatar {
+    margin: 0 !important;
+  }
+
+  .private-message-view-header > hr {
+    width: 2px;
+  }
+
+  .private-message-view-header > table {
+    width: unset;
+  }
+
+  .private-message-view-header tr > td:first-child {
+    padding-right: 1rem;
   }
 
   /* Nav */

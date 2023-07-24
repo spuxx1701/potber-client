@@ -15,7 +15,10 @@ export default class PrivateMessagesViewRoute extends Route {
   @service declare store: CustomStore;
 
   async model(params: Params) {
-    const message = await this.store.getPrivateMessage(params.id);
+    const message = await this.store.getPrivateMessage(params.id, {
+      reload: true,
+    });
+    message.unread = false;
     return { message };
   }
 }

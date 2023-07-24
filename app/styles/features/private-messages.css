@@ -67,6 +67,8 @@
 
 .private-message-view-header {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 1rem;
 }

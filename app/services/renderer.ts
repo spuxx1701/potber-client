@@ -6,7 +6,7 @@ import MessagesService from './messages';
 import SettingsService, { BoxStyle, SidebarLayout } from './settings';
 
 const LOADING_INDICATOR_DELAY = 500;
-const DESKTOP_MIN_WIDTH = 1280;
+const DESKTOP_MIN_WIDTH = 1200;
 
 export default class RendererService extends Service {
   @service declare settings: SettingsService;

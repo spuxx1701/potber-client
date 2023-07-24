@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
+- Private messages can now viewed inside the application.
 - User profiles now include information about the account age.
 - The application now has a loading skeleton that improves perceived responsiveness.
 
@@ -16,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - `<textarea>` now inherits font settings.
 - `staging` build process now properly fingerprints.
 - Occasionally, the version check fails on cold starts of the PWA. If that happens, the application no longer breaks.
+
 ## [1.6.2] - 2023-07-21
 
 ### Changed

@@ -51,7 +51,15 @@ export default class CustomStore extends Store {
     return privateMessages;
   }
 
-  async getPrivateMessage(id: string) {
+  async getPrivateMessage(
+    id: string,
+    options?: {
+      reload?: boolean;
+    }
+  ) {
+    if (options?.reload) {
+      this.unloadAll('privateMessage');
+    }
     const privateMessage = await this.findRecord('privateMessage', id);
     return privateMessage;
   }
