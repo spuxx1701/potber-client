@@ -12,4 +12,19 @@
     @route='authenticated.private-messages.{{@message.folder}}'
     class='nav-element-left'
   ><FaIcon @icon='arrow-left' /></Common::Control::Link>
+
+  <div class='nav-element-center'>
+    <Common::Control::Menu
+      @position='top'
+      @variant='primary-transparent'
+      @icon='ellipsis'
+    >
+      <Common::Control::Menu::Link
+        @text='Original öffnen'
+        @icon='up-right-from-square'
+        @href={{this.originalUrl}}
+        target='_blank'
+      />
+    </Common::Control::Menu>
+  </div>
 </Portal>
