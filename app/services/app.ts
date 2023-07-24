@@ -23,7 +23,7 @@ export default class AppService extends Service {
     if (this.initialized) return;
     this.renderer.initialize();
     this.deviceManager.initialize();
-    this.session.setup();
+    await this.session.setup();
     if (this.session.isAuthenticated) {
       this.session.update();
       this.localStorage.initialize();
