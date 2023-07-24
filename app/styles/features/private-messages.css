@@ -81,6 +81,11 @@
   margin: 0.25rem 0;
 }
 
+.private-message-view-tag-important {
+  margin: 0.5rem 0;
+  color: var(--color-warning);
+}
+
 .private-message-view-content {
   box-sizing: border-box;
   background-color: var(--color-post-background-primary);

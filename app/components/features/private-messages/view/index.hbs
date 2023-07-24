@@ -8,54 +8,62 @@
       />
       <hr />
     {{/if}}
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <p>Betreff: </p>
-          </td>
-          <td class='flex-row'>
-            <p><b>{{@message.title}}</b></p>
-          </td>
-        </tr>
-        {{#if @message.sender}}
+    <div>
+      <table>
+        <tbody>
           <tr>
             <td>
-              <p>Absender: </p>
+              <p>Betreff: </p>
             </td>
             <td class='flex-row'>
-              <p><b>{{@message.sender.name}}</b></p>
+              <p><b>{{@message.title}}</b></p>
             </td>
           </tr>
-        {{/if}}
-        {{#if @message.recipient}}
+          {{#if @message.sender}}
+            <tr>
+              <td>
+                <p>Absender: </p>
+              </td>
+              <td class='flex-row'>
+                <p><b>{{@message.sender.name}}</b></p>
+              </td>
+            </tr>
+          {{/if}}
+          {{#if @message.recipient}}
+            <tr>
+              <td>
+                <p>Empfänger: </p>
+              </td>
+              <td class='flex-row'>
+                <p><b>{{@message.recipient.name}}</b></p>
+              </td>
+            </tr>
+          {{/if}}
           <tr>
             <td>
-              <p>Empfänger: </p>
+              <p>Gesendet: </p>
             </td>
             <td class='flex-row'>
-              <p><b>{{@message.recipient.name}}</b></p>
+              <p><b>{{@message.date}}</b></p>
             </td>
           </tr>
-        {{/if}}
-        <tr>
-          <td>
-            <p>Gesendet: </p>
-          </td>
-          <td class='flex-row'>
-            <p><b>{{@message.date}}</b></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p>Ordner: </p>
-          </td>
-          <td class='flex-row'>
-            <p><b>{{this.folder}}</b></p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <tr>
+            <td>
+              <p>Ordner: </p>
+            </td>
+            <td class='flex-row'>
+              <p><b>{{this.folder}}</b></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {{#if @message.important}}
+        <div class='private-message-view-tag-important'>
+          <FaIcon @icon='circle-exclamation' />
+          Wichtige Nachricht!
+        </div>
+      {{/if}}
+    </div>
   </div>
   <div class='private-message-view-content'>
     <p>{{this.content}}</p>
