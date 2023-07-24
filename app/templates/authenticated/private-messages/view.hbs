@@ -1,8 +1,8 @@
 {{page-title (concat @model.message.title ' | Nachrichten')}}
 
-<Nav::Routes::Generic
+{{!-- <Nav::Routes::Generic
   @title={{@model.message.title}}
   @subtitle={{this.subtitle}}
-/>
+/> --}}
 
 <Features::PrivateMessages::View @message={{@model.message}} />

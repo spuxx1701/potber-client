@@ -28,7 +28,7 @@ Router.map(function () {
       this.route('inbound');
       this.route('outbound');
       this.route('system');
-      this.route('read', { path: '/read/:id' });
+      this.route('view', { path: '/view/:id' });
     });
   });
   this.route('not-found', { path: '/*path' });

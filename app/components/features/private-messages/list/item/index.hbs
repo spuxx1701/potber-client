@@ -4,7 +4,7 @@
 >
   <Common::Control::Link
     class='private-messages-list-item-link'
-    @route='authenticated.private-messages.read'
+    @route='authenticated.private-messages.view'
     @model={{@message.id}}
   >
     {{#if @message.unread}}

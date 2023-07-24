@@ -7,11 +7,11 @@ interface Params {
   id: string;
 }
 
-export interface PrivateMessagesReadRouteModel {
+export interface PrivateMessagesViewRouteModel {
   message: PrivateMessage;
 }
 
-export default class PrivateMessagesReadRoute extends Route {
+export default class PrivateMessagesViewRoute extends Route {
   @service declare store: CustomStore;
 
   async model(params: Params) {
