@@ -22,6 +22,10 @@ export default class PrivateMessageListComponent extends Component<Signature> {
     return this.args.messages.slice(0, this.limit);
   }
 
+  get showLoadingIndicator() {
+    return this.limit <= this.args.messages.length;
+  }
+
   /**
    * Asynchronously updates the limit. The delay is important so we don't attempt to
    * update the limit twice within the same cycle.

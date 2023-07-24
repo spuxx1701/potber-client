@@ -1,3 +1,6 @@
 {{#each this.messages as |message|}}
   <Features::PrivateMessages::List::Item @message={{message}} />
 {{/each}}
+{{#if this.showLoadingIndicator}}
+  <FaIcon @icon='circle-notch' @spin={{true}} @size='2x' class='margin-small' />
+{{/if}}
