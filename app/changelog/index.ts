@@ -1,7 +1,7 @@
 export const changelog: ChangelogItem[] = [
   {
     version: '1.7.0',
-    type: 'patch',
+    type: 'minor',
     added: [
       'Privatnachrichten können nun direkt in der Anwendung gelesen werden.',
       'Nutzerprofile enthalten nun Informationen zum Alter des Accounts.',
