@@ -21,7 +21,7 @@ module('Unit | Service | ContentParser', (hooks) => {
       'service:contentParser'
     ) as ContentParserService;
     const input = `hello
-worldemojis
+world
 
 foo bar`;
     const expected = `hello<br/>world<br/><br/>foo bar`;
