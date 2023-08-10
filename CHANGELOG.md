@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Fixed an issue with the loading indicator not being visible.
 - Fixed an issue where certain emojis would not be parsed properly.
+- Fixed an issue where URL tags would not be parsed properly if they would cover multiple lines.
 - Fixed an issue with the PWA header's color not maching the application's header color.
 
 ## [1.7.0] - 2023-07-24

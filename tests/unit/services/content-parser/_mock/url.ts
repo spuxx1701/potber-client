@@ -35,4 +35,10 @@ export const urlTagMocks: ContentParserMock[] = [
     expected: `[b][i]Du willst doch mein Passwort![/i][/b]
     Passwörter werden natürlich nicht gespeichert. Weil der Quellcode offen ist, lässt sich das <a href="https://github.com/spuxx1701/potber-client/blob/develop/app/controllers/login.ts#L30" target="_blank">hier</a> (Client) und <a href="https://github.com/spuxx1701/potber-api/blob/develop/src/auth/auth.service.ts#L19" target="_blank">hier</a> (API) auch nachprüfen.`,
   },
+  {
+    input: `[url=https://www.t-online.de/nachrichten/deutschland/innenpolitik/id_100219588/afd-parteitag-26-jaehrige-kaiser-will-21-jahre-berufserfahrung-haben.html]Erstaunen auf dem Parteitag
+    26-jährige AfD-Frau: Habe 21 Jahre Berufserfahrung[/url]`,
+    expected: `<a href="https://www.t-online.de/nachrichten/deutschland/innenpolitik/id_100219588/afd-parteitag-26-jaehrige-kaiser-will-21-jahre-berufserfahrung-haben.html" target="_blank">Erstaunen auf dem Parteitag
+    26-jährige AfD-Frau: Habe 21 Jahre Berufserfahrung</a>`,
+  },
 ];

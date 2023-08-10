@@ -5,6 +5,7 @@ export const changelog: ChangelogItem[] = [
     fixed: [
       'Der Lade-Indikator ist nun wieder sichtbar.',
       'Emojis, die dem Schema :xyz: folgen, werden nun auch dann korrekt dargestellt, wenn sie in Klammern stehen.',
+      'URL-Tags werden nun auch dann korrekt angezeigt, wenn sie sich über mehrere Zeilen erstrecken.',
       'Verschiedene visuelle Fixes.',
     ],
   },

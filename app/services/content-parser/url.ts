@@ -4,9 +4,9 @@
  * @returns The output string.
  */
 export function parseUrl(input: string) {
-  const URL_REGEX = /\[url.*?\](.*?)\[\/url\]/gi;
+  const URL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/gi;
   const URL_PATH_REGEX = /\[url=(.*?)\]/i;
-  const URL_LABEL_REGEX = /\[url.*?\](.*?)\[\/url\]/i;
+  const URL_LABEL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/i;
 
   if (!URL_REGEX.test(input)) return input;
   let output = input;
