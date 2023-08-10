@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.7.1',
+    type: 'minor',
+    fixed: ['Der Lade-Indikator ist nun wieder sichtbar.'],
+  },
+  {
     version: '1.7.0',
     type: 'minor',
     added: [
