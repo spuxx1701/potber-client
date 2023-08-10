@@ -21,10 +21,16 @@ module('Unit | Service | ContentParser', (hooks) => {
       'service:contentParser'
     ) as ContentParserService;
     const input = `hello
-world
+worldemojis
 
 foo bar`;
     const expected = `hello<br/>world<br/><br/>foo bar`;
     assert.strictEqual(service.format(input), expected);
+  });
+
+  test('should properly parse emojis', function (assert) {
+    const service = this.owner.lookup(
+      'service:contentParser'
+    ) as ContentParserService;
   });
 });

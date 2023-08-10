@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Fixed an issue with the loading indicator not being visible.
+- Fixed an issue where certain emojis would not be parsed properly.
 
 ## [1.7.0] - 2023-07-24
 

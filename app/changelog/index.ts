@@ -2,7 +2,10 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.7.1',
     type: 'minor',
-    fixed: ['Der Lade-Indikator ist nun wieder sichtbar.'],
+    fixed: [
+      'Der Lade-Indikator ist nun wieder sichtbar.',
+      'Emojis, die dem Schema :xyz: folgen, werden nun auch dann korrekt dargestellt, wenn sie in Klammern stehen.',
+    ],
   },
   {
     version: '1.7.0',

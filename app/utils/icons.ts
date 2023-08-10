@@ -76,21 +76,6 @@ export interface Emoji extends PostIcon {
 
 export const emojis: Emoji[] = [
   {
-    key: '8|',
-    pattern: /\8\|/g,
-    filename: 'icon3.gif',
-  },
-  {
-    key: ':(',
-    pattern: /:\(/g,
-    filename: 'icon12.gif',
-  },
-  {
-    key: ':)',
-    pattern: /:\)/g,
-    filename: 'icon7.gif',
-  },
-  {
     key: ':0:',
     pattern: /:0:/g,
     filename: 'icon4.gif',
@@ -104,11 +89,6 @@ export const emojis: Emoji[] = [
     key: ':confused:',
     pattern: /:confused:/g,
     filename: 'confused.gif',
-  },
-  {
-    key: ':D',
-    pattern: /:D/g,
-    filename: 'biggrin.gif',
   },
   {
     key: ':eek:',
@@ -139,16 +119,6 @@ export const emojis: Emoji[] = [
     key: ':moo:',
     pattern: /:moo:/g,
     filename: 'smiley-pillepalle.gif',
-  },
-  {
-    key: ':o',
-    pattern: /:o/g,
-    filename: 'icon16.gif',
-  },
-  {
-    key: ':p',
-    pattern: /:p/g,
-    filename: 'icon2.gif',
   },
   {
     key: ':roll:',
@@ -184,6 +154,36 @@ export const emojis: Emoji[] = [
     key: ':zzz:',
     pattern: /:zzz:/g,
     filename: 'sleepy.gif',
+  },
+  {
+    key: '8|',
+    pattern: /\8\|/g,
+    filename: 'icon3.gif',
+  },
+  {
+    key: ':(',
+    pattern: /:\(/g,
+    filename: 'icon12.gif',
+  },
+  {
+    key: ':)',
+    pattern: /:\)/g,
+    filename: 'icon7.gif',
+  },
+  {
+    key: ':D',
+    pattern: /:D/g,
+    filename: 'biggrin.gif',
+  },
+  {
+    key: ':o',
+    pattern: /:o/g,
+    filename: 'icon16.gif',
+  },
+  {
+    key: ':p',
+    pattern: /:p/g,
+    filename: 'icon2.gif',
   },
   {
     key: ':|',
