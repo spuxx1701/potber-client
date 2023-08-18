@@ -65,7 +65,7 @@
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.11",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.1",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.0.1",
     "ember-api-actions": "^0.2.9",
