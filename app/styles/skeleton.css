@@ -30,6 +30,9 @@
 #app-skeleton-content {
   flex-grow: 1;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #app-skeleton-content > span {
@@ -72,6 +75,11 @@
   );
   animation: skeleton-shimmer 3s infinite;
   z-index: 0;
+}
+
+#app-skeleton-loading-indicator {
+  width: 4rem;
+  margin: 3rem auto;
 }
 
 @keyframes skeleton-shimmer {
