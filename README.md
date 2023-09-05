@@ -96,3 +96,7 @@ After building the Docker image, you can run it locally or on a remote host. In 
 - [ember.js](https://emberjs.com/) - The framework.
 - [potber-api](https://github.com/spuxx1701/potber-api) - The web server that potber-client utilizes.
 - [dockerhub](https://hub.docker.com/repository/docker/spuxx/potber-client/general) - The dockerhub repository.
+
+## Credit
+
+- Credit goes to deviant user Emoxynha for the [incredible cute kitty](https://www.deviantart.com/emoxynha/art/Gif-309653475) that I'm using within the application's skeleton.

@@ -1,7 +1,14 @@
 export const changelog: ChangelogItem[] = [
   {
-    version: '1.7.1',
+    version: '1.8.0',
     type: 'minor',
+    changed: [
+      'Beim initialen Laden gibt es nun Katzen. Credit geht an: https://www.deviantart.com/emoxynha/art/Gif-309653475 😻',
+    ],
+  },
+  {
+    version: '1.7.1',
+    type: 'patch',
     fixed: [
       'Der Lade-Indikator ist nun wieder sichtbar.',
       'Emojis, die dem Schema :xyz: folgen, werden nun auch dann korrekt dargestellt, wenn sie in Klammern stehen.',

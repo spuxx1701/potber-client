@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.8.0] - unreleased
+
+### Changed
+
+- The app skeleton now uses a cute kitty as a busy indicator. 😻
+
 ## [1.7.1] - 2023-08-18
 
 ### Fixed

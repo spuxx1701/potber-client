@@ -35,15 +35,6 @@
   align-items: center;
 }
 
-#app-skeleton-content > span {
-  display: flex;
-  flex-direction: column;
-  width: auto;
-  padding: 0.25rem 0.5rem;
-  background-color: var(--color-post-background-primary);
-  margin-bottom: 1px;
-}
-
 #app-skeleton .skeleton-text {
   position: relative;
   width: fit-content;
@@ -78,7 +69,7 @@
 }
 
 #app-skeleton-loading-indicator {
-  width: 4rem;
+  /* width: 5rem; */
   margin: 3rem auto;
 }
 
