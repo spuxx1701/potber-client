@@ -6,13 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.8.0] - unreleased
 
+### Changed
+
+- Page content now uses a fair amount of bottom padding in desktop mode to make it easier to read the bottom-most posts.
+- The app skeleton now uses a cute kitty as a busy indicator. 😻
+
 ### Fixed
 
 - The app no longer creates double line breaks in case of CRLF line endings.
-
-### Changed
-
-- The app skeleton now uses a cute kitty as a busy indicator. 😻
 
 ## [1.7.1] - 2023-08-18
 

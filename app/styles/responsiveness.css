@@ -11,6 +11,7 @@
   #page-content {
     transition: margin 500ms !important;
     margin-left: var(--sidebar-width);
+    padding-bottom: 8rem;
   }
 
   /* Sidebar */
