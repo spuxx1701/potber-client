@@ -2,6 +2,7 @@ import LocalStorageService from 'potber-client/services/local-storage';
 import SettingsService, {
   AvatarStyle,
   BoxStyle,
+  FontSize,
   LandingPage,
   Settings,
   SidebarLayout,
@@ -15,6 +16,7 @@ const mockedSettings: Settings = {
   landingPage: LandingPage.pot,
   autoRefreshSidebar: false,
   sidebarLayout: SidebarLayout.leftTop,
+  fontSize: FontSize.medium,
 };
 
 module('Unit | Service | Settings', function (hooks) {

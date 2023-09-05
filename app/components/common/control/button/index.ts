@@ -13,6 +13,7 @@ interface Signature {
     variant?: ControlVariant;
     busy?: boolean;
     disabled?: boolean;
+    iconSize?: 'normal' | 'small';
     onClick?: () => void;
   };
 }
@@ -43,6 +44,10 @@ export default class CommonButtonComponent extends Component<Signature> {
 
   get disabled() {
     return this.args.disabled || this.args.busy;
+  }
+
+  get iconSize() {
+    return this.args.iconSize ?? 'auto';
   }
 
   @action handleClick(event: MouseEvent) {

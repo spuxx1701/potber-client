@@ -13,6 +13,11 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
+.nav button:not(.menu-item) > svg,
+.nav .button-link:not(.menu-item) > svg {
+  font-size: var(--icon-size-large) !important;
+}
+
 #top-nav {
   height: var(--top-nav-height);
   top: 0;

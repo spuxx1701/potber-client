@@ -9,6 +9,7 @@ export interface Settings {
   landingPage: LandingPage;
   autoRefreshSidebar: boolean;
   sidebarLayout: SidebarLayout;
+  fontSize: FontSize;
 }
 
 export enum AvatarStyle {
@@ -34,6 +35,12 @@ export enum SidebarLayout {
   rightBottom,
 }
 
+export enum FontSize {
+  small = 'small',
+  medium = 'medium',
+  large = 'large',
+}
+
 export default class SettingsService extends Service {
   @service declare localStorage: LocalStorageService;
 
@@ -44,6 +51,7 @@ export default class SettingsService extends Service {
     landingPage: LandingPage.boardOverview,
     autoRefreshSidebar: true,
     sidebarLayout: SidebarLayout.leftTop,
+    fontSize: FontSize.medium,
   };
 
   /**
@@ -64,9 +72,11 @@ export default class SettingsService extends Service {
       if (Object.values(LandingPage).includes(storedSettings.landingPage)) {
         settings.landingPage = storedSettings.landingPage;
       }
-
       if (Object.values(SidebarLayout).includes(storedSettings.sidebarLayout)) {
         settings.sidebarLayout = storedSettings.sidebarLayout;
+      }
+      if (Object.values(FontSize).includes(storedSettings.fontSize)) {
+        settings.fontSize = storedSettings.fontSize;
       }
       if (typeof storedSettings.autoRefreshSidebar === 'boolean') {
         settings.autoRefreshSidebar = storedSettings.autoRefreshSidebar;
@@ -119,6 +129,15 @@ export default class SettingsService extends Service {
 
   set landingPage(landingPage: LandingPage) {
     this.active = { ...this.active, landingPage };
+    this.save();
+  }
+
+  get fontSize() {
+    return this.active.fontSize;
+  }
+
+  set fontSize(fontSize: FontSize) {
+    this.active = { ...this.active, fontSize };
     this.save();
   }
 

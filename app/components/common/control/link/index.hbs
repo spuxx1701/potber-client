@@ -1,6 +1,7 @@
 {{#if @model}}
   <LinkTo
     class='button-link control-size-{{@size}}
+      icon-size-{{this.iconSize}}
       control-variant-{{this.variant}}
       {{if @disabled "button-link-disabled"}}'
     @route={{@route}}
@@ -15,6 +16,7 @@
 {{else}}
   <LinkTo
     class='button-link control-size-{{@size}}
+      icon-size-{{this.iconSize}}
       control-variant-{{this.variant}}
       {{if @disabled "button-link-disabled"}}'
     @route={{@route}}

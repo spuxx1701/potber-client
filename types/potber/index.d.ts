@@ -21,6 +21,8 @@ declare global {
     input: string;
     expected: string;
   }
+
+  type IconSize = 'auto' | 'large' | 'medium';
 }
 
 export {};

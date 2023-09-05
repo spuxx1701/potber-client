@@ -34,10 +34,10 @@
 }
 
 .board-category-header-title {
-  font-size: large;
+  font-size: larger;
   font-weight: bold;
   margin: 0 0 0.25rem 0;
-  color: var(--color-text-default)
+  color: var(--color-text-default);
 }
 
 .board-category .subtitle {
@@ -46,7 +46,7 @@
 
 .board-category-header-chevron {
   width: 1rem;
-  font-size: large;
+  font-size: larger;
   color: var(--color-text-default);
 }
 
@@ -71,7 +71,8 @@
   font-weight: bold;
 }
 
-.board-category-item-title, .board-header .subtitle {
+.board-category-item-title,
+.board-header .subtitle {
   margin: 0 0 0.25rem 0;
   text-align: start;
   text-decoration: none !important;

@@ -8,7 +8,7 @@ button,
   min-height: var(--control-default-height);
   border: none;
   border-radius: var(--global-border-radius);
-  font-size: medium;
+  font-size: 1em;
 }
 
 button:not(:disabled),

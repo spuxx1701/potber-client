@@ -64,7 +64,7 @@
 }
 
 .control-size-square > svg {
-  font-size: x-large;
+  font-size: var(--icon-size-normal);
 }
 
 .control-size-small {

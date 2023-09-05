@@ -3,7 +3,7 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { sleep } from 'potber-client/utils/misc';
 import MessagesService from './messages';
-import SettingsService, { BoxStyle, SidebarLayout } from './settings';
+import SettingsService, { BoxStyle, FontSize, SidebarLayout } from './settings';
 
 const LOADING_INDICATOR_DELAY = 500;
 const DESKTOP_MIN_WIDTH = 1200;
@@ -22,6 +22,7 @@ export default class RendererService extends Service {
    */
   @action initialize() {
     this.updateBoxStyle();
+    this.updateFontSize();
     this.updateSidebarLayout();
     addEventListener('resize', this.updateIsDesktop);
     this.updateIsDesktop();
@@ -203,5 +204,13 @@ export default class RendererService extends Service {
     if (skeleton) {
       skeleton.remove();
     }
+  }
+
+  /**
+   * Updates the global font size according to the settings..
+   */
+  async updateFontSize() {
+    const { fontSize } = this.settings;
+    this.rootStyle.setProperty('--global-font-size', fontSize);
   }
 }

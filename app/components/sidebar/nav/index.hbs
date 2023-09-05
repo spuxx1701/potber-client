@@ -1,6 +1,7 @@
 <div id='sidebar-nav'>
   <Common::Control::Link
     @route='authenticated.home'
+    @iconSize='medium'
     @onClick={{this.handleNavLinkClick}}
   >
     <FaIcon @icon='house' />
@@ -8,6 +9,7 @@
   {{#if this.showBoardOverviewButton}}
     <Common::Control::Link
       @route='authenticated.board-overview'
+      @iconSize='medium'
       @onClick={{this.handleNavLinkClick}}
     >
       <FaIcon @icon='bars-staggered' />
@@ -16,12 +18,14 @@
   {{#if this.authenticated}}
     <Common::Control::Link
       @route='authenticated.private-messages.inbound'
+      @iconSize='medium'
       @onClick={{this.handleNavLinkClick}}
     >
       <FaIcon @icon='envelope' />
     </Common::Control::Link>
     <Common::Control::Link
       @route='authenticated.bookmarks'
+      @iconSize='medium'
       @onClick={{this.handleNavLinkClick}}
     >
       <FaIcon @icon='bookmark' />
@@ -29,6 +33,7 @@
   {{/if}}
   <Common::Control::Link
     @route='authenticated.settings'
+    @iconSize='medium'
     @onClick={{this.handleNavLinkClick}}
   >
     <FaIcon @icon='gear' />

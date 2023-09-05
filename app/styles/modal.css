@@ -52,7 +52,7 @@
 }
 
 .modal-header svg {
-  font-size: large;
+  font-size: var(--icon-size-normal);
   margin: 0 0.75rem 0 1rem;
 }
 

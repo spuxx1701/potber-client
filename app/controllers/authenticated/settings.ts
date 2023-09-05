@@ -10,6 +10,7 @@ import {
   landingPageOptions,
   SettingsRouteModel,
   sidebarLayoutOptions,
+  fontSizeOptions,
 } from 'potber-client/routes/authenticated/settings';
 import MessagesService from 'potber-client/services/messages';
 import AppService from 'potber-client/services/app';
@@ -30,6 +31,7 @@ export default class SettingsController extends Controller {
   avatarStyleOptions = avatarStyleOptions;
   boxStyleOptions = boxStyleOptions;
   sidebarLayoutOptions = sidebarLayoutOptions;
+  fontSizeOptions = fontSizeOptions;
   landingPageOptions = landingPageOptions;
   autoRefreshSidebarOptions = autoRefreshSidebarOptions;
 
@@ -53,6 +55,11 @@ export default class SettingsController extends Controller {
     }
     this.settings.sidebarLayout = option.data;
     this.renderer.updateSidebarLayout();
+  }
+
+  @action handleFontSizeSelect(option: DropdownOption) {
+    this.settings.fontSize = option.data;
+    this.renderer.updateFontSize();
   }
 
   @action handleLandingPageSelect(option: DropdownOption) {

@@ -89,13 +89,13 @@
 }
 
 p.mod {
-  font-size: large;
+  font-size: larger;
   font-weight: bolder;
   color: var(--color-text-mod);
 }
 
 p.tex {
-  font-size: large;
+  font-size: larger;
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
   font-style: italic;
@@ -104,7 +104,7 @@ p.tex {
 }
 
 p.trigger {
-  font-size: x-small;
+  font-size: 0.5em;
   cursor: pointer;
 }
 
@@ -149,7 +149,7 @@ code {
   margin-bottom: 0.5rem;
   display: inline-block;
   width: 100%;
-  font-size: large;
+  font-size: larger;
   white-space: pre;
   overflow: auto;
 }

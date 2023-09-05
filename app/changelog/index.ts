@@ -2,6 +2,7 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.8.0',
     type: 'minor',
+    added: ['Die Textgröße kann nun in den Einstellungen geändert werden.'],
     changed: [
       'Im Desktopmodus wird der Seiteninhalt nun mit einigem Abstand zum unteren Bildrand dargestellt.',
       'Beim initialen Laden gibt es nun Katzen. Credit geht an: https://www.deviantart.com/emoxynha/art/Gif-309653475 😻',

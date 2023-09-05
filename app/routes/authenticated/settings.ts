@@ -8,6 +8,7 @@ import SessionService from 'potber-client/services/session';
 import SettingsService, {
   AvatarStyle,
   BoxStyle,
+  FontSize,
   LandingPage,
   SidebarLayout,
 } from 'potber-client/services/settings';
@@ -18,6 +19,7 @@ export interface SettingsRouteModel {
   currentAvatarStyleOption: DropdownOption;
   currentBoxStyleOption: DropdownOption;
   currentSidebarLayoutOption: DropdownOption;
+  currentFontSizeOption: DropdownOption;
   currentLandingPageOption: DropdownOption;
   currentAutoRefreshSidebarOption: DropdownOption;
 }
@@ -39,6 +41,9 @@ export default class SettingsRoute extends Route {
       ),
       currentSidebarLayoutOption: sidebarLayoutOptions.find(
         (option) => option.data === this.settings.sidebarLayout
+      ),
+      currentFontSizeOption: fontSizeOptions.find(
+        (option) => option.data === this.settings.fontSize
       ),
       currentLandingPageOption: landingPageOptions.find(
         (option) => option.data === this.settings.landingPage
@@ -92,6 +97,21 @@ export const sidebarLayoutOptions: DropdownOption[] = [
   {
     label: 'Rechts (unten)',
     data: SidebarLayout.rightBottom,
+  },
+];
+
+export const fontSizeOptions: DropdownOption[] = [
+  {
+    label: 'Klein',
+    data: FontSize.small,
+  },
+  {
+    label: 'Normal',
+    data: FontSize.medium,
+  },
+  {
+    label: 'Groß',
+    data: FontSize.large,
   },
 ];
 

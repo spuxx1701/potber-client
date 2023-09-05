@@ -12,6 +12,7 @@ export interface Signature {
     variant?: ControlVariant;
     title?: string;
     disabled?: boolean;
+    iconSize?: IconSize;
     onClick?: () => void;
   };
 }
@@ -29,6 +30,10 @@ export default class CommonControlLinkComponent extends Component<Signature> {
 
   get variant() {
     return this.args.variant || 'primary-transparent';
+  }
+
+  get iconSize() {
+    return this.args.iconSize || 'auto';
   }
 
   get query() {

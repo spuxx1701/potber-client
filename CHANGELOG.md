@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.8.0] - unreleased
 
+### Added
+
+- Users may now customize the font size.
+
 ### Changed
 
 - Page content now uses a fair amount of bottom padding in desktop mode to make it easier to read the bottom-most posts.

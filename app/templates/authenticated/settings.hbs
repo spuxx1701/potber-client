@@ -30,6 +30,14 @@
     @label='Sidebar'
   />
 
+  <Common::Control::Dropdown
+    @options={{this.fontSizeOptions}}
+    @default={{@model.currentFontSizeOption}}
+    @onSelect={{this.handleFontSizeSelect}}
+    @size='max'
+    @label='Schriftgröße'
+  />
+
   <h3>Daten & Netzwerk</h3>
 
   <Common::Control::Dropdown
