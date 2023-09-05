@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.8.0] - unreleased
 
+### Fixed
+
+- The app no longer creates double line breaks in case of CRLF line endings.
+
 ### Changed
 
 - The app skeleton now uses a cute kitty as a busy indicator. 😻

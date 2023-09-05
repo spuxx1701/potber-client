@@ -5,6 +5,9 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'Beim initialen Laden gibt es nun Katzen. Credit geht an: https://www.deviantart.com/emoxynha/art/Gif-309653475 😻',
     ],
+    fixed: [
+      'Beim Einfügen von Code mit CRLF line endings werden nun nicht mehr redundante Zeilenumbrüche eingefügt.',
+    ],
   },
   {
     version: '1.7.1',

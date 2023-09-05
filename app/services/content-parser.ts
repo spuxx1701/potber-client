@@ -59,6 +59,7 @@ export default class ContentParserService extends Service {
    */
   format(input: string): string {
     let output = input;
+    output = output.replaceAll(/\r\n/g, '<br/>');
     output = output.replaceAll(/\n/g, '<br/>');
     return output;
   }
