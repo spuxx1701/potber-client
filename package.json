@@ -52,7 +52,7 @@
     "@types/ember__service": "^4.0.2",
     "@types/ember__string": "^3.0.10",
     "@types/ember__template": "^4.0.2",
-    "@types/ember__test": "^4.0.1",
+    "@types/ember__test": "^4.0.2",
     "@types/ember__utils": "^4.0.2",
     "@types/ember-data": "^4.4.10",
     "@types/ember-data__adapter": "^4.0.1",
