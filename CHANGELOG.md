@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Improved user experience within the post form for mobile Chrome and Firefox. In particular, the visual keyboard no longer hides the submit button.
+- Fixed a couple of issues caused by the customizable font size.
 
 ## [1.8.0] - 2023-09-06
 
