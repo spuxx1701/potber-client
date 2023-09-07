@@ -9,7 +9,6 @@ import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
 import RendererService from 'potber-client/services/renderer';
 import SessionService from 'potber-client/services/session';
-import RSVP from 'rsvp';
 
 interface Params {
   TID: string;
@@ -60,14 +59,15 @@ export default class PostCreateRoute extends Route {
         icon: '0',
         message: '',
       });
-      return RSVP.hash({
+      return {
         thread,
         post,
-      } as PostCreateRouteModel);
+      } as PostCreateRouteModel;
     } catch (error) {
-      this.messages.showNotification(
+      this.messages.logErrorAndNotify(
         'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',
-        'error'
+        error,
+        this.constructor.name
       );
       transition.abort();
     }

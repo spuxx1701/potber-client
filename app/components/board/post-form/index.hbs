@@ -1,4 +1,4 @@
-<div id='post-form-container' class='container-size-x-large'>
+<form id='post-form' class='container-size-x-large'>
   <div role='toolbar' id='post-form-toolbar'>
     <Board::PostForm::Control::EmojiSelect
       @post={{@post}}
@@ -114,35 +114,33 @@
       @post={{@post}}
     />
   </div>
-  <form id='post-form' {{on 'submit' this.handleSubmit}}>
-    {{#unless @hideTitle}}
-      <Board::PostForm::Control::Title @post={{@post}} />
-    {{/unless}}
-    <Common::Control::Textarea
-      @id='textarea-post-form'
-      @required={{true}}
-      @size='max'
-      @height='large'
-      @value={{@post.message}}
-      placeholder='Nachricht eingeben...'
-      maxLength='15000'
-      {{on 'change' this.handleMessageChange}}
-    />
-    <Common::Control::Button
-      @icon='right-to-bracket'
-      @text={{this.submitLabel}}
-      @variant='primary'
-      @size='max'
-      @type='submit'
-      @busy={{@busy}}
-    />
-    <Common::Control::Button
-      @icon='eye'
-      @text='Vorschau'
-      @variant='secondary'
-      @size='max'
-      @type='button'
-      @onClick={{this.handlePreview}}
-    />
-  </form>
-</div>
+  {{#unless @hideTitle}}
+    <Board::PostForm::Control::Title @post={{@post}} />
+  {{/unless}}
+  <Common::Control::Textarea
+    @id='textarea-post-form'
+    @required={{true}}
+    @size='max'
+    @height='large'
+    @value={{@post.message}}
+    placeholder='Nachricht eingeben...'
+    maxLength='15000'
+    {{on 'change' this.handleMessageChange}}
+  />
+  <Common::Control::Button
+    @icon='right-to-bracket'
+    @text={{this.submitLabel}}
+    @variant='primary'
+    @size='max'
+    @type='submit'
+    @busy={{@busy}}
+  />
+  <Common::Control::Button
+    @icon='eye'
+    @text='Vorschau'
+    @variant='secondary'
+    @size='max'
+    @type='button'
+    @onClick={{this.handlePreview}}
+  />
+</form>

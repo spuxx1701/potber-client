@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.8.1',
+    type: 'patch',
+    fixed: [
+      'Die user experience des Postformulars auf Chrome & Firefox wurde verbessert. Insbesondere muss nun die Tastatur nicht eingeklappt oder nach unten gescrollt werden, um den Post abzuschicken.',
+    ],
+  },
+  {
     version: '1.8.0',
     type: 'minor',
     added: ['Die Textgröße kann nun in den Einstellungen geändert werden.'],

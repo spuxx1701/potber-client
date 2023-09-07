@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.8.0] - unreleased
+## [1.8.1] - unreleased
+
+### Fixed
+
+- Improved user experience within the post form for mobile Chrome and Firefox. In particular, the visual keyboard no longer hides the submit button.
+
+## [1.8.0] - 2023-09-06
 
 ### Added
 
