@@ -7,7 +7,7 @@ import RendererService from 'potber-client/services/renderer';
 
 export interface Signature {
   Args: {
-    position:
+    position?:
       | 'auto'
       | 'top-left'
       | 'top'
@@ -36,7 +36,7 @@ export default class MenuComponent extends Component<Signature> {
   }
 
   calculatePosition() {
-    if (this.args.position === 'auto') {
+    if (!this.args.position || this.args.position === 'auto') {
       const element = document.getElementById(this.id) as Element;
       const rect = element.getBoundingClientRect();
       let position = '';

@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.8.1',
     type: 'patch',
     fixed: [
+      'In den Bookmarks kann das Optionsmenü eines Gespeicherten Posts nun nicht mehr außerhalb des Viewports liegen.',
       'Die user experience des Postformulars auf Chrome & Firefox wurde verbessert. Insbesondere muss nun die Tastatur nicht eingeklappt oder nach unten gescrollt werden, um den Post abzuschicken.',
       'Verschiedene klein visuelle Fixes rund um die einstellbare Schriftgröße.',
       'Diverse kleinere Fixes.',

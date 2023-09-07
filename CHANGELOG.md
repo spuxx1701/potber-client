@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Fixed an issue with the menu button of a saved post in the bookmarks menu expanding outside the viewport.
 - Improved user experience within the post form for mobile Chrome and Firefox. In particular, the visual keyboard no longer hides the submit button.
 - Fixed a couple of issues caused by the customizable font size.
 - Fixed various minor visual bugs.
