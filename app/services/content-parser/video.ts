@@ -38,7 +38,7 @@ export function parseVideo(input: string, location: Partial<Location>) {
         }
         if (query) query += '&';
         query += `origin=${location.protocol}//${location.host}`;
-        replacement += `<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/${videoId}?${query}" frameborder="0"></iframe></span>`;
+        replacement += `<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/${videoId}?${query}" frameborder="0" allow="fullscreen;"></iframe></span>`;
         output = output.replace(match[0], replacement);
       } else {
         // Other links can be embedded using the <video> tag

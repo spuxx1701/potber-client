@@ -105,7 +105,7 @@ export const videoTagMocks: ContentParserMock[] = [
     input: `[video]https://www.youtube.com/watch?v=--y3Rw3a4Zs[/video]`,
     expected: `${createVideoContainer(
       'https://www.youtube.com/watch?v=--y3Rw3a4Zs',
-      '<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/--y3Rw3a4Zs?origin=https://test.potber.de" frameborder="0"></iframe>'
+      '<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/--y3Rw3a4Zs?origin=https://test.potber.de" frameborder="0" allow="fullscreen;"></iframe>'
     )}`,
   },
   {
@@ -118,7 +118,7 @@ export const videoTagMocks: ContentParserMock[] = [
     Gestorben :D`,
     expected: `${createVideoContainer(
       'https://www.youtube.com/watch?v=tleu80PP-UE',
-      '<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/tleu80PP-UE?origin=https://test.potber.de" frameborder="0"></iframe>'
+      '<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/tleu80PP-UE?origin=https://test.potber.de" frameborder="0" allow="fullscreen;"></iframe>'
     )}
 
     Ich finds leider nicht separat aber der erste, mit Schleff :D:D:D:D
@@ -163,7 +163,7 @@ export const videoTagMocks: ContentParserMock[] = [
     
     ${createVideoContainer(
       'https://youtu.be/U5yhs5HTCpU?t=105',
-      '<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/U5yhs5HTCpU?t=105&origin=https://test.potber.de" frameborder="0"></iframe>'
+      '<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/U5yhs5HTCpU?t=105&origin=https://test.potber.de" frameborder="0" allow="fullscreen;"></iframe>'
     )}`,
   },
 ];
