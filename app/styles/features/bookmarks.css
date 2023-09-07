@@ -17,6 +17,11 @@
   height: 100%;
 }
 
+.bookmark > *:first-child {
+  flex: 1;
+  max-width: calc(100% - var(--control-default-height));
+}
+
 .bookmark-link {
   box-sizing: border-box;
   display: flex;
@@ -40,6 +45,7 @@
   margin: 0;
   text-align: start;
   text-decoration: none !important;
+  max-width: 100%;
 }
 
 .bookmark-icon {
