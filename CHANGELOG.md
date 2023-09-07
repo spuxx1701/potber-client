@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.8.1] - 2023-09-07
+## [1.9.0] - 2023-09-07
+
+### Added
+
+- Videos are now embedded into containers that include a hyperlink to the video source.
 
 ### Fixed
 

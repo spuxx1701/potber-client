@@ -1,3 +1,5 @@
+import { getFaIconHtmlString } from 'potber-client/utils/font-awesome';
+
 /**
  * Parses [video] tags. Does not support tag nesting.
  * @param input The input string.
@@ -14,6 +16,9 @@ export function parseVideo(input: string, location: Partial<Location>) {
     try {
       const full = match[0] as string;
       const url = match[1] as string;
+
+      const linkIcon = getFaIconHtmlString({ prefix: 'fas', iconName: 'link' });
+      let replacement = `<span class="video-container"><a class="video-container-header" href="${url}" target="_blank"><p>Video</p>${linkIcon}</a>`;
       if (full.match(YOUTUBE_REGEX)) {
         // YouTube links need to be embedded using their propietary player
         const split = url.split('/');
@@ -33,11 +38,11 @@ export function parseVideo(input: string, location: Partial<Location>) {
         }
         if (query) query += '&';
         query += `origin=${location.protocol}//${location.host}`;
-        const replacement = `<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/${videoId}?${query}" frameborder="0"></iframe>`;
+        replacement += `<iframe class="youtube-player" type="text/html" src="https://www.youtube.com/embed/${videoId}?${query}" frameborder="0"></iframe></span>`;
         output = output.replace(match[0], replacement);
       } else {
         // Other links can be embedded using the <video> tag
-        const replacement = `<video src="${url}" controls></video>`;
+        replacement += `<video src="${url}" controls></video></span>`;
         output = output.replace(match[0], replacement);
       }
     } catch (error) {

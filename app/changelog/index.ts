@@ -1,7 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
-    version: '1.8.1',
-    type: 'patch',
+    version: '1.9.0',
+    type: 'minor',
+    added: [
+      'Eingebettete Videos beinhalten nun auch einen Direktlink zum Video.',
+    ],
     fixed: [
       'In den Bookmarks kann das Optionsmenü eines Gespeicherten Posts nun nicht mehr außerhalb des Viewports liegen.',
       'Die user experience des Postformulars auf Chrome & Firefox wurde verbessert. Insbesondere muss nun die Tastatur nicht eingeklappt oder nach unten gescrollt werden, um den Post abzuschicken.',
