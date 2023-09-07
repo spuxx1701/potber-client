@@ -21,6 +21,7 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
     "start": "ember serve",
+    "start:mobile": "ember serve --environment=development:mobile",
     "test": "ember test",
     "test:coverage": "COVERAGE=true ember test",
     "update": "npx npm-check-updates -u"

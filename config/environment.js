@@ -34,6 +34,12 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
+  if (environment === 'development:mobile') {
+    ENV.APP.API_URL = 'http://schleppi.fritz.box:3000';
+    ENV.APP.DEBUG = true;
+    ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
+  }
+
   if (environment === 'test') {
     ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
 
