@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.9.1] - 2023-09-07
+
+### Fixed
+
+- Fixed an issue where submitting a post was not possible.
+
 ## [1.9.0] - 2023-09-07
 
 ### Added

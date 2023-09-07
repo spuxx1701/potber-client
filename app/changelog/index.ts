@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.9.1',
+    type: 'patch',
+    fixed: ['Posts können nun wieder abgeschickt werden.'],
+  },
+  {
     version: '1.9.0',
     type: 'minor',
     added: [

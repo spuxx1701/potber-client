@@ -1,4 +1,8 @@
-<form id='post-form' class='container-size-x-large'>
+<form
+  id='post-form'
+  class='container-size-x-large'
+  {{on 'submit' this.handleSubmit}}
+>
   <div role='toolbar' id='post-form-toolbar'>
     <Board::PostForm::Control::EmojiSelect
       @post={{@post}}
