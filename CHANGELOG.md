@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
+- The project now uses [glint](https://github.com/typed-ember/glint) for typechecking. Temporarily, the linting job is no longer required to succeed for pipelines to finish.
 - The project now includes support for [gjs/gts template syntax](https://github.com/ember-template-imports/ember-template-imports) (meaning [first class component templates](https://rfcs.emberjs.com/id/0779-first-class-component-templates/)).
 
 ### Fixed

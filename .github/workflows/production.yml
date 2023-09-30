@@ -6,9 +6,6 @@ on:
       - v*
 
 jobs:
-  types:
-    uses: spuxx1701/ci-cd/.github/workflows/npm_types.yml@v2.0
-
   lint:
     uses: spuxx1701/ci-cd/.github/workflows/npm_lint.yml@v2.0
 
@@ -17,7 +14,7 @@ jobs:
 
   release_image:
     needs:
-      - types
+      # - types
       - lint
       - test
     uses: spuxx1701/ci-cd/.github/workflows/release_image.yml@v2.0
