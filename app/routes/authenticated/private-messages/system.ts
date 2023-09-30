@@ -12,7 +12,7 @@ export default class PrivateMessagesSystemRoute extends SlowRoute {
       reload: true,
     });
     const filteredMessages = messages.filter(
-      (message) => message.folder === PrivateMessageFolder.system
+      (message) => message.folder === PrivateMessageFolder.system,
     );
     return filteredMessages;
   }

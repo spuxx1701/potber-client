@@ -19,7 +19,7 @@ module('Acceptance | Authenticated | Settings', function (hooks) {
     const bottomNav = find('#bottom-nav');
 
     const controller = this.owner.lookup(
-      'controller:authenticated.settings'
+      'controller:authenticated.settings',
     ) as SettingsController;
 
     controller.handleSidebarLayoutSelect({

@@ -55,7 +55,7 @@ export default class CustomStore extends Store {
     id: string,
     options?: {
       reload?: boolean;
-    }
+    },
   ) {
     if (options?.reload) {
       this.unloadAll('privateMessage');

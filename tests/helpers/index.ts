@@ -19,7 +19,7 @@ interface ApplicationTestOptions extends SetupTestOptions {
 
 function setupApplicationTest(
   hooks: NestedHooks,
-  options?: ApplicationTestOptions
+  options?: ApplicationTestOptions,
 ) {
   upstreamSetupApplicationTest(hooks, options);
 
@@ -42,7 +42,7 @@ interface RenderingTestOptions extends SetupTestOptions {
 
 function setupRenderingTest(
   hooks: NestedHooks,
-  options?: RenderingTestOptions
+  options?: RenderingTestOptions,
 ) {
   upstreamSetupRenderingTest(hooks, options);
 

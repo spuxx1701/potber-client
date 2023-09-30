@@ -1,7 +1,9 @@
 :root {
   --sidebar-expanded-width: 300px;
   /* Will be modified during runtime */
-  --sidebar-height: calc(100dvh - var(--top-nav-height) - var(--bottom-nav-height));
+  --sidebar-height: calc(
+    100dvh - var(--top-nav-height) - var(--bottom-nav-height)
+  );
   --sidebar-width: 0px;
   --sidebar-left: 0px;
   --sidebar-right: unset;
@@ -22,7 +24,7 @@
   width: var(--sidebar-width);
   left: var(--sidebar-left);
   right: var(--sidebar-right);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, .5)
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 #sidebar-backdrop {
@@ -64,7 +66,7 @@
   overflow-y: auto;
 }
 
-#sidebar-content>* {
+#sidebar-content > * {
   width: 100%;
 }
 

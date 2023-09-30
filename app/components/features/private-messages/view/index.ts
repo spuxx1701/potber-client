@@ -20,7 +20,7 @@ export default class PrivateMessagesViewComponent extends Component<Signature> {
 
   get content() {
     const content = this.contentParser.parsePrivateMessageContent(
-      this.args.message.content || ''
+      this.args.message.content || '',
     );
     return htmlSafe(content);
   }

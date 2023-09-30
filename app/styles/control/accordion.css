@@ -9,6 +9,6 @@
   justify-content: space-between;
 }
 
-button.control-variant-primary+.accordion-content {
+button.control-variant-primary + .accordion-content {
   background-color: var(--color-control-inactive);
 }

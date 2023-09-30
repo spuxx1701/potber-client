@@ -42,7 +42,7 @@ export default class PostQuoteRoute extends PostCreateRoute {
     } catch (error) {
       this.messages.showNotification(
         'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',
-        'error'
+        'error',
       );
       transition.abort();
     }

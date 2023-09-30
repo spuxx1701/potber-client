@@ -11,7 +11,7 @@ module('Unit | Service | ContentParser | [quote]', (hooks) => {
     for (const mock of quoteTagMocks) {
       assert.strictEqual(
         parseQuote(mock.input, { protocol: 'https:', host: 'test.potber.de' }),
-        mock.expected
+        mock.expected,
       );
     }
   });

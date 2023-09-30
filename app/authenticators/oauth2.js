@@ -34,12 +34,12 @@ export default class OAuth2Authenticator extends OAuth2PasswordGrantAuthenticato
             }
 
             const expiresAt = this._absolutizeExpirationTime(
-              response['expires_in']
+              response['expires_in'],
             );
             this._scheduleAccessTokenRefresh(
               response['expires_in'],
               expiresAt,
-              response['refresh_token']
+              response['refresh_token'],
             );
             if (!isEmpty(expiresAt)) {
               response = Object.assign(response, { expires_at: expiresAt });
@@ -50,7 +50,7 @@ export default class OAuth2Authenticator extends OAuth2PasswordGrantAuthenticato
         },
         (response) => {
           run(null, reject, response);
-        }
+        },
       );
     });
   }

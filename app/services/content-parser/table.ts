@@ -15,16 +15,16 @@ export function parseTable(input: string) {
       let replacement = full;
       replacement = replacement.replace(
         openingTag as string,
-        '<table><tr><td>'
+        '<table><tr><td>',
       );
       replacement = replacement.replace(
         closingTag as string,
-        '</td></tr></table>'
+        '</td></tr></table>',
       );
       replacement = replacement.replaceAll(/\s*\[\|\|\]\s*/g, '</td><td>');
       replacement = replacement.replaceAll(
         /\s*\[--\]\s*/g,
-        '</td></tr><tr><td>'
+        '</td></tr><tr><td>',
       );
       output = output.replace(full, replacement);
     } catch (error) {

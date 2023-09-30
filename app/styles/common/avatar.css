@@ -5,7 +5,7 @@
   background-color: var(--color-post-background-primary);
 }
 
-.avatar>img {
+.avatar > img {
   object-fit: contain;
   height: 100%;
   width: 100%;

@@ -4,7 +4,7 @@ import ENV from 'potber-client/config/environment';
 export function parseMemeUrl([url]: [string]) {
   if (!url) {
     throw new Error(
-      'parse-meme-url helper requires exactly one argument of type string.'
+      'parse-meme-url helper requires exactly one argument of type string.',
     );
   }
   if (url.startsWith('http')) {

@@ -66,7 +66,7 @@ export default class LocalStorageService extends Service {
     } catch (error) {
       this.messages.log(
         `Error while attempting to fetch board-favorites: ${error}`,
-        { type: 'error', context: this.constructor.name }
+        { type: 'error', context: this.constructor.name },
       );
       this.boardFavorites = null;
     }
@@ -107,7 +107,7 @@ export default class LocalStorageService extends Service {
                     threadId: persistedPost.threadId,
                   },
                 },
-              })
+              }),
             );
           }
         }
@@ -115,7 +115,7 @@ export default class LocalStorageService extends Service {
       } catch (error) {
         this.messages.log(
           `Error while attempting to fetch saved posts: ${error}`,
-          { type: 'error', context: this.constructor.name }
+          { type: 'error', context: this.constructor.name },
         );
         this.savedPosts = null;
       }
@@ -137,7 +137,7 @@ export default class LocalStorageService extends Service {
       `${PREFIX}savedPosts set to: '${JSON.stringify(keys)}'.`,
       {
         context: this.constructor.name,
-      }
+      },
     );
     this.savedPosts = [...posts];
   }
@@ -148,13 +148,13 @@ export default class LocalStorageService extends Service {
    */
   getUnencountedVersion() {
     const encounteredVersion = localStorage.getItem(
-      `${PREFIX}lastEncountedVersion`
+      `${PREFIX}lastEncountedVersion`,
     );
     if (!valid(encounteredVersion)) return undefined;
     if (
       gt(
         clean(ENV.APP['version'] as string) as string,
-        clean(encounteredVersion as string) as string
+        clean(encounteredVersion as string) as string,
       )
     ) {
       return clean(ENV.APP['version'] as string) as string;

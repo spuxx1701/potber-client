@@ -19,7 +19,7 @@ export function sanitize(input: string): string {
   for (const unallowedCharacter of unallowedCharacters) {
     output = output.replaceAll(
       unallowedCharacter.input,
-      unallowedCharacter.replacement
+      unallowedCharacter.replacement,
     );
   }
   return output;

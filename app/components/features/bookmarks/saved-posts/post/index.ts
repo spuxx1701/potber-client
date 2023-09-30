@@ -32,7 +32,7 @@ export default class BookmarksSavedPostComponent extends Component<Signature> {
 
   get subtitle() {
     return `von ${this.args.post.author.name} am ${new Date(
-      this.args.post.date
+      this.args.post.date,
     ).toLocaleString()}`;
   }
 
@@ -55,7 +55,7 @@ export default class BookmarksSavedPostComponent extends Component<Signature> {
       this.messages.logErrorAndNotify(
         'Das hat leider nicht geklappt',
         error,
-        this.constructor.name
+        this.constructor.name,
       );
     }
   }

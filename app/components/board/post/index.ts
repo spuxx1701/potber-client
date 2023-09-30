@@ -63,7 +63,7 @@ export default class PostComponent extends Component<Signature> {
   get message() {
     if (typeof this.args.post.message === 'string') {
       const content = this.contentParser.parsePostContent(
-        this.args.post.message
+        this.args.post.message,
       );
       return htmlSafe(content);
     } else {
@@ -82,20 +82,20 @@ export default class PostComponent extends Component<Signature> {
     try {
       const user = await this.store.findRecord(
         'user',
-        this.args.post.author.id
+        this.args.post.author.id,
       );
       this.modal.userProfile({ user });
     } catch (error: any) {
       if (error.errors && error.errors[0]?.status === '404') {
         this.messages.showNotification(
           'Dieser User existiert nicht (mehr).',
-          'error'
+          'error',
         );
       } else {
         this.messages.logErrorAndNotify(
           'Das hat leider nicht geklappt.',
           error,
-          this.constructor.name
+          this.constructor.name,
         );
       }
     }
@@ -106,7 +106,7 @@ export default class PostComponent extends Component<Signature> {
     navigator.clipboard.writeText(this.href);
     this.messages.showNotification(
       'Link in Zwischenablage kopiert.',
-      'success'
+      'success',
     );
   }
 
@@ -123,13 +123,13 @@ export default class PostComponent extends Component<Signature> {
       if (error.errors?.find((httpError: any) => httpError.status === '400')) {
         this.messages.showNotification(
           'Lesezeichen ist bereits gesetzt.',
-          'error'
+          'error',
         );
       } else {
         this.messages.logErrorAndNotify(
           'Das hat leider nicht geklappt.',
           error,
-          this.constructor.name
+          this.constructor.name,
         );
       }
     }
@@ -143,7 +143,7 @@ export default class PostComponent extends Component<Signature> {
       if (savedPosts.find((post) => post.id === this.args.post.id)) {
         this.messages.showNotification(
           'Du hast diesen Post bereits gespeichert.',
-          'error'
+          'error',
         );
         return;
       }
@@ -154,7 +154,7 @@ export default class PostComponent extends Component<Signature> {
       this.messages.logErrorAndNotify(
         'Das hat leider nicht geklappt.',
         error,
-        this.constructor.name
+        this.constructor.name,
       );
     }
   }

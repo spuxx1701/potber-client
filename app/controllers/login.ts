@@ -36,7 +36,7 @@ export default class AboutController extends Controller {
         'authenticator:oauth2',
         this.model.username,
         this.model.password,
-        this.model.lifetimeOption.data
+        this.model.lifetimeOption.data,
       );
     } catch (error) {
       this.messages.log(`Login failed. (${error})`, {
@@ -45,7 +45,7 @@ export default class AboutController extends Controller {
       });
       this.messages.showNotification(
         'Das hat leider nicht geklappt. Versuche es nochmal.',
-        'error'
+        'error',
       );
     }
     this.loginInProcess = false;

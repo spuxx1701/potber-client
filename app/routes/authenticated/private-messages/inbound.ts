@@ -13,7 +13,7 @@ export default class PrivateMessagesInboundRoute extends SlowRoute {
     });
     const filteredMessages = [
       ...messages.filter(
-        (message) => message.folder === PrivateMessageFolder.inbound
+        (message) => message.folder === PrivateMessageFolder.inbound,
       ),
     ];
     return filteredMessages;

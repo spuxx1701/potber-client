@@ -60,7 +60,7 @@ export default class RendererService extends Service {
         this.rootStyle.setProperty('--bottom-nav-left-gap', '0px');
         this.rootStyle.setProperty(
           '--bottom-nav-right-gap',
-          'var(--control-default-height)'
+          'var(--control-default-height)',
         );
         break;
       case SidebarLayout.rightTop:
@@ -74,7 +74,7 @@ export default class RendererService extends Service {
         this.rootStyle.setProperty('--sidebar-right', 'unset');
         this.rootStyle.setProperty(
           '--bottom-nav-left-gap',
-          'var(--control-default-height)'
+          'var(--control-default-height)',
         );
         this.rootStyle.setProperty('--bottom-nav-right-gap', '0px');
         break;
@@ -93,7 +93,7 @@ export default class RendererService extends Service {
   @action createClickRipple(event: Event) {
     // Clean up existing ripples
     const existingRipples = document.body.getElementsByClassName(
-      'click-ripple-container'
+      'click-ripple-container',
     );
     for (const ripple of existingRipples) {
       ripple.remove();
@@ -135,7 +135,7 @@ export default class RendererService extends Service {
     if (this.leftSidebarExpanded) {
       this.rootStyle.setProperty(
         '--sidebar-width',
-        'var(--sidebar-expanded-width)'
+        'var(--sidebar-expanded-width)',
       );
       this.rootStyle.setProperty('--sidebar-backdrop-opacity', '1');
       this.rootStyle.setProperty('--sidebar-backdrop-pointer-events', 'all');

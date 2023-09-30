@@ -29,7 +29,7 @@ export default class ApplicationAdapter extends RESTAdapter {
     status: number,
     headers: object,
     payload: object,
-    requestData: object
+    requestData: object,
   ) {
     // When the client calls a protected endpoint and the API returns 401,
     // this likely means that our current session is invalid. In that case,

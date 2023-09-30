@@ -26,7 +26,7 @@ export default class PostFormControlLinkComponent extends Component<Signature> {
     const insertion = `[url=${url}]${text}[/url]`;
     this.args.post.message = `${message.substring(
       0,
-      selectionEnd
+      selectionEnd,
     )}${insertion}${message.substring(selectionEnd, message.length)}`;
     this.args.textarea.value = this.args.post.message;
     // Close the dialog and...

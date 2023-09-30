@@ -46,7 +46,7 @@ export default class ContentParserService extends Service {
     for (const emoji of emojis) {
       output = output.replaceAll(
         emoji.pattern,
-        `<img class="post-emoji" src="/images/post-emojis/${emoji.filename}" alt="${emoji.key}"/>`
+        `<img class="post-emoji" src="/images/post-emojis/${emoji.filename}" alt="${emoji.key}"/>`,
       );
     }
     return output;

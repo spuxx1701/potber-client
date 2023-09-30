@@ -116,5 +116,5 @@ module(
         .dom('[data-test-newsfeed-indicator')
         .hasClass('newsfeed-indicator-position-left');
     });
-  }
+  },
 );

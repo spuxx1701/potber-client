@@ -50,7 +50,7 @@ export default class BoardRoute extends SlowRoute {
       } else if (error.message === 'no-access') {
         this.messages.showNotification(
           'Du hast keine Zugriffsberechtigung für dieses Board.',
-          'error'
+          'error',
         );
       }
       transition.abort();

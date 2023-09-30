@@ -7,7 +7,7 @@ module('Unit | Service | DeviceManager', function (hooks) {
 
   test('Properly recognizes all supported operating systems.', function (assert) {
     const deviceManager = this.owner.lookup(
-      'service:device-manager'
+      'service:device-manager',
     ) as DeviceManagerService;
     const iOSUserAgent =
       'Mozilla/5.0 (iPhone14,3; U; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19A346 Safari/602.1';
@@ -22,25 +22,25 @@ module('Unit | Service | DeviceManager', function (hooks) {
     assert.strictEqual(deviceManager.getOperatingSystem(iOSUserAgent), 'iOS');
     assert.strictEqual(
       deviceManager.getOperatingSystem(androidUserAgent),
-      'Android'
+      'Android',
     );
     assert.strictEqual(
       deviceManager.getOperatingSystem(windowsUserAgent),
-      'Windows'
+      'Windows',
     );
     assert.strictEqual(
       deviceManager.getOperatingSystem(linuxUserAgent),
-      'Linux'
+      'Linux',
     );
     assert.strictEqual(
       deviceManager.getOperatingSystem(macOSUserAgent),
-      'Mac OS'
+      'Mac OS',
     );
   });
 
   test('Properly recognizes all supported browsers.', function (assert) {
     const deviceManager = this.owner.lookup(
-      'service:device-manager'
+      'service:device-manager',
     ) as DeviceManagerService;
     const webKitUserAgent =
       'Mozilla/5.0 (iPhone14,3; U; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19A346 Safari/602.1';

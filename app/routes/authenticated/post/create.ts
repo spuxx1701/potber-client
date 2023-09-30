@@ -67,7 +67,7 @@ export default class PostCreateRoute extends Route {
       this.messages.logErrorAndNotify(
         'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',
         error,
-        this.constructor.name
+        this.constructor.name,
       );
       transition.abort();
     }

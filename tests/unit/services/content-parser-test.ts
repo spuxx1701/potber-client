@@ -8,7 +8,7 @@ module('Unit | Service | ContentParser', (hooks) => {
 
   test('should properly parse all post contents', function (assert) {
     const service = this.owner.lookup(
-      'service:contentParser'
+      'service:contentParser',
     ) as ContentParserService;
     assert.expect(postContentMocks.length);
     for (const mock of postContentMocks) {
@@ -18,7 +18,7 @@ module('Unit | Service | ContentParser', (hooks) => {
 
   test("should replace line breaks with '<br/>' tags", function (assert) {
     const service = this.owner.lookup(
-      'service:contentParser'
+      'service:contentParser',
     ) as ContentParserService;
     const input = `hello
 world

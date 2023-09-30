@@ -30,7 +30,7 @@ export default class ThreadComponent extends Component<Signature> {
   get bookmark() {
     if (this.store.bookmarks) {
       return this.store.bookmarks.find(
-        (bookmark) => bookmark.thread.id === this.args.thread.id
+        (bookmark) => bookmark.thread.id === this.args.thread.id,
       );
     }
   }
@@ -59,7 +59,7 @@ export default class ThreadComponent extends Component<Signature> {
       post = this.args.thread.firstPost;
     } else return undefined;
     return htmlSafe(
-      `<b>${post.author.name}</b> am ${new Date(post.date).toLocaleString()}`
+      `<b>${post.author.name}</b> am ${new Date(post.date).toLocaleString()}`,
     );
   }
 }

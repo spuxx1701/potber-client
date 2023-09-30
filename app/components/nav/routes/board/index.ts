@@ -56,7 +56,7 @@ export default class NavBoardComponent extends Component<Signature> {
     this.localStorage.setBoardFavorites(ids);
     this.messages.showNotification(
       'Board wurde zu Deinen Favoriten hinzugefügt.',
-      'success'
+      'success',
     );
   }
 

@@ -14,14 +14,14 @@ module('Integration | Adapter | Application', (hooks) => {
     test('should include authorization header when authenticated', async function (assert) {
       await authenticateSession();
       const adapter = this.owner.lookup(
-        'adapter:application'
+        'adapter:application',
       ) as ApplicationAdapter;
       assert.deepEqual(adapter.headers, { Authorization: 'Bearer undefined' });
     });
 
     test('should not include authorization header when not authenticatd', function (assert) {
       const adapter = this.owner.lookup(
-        'adapter:application'
+        'adapter:application',
       ) as ApplicationAdapter;
       assert.deepEqual(adapter.headers, {});
     });
@@ -30,7 +30,7 @@ module('Integration | Adapter | Application', (hooks) => {
   module('handleResponse', () => {
     test('should invalidate the session when receiving a 401 response', async function (assert) {
       const adapter = this.owner.lookup(
-        'adapter:application'
+        'adapter:application',
       ) as ApplicationAdapter;
       await authenticateSession();
       assert.true(currentSession().isAuthenticated);
@@ -40,7 +40,7 @@ module('Integration | Adapter | Application', (hooks) => {
 
     test('should not invalidate the session when receiving different responses', async function (assert) {
       const adapter = this.owner.lookup(
-        'adapter:application'
+        'adapter:application',
       ) as ApplicationAdapter;
       await authenticateSession();
       await adapter.handleResponse(200, {}, { foo: 'bar' }, {});

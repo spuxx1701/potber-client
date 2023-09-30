@@ -32,7 +32,7 @@ module('Unit | Service | Settings', function (hooks) {
     this.owner.register('service:local-storage', LocalStorageStub);
 
     const settings = this.owner.lookup(
-      'service:settings'
+      'service:settings',
     ) as unknown as SettingsService;
 
     const actual = settings.getSettings();
@@ -49,7 +49,7 @@ module('Unit | Service | Settings', function (hooks) {
     this.owner.register('service:local-storage', LocalStorageStub);
 
     const settings = this.owner.lookup(
-      'service:settings'
+      'service:settings',
     ) as unknown as SettingsService;
 
     const actual = settings.getSettings();
@@ -74,7 +74,7 @@ module('Unit | Service | Settings', function (hooks) {
     this.owner.register('service:local-storage', LocalStorageStub);
 
     const settings = this.owner.lookup(
-      'service:settings'
+      'service:settings',
     ) as unknown as SettingsService;
 
     settings.save();

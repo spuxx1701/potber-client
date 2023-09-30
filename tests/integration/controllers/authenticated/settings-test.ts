@@ -22,7 +22,7 @@ module('Integration | Controller | Authenticated | Settings', function (hooks) {
     assert.ok(bottomNav);
 
     const controller = this.owner.lookup(
-      'controller:authenticated.settings'
+      'controller:authenticated.settings',
     ) as SettingsController;
 
     controller.handleSidebarLayoutSelect({
@@ -44,7 +44,7 @@ module('Integration | Controller | Authenticated | Settings', function (hooks) {
     const modal = this.owner.lookup('service:modal') as ModalService;
 
     const controller = this.owner.lookup(
-      'controller:authenticated.settings'
+      'controller:authenticated.settings',
     ) as SettingsController;
 
     controller.handleSidebarLayoutSelect({

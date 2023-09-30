@@ -17,16 +17,16 @@ module(
       this.set('messages', privateMessageMocks.inbound);
 
       await render(
-        hbs`<Features::PrivateMessages::List @messages={{this.messages}}/>`
+        hbs`<Features::PrivateMessages::List @messages={{this.messages}}/>`,
       );
 
       const messageListItems = this.element.getElementsByClassName(
-        'private-messages-list-item'
+        'private-messages-list-item',
       );
       assert.strictEqual(
         messageListItems.length,
         3,
-        'should have 3 list items'
+        'should have 3 list items',
       );
 
       // First message is an unread message
@@ -34,19 +34,21 @@ module(
       assert
         .dom(message)
         .hasTextContaining(
-          'Ungelesene Nachricht von User 1 (13:51 20.07.2023)'
+          'Ungelesene Nachricht von User 1 (13:51 20.07.2023)',
         );
       assert.dom(message).hasClass('private-messages-list-item-unread');
       assert
         .dom(
-          message?.getElementsByClassName('private-message-unread-indicator')[0]
+          message?.getElementsByClassName(
+            'private-message-unread-indicator',
+          )[0],
         )
         .exists();
       assert.strictEqual(
         message?.getElementsByClassName('private-message-important-indicator')
           .length,
         0,
-        'should not have an important indicator'
+        'should not have an important indicator',
       );
 
       // Second message is a read important message
@@ -59,13 +61,13 @@ module(
         message?.getElementsByClassName('private-message-unread-indicator')
           .length,
         0,
-        'should not have an unread indicator'
+        'should not have an unread indicator',
       );
       assert
         .dom(
           message?.getElementsByClassName(
-            'private-message-important-indicator'
-          )[0]
+            'private-message-important-indicator',
+          )[0],
         )
         .exists();
 
@@ -79,14 +81,14 @@ module(
         message?.getElementsByClassName('private-message-unread-indicator')
           .length,
         0,
-        'should not have an unread indicator'
+        'should not have an unread indicator',
       );
       assert.strictEqual(
         message?.getElementsByClassName('private-message-important-indicator')
           .length,
         0,
-        'should not have an important indicator'
+        'should not have an important indicator',
       );
     });
-  }
+  },
 );

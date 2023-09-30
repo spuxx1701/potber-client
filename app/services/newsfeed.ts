@@ -31,7 +31,7 @@ export default class NewsfeedService extends Service {
     try {
       const bookmarks = await this.store.getBookmarks({ reload: true });
       this.unreadBookmarks = bookmarks.filter(
-        (bookmark) => bookmark.newPostsCount > 0
+        (bookmark) => bookmark.newPostsCount > 0,
       );
     } catch (error) {
       this.unreadBookmarks = null;
@@ -47,7 +47,7 @@ export default class NewsfeedService extends Service {
       this.unreadPrivateMessages = [
         ...privateMessages.filter(
           (message) =>
-            message.unread && message.folder === PrivateMessageFolder.inbound
+            message.unread && message.folder === PrivateMessageFolder.inbound,
         ),
       ];
     } catch (error) {

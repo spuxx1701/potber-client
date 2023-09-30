@@ -44,7 +44,7 @@ export default class PostFormControlSimpleInputComponent extends Component<Signa
     const insertion = `${this.args.opening}${value}${this.args.closing}`;
     this.args.post.message = `${message.substring(
       0,
-      selectionEnd
+      selectionEnd,
     )}${insertion}${message.substring(selectionEnd, message.length)}`;
     this.args.textarea.value = this.args.post.message;
     // Close the dialog and...

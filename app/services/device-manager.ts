@@ -23,7 +23,7 @@ export default class DeviceManagerService extends Service {
       `Recognized OS: ${this.operatingSystem}; Browser: ${this.browser}.`,
       {
         context: this.constructor.name,
-      }
+      },
     );
     if (this.operatingSystem === 'iOS') {
       this.enableiOSCompatibility();
@@ -73,7 +73,7 @@ export default class DeviceManagerService extends Service {
     // Add a bottom border to the bottom nav to make room for the home button
     document.documentElement.style.setProperty(
       '--bottom-nav-bottom-border',
-      'var(--bottom-nav-bottom-border-ios)'
+      'var(--bottom-nav-bottom-border-ios)',
     );
   }
 }

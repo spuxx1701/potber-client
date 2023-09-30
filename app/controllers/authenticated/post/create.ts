@@ -34,13 +34,13 @@ export default class PostCreateController extends Controller {
       if (error.errors?.find((err: any) => err.status === '429')) {
         this.messages.showNotification(
           'Du postest zu viel. Bitte warte einen Moment.',
-          'error'
+          'error',
         );
       } else {
         this.messages.logErrorAndNotify(
           'Das hat leider nicht geklappt.',
           error,
-          this.constructor.name
+          this.constructor.name,
         );
       }
     }

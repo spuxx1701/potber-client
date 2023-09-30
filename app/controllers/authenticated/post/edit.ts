@@ -33,7 +33,7 @@ export default class PostCreateController extends Controller {
       this.messages.logErrorAndNotify(
         'Da ist leider etwas schiefgegangen. Probiere es nochmal.',
         error,
-        this.constructor.name
+        this.constructor.name,
       );
     }
     this.busy = false;

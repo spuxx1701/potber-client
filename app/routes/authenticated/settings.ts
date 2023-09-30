@@ -34,22 +34,22 @@ export default class SettingsRoute extends Route {
     return RSVP.hash({
       session: this.session.sessionData,
       currentAvatarStyleOption: avatarStyleOptions.find(
-        (option) => option.data === this.settings.avatarStyle
+        (option) => option.data === this.settings.avatarStyle,
       ),
       currentBoxStyleOption: boxStyleOptions.find(
-        (option) => option.data === this.settings.boxStyle
+        (option) => option.data === this.settings.boxStyle,
       ),
       currentSidebarLayoutOption: sidebarLayoutOptions.find(
-        (option) => option.data === this.settings.sidebarLayout
+        (option) => option.data === this.settings.sidebarLayout,
       ),
       currentFontSizeOption: fontSizeOptions.find(
-        (option) => option.data === this.settings.fontSize
+        (option) => option.data === this.settings.fontSize,
       ),
       currentLandingPageOption: landingPageOptions.find(
-        (option) => option.data === this.settings.landingPage
+        (option) => option.data === this.settings.landingPage,
       ),
       currentAutoRefreshSidebarOption: autoRefreshSidebarOptions.find(
-        (option) => option.data === this.settings.autoRefreshSidebar
+        (option) => option.data === this.settings.autoRefreshSidebar,
       ),
     } as SettingsRouteModel);
   }

@@ -14,7 +14,7 @@ module(
 
     test('properly hides and expands its content', async function (this: Context, assert) {
       await render(
-        hbs`<Common::Control::Accordion>Hello World</Common::Control::Accordion>`
+        hbs`<Common::Control::Accordion>Hello World</Common::Control::Accordion>`,
       );
 
       // Content is initially hidden
@@ -26,5 +26,5 @@ module(
       // Content is now visible
       assert.dom('[data-test-accordion-content]').hasText('Hello World');
     });
-  }
+  },
 );
