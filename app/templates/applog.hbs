@@ -4,6 +4,6 @@
 
 <Common::Container @size='medium'>
   {{#each @model as |message|}}
-    <Misc::MessageItem @message={{message}} />
+    <Routes::Applog::MessageItem @message={{message}} />
   {{/each}}
 </Common::Container>
