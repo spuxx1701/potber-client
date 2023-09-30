@@ -1,3 +1,4 @@
+import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import { service } from '@ember/service';
@@ -45,4 +46,12 @@ export default class UpdateScrollPositionComponent extends Component {
       });
     }
   }
+
+  <template>
+    <span
+      id={{this.elementId}}
+      class='hidden'
+      {{didInsert this.updateScrollPosition}}
+    />
+  </template>
 }

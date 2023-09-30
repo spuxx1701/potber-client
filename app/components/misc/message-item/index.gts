@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { Message } from 'potber-client/services/messages';
+import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
 
 interface Signature {
   Args: {
@@ -25,4 +26,12 @@ export default class MessageItemComponent extends Component<Signature> {
   get date() {
     return new Date(this.args.message.date).toLocaleString();
   }
+
+  <template>
+    <div class='message-item bg-{{@message.type}}'>
+      <p class='subtitle'><FaIcon @icon={{this.icon}} />[{{@message.context}}]
+        {{this.date}}</p>
+      <p>{{@message.text}}</p>
+    </div>
+  </template>
 }
