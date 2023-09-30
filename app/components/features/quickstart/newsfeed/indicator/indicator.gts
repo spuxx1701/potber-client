@@ -38,4 +38,13 @@ export default class NewsfeedIndicatorComponent extends Component {
       return 'right';
     }
   }
+
+  <template>
+    <span
+      id='newsfeed-indicator'
+      class='newsfeed-indicator-position-{{this.position}}
+        newsfeed-indicator-{{this.status}}'
+      data-test-newsfeed-indicator
+    />
+  </template>
 }

@@ -1,4 +1,6 @@
-{{page-title (concat @model.message.title ' | Nachrichten')}}
+{{! @glint-nocheck }}{{page-title
+  (concat @model.message.title ' | Nachrichten')
+}}
 
 <Nav::Routes::PrivateMessages::View @message={{@model.message}} />
 
