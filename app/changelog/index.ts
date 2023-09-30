@@ -4,6 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
     fixed: [
       'Besonders lange Wörter werden nun auf mehrere Zeilen umgebrochen, statt über den Bildrand hinauszuragen.',
+      'Beim Klick auf eine private Nachricht in der Sidebar wird nun die Sidebar geschlossen.',
     ],
   },
   {

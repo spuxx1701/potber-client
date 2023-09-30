@@ -12,8 +12,6 @@ interface Signature {
   };
 }
 
-const MESSAGE_BASE_PATH = 'https://forum.mods.de/bb/pm/?a=2&mid=';
-
 export default class QuickstartNewsfeedPrivateMessageComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare modal: ModalService;
@@ -21,5 +19,11 @@ export default class QuickstartNewsfeedPrivateMessageComponent extends Component
 
   get subtitle() {
     return `${this.args.privateMessage.sender?.name}`;
+  }
+
+  @action handleLinkClick() {
+    if (this.args.inSidebar && !this.renderer.isDesktop) {
+      this.renderer.closeLeftSidebar();
+    }
   }
 }

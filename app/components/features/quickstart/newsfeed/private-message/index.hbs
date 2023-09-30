@@ -5,6 +5,7 @@
     @variant='secondary'
     @route='authenticated.private-messages.view'
     @model={{@privateMessage.id}}
+    @onClick={{this.handleLinkClick}}
   >
     <FaIcon @icon='envelope' class='fg-text-subtle' />
     <div class='text-start'>
