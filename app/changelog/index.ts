@@ -2,6 +2,7 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.10.0',
     type: 'minor',
+    added: ['In Vorbereitung auf die bevorstehende Migration auf Ember 5.x.x & Ember Polaris unterstützt das Projekt jetzt First-Class Component Templates.'],
     fixed: [
       'Besonders lange Wörter werden nun auf mehrere Zeilen umgebrochen, statt über den Bildrand hinauszuragen.',
       'Beim Klick auf eine private Nachricht in der Sidebar wird nun die Sidebar geschlossen.',

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.10.0] - unreleased
 
+### Added
+
+- The project now includes support for [gjs/gts template syntax](https://github.com/ember-template-imports/ember-template-imports) (meaning [first class component templates](https://rfcs.emberjs.com/id/0779-first-class-component-templates/)).
+
 ### Fixed
 
 - Fixed an issue with the sidebar not closing in mobile devices when navigating to an unread private message.
