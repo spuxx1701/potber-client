@@ -4,11 +4,11 @@ import { ThreadRouteModel } from 'potber-client/routes/authenticated/thread';
 export default class ThreadController extends Controller {
   declare model: ThreadRouteModel;
 
-  queryParams = ['TID', 'page', 'PID', 'subtleUntilPostId', 'scrollToBottom'];
+  queryParams = ['TID', 'page', 'PID', 'lastReadPost', 'scrollToBottom'];
   TID = '';
   page = '';
   PID = '';
-  subtleUntilPostId = '';
+  lastReadPost = '';
   scrollToBottom = '';
 
   get pageTitle() {

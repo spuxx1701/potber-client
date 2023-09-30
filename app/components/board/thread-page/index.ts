@@ -5,7 +5,7 @@ interface Signature {
   Args: {
     thread: Thread;
     reverseOrder?: boolean;
-    subtleUntilPostId?: string;
+    lastReadPost?: string;
   };
 }
 

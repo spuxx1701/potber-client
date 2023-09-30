@@ -10,13 +10,13 @@ interface Params {
   TID: string;
   PID?: string;
   page?: string;
-  subtleUntilPostId?: string;
+  lastReadPost?: string;
   scrollToBottom?: string;
 }
 
 export interface ThreadRouteModel {
   thread: Thread;
-  subtleUntilPostId: string;
+  lastReadPost: string;
 }
 
 export default class ThreadRoute extends SlowRoute {
@@ -49,12 +49,12 @@ export default class ThreadRoute extends SlowRoute {
       // Attempt to parse the page
       let page: number | undefined;
       let postId = params.PID;
-      let subtleUntilPostId = params.subtleUntilPostId;
+      let lastReadPost = params.lastReadPost;
       if (params.page) {
         page = parseInt(params.page) || 1;
         // If page is supplied, ignore post ID to prevent conflicts
         postId = undefined;
-        subtleUntilPostId = undefined;
+        lastReadPost = undefined;
       }
       const thread = await this.store.findRecord('thread', params.TID, {
         adapterOptions: {
@@ -67,7 +67,7 @@ export default class ThreadRoute extends SlowRoute {
       });
       return RSVP.hash({
         thread,
-        subtleUntilPostId: subtleUntilPostId,
+        lastReadPost: lastReadPost,
       } as ThreadRouteModel);
     } catch (error: any) {
       if (error.message === 'not-found') {
