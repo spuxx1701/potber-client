@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.10.0',
+    type: 'minor',
+    fixed: [
+      'Besonders lange Wörter werden nun auf mehrere Zeilen umgebrochen, statt über den Bildrand hinauszuragen.',
+    ],
+  },
+  {
     version: '1.9.1',
     type: 'patch',
     fixed: ['Posts können nun wieder abgeschickt werden.'],

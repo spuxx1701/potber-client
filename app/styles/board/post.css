@@ -81,6 +81,7 @@
 
 .post-content-message {
   margin: 0;
+  word-break: break-word;
 }
 
 .post-content-message p {

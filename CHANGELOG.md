@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.10.0] - unreleased
+
+### Fixed
+
+- Fixed an issue with long words not properly being broken into a new line.
+
 ## [1.9.1] - 2023-09-07
 
 ### Fixed
