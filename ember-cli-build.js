@@ -6,7 +6,12 @@ module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     // Add options here
     babel: {
+      sourceMaps: 'inline',
       plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
+    },
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js'],
     },
     fingerprint: {
       enabled:
