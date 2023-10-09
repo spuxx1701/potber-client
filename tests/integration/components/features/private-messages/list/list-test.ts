@@ -3,9 +3,11 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'potber-client/tests/helpers';
 import { module, test } from 'qunit';
 import { privateMessageMocks } from './_mock/private-messages';
+import PrivateMessage from 'potber-client/models/private-message';
 
 interface Context extends TestContext {
   element: HTMLElement;
+  messages: PrivateMessage[];
 }
 
 module(
@@ -16,7 +18,7 @@ module(
     test('should render all inbound messages as expected', async function (this: Context, assert) {
       this.set('messages', privateMessageMocks.inbound);
 
-      await render(
+      await render<Context>(
         hbs`<Features::PrivateMessages::List @messages={{this.messages}}/>`,
       );
 

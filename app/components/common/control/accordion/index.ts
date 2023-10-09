@@ -7,6 +7,9 @@ interface Signature {
     size?: ControlSize;
     variant?: ControlVariant;
   };
+  Blocks: {
+    default: [];
+  };
 }
 
 export default class AccordionComponent extends Component<Signature> {

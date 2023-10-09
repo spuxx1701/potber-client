@@ -13,7 +13,7 @@ module(
     setupRenderingTest(hooks);
 
     test('properly hides and expands its content', async function (this: Context, assert) {
-      await render(
+      await render<Context>(
         hbs`<Common::Control::Accordion>Hello World</Common::Control::Accordion>`,
       );
 
