@@ -5,7 +5,6 @@ import {
   authenticateSession,
   currentSession,
 } from 'ember-simple-auth/test-support';
-import { sleep } from 'potber-client/utils/misc';
 
 module('Integration | Adapter | Application', (hooks) => {
   setupTest(hooks);

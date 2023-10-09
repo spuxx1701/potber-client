@@ -1,4 +1,4 @@
-import { module, skip, test } from 'qunit';
+import { module, skip } from 'qunit';
 import { visit, currentURL, find } from '@ember/test-helpers';
 import { setupApplicationTest } from 'potber-client/tests/helpers';
 import SettingsController from 'potber-client/controllers/authenticated/settings';

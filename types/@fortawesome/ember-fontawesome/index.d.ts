@@ -1,5 +1,5 @@
 declare module '@fortawesome/ember-fontawesome/components/fa-icon' {
-  import Component from '@ember/component';
+  import Component from '@glimmer/component';
 
   import {
     FlipProp,

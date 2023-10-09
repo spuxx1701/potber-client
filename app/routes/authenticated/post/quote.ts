@@ -1,5 +1,5 @@
 import Transition from '@ember/routing/transition';
-import Post, { PostQuote } from 'potber-client/models/post';
+import Post from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
 import PostCreateRoute from './create';
 
