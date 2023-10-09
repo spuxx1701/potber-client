@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Changed
 
 - The nav button that returns the user the parent layer (e.g. the board if the user is currently in a thread) now uses an upwards arrow to better stand out from similar functions.
+- When navigating to a thread via a bookmark, read posts will now be marked via a separator instead of decreased opacity.
 
 ### Fixed
 
