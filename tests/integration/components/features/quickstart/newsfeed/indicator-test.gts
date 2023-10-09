@@ -2,7 +2,6 @@ import { render, TestContext } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'potber-client/tests/helpers';
 import NewsfeedService from 'potber-client/services/newsfeed';
-import { hbs } from 'ember-cli-htmlbars';
 import Bookmark from 'potber-client/models/bookmark';
 import { newsfeedMocks } from './_mock/newsfeed';
 import SettingsService, {
@@ -10,6 +9,7 @@ import SettingsService, {
 } from 'potber-client/services/settings';
 import RendererService from 'potber-client/services/renderer';
 import PrivateMessage from 'potber-client/models/private-message';
+import NewsfeedIndicatorComponent from 'potber-client/components/features/quickstart/newsfeed/indicator';
 
 interface Context extends TestContext {
   element: HTMLElement;
@@ -25,7 +25,7 @@ module(
         unreadBookmarks: Bookmark[] = [];
       }
       this.owner.register('service:newsfeed', NewsfeedStub);
-      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+      await render(<template><NewsfeedIndicatorComponent /></template>);
 
       assert
         .dom('[data-test-newsfeed-indicator]')
@@ -41,7 +41,7 @@ module(
         leftSidebarExpanded = true;
       }
       this.owner.register('service:renderer', RendererStub);
-      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+      await render(<template><NewsfeedIndicatorComponent /></template>);
 
       assert
         .dom('[data-test-newsfeed-indicator]')
@@ -55,7 +55,7 @@ module(
         ];
       }
       this.owner.register('service:newsfeed', NewsfeedStub);
-      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+      await render(<template><NewsfeedIndicatorComponent /></template>);
 
       assert
         .dom('[data-test-newsfeed-indicator')
@@ -67,7 +67,7 @@ module(
         unreadBookmarks: Bookmark[] = [newsfeedMocks.unreadBookmark];
       }
       this.owner.register('service:newsfeed', NewsfeedStub);
-      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+      await render(<template><NewsfeedIndicatorComponent /></template>);
 
       assert
         .dom('[data-test-newsfeed-indicator')
@@ -82,7 +82,7 @@ module(
         ];
       }
       this.owner.register('service:newsfeed', NewsfeedStub);
-      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+      await render(<template><NewsfeedIndicatorComponent /></template>);
 
       assert
         .dom('[data-test-newsfeed-indicator')
@@ -96,7 +96,7 @@ module(
         }
       }
       this.owner.register('service:settings', SettingsStub);
-      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+      await render(<template><NewsfeedIndicatorComponent /></template>);
 
       assert
         .dom('[data-test-newsfeed-indicator')
@@ -110,7 +110,7 @@ module(
         }
       }
       this.owner.register('service:settings', SettingsStub);
-      await render(hbs`<Features::Quickstart::Newsfeed::Indicator/>`);
+      await render(<template><NewsfeedIndicatorComponent /></template>);
 
       assert
         .dom('[data-test-newsfeed-indicator')
