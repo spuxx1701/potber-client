@@ -3,20 +3,15 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown';
 import RendererService from 'potber-client/services/renderer';
-import {
-  autoRefreshSidebarOptions,
-  avatarStyleOptions,
-  boxStyleOptions,
-  landingPageOptions,
-  SettingsRouteModel,
-  sidebarLayoutOptions,
-  fontSizeOptions,
-} from 'potber-client/routes/authenticated/settings';
 import MessagesService from 'potber-client/services/messages';
 import AppService from 'potber-client/services/app';
 import ModalService from 'potber-client/services/modal';
 import SettingsService from 'potber-client/services/settings';
 import CustomSession from 'potber-client/services/custom-session';
+import {
+  SettingsRouteModel,
+  settingsConfig,
+} from 'potber-client/routes/authenticated/settings';
 
 export default class SettingsController extends Controller {
   declare model: SettingsRouteModel;
@@ -28,12 +23,7 @@ export default class SettingsController extends Controller {
   @service declare modal: ModalService;
   @service declare app: AppService;
 
-  avatarStyleOptions = avatarStyleOptions;
-  boxStyleOptions = boxStyleOptions;
-  sidebarLayoutOptions = sidebarLayoutOptions;
-  fontSizeOptions = fontSizeOptions;
-  landingPageOptions = landingPageOptions;
-  autoRefreshSidebarOptions = autoRefreshSidebarOptions;
+  config = settingsConfig;
 
   @action handleAvatarStyleSelect(option: DropdownOption) {
     this.settings.avatarStyle = option.data;

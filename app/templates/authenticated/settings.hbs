@@ -7,7 +7,7 @@
   <h3>Anzeige</h3>
 
   <Common::Control::Dropdown
-    @options={{this.avatarStyleOptions}}
+    @options={{this.config.avatarStyleOptions}}
     @default={{@model.currentAvatarStyleOption}}
     @onSelect={{this.handleAvatarStyleSelect}}
     @size='max'
@@ -15,7 +15,7 @@
   />
 
   <Common::Control::Dropdown
-    @options={{this.boxStyleOptions}}
+    @options={{this.config.boxStyleOptions}}
     @default={{@model.currentBoxStyleOption}}
     @onSelect={{this.handleBoxStyleSelect}}
     @size='max'
@@ -23,7 +23,7 @@
   />
 
   <Common::Control::Dropdown
-    @options={{this.sidebarLayoutOptions}}
+    @options={{this.config.sidebarLayoutOptions}}
     @default={{@model.currentSidebarLayoutOption}}
     @onSelect={{this.handleSidebarLayoutSelect}}
     @size='max'
@@ -31,7 +31,7 @@
   />
 
   <Common::Control::Dropdown
-    @options={{this.fontSizeOptions}}
+    @options={{this.config.fontSizeOptions}}
     @default={{@model.currentFontSizeOption}}
     @onSelect={{this.handleFontSizeSelect}}
     @size='max'
@@ -41,7 +41,7 @@
   <h3>Daten & Netzwerk</h3>
 
   <Common::Control::Dropdown
-    @options={{this.autoRefreshSidebarOptions}}
+    @options={{this.config.autoRefreshSidebarOptions}}
     @default={{@model.currentAutoRefreshSidebarOption}}
     @onSelect={{this.handleAutoRefreshSidebarSelect}}
     @size='max'
@@ -51,7 +51,7 @@
   <h3>Personalisierung</h3>
 
   <Common::Control::Dropdown
-    @options={{this.landingPageOptions}}
+    @options={{this.config.landingPageOptions}}
     @default={{@model.currentLandingPageOption}}
     @onSelect={{this.handleLandingPageSelect}}
     @size='max'
