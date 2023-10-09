@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - The project now uses [glint](https://github.com/typed-ember/glint) for typechecking. Temporarily, the linting job is no longer required to succeed for pipelines to finish.
 - The project now includes support for [gjs/gts template syntax](https://github.com/ember-template-imports/ember-template-imports) (meaning [first class component templates](https://rfcs.emberjs.com/id/0779-first-class-component-templates/)).
 
+### Changed
+
+- The nav button that returns the user the parent layer (e.g. the board if the user is currently in a thread) now uses an upwards arrow to better stand out from similar functions.
+
 ### Fixed
 
 - Fixed an issue with the sidebar not closing in mobile devices when navigating to an unread private message.

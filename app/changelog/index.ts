@@ -6,6 +6,9 @@ export const changelog: ChangelogItem[] = [
       'In Vorbereitung auf die bevorstehende Migration auf Ember 5.x.x & Ember Polaris verwendet das Projekt jetzt Glint.',
       'In Vorbereitung auf die bevorstehende Migration auf Ember 5.x.x & Ember Polaris unterstützt das Projekt jetzt First-Class Component Templates.',
     ],
+    changed: [
+      'Der Navigationsbutton, mit dem man in die nächsthöhere Ebene gelangt (z.B. zurück ins Board, wenn man sich in einem Thread befindet) verwendet nun einen Pfeil nach oben, um sich besser von anderen Funktionen abzusetzen.',
+    ],
     fixed: [
       'Besonders lange Wörter werden nun auf mehrere Zeilen umgebrochen, statt über den Bildrand hinauszuragen.',
       'Beim Klick auf eine private Nachricht in der Sidebar wird nun die Sidebar geschlossen.',
