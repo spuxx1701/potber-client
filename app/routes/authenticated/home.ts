@@ -20,7 +20,7 @@ export default class HomeRoute extends Route {
   @service declare newsfeed: NewsfeedService;
 
   beforeModel() {
-    const landingPage = this.settings.landingPage;
+    const landingPage = this.settings.getSetting('landingPage');
     switch (landingPage) {
       case LandingPage.pot:
         this.router.transitionTo('authenticated.board', {

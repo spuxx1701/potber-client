@@ -14,6 +14,7 @@ import LocalStorageService from 'potber-client/services/local-storage';
 import ModalService from 'potber-client/services/modal';
 import CustomSession from 'potber-client/services/custom-session';
 import { htmlSafe } from '@ember/template';
+import { appConfig } from 'potber-client/config/app.config';
 
 interface Signature {
   Args: {
@@ -56,7 +57,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get url() {
-    return `${ENV.APP['FORUM_URL']}/thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}`;
+    return `${appConfig.forumUrl}/thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}`;
   }
 
   get message() {
@@ -73,7 +74,7 @@ export default class PostComponent extends Component<Signature> {
   get showSmallAvatar() {
     return (
       this.args.post.avatarUrl &&
-      this.settings.avatarStyle === AvatarStyle.small
+      this.settings.getSetting('avatarStyle') === AvatarStyle.small
     );
   }
 

@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import PrivateMessage from 'potber-client/models/private-message';
 import { createPrivateMessageSubtitle } from 'potber-client/utils/private-messages';
-import ENV from 'potber-client/config/environment';
+import { appConfig } from 'potber-client/config/app.config';
 
 interface Signature {
   Args: {
@@ -15,6 +15,6 @@ export default class NavRoutesPrivateMessagesViewComponent extends Component<Sig
   }
 
   get originalUrl() {
-    return `${ENV.APP['FORUM_URL']}/pm/?a=2&mid=${this.args.message.id}`;
+    return `${appConfig.forumUrl}/pm/?a=2&mid=${this.args.message.id}`;
   }
 }

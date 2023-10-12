@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - The nav button that returns the user the parent layer (e.g. the board if the user is currently in a thread) now uses an upwards arrow to better stand out from similar functions.
 - When navigating to a thread via a bookmark, read posts will now be marked via a separator instead of decreased opacity.
 - Copying a post url now uses the origianal forum's url.
+- Specific forum.mods.de urls will now point to the corresponding potber urls. The behavior can be disabled in the settings.
+- Several parts of the app have been refactored.
 
 ### Fixed
 

@@ -39,7 +39,7 @@ export default class RendererService extends Service {
    * Updates the current box style.
    */
   updateBoxStyle() {
-    if (this.settings.boxStyle === BoxStyle.rect) {
+    if (this.settings.getSetting('boxStyle') === BoxStyle.rect) {
       this.rootStyle.setProperty('--global-border-radius', '0px');
       this.rootStyle.setProperty('--global-gap', 'unset');
     } else {
@@ -210,7 +210,7 @@ export default class RendererService extends Service {
    * Updates the global font size according to the settings..
    */
   async updateFontSize() {
-    const { fontSize } = this.settings;
+    const { fontSize } = this.settings.getSettings();
     this.rootStyle.setProperty('--global-font-size', fontSize);
   }
 }

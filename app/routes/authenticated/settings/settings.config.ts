@@ -95,4 +95,15 @@ export const settingsConfig: Record<
       data: false,
     },
   ],
+
+  replaceForumUrlsOptions: [
+    {
+      label: 'Ja',
+      data: true,
+    },
+    {
+      label: 'Nein',
+      data: false,
+    },
+  ],
 };

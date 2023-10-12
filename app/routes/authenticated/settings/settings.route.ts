@@ -61,11 +61,10 @@ export default class SettingsRoute extends Route {
         const settingsKey = settingsKeys[index];
         return (
           option.data ===
-          this.settings[settingsKey as keyof typeof this.settings]
+          this.settings.getSettings()[settingsKey as keyof Settings]
         );
       }) as DropdownOption;
     });
-    console.log(result);
     return result;
   }
 }

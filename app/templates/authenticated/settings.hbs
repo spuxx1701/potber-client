@@ -58,6 +58,14 @@
     @label='Startseite'
   />
 
+  <Common::Control::Dropdown
+    @options={{this.config.replaceForumUrlsOptions}}
+    @default={{@model.currentReplaceForumUrlsOption}}
+    @onSelect={{this.handleReplaceForumUrlsSelect}}
+    @size='max'
+    @label='forum.mods.de-Links ersetzen'
+  />
+
   <hr />
 
   <Common::Control::Link

@@ -24,7 +24,10 @@ export default class SidebarToggleComponent extends Component {
 
   @action toggleLeftSidebar() {
     this.renderer.toggleLeftSidebar();
-    if (this.renderer.leftSidebarExpanded && this.settings.autoRefreshSidebar) {
+    if (
+      this.renderer.leftSidebarExpanded &&
+      this.settings.getSetting('autoRefreshSidebar')
+    ) {
       this.newsfeed.refresh();
     }
   }

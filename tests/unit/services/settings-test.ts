@@ -17,6 +17,7 @@ const mockedSettings: Settings = {
   autoRefreshSidebar: false,
   sidebarLayout: SidebarLayout.leftTop,
   fontSize: FontSize.medium,
+  replaceForumUrls: true,
 };
 
 module('Unit | Service | Settings', function (hooks) {

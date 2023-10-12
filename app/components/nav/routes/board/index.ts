@@ -7,6 +7,7 @@ import { getOwner } from '@ember/application';
 import RendererService from 'potber-client/services/renderer';
 import MessagesService from 'potber-client/services/messages';
 import Board from 'potber-client/models/board';
+import { appConfig } from 'potber-client/config/app.config';
 
 export interface Signature {
   Args: {
@@ -46,7 +47,7 @@ export default class NavBoardComponent extends Component<Signature> {
   }
 
   get originalUrl() {
-    return `${ENV.APP['FORUM_URL']}board.php?BID=${this.args.board.id}&page=${this.currentPage}`;
+    return `${appConfig.forumUrl}board.php?BID=${this.args.board.id}&page=${this.currentPage}`;
   }
 
   @action addToFavorites() {

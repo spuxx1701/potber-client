@@ -10,6 +10,7 @@ export interface Settings {
   autoRefreshSidebar: boolean;
   sidebarLayout: SidebarLayout;
   fontSize: FontSize;
+  replaceForumUrls: boolean;
 }
 
 export enum AvatarStyle {
@@ -52,6 +53,7 @@ export default class SettingsService extends Service {
     autoRefreshSidebar: true,
     sidebarLayout: SidebarLayout.leftTop,
     fontSize: FontSize.medium,
+    replaceForumUrls: true,
   };
 
   /**
@@ -81,6 +83,9 @@ export default class SettingsService extends Service {
       if (typeof storedSettings.autoRefreshSidebar === 'boolean') {
         settings.autoRefreshSidebar = storedSettings.autoRefreshSidebar;
       }
+      if (typeof storedSettings.replaceForumUrls === 'boolean') {
+        settings.replaceForumUrls = storedSettings.replaceForumUrls;
+      }
     }
     return settings;
   }
@@ -96,57 +101,21 @@ export default class SettingsService extends Service {
     return this.active;
   }
 
-  get avatarStyle() {
-    return this.active.avatarStyle;
+  getSetting<Key extends keyof Settings, Value extends Settings[Key]>(
+    key: Key,
+  ) {
+    return this.active[key] as Value;
   }
 
-  set avatarStyle(avatarStyle: AvatarStyle) {
-    this.active = { ...this.active, avatarStyle };
-    this.save();
-  }
-
-  get boxStyle() {
-    return this.active.boxStyle;
-  }
-
-  set boxStyle(boxStyle: BoxStyle) {
-    this.active = { ...this.active, boxStyle };
+  setSetting<Key extends keyof Settings, Value extends Settings[Key]>(
+    key: Key,
+    value: Value,
+  ) {
+    this.active = { ...this.active, [key]: value };
     this.save();
   }
 
   get sidebarLayout() {
     return this.active.sidebarLayout;
-  }
-
-  set sidebarLayout(sidebarLayout: SidebarLayout) {
-    this.active = { ...this.active, sidebarLayout };
-    this.save();
-  }
-
-  get landingPage() {
-    return this.active.landingPage;
-  }
-
-  set landingPage(landingPage: LandingPage) {
-    this.active = { ...this.active, landingPage };
-    this.save();
-  }
-
-  get fontSize() {
-    return this.active.fontSize;
-  }
-
-  set fontSize(fontSize: FontSize) {
-    this.active = { ...this.active, fontSize };
-    this.save();
-  }
-
-  get autoRefreshSidebar() {
-    return this.active.autoRefreshSidebar;
-  }
-
-  set autoRefreshSidebar(autoRefreshSidebar: boolean) {
-    this.active = { ...this.active, autoRefreshSidebar };
-    this.save();
   }
 }

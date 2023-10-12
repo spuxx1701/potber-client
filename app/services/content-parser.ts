@@ -11,9 +11,11 @@ import { parseTable } from './content-parser/table';
 import { sanitize } from './content-parser/sanitize';
 import { parseCode } from './content-parser/code';
 import { parsePrivateMessageHtml } from './content-parser/private-message';
+import SettingsService from './settings';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
+  @service declare settings: SettingsService;
 
   /**
    * Parses post content to HTML and returns the result.
@@ -27,7 +29,9 @@ export default class ContentParserService extends Service {
     output = parseSimpleTags(output);
     output = parseImg(output);
     output = parseVideo(output, window.location);
-    output = parseUrl(output);
+    output = parseUrl(output, {
+      replaceForumUrls: this.settings.getSetting('replaceForumUrls'),
+    });
     output = parseQuote(output, window.location);
     output = parseList(output);
     output = parseTable(output);

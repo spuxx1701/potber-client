@@ -26,11 +26,11 @@ export default class SettingsController extends Controller {
   config = settingsConfig;
 
   @action handleAvatarStyleSelect(option: DropdownOption) {
-    this.settings.avatarStyle = option.data;
+    this.settings.setSetting('avatarStyle', option.data);
   }
 
   @action handleBoxStyleSelect(option: DropdownOption) {
-    this.settings.boxStyle = option.data;
+    this.settings.setSetting('boxStyle', option.data);
     this.renderer.updateBoxStyle();
   }
 
@@ -43,21 +43,25 @@ export default class SettingsController extends Controller {
         onSubmit: () => this.modal.close(),
       });
     }
-    this.settings.sidebarLayout = option.data;
+    this.settings.setSetting('sidebarLayout', option.data);
     this.renderer.updateSidebarLayout();
   }
 
   @action handleFontSizeSelect(option: DropdownOption) {
-    this.settings.fontSize = option.data;
+    this.settings.setSetting('fontSize', option.data);
     this.renderer.updateFontSize();
   }
 
   @action handleLandingPageSelect(option: DropdownOption) {
-    this.settings.landingPage = option.data;
+    this.settings.setSetting('landingPage', option.data);
   }
 
   @action handleAutoRefreshSidebarSelect(option: DropdownOption) {
-    this.settings.autoRefreshSidebar = option.data;
+    this.settings.setSetting('autoRefreshSidebar', option.data);
+  }
+
+  @action handleReplaceForumUrlsSelect(option: DropdownOption) {
+    this.settings.setSetting('replaceForumUrls', option.data);
   }
 
   @action async handleSignOut() {

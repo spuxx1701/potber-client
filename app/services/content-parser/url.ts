@@ -1,12 +1,30 @@
+import { appConfig } from 'potber-client/config/app.config';
+
 /**
  * Parses [url] tags. Does not support tag nesting.
  * @param input The input string.
+ * @param options.replaceForumUrls (optional) Whether forum.mods.de URLs should be replaced by potber URLs.
  * @returns The output string.
  */
-export function parseUrl(input: string) {
+export function parseUrl(
+  input: string,
+  options?: { replaceForumUrls?: boolean },
+) {
   const URL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/gi;
   const URL_PATH_REGEX = /\[url=(.*?)\]/i;
   const URL_LABEL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/i;
+  const FORUM_URL_REPLACEMENTS = [
+    {
+      input: 'forum.mods.de/bb//thread.php',
+      output: `${appConfig.hostname}/thread`,
+    },
+    {
+      input: 'forum.mods.de/bb//board.php',
+      output: `${appConfig.hostname}/board`,
+    },
+  ];
+
+  const { replaceForumUrls } = { ...options };
 
   if (!URL_REGEX.test(input)) return input;
   let output = input;
@@ -21,7 +39,19 @@ export function parseUrl(input: string) {
       if (urlMatches) {
         url = urlMatches[1];
       }
-      const replacement = `<a href="${url}" target="_blank">${content}</a>`;
+      if (!url) continue;
+      if (replaceForumUrls) {
+        for (const replacement of FORUM_URL_REPLACEMENTS) {
+          url = url.replace(replacement.input, replacement.output);
+        }
+      }
+
+      // Internal links should not be opened in new tabs
+      const isInternal = url.includes(appConfig.hostname);
+
+      const replacement = `<a href="${url}"${
+        isInternal ? '' : ' target="_blank"'
+      }>${content}</a>`;
       output = output.replace(full, replacement);
     } catch (error) {
       continue;
@@ -29,6 +59,3 @@ export function parseUrl(input: string) {
   }
   return output;
 }
-
-// if (!attr) attr = `"${content}"`;
-// return `<a href=${attr} target="_blank">${content}</a>`;

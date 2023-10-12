@@ -8,6 +8,7 @@ import ModalService from 'potber-client/services/modal';
 import RouterService from '@ember/routing/router-service';
 import Thread from 'potber-client/models/thread';
 import CustomSession from 'potber-client/services/custom-session';
+import { appConfig } from 'potber-client/config/app.config';
 
 export interface Signature {
   Args: {
@@ -47,7 +48,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   }
 
   get originalUrl() {
-    return `${ENV.APP['FORUM_URL']}thread.php?TID=${this.args.thread.id}`;
+    return `${appConfig.forumUrl}thread.php?TID=${this.args.thread.id}`;
   }
 
   get authenticated() {

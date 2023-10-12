@@ -16,7 +16,9 @@ export default class SidebarNavComponent extends Component {
   }
 
   get showBoardOverviewButton() {
-    return this.settings.landingPage !== LandingPage.boardOverview;
+    return (
+      this.settings.getSetting('landingPage') !== LandingPage.boardOverview
+    );
   }
 
   get authenticated() {

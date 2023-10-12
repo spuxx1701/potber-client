@@ -15,15 +15,15 @@ module.exports = function (environment) {
     },
 
     APP: {
+      HOSTNAME: 'potber.de',
       API_URL: 'https://api.potber.de',
-      FORUM_URL: 'https://forum.mods.de/bb/',
-      USER_PAGE_URL: 'https://my.mods.de/',
       MEME_HOST_URL: `https://potber.de`,
       DEBUG: false,
     },
   };
 
   if (environment === 'development') {
+    ENV.APP.HOSTNAME = 'localhost:4200';
     ENV.APP.API_URL = 'http://localhost:3000';
     ENV.APP.DEBUG = true;
     ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
@@ -35,12 +35,14 @@ module.exports = function (environment) {
   }
 
   if (environment === 'development:mobile') {
+    ENV.APP.HOSTNAME = 'http://schleppi.fritz.box:4200';
     ENV.APP.API_URL = 'http://schleppi.fritz.box:3000';
     ENV.APP.DEBUG = true;
     ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
   }
 
   if (environment === 'test') {
+    ENV.APP.HOSTNAME = 'test.potber.de';
     ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
 
     // Testem prefers this...
@@ -55,6 +57,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'staging') {
+    ENV.APP.HOSTNAME = 'test.potber.de';
     ENV.APP.API_URL = 'https://test-api.potber.de';
     ENV.APP.MEME_HOST_URL = 'https://potber.de';
     ENV.APP.DEBUG = true;

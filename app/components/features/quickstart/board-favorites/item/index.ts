@@ -5,6 +5,7 @@ import RendererService from 'potber-client/services/renderer';
 import ENV from 'potber-client/config/environment';
 import LocalStorageService from 'potber-client/services/local-storage';
 import Board from 'potber-client/models/board';
+import { appConfig } from 'potber-client/config/app.config';
 
 export interface Signature {
   Args: {
@@ -19,7 +20,7 @@ export default class QuickstartBoardFavoriteComponent extends Component<Signatur
   declare args: Signature['Args'];
 
   get originalUrl() {
-    return `${ENV.APP['FORUM_URL']}board.php?BID=${this.args.board.id}`;
+    return `${appConfig.forumUrl}board.php?BID=${this.args.board.id}`;
   }
 
   @action handleLinkClick() {
