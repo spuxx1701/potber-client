@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Fixed an issue that prevented `video` tags from being parsed if they contained the `play` parameter.
+- Fixed an issue that affected parsing lists.
 
 ## [1.10.0] - 2023-10-12
 

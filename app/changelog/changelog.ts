@@ -2,7 +2,10 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.10.1',
     type: 'patch',
-    fixed: ["Video-Tags mit 'play' werden jetzt korrekt angezeigt."],
+    fixed: [
+      "Video-Tags mit 'play' werden jetzt korrekt angezeigt.",
+      'Ein Fehler beim Parsen von Listen wurde behoben.',
+    ],
   },
   {
     version: '1.10.0',

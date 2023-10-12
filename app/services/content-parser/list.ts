@@ -4,7 +4,7 @@
  * @returns The output string.
  */
 export function parseList(input: string) {
-  const LIST_REGEX = /(?:(\[list\])(?:\s|\S)*?(\[\/list\]))/gi;
+  const LIST_REGEX = /(?:(\[list\])(?:\s|\S)*?(\s*\[\/list\]))/gi;
   if (!LIST_REGEX.test(input)) return input;
   let output = input;
   const matches = input.matchAll(new RegExp(LIST_REGEX));
@@ -14,8 +14,10 @@ export function parseList(input: string) {
       let replacement = full;
       replacement = replacement.replace(openingTag as string, '<ul><li>');
       replacement = replacement.replace(closingTag as string, '</li></ul>');
-      const LIST_ITEM_REGEX = /\[\*\]\s?/g;
-      const itemMatches = full.match(LIST_ITEM_REGEX) as RegExpMatchArray;
+      const LIST_ITEM_REGEX = /\s*\[\*\]\s?/g;
+      const itemMatches = replacement.match(
+        LIST_ITEM_REGEX,
+      ) as RegExpMatchArray;
       itemMatches.forEach((itemMatch, index) => {
         if (index === 0) {
           // On first element, simply remove the marker
