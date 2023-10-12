@@ -6,7 +6,7 @@ import { getFaIconHtmlString } from 'potber-client/utils/font-awesome';
  * @returns The output string.
  */
 export function parseVideo(input: string, location: Partial<Location>) {
-  const VIDEO_REGEX = /\[video\](.*)\[\/video\]/gi;
+  const VIDEO_REGEX = /\[video.*\](.*)\[\/video\]/gi;
   const YOUTUBE_REGEX = /(youtu\.be)|(youtube\.com)/;
 
   if (!VIDEO_REGEX.test(input)) return input;
@@ -42,7 +42,11 @@ export function parseVideo(input: string, location: Partial<Location>) {
         output = output.replace(match[0], replacement);
       } else {
         // Other links can be embedded using the <video> tag
-        replacement += `<video src="${url}" controls></video></span>`;
+        const autoplay = full.includes('play');
+        console.log(autoplay);
+        replacement += `<video src="${url}" ${
+          autoplay ? 'autoplay ' : ''
+        }controls></video></span>`;
         output = output.replace(match[0], replacement);
       }
     } catch (error) {
