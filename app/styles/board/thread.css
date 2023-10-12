@@ -9,7 +9,7 @@
   justify-content: center;
   text-align: center;
 
-  p {
+  > p {
     width: fit-content;
     padding: 0 1rem;
     margin: 1rem auto;
@@ -18,7 +18,7 @@
     z-index: 1;
   }
 
-  hr {
+  > hr {
     position: absolute;
   }
 }
