@@ -1,0 +1,36 @@
+{{! @glint-nocheck }}
+<Modal::Component::Header @title='Bild einfügen' @icon='image' />
+<Modal::Component::Content>
+  <form id={{this.formId}} {{on 'submit' this.handleSubmit}}>
+    <Common::Control::Input
+      @label='URL'
+      @size='max'
+      @onChange={{this.handleSrcChange}}
+      @required={{true}}
+      @value={{this.values.src}}
+      type='url'
+    />
+    <Common::Control::Input
+      @label='Thumbnail (optional)'
+      @size='max'
+      @onChange={{this.handleThumbnailChange}}
+      @value={{this.values.thumbnail}}
+      type='url'
+    />
+  </form>
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @text='Abbrechen'
+    @variant='secondary'
+    @size='small'
+    @onClick={{this.handleCancel}}
+  />
+  <Common::Control::Button
+    @text='OK'
+    @type='submit'
+    @variant='primary'
+    @size='small'
+    form={{this.formId}}
+  />
+</Modal::Component::Footer>

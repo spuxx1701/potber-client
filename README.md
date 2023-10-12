@@ -1,6 +1,6 @@
 # potber
 
-This is a mobile-first web client for the german internet forum [forum.mods.de](https://forum.mods.de) built with [ember.js](https://emberjs.com/). If you're looking for the potber API, you can find it [here](https://github.com/spuxx1701/potber-api).
+This is a mobile-first web client for the german internet forum [forum.mods.de](https://forum.mods.de) built with [ember.js](https://emberjs.com/). If you're looking for potber-api, you can find it [here](https://github.com/spuxx1701/potber-api).
 
 ## Table of contents
 

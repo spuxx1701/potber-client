@@ -6,6 +6,7 @@ export const changelog: ChangelogItem[] = [
       'In Vorbereitung auf die bevorstehende Migration auf Ember 5.x.x & Ember Polaris verwendet das Projekt jetzt Glint.',
       'In Vorbereitung auf die bevorstehende Migration auf Ember 5.x.x & Ember Polaris unterstützt das Projekt jetzt First-Class Component Templates.',
       'Original-Links zu Posts, Threads und Board zeigen nun beim Öffnen auf die entsprechenden Seiten von potber. Das Verhalten kann in den Einstellungen deaktiviert werden.',
+      'Beim Einfügen von Bildern kann nun optional eine URL für eine Thumbnail angegeben werden. Dadurch können etwa Bilder von imgur in geringerer Größe und mit einem Direktlink zum Original eingebunden werden.',
     ],
     changed: [
       'Der Navigationsbutton, mit dem man in die nächsthöhere Ebene gelangt (z.B. zurück ins Board, wenn man sich in einem Thread befindet) verwendet nun einen Pfeil nach oben, um sich besser von anderen Funktionen abzusetzen.',

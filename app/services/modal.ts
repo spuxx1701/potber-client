@@ -2,6 +2,7 @@ import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { ConfirmModalOptions } from 'potber-client/components/modal/types/confirm';
 import { IconSelectModalOptions } from 'potber-client/components/modal/types/icon-select';
+import { ImageInsertModalOptions } from 'potber-client/components/modal/types/image-insert';
 import { InputModalOptions } from 'potber-client/components/modal/types/input';
 import { LinkInsertModalOptions } from 'potber-client/components/modal/types/link-insert';
 import { MemeSelectModalOptions } from 'potber-client/components/modal/types/meme-select';
@@ -22,6 +23,7 @@ export enum ModalType {
   iconSelect = 'icon-select',
   memeSelect = 'meme-select',
   linkInsert = 'link-insert',
+  imageInsert = 'image-insert',
   postPreview = 'post-preview',
   userProfile = 'user-profile',
 }
@@ -77,6 +79,14 @@ export default class ModalService extends Service {
    */
   linkInsert(options: LinkInsertModalOptions) {
     this.show(ModalType.linkInsert, options);
+  }
+
+  /**
+   * Calls a multi input modal.
+   * @param options The input modal options.
+   */
+  imageInsert(options: ImageInsertModalOptions) {
+    this.show(ModalType.imageInsert, options);
   }
 
   /**
