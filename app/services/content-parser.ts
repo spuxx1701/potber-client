@@ -68,10 +68,13 @@ export default class ContentParserService extends Service {
     return output;
   }
 
+  /**
+   * Parses the content of private messages.
+   * @param input The input string.
+   * @returns The output string.
+   */
   parsePrivateMessageContent(input: string): string {
-    let output = input;
-    output = parsePrivateMessageHtml(output);
-    output = sanitize(output);
+    let output = parsePrivateMessageHtml(input);
     output = this.format(output);
     return output;
   }

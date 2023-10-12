@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Fixed an issue with the sidebar not closing in mobile devices when navigating to an unread private message.
 - Fixed an issue with long words not properly being broken into a new line.
+- HTMl and emojis in private messages are now being parsed properly.
 
 ## [1.9.1] - 2023-09-07
 
