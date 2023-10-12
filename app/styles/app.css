@@ -36,6 +36,8 @@
 
 html {
   background-color: var(--color-application-background);
+  height: 100svh;
+  width: 100svw;
 }
 
 body {

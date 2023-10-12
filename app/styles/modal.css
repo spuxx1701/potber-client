@@ -30,7 +30,7 @@
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.9);
   cursor: default;

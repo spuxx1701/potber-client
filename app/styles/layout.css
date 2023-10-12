@@ -11,7 +11,7 @@
   flex-direction: column;
   position: relative;
   margin: 0 auto 0 auto;
-  min-height: calc(100vh - var(--top-nav-height) - var(--bottom-nav-height));
+  min-height: calc(100svh - var(--top-nav-height) - var(--bottom-nav-height));
   background-color: var(--color-application-background);
   padding-top: var(--top-nav-height);
   padding-bottom: var(--bottom-nav-height);
