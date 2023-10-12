@@ -55,7 +55,7 @@ export default class PostComponent extends Component<Signature> {
     return `${window.location.protocol}//${window.location.host}/thread?TID=${this.args.post.threadId}&PID=${this.args.post.id}`;
   }
 
-  get originalUrl() {
+  get url() {
     return `${ENV.APP['FORUM_URL']}/thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}`;
   }
 
@@ -100,9 +100,9 @@ export default class PostComponent extends Component<Signature> {
     }
   }
 
-  @action copyLink() {
+  @action copyUrl() {
     if (this.args.isPreview) return;
-    navigator.clipboard.writeText(this.href);
+    navigator.clipboard.writeText(this.url);
     this.messages.showNotification(
       'Link in Zwischenablage kopiert.',
       'success',

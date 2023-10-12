@@ -9,6 +9,7 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'Der Navigationsbutton, mit dem man in die nächsthöhere Ebene gelangt (z.B. zurück ins Board, wenn man sich in einem Thread befindet) verwendet nun einen Pfeil nach oben, um sich besser von anderen Funktionen abzusetzen.',
       'Beim Aufrufen eines Lesezeichens werden bereits gelesene Posts nun durch einen Trenner statt durch Abdunkeln gekennzeichnet.',
+      'Beim Kopieren eines Post-Links wird nun der Originallink zum Forum verwendet.',
     ],
     fixed: [
       'Besonders lange Wörter werden nun auf mehrere Zeilen umgebrochen, statt über den Bildrand hinauszuragen.',
