@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.10.1] - unreleased
 
+### Changed
+
+- Reenabled darkening posts that have already been read as an optional behavior.
+
 ### Fixed
 
 - Fixed an issue that prevented `video` tags from being parsed if they contained the `play` parameter.

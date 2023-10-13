@@ -70,6 +70,17 @@ export const settingsConfig: Record<
     },
   ],
 
+  darkenReadPostsOptions: [
+    {
+      label: 'Ja',
+      data: true,
+    },
+    {
+      label: 'Nein',
+      data: false,
+    },
+  ],
+
   landingPageOptions: [
     {
       label: 'Forenübersicht',

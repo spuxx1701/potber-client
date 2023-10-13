@@ -38,6 +38,14 @@
     @label='Schriftgröße'
   />
 
+  <Common::Control::Dropdown
+    @options={{this.config.darkenReadPostsOptions}}
+    @default={{@model.currentDarkenReadPostsOption}}
+    @onSelect={{this.handleDarkenReadPostsSelect}}
+    @size='max'
+    @label='Gelesene Posts abdunkeln'
+  />
+
   <h3>Daten & Netzwerk</h3>
 
   <Common::Control::Dropdown

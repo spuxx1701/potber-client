@@ -2,6 +2,9 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.10.1',
     type: 'patch',
+    changed: [
+      'Das Abdunkeln von bereits gelesenen Posts ist nun wieder verfügbar und kann in den Einstellungen eingeschaltet werden.',
+    ],
     fixed: [
       "Video-Tags mit 'play' werden jetzt korrekt angezeigt.",
       'Ein Fehler beim Parsen von Listen wurde behoben.',

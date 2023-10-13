@@ -18,6 +18,7 @@ const mockedSettings: Settings = {
   sidebarLayout: SidebarLayout.leftTop,
   fontSize: FontSize.medium,
   replaceForumUrls: true,
+  darkenReadPosts: false,
 };
 
 module('Unit | Service | Settings', function (hooks) {

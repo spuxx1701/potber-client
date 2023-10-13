@@ -52,6 +52,10 @@ export default class SettingsController extends Controller {
     this.renderer.updateFontSize();
   }
 
+  @action handleDarkenReadPostsSelect(option: DropdownOption) {
+    this.settings.setSetting('darkenReadPosts', option.data);
+  }
+
   @action handleLandingPageSelect(option: DropdownOption) {
     this.settings.setSetting('landingPage', option.data);
   }

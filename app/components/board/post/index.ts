@@ -20,6 +20,7 @@ interface Signature {
   Args: {
     post: Post;
     thread: Thread;
+    subtle?: boolean;
     isPreview?: boolean;
   };
 }

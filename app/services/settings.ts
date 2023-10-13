@@ -11,6 +11,7 @@ export interface Settings {
   sidebarLayout: SidebarLayout;
   fontSize: FontSize;
   replaceForumUrls: boolean;
+  darkenReadPosts: boolean;
 }
 
 export enum AvatarStyle {
@@ -54,6 +55,7 @@ export default class SettingsService extends Service {
     sidebarLayout: SidebarLayout.leftTop,
     fontSize: FontSize.medium,
     replaceForumUrls: true,
+    darkenReadPosts: false,
   };
 
   /**
@@ -85,6 +87,9 @@ export default class SettingsService extends Service {
       }
       if (typeof storedSettings.replaceForumUrls === 'boolean') {
         settings.replaceForumUrls = storedSettings.replaceForumUrls;
+      }
+      if (typeof storedSettings.darkenReadPosts === 'boolean') {
+        settings.darkenReadPosts = storedSettings.darkenReadPosts;
       }
     }
     return settings;
