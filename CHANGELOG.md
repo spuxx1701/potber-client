@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Changed
 
 - Reenabled darkening posts that have already been read as an optional behavior.
+- Slight visual changes to tables.
 
 ### Fixed
 

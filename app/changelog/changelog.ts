@@ -4,6 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'patch',
     changed: [
       'Das Abdunkeln von bereits gelesenen Posts ist nun wieder verfügbar und kann in den Einstellungen eingeschaltet werden.',
+      'Tabellen wurden geringfügig visuell angepasst.',
     ],
     fixed: [
       "Video-Tags mit 'play' werden jetzt korrekt angezeigt.",

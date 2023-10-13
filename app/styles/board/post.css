@@ -218,10 +218,11 @@ video {
 
 .post-content-message table {
   border: none;
+  border-spacing: 2px;
 }
 
 .post-content-message td {
   background-color: var(--color-quote-background);
-  border: 2px solid var(--color-post-background-primary);
+  border: none;
   padding: 0.5rem;
 }
