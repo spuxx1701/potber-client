@@ -8,7 +8,7 @@
 }
 
 .post-subtle {
-  opacity: 0.6;
+  filter: brightness(0.6);
 }
 
 .post:not(:first-child) {
