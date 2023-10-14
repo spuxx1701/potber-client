@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Fixed an issue that prevented posts from navigating to the original forum version of a post.
+- Fixed an issue that caused original forum urls to not be replaced with the corresponding potber urls in some cases.
 
 ## [1.10.1] - 2023-10-13
 

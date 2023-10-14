@@ -4,6 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'patch',
     fixed: [
       'Posts lassen sich nun wieder über das Kebabmenü im Original öffnen.',
+      'Ein Fehler wurde behoben, der dazu geführt hat, dass Original-Links zum Forum manchmal nicht korrekt mit potber-Links ersetzt wurden.',
     ],
   },
 

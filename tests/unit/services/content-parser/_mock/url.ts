@@ -62,6 +62,14 @@ export const urlTagMocks: UrlTagMocks = {
       expected: `<a href="https://test.potber.de/thread?TID=219289&PID=1249813752">https://forum.mods.de/bb//thread.php?TID=219289&PID=1249813752</a>`,
     },
     {
+      input: `[url]https://forum.mods.de/bb/thread.php?TID=219289&PID=1249813752[/url]`,
+      expected: `<a href="https://test.potber.de/thread?TID=219289&PID=1249813752">https://forum.mods.de/bb/thread.php?TID=219289&PID=1249813752</a>`,
+    },
+    {
+      input: `[URL]https://forum.mods.de/bb//thread.php?TID=219311&PID=1250001764[/URL]`,
+      expected: `<a href="https://test.potber.de/thread?TID=219311&PID=1250001764">https://forum.mods.de/bb//thread.php?TID=219311&PID=1250001764</a>`,
+    },
+    {
       input: `[url=https://forum.mods.de/bb//thread.php?TID=219289&PID=1249813752]Foo[/url]`,
       expected: `<a href="https://test.potber.de/thread?TID=219289&PID=1249813752">Foo</a>`,
     },

@@ -22,6 +22,14 @@ export function parseUrl(
       input: 'forum.mods.de/bb//board.php',
       output: `${appConfig.hostname}/board`,
     },
+    {
+      input: 'forum.mods.de/bb/thread.php',
+      output: `${appConfig.hostname}/thread`,
+    },
+    {
+      input: 'forum.mods.de/bb/board.php',
+      output: `${appConfig.hostname}/board`,
+    },
   ];
 
   const { replaceForumUrls } = { ...options };
@@ -40,7 +48,7 @@ export function parseUrl(
         url = urlMatches[1];
       }
       if (!url) continue;
-      if (replaceForumUrls) {
+      if (replaceForumUrls && url.includes(appConfig.forumUrl)) {
         for (const replacement of FORUM_URL_REPLACEMENTS) {
           url = url.replace(replacement.input, replacement.output);
         }
