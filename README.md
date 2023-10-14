@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./.logo/1080x480.png" alt="potber logo" height="200" style="border-radius: 5rem;" />
+<img src="./.logo/1080x480_round.png" alt="potber logo" height="200" />
 </p>
 <p align="center">
 A mobile-first web client for the german internet forum <a href="https://forum.mods.de" target="_blank">forum.mods.de</a> built with <a href="https://emberjs.com/" target="_blank">ember.js</a>. If you're looking for potber-api, you can find it <a hef="https://github.com/spuxx1701/potber-api" target="_blank">here</a>.
