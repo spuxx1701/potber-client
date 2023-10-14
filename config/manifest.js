@@ -11,7 +11,7 @@ module.exports = function (/* environment, appConfig */) {
     start_url: '/',
     scope: '/',
     display: 'standalone',
-    background_color: '#394e63',
+    background_color: '#0c1c2c',
     theme_color: '#0c1c2c',
     icons: [
       {
