@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.10.1] - unreleased
+## [1.10.2] - 2023-10-14
+
+### Fixed
+
+- Fixed an issue that prevented posts from navigating to the original forum version of a post.
+
+## [1.10.1] - 2023-10-13
 
 ### Changed
 

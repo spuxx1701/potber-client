@@ -1,5 +1,13 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.10.2',
+    type: 'patch',
+    fixed: [
+      'Posts lassen sich nun wieder über das Kebabmenü im Original öffnen.',
+    ],
+  },
+
+  {
     version: '1.10.1',
     type: 'patch',
     changed: [
