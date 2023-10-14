@@ -1,6 +1,9 @@
-# potber
-
-This is a mobile-first web client for the german internet forum [forum.mods.de](https://forum.mods.de) built with [ember.js](https://emberjs.com/). If you're looking for potber-api, you can find it [here](https://github.com/spuxx1701/potber-api).
+<p align="center">
+<img src="./.logo/1080x480.png" alt="potber logo" height="200" style="border-radius: 5rem;" />
+</p>
+<p align="center">
+A mobile-first web client for the german internet forum <a href="https://forum.mods.de" target="_blank">forum.mods.de</a> built with <a href="https://emberjs.com/" target="_blank">ember.js</a>. If you're looking for potber-api, you can find it <a hef="https://github.com/spuxx1701/potber-api" target="_blank">here</a>.
+</p>
 
 ## Table of contents
 
@@ -99,4 +102,5 @@ After building the Docker image, you can run it locally or on a remote host. In 
 
 ## Credit
 
-- Credit goes to deviant user Emoxynha for the [incredible cute kitty](https://www.deviantart.com/emoxynha/art/Gif-309653475) that I'm using within the application's skeleton.
+- Credit goes to deviant user [Emoxynha](https://www.deviantart.com/emoxynha) for the [incredible cute kitty](https://www.deviantart.com/emoxynha/art/Gif-309653475) that I'm using within the application's skeleton.
+- Credit goes to deviant user [IvonChee](https://www.deviantart.com/ivonchee) for the [cute pixel cat bases](https://www.deviantart.com/ivonchee/art/F2U-pixel-cat-bases-859073695) I used as a template for the logo.
