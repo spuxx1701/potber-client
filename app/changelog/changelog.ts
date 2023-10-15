@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.10.3',
     type: 'patch',
     changed: [
+      'Neues Branding: Die Anwendung heißt nun "potify" und kann unter "https://p0tify.de" erreicht werden. Die alte Adresse "https://potber.de" bleibt bis auf Weiteres erhalten und leitet auf "https://potify.de" um.',
       'Die Navigationsbuttons werden auf mobilen Geräten nun ausgeblendet, wenn die Sidebar ausgeklappt ist.',
     ],
     fixed: ['Der Lade-Indikator ist nun wieder sichtbar.'],

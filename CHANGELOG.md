@@ -4,10 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.10.3] - 2023-10-15
+## [1.11.0] - unreleased
 
 ### Changed
 
+- New branding: The application is now called 'potify-client' and can be reached at 'https://p0tify.de'.
 - On mobile devices, nav buttons are now being hidden when the sidebar is expanded.
 
 ### Fixed
