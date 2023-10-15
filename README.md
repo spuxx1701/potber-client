@@ -2,7 +2,7 @@
 <img src="./.logo/1080x480_round.png" alt="potber logo" height="200" />
 </p>
 <p align="center">
-A mobile-first web client for the german internet forum <a href="https://forum.mods.de" target="_blank">forum.mods.de</a> built with <a href="https://emberjs.com/" target="_blank">ember.js</a>. If you're looking for potber-api, you can find it <a hef="https://github.com/spuxx1701/potber-api" target="_blank">here</a>.
+A mobile-first web client for the german internet forum <a href="https://forum.mods.de" target="_blank">forum.mods.de</a> built with <a href="https://emberjs.com/" target="_blank">ember.js</a>. If you're looking for potber-api, you can find it <a href="https://github.com/spuxx1701/potber-api" target="_blank">here</a>.
 </p>
 
 ## Table of contents
