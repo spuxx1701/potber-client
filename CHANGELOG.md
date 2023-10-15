@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - New branding: The application is now called 'potify-client' and can be reached at 'https://p0tify.de'.
 - On mobile devices, nav buttons are now being hidden when the sidebar is expanded.
+- Updated `robots.txt` to prevent search bots from indexing the page.
 
 ### Fixed
 
