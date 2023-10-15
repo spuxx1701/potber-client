@@ -84,6 +84,12 @@
     right: 0;
   }
 
+  .nav .nav-portal-target button,
+  .nav .button-link {
+    opacity: 1 !important;
+    pointer-events: all !important;
+  }
+
   /* Hover effects */
   .control-variant-primary:not(:disabled):hover,
   .dropdown-toggle:not(:disabled):hover,

@@ -139,10 +139,14 @@ export default class RendererService extends Service {
       );
       this.rootStyle.setProperty('--sidebar-backdrop-opacity', '1');
       this.rootStyle.setProperty('--sidebar-backdrop-pointer-events', 'all');
+      this.rootStyle.setProperty('--nav-controls-pointer-events', 'none');
+      this.rootStyle.setProperty('--nav-controls-opacity', '0');
     } else {
       this.rootStyle.setProperty('--sidebar-width', '0px');
       this.rootStyle.setProperty('--sidebar-backdrop-opacity', '0');
       this.rootStyle.setProperty('--sidebar-backdrop-pointer-events', 'none');
+      this.rootStyle.setProperty('--nav-controls-pointer-events', 'all');
+      this.rootStyle.setProperty('--nav-controls-opacity', '1');
     }
   }
 

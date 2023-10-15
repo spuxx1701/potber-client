@@ -4,6 +4,8 @@
   /* May change during runtime */
   --bottom-nav-left-gap: 0px;
   --bottom-nav-right-gap: 0px;
+  --nav-controls-opacity: 1;
+  --nav-controls-pointer-events: all;
 }
 
 .nav {
@@ -11,6 +13,12 @@
   position: fixed;
   background-color: var(--color-nav-background);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.nav .nav-portal-target button,
+.nav .button-link {
+  opacity: var(--nav-controls-opacity);
+  pointer-events: var(--nav-controls-pointer-events);
 }
 
 .nav button:not(.menu-item) > svg,

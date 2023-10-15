@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.10.3] - 2023-10-15
 
+### Changed
+
+- On mobile devices, nav buttons are now being hidden when the sidebar is expanded.
+
 ### Fixed
 
 - Fixed an issue that prevented the loading indicator from being visible.

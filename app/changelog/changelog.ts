@@ -2,6 +2,9 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.10.3',
     type: 'patch',
+    changed: [
+      'Die Navigationsbuttons werden auf mobilen Geräten nun ausgeblendet, wenn die Sidebar ausgeklappt ist.',
+    ],
     fixed: ['Der Lade-Indikator ist nun wieder sichtbar.'],
   },
   {
