@@ -6,6 +6,6 @@ export const appConfig = {
   apiUrl: ENV.APP['API_URL'] as string,
   debug: ENV.APP['DEBUG'] as boolean,
   memeHostUrl: ENV.APP['MEME_HOST_URL'] as string,
-  forumUrl: 'https://forum.mods.de/bb/',
+  forumUrl: 'https://forum.mods.de/',
   userPageUrl: 'https://my.mods.de/',
 };

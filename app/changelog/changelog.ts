@@ -3,10 +3,12 @@ export const changelog: ChangelogItem[] = [
     version: '1.10.3',
     type: 'patch',
     changed: [
-
       'Die Navigationsbuttons werden auf mobilen Geräten nun ausgeblendet, wenn die Sidebar ausgeklappt ist.',
     ],
-    fixed: ['Der Lade-Indikator ist nun wieder sichtbar.'],
+    fixed: [
+      'Der Lade-Indikator ist nun wieder sichtbar.',
+      'Ein Fehler wurde behoben, der dazu geführt hat, dass noch weitere Original-Links zum Forum manchmal nicht korrekt mit potber-Links ersetzt wurden.',
+    ],
   },
   {
     version: '1.10.2',

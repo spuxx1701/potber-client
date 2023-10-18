@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.11.0] - unreleased
+## [1.10.3] - 2023-10-18
 
 ### Changed
 
@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Fixed an issue that prevented the loading indicator from being visible.
+- Fixed an issue that prevented certain forum.mods.de links to be parsed properly.
 
 ## [1.10.2] - 2023-10-14
 
