@@ -12,7 +12,9 @@ export function parseImg(input: string) {
   for (const match of matches) {
     try {
       const full = match[0] as string;
-      const url = match[1] as string;
+      let url = match[1] as string;
+      // Escape colons to prevent emojis from screwing up URLs
+      url = url.replaceAll(':', '&#58;');
       const replacement = `<img src="${url}"/>`;
       output = output.replace(full, replacement);
     } catch (error) {

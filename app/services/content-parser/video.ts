@@ -15,7 +15,9 @@ export function parseVideo(input: string, location: Partial<Location>) {
   for (const match of matches) {
     try {
       const full = match[0] as string;
-      const url = match[1] as string;
+      let url = match[1] as string;
+      // Escape colons to prevent emojis from screwing up URLs
+      url = url.replaceAll(':', '&#58;');
 
       const linkIcon = getFaIconHtmlString({ prefix: 'fas', iconName: 'link' });
       let replacement = `<span class="video-container"><a class="video-container-header" href="${url}" target="_blank"><p>Video</p>${linkIcon}</a>`;
@@ -43,7 +45,6 @@ export function parseVideo(input: string, location: Partial<Location>) {
       } else {
         // Other links can be embedded using the <video> tag
         const autoplay = full.includes('play');
-        console.log(autoplay);
         replacement += `<video src="${url}" ${
           autoplay ? 'autoplay ' : ''
         }controls></video></span>`;

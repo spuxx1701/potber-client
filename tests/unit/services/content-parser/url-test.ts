@@ -13,7 +13,7 @@ module('Unit | Service | ContentParser | [url]', (hooks) => {
     }
   });
 
-  test('Parses all [url] tags while replacing foru.mods.de URLs.', (assert) => {
+  test('Parses all [url] tags while replacing forum.mods.de URLs.', (assert) => {
     assert.expect(urlTagMocks.withReplacingForumUrls.length);
     for (const mock of urlTagMocks.withReplacingForumUrls) {
       assert.strictEqual(

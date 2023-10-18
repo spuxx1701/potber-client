@@ -65,9 +65,13 @@ export function parseUrl(
       // Internal links should not be opened in new tabs
       const isInternal = url.includes(appConfig.hostname);
 
+      // Escape colons to prevent emojis from screwing up URLs
+      url = url.replaceAll(':', '&#58;');
+
       const replacement = `<a href="${url}"${
         isInternal ? '' : ' target="_blank"'
       }>${content}</a>`;
+
       output = output.replace(full, replacement);
     } catch (error) {
       continue;
