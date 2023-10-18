@@ -12,6 +12,8 @@ import { sanitize } from './content-parser/sanitize';
 import { parseCode } from './content-parser/code';
 import { parsePrivateMessageHtml } from './content-parser/private-message';
 import SettingsService from './settings';
+import { parsePrivilegedTags } from './content-parser/privileged-tags';
+import { appConfig } from 'potber-client/config/app.config';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -20,13 +22,17 @@ export default class ContentParserService extends Service {
   /**
    * Parses post content to HTML and returns the result.
    * @param input The post content containing BBCode and other things.
+   * @param options.groupId (optional) The author's group id. Will be used to decide whether specific tags should be parsed at all (e.g. `[mod]`).
+   * Defaults to '3', the value for normal users.
    * @returns The HTML output.
    */
-  parsePostContent(input: string) {
+  parsePostContent(input: string, options?: { groupId?: string }) {
+    const { groupId } = { groupId: appConfig.standardUserGroupId, ...options };
     let output = input;
     output = sanitize(output);
     output = parseCode(output);
     output = parseSimpleTags(output);
+    output = parsePrivilegedTags(output, groupId);
     output = parseImg(output);
     output = parseVideo(output, window.location);
     output = parseUrl(output, {

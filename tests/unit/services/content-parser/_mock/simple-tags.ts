@@ -20,10 +20,6 @@ export const simpleTagMocks: ContentParserMock[] = [
     expected: `<u>hello world</u>`,
   },
   {
-    input: `[mod]hello world[/mod]`,
-    expected: `<p class="mod">hello world</p>`,
-  },
-  {
     input: `[tex]hello world[/tex]`,
     expected: `<p class="tex">hello world</p>`,
   },

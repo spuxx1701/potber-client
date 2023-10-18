@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.11.1',
+    type: 'patch',
+    fixed: [
+      '[mod]-Tags werden nun nicht geparsed, wenn sie von einer Nutzer:in ohne Modrechte verwendet werden.',
+    ],
+  },
+  {
     version: '1.11.0',
     type: 'minor',
     changed: [

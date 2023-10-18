@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.11.1] - 2023-10-18
+
+### Fixed
+
+- `[mod]` tags are now not being parsed when used by a user without moderation privileges.
+
 ## [1.11.0] - 2023-10-18
 
 ### Changed
