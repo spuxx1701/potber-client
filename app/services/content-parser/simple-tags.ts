@@ -79,16 +79,6 @@ const simpleTags: SimpleTag[] = [
   },
   {
     open: {
-      regex: /\[mod\]/gi,
-      replacement: '<p class="mod">',
-    },
-    close: {
-      regex: /\[\/mod\]/gi,
-      replacement: '</p>',
-    },
-  },
-  {
-    open: {
       regex: /\[tex\]/gi,
       replacement: '<p class="tex">',
     },
