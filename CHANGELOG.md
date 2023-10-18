@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Fixed an issue that prevented the loading indicator from being visible.
 - Fixed an issue that prevented certain forum.mods.de links to be parsed properly.
+- Fixed an issue that prevented navigating to the full user profile.
 
 ## [1.10.2] - 2023-10-14
 

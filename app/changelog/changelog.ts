@@ -8,6 +8,7 @@ export const changelog: ChangelogItem[] = [
     fixed: [
       'Der Lade-Indikator ist nun wieder sichtbar.',
       'Ein Fehler wurde behoben, der dazu geführt hat, dass noch weitere Original-Links zum Forum manchmal nicht korrekt mit potber-Links ersetzt wurden.',
+      'Aus der Profilansicht kann man nun wieder zum jeweiligen Originalprofil abspringen.',
     ],
   },
   {
