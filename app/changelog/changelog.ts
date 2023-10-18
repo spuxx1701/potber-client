@@ -1,8 +1,9 @@
 export const changelog: ChangelogItem[] = [
   {
-    version: '1.10.3',
-    type: 'patch',
+    version: '1.11.0',
+    type: 'minor',
     changed: [
+      'Webanwendung und PWA haben ein neues Icon erhalten.',
       'Die Navigationsbuttons werden auf mobilen Geräten nun ausgeblendet, wenn die Sidebar ausgeklappt ist.',
     ],
     fixed: [
