@@ -3,7 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.12.0',
     type: 'minor',
     added: [
-      'Die Anwendung unterstützt nun personalisierte Farbthemen. Du kannst Dein Thema in den Einstellungen ändern. Eine Anleitung, wie Du eigene Farbthemen erstellen kannst, findest Du im Startpost.',
+      'Die Anwendung unterstützt nun personalisierte Themen. Du kannst Dein Thema in den Einstellungen ändern. Eine Anleitung, wie Du eigene Themen erstellen kannst, findest Du auf GitHub.',
     ],
     changed: [
       'Die Seite für Lesezeichen verfügt nun über einen ähnliche Aufbau wie die Seite für private Nachrichten.',
