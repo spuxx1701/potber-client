@@ -4,6 +4,7 @@
   /* May change during runtime. */
   --global-font-size: 'medium';
   font-size: var(--global-font-size);
+  word-wrap: break-word;
 }
 
 html * {

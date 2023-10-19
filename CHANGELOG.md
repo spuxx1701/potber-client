@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Fixed a couple of issues affecting menu buttons.
+- Fixed an issue where words would not wrap properly across line breaks.
 
 ## [1.11.1] - 2023-10-18
 

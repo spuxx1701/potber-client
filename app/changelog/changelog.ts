@@ -10,7 +10,10 @@ export const changelog: ChangelogItem[] = [
       'Gruppierung und Kategorien in den Einstellungen wurden überarbeitet.',
       'Bender werden nun stadardmäßig angezeigt.',
     ],
-    fixed: ['Einige Fehler rund um Menu-Buttons wurden behoben.'],
+    fixed: [
+      'Einige Fehler rund um Menu-Buttons wurden behoben.',
+      'In privaten Nachrichten werden Zeilen nun korrekt umgebrochen. Dadurch kommt es nicht mehr zu Verschiebungen beim Layout.',
+    ],
   },
   {
     version: '1.11.1',
