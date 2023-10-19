@@ -120,7 +120,8 @@ p.trigger {
   display: flex;
   flex-direction: column;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-block-background);
+  background-color: transparent;
+  backdrop-filter: var(--filter-block);
   margin: 0.5rem 0 0.5rem 0.5rem;
   overflow: hidden;
 }
@@ -149,7 +150,8 @@ blockquote {
 code {
   box-sizing: border-box;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-block-background);
+  background-color: transparent;
+  backdrop-filter: var(--filter-block);
   padding: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -224,7 +226,7 @@ video {
 }
 
 .post-content-message td {
-  background-color: var(--color-block-background);
+  backdrop-filter: var(--filter-block);
   border: none;
   padding: 0.5rem;
 }

@@ -18,12 +18,11 @@ html * {
   --color-text-highlighted: white;
   --color-text-mod: yellow;
 
-  --color-block-header: var(--color-nav);
-  --color-block-background: var(--color-post-background-primary);
+  --color-block-header: var(--color-nav-background);
 
   --color-container-background: var(--color-nav-background);
   --color-control-inactive: #142637;
-  --color-control-disabled: #333d4b;
+  --color-control-disabled: var(--color-post-background-primary);
 
   --color-modal-background: var(--color-nav-background);
 
@@ -39,6 +38,7 @@ html * {
   --filter-control-active: brightness(135%);
   --filter-loading-indicator: brightness(75%);
   --filter-click-ripple: brightness(125%);
+  --filter-block: brightness(85%);
 
   /* Misc */
   --global-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);

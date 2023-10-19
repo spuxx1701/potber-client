@@ -16,16 +16,12 @@ html[data-theme='snowman'] * {
   --color-text-highlighted: #131313;
   --color-text-mod: rgb(150, 0, 0);
 
-  --color-container-background: var(--color-nav-background);
   --color-control-inactive: var(--color-nav-background);
-  --color-control-disabled: var(--color-application-background);
 
-  --color-block-header: rgb(0, 0, 0, 0.1);
-  --color-block-background: rgb(0, 0, 0, 0.1);
+  --color-block-header: #aaaaaa;
 
   --color-modal-background: var(--color-application-background);
 
-  --color-info: var(--color-accent);
   --color-success: #70cc78;
   --color-warning: #e4a75c;
   --color-error: #ca4949;
