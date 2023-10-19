@@ -4,9 +4,12 @@
   flex-direction: row;
   box-sizing: border-box;
   width: 100%;
-  margin: var(--global-gap);
   border-radius: var(--global-border-radius);
   background-color: var(--color-post-background-secondary);
+}
+
+.bookmark:not(:first-child) {
+  margin-top: var(--global-gap);
 }
 
 .bookmark-unread {
