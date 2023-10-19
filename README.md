@@ -12,6 +12,7 @@ A mobile-first web client for the german internet forum <a href="https://forum.m
   - [Browser support](#how-to-use)
   - [Standalone mode (PWA)](#standalone-mode-pwa)
   - [BBCode parser](#bbcode-parser)
+  - [Themes](#themes)
 - [How to develop or build the app](#how-to-develop-or-build-the-app)
   - [Preqrequesites](#prerequisites)
   - [Installation](#installation)
@@ -46,7 +47,7 @@ The app supports standalone mode ([PWA](https://developer.mozilla.org/en-US/docs
 
 The application includes a functioning and fully custom BBCode parser written in TypeScript. It is able to parse most of the board's BBCode without errors and is being continously worked on. You can find it [here](app/services//content-parser.ts).
 
-### Theme support
+### Themes
 
 You can customize the application's appearance via the available themes. Additionally, feel free to create your own theme and suggest adding it to the app. The individual steps might depend on your browser, but this is rougly how you do it:
 
