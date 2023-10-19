@@ -46,6 +46,30 @@ The app supports standalone mode ([PWA](https://developer.mozilla.org/en-US/docs
 
 The application includes a functioning and fully custom BBCode parser written in TypeScript. It is able to parse most of the board's BBCode without errors and is being continously worked on. You can find it [here](app/services//content-parser.ts).
 
+### Theme support
+
+You can customize the application's appearance via the available themes. Additionally, feel free to create your own theme and suggest adding it to the app. The individual steps might depend on your browser, but this is rougly how you do it:
+
+1. Open the application on a desktop device. Make sure you have the 'default' theme selected as it'll make the process easier.
+2. Rightclick anywhere into the application and hit `Inspect` (or `Untersuchen` in german). What you see now is the inspector panel. In the panel, look for the `styles` container. It looks rougly like this:
+
+```css
+element {
+  ...
+}
+
+:root {
+  ...
+}
+...
+```
+
+3. Scroll down in that container until you see a section called `html, html *`
+4. You can now change any of the default theme's variables.
+5. Send me a copy of the entire section and tell me how the theme should be called. 🙂
+
+If you feel skilled enough, you can also create a PR of course. Themes are located [here](app/styles/themes/). All themes will be merged with the default theme, so you only need to provide variables you want to override.
+
 ## How to develop or build the app
 
 ### Prerequisites
