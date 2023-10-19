@@ -43,7 +43,7 @@ html * {
   /* Filters */
   --filter-control-active: brightness(135%);
   --filter-loading-indicator: brightness(75%);
-  --filter-click-ripple: brightness(125%);
+  --filter-click-ripple: brightness(500%) contrast(50%);
 
   /* Misc */
   --global-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);

@@ -28,4 +28,5 @@ html[data-theme='snowman'] * {
 
   /* Filters */
   --filter-control-active: brightness(85%);
+  --filter-click-ripple: brightness(50%);
 }
