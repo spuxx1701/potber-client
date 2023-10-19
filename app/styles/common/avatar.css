@@ -2,7 +2,7 @@
   display: flex;
   border-radius: 50%;
   overflow: hidden;
-  background-color: var(--color-post-background-primary);
+  background-color: var(--color-avatar-background);
 }
 
 .avatar > img {

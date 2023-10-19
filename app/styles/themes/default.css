@@ -19,6 +19,7 @@ html * {
   --color-text-mod: yellow;
 
   --color-block-header: var(--color-nav-background);
+  --color-avatar-background: #394e63;
 
   --color-container-background: var(--color-nav-background);
   --color-control-inactive: #142637;
