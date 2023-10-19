@@ -8,10 +8,13 @@
   flex-direction: column;
   position: relative;
   margin: 0 auto 0 auto;
-  min-height: calc(100svh - var(--top-nav-height) - var(--bottom-nav-height));
+  min-height: calc(
+    100svh - var(--top-nav-height) - var(--bottom-nav-height) - 2 *
+      var(--global-padding)
+  );
   background-color: var(--color-application-background);
-  padding-top: var(--top-nav-height);
-  padding-bottom: var(--bottom-nav-height);
+  padding-top: calc(var(--top-nav-height) + var(--global-padding));
+  padding-bottom: calc(var(--bottom-nav-height) + var(--global-padding));
   padding-left: var(--global-padding);
   padding-right: var(--global-padding);
   z-index: 5;

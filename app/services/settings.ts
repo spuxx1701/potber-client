@@ -20,8 +20,9 @@ export enum AvatarStyle {
 }
 
 export enum Theme {
-  default,
-  snowman,
+  'default',
+  'snowman',
+  'default-round',
 }
 
 export enum LandingPage {

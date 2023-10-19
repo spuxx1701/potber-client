@@ -1,4 +1,5 @@
-html {
+html,
+html * {
   /* Layout */
   --global-padding: 0px;
   --global-gap: 1px;

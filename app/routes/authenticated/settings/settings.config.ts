@@ -50,6 +50,10 @@ export const settingsConfig: Record<
       data: Theme.default,
     },
     {
+      label: 'mods.de (Hobelware)',
+      data: Theme['default-round'],
+    },
+    {
       label: 'Schneemann',
       data: Theme.snowman,
     },

@@ -33,6 +33,7 @@
 @import './devices.css';
 
 @import './themes/default.css';
+@import './themes/default-round.css';
 @import './themes/snowman.css';
 
 @import './overrides.css';
