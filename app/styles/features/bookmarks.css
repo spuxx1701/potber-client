@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
-  width: calc(100vw - 4 * var(--global-gap));
+  width: 100%;
   margin: var(--global-gap);
   border-radius: var(--global-border-radius);
   background-color: var(--color-post-background-secondary);
@@ -32,7 +32,7 @@
 }
 
 .bookmark:not(:first-child) {
-  margin-top: 1px;
+  margin-top: var(--global-gap);
 }
 
 .bookmark-title {
@@ -46,9 +46,4 @@
   text-align: start;
   text-decoration: none !important;
   max-width: 100%;
-}
-
-.bookmark-icon {
-  color: var(--color-accent) !important;
-  margin-right: 0.25rem;
 }

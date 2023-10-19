@@ -15,7 +15,7 @@
 }
 
 .private-messages-list-item:not(:first-child) {
-  margin-top: 1px;
+  margin-top: var(--global-gap);
 }
 
 .private-messages-list-item-unread {

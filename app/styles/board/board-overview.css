@@ -25,7 +25,7 @@
 }
 
 .board-category-header:not(:first-child) {
-  margin-top: 1px;
+  margin-top: var(--global-gap);
 }
 
 .board-category-header-details {
@@ -63,7 +63,7 @@
 }
 
 .board-category-item:not(:first-child) {
-  margin-top: 1px;
+  margin-top: var(--global-gap);
 }
 
 .board-category-item-title {

@@ -15,14 +15,6 @@
   />
 
   <Common::Control::Dropdown
-    @options={{this.config.boxStyleOptions}}
-    @default={{@model.currentBoxStyleOption}}
-    @onSelect={{this.handleBoxStyleSelect}}
-    @size='max'
-    @label='Box-Design'
-  />
-
-  <Common::Control::Dropdown
     @options={{this.config.sidebarLayoutOptions}}
     @default={{@model.currentSidebarLayoutOption}}
     @onSelect={{this.handleSidebarLayoutSelect}}

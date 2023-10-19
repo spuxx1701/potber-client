@@ -1,6 +1,5 @@
 import {
   AvatarStyle,
-  BoxStyle,
   FontSize,
   LandingPage,
   Settings,
@@ -53,17 +52,6 @@ export const settingsConfig: Record<
     {
       label: 'Schneemann',
       data: Theme.snowman,
-    },
-  ],
-
-  boxStyleOptions: [
-    {
-      label: 'Kantholz',
-      data: BoxStyle.rect,
-    },
-    {
-      label: 'Hobelware',
-      data: BoxStyle.round,
     },
   ],
 

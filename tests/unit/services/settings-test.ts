@@ -1,7 +1,6 @@
 import LocalStorageService from 'potber-client/services/local-storage';
 import SettingsService, {
   AvatarStyle,
-  BoxStyle,
   FontSize,
   LandingPage,
   Settings,
@@ -14,7 +13,6 @@ import { module, test } from 'qunit';
 const mockedSettings: Settings = {
   avatarStyle: AvatarStyle.small,
   theme: Theme.default,
-  boxStyle: BoxStyle.rect,
   landingPage: LandingPage.pot,
   autoRefreshSidebar: false,
   sidebarLayout: SidebarLayout.leftTop,

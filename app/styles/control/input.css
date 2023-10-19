@@ -14,7 +14,7 @@ form > * {
   width: 100%;
   box-sizing: border-box;
   min-height: var(--control-input-height);
-  background-color: var(--color-input-inactive);
+  background-color: var(--color-control-inactive);
   border: 0px solid transparent;
   border-radius: var(--global-border-radius);
   margin: 0;

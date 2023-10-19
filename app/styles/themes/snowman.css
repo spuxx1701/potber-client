@@ -1,13 +1,14 @@
 html[data-theme='showman'],
 html[data-theme='snowman'] * {
+  /* Layout */
+  --global-gap: 0px;
+
   /* Colors */
   --color-application-background: #f7f7f7;
   --color-nav-background: #cecece;
   --color-post-background-primary: var(--color-application-background);
-  --color-post-background-secondary: #cfcfcf;
-  --color-accent: #00d9ff;
-
-  --color-loading-indicator-background: rgba(61, 61, 61, 0.7);
+  --color-post-background-secondary: var(--color-nav-background);
+  --color-accent: #009cb8;
 
   --color-text-default: #333333;
   --color-text-subtle: #3f3f3f;
@@ -16,25 +17,19 @@ html[data-theme='snowman'] * {
   --color-text-mod: rgb(150, 0, 0);
 
   --color-container-background: var(--color-nav-background);
-  --color-control-inactive: var(--color-post-background-secondary);
+  --color-control-inactive: var(--color-nav-background);
   --color-control-disabled: var(--color-application-background);
-  --color-input-inactive: var(--color-control-inactive);
 
+  --color-block-header: rgb(0, 0, 0, 0.1);
   --color-block-background: rgb(0, 0, 0, 0.1);
 
-  --color-click-ripple: var(--color-text-default);
+  --color-modal-background: var(--color-application-background);
 
-  --color-modal-background: var(--color-nav-background);
-
-  --color-info: var(--color-modal-background);
-  --color-success: #21922b;
-  --color-warning: #e08e2a;
-  --color-error: #c83232;
-
-  --color-newsfeed-indicator-info: var(--color-accent);
-  --color-newsfeed-indicator-important: var(--color-error);
+  --color-info: var(--color-accent);
+  --color-success: #70cc78;
+  --color-warning: #e4a75c;
+  --color-error: #ca4949;
 
   /* Filters */
   --filter-control-active: brightness(85%);
-  --filter-block-header: brightness(85%);
 }

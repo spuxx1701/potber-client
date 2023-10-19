@@ -6,7 +6,6 @@ import LocalStorageService from './local-storage';
 export interface Settings {
   avatarStyle: AvatarStyle;
   theme: Theme;
-  boxStyle: BoxStyle;
   landingPage: LandingPage;
   autoRefreshSidebar: boolean;
   sidebarLayout: SidebarLayout;
@@ -23,11 +22,6 @@ export enum AvatarStyle {
 export enum Theme {
   default,
   snowman,
-}
-
-export enum BoxStyle {
-  rect,
-  round,
 }
 
 export enum LandingPage {
@@ -56,7 +50,6 @@ export default class SettingsService extends Service {
   readonly default: Settings = {
     avatarStyle: AvatarStyle.none,
     theme: Theme.default,
-    boxStyle: BoxStyle.rect,
     landingPage: LandingPage.boardOverview,
     autoRefreshSidebar: true,
     sidebarLayout: SidebarLayout.leftTop,
@@ -79,9 +72,6 @@ export default class SettingsService extends Service {
       }
       if (Object.values(Theme).includes(storedSettings.theme)) {
         settings.theme = storedSettings.theme;
-      }
-      if (Object.values(BoxStyle).includes(storedSettings.boxStyle)) {
-        settings.boxStyle = storedSettings.boxStyle;
       }
       if (Object.values(LandingPage).includes(storedSettings.landingPage)) {
         settings.landingPage = storedSettings.landingPage;

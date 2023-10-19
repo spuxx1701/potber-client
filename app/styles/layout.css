@@ -1,9 +1,6 @@
 :root {
   --control-default-height: 45px;
   --control-input-height: calc(var(--control-default-height) + 0.5rem);
-  /* The following variables may change during runtime. */
-  --global-border-radius: 0px;
-  --global-gap: unset;
 }
 
 #page-content {
@@ -15,8 +12,8 @@
   background-color: var(--color-application-background);
   padding-top: var(--top-nav-height);
   padding-bottom: var(--bottom-nav-height);
-  padding-left: var(--global-gap);
-  padding-right: var(--global-gap);
+  padding-left: var(--global-padding);
+  padding-right: var(--global-padding);
   z-index: 5;
 }
 

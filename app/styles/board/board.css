@@ -1,5 +1,5 @@
 .board-item:not(:first-child) {
-  margin-top: 1px;
+  margin-top: var(--global-gap);
 }
 
 .board-item {
@@ -30,6 +30,10 @@
   align-items: center;
   color: var(--color-text-default);
   font-weight: bold;
+}
+
+.board-item-title > svg > path {
+  color: var(--color-accent);
 }
 
 .board-item-title img {

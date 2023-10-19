@@ -1,10 +1,23 @@
-:root {
-  /* Ember Notifications */
-  --ecn-blue: var(--color-info);
-  --ecn-green: var(--color-success);
-  --ecn-orange: var(--color-warning);
-  --ecn-red: var(--color-error);
-  --ecn-notification-border-radius: var(--global-border-radius);
+.c-notification {
+  box-shadow: var(--global-box-shadow) !important;
+}
+
+.c-notification,
+.c-notification * {
+  border-radius: var(--global-border-radius) !important;
+}
+
+.c-notification--info {
+  background-color: var(--color-info) !important;
+}
+.c-notification--success {
+  background-color: var(--color-success) !important;
+}
+.c-notification--warning {
+  background-color: var(--color-warning) !important;
+}
+.c-notification--error {
+  background-color: var(--color-error) !important;
 }
 
 .ember-cli-notifications-notification__container--bottom {

@@ -1,5 +1,9 @@
-html[data-theme='default'],
-html[data-theme='default'] * {
+html {
+  /* Layout */
+  --global-padding: 0px;
+  --global-gap: 1px;
+  --global-border-radius: 0px;
+
   /* Colors */
   --color-application-background: #060f15;
   --color-nav-background: #0c1c2c;
@@ -7,22 +11,18 @@ html[data-theme='default'] * {
   --color-post-background-secondary: #293746;
   --color-accent: #00d9ff;
 
-  --color-loading-indicator-background: rgba(41, 55, 70, 0.7);
-
   --color-text-default: #f1f1f1;
   --color-text-subtle: #aeaeae;
   --color-text-link: var(--color-text-subtle);
   --color-text-highlighted: white;
   --color-text-mod: yellow;
 
+  --color-block-header: var(--color-nav);
+  --color-block-background: var(--color-post-background-primary);
+
   --color-container-background: var(--color-nav-background);
   --color-control-inactive: #142637;
   --color-control-disabled: #333d4b;
-  --color-input-inactive: var(--color-control-inactive);
-
-  --color-block-background: rgb(55, 55, 55, 0.8);
-
-  --color-click-ripple: var(--color-text-default);
 
   --color-modal-background: var(--color-nav-background);
 
@@ -36,4 +36,9 @@ html[data-theme='default'] * {
 
   /* Filters */
   --filter-control-active: brightness(135%);
+  --filter-loading-indicator: brightness(75%);
+  --filter-click-ripple: brightness(125%);
+
+  /* Misc */
+  --global-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }

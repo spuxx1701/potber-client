@@ -6,6 +6,10 @@
   font-size: var(--global-font-size);
 }
 
+html * {
+  color: var(--color-text-default);
+}
+
 .title {
   font-size: 1em;
   font-weight: bold;

@@ -16,7 +16,7 @@
   border-radius: 50%;
   transform: scale(0);
   animation: click-ripple 500ms linear;
-  background-color: var(--color-click-ripple);
+  backdrop-filter: var(--filter-click-ripple);
   opacity: 0.5;
 }
 

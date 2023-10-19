@@ -76,7 +76,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background-color: var(--color-loading-indicator-background);
+  backdrop-filter: var(--filter-loading-indicator);
   width: 60px;
   height: 60px;
   opacity: var(--loading-indicator-opacity);
@@ -85,10 +85,6 @@ body {
   align-items: center;
   pointer-events: none;
   z-index: 89;
-}
-
-.c-notification {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .message-item {

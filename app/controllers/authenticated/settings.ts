@@ -34,11 +34,6 @@ export default class SettingsController extends Controller {
     this.renderer.updateTheme();
   }
 
-  @action handleBoxStyleSelect(option: DropdownOption) {
-    this.settings.setSetting('boxStyle', option.data);
-    this.renderer.updateBoxStyle();
-  }
-
   @action handleSidebarLayoutSelect(option: DropdownOption) {
     if (this.renderer.isDesktop) {
       this.modal.confirm({

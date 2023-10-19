@@ -3,7 +3,7 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { sleep } from 'potber-client/utils/misc';
 import MessagesService from './messages';
-import SettingsService, { BoxStyle, SidebarLayout, Theme } from './settings';
+import SettingsService, { SidebarLayout, Theme } from './settings';
 
 const LOADING_INDICATOR_DELAY = 500;
 const DESKTOP_MIN_WIDTH = 1200;
@@ -22,7 +22,6 @@ export default class RendererService extends Service {
    */
   @action initialize() {
     this.updateTheme();
-    this.updateBoxStyle();
     this.updateFontSize();
     this.updateSidebarLayout();
     addEventListener('resize', this.updateIsDesktop);
@@ -42,19 +41,6 @@ export default class RendererService extends Service {
   updateTheme() {
     const theme = this.settings.getSetting('theme');
     document.documentElement.setAttribute('data-theme', `${Theme[theme]}`);
-  }
-
-  /**
-   * Updates the current box style.
-   */
-  updateBoxStyle() {
-    if (this.settings.getSetting('boxStyle') === BoxStyle.rect) {
-      this.rootStyle.setProperty('--global-border-radius', '0px');
-      this.rootStyle.setProperty('--global-gap', 'unset');
-    } else {
-      this.rootStyle.setProperty('--global-border-radius', '5px');
-      this.rootStyle.setProperty('--global-gap', '0.25rem');
-    }
   }
 
   /**

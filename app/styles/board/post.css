@@ -12,7 +12,7 @@
 }
 
 .post:not(:first-child) {
-  margin-top: 1px;
+  margin-top: var(--global-gap);
 }
 
 .post-details {
@@ -130,7 +130,7 @@ p.trigger {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: var(--filter-block-header);
+  background-color: var(--color-block-header);
   padding: 0.5rem;
   text-decoration: none;
 }
