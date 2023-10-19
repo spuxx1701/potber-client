@@ -1,0 +1,9 @@
+{{! @glint-nocheck }}
+
+<Portal @target='top-nav'>
+  <Nav::Component::Header @title={{@tab}} />
+</Portal>
+
+<Portal @target='bottom-nav'>
+  <Nav::Component::Tabs @tabs={{this.tabs}} />
+</Portal>

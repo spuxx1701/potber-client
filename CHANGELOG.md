@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.12.0] - TODO
+
+### Changed
+
+- The `bookmarks` route has been slightly redesigned.
+
 ## [1.11.1] - 2023-10-18
 
 ### Fixed

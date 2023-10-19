@@ -1,14 +1,11 @@
+import Route from '@ember/routing/route';
+import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
-import CustomStore from 'potber-client/services/custom-store';
-import LocalStorageService from 'potber-client/services/local-storage';
-import SlowRoute from '../slow';
 
-export default class BookmarksRoute extends SlowRoute {
-  @service declare store: CustomStore;
-  @service declare localStorage: LocalStorageService;
+export default class BookmarksRoute extends Route {
+  @service declare router: RouterService;
 
-  async model() {
-    await this.store.getBookmarks();
-    await this.localStorage.getSavedPosts({ reload: true });
+  redirect(): void {
+    this.router.transitionTo('authenticated.bookmarks.threads');
   }
 }

@@ -1,12 +1,19 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import Post from 'potber-client/models/post';
 import LocalStorageService from 'potber-client/services/local-storage';
 
-export default class BookmarksSavedPostsComponent extends Component {
+interface Signature {
+  Args: {
+    savedPosts: Post[] | null;
+  };
+}
+
+export default class BookmarksSavedPostsComponent extends Component<Signature> {
   @service declare localStorage: LocalStorageService;
 
   get savedPosts() {
-    return this.localStorage.savedPosts;
+    return this.args.savedPosts;
   }
 
   get status() {

@@ -18,7 +18,10 @@ Router.map(function () {
     this.route('board');
     this.route('thread');
     this.route('settings');
-    this.route('bookmarks');
+    this.route('bookmarks', function () {
+      this.route('threads');
+      this.route('saved-posts');
+    });
     this.route('post', function () {
       this.route('create');
       this.route('quote');

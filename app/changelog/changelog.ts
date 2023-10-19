@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.12.0',
+    type: 'minor',
+    changed: [
+      'Die Seite für Lesezeichen verfügt nun über einen ähnliche Aufbau wie die Seite für private Nachrichten.',
+    ],
+  },
+  {
     version: '1.11.1',
     type: 'patch',
     fixed: [
