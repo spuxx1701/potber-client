@@ -29,6 +29,11 @@ export default class SettingsController extends Controller {
     this.settings.setSetting('avatarStyle', option.data);
   }
 
+  @action handleThemeSelect(option: DropdownOption) {
+    this.settings.setSetting('theme', option.data);
+    this.renderer.updateTheme();
+  }
+
   @action handleBoxStyleSelect(option: DropdownOption) {
     this.settings.setSetting('boxStyle', option.data);
     this.renderer.updateBoxStyle();

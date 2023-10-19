@@ -6,9 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.12.0] - TODO
 
+### Added
+
+- The application now supports customized color themes.
+
 ### Changed
 
 - The `bookmarks` route has been slightly redesigned.
+- Grouping and categories within the settings have been redesigned.
+- Avatars are now `on` by default.
 
 ## [1.11.1] - 2023-10-18
 

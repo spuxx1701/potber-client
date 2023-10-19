@@ -5,6 +5,7 @@ import {
   LandingPage,
   Settings,
   SidebarLayout,
+  Theme,
 } from 'potber-client/services/settings';
 
 /**
@@ -41,6 +42,17 @@ export const settingsConfig: Record<
     {
       label: 'Rechts (unten)',
       data: SidebarLayout.rightBottom,
+    },
+  ],
+
+  themeOptions: [
+    {
+      label: 'mods.de',
+      data: Theme.default,
+    },
+    {
+      label: 'Schneemann',
+      data: Theme.snowman,
     },
   ],
 

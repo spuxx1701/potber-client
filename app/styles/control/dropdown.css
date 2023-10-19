@@ -92,7 +92,7 @@
 .dropdown-item:focus,
 .dropdown-item:active,
 .dropdown-item-selected {
-  background-color: var(--color-control-hover);
+  backdrop-filter: var(--filter-control-active);
   color: var(--color-text-default);
 }
 

@@ -6,7 +6,7 @@
   box-sizing: border-box;
   height: auto;
   flex-direction: column;
-  background-color: var(--color-post-background-primary) !important;
+  background-color: var(--color-post-background-primary);
   padding: 0.5rem;
   width: 100%;
   align-items: flex-start !important;
@@ -15,7 +15,7 @@
 }
 
 .board-item-important {
-  background-color: var(--color-post-background-secondary) !important;
+  background-color: var(--color-post-background-secondary);
 }
 
 .board-item-header {

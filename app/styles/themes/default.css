@@ -1,0 +1,39 @@
+html[data-theme='default'],
+html[data-theme='default'] * {
+  /* Colors */
+  --color-application-background: #060f15;
+  --color-nav-background: #0c1c2c;
+  --color-post-background-primary: #394e63;
+  --color-post-background-secondary: #293746;
+  --color-accent: #00d9ff;
+
+  --color-loading-indicator-background: rgba(41, 55, 70, 0.7);
+
+  --color-text-default: #f1f1f1;
+  --color-text-subtle: #aeaeae;
+  --color-text-link: var(--color-text-subtle);
+  --color-text-highlighted: white;
+  --color-text-mod: yellow;
+
+  --color-container-background: var(--color-nav-background);
+  --color-control-inactive: #142637;
+  --color-control-disabled: #333d4b;
+  --color-input-inactive: var(--color-control-inactive);
+
+  --color-block-background: rgb(55, 55, 55, 0.8);
+
+  --color-click-ripple: var(--color-text-default);
+
+  --color-modal-background: var(--color-nav-background);
+
+  --color-info: var(--color-modal-background);
+  --color-success: #21922b;
+  --color-warning: #e08e2a;
+  --color-error: #c83232;
+
+  --color-newsfeed-indicator-info: var(--color-accent);
+  --color-newsfeed-indicator-important: var(--color-error);
+
+  /* Filters */
+  --filter-control-active: brightness(135%);
+}

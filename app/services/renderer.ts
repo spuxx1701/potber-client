@@ -3,7 +3,7 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { sleep } from 'potber-client/utils/misc';
 import MessagesService from './messages';
-import SettingsService, { BoxStyle, SidebarLayout } from './settings';
+import SettingsService, { BoxStyle, SidebarLayout, Theme } from './settings';
 
 const LOADING_INDICATOR_DELAY = 500;
 const DESKTOP_MIN_WIDTH = 1200;
@@ -21,6 +21,7 @@ export default class RendererService extends Service {
    * Initializes the service.
    */
   @action initialize() {
+    this.updateTheme();
     this.updateBoxStyle();
     this.updateFontSize();
     this.updateSidebarLayout();
@@ -33,6 +34,14 @@ export default class RendererService extends Service {
    */
   @action updateIsDesktop() {
     this.isDesktop = window.innerWidth >= DESKTOP_MIN_WIDTH;
+  }
+
+  /**
+   * Updates the current theme.
+   */
+  updateTheme() {
+    const theme = this.settings.getSetting('theme');
+    document.documentElement.setAttribute('data-theme', `${Theme[theme]}`);
   }
 
   /**

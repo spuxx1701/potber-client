@@ -32,6 +32,9 @@
 @import './responsiveness.css';
 @import './devices.css';
 
+@import './themes/default.css';
+@import './themes/snowman.css';
+
 @import './overrides.css';
 
 html {
@@ -56,6 +59,7 @@ body {
   transition:
     color 200ms,
     background-color 200ms,
+    filter 200ms,
     border 200ms,
     border-color 200ms,
     font-size 200ms,

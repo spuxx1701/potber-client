@@ -4,14 +4,14 @@
 
 <Common::Container @size='small'>
 
-  <h3>Anzeige</h3>
+  <h3>Erscheinungsbild</h3>
 
   <Common::Control::Dropdown
-    @options={{this.config.avatarStyleOptions}}
-    @default={{@model.currentAvatarStyleOption}}
-    @onSelect={{this.handleAvatarStyleSelect}}
+    @options={{this.config.themeOptions}}
+    @default={{@model.currentThemeOption}}
+    @onSelect={{this.handleThemeSelect}}
     @size='max'
-    @label='Bender'
+    @label='Thema'
   />
 
   <Common::Control::Dropdown
@@ -19,7 +19,7 @@
     @default={{@model.currentBoxStyleOption}}
     @onSelect={{this.handleBoxStyleSelect}}
     @size='max'
-    @label='Design'
+    @label='Box-Design'
   />
 
   <Common::Control::Dropdown
@@ -47,6 +47,14 @@
   />
 
   <h3>Daten & Netzwerk</h3>
+
+  <Common::Control::Dropdown
+    @options={{this.config.avatarStyleOptions}}
+    @default={{@model.currentAvatarStyleOption}}
+    @onSelect={{this.handleAvatarStyleSelect}}
+    @size='max'
+    @label='Bender'
+  />
 
   <Common::Control::Dropdown
     @options={{this.config.autoRefreshSidebarOptions}}

@@ -33,6 +33,7 @@
   padding: 0;
   margin: 0;
   background-color: transparent !important;
+  backdrop-filter: none !important;
   justify-content: start;
   height: auto;
   min-height: unset;
@@ -42,6 +43,7 @@
   margin: 0;
   text-decoration: none;
   background-color: transparent !important;
+  backdrop-filter: none !important;
   padding: unset;
   min-height: unset;
   height: unset;
@@ -118,7 +120,7 @@ p.trigger {
   display: flex;
   flex-direction: column;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-quote-background);
+  background-color: var(--color-block-background);
   margin: 0.5rem 0 0.5rem 0.5rem;
   overflow: hidden;
 }
@@ -128,7 +130,7 @@ p.trigger {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-quote-header);
+  backdrop-filter: var(--filter-block-header);
   padding: 0.5rem;
   text-decoration: none;
 }
@@ -147,7 +149,7 @@ blockquote {
 code {
   box-sizing: border-box;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-quote-background);
+  background-color: var(--color-block-background);
   padding: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -222,7 +224,7 @@ video {
 }
 
 .post-content-message td {
-  background-color: var(--color-quote-background);
+  background-color: var(--color-block-background);
   border: none;
   padding: 0.5rem;
 }

@@ -6,12 +6,14 @@ import SettingsService, {
   LandingPage,
   Settings,
   SidebarLayout,
+  Theme,
 } from 'potber-client/services/settings';
 import { setupTest } from 'potber-client/tests/helpers';
 import { module, test } from 'qunit';
 
 const mockedSettings: Settings = {
   avatarStyle: AvatarStyle.small,
+  theme: Theme.default,
   boxStyle: BoxStyle.rect,
   landingPage: LandingPage.pot,
   autoRefreshSidebar: false,

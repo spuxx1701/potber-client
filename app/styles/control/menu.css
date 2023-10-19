@@ -58,7 +58,7 @@
 
 .menu-content > * {
   box-sizing: border-box;
-  background-color: transparent;
+  /* background-color: transparent; */
   color: var(--color-text-default);
   padding: 0 0.5rem 0 0.5rem;
   width: max-content;
@@ -68,7 +68,7 @@
 
 .menu-content > *:not(:disabled):active,
 .menu-content > *:not(:disabled):focus {
-  background-color: var(--color-control-hover-primary);
+  background-color: var(--filter-control-active);
 }
 
 .menu-content > * > * {

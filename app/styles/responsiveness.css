@@ -91,34 +91,13 @@
   }
 
   /* Hover effects */
-  .control-variant-primary:not(:disabled):hover,
+  button:not(:disabled):hover,
+  .button-link:not(:disabled):hover,
   .dropdown-toggle:not(:disabled):hover,
   .menu-button-item:not(:disabled):hover,
   .dropdown-item:not(:disabled):hover,
   input:not(:disabled):hover {
-    background-color: var(--color-control-hover);
-  }
-
-  .control-variant-primary-transparent:not(:disabled):hover,
-  .control-variant-secondary:not(:disabled):hover {
-    background-color: var(--color-control-hover-transparent);
-  }
-
-  .board-category-header:hover,
-  .board-category-item:hover,
-  .board-item:hover,
-  .quickstart-item > a:hover,
-  .quickstart-item > button:hover {
-    opacity: 0.8;
-  }
-
-  .board-category-header:hover,
-  .board-item-important:hover {
-    background-color: var(--color-post-background-secondary) !important;
-  }
-
-  .board-category-item:hover,
-  .board-item:hover {
-    background-color: var(--color-post-background-primary) !important;
+    filter: var(--filter-control-active);
+    backdrop-filter: var(--filter-control-active);
   }
 }
