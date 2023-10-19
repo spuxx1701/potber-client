@@ -16,6 +16,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Grouping and categories within the settings have been redesigned.
 - Avatars are now `on` by default.
 
+### Fixed
+
+- Fixed a couple of issues affecting menu buttons.
+
 ## [1.11.1] - 2023-10-18
 
 ### Fixed

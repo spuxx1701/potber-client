@@ -1,7 +1,6 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import LocalStorageService from 'potber-client/services/local-storage';
-import ENV from 'potber-client/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import RendererService from 'potber-client/services/renderer';

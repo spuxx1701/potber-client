@@ -94,6 +94,7 @@
   button:not(:disabled):hover,
   .button-link:not(:disabled):hover,
   .dropdown-toggle:not(:disabled):hover,
+  .menu-button:not(:disabled):focus,
   .menu-button-item:not(:disabled):hover,
   .dropdown-item:not(:disabled):hover,
   input:not(:disabled):hover {

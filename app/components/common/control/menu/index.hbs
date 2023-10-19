@@ -1,7 +1,6 @@
 {{! @glint-nocheck }}
 <button
-  id={{this.id}}
-  type='button'
+  id='{{this.id}}-button'
   class='menu-button control-size-square control-variant-{{this.variant}}
     icon-size-large'
   title={{this.title}}
@@ -9,12 +8,11 @@
   {{on 'blur' this.handleBlur}}
 >
   <FaIcon @icon={{this.icon}} />
-  <div
-    class='menu-dropdown menu-dropdown-{{this.position}}
-      {{if this.visible "menu-dropdown-visible"}}'
+  <menu
+    id='{{this.id}}-menu'
+    class='menu-{{this.position}}'
+    data-visible='false'
   >
-    <menu class='menu-content'>
-      {{yield}}
-    </menu>
-  </div>
+    {{yield}}
+  </menu>
 </button>

@@ -10,6 +10,7 @@ export const changelog: ChangelogItem[] = [
       'Gruppierung und Kategorien in den Einstellungen wurden überarbeitet.',
       'Bender werden nun stadardmäßig angezeigt.',
     ],
+    fixed: ['Einige Fehler rund um Menu-Buttons wurden behoben.'],
   },
   {
     version: '1.11.1',

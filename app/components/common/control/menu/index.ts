@@ -24,7 +24,6 @@ export default class MenuComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   declare args: Signature['Args'];
   id = guidFor(this);
-  @tracked visible = false;
   @tracked position = this.calculatePosition();
 
   get variant() {
@@ -37,7 +36,7 @@ export default class MenuComponent extends Component<Signature> {
 
   calculatePosition() {
     if (!this.args.position || this.args.position === 'auto') {
-      const element = document.getElementById(this.id) as Element;
+      const element = document.getElementById(`${this.id}-button`) as Element;
       const rect = element.getBoundingClientRect();
       let position = '';
       if (rect.top > window.innerHeight / 2) {
@@ -63,13 +62,18 @@ export default class MenuComponent extends Component<Signature> {
   @action handleClick(event: any) {
     this.updatePosition();
     this.renderer.createClickRipple(event);
-    this.visible = !this.visible;
+    const element = document.getElementById(`${this.id}-menu`) as Element;
+    element.setAttribute(
+      'data-visible',
+      element.getAttribute('data-visible') === 'false' ? 'true' : 'false',
+    );
   }
 
   @action handleBlur(event: any) {
     if (event.currentTarget.contains(event.relatedTarget)) {
       return;
     }
-    this.visible = false;
+    const element = document.getElementById(`${this.id}-menu`) as Element;
+    element.setAttribute('data-visible', 'false');
   }
 }

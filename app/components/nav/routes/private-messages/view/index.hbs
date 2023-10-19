@@ -16,7 +16,7 @@
 
   <div class='nav-element-center'>
     <Common::Control::Menu
-      @position='top'
+      @position={{unless this.renderer.isDesktop 'top' 'bottom'}}
       @variant='primary-transparent'
       @icon='ellipsis'
     >
