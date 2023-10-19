@@ -20,7 +20,7 @@ html * {
 
   --color-block-header: var(--color-nav-background);
   --color-block-background: color-mix(
-    in lch,
+    in srgb,
     var(--color-block-header),
     transparent
   );
