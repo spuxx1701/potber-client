@@ -14,7 +14,7 @@ html[data-theme='snowman'] * {
   --color-text-subtle: #3f3f3f;
   --color-text-link: var(--color-text-subtle);
   --color-text-highlighted: #131313;
-  --color-text-mod: rgb(150, 0, 0);
+  --color-text-mod: red;
 
   --color-control-inactive: var(--color-nav-background);
 
