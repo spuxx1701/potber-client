@@ -120,8 +120,6 @@ p.trigger {
   display: flex;
   flex-direction: column;
   border-radius: var(--global-border-radius);
-  background-color: transparent;
-  backdrop-filter: var(--filter-block);
   margin: 0.5rem 0 0.5rem 0.5rem;
   overflow: hidden;
 }
@@ -145,13 +143,13 @@ p.trigger {
 blockquote {
   margin: 0;
   padding: 0.5rem;
+  background-color: var(--color-block-background);
 }
 
 code {
   box-sizing: border-box;
   border-radius: var(--global-border-radius);
-  background-color: transparent;
-  backdrop-filter: var(--filter-block);
+  background-color: var(--color-block-background);
   padding: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -226,7 +224,7 @@ video {
 }
 
 .post-content-message td {
-  backdrop-filter: var(--filter-block);
+  background-color: var(--color-block-background);
   border: none;
   padding: 0.5rem;
 }
