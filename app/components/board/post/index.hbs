@@ -28,6 +28,11 @@
           target='_blank'
         />
         <Common::Control::Menu::Button
+          @text='Post melden'
+          @icon='triangle-exclamation'
+          @onClick={{this.report}}
+        />
+        <Common::Control::Menu::Button
           @text='Lesezeichen setzen'
           @icon='bookmark'
           @onClick={{this.setBookmark}}

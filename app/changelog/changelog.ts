@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.13.0',
+    type: 'minor',
+    added: ['Posts können nun über das Kebap-Menü gemeldet werden.'],
+  },
+  {
     version: '1.12.0',
     type: 'minor',
     added: [

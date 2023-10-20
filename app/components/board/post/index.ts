@@ -2,7 +2,6 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import ContentParserService from 'potber-client/services/content-parser';
-import ENV from 'potber-client/config/environment';
 import MessagesService from 'potber-client/services/messages';
 import Post from 'potber-client/models/post';
 import CustomStore from 'potber-client/services/custom-store';
@@ -159,6 +158,48 @@ export default class PostComponent extends Component<Signature> {
         this.constructor.name,
       );
     }
+  }
+
+  @action report() {
+    this.modal.input({
+      title: 'Post melden',
+      icon: 'triangle-exclamation',
+      label:
+        'Bitte gib einen Grund an, weshalb Du diesen Post an die Moderator:innen melden möchtest.',
+      submitLabel: 'Melden',
+      useTextarea: true,
+      onSubmit: async (cause: string) => {
+        try {
+          const post = (await this.store.findRecord('post', this.args.post.id, {
+            adapterOptions: {
+              queryParams: {
+                threadId: this.args.post.threadId,
+              },
+            },
+          })) as Post;
+          await post.report({ cause });
+          this.modal.close();
+          this.messages.showNotification('Post wurde gemeldet.', 'success');
+        } catch (error) {
+          const { errors } = await (error as Promise<{
+            errors: Array<{ status: string }>;
+          }>);
+          if (errors[0]?.status === '409') {
+            this.messages.showNotification(
+              'Dieser Post wurde bereits gemeldet.',
+              'warning',
+            );
+            this.modal.close();
+          } else {
+            this.messages.logErrorAndNotify(
+              'Das hat leider nicht geklappt. Versuche es später nochmal.',
+              error,
+              this.constructor.name,
+            );
+          }
+        }
+      },
+    });
   }
 
   get canEdit() {

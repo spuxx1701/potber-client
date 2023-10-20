@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.13.0] - UNRELEASED
+
+### Added
+
+- It is now possible to report posts via the kebap menu in the post header.
+
 ## [1.12.0] - 2023-10-19
 
 ### Added

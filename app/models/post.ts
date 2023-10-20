@@ -49,6 +49,14 @@ export default class Post extends Model {
    * Gets a modified version of the post's message used for quoting.
    */
   quote = memberAction<undefined, PostQuote>({ path: 'quote', type: 'GET' });
+
+  /**
+   * Reports a post to the moderators.
+   */
+  report = memberAction<PostReport>({
+    path: 'report',
+    type: 'POST',
+  });
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
@@ -73,4 +81,8 @@ export interface PostPreview {
 
 export interface PostQuote {
   message: string;
+}
+
+export interface PostReport {
+  cause: string;
 }
