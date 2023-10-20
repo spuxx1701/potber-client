@@ -5,6 +5,9 @@
 A mobile-first web client for the german internet forum <a href="https://forum.mods.de" target="_blank">forum.mods.de</a> built with <a href="https://emberjs.com/" target="_blank">ember.js</a>. If you're looking for potber-api, you can find it <a href="https://github.com/spuxx1701/potber-api" target="_blank">here</a>.
 </p>
 
+![Production Builds](https://github.com/spuxx1701/potber-client/actions/workflows/production.yml/badge.svg)
+![Staging Builds](https://github.com/spuxx1701/potber-client/actions/workflows/staging.yml/badge.svg)
+
 ## Table of contents
 
 - [How to use](#how-to-use)
