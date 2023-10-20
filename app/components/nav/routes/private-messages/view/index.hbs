@@ -40,6 +40,12 @@
           target='_blank'
         />
       {{/each}}
+      <Common::Control::Menu::Button
+        @text='Nachricht löschen'
+        @icon='trash'
+        @onClick={{this.delete}}
+        target='_blank'
+      />
     </Common::Control::Menu>
   </div>
 </Portal>

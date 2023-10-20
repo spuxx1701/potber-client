@@ -9,6 +9,8 @@ import RendererService from 'potber-client/services/renderer';
 import MessagesService from 'potber-client/services/messages';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import type { IntlService } from 'ember-intl';
+import ModalService from 'potber-client/services/modal';
+import RouterService from '@ember/routing/router-service';
 
 interface Signature {
   Args: {
@@ -21,6 +23,8 @@ export default class NavRoutesPrivateMessagesViewComponent extends Component<Sig
   @service declare messages: MessagesService;
   @service declare newsfeed: NewsfeedService;
   @service declare intl: IntlService;
+  @service declare modal: ModalService;
+  @service declare router: RouterService;
 
   get subtitle() {
     return createPrivateMessageSubtitle(this.args.message);
@@ -40,7 +44,7 @@ export default class NavRoutesPrivateMessagesViewComponent extends Component<Sig
       );
     } catch (error) {
       this.messages.logErrorAndNotify(
-        'Das hat leider nicht geklappt. Versuche es später nochmal',
+        this.intl.t('error.unknown'),
         error,
         this.constructor.name,
       );
@@ -66,10 +70,36 @@ export default class NavRoutesPrivateMessagesViewComponent extends Component<Sig
       this.messages.showNotification('Nachricht wurde verschoben.', 'success');
     } catch (error) {
       this.messages.logErrorAndNotify(
-        'Das hat leider nicht geklappt. Versuche es später nochmal',
+        this.intl.t('error.unknown'),
         error,
         this.constructor.name,
       );
     }
+  };
+
+  delete = () => {
+    this.modal.confirm({
+      title: this.intl.t('private-messages.view.modal.delete.title'),
+      text: this.intl.t('private-messages.view.modal.delete.text'),
+      icon: 'trash',
+      onSubmit: async () => {
+        try {
+          const { folder } = this.args.message;
+          await this.args.message.destroyRecord();
+          this.modal.close();
+          this.router.transitionTo(`authenticated.private-messages.${folder}`);
+          this.messages.showNotification(
+            'Nachricht wurde gelöscht.',
+            'success',
+          );
+        } catch (error) {
+          this.messages.logErrorAndNotify(
+            this.intl.t('error.unknown'),
+            error,
+            this.constructor.name,
+          );
+        }
+      },
+    });
   };
 }

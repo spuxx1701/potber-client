@@ -6,6 +6,7 @@ export const changelog: ChangelogItem[] = [
       'Posts können nun über das Kebap-Menü gemeldet werden.',
       'Private Nachrichten können nun als ungelesen markiert werden.',
       'Private Nachrichten können nun in einen anderen Ordner verschoben werden.',
+      'Private Nachrichten können nun gelöscht werden.',
     ],
   },
   {

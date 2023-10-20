@@ -5,7 +5,12 @@ private-messages:
     inbound: Posteingang
     outbound: Postausgang
     system: System
-errors:
+  view:
+    modal:
+      delete:
+        title: Nachricht löschen
+        text: Möchtest Du die Nachricht wirklich löschen?
+error:
   unknown: Das hat leider nicht geklappt. Versuche es später nochmal.
 misc:
   ok: OK,
