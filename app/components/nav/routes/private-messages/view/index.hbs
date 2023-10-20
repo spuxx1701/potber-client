@@ -26,6 +26,20 @@
         @href={{this.originalUrl}}
         target='_blank'
       />
+      <Common::Control::Menu::Button
+        @text='Als ungelesen markieren'
+        @icon='envelope'
+        @onClick={{this.markAsUnread}}
+        target='_blank'
+      />
+      {{#each this.getOtherFolders as |folder|}}
+        <Common::Control::Menu::Button
+          @text='Verschieben nach {{folder.label}}'
+          @icon='folder'
+          @onClick={{fn this.moveToFolder folder.key}}
+          target='_blank'
+        />
+      {{/each}}
     </Common::Control::Menu>
   </div>
 </Portal>

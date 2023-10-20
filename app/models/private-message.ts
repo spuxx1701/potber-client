@@ -1,5 +1,6 @@
 import Model, { attr } from '@ember-data/model';
 import User from './user';
+import { memberAction } from 'ember-api-actions';
 
 export default class PrivateMessage extends Model {
   @attr()
@@ -25,6 +26,22 @@ export default class PrivateMessage extends Model {
 
   @attr()
   declare content?: string;
+
+  /**
+   * Marks the private message as unread.
+   */
+  markAsUnread = memberAction<void>({
+    path: 'markAsUnread',
+    type: 'PUT',
+  });
+
+  /**
+   * Moves the private message to the given folder.
+   */
+  moveToFolder = memberAction<{ folder: PrivateMessageFolder }>({
+    path: 'moveToFolder',
+    type: 'PUT',
+  });
 }
 
 export enum PrivateMessageFolder {

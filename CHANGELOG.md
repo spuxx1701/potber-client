@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - It is now possible to report posts via the kebap menu in the post header.
+- It is now possible to mark private messages as unread.
+- It is now possible to move private messages to another folder.
 - Introduced `ember-intl` for easier maintenance of texts.
 
 ## [1.12.0] - 2023-10-19
