@@ -8,7 +8,7 @@ A mobile-first web client for the german internet forum <a href="https://forum.m
 ![Latest Release](https://img.shields.io/github/v/release/spuxx1701/potber-client)
 ![Production Builds](https://github.com/spuxx1701/potber-client/actions/workflows/production.yml/badge.svg)
 ![Staging Builds](https://github.com/spuxx1701/potber-client/actions/workflows/staging.yml/badge.svg)
-![License](https://img.shields.io/github/license/spuxx1701/potber-api)
+![License](https://img.shields.io/github/license/spuxx1701/potber-client)
 
 ## Table of contents
 
