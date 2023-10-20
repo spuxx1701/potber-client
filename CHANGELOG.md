@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - It is now possible to report posts via the kebap menu in the post header.
+- Introduced `ember-intl` for easier maintenance of texts.
 
 ## [1.12.0] - 2023-10-19
 

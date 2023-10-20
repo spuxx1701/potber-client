@@ -1,0 +1,13 @@
+app:
+  name: potber
+private-messages:
+  folder:
+    inbound: Posteingang
+    outbound: Postausgang
+    system: System
+errors:
+  unknown: Das hat leider nicht geklappt. Versuche es später nochmal.
+misc:
+  ok: OK,
+  cancel: Abbrechen
+  close: Schließen
