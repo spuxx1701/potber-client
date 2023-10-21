@@ -32,7 +32,7 @@
   font-weight: bold;
 }
 
-.board-item-title > svg > path {
+.board-item-title > svg {
   color: var(--color-accent);
 }
 

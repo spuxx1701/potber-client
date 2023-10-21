@@ -2,6 +2,11 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.13.0',
     type: 'minor',
+    fixed: ['Diverse kleinere Fixes.'],
+  },
+  {
+    version: '1.13.0',
+    type: 'minor',
     added: [
       'Posts können nun über das Kebap-Menü gemeldet werden.',
       'Private Nachrichten können nun als ungelesen markiert werden.',
