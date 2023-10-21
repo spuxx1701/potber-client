@@ -39,6 +39,11 @@
   min-height: unset;
 }
 
+.post-details-author-name svg[data-icon='lock'] {
+  margin-left: 0.5rem;
+  font-size: smaller;
+}
+
 .post-details-date {
   margin: 0;
   text-decoration: none;

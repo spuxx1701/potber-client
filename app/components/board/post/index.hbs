@@ -10,7 +10,12 @@
           type='button'
           class='post-details-author-name'
           {{on 'click' this.showAuthorProfile}}
-        ><b>{{@post.author.name}}</b></button>
+        >{{#unless @post.author.locked}}
+            <b>{{@post.author.name}}</b>
+          {{else}}
+            <s><b>{{@post.author.name}}</b></s><FaIcon @icon='lock' />
+          {{/unless}}
+        </button>
         <button
           href={{this.href}}
           type='button'

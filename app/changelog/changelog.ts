@@ -2,6 +2,9 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.13.0',
     type: 'minor',
+    added: [
+      'Der Autor:innenname eines Posts zeigt nun, ob der/die User:in gesperrt ist.',
+    ],
     fixed: ['Diverse kleinere Fixes.'],
   },
   {

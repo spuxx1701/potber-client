@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.14.0] - UNRELEASED
 
+### Added
+
+- Author names now show whether the user account has been locked.
+
 ### Fixed
 
 - Various smaller fixes.

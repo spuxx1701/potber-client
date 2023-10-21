@@ -24,6 +24,9 @@ export default class User extends Model {
 
   @attr()
   declare groupId?: string;
+
+  @attr()
+  declare locked?: boolean;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your models.
