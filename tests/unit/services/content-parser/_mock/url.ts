@@ -77,5 +77,9 @@ export const urlTagMocks: UrlTagMocks = {
       input: `[url=https://forum.mods.de/thread.php?TID=219289&PID=1249813752]Foo[/url]`,
       expected: `<a href="https&#58;//test.potber.de/thread?TID=219289&PID=1249813752">Foo</a>`,
     },
+    {
+      input: `[url=https://forum.mods.de//thread.php?TID=219289&PID=1249813752]Foo[/url]`,
+      expected: `<a href="https&#58;//test.potber.de/thread?TID=219289&PID=1249813752">Foo</a>`,
+    },
   ],
 };

@@ -5,7 +5,10 @@ export const changelog: ChangelogItem[] = [
     added: [
       'Der Autor:innenname eines Posts zeigt nun, ob der/die User:in gesperrt ist.',
     ],
-    fixed: ['Diverse kleinere Fixes.'],
+    fixed: [
+      'Beim Ersetzen von Original-Links durch potber-Links wird nun noch eine weitere mögliche Schreibweise berücksichtigt.',
+      'Diverse kleinere Fixes.',
+    ],
   },
   {
     version: '1.13.0',

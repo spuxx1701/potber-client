@@ -38,6 +38,14 @@ export function parseUrl(
       input: 'forum.mods.de/board.php',
       output: `${appConfig.hostname}/board`,
     },
+    {
+      input: 'forum.mods.de//thread.php',
+      output: `${appConfig.hostname}/thread`,
+    },
+    {
+      input: 'forum.mods.de//board.php',
+      output: `${appConfig.hostname}/board`,
+    },
   ];
 
   const { replaceForumUrls } = { ...options };
