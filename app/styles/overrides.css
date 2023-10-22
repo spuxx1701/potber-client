@@ -27,3 +27,8 @@
 .svg-inline--fa path {
   color: inherit;
 }
+
+/* Prevent some styles from leaking into QUnit. */
+#qunit * {
+  color: unset;
+}
