@@ -11,7 +11,9 @@ export function parseUrl(
   options?: { replaceForumUrls?: boolean },
 ) {
   const URL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/gi;
-  const URL_PATH_REGEX = /\[url=(.*?)\]/i;
+  // This regex needs to account for quite the variety of different kinds of syntax
+  const URL_PATH_REGEX =
+    /\[url(?:=")?\]?(?:.*src=")?(.*?)(?:"|(?:\[\/url\])|(?:\]))/i;
   const URL_LABEL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/i;
   const FORUM_URL_REPLACEMENTS = [
     {

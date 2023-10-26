@@ -7,6 +7,7 @@ export const changelog: ChangelogItem[] = [
     ],
     fixed: [
       'Beim Ersetzen von Original-Links durch potber-Links wird nun noch eine weitere mögliche Schreibweise berücksichtigt.',
+      'URL/Bildkombinationen mit der Schreibweise "[url][img]www.foo.com/bar[/img][/url]" werden jetzt korrekt geparsed.',
       'Diverse kleinere Fixes.',
     ],
   },

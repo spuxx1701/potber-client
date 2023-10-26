@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Account for another possible syntax when replacing forum URLs with potber URLs.
+- Specific combinations of the `[url]` and `[img]` tags are now being parsed proeprly.
 - Various smaller fixes.
 
 ## [1.13.0] - 2023-10-20

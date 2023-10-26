@@ -5,7 +5,6 @@
  */
 export function parseImg(input: string) {
   const IMG_REGEX = /\[img\](.*?)\[\/img\]/gi;
-
   if (!IMG_REGEX.test(input)) return input;
   let output = input;
   const matches = input.matchAll(new RegExp(IMG_REGEX));
