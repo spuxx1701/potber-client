@@ -18,7 +18,7 @@
 }
 
 .control-variant-secondary,
-.color-variant-secondary svg {
+.control-variant-secondary svg {
   background-color: transparent;
   color: var(--color-text-subtle);
 }
