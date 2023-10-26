@@ -56,20 +56,20 @@ export const urlTagMocks: UrlTagMocks = {
       expected: `<a href="https&#58;//forum.mods.de/bb//thread.php?TID=219289&PID=1249813752" target="_blank">Foo</a>`,
     },
     {
-      input: `[url="foo.com"]Foo[/url]`,
-      expected: `<a href="foo.com">Foo</a>`,
+      input: `[url=foo.com]Foo[/url]`,
+      expected: `<a href="foo.com" target="_blank">Foo</a>`,
     },
     {
-      input: `[url="www.foo.com"]Foo[/url]`,
-      expected: `<a href="www.foo.com">Foo</a>`,
+      input: `[url=www.foo.com]Foo[/url]`,
+      expected: `<a href="www.foo.com" target="_blank">Foo</a>`,
     },
     {
       input: `[url]www.foo.com[/url]`,
-      expected: `<a href="www.foo.com">www.foo.com</a>`,
+      expected: `<a href="www.foo.com" target="_blank">www.foo.com</a>`,
     },
     {
       input: `[url]foo.com[/url]`,
-      expected: `<a href="foo.com">www.foo.com</a>`,
+      expected: `<a href="foo.com" target="_blank">foo.com</a>`,
     },
   ],
   withReplacingForumUrls: [
