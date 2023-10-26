@@ -26,6 +26,6 @@ export const postContentMocks: ContentParserMock[] = [
   },
   {
     input: `[url][img]https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:4xuf4gkbm7cgxqcgpnykzo6e/bafkreihu2a3rwp4hwqhtr6cgf6jejxffhmx5fiw4kpynemm3pulsw5xajy@jpeg[/img][/url]`,
-    expected: `<a href="https&#58;//cdn.bsky.app/img/feed_fullsize/plain/did&#58;plc&#58;4xuf4gkbm7cgxqcgpnykzo6e/bafkreihu2a3rwp4hwqhtr6cgf6jejxffhmx5fiw4kpynemm3pulsw5xajy@jpeg\" target=\"_blank\"><img src=\"https&#58;//cdn.bsky.app/img/feed_fullsize/plain/did&#58;plc&#58;4xuf4gkbm7cgxqcgpnykzo6e/bafkreihu2a3rwp4hwqhtr6cgf6jejxffhmx5fiw4kpynemm3pulsw5xajy@jpeg"/></a>`,
+    expected: `<a href="https&#58;//cdn.bsky.app/img/feed_fullsize/plain/did&#58;plc&#58;4xuf4gkbm7cgxqcgpnykzo6e/bafkreihu2a3rwp4hwqhtr6cgf6jejxffhmx5fiw4kpynemm3pulsw5xajy@jpeg" target="_blank"><img src="https&#58;//cdn.bsky.app/img/feed_fullsize/plain/did&#58;plc&#58;4xuf4gkbm7cgxqcgpnykzo6e/bafkreihu2a3rwp4hwqhtr6cgf6jejxffhmx5fiw4kpynemm3pulsw5xajy@jpeg"/></a>`,
   },
 ];

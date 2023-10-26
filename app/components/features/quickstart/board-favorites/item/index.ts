@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import RendererService from 'potber-client/services/renderer';
-import ENV from 'potber-client/config/environment';
 import LocalStorageService from 'potber-client/services/local-storage';
 import Board from 'potber-client/models/board';
 import { appConfig } from 'potber-client/config/app.config';

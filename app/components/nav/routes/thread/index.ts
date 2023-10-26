@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
-import ENV from 'potber-client/config/environment';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
