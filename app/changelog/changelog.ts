@@ -5,6 +5,9 @@ export const changelog: ChangelogItem[] = [
     added: [
       'Der Autor:innenname eines Posts zeigt nun, ob der/die User:in gesperrt ist.',
     ],
+    changed: [
+      'Branding wurde (hoffentlich zum letzten mal) aktualisiert. Herzlichen Dank an Sir Maximillion für den schönen Wal! 🐳',
+    ],
     fixed: [
       'Beim Ersetzen von Original-Links durch potber-Links wird nun noch eine weitere mögliche Schreibweise berücksichtigt.',
       'URL/Bildkombinationen mit der Schreibweise "[url][img]www.foo.com/bar[/img][/url]" werden jetzt korrekt geparsed.',

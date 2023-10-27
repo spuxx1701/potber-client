@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Author names now show whether the user account has been locked.
 
+## Changed
+
+- App received a new branding again (hopefully for the last time). Thanks to user `Sir Maximilion` for the great animation!
+
 ### Fixed
 
 - Account for another possible syntax when replacing forum URLs with potber URLs.
