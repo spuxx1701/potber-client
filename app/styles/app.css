@@ -78,8 +78,8 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 50%;
   backdrop-filter: var(--filter-loading-indicator);
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   opacity: var(--loading-indicator-opacity);
   display: flex;
   justify-content: center;

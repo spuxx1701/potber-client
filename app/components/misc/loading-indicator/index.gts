@@ -1,7 +1,5 @@
-import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
-
 <template>
   <span id='loading-indicator'>
-    <FaIcon @icon='circle-notch' @spin={{true}} @size='2x' />
+    <img src='/images/logo/loading-indicator.gif' alt='Loading...' />
   </span>
 </template>

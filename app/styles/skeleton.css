@@ -69,8 +69,8 @@
 }
 
 #app-skeleton-loading-indicator {
-  /* width: 5rem; */
-  margin: 3rem auto;
+  margin: auto;
+  width: 64px;
 }
 
 @keyframes skeleton-shimmer {
