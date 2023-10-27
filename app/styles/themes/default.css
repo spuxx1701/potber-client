@@ -42,7 +42,7 @@ html * {
 
   /* Filters */
   --filter-control-active: brightness(135%);
-  --filter-loading-indicator: brightness(75%);
+  --filter-loading-indicator: contrast(85%) brightness(65%);
   --filter-click-ripple: brightness(500%) contrast(50%);
 
   /* Misc */

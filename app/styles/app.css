@@ -77,6 +77,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
+  /* filter: blur(50%); */
   backdrop-filter: var(--filter-loading-indicator);
   width: 64px;
   height: 64px;
