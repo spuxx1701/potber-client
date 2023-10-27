@@ -218,12 +218,16 @@ video {
 }
 
 .table-container {
+  display: flex;
   box-sizing: border-box;
   max-width: 100%;
   overflow: auto;
 }
 
 .post-content-message table {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
   border: none;
   border-spacing: 2px;
 }
@@ -232,4 +236,5 @@ video {
   background-color: var(--color-block-background);
   border: none;
   padding: 0.5rem;
+  min-width: max-content;
 }

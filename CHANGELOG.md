@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Account for another possible syntax when replacing forum URLs with potber URLs.
 - Specific combinations of the `[url]` and `[img]` tags are now being parsed proeprly.
+- Large tables are now readable.
 - Various smaller fixes.
 
 ## [1.13.0] - 2023-10-20
