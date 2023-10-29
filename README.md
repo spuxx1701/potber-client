@@ -132,5 +132,4 @@ After building the Docker image, you can run it locally or on a remote host. In 
 
 ## Credit
 
-- Credit goes to deviant user [Emoxynha](https://www.deviantart.com/emoxynha) for the [incredible cute kitty](https://www.deviantart.com/emoxynha/art/Gif-309653475) that I'm using within the application's skeleton.
-- Credit goes to deviant user [IvonChee](https://www.deviantart.com/ivonchee) for the [cute pixel cat bases](https://www.deviantart.com/ivonchee/art/F2U-pixel-cat-bases-859073695) I used as a template for the logo.
+- Credit goes to [fiskensen](instagram.com/fiskensen) for the [very cool whale animation](.logo/whale_animated_560x400.gif) that is used as a loading indicator and in the logo. Thank you!
