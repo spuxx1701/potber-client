@@ -74,7 +74,6 @@ export default class SidebarComponent extends Component {
             startWidth: this.width,
             newWidth: this.width,
           };
-          // Change the transition for the time of the gesture
           this.renderer.setStyleVariable(
             '--sidebar-transition-time',
             'var(--sidebar-transition-time-pan)',
@@ -98,6 +97,10 @@ export default class SidebarComponent extends Component {
         }
 
         default: {
+          this.renderer.setStyleVariable(
+            '--sidebar-transition-time',
+            'var(--sidebar-transition-time-default)',
+          );
           if (this.gestureState.newWidth > this.maxWidth * 0.5) {
             this.renderer.toggleLeftSidebar(true);
           } else {
