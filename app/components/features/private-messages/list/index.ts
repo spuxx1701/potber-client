@@ -37,7 +37,6 @@ export default class PrivateMessageListComponent extends Component<Signature> {
     if (this.limit > this.args.messages.length) return;
     if (y > 0.8 * yMax) {
       this.limit += 10;
-      console.log(this.limit);
     }
   }
 }
