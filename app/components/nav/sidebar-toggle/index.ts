@@ -23,6 +23,10 @@ export default class SidebarToggleComponent extends Component {
   }
 
   @action toggleLeftSidebar() {
+    this.renderer.setStyleVariable(
+      '--sidebar-transition-time',
+      'var(--sidebar-transition-time-default)',
+    );
     this.renderer.toggleLeftSidebar();
     if (
       this.renderer.leftSidebarExpanded &&

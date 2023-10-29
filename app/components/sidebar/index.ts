@@ -55,6 +55,10 @@ export default class SidebarComponent extends Component {
 
   handleGesture = (gesture: any, event: MouseEvent | TouchEvent) => {
     if (Math.abs(gesture.velocityX) > appConfig.swipeVelocityThredhold) {
+      this.renderer.setStyleVariable(
+        '--sidebar-transition-time',
+        'var(--sidebar-transition-time-swipe)',
+      );
       // Handling fast swiping gestures
       if (gesture.velocityX < 0 && this.renderer.leftSidebarExpanded) {
         this.renderer.toggleLeftSidebar(false);
@@ -73,7 +77,7 @@ export default class SidebarComponent extends Component {
           // Change the transition for the time of the gesture
           this.renderer.setStyleVariable(
             '--sidebar-transition-time',
-            'var(--sidebar-transition-time-swipe)',
+            'var(--sidebar-transition-time-pan)',
           );
           break;
         }
@@ -81,10 +85,12 @@ export default class SidebarComponent extends Component {
         case 'touchmove':
         case 'mousemove': {
           const { touchMoveX } = gesture;
-          let newWidth = this.gestureState.startWidth + touchMoveX;
-          if (newWidth < 0) newWidth = 0;
-          else if (newWidth > this.maxWidth) newWidth = this.maxWidth;
-          if (newWidth !== this.gestureState.newWidth) {
+          const newWidth = this.gestureState.startWidth + touchMoveX;
+          if (newWidth < 0) {
+            this.renderer.toggleLeftSidebar(false);
+          } else if (newWidth > this.maxWidth) {
+            this.renderer.toggleLeftSidebar(true);
+          } else {
             this.gestureState.newWidth = newWidth;
             this.renderer.setStyleVariable('--sidebar-width', `${newWidth}px`);
           }
@@ -92,10 +98,6 @@ export default class SidebarComponent extends Component {
         }
 
         default: {
-          this.renderer.setStyleVariable(
-            '--sidebar-transition-time',
-            'var(--sidebar-transition-time-default)',
-          );
           if (this.gestureState.newWidth > this.maxWidth * 0.5) {
             this.renderer.toggleLeftSidebar(true);
           } else {

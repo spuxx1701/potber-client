@@ -1,7 +1,8 @@
 :root {
   --sidebar-expanded-width: 300px;
-  --sidebar-transition-time-default: 500ms;
-  --sidebar-transition-time-swipe: 50ms;
+  --sidebar-transition-time-default: 300ms;
+  --sidebar-transition-time-swipe: 100ms;
+  --sidebar-transition-time-pan: 0ms;
   /* Will be modified during runtime */
   --sidebar-height: calc(
     100dvh - var(--top-nav-height) - var(--bottom-nav-height)
@@ -82,7 +83,7 @@
 }
 
 #sidebar > .gesture-pane {
-  min-width: min(1rem, 110%);
+  min-width: min(1.5rem, 110%);
   left: var(--sidebar-left);
   right: var(--sidebar-right);
 }
