@@ -16,12 +16,12 @@ export const settingsConfig: Record<
 > = {
   avatarStyleOptions: [
     {
-      label: 'Aus',
-      data: AvatarStyle.none,
-    },
-    {
       label: 'An',
       data: AvatarStyle.small,
+    },
+    {
+      label: 'Aus',
+      data: AvatarStyle.none,
     },
   ],
 
