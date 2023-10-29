@@ -94,7 +94,7 @@
     "ember-page-title": "^7.0.0",
     "ember-qunit": "^6.2.0",
     "ember-resolver": "^10.1.0",
-    "ember-simple-auth": "^5.0.0",
+    "ember-simple-auth": "^6.0.0",
     "ember-source": "~4.8.5",
     "ember-stargate": "^0.4.3",
     "ember-template-imports": "^3.4.2",
