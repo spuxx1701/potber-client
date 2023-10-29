@@ -23,7 +23,7 @@ export default class QuickstartNewsfeedPrivateMessageComponent extends Component
 
   @action handleLinkClick() {
     if (this.args.inSidebar && !this.renderer.isDesktop) {
-      this.renderer.closeLeftSidebar();
+      this.renderer.toggleLeftSidebar(false);
     }
   }
 }

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.15.0] - UNRELEASE
+
+### Added
+
+- Implemented basic support for gestures. It can be enabled in the settings.
+- Implemented a togglable debug mode. It can be enabled in the settings.
+
 ## [1.14.0] - 2023-10-27
 
 ### Added

@@ -67,6 +67,14 @@ export default class SettingsController extends Controller {
   @action handleReplaceForumUrlsSelect(option: DropdownOption) {
     this.settings.setSetting('replaceForumUrls', option.data);
   }
+  @action handleEnableGesturesSelect(option: DropdownOption) {
+    this.settings.setSetting('enableGestures', option.data);
+  }
+
+  @action handleDebugSelect(option: DropdownOption) {
+    this.settings.toggleDebugMode(option.data);
+    this.settings.setSetting('debug', option.data);
+  }
 
   @action async handleSignOut() {
     this.session.invalidate();

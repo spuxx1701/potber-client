@@ -16,3 +16,42 @@ misc:
   ok: OK,
   cancel: Abbrechen
   close: Schließen
+route:
+  about:
+    title: Über die App
+  applog:
+    title: Applog
+  changelog:
+    title: Changelog
+  settings:
+    title: Einstellungen
+    category:
+      appearance: Erscheinungsbild
+      network: Daten & Netzwerk
+      behavior: Verhalten
+      danger-zone: Gefahrenzone ⚠
+    theme:
+      label: Thema
+    sidebar:
+      label: Sidebar
+    font-size:
+      label: Schriftgröße
+    darken-read-posts:
+      label: Gelesene Posts abdunkeln
+    avatar-style:
+      label: Bender anzeigen
+    auto-refresh-sidebar:
+      label: Automatischer Newsfeed-Refresh
+    landing-page:
+      label: Startseite
+    replace-forum-urls:
+      label: forum.mods.de-Links ersetzen
+    enable-gestures:
+      label: Gestensteuerung
+    debug:
+      label: Debug-Modus
+    session:
+      title: Sitzung
+      user-id: User ID
+      username: Username
+      sign-out: Abmelden

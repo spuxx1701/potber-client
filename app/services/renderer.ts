@@ -13,7 +13,8 @@ export default class RendererService extends Service {
   @service declare messages: MessagesService;
   @tracked leftSidebarExpanded = false;
   @tracked isDesktop = false;
-  rootStyle = document.documentElement.style;
+  private rootStyle = document.documentElement.style;
+  private computedStyle = getComputedStyle(document.documentElement);
 
   preventScrollReset = false;
 
@@ -26,6 +27,20 @@ export default class RendererService extends Service {
     this.updateSidebarLayout();
     addEventListener('resize', this.updateIsDesktop);
     this.updateIsDesktop();
+  }
+
+  /**
+   * Gets a specific variable on the root style and returns its value.
+   */
+  getStyleVariable(key: string) {
+    return this.computedStyle.getPropertyValue(key);
+  }
+
+  /**
+   * Sets a specific variable on the root style.
+   */
+  setStyleVariable(key: string, value: string) {
+    return this.rootStyle.setProperty(key, value);
   }
 
   /**
@@ -50,34 +65,34 @@ export default class RendererService extends Service {
   updateSidebarLayout() {
     switch (this.settings.sidebarLayout) {
       case SidebarLayout.rightBottom:
-        this.rootStyle.setProperty('--sidebar-left', 'unset');
-        this.rootStyle.setProperty('--sidebar-right', '0px');
-        this.rootStyle.setProperty('--bottom-nav-left-gap', '0px');
-        this.rootStyle.setProperty(
+        this.setStyleVariable('--sidebar-left', 'unset');
+        this.setStyleVariable('--sidebar-right', '0px');
+        this.setStyleVariable('--bottom-nav-left-gap', '0px');
+        this.setStyleVariable(
           '--bottom-nav-right-gap',
           'var(--control-default-height)',
         );
         break;
       case SidebarLayout.rightTop:
-        this.rootStyle.setProperty('--sidebar-left', 'unset');
-        this.rootStyle.setProperty('--sidebar-right', '0px');
-        this.rootStyle.setProperty('--bottom-nav-left-gap', '0px');
-        this.rootStyle.setProperty('--bottom-nav-right-gap', '0px');
+        this.setStyleVariable('--sidebar-left', 'unset');
+        this.setStyleVariable('--sidebar-right', '0px');
+        this.setStyleVariable('--bottom-nav-left-gap', '0px');
+        this.setStyleVariable('--bottom-nav-right-gap', '0px');
         break;
       case SidebarLayout.leftBottom:
-        this.rootStyle.setProperty('--sidebar-left', '0px');
-        this.rootStyle.setProperty('--sidebar-right', 'unset');
-        this.rootStyle.setProperty(
+        this.setStyleVariable('--sidebar-left', '0px');
+        this.setStyleVariable('--sidebar-right', 'unset');
+        this.setStyleVariable(
           '--bottom-nav-left-gap',
           'var(--control-default-height)',
         );
-        this.rootStyle.setProperty('--bottom-nav-right-gap', '0px');
+        this.setStyleVariable('--bottom-nav-right-gap', '0px');
         break;
       default:
-        this.rootStyle.setProperty('--sidebar-left', '0px');
-        this.rootStyle.setProperty('--sidebar-right', 'unset');
-        this.rootStyle.setProperty('--bottom-nav-left-gap', '0px');
-        this.rootStyle.setProperty('--bottom-nav-right-gap', '0px');
+        this.setStyleVariable('--sidebar-left', '0px');
+        this.setStyleVariable('--sidebar-right', 'unset');
+        this.setStyleVariable('--bottom-nav-left-gap', '0px');
+        this.setStyleVariable('--bottom-nav-right-gap', '0px');
     }
   }
 
@@ -108,18 +123,13 @@ export default class RendererService extends Service {
   }
 
   /**
-   * Closes the left sidebar.
-   */
-  @action closeLeftSidebar() {
-    this.leftSidebarExpanded = false;
-    this.updateLeftSidebar();
-  }
-
-  /**
    * Toggles the left sidebar.
+   * @param expanded (optional) Whether the sidebar should be expanded. Will choose the opposite of the current state
+   * if not provided.
    */
-  @action toggleLeftSidebar() {
-    this.leftSidebarExpanded = !this.leftSidebarExpanded;
+  @action toggleLeftSidebar(expanded?: boolean) {
+    if (typeof expanded === 'boolean') this.leftSidebarExpanded = expanded;
+    else this.leftSidebarExpanded = !this.leftSidebarExpanded;
     this.updateLeftSidebar();
   }
 
@@ -128,20 +138,17 @@ export default class RendererService extends Service {
    */
   @action updateLeftSidebar() {
     if (this.leftSidebarExpanded) {
-      this.rootStyle.setProperty(
-        '--sidebar-width',
-        'var(--sidebar-expanded-width)',
-      );
-      this.rootStyle.setProperty('--sidebar-backdrop-opacity', '1');
-      this.rootStyle.setProperty('--sidebar-backdrop-pointer-events', 'all');
-      this.rootStyle.setProperty('--nav-controls-pointer-events', 'none');
-      this.rootStyle.setProperty('--nav-controls-opacity', '0');
+      this.setStyleVariable('--sidebar-width', 'var(--sidebar-expanded-width)');
+      this.setStyleVariable('--sidebar-backdrop-opacity', '1');
+      this.setStyleVariable('--sidebar-backdrop-pointer-events', 'all');
+      this.setStyleVariable('--nav-controls-pointer-events', 'none');
+      this.setStyleVariable('--nav-controls-opacity', '0');
     } else {
-      this.rootStyle.setProperty('--sidebar-width', '0px');
-      this.rootStyle.setProperty('--sidebar-backdrop-opacity', '0');
-      this.rootStyle.setProperty('--sidebar-backdrop-pointer-events', 'none');
-      this.rootStyle.setProperty('--nav-controls-pointer-events', 'all');
-      this.rootStyle.setProperty('--nav-controls-opacity', '1');
+      this.setStyleVariable('--sidebar-width', '0px');
+      this.setStyleVariable('--sidebar-backdrop-opacity', '0');
+      this.setStyleVariable('--sidebar-backdrop-pointer-events', 'none');
+      this.setStyleVariable('--nav-controls-pointer-events', 'all');
+      this.setStyleVariable('--nav-controls-opacity', '1');
     }
   }
 
@@ -149,7 +156,7 @@ export default class RendererService extends Service {
    * Shows the loading indicator.
    */
   @action async showLoadingIndicator() {
-    this.rootStyle.setProperty('--loading-indicator-opacity', '1');
+    this.setStyleVariable('--loading-indicator-opacity', '1');
   }
 
   /**
@@ -157,7 +164,7 @@ export default class RendererService extends Service {
    */
   @action async hideLoadingIndicator() {
     await sleep(LOADING_INDICATOR_DELAY);
-    this.rootStyle.setProperty('--loading-indicator-opacity', '0');
+    this.setStyleVariable('--loading-indicator-opacity', '0');
   }
 
   /**
@@ -210,6 +217,6 @@ export default class RendererService extends Service {
    */
   async updateFontSize() {
     const { fontSize } = this.settings.getSettings();
-    this.rootStyle.setProperty('--global-font-size', fontSize);
+    this.setStyleVariable('--global-font-size', fontSize);
   }
 }

@@ -1,0 +1,13 @@
+:root {
+  --gesture-pane-opacity-debug: 0.5;
+  /* May change during runtime */
+  --gesture-pane-opacity: 0;
+}
+
+.gesture-pane {
+  position: fixed;
+  height: inherit;
+  width: inherit;
+  background-color: orange;
+  opacity: var(--gesture-pane-opacity);
+}

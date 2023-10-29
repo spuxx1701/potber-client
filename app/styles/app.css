@@ -16,6 +16,8 @@
 
 @import './common/avatar.css';
 
+@import './misc/gesture-pane.css';
+
 @import './features/quickstart.css';
 @import './features/newsfeed.css';
 @import './features/bookmarks.css';

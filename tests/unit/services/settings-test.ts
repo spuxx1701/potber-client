@@ -19,6 +19,8 @@ const mockedSettings: Settings = {
   fontSize: FontSize.medium,
   replaceForumUrls: true,
   darkenReadPosts: false,
+  enableGestures: true,
+  debug: false,
 };
 
 module('Unit | Service | Settings', function (hooks) {

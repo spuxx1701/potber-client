@@ -2,6 +2,7 @@ import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import LocalStorageService from './local-storage';
+import RendererService from './renderer';
 
 export interface Settings {
   avatarStyle: AvatarStyle;
@@ -12,6 +13,8 @@ export interface Settings {
   fontSize: FontSize;
   replaceForumUrls: boolean;
   darkenReadPosts: boolean;
+  enableGestures: boolean;
+  debug: boolean;
 }
 
 export enum AvatarStyle {
@@ -46,6 +49,7 @@ export enum FontSize {
 
 export default class SettingsService extends Service {
   @service declare localStorage: LocalStorageService;
+  @service declare renderer: RendererService;
 
   @tracked protected active: Settings = this.load();
   readonly default: Settings = {
@@ -57,6 +61,8 @@ export default class SettingsService extends Service {
     fontSize: FontSize.medium,
     replaceForumUrls: true,
     darkenReadPosts: false,
+    enableGestures: false,
+    debug: false,
   };
 
   /**
@@ -92,6 +98,13 @@ export default class SettingsService extends Service {
       if (typeof storedSettings.darkenReadPosts === 'boolean') {
         settings.darkenReadPosts = storedSettings.darkenReadPosts;
       }
+      if (typeof storedSettings.enableGestures === 'boolean') {
+        settings.enableGestures = storedSettings.enableGestures;
+      }
+      if (typeof storedSettings.debug === 'boolean') {
+        settings.debug = storedSettings.debug;
+        this.toggleDebugMode(settings.debug);
+      }
     }
     return settings;
   }
@@ -123,5 +136,12 @@ export default class SettingsService extends Service {
 
   get sidebarLayout() {
     return this.active.sidebarLayout;
+  }
+
+  toggleDebugMode(enabled: boolean) {
+    this.renderer.setStyleVariable(
+      '--gesture-pane-opacity',
+      enabled ? 'var(--gesture-pane-opacity-debug)' : '0',
+    );
   }
 }

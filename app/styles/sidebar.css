@@ -1,5 +1,7 @@
 :root {
   --sidebar-expanded-width: 300px;
+  --sidebar-transition-time-default: 500ms;
+  --sidebar-transition-time-swipe: 50ms;
   /* Will be modified during runtime */
   --sidebar-height: calc(
     100dvh - var(--top-nav-height) - var(--bottom-nav-height)
@@ -9,6 +11,7 @@
   --sidebar-right: unset;
   --sidebar-backdrop-opacity: 0;
   --sidebar-backdrop-pointer-events: none;
+  --sidebar-transition-time: var(--sidebar-transition-time-default);
 }
 
 #sidebar {
@@ -16,7 +19,7 @@
   background-color: var(--color-nav-background);
   height: var(--sidebar-height);
   z-index: 15;
-  transition: width 500ms !important;
+  transition: width var(--sidebar-transition-time) ease !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -76,4 +79,10 @@
 
 #sidebar-content hr {
   max-width: calc(var(--sidebar-expanded-width) - 2rem);
+}
+
+#sidebar > .gesture-pane {
+  min-width: min(1rem, 110%);
+  left: var(--sidebar-left);
+  right: var(--sidebar-right);
 }

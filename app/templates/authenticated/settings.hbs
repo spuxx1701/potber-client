@@ -1,17 +1,17 @@
-{{! @glint-nocheck }}{{page-title 'Einstellungen'}}
+{{! @glint-nocheck }}{{page-title (t 'route.settings.title')}}
 
-<Nav::Routes::Generic @title='Einstellungen' />
+<Nav::Routes::Generic @title={{t 'route.settings.title'}} />
 
 <Common::Container @size='small'>
 
-  <h3>Erscheinungsbild</h3>
+  <h3>{{t 'route.settings.category.appearance'}}</h3>
 
   <Common::Control::Dropdown
     @options={{this.config.themeOptions}}
     @default={{@model.currentThemeOption}}
     @onSelect={{this.handleThemeSelect}}
     @size='max'
-    @label='Thema'
+    @label={{t 'route.settings.theme.label'}}
   />
 
   <Common::Control::Dropdown
@@ -19,7 +19,7 @@
     @default={{@model.currentSidebarLayoutOption}}
     @onSelect={{this.handleSidebarLayoutSelect}}
     @size='max'
-    @label='Sidebar'
+    @label={{t 'route.settings.sidebar.label'}}
   />
 
   <Common::Control::Dropdown
@@ -27,7 +27,7 @@
     @default={{@model.currentFontSizeOption}}
     @onSelect={{this.handleFontSizeSelect}}
     @size='max'
-    @label='Schriftgröße'
+    @label={{t 'route.settings.font-size.label'}}
   />
 
   <Common::Control::Dropdown
@@ -35,17 +35,17 @@
     @default={{@model.currentDarkenReadPostsOption}}
     @onSelect={{this.handleDarkenReadPostsSelect}}
     @size='max'
-    @label='Gelesene Posts abdunkeln'
+    @label={{t 'route.settings.darken-read-posts.label'}}
   />
 
-  <h3>Daten & Netzwerk</h3>
+  <h3>{{t 'route.settings.category.network'}}</h3>
 
   <Common::Control::Dropdown
     @options={{this.config.avatarStyleOptions}}
     @default={{@model.currentAvatarStyleOption}}
     @onSelect={{this.handleAvatarStyleSelect}}
     @size='max'
-    @label='Bender'
+    @label={{t 'route.settings.avatar-style.label'}}
   />
 
   <Common::Control::Dropdown
@@ -53,17 +53,17 @@
     @default={{@model.currentAutoRefreshSidebarOption}}
     @onSelect={{this.handleAutoRefreshSidebarSelect}}
     @size='max'
-    @label='Automatischer Newsfeed-Refresh'
+    @label={{t 'route.settings.auto-refresh-sidebar.label'}}
   />
 
-  <h3>Personalisierung</h3>
+  <h3>{{t 'route.settings.category.behavior'}}</h3>
 
   <Common::Control::Dropdown
     @options={{this.config.landingPageOptions}}
     @default={{@model.currentLandingPageOption}}
     @onSelect={{this.handleLandingPageSelect}}
     @size='max'
-    @label='Startseite'
+    @label={{t 'route.settings.landing-page.label'}}
   />
 
   <Common::Control::Dropdown
@@ -71,7 +71,25 @@
     @default={{@model.currentReplaceForumUrlsOption}}
     @onSelect={{this.handleReplaceForumUrlsSelect}}
     @size='max'
-    @label='forum.mods.de-Links ersetzen'
+    @label={{t 'route.settings.replace-forum-urls.label'}}
+  />
+
+  <Common::Control::Dropdown
+    @options={{this.config.enableGesturesOptions}}
+    @default={{@model.currentEnableGesturesOption}}
+    @onSelect={{this.handleEnableGesturesSelect}}
+    @size='max'
+    @label={{t 'route.settings.enable-gestures.label'}}
+  />
+
+  <h3>{{t 'route.settings.category.danger-zone'}}</h3>
+
+  <Common::Control::Dropdown
+    @options={{this.config.debugOptions}}
+    @default={{@model.currentDebugOption}}
+    @onSelect={{this.handleDebugSelect}}
+    @size='max'
+    @label={{t 'route.settings.debug.label'}}
   />
 
   <hr />
@@ -83,7 +101,7 @@
     class='margin-auto margin-vertical-x-small'
   >
     <FaIcon @icon='rectangle-list' />
-    <p>Applog</p>
+    <p>{{t 'route.applog.title'}}</p>
   </Common::Control::Link>
 
   <Common::Control::Link
@@ -93,7 +111,7 @@
     class='margin-auto margin-vertical-x-small'
   >
     <FaIcon @icon='star' @prefix='fas' />
-    <p>Changelog</p>
+    <p>{{t 'route.changelog.title'}}</p>
   </Common::Control::Link>
 
   <Common::Control::Link
@@ -103,16 +121,17 @@
     class='margin-auto margin-vertical-x-small'
   >
     <FaIcon @icon='info-circle' @prefix='fas' />
-    <p>Über die App</p>
+    <p>{{t 'route.about.title'}}</p>
   </Common::Control::Link>
 
   <hr />
 
-  <h3>Sitzung</h3>
-  <p class='no-margin'>User ID: {{@model.session.userId}}</p>
-  <p>Username: {{@model.session.username}}</p>
+  <h3>{{t 'route.settings.session.title'}}</h3>
+  <p class='no-margin'>{{t 'route.settings.session.user-id'}}:
+    {{@model.session.userId}}</p>
+  <p>{{t 'route.settings.session.username'}}: {{@model.session.username}}</p>
   <Common::Control::Button
-    @text='Abmelden'
+    @text={{t 'route.settings.session.sign-out'}}
     @icon='right-from-bracket'
     @variant='primary'
     @size='large'

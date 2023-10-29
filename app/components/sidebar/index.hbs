@@ -1,4 +1,11 @@
-{{! @glint-nocheck }}<div id='sidebar' role='navigation'>
+{{! @glint-nocheck }}
+<div id='sidebar' role='navigation'>
+  {{#if this.enableGestures}}
+    <Misc::GesturePane
+      @types={{array 'panstart' 'panmove' 'panend'}}
+      @onGesture={{this.handleGesture}}
+    />
+  {{/if}}
   {{#if (eq this.navVerticalPosition 'top')}}
     <Sidebar::Nav />
   {{/if}}

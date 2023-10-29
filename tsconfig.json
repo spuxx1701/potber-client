@@ -13,12 +13,10 @@
       "potber-client/tests/*": ["tests/*"],
       "potber-client/*": ["app/*"],
       "*": ["types/*"]
-    },
-    "moduleResolution": "nodenext"
+    }
   },
   "include": ["app/**/*", "tests/**/*", "types/**/*"],
   "glint": {
-    "environment": ["ember-loose", "ember-template-imports"],
-    "include": ["*.gts", ".ts"]
+    "environment": ["ember-loose", "ember-template-imports"]
   }
 }

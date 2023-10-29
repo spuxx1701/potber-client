@@ -121,4 +121,26 @@ export const settingsConfig: Record<
       data: false,
     },
   ],
+
+  enableGesturesOptions: [
+    {
+      label: 'An',
+      data: true,
+    },
+    {
+      label: 'Aus',
+      data: false,
+    },
+  ],
+
+  debugOptions: [
+    {
+      label: 'An',
+      data: true,
+    },
+    {
+      label: 'Aus',
+      data: false,
+    },
+  ],
 };
