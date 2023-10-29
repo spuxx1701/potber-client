@@ -29,7 +29,7 @@ route:
       appearance: Erscheinungsbild
       network: Daten & Netzwerk
       behavior: Verhalten
-      danger-zone: Gefahrenzone ⚠
+      advanced: Erweiterte Einstellungen
     theme:
       label: Thema
     sidebar:
