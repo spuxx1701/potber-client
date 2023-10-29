@@ -7,6 +7,7 @@ import MessagesService from 'potber-client/services/messages';
 import AppService from 'potber-client/services/app';
 import ModalService from 'potber-client/services/modal';
 import SettingsService from 'potber-client/services/settings';
+import DeviceManagerService from 'potber-client/services/device-manager';
 import CustomSession from 'potber-client/services/custom-session';
 import {
   SettingsRouteModel,
@@ -22,6 +23,7 @@ export default class SettingsController extends Controller {
   @service declare messages: MessagesService;
   @service declare modal: ModalService;
   @service declare app: AppService;
+  @service declare deviceManager: DeviceManagerService;
 
   config = settingsConfig;
 
@@ -69,6 +71,7 @@ export default class SettingsController extends Controller {
   }
   @action handleEnableGesturesSelect(option: DropdownOption) {
     this.settings.setSetting('enableGestures', option.data);
+    this.deviceManager.toggleGesturesSupport();
   }
 
   @action handleDebugSelect(option: DropdownOption) {

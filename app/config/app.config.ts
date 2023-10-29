@@ -12,4 +12,5 @@ export const appConfig = {
    * The default user group id. Other group ids define mods, admins and the like.
    */
   standardUserGroupId: '3',
+  swipeVelocityThredhold: 75,
 };

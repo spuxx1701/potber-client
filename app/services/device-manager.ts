@@ -1,5 +1,7 @@
 import Service, { service } from '@ember/service';
 import MessagesService from './messages';
+import SettingsService from './settings';
+import RendererService from './renderer';
 
 type OperatingSystem =
   | 'Android'
@@ -13,6 +15,8 @@ type Browser = 'Firefox' | 'Chrome' | 'WebKit' | 'unknown';
 
 export default class DeviceManagerService extends Service {
   @service declare messages: MessagesService;
+  @service declare settings: SettingsService;
+  @service declare renderer: RendererService;
 
   userAgent = window.navigator.userAgent;
   operatingSystem: OperatingSystem = this.getOperatingSystem(this.userAgent);
@@ -27,6 +31,18 @@ export default class DeviceManagerService extends Service {
     );
     if (this.operatingSystem === 'iOS') {
       this.enableiOSCompatibility();
+    }
+    this.toggleGesturesSupport();
+  }
+
+  /**
+   * Enabled or disables gestures support.
+   */
+  toggleGesturesSupport() {
+    if (this.settings.getSetting('enableGestures')) {
+      this.renderer.setStyleVariable('--app-overscroll-behavior', 'contain');
+    } else {
+      this.renderer.setStyleVariable('--app-overscroll-behavior', 'unset');
     }
   }
 

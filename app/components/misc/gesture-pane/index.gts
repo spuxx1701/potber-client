@@ -55,7 +55,6 @@ export default class GesturePaneComponent extends Component<Signature> {
     const target = document.getElementById(this.gesturePaneId) as HTMLElement;
     this._gesture = new TinyGesture(target, this.args.options);
     this._listeners = [];
-    console.log(this.types);
     for (const type of this.types) {
       const listener = this.gesture.on(type, this.handleGesture);
       this._listeners.push(listener);
