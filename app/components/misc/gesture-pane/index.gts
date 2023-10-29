@@ -26,6 +26,13 @@ export default class GesturePaneComponent extends Component<Signature> {
   private _gesture: TinyGesture<HTMLElement> | undefined;
   private _listeners: any[] | undefined;
 
+  willDestroy() {
+    super.willDestroy();
+    for (const listener of this.listeners) {
+      listener.cancel();
+    }
+  }
+
   get gesturePaneId() {
     return `${this.componentId}-gesture-pane`;
   }
@@ -38,7 +45,7 @@ export default class GesturePaneComponent extends Component<Signature> {
     return this._gesture;
   }
 
-  get listener() {
+  get listeners() {
     if (!this._listeners)
       throw new Error(
         "Attempted to access gesture-pane's listeners reference before it was initialized.",
