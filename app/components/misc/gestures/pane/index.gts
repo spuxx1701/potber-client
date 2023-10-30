@@ -1,20 +1,14 @@
 import didInsert from '@ember/render-modifiers/modifiers/did-insert';
 import Component from '@glimmer/component';
 import { guidFor } from '@ember/object/internals';
-// ts-ignore
-import TinyGesture, { Options, Events } from 'tinygesture';
+import TinyGesture, { Options } from 'tinygesture';
 import { service } from '@ember/service';
 import RendererService from 'potber-client/services/renderer';
+import { Gesture } from 'potber-client/components/misc/gestures/types';
 
 interface Signature {
   Args: {
-    types: Array<keyof Events> | keyof Events;
-    onGesture: (
-      // eslint-disable-next-line no-unused-vars
-      gesture: TinyGesture<HTMLElement>,
-      // eslint-disable-next-line no-unused-vars
-      event: MouseEvent | TouchEvent,
-    ) => void;
+    gestures: Array<Gesture> | Gesture;
     options?: Partial<Options<HTMLElement>>;
   };
 }
@@ -23,7 +17,7 @@ export default class GesturePaneComponent extends Component<Signature> {
   @service declare renderer: RendererService;
 
   private componentId = guidFor(this);
-  private _gesture: TinyGesture<HTMLElement> | undefined;
+  private _tinyGesture: TinyGesture<HTMLElement> | undefined;
   private _listeners: any[] | undefined;
 
   willDestroy() {
@@ -37,12 +31,12 @@ export default class GesturePaneComponent extends Component<Signature> {
     return `${this.componentId}-gesture-pane`;
   }
 
-  get gesture() {
-    if (!this._gesture)
+  get tinyGesture() {
+    if (!this._tinyGesture)
       throw new Error(
-        "Attempted to access gesture-pane's gesture reference before it was initialized.",
+        "Attempted to access gesture-pane's TinyGesture reference before it was initialized.",
       );
-    return this._gesture;
+    return this._tinyGesture;
   }
 
   get listeners() {
@@ -53,23 +47,28 @@ export default class GesturePaneComponent extends Component<Signature> {
     return this._listeners;
   }
 
-  get types() {
-    if (!Array.isArray(this.args.types)) return [this.args.types];
-    else return this.args.types;
+  get gestures(): Array<Gesture> {
+    if (!Array.isArray(this.args.gestures)) return [this.args.gestures];
+    else return this.args.gestures;
   }
 
   didInsert = () => {
     const target = document.getElementById(this.gesturePaneId) as HTMLElement;
-    this._gesture = new TinyGesture(target, this.args.options);
+    this._tinyGesture = new TinyGesture(target, this.args.options);
     this._listeners = [];
-    for (const type of this.types) {
-      const listener = this.gesture.on(type, this.handleGesture);
+    for (const gesture of this.gestures) {
+      const listener = this.tinyGesture.on(
+        gesture.type,
+        (event: MouseEvent | TouchEvent) => {
+          gesture.onGesture({
+            type: gesture.type,
+            gesture: this.tinyGesture,
+            nativeEvent: event,
+          });
+        },
+      );
       this._listeners.push(listener);
     }
-  };
-
-  handleGesture = (event: MouseEvent | TouchEvent) => {
-    this.args.onGesture(this.gesture, event);
   };
 
   <template>

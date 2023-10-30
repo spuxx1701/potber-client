@@ -5,8 +5,10 @@ import SettingsService, {
   SidebarLayout,
 } from 'potber-client/services/settings';
 import { appConfig } from 'potber-client/config/app.config';
-// TODO: Fix type import
-// import TinyGesture from 'tinygesture';
+import {
+  Gesture,
+  GestureEvent,
+} from 'potber-client/components/misc/gestures/types';
 
 export default class SidebarComponent extends Component {
   @service declare settings: SettingsService;
@@ -53,67 +55,31 @@ export default class SidebarComponent extends Component {
     return this.settings.getSetting('enableGestures');
   }
 
-  handleGesture = (gesture: any, event: MouseEvent | TouchEvent) => {
-    if (Math.abs(gesture.velocityX) > appConfig.swipeVelocityThredhold) {
-      this.renderer.setStyleVariable(
-        '--sidebar-transition-time',
-        'var(--sidebar-transition-time-swipe)',
-      );
-      // Handling fast swiping gestures
-      if (gesture.velocityX < 0 && this.renderer.leftSidebarExpanded) {
-        this.renderer.toggleLeftSidebar(false);
-      } else if (gesture.velocityX > 0 && !this.renderer.leftSidebarExpanded) {
-        this.renderer.toggleLeftSidebar(true);
-      }
-    } else {
-      // Handling slow panning gestures
-      switch (event.type) {
-        case 'touchstart':
-        case 'mousedown': {
-          this.gestureState = {
-            startWidth: this.width,
-            newWidth: this.width,
-          };
-          this.renderer.setStyleVariable(
-            '--sidebar-transition-time',
-            'var(--sidebar-transition-time-pan)',
-          );
-          break;
-        }
-
-        case 'touchmove':
-        case 'mousemove': {
-          const { touchMoveX } = gesture;
-          let newWidth = this.gestureState.startWidth + touchMoveX;
-          if (newWidth < 0) {
-            newWidth = 0;
-            // this.renderer.toggleLeftSidebar(false);
-          } else if (newWidth > this.maxWidth) {
-            newWidth = this.maxWidth;
-            // this.renderer.toggleLeftSidebar(true);
-          } else {
-            this.renderer.setStyleVariable('--sidebar-width', `${newWidth}px`);
-          }
-          this.gestureState.newWidth = newWidth;
-          break;
-        }
-
-        default: {
-          this.renderer.setStyleVariable(
-            '--sidebar-transition-time',
-            'var(--sidebar-transition-time-default)',
-          );
-          if (this.gestureState.newWidth > this.maxWidth * 0.5) {
-            this.renderer.toggleLeftSidebar(true);
-          } else {
-            this.renderer.toggleLeftSidebar(false);
-          }
-        }
-      }
-    }
-  };
-
   handleSidebarBackdropClick = () => {
     this.renderer.toggleLeftSidebar(false);
   };
+
+  handleSwipe = ({ gesture, type }: GestureEvent) => {
+    if (!gesture.velocityX) return;
+    this.renderer.setStyleVariable(
+      '--sidebar-transition-time',
+      'var(--sidebar-transition-time-swipe)',
+    );
+    if (type === 'swipeleft' && this.renderer.leftSidebarExpanded) {
+      this.renderer.toggleLeftSidebar(false);
+    } else if (type === 'swiperight' && !this.renderer.leftSidebarExpanded) {
+      this.renderer.toggleLeftSidebar(true);
+    }
+  };
+
+  gestures: Gesture[] = [
+    {
+      type: 'swiperight',
+      onGesture: this.handleSwipe,
+    },
+    {
+      type: 'swipeleft',
+      onGesture: this.handleSwipe,
+    },
+  ];
 }
