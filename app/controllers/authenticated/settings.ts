@@ -70,6 +70,14 @@ export default class SettingsController extends Controller {
     this.settings.setSetting('replaceForumUrls', option.data);
   }
   @action handleEnableGesturesSelect(option: DropdownOption) {
+    if (option.data) {
+      this.modal.confirm({
+        title: 'Gestensteuerung',
+        icon: 'triangle-exclamation',
+        text: 'Die Gestensteuerung ist experimentell und work in progress. Je nach Browser oder Gerät funktioniert sie gegebenenfalls nur unzuverlässig oder gar nicht. Möglicherweise kommt es zu Konflikten mit der Gestensteuerung Deines Geräts.',
+        onSubmit: () => this.modal.close(),
+      });
+    }
     this.settings.setSetting('enableGestures', option.data);
     this.deviceManager.toggleGesturesSupport();
   }
