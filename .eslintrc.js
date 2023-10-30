@@ -29,7 +29,8 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
       ],
       rules: {
-        '@typescript-eslint/no-explicit-any': 0,
+        '@typescript-eslint/no-explicit-any': 'off',
+        'no-undef': 'off',
       },
     },
     // node files
