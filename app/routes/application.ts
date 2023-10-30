@@ -3,7 +3,6 @@ import { service } from '@ember/service';
 import AppService from 'potber-client/services/app';
 import RendererService from 'potber-client/services/renderer';
 import type { IntlService } from 'ember-intl';
-import { sleep } from 'potber-client/utils/misc';
 
 export default class ApplicationRoute extends Route {
   @service declare app: AppService;
@@ -16,7 +15,6 @@ export default class ApplicationRoute extends Route {
 
   async model() {
     try {
-      // await sleep(5000);
       await this.app.initialize();
       return {
         failure: false,

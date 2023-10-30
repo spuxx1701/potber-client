@@ -19,10 +19,12 @@
     />
   {{/each}}
 {{/if}}
-<Common::Control::Button
-  @icon='arrows-rotate'
-  @text='Aktualisieren'
-  @size='max'
-  @busy={{this.busy}}
-  @onClick={{this.refresh}}
-/>
+{{#unless this.hideRefreshButton}}
+  <Common::Control::Button
+    @icon='arrows-rotate'
+    @text='Aktualisieren'
+    @size='max'
+    @busy={{this.busy}}
+    @onClick={{this.refresh}}
+  />
+{{/unless}}

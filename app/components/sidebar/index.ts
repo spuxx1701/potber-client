@@ -1,10 +1,10 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
+import NewsfeedService from 'potber-client/services/newsfeed';
 import SettingsService, {
   SidebarLayout,
 } from 'potber-client/services/settings';
-import { appConfig } from 'potber-client/config/app.config';
 import {
   Gesture,
   GestureEvent,
@@ -13,6 +13,7 @@ import {
 export default class SidebarComponent extends Component {
   @service declare settings: SettingsService;
   @service declare renderer: RendererService;
+  @service declare newsfeed: NewsfeedService;
 
   maxWidth = parseInt(
     getComputedStyle(document.documentElement)
@@ -59,7 +60,7 @@ export default class SidebarComponent extends Component {
     this.renderer.toggleLeftSidebar(false);
   };
 
-  handleSwipe = ({ gesture, type }: GestureEvent) => {
+  handleSwipeHorzontal = ({ gesture, type }: GestureEvent) => {
     if (!gesture.velocityX) return;
     this.renderer.setStyleVariable(
       '--sidebar-transition-time',
@@ -75,11 +76,15 @@ export default class SidebarComponent extends Component {
   gestures: Gesture[] = [
     {
       type: 'swiperight',
-      onGesture: this.handleSwipe,
+      onGesture: this.handleSwipeHorzontal,
     },
     {
       type: 'swipeleft',
-      onGesture: this.handleSwipe,
+      onGesture: this.handleSwipeHorzontal,
     },
   ];
+
+  refreshNewsfeed = () => {
+    this.newsfeed.refresh();
+  };
 }

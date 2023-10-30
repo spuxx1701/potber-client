@@ -16,6 +16,7 @@ misc:
   ok: OK,
   cancel: Abbrechen
   close: Schließen
+  refresh: Aktualisieren
 route:
   about:
     title: Über die App

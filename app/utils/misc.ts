@@ -14,3 +14,23 @@ export function getDateFromUnixTimestamp(timestamp: string) {
 export async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+/**
+ * Debounces the given callback function, which means it's being called after the given delay, but only once per usecase.
+ * Every call will reset the delay timer.
+ * @param callback The callback function.
+ * @param delay The delay in miliseconds.
+ */
+export function debounce<TArgs extends unknown[], TReturn>(
+  callback: (...args: TArgs) => PromiseLike<TReturn> | TReturn,
+  delay: number,
+) {
+  let timer: number;
+
+  return (...args: TArgs): Promise<TReturn> => {
+    clearTimeout(timer);
+    return new Promise((resolve) => {
+      timer = setTimeout(() => resolve(callback(...args)), delay);
+    });
+  };
+}

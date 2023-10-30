@@ -4,7 +4,6 @@ import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
 import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
-// import { yield } from
 import { on } from '@ember/modifier';
 import eq from 'ember-truth-helpers/helpers/eq';
 

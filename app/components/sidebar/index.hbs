@@ -1,12 +1,21 @@
 {{! @glint-nocheck }}
 <div id='sidebar' role='navigation'>
-  {{#if this.enableGestures}}
-    <Misc::Gestures::Pane @gestures={{this.gestures}} />
-  {{/if}}
   {{#if (eq this.navVerticalPosition 'top')}}
     <Sidebar::Nav />
   {{/if}}
+  {{#if this.enableGestures}}
+    <Misc::Gestures::Sidebar
+      @direction='down'
+      @indicator='sidebar-content-overscroll-indicator'
+      @onOverscroll={{this.refreshNewsfeed}}
+      @gestures={{this.gestures}}
+    />
+  {{/if}}
   <div id='sidebar-content'>
+    <Misc::Gestures::OverscrollAction::Indicator
+      id='sidebar-content-overscroll-indicator'
+      @direction='down'
+    />
     <Features::Quickstart @inSidebar={{true}} />
   </div>
   {{#if (eq this.navVerticalPosition 'bottom')}}

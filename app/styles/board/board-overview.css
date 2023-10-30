@@ -19,7 +19,7 @@
   padding: 0.5rem;
   margin-bottom: var(--global-gap);
   height: unset;
-  min-height: var(--default-control-height);
+  min-height: var(--control-default-height);
   text-align: start;
   cursor: pointer;
 }

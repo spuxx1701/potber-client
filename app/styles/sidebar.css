@@ -54,6 +54,8 @@
   grid-auto-columns: minmax(0, 1fr);
   width: var(--sidebar-expanded-width);
   height: var(--control-default-height);
+  background-color: var(--color-nav-background);
+  z-index: 19;
 }
 
 #sidebar-nav a {
@@ -68,6 +70,7 @@
   height: calc(var(--sidebar-height) - var(--control-default-height));
   width: var(--sidebar-expanded-width);
   overflow-y: auto;
+  overscroll-behavior-y: contain;
 }
 
 #sidebar-content > * {
@@ -82,8 +85,11 @@
   max-width: calc(var(--sidebar-expanded-width) - 2rem);
 }
 
-#sidebar > .gesture-pane {
+#sidebar .overscroll-gesture-action {
   min-width: min(1.5rem, 110%);
   left: var(--sidebar-left);
   right: var(--sidebar-right);
+  position: fixed;
+  height: inherit;
+  width: inherit;
 }

@@ -40,7 +40,7 @@ export default class DeviceManagerService extends Service {
    */
   toggleGesturesSupport() {
     if (this.settings.getSetting('enableGestures')) {
-      this.renderer.setStyleVariable('--app-overscroll-behavior', 'contain');
+      this.renderer.setStyleVariable('--app-overscroll-behavior', 'none');
     } else {
       this.renderer.setStyleVariable('--app-overscroll-behavior', 'unset');
     }

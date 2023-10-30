@@ -13,7 +13,7 @@ interface Signature {
   };
 }
 
-export default class GesturePaneComponent extends Component<Signature> {
+export default class GesturePane extends Component<Signature> {
   @service declare renderer: RendererService;
 
   private componentId = guidFor(this);

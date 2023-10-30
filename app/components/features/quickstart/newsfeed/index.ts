@@ -1,12 +1,18 @@
-import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import RendererService from 'potber-client/services/renderer';
+import SettingsService from 'potber-client/services/settings';
 
-export default class QuickstartNewsfeedComponent extends Component {
+interface Signature {
+  Args: {
+    inSidebar?: boolean;
+  };
+}
+export default class QuickstartNewsfeedComponent extends Component<Signature> {
   @service declare newsfeed: NewsfeedService;
   @service declare renderer: RendererService;
+  @service declare settings: SettingsService;
 
   get status() {
     if (!this.unreadBookmarks && !this.unreadPrivateMessages) {
@@ -35,7 +41,11 @@ export default class QuickstartNewsfeedComponent extends Component {
     return this.newsfeed.isUpdating;
   }
 
-  @action async refresh() {
-    await this.newsfeed.refresh();
+  get hideRefreshButton() {
+    return this.args.inSidebar && this.settings.getSetting('enableGestures');
   }
+
+  refresh = async () => {
+    await this.newsfeed.refresh();
+  };
 }

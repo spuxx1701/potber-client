@@ -1,0 +1,55 @@
+:root {
+  --gesture-pane-opacity-debug: 0.5;
+  /* May change during runtime */
+  --app-overscroll-behavior: unset;
+  --gesture-pane-opacity: 0;
+}
+
+html,
+body {
+  overscroll-behavior: var(--app-overscroll-behavior);
+}
+
+.gesture-pane {
+  position: fixed;
+  height: inherit;
+  width: inherit;
+  z-index: 69;
+  background: repeating-linear-gradient(
+    45deg,
+    #bc9160,
+    #bc9160 10px,
+    #c77e2a 10px,
+    #c77e2a 20px
+  );
+  opacity: var(--gesture-pane-opacity);
+}
+
+.overscroll-gesture-action .gesture-pane {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.overscroll-gesture-indicator {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 0px;
+  transition: 200ms height ease !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: inherit;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.overscroll-gesture-indicator p {
+  text-align: center;
+  margin-left: 0.5rem;
+}
+
+.overscroll-gesture-indicator * {
+  color: var(--color-text-subtle);
+}
