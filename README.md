@@ -17,6 +17,7 @@ A mobile-first web client for the german internet forum <a href="https://forum.m
   - [Browser support](#how-to-use)
   - [Standalone mode (PWA)](#standalone-mode-pwa)
   - [BBCode parser](#bbcode-parser)
+  - [Gestures](##gestures)
   - [Themes](#themes)
 - [How to develop or build the app](#how-to-develop-or-build-the-app)
   - [Preqrequesites](#prerequisites)
@@ -51,6 +52,17 @@ The app supports standalone mode ([PWA](https://developer.mozilla.org/en-US/docs
 ### BBCode parser
 
 The application includes a functioning and fully custom BBCode parser written in TypeScript. It is able to parse most of the board's BBCode without errors and is being continously worked on. You can find it [here](app/services//content-parser.ts).
+
+### Gestures
+
+The app includes basic support for gestures. Gestures support can be enabled in the settings. When doing so, the app will disable some of your browser's native gestures (like pull to refresh). You might still run into issues in case your device adds native gestures on top of that. For example, some Android devices use horizontal swipes to enable navigating back and forth.
+
+The following gestures have been implemented so far:
+
+- Swipe horizontally from the edge of your screen to show the sidebar.
+- Swipe down in the sidebar to refresh your newsfeed.
+- Swipe down on any board page to refresh that page.
+- Swipe down on any thread page to refresh that page.
 
 ### Themes
 
