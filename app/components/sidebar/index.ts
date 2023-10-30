@@ -84,15 +84,17 @@ export default class SidebarComponent extends Component {
         case 'touchmove':
         case 'mousemove': {
           const { touchMoveX } = gesture;
-          const newWidth = this.gestureState.startWidth + touchMoveX;
+          let newWidth = this.gestureState.startWidth + touchMoveX;
           if (newWidth < 0) {
-            this.renderer.toggleLeftSidebar(false);
+            newWidth = 0;
+            // this.renderer.toggleLeftSidebar(false);
           } else if (newWidth > this.maxWidth) {
-            this.renderer.toggleLeftSidebar(true);
+            newWidth = this.maxWidth;
+            // this.renderer.toggleLeftSidebar(true);
           } else {
-            this.gestureState.newWidth = newWidth;
             this.renderer.setStyleVariable('--sidebar-width', `${newWidth}px`);
           }
+          this.gestureState.newWidth = newWidth;
           break;
         }
 

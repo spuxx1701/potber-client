@@ -1,4 +1,3 @@
-import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { sleep } from 'potber-client/utils/misc';
@@ -21,48 +20,48 @@ export default class RendererService extends Service {
   /**
    * Initializes the service.
    */
-  @action initialize() {
+  initialize = () => {
     this.updateTheme();
     this.updateFontSize();
     this.updateSidebarLayout();
     addEventListener('resize', this.updateIsDesktop);
     this.updateIsDesktop();
-  }
+  };
 
   /**
    * Gets a specific variable on the root style and returns its value.
    */
-  getStyleVariable(key: string) {
+  getStyleVariable = (key: string) => {
     return this.computedStyle.getPropertyValue(key);
-  }
+  };
 
   /**
    * Sets a specific variable on the root style.
    */
-  setStyleVariable(key: string, value: string) {
+  setStyleVariable = (key: string, value: string) => {
     return this.rootStyle.setProperty(key, value);
-  }
+  };
 
   /**
    * Handles window resize events and updates renderer.isDesktop.
    */
-  @action updateIsDesktop() {
+  updateIsDesktop = () => {
     this.isDesktop = window.innerWidth >= DESKTOP_MIN_WIDTH;
-  }
+  };
 
   /**
    * Updates the current theme.
    */
-  updateTheme() {
+  updateTheme = () => {
     const theme = this.settings.getSetting('theme');
     document.documentElement.setAttribute('data-theme', `${Theme[theme]}`);
-  }
+  };
 
   /**
    * Updates the sidebar layout. Affects whether the sidebar is rendered on the left
    * or ride side as well as the position of the sidebar toggle button.
    */
-  updateSidebarLayout() {
+  updateSidebarLayout = () => {
     switch (this.settings.sidebarLayout) {
       case SidebarLayout.rightBottom:
         this.setStyleVariable('--sidebar-left', 'unset');
@@ -94,13 +93,13 @@ export default class RendererService extends Service {
         this.setStyleVariable('--bottom-nav-left-gap', '0px');
         this.setStyleVariable('--bottom-nav-right-gap', '0px');
     }
-  }
+  };
 
   /**
    * Creates a ripple animation on the event target.
    * @param event The event.
    */
-  @action createClickRipple(event: Event) {
+  createClickRipple = async (event: Event) => {
     // Clean up existing ripples
     const existingRipples = document.body.getElementsByClassName(
       'click-ripple-container',
@@ -120,23 +119,23 @@ export default class RendererService extends Service {
       rippleContainer.appendChild(ripple);
       control.appendChild(rippleContainer);
     }
-  }
+  };
 
   /**
    * Toggles the left sidebar.
    * @param expanded (optional) Whether the sidebar should be expanded. Will choose the opposite of the current state
    * if not provided.
    */
-  @action toggleLeftSidebar(expanded?: boolean) {
+  toggleLeftSidebar = async (expanded?: boolean) => {
     if (typeof expanded === 'boolean') this.leftSidebarExpanded = expanded;
     else this.leftSidebarExpanded = !this.leftSidebarExpanded;
     this.updateLeftSidebar();
-  }
+  };
 
   /*
    * Updates the state of the left sidebar.
    */
-  @action updateLeftSidebar() {
+  private updateLeftSidebar = () => {
     if (this.leftSidebarExpanded) {
       this.setStyleVariable('--sidebar-width', 'var(--sidebar-expanded-width)');
       this.setStyleVariable('--sidebar-backdrop-opacity', '1');
@@ -150,53 +149,53 @@ export default class RendererService extends Service {
       this.setStyleVariable('--nav-controls-pointer-events', 'all');
       this.setStyleVariable('--nav-controls-opacity', '1');
     }
-  }
+  };
 
   /**
    * Shows the loading indicator.
    */
-  @action async showLoadingIndicator() {
+  showLoadingIndicator = async () => {
     this.setStyleVariable('--loading-indicator-opacity', '1');
-  }
+  };
 
   /**
    * Hides the loading indicator.
    */
-  @action async hideLoadingIndicator() {
+  hideLoadingIndicator = async () => {
     await sleep(LOADING_INDICATOR_DELAY);
     this.setStyleVariable('--loading-indicator-opacity', '0');
-  }
+  };
 
   /**
    * Prevents the next reset of the scroll position that would otherwise be
    * triggered by calling RendererService.trySetScrollPosition().
    */
-  @action preventNextScrollReset() {
+  preventNextScrollReset = async () => {
     this.preventScrollReset = true;
-  }
+  };
 
   /**
    * Attempts to set the window's scroll position. Will not do anything if
    * RendererService.preventScrollReset has been set earlier. However, setting this
    * property will only prevent a scroll reset one single time.
    */
-  @action trySetScrollPosition(options?: Partial<ScrollToOptions>) {
+  trySetScrollPosition = (options?: Partial<ScrollToOptions>) => {
     if (this.preventScrollReset) {
       this.preventScrollReset = false;
       return;
     }
     window.scrollTo({ top: 0, behavior: 'auto', ...options });
-  }
+  };
 
   /**
    * Can be used to scroll to the bottom after a certain amount of miliseconds.
    * Useful when refreshing thread pages.
    * @param waitTime The wait time in miliseconds.
    */
-  async waitAndScrollToBottom(waitTime = 500) {
+  waitAndScrollToBottom = async (waitTime = 500) => {
     await sleep(waitTime);
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  }
+  };
 
   /**
    * Looks for the `app-skeleton` node in the document and removes it.
@@ -204,19 +203,19 @@ export default class RendererService extends Service {
    * the skeleton is no longer needed.
    * @param delay The delay after which the skeleton should be removed.
    */
-  async removeAppSkeleton(delay: number) {
+  removeAppSkeleton = async (delay: number) => {
     await sleep(delay);
     const skeleton = document.getElementById('app-skeleton');
     if (skeleton) {
       skeleton.remove();
     }
-  }
+  };
 
   /**
    * Updates the global font size according to the settings..
    */
-  async updateFontSize() {
+  updateFontSize = async () => {
     const { fontSize } = this.settings.getSettings();
     this.setStyleVariable('--global-font-size', fontSize);
-  }
+  };
 }
