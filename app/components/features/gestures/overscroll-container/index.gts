@@ -90,7 +90,7 @@ export default class OverscrollContainer extends Component<Signature> {
   }
 
   get delay(): number {
-    return this.args.delay ?? 3000;
+    return this.args.delay ?? 1000;
   }
 
   get threshold() {
