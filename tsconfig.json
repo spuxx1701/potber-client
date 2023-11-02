@@ -2,6 +2,7 @@
   "extends": "@tsconfig/ember/tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
+    "skipLibCheck": true,
     // Required for ember-cli-code-coverage
     "inlineSourceMap": true,
     "inlineSources": true,
