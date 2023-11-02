@@ -31,8 +31,4 @@ export default class ThreadPageComponent extends Component<Signature> {
     ) as ThreadRoute;
     route.refresh();
   };
-
-  refresh = () => {
-    console.log('foo');
-  };
 }
