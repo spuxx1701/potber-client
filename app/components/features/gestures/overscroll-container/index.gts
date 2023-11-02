@@ -78,7 +78,7 @@ export default class OverscrollContainer extends Component<Signature> {
   }
 
   get indicatorId() {
-    return `${this.id}-overscroll-indicdator`;
+    return `${this.id}-overscroll-indicator`;
   }
 
   get indicatorHeight() {
@@ -90,7 +90,7 @@ export default class OverscrollContainer extends Component<Signature> {
   }
 
   get delay(): number {
-    return this.args.delay ?? 10000;
+    return this.args.delay ?? 3000;
   }
 
   get threshold() {
@@ -149,15 +149,8 @@ export default class OverscrollContainer extends Component<Signature> {
       @id={{this.gesturesContainerId}}
       @gestures={{this.gestures}}
     >
-      {{#if (eq @direction 'down')}}<OverscrollIndicator
-          id={{this.indicatorId}}
-          @direction={{@direction}}
-        />{{/if}}
+      <OverscrollIndicator id={{this.indicatorId}} @direction={{@direction}} />
       {{yield}}
-      {{#if (eq @direction 'up')}}<OverscrollIndicator
-          id={{this.indicatorId}}
-          @direction={{@direction}}
-        />{{/if}}
     </GesturesContainer>
   </template>
 }
