@@ -59,10 +59,9 @@ The app includes basic support for gestures. Gestures support can be enabled in 
 
 The following gestures have been implemented so far:
 
-- Swipe horizontally from the edge of your screen to show the sidebar.
-- Swipe down in the sidebar to refresh your newsfeed.
-- Swipe down on any board page to refresh that page.
-- Swipe down on any thread page to refresh that page.
+- Swipe horizontally from the edge of your screen to show the sidebar. Swipe the other direction to close the sidebar.
+- Swipe down on any board page to refresh that page. You need to be scrolled all the way to the top of the page first.
+- Swipe up on any thread page to refresh that page. You need to be scrolled all the way to the bottom of the page first.
 
 ### Themes
 
