@@ -13,7 +13,9 @@ export interface ConfirmModalOptions {
   submitIcon?: string;
   cancelLabel?: string;
   cancelIcon?: string;
+  hideCancel?: boolean;
   onSubmit?: () => void;
+  onCancel?: () => void;
 }
 
 interface Signature {
@@ -42,5 +44,8 @@ export default class ConfirmModalComponent extends Component<Signature> {
 
   @action handleCancel() {
     this.modal.close();
+    if (this.args.options.onCancel) {
+      this.args.options.onCancel();
+    }
   }
 }

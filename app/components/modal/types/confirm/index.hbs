@@ -8,13 +8,15 @@
   <p>{{@options.text}}</p>
 </Modal::Component::Content>
 <Modal::Component::Footer>
-  <Common::Control::Button
-    @icon={{this.cancelIcon}}
-    @text={{this.cancelLabel}}
-    @variant='secondary'
-    @size='small'
-    @onClick={{this.handleCancel}}
-  />
+  {{#unless @options.hideCancel}}
+    <Common::Control::Button
+      @icon={{this.cancelIcon}}
+      @text={{this.cancelLabel}}
+      @variant='secondary'
+      @size='small'
+      @onClick={{this.handleCancel}}
+    />
+  {{/unless}}
   <Common::Control::Button
     @icon={{@options.submitIcon}}
     @text={{this.submitLabel}}
