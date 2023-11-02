@@ -7,8 +7,10 @@ import ModalService from './modal';
 import NewsfeedService from './newsfeed';
 import RendererService from './renderer';
 import CustomSession from './custom-session';
+import SettingsService from './settings';
 
 export default class AppService extends Service {
+  @service declare settings: SettingsService;
   @service declare renderer: RendererService;
   @service declare deviceManager: DeviceManagerService;
   @service declare router: RouterService;
@@ -21,6 +23,7 @@ export default class AppService extends Service {
 
   async initialize() {
     if (this.initialized) return;
+    this.settings.initialize();
     this.renderer.initialize();
     this.deviceManager.initialize();
     this.setupSession();

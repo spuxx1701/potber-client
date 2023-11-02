@@ -1,6 +1,9 @@
 {{! @glint-nocheck }}
 <div class='thread-page'>
-  <div class='thread-page-content'>
+  <Features::Gestures::OverscrollContainer
+    @direction='up'
+    @onOverscroll={{this.handleOverscroll}}
+  >
     {{#each this.posts as |post|}}
       <Board::Post
         @post={{post}}
@@ -17,5 +20,5 @@
         <Misc::UpdateScrollPosition />
       {{/if}}
     {{/each}}
-  </div>
+  </Features::Gestures::OverscrollContainer>
 </div>

@@ -1,0 +1,44 @@
+:root {
+  --gestures-container-background-debug: repeating-linear-gradient(
+    45deg,
+    rgb(188, 145, 96, 0.5),
+    rgb(188, 145, 96, 0.5) 10px,
+    rgb(199, 126, 42, 0.5) 10px,
+    rgb(199, 126, 42, 0.5) 20px
+  );
+  /* May change during runtime */
+  --app-overscroll-behavior: unset;
+  --gestures-container-background: unset;
+}
+
+html,
+body {
+  overscroll-behavior: var(--app-overscroll-behavior);
+}
+
+.gestures-container {
+  background: var(--gestures-container-background);
+}
+
+.overscroll-container-indicator {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 0px;
+  transition: 200ms height ease !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: inherit;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.overscroll-container-indicator p {
+  text-align: center;
+  margin-left: 0.5rem;
+}
+
+.overscroll-container-indicator * {
+  color: var(--color-text-subtle);
+}

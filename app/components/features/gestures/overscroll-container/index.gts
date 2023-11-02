@@ -1,0 +1,154 @@
+import Component from '@glimmer/component';
+import { service } from '@ember/service';
+import { guidFor } from '@ember/object/internals';
+import eq from 'ember-truth-helpers/helpers/eq';
+import RendererService from 'potber-client/services/renderer';
+import {
+  Gesture,
+  GestureEvent,
+  GestureOptions,
+} from 'potber-client/components/misc/gestures/types';
+import GesturesContainer from '../container';
+import OverscrollIndicator from './indicator';
+import { debounce } from 'potber-client/utils/misc';
+
+interface Signature {
+  Element: HTMLDivElement;
+  Args: {
+    /**
+     * The direction of the overscroll.
+     */
+    direction: 'up' | 'down';
+    /**
+     * The callback function.
+     */
+    onOverscroll: () => void;
+    /**
+     * The container that should support overscrolling. Can be an `HTMLElement` or an element's id. If left emtpty, `page-content` will be used.
+     */
+    scrollContainer?: HTMLElement | string;
+    /**
+     * Optional id for the container. If none is provided, an id will be randomly generated.
+     */
+    id?: string;
+    /**
+     * The delay in miliseconds until the container will bounce back. Defaults to 500.
+     */
+    delay?: number;
+    /**
+     * The scroll threshold that needs to be reached before an overscroll is being considered. Defaults to `0.95`.
+     */
+    threshold?: number;
+    /**
+     * Optional `GestureOptions`.
+     */
+    options?: GestureOptions;
+  };
+  Blocks: {
+    default: [];
+  };
+}
+
+export default class OverscrollContainer extends Component<Signature> {
+  @service declare renderer: RendererService;
+
+  get id() {
+    return this.args.id ?? `${guidFor(this)}`;
+  }
+
+  get scrollContainer() {
+    if (!this.args.scrollContainer)
+      return document.getElementById('page-content') as HTMLElement;
+    else if (typeof this.args.scrollContainer === 'string')
+      return document.getElementById(this.args.scrollContainer) as HTMLElement;
+    else return this.args.scrollContainer;
+  }
+
+  get gesturesContainerId() {
+    return this.args.id ?? `${this.id}-overscroll-container`;
+  }
+
+  get indicatorId() {
+    return `${this.id}-overscroll-indicdator`;
+  }
+
+  get indicatorHeight() {
+    return parseInt(
+      this.renderer
+        .getStyleVariable('--control-default-height')
+        .replaceAll(/\D/g, ''),
+    );
+  }
+
+  get delay(): number {
+    return this.args.delay ?? 500;
+  }
+
+  get threshold() {
+    if (
+      typeof this.args.threshold !== 'number' ||
+      this.args.threshold < 0 ||
+      this.args.threshold > 1
+    )
+      return 0.95;
+    else return this.args.threshold;
+  }
+
+  get indicator() {
+    return document.getElementById(this.indicatorId) as HTMLElement;
+  }
+
+  get gestures(): Gesture[] {
+    return [
+      {
+        type: this.args.direction === 'down' ? 'swipedown' : 'swipeup',
+        onGesture: this.handleSwipe,
+      },
+    ];
+  }
+
+  handleSwipe = ({ type }: GestureEvent) => {
+    const { scrollTop, scrollHeight, clientHeight } = this.scrollContainer;
+
+    if (
+      type === 'swipedown' &&
+      scrollTop <= (1 - this.threshold) * scrollHeight
+    ) {
+      this.showIndicator();
+      this.args.onOverscroll();
+    } else if (
+      type === 'swipeup' &&
+      scrollTop + clientHeight >= this.threshold * scrollHeight
+    ) {
+      this.showIndicator();
+      this.args.onOverscroll();
+    }
+  };
+
+  showIndicator = () => {
+    this.indicator.style.height = 'var(--control-default-height)';
+    const debouncedHideIndicator = debounce(this.hideIndicator, 1000);
+    debouncedHideIndicator();
+  };
+
+  hideIndicator = () => {
+    this.indicator.style.height = '0px';
+  };
+
+  <template>
+    <GesturesContainer
+      @id={{this.gesturesContainerId}}
+      @gestures={{this.gestures}}
+    >
+      {{#if (eq @direction 'down')}}<OverscrollIndicator
+          id={{this.indicatorId}}
+          @direction={{@direction}}
+        />{{/if}}
+      {{yield}}
+      {{#if (eq @direction 'up')}}<OverscrollIndicator
+          id={{this.indicatorId}}
+          @direction={{@direction}}
+        />{{/if}}
+    </GesturesContainer>
+  </template>
+}

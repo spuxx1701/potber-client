@@ -12,7 +12,7 @@ interface Signature {
   };
 }
 
-export default class OverscrollGestureIndicator extends Component<Signature> {
+export default class OverscrollIndicator extends Component<Signature> {
   @service declare intl: IntlService;
 
   get label() {
@@ -24,7 +24,7 @@ export default class OverscrollGestureIndicator extends Component<Signature> {
   }
 
   <template>
-    <span class='overscroll-gesture-indicator' ...attributes><FaIcon
+    <span class='overscroll-container-indicator' ...attributes><FaIcon
         @icon='circle-notch'
         @spin={{true}}
       /><p>{{this.label}}</p></span>

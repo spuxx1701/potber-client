@@ -13,6 +13,8 @@ import {
   SettingsRouteModel,
   settingsConfig,
 } from 'potber-client/routes/authenticated/settings';
+import { getOwner } from '@ember/application';
+import Route from '@ember/routing/route';
 
 export default class SettingsController extends Controller {
   declare model: SettingsRouteModel;
@@ -75,16 +77,24 @@ export default class SettingsController extends Controller {
         title: 'Gestensteuerung',
         icon: 'triangle-exclamation',
         text: 'Die Gestensteuerung ist experimentell und work in progress. Je nach Browser oder Gerät funktioniert sie gegebenenfalls nur unzuverlässig oder gar nicht. Möglicherweise kommt es zu Konflikten mit der Gestensteuerung Deines Geräts.',
-        onSubmit: () => this.modal.close(),
+        hideCancel: true,
+        onSubmit: () => {
+          this.modal.close();
+          this.settings.setSetting('enableGestures', option.data);
+          this.deviceManager.toggleGesturesSupport();
+          window.location.reload();
+        },
       });
+    } else {
+      this.settings.setSetting('enableGestures', option.data);
+      this.deviceManager.toggleGesturesSupport();
+      window.location.reload();
     }
-    this.settings.setSetting('enableGestures', option.data);
-    this.deviceManager.toggleGesturesSupport();
   }
 
   @action handleDebugSelect(option: DropdownOption) {
-    this.settings.toggleDebugMode(option.data);
     this.settings.setSetting('debug', option.data);
+    this.settings.toggleDebugMode(option.data);
   }
 
   @action async handleSignOut() {

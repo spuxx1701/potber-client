@@ -65,6 +65,10 @@ export default class SettingsService extends Service {
     debug: false,
   };
 
+  initialize() {
+    this.toggleDebugMode(this.getSetting('debug'));
+  }
+
   /**
    * Loads settings from local storage and/or defaults to default values
    * if one or more settings could not be found.
@@ -103,7 +107,6 @@ export default class SettingsService extends Service {
       }
       if (typeof storedSettings.debug === 'boolean') {
         settings.debug = storedSettings.debug;
-        this.toggleDebugMode(settings.debug);
       }
     }
     return settings;
@@ -140,8 +143,10 @@ export default class SettingsService extends Service {
 
   toggleDebugMode(enabled: boolean) {
     this.renderer.setStyleVariable(
-      '--gesture-pane-opacity',
-      enabled ? 'var(--gesture-pane-opacity-debug)' : '0',
+      '--gestures-container-background',
+      enabled && this.getSetting('enableGestures')
+        ? 'var(--gestures-container-background-debug)'
+        : 'unset',
     );
   }
 }

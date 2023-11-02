@@ -14,7 +14,7 @@ export interface Args {
   label: string;
   options: DropdownOption[];
   default?: DropdownOption;
-  onSelect?: (element: any) => void;
+  onSelect?: (element: DropdownOption) => void;
   size?: ControlSize;
 }
 

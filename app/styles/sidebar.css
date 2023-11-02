@@ -1,8 +1,5 @@
 :root {
   --sidebar-expanded-width: 300px;
-  --sidebar-transition-time-default: 300ms;
-  --sidebar-transition-time-swipe: 100ms;
-  --sidebar-transition-time-pan: 0ms;
   /* Will be modified during runtime */
   --sidebar-height: calc(
     100dvh - var(--top-nav-height) - var(--bottom-nav-height)
@@ -12,7 +9,6 @@
   --sidebar-right: unset;
   --sidebar-backdrop-opacity: 0;
   --sidebar-backdrop-pointer-events: none;
-  --sidebar-transition-time: var(--sidebar-transition-time-default);
 }
 
 #sidebar {
@@ -20,7 +16,7 @@
   background-color: var(--color-nav-background);
   height: var(--sidebar-height);
   z-index: 15;
-  transition: width var(--sidebar-transition-time) ease !important;
+  transition: width 100ms ease !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -85,11 +81,10 @@
   max-width: calc(var(--sidebar-expanded-width) - 2rem);
 }
 
-#sidebar .overscroll-gesture-action {
-  min-width: min(1.5rem, 110%);
-  left: var(--sidebar-left);
-  right: var(--sidebar-right);
+#sidebar-gestures-container-outer {
   position: fixed;
+  width: 1.5rem;
   height: inherit;
-  width: inherit;
+  left: calc(var(--sidebar-width) + var(--sidebar-left));
+  right: calc(var(--sidebar-width) + var(--sidebar-right));
 }

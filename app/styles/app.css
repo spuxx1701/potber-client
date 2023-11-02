@@ -16,13 +16,12 @@
 
 @import './common/avatar.css';
 
-@import './misc/gestures.css';
-
 @import './features/quickstart.css';
 @import './features/newsfeed.css';
 @import './features/bookmarks.css';
 @import './features/private-messages.css';
 @import './features/user-profile.css';
+@import './features/gestures.css';
 
 @import './board/board.css';
 @import './board/board-overview.css';
@@ -48,6 +47,8 @@ html {
 
 body {
   margin: 0;
+  height: inherit;
+  width: inherit;
 }
 
 :root {

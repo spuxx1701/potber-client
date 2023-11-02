@@ -8,7 +8,7 @@ import SettingsService, {
 import {
   Gesture,
   GestureEvent,
-} from 'potber-client/components/misc/gestures/types';
+} from 'potber-client/components/features/gestures/types';
 
 export default class SidebarComponent extends Component {
   @service declare settings: SettingsService;
@@ -60,31 +60,35 @@ export default class SidebarComponent extends Component {
     this.renderer.toggleLeftSidebar(false);
   };
 
-  handleSwipeHorzontal = ({ gesture, type }: GestureEvent) => {
-    if (!gesture.velocityX) return;
-    this.renderer.setStyleVariable(
-      '--sidebar-transition-time',
-      'var(--sidebar-transition-time-swipe)',
-    );
-    if (type === 'swipeleft' && this.renderer.leftSidebarExpanded) {
-      this.renderer.toggleLeftSidebar(false);
-    } else if (type === 'swiperight' && !this.renderer.leftSidebarExpanded) {
-      this.renderer.toggleLeftSidebar(true);
-    }
-  };
-
-  gestures: Gesture[] = [
-    {
-      type: 'swiperight',
-      onGesture: this.handleSwipeHorzontal,
-    },
-    {
-      type: 'swipeleft',
-      onGesture: this.handleSwipeHorzontal,
-    },
-  ];
-
   refreshNewsfeed = () => {
     this.newsfeed.refresh();
+  };
+
+  handleSwipeInner = ({ gesture }: GestureEvent) => {
+    if (!gesture.velocityX) return;
+    this.renderer.toggleLeftSidebar(false);
+  };
+  handleSwipeOuter = ({ gesture }: GestureEvent) => {
+    if (!gesture.velocityX) return;
+    this.renderer.toggleLeftSidebar(true);
+  };
+
+  gestures: Record<string, Gesture[]> = {
+    inner: [
+      {
+        type: 'swipeleft',
+        onGesture: this.handleSwipeInner,
+      },
+    ],
+    outer: [
+      {
+        type: 'swiperight',
+        onGesture: this.handleSwipeOuter,
+      },
+      {
+        type: 'swipeleft',
+        onGesture: this.handleSwipeOuter,
+      },
+    ],
   };
 }
