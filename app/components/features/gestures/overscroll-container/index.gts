@@ -7,7 +7,7 @@ import {
   Gesture,
   GestureEvent,
   GestureOptions,
-} from 'potber-client/components/misc/gestures/types';
+} from 'potber-client/components/features/gestures/types';
 import GesturesContainer from '../container';
 import OverscrollIndicator from './indicator';
 import { debounce } from 'potber-client/utils/misc';
@@ -24,7 +24,7 @@ interface Signature {
      */
     onOverscroll: () => void;
     /**
-     * The container that should support overscrolling. Can be an `HTMLElement` or an element's id. If left emtpty, `page-content` will be used.
+     * The container that should support overscrolling. Can be an `HTMLElement` or an element's id. If left emtpty, `document.documentElement` will be used.
      */
     scrollContainer?: HTMLElement | string;
     /**
@@ -58,10 +58,19 @@ export default class OverscrollContainer extends Component<Signature> {
 
   get scrollContainer() {
     if (!this.args.scrollContainer)
-      return document.getElementById('page-content') as HTMLElement;
+      // return document.getElementById('page-content') as HTMLElement;
+      return document.documentElement;
     else if (typeof this.args.scrollContainer === 'string')
       return document.getElementById(this.args.scrollContainer) as HTMLElement;
     else return this.args.scrollContainer;
+  }
+
+  get scrollContainerContentHeight() {
+    let height = 0;
+    for (const child of this.scrollContainer.children) {
+      height += child.clientHeight;
+    }
+    return height;
   }
 
   get gesturesContainerId() {
@@ -108,8 +117,8 @@ export default class OverscrollContainer extends Component<Signature> {
   }
 
   handleSwipe = ({ type }: GestureEvent) => {
-    const { scrollTop, scrollHeight, clientHeight } = this.scrollContainer;
-
+    const { scrollTop, scrollHeight } = this.scrollContainer;
+    const contentHeight = this.scrollContainerContentHeight;
     if (
       type === 'swipedown' &&
       scrollTop <= (1 - this.threshold) * scrollHeight
@@ -118,7 +127,7 @@ export default class OverscrollContainer extends Component<Signature> {
       this.args.onOverscroll();
     } else if (
       type === 'swipeup' &&
-      scrollTop + clientHeight >= this.threshold * scrollHeight
+      scrollTop + contentHeight >= this.threshold * scrollHeight
     ) {
       this.showIndicator();
       this.args.onOverscroll();

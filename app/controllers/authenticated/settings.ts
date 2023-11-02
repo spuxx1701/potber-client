@@ -13,8 +13,6 @@ import {
   SettingsRouteModel,
   settingsConfig,
 } from 'potber-client/routes/authenticated/settings';
-import { getOwner } from '@ember/application';
-import Route from '@ember/routing/route';
 
 export default class SettingsController extends Controller {
   declare model: SettingsRouteModel;

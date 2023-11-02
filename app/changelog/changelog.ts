@@ -3,7 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.15.0',
     type: 'minor',
     added: [
-      'Die Anwendung verfügt nun über experimentelle Gestensteuerung. Du kannst sie in den Einstellungen aktivieren.',
+      'Die Anwendung verfügt nun über experimentelle Gestensteuerung. Du kannst sie in den Einstellungen aktivieren. Im Startpost erfährst Du, welche Gesten bislang unterstützt werden.',
       'Die Anwendung verfügt nun über einen aktivierenbaren Debug-Modus.',
     ],
   },
