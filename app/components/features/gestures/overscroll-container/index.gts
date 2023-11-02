@@ -32,7 +32,7 @@ interface Signature {
      */
     id?: string;
     /**
-     * The delay in miliseconds until the container will bounce back. Defaults to 500.
+     * The delay in miliseconds until the container will bounce back. Defaults to 1000 miliseconds.
      */
     delay?: number;
     /**
@@ -90,7 +90,7 @@ export default class OverscrollContainer extends Component<Signature> {
   }
 
   get delay(): number {
-    return this.args.delay ?? 500;
+    return this.args.delay ?? 10000;
   }
 
   get threshold() {
@@ -136,7 +136,7 @@ export default class OverscrollContainer extends Component<Signature> {
 
   showIndicator = () => {
     this.indicator.style.height = 'var(--control-default-height)';
-    const debouncedHideIndicator = debounce(this.hideIndicator, 1000);
+    const debouncedHideIndicator = debounce(this.hideIndicator, this.delay);
     debouncedHideIndicator();
   };
 
