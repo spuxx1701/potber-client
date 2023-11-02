@@ -21,7 +21,7 @@ body {
 }
 
 .overscroll-container-indicator {
-  position: relative;
+  position: absolute;
   box-sizing: border-box;
   width: 100%;
   height: 0px;
@@ -32,6 +32,17 @@ body {
   margin-top: inherit;
   overflow: hidden;
   padding: 0 1rem;
+  z-index: 99;
+  background-color: var(--color-nav-background);
+}
+
+.overscroll-container-indicator[data-direction='down'] {
+  top: 0;
+}
+
+.overscroll-container-indicator[data-direction='up'] {
+  bottom: 0;
+  transform: translateY(calc(-1 * var(--control-default-height)));
 }
 
 .overscroll-container-indicator p {

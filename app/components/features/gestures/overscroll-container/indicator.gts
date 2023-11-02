@@ -24,9 +24,10 @@ export default class OverscrollIndicator extends Component<Signature> {
   }
 
   <template>
-    <span class='overscroll-container-indicator' ...attributes><FaIcon
-        @icon='circle-notch'
-        @spin={{true}}
-      /><p>{{this.label}}</p></span>
+    <span
+      ...attributes
+      class='overscroll-container-indicator'
+      data-direction={{@direction}}
+    ><FaIcon @icon='circle-notch' @spin={{true}} /><p>{{this.label}}</p></span>
   </template>
 }
