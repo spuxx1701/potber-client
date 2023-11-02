@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { guidFor } from '@ember/object/internals';
-import eq from 'ember-truth-helpers/helpers/eq';
 import RendererService from 'potber-client/services/renderer';
 import {
   Gesture,
