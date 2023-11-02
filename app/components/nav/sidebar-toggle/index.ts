@@ -1,7 +1,6 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import NewsfeedService from 'potber-client/services/newsfeed';
 import RendererService from 'potber-client/services/renderer';
 import SettingsService, {
   SidebarLayout,
@@ -10,7 +9,6 @@ import SettingsService, {
 export default class SidebarToggleComponent extends Component {
   @service declare renderer: RendererService;
   @service declare settings: SettingsService;
-  @service declare newsfeed: NewsfeedService;
 
   get sidebarCollapseIcon() {
     if (
@@ -24,11 +22,5 @@ export default class SidebarToggleComponent extends Component {
 
   @action toggleLeftSidebar() {
     this.renderer.toggleLeftSidebar();
-    if (
-      this.renderer.leftSidebarExpanded &&
-      this.settings.getSetting('autoRefreshSidebar')
-    ) {
-      this.newsfeed.refresh();
-    }
   }
 }

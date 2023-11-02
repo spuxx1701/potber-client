@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { sleep } from 'potber-client/utils/misc';
 import MessagesService from './messages';
 import SettingsService, { SidebarLayout, Theme } from './settings';
+import NewsfeedService from './newsfeed';
 
 const LOADING_INDICATOR_DELAY = 500;
 const DESKTOP_MIN_WIDTH = 1200;
@@ -10,6 +11,7 @@ const DESKTOP_MIN_WIDTH = 1200;
 export default class RendererService extends Service {
   @service declare settings: SettingsService;
   @service declare messages: MessagesService;
+  @service declare newsfeed: NewsfeedService;
   @tracked leftSidebarExpanded = false;
   @tracked isDesktop = false;
   private rootStyle = document.documentElement.style;
@@ -130,6 +132,11 @@ export default class RendererService extends Service {
     if (typeof expanded === 'boolean') this.leftSidebarExpanded = expanded;
     else this.leftSidebarExpanded = !this.leftSidebarExpanded;
     this.updateLeftSidebar();
+    if (
+      this.leftSidebarExpanded &&
+      this.settings.getSetting('autoRefreshSidebar')
+    )
+      this.newsfeed.refresh();
   };
 
   /*
