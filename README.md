@@ -55,7 +55,7 @@ The application includes a functioning and fully custom BBCode parser written in
 
 ### Gestures
 
-The app includes basic support for gestures. Gestures support can be enabled in the settings. When doing so, the app will disable some of your browser's native gestures (like pull to refresh). You might still run into issues in case your device adds native gestures on top of that. For example, some Android devices use horizontal swipes to enable navigating back and forth.
+The app includes basic support for gestures. Gestures support can be enabled in the settings. When doing so, the app will disable some of your browser's native gestures (like pull to refresh). You might still run into issues in case your device adds native gestures on top of that. For example, some Android devices use horizontal swipes for navigating the OS.
 
 The following gestures have been implemented so far:
 
