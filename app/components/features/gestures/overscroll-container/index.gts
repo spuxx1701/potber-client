@@ -35,7 +35,7 @@ interface Signature {
      */
     delay?: number;
     /**
-     * The scroll threshold that needs to be reached before an overscroll is being considered. Defaults to `0.95`.
+     * The scroll threshold that needs to be reached before an overscroll is being considered. Defaults to `0.99`.
      */
     threshold?: number;
     /**
@@ -98,7 +98,7 @@ export default class OverscrollContainer extends Component<Signature> {
       this.args.threshold < 0 ||
       this.args.threshold > 1
     )
-      return 0.95;
+      return 0.99;
     else return this.args.threshold;
   }
 

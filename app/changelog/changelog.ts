@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.15.1',
+    type: 'patch',
+    fixed: [
+      'Verbesserungen beim Overscrolling zum Aktualiesieren von Board- und Threadseiten.',
+    ],
+  },
+  {
     version: '1.15.0',
     type: 'minor',
     added: [
