@@ -69,7 +69,7 @@ export default class SettingsController extends Controller {
   @action handleReplaceForumUrlsSelect(option: DropdownOption) {
     this.settings.setSetting('replaceForumUrls', option.data);
   }
-  @action handleEnableGesturesSelect(option: DropdownOption) {
+  @action handleGesturesSelect(option: DropdownOption) {
     if (option.data) {
       this.modal.confirm({
         title: 'Gestensteuerung',

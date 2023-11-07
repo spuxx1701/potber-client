@@ -75,9 +75,9 @@
   />
 
   <Common::Control::Dropdown
-    @options={{this.config.enableGesturesOptions}}
-    @default={{@model.currentEnableGesturesOption}}
-    @onSelect={{this.handleEnableGesturesSelect}}
+    @options={{this.config.gesturesOptions}}
+    @default={{@model.currentGesturesOption}}
+    @onSelect={{this.handleGesturesSelect}}
     @size='max'
     @label={{t 'route.settings.enable-gestures.label'}}
   />
