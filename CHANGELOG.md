@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Minor improvements to overscrolling behavior.
+- Various smaller fixes.
 
 ## [1.15.0] - 2023-11-02
 

@@ -7,6 +7,7 @@ export const changelog: ChangelogItem[] = [
     ],
     fixed: [
       'Verbesserungen beim Overscrolling zum Aktualiesieren von Board- und Threadseiten.',
+      'Diverse kleinere Fixes.',
     ],
   },
   {

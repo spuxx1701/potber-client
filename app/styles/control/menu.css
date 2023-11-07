@@ -58,10 +58,11 @@
   box-sizing: border-box;
   background-color: var(--color-control-inactive);
   color: var(--color-text-default);
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0 1rem;
   width: max-content;
   min-width: 100%;
   max-width: 100%;
+  justify-content: start;
 }
 
 .menu-button menu > * > * {
@@ -71,4 +72,6 @@
 
 .menu-item svg {
   font-size: 1em;
+  margin-left: 0;
+  min-width: 1rem;
 }
