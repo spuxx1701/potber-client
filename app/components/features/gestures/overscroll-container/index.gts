@@ -31,6 +31,10 @@ interface Signature {
      */
     id?: string;
     /**
+     * Whether gestures are disabled.
+     */
+    disabled?: boolean;
+    /**
      * The delay in miliseconds until the container will bounce back. Defaults to 1000 miliseconds.
      */
     delay?: number;
@@ -141,6 +145,7 @@ export default class OverscrollContainer extends Component<Signature> {
   <template>
     <GesturesContainer
       @id={{this.gesturesContainerId}}
+      @disabled={{@disabled}}
       @gestures={{this.gestures}}
     >
       <OverscrollIndicator id={{this.indicatorId}} @direction={{@direction}} />
