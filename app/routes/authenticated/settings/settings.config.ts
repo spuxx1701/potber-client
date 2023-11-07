@@ -1,6 +1,7 @@
 import {
   AvatarStyle,
   FontSize,
+  Gestures,
   LandingPage,
   Settings,
   SidebarLayout,
@@ -122,14 +123,18 @@ export const settingsConfig: Record<
     },
   ],
 
-  enableGesturesOptions: [
+  gesturesOptions: [
     {
-      label: 'An',
-      data: true,
+      label: 'Alle',
+      data: Gestures.all,
+    },
+    {
+      label: 'Nur Sidebar',
+      data: Gestures.onlySidebar,
     },
     {
       label: 'Aus',
-      data: false,
+      data: Gestures.none,
     },
   ],
 

@@ -1,6 +1,6 @@
 import Service, { service } from '@ember/service';
 import MessagesService from './messages';
-import SettingsService from './settings';
+import SettingsService, { Gestures } from './settings';
 import RendererService from './renderer';
 
 type OperatingSystem =
@@ -39,10 +39,18 @@ export default class DeviceManagerService extends Service {
    * Enabled or disables gestures support.
    */
   toggleGesturesSupport() {
-    if (this.settings.getSetting('enableGestures')) {
-      this.renderer.setStyleVariable('--app-overscroll-behavior', 'none');
-    } else {
-      this.renderer.setStyleVariable('--app-overscroll-behavior', 'unset');
+    switch (this.settings.getSetting('gestures')) {
+      case Gestures.all:
+        this.renderer.setStyleVariable('--app-overscroll-behavior-y', 'none');
+        this.renderer.setStyleVariable('--app-overscroll-behavior-x', 'none');
+        break;
+      case Gestures.onlySidebar:
+        this.renderer.setStyleVariable('--app-overscroll-behavior-y', 'unset');
+        this.renderer.setStyleVariable('--app-overscroll-behavior-x', 'none');
+        break;
+      default:
+        this.renderer.setStyleVariable('--app-overscroll-behavior-y', 'unset');
+        this.renderer.setStyleVariable('--app-overscroll-behavior-x', 'unset');
     }
   }
 

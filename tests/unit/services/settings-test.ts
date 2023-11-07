@@ -2,6 +2,7 @@ import LocalStorageService from 'potber-client/services/local-storage';
 import SettingsService, {
   AvatarStyle,
   FontSize,
+  Gestures,
   LandingPage,
   Settings,
   SidebarLayout,
@@ -19,7 +20,7 @@ const mockedSettings: Settings = {
   fontSize: FontSize.medium,
   replaceForumUrls: true,
   darkenReadPosts: false,
-  enableGestures: true,
+  gestures: Gestures.none,
   debug: false,
 };
 

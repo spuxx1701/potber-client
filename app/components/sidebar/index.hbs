@@ -2,6 +2,7 @@
 <div id='sidebar' role='navigation'>
   <Features::Gestures::Container
     @id='sidebar-gestures-container-inner'
+    @disabled={{this.disableGestures}}
     @gestures={{this.gestures.inner}}
   >
     {{#if (eq this.navVerticalPosition 'top')}}

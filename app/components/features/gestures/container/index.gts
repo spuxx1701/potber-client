@@ -5,7 +5,7 @@ import { guidFor } from '@ember/object/internals';
 import TinyGesture, { Options } from 'tinygesture';
 import { Gesture } from 'potber-client/components/features/gestures/types';
 import RendererService from 'potber-client/services/renderer';
-import SettingsService from 'potber-client/services/settings';
+import SettingsService, { Gestures } from 'potber-client/services/settings';
 
 interface Signature {
   Element: HTMLDivElement;
@@ -18,6 +18,10 @@ interface Signature {
      * Optional id for the container. If none is provided, an id will be randomly generated.
      */
     id?: string;
+    /**
+     * Whether gestures are disabled.
+     */
+    disabled?: boolean;
     /**
      * Optional `GestureOptions`.
      */
@@ -67,8 +71,13 @@ export default class GesturesContainer extends Component<Signature> {
     else return this.args.gestures;
   }
 
+  get disabled(): boolean {
+    if (this.settings.getSetting('gestures') === Gestures.none) return true;
+    else return this.args.disabled ?? false;
+  }
+
   didInsert = () => {
-    if (!this.settings.getSetting('enableGestures')) return;
+    if (this.disabled) return;
     this._tinyGesture = new TinyGesture(this.container, this.args.options);
     for (const gesture of this.gestures) {
       const listener = this.tinyGesture.on(

@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.15.1] - UNRELEASED
+## [1.16.0] - UNRELEASED
+
+### Changed
+
+- Gestures can now also be enabled for only the sidebar.
 
 ### Fixed
 

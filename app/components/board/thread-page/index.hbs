@@ -2,6 +2,7 @@
 <div class='thread-page'>
   <Features::Gestures::OverscrollContainer
     @direction='up'
+    @disabled={{this.disableOverscroll}}
     @onOverscroll={{this.handleOverscroll}}
   >
     {{#each this.posts as |post|}}

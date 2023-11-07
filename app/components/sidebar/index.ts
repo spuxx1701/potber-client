@@ -3,6 +3,7 @@ import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import SettingsService, {
+  Gestures,
   SidebarLayout,
 } from 'potber-client/services/settings';
 import {
@@ -53,7 +54,7 @@ export default class SidebarComponent extends Component {
   }
 
   get enableGestures() {
-    return this.settings.getSetting('enableGestures');
+    return this.settings.getSetting('gestures');
   }
 
   handleSidebarBackdropClick = () => {
@@ -91,4 +92,8 @@ export default class SidebarComponent extends Component {
       },
     ],
   };
+
+  get disableGestures() {
+    return this.settings.getSetting('gestures') === Gestures.none;
+  }
 }

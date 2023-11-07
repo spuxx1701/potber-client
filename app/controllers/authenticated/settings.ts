@@ -78,13 +78,13 @@ export default class SettingsController extends Controller {
         hideCancel: true,
         onSubmit: () => {
           this.modal.close();
-          this.settings.setSetting('enableGestures', option.data);
+          this.settings.setSetting('gestures', option.data);
           this.deviceManager.toggleGesturesSupport();
           window.location.reload();
         },
       });
     } else {
-      this.settings.setSetting('enableGestures', option.data);
+      this.settings.setSetting('gestures', option.data);
       this.deviceManager.toggleGesturesSupport();
       window.location.reload();
     }

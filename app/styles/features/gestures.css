@@ -7,13 +7,15 @@
     rgb(199, 126, 42, 0.5) 20px
   );
   /* May change during runtime */
-  --app-overscroll-behavior: unset;
+  --app-overscroll-behavior-y: unset;
+  --app-overscroll-behavior-x: unset;
   --gestures-container-background: unset;
 }
 
 html,
 body {
-  overscroll-behavior: var(--app-overscroll-behavior);
+  overscroll-behavior-y: var(--app-overscroll-behavior-y);
+  overscroll-behavior-x: var(--app-overscroll-behavior-x);
 }
 
 .gestures-container {

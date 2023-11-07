@@ -1,7 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
-    version: '1.15.1',
-    type: 'patch',
+    version: '1.16.0',
+    type: 'minor',
+    changed: [
+      "Die Gestensteuerung kann nun in drei Stufen eingestellt werden: 'Aus', 'Nur Sidebar' oder 'Alle'. Falls Du die Gestensteuerung bereits aktiviert hast, musst Du sie nach diesem Update erneut aktivieren.",
+    ],
     fixed: [
       'Verbesserungen beim Overscrolling zum Aktualiesieren von Board- und Threadseiten.',
     ],

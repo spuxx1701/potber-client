@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 import Thread, { ThreadPage } from 'potber-client/models/thread';
 import ThreadRoute from 'potber-client/routes/authenticated/thread';
 import RendererService from 'potber-client/services/renderer';
+import SettingsService, { Gestures } from 'potber-client/services/settings';
 
 interface Signature {
   Args: {
@@ -15,6 +16,7 @@ interface Signature {
 }
 
 export default class ThreadPageComponent extends Component<Signature> {
+  @service declare settings: SettingsService;
   @service declare renderer: RendererService;
 
   get page() {
@@ -27,6 +29,13 @@ export default class ThreadPageComponent extends Component<Signature> {
     } else {
       return this.page.posts;
     }
+  }
+
+  get disableOverscroll() {
+    return (
+      this.settings.getSetting('gestures') === Gestures.none ||
+      this.settings.getSetting('gestures') === Gestures.onlySidebar
+    );
   }
 
   handleOverscroll = () => {

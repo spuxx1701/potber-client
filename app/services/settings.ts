@@ -13,7 +13,7 @@ export interface Settings {
   fontSize: FontSize;
   replaceForumUrls: boolean;
   darkenReadPosts: boolean;
-  enableGestures: boolean;
+  gestures: Gestures;
   debug: boolean;
 }
 
@@ -47,6 +47,12 @@ export enum FontSize {
   large = 'large',
 }
 
+export enum Gestures {
+  none,
+  onlySidebar,
+  all,
+}
+
 export default class SettingsService extends Service {
   @service declare localStorage: LocalStorageService;
   @service declare renderer: RendererService;
@@ -61,7 +67,7 @@ export default class SettingsService extends Service {
     fontSize: FontSize.medium,
     replaceForumUrls: true,
     darkenReadPosts: false,
-    enableGestures: false,
+    gestures: Gestures.none,
     debug: false,
   };
 
@@ -102,8 +108,8 @@ export default class SettingsService extends Service {
       if (typeof storedSettings.darkenReadPosts === 'boolean') {
         settings.darkenReadPosts = storedSettings.darkenReadPosts;
       }
-      if (typeof storedSettings.enableGestures === 'boolean') {
-        settings.enableGestures = storedSettings.enableGestures;
+      if (Object.values(Gestures).includes(storedSettings.gestures)) {
+        settings.gestures = storedSettings.gestures;
       }
       if (typeof storedSettings.debug === 'boolean') {
         settings.debug = storedSettings.debug;
@@ -144,7 +150,7 @@ export default class SettingsService extends Service {
   toggleDebugMode(enabled: boolean) {
     this.renderer.setStyleVariable(
       '--gestures-container-background',
-      enabled && this.getSetting('enableGestures')
+      enabled && this.getSetting('gestures') !== Gestures.none
         ? 'var(--gestures-container-background-debug)'
         : 'unset',
     );
