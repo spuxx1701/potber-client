@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
 import RendererService from 'potber-client/services/renderer';
@@ -54,7 +53,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
     return this.session.isAuthenticated;
   }
 
-  @action async reload() {
+  reload = async () => {
     this.renderer.preventNextScrollReset();
     this.renderer.showLoadingIndicator();
     (getOwner(this as unknown) as any)
@@ -64,9 +63,9 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
         this.renderer.hideLoadingIndicator();
         this.renderer.waitAndScrollToBottom();
       });
-  }
+  };
 
-  @action handleGoToPage() {
+  handleGoToPage = () => {
     this.modal.input({
       title: 'Gehe zu Seite...',
       text: `Gib eine Seite zwischen 1 und ${this.args.thread.pagesCount} ein.`,
@@ -88,5 +87,13 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
         this.modal.close();
       },
     });
-  }
+  };
+
+  handleGoToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  handleGoToBottom = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
 }

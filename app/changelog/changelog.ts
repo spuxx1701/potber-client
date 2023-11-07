@@ -2,6 +2,9 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.16.0',
     type: 'minor',
+    added: [
+      'Du kannst nun Über das Kebap-Menü zum Anfang oder Ende einer Threadseite springen.',
+    ],
     changed: [
       "Die Gestensteuerung kann nun in drei Stufen eingestellt werden: 'Aus', 'Nur Sidebar' oder 'Alle'. Falls Du die Gestensteuerung bereits aktiviert hast, musst Du sie nach diesem Update erneut aktivieren.",
     ],

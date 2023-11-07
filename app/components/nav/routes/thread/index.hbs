@@ -73,6 +73,16 @@
           scrollToBottom=undefined
         }}
       />
+      <Common::Control::Menu::Button
+        @text='Zum Seitenanfang'
+        @icon='chevron-up'
+        @onClick={{this.handleGoToTop}}
+      />
+      <Common::Control::Menu::Button
+        @text='Zum Seitenende'
+        @icon='chevron-down'
+        @onClick={{this.handleGoToBottom}}
+      />
     </Common::Control::Menu>
 
     {{#if this.nextPageVisible}}

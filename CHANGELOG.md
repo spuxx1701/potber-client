@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.16.0] - UNRELEASED
 
+### Added
+
+- Users can now navigate to the top or bottom of a thread's page via the kebap menu.
+
 ### Changed
 
 - Gestures can now also be enabled for only the sidebar.
