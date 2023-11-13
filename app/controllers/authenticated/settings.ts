@@ -58,6 +58,10 @@ export default class SettingsController extends Controller {
     this.settings.setSetting('darkenReadPosts', option.data);
   }
 
+  handleGoToBottomOfThreadPageSelect = (option: DropdownOption) => {
+    this.settings.setSetting('goToBottomOfThreadPage', option.data);
+  };
+
   @action handleLandingPageSelect(option: DropdownOption) {
     this.settings.setSetting('landingPage', option.data);
   }

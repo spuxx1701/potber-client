@@ -86,6 +86,14 @@ export const settingsConfig: Record<
     },
   ],
 
+  goToBottomOfThreadPageOptions: [
+    {
+      label: 'Zum Seitenende springen',
+      data: true,
+    },
+    { label: 'Auf Seitenanfang bleiben', data: false },
+  ],
+
   landingPageOptions: [
     {
       label: 'Forenübersicht',

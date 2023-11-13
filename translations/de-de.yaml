@@ -43,6 +43,9 @@ route:
     darken-read-posts:
       label: Gelesene Posts abdunkeln
       info: Stelle ein, ob beim Aufruf eines Lesezeichens bereits gelesene Posts abgedunkelt werden sollen. Der "Neue Posts"-Trenner wird in jedem Fall eingeblendet.
+    go-to-bottom-of-thread-page:
+      label: Nach Öffnen eines Threads
+      info: Stelle ein, ob beim Navigieren zu einem Thread aus einem Board der Seitenanfang oder das Seitenende der letzten Threadseite gezeigt werden soll.
     avatar-style:
       label: Bender anzeigen
       info: Stelle ein, ob in den Kopfzeilen von Posts die Bender der Autor:innen angezeigt werden sollen.

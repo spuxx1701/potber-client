@@ -20,6 +20,7 @@ const mockedSettings: Settings = {
   fontSize: FontSize.medium,
   replaceForumUrls: true,
   darkenReadPosts: false,
+  goToBottomOfThreadPage: true,
   gestures: Gestures.none,
   debug: false,
 };

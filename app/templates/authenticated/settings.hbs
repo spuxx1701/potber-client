@@ -131,6 +131,21 @@
   </Common::Control::Dropdown>
 
   <Common::Control::Dropdown
+    @options={{this.config.goToBottomOfThreadPageOptions}}
+    @default={{@model.currentGoToBottomOfThreadPageOption}}
+    @onSelect={{this.handleGoToBottomOfThreadPageSelect}}
+    @size='max'
+    @label={{t 'route.settings.go-to-bottom-of-thread-page.label'}}
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.go-to-bottom-of-thread-page.label'}}
+        @text={{t 'route.settings.go-to-bottom-of-thread-page.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
+
+  <Common::Control::Dropdown
     @options={{this.config.gesturesOptions}}
     @default={{@model.currentGesturesOption}}
     @onSelect={{this.handleGesturesSelect}}

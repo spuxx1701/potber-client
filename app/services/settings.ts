@@ -3,56 +3,17 @@ import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import LocalStorageService from './local-storage';
 import RendererService from './renderer';
+import {
+  AvatarStyle,
+  FontSize,
+  Gestures,
+  LandingPage,
+  Settings,
+  SidebarLayout,
+  Theme,
+} from './settings/types';
 
-export interface Settings {
-  avatarStyle: AvatarStyle;
-  theme: Theme;
-  landingPage: LandingPage;
-  autoRefreshSidebar: boolean;
-  sidebarLayout: SidebarLayout;
-  fontSize: FontSize;
-  replaceForumUrls: boolean;
-  darkenReadPosts: boolean;
-  gestures: Gestures;
-  debug: boolean;
-}
-
-export enum AvatarStyle {
-  none,
-  small,
-}
-
-export enum Theme {
-  'default',
-  'snowman',
-  'default-round',
-}
-
-export enum LandingPage {
-  boardOverview,
-  home,
-  pot,
-}
-
-export enum SidebarLayout {
-  leftTop,
-  leftBottom,
-  rightTop,
-  rightBottom,
-}
-
-export enum FontSize {
-  small = 'small',
-  medium = 'medium',
-  large = 'large',
-}
-
-export enum Gestures {
-  none,
-  onlySidebar,
-  all,
-}
-
+export * from './settings/types';
 export default class SettingsService extends Service {
   @service declare localStorage: LocalStorageService;
   @service declare renderer: RendererService;
@@ -67,6 +28,7 @@ export default class SettingsService extends Service {
     fontSize: FontSize.medium,
     replaceForumUrls: true,
     darkenReadPosts: false,
+    goToBottomOfThreadPage: true,
     gestures: Gestures.none,
     debug: false,
   };
@@ -107,6 +69,9 @@ export default class SettingsService extends Service {
       }
       if (typeof storedSettings.darkenReadPosts === 'boolean') {
         settings.darkenReadPosts = storedSettings.darkenReadPosts;
+      }
+      if (typeof storedSettings.goToBottomOfThreadPage === 'boolean') {
+        settings.goToBottomOfThreadPage = storedSettings.goToBottomOfThreadPage;
       }
       if (Object.values(Gestures).includes(storedSettings.gestures)) {
         settings.gestures = storedSettings.gestures;

@@ -5,6 +5,7 @@ import { PostPreview } from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import RendererService from 'potber-client/services/renderer';
+import SettingsService from 'potber-client/services/settings';
 
 export interface Signature {
   Args: {
@@ -17,6 +18,7 @@ export default class ThreadComponent extends Component<Signature> {
 
   @service declare store: CustomStore;
   @service declare renderer: RendererService;
+  @service declare settings: SettingsService;
 
   get isImportant() {
     return (
@@ -61,5 +63,9 @@ export default class ThreadComponent extends Component<Signature> {
     return htmlSafe(
       `<b>${post.author.name}</b> am ${new Date(post.date).toLocaleString()}`,
     );
+  }
+
+  get scrollToBottom() {
+    return this.settings.getSetting('goToBottomOfThreadPage') || undefined;
   }
 }

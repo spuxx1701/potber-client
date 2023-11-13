@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Users can now navigate to the top or bottom of a thread's page via the kebap menu.
 - Implemented `InfoButton` component. `Dropdown` can now has an optional `InfoButton` block.
+- Users can now control whether the app should jump to the bottom of the page when navigating to a thread from a board.
 
 ### Changed
 
