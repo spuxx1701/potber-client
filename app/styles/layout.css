@@ -30,8 +30,8 @@
   padding: 1rem;
 }
 
-.container > h1:first-child {
-  margin: 0 auto 0 auto;
+.container > *:first-child {
+  margin-top: 0;
 }
 
 .container-size-small {
