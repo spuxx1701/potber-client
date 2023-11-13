@@ -7,11 +7,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   min-height: calc(
     100svh - var(--top-nav-height) - var(--bottom-nav-height) - 2 *
       var(--global-padding)
   );
+  max-width: 1600px;
   background-color: var(--color-application-background);
   padding-top: calc(var(--top-nav-height) + var(--global-padding));
   padding-bottom: calc(var(--bottom-nav-height) + var(--global-padding));

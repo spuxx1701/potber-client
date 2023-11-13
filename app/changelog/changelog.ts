@@ -8,6 +8,7 @@ export const changelog: ChangelogItem[] = [
     ],
     changed: [
       "Die Gestensteuerung kann nun in drei Stufen eingestellt werden: 'Aus', 'Nur Sidebar' oder 'Alle'. Falls Du die Gestensteuerung bereits aktiviert hast, musst Du sie nach diesem Update erneut aktivieren.",
+      'Geringfügige Verbesserungen des Desktop-Layouts.',
     ],
     fixed: [
       'Verbesserungen beim Overscrolling zum Aktualiesieren von Board- und Threadseiten.',

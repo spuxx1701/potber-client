@@ -1,5 +1,6 @@
 :root {
   --sidebar-expanded-width: 300px;
+  --sidebar-transition-time: 100ms;
   /* Will be modified during runtime */
   --sidebar-height: calc(
     100dvh - var(--top-nav-height) - var(--bottom-nav-height)
@@ -16,7 +17,7 @@
   background-color: var(--color-nav-background);
   height: var(--sidebar-height);
   z-index: 15;
-  transition: width 100ms ease !important;
+  transition: width var(--sidebar-transition-time) ease !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;

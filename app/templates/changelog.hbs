@@ -2,7 +2,7 @@
 
 <Nav::Routes::Generic @title='Changelog' @enableBackNavigation={{true}} />
 
-<Common::Container>
+<Common::Container @size='huge' class='changelog'>
   {{#each @model as |changelogItem|}}
     <Routes::Changelog::Changelog-Item @item={{changelogItem}} />
   {{/each}}

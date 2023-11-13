@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Changed
 
 - Gestures can now also be enabled for only the sidebar.
+- Desktop layout was slightly improved.
 
 ### Fixed
 

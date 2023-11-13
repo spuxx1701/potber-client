@@ -1,7 +1,7 @@
 /* Large tablets and desktops */
 @media only screen and (min-width: 1200px) {
   :root {
-    --max-content-width: 1200px;
+    --max-content-width: 1600px;
     --bottom-nav-height: 0px;
     --sidebar-left: 0px !important;
     --sidebar-right: unset !important;
@@ -9,8 +9,12 @@
 
   /* Page layout */
   #page-content {
-    transition: margin 500ms !important;
-    margin-left: var(--sidebar-width);
+    max-width: var(--max-content-width);
+    transition: margin padding var(--sidebar-transition-time) ease !important;
+    padding-left: max(
+      calc(100vh - var(--max-content-width)),
+      var(--sidebar-width)
+    );
     padding-bottom: 8rem;
   }
 
