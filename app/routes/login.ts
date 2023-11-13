@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
-import { DropdownOption } from 'potber-client/components/common/control/dropdown';
+import { DropdownOption } from 'potber-client/components/common/control/dropdown/types';
 import CustomSession from 'potber-client/services/custom-session';
 import RSVP from 'rsvp';
 

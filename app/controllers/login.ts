@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { DropdownOption } from 'potber-client/components/common/control/dropdown';
+import { DropdownOption } from 'potber-client/components/common/control/dropdown/types';
 import {
   LoginRouteModel,
   LOGIN_LIFETIME_OPTIONS,
