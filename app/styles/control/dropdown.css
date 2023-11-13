@@ -61,8 +61,7 @@
   padding: 0px;
   border: none;
   max-height: 280px;
-  width: inherit;
-  max-width: inherit;
+  width: 100%;
   overflow-y: auto;
   position: absolute;
   z-index: 30;
