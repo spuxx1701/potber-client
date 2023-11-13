@@ -1,18 +1,30 @@
 import Component from '@glimmer/component';
 import Button from 'potber-client/components/common/control/button';
+import { service } from '@ember/service';
+import ModalService from 'potber-client/services/modal';
+import { Info } from './types';
 
 interface Signature {
   Element: HTMLButtonElement;
-  title: string;
-  text: string;
+  Args: Info;
 }
 
 export default class InfoButtonComponent extends Component<Signature> {
+  @service declare modal: ModalService;
   handleClick = () => {
-    console.log('click');
+    this.modal.info({
+      title: this.args.title,
+      text: this.args.text,
+    });
   };
 
   <template>
-    <Button @icon='info' @size='square' @onClick={{this.handleClick}} />
+    <Button
+      @icon='info'
+      @size='square'
+      @variant={{@variant}}
+      @onClick={{this.handleClick}}
+      class='info-button'
+    />
   </template>
 }

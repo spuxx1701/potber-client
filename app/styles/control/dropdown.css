@@ -6,6 +6,7 @@
   width: 100%;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+  --dropdown-height: calc(var(--control-default-height) + 0.5rem);
 }
 
 .dropdown-label {
@@ -19,6 +20,7 @@
 
 .dropdown-inner {
   position: relative;
+  flex: 1;
 }
 
 .dropdown-toggle {
@@ -29,7 +31,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: calc(var(--control-default-height) + 0.5rem);
+  height: var(--dropdown-height);
   border-radius: var(--global-border-radius);
   padding: 0px 1rem 0px 1rem;
   background-color: var(--color-control-inactive);
@@ -42,6 +44,7 @@
 
 .dropdown-toggle-icon {
   width: 1rem;
+  margin-right: 0 !important;
 }
 
 .dropdown-toggle-caption {
@@ -102,4 +105,9 @@
 
 .dropdown-item:last-child {
   border-radius: 0px 0px var(--global-border-radius) var(--global-border-radius);
+}
+
+.dropdown .info-button {
+  height: var(--dropdown-height);
+  background-color: var(--color-control-inactive);
 }

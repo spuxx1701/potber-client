@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - Users can now navigate to the top or bottom of a thread's page via the kebap menu.
+- Implemented `InfoButton` component. `Dropdown` can now has an optional `InfoButton` block.
 
 ### Changed
 

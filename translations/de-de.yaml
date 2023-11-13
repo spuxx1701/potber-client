@@ -33,24 +33,35 @@ route:
       advanced: Gefahrenzone ⚠
     theme:
       label: Thema
+      info: Mit dem Thema kannst Du einstellen, wie potber bei Dir aussehen soll.
     sidebar:
       label: Sidebar
+      info: Bestimme selbst, ob die Sidebar von der linken oder rechten Seite öffnen und in welcher Ecke der dazugehörige Button positioniert werden soll.
     font-size:
       label: Schriftgröße
+      info: Stelle die Schriftgröße ein, die potber für Texte und Icons verwenden soll.
     darken-read-posts:
       label: Gelesene Posts abdunkeln
+      info: Stelle ein, ob beim Aufruf eines Lesezeichens bereits gelesene Posts abgedunkelt werden sollen. Der "Neue Posts"-Trenner wird in jedem Fall eingeblendet.
     avatar-style:
       label: Bender anzeigen
+      info: Stelle ein, ob in den Kopfzeilen von Posts die Bender der Autor:innen angezeigt werden sollen.
     auto-refresh-sidebar:
       label: Automatischer Newsfeed-Refresh
+      info: Stelle ein, ob Dein Newsfeed beim Aufklappen der Sidebar automatisch aktualisiert werden soll.
     landing-page:
       label: Startseite
+      info: Deine Startseite wird beim Neustart von potber aufgerufen. Außerdem kannst Du sie jederzeit über das 🏠-Icon in der Sidebar aufrufen.
     replace-forum-urls:
       label: forum.mods.de-Links ersetzen
+      info: Ist diese Option aktiviert, werden bestimmte Links zum Forum (Posts, Threads und Boards) automatisch durch die entsprechenden potber-Links ersetzt
     enable-gestures:
       label: Gestensteuerung
+      info: 'Aktiviere Gestensteuerung für potber. "Nur Sidebar" aktiviert lediglich das Öffnen und Schließen der Sidebar via horizontale Wischgesten. "Alle" aktiviert außerdem noch Pull-to-Refresh in Boards und Threads.
+      <br/><br/>⚠ Bitte beachte, dass die Gestensteuerung unter Umständen Konflikte mit der Gestensteuerung Deines Browsers oder Deines Geräts verursachen kann.'
     debug:
       label: Debug-Modus
+      info: Wechsle in den Debug-Modus. Üblicherweise solltest Du diese Einstellung nicht aktivieren.
     session:
       title: Sitzung
       user-id: User ID

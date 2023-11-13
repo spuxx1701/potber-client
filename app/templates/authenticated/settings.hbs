@@ -2,7 +2,7 @@
 
 <Nav::Routes::Generic @title={{t 'route.settings.title'}} />
 
-<Common::Container @size='small'>
+<Common::Container @size='medium'>
 
   <h3>{{t 'route.settings.category.appearance'}}</h3>
 
@@ -12,7 +12,14 @@
     @onSelect={{this.handleThemeSelect}}
     @size='max'
     @label={{t 'route.settings.theme.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.theme.label'}}
+        @text={{t 'route.settings.theme.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <Common::Control::Dropdown
     @options={{this.config.sidebarLayoutOptions}}
@@ -20,7 +27,14 @@
     @onSelect={{this.handleSidebarLayoutSelect}}
     @size='max'
     @label={{t 'route.settings.sidebar.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.sidebar.label'}}
+        @text={{t 'route.settings.sidebar.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <Common::Control::Dropdown
     @options={{this.config.fontSizeOptions}}
@@ -28,7 +42,14 @@
     @onSelect={{this.handleFontSizeSelect}}
     @size='max'
     @label={{t 'route.settings.font-size.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.font-size.label'}}
+        @text={{t 'route.settings.font-size.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <Common::Control::Dropdown
     @options={{this.config.darkenReadPostsOptions}}
@@ -36,7 +57,14 @@
     @onSelect={{this.handleDarkenReadPostsSelect}}
     @size='max'
     @label={{t 'route.settings.darken-read-posts.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.darken-read-posts.label'}}
+        @text={{t 'route.settings.darken-read-posts.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <h3>{{t 'route.settings.category.network'}}</h3>
 
@@ -46,7 +74,14 @@
     @onSelect={{this.handleAvatarStyleSelect}}
     @size='max'
     @label={{t 'route.settings.avatar-style.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.avatar-style.label'}}
+        @text={{t 'route.settings.avatar-style.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <Common::Control::Dropdown
     @options={{this.config.autoRefreshSidebarOptions}}
@@ -54,7 +89,14 @@
     @onSelect={{this.handleAutoRefreshSidebarSelect}}
     @size='max'
     @label={{t 'route.settings.auto-refresh-sidebar.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.auto-refresh-sidebar.label'}}
+        @text={{t 'route.settings.auto-refresh-sidebar.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <h3>{{t 'route.settings.category.behavior'}}</h3>
 
@@ -64,7 +106,14 @@
     @onSelect={{this.handleLandingPageSelect}}
     @size='max'
     @label={{t 'route.settings.landing-page.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.landing-page.label'}}
+        @text={{t 'route.settings.landing-page.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <Common::Control::Dropdown
     @options={{this.config.replaceForumUrlsOptions}}
@@ -72,7 +121,14 @@
     @onSelect={{this.handleReplaceForumUrlsSelect}}
     @size='max'
     @label={{t 'route.settings.replace-forum-urls.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.replace-forum-urls.label'}}
+        @text={{t 'route.settings.replace-forum-urls.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <Common::Control::Dropdown
     @options={{this.config.gesturesOptions}}
@@ -80,7 +136,17 @@
     @onSelect={{this.handleGesturesSelect}}
     @size='max'
     @label={{t 'route.settings.enable-gestures.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.enable-gestures.label'}}
+        @text={{format-message
+          'route.settings.enable-gestures.info'
+          htmlSafe=true
+        }}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <h3>{{t 'route.settings.category.advanced'}}</h3>
 
@@ -90,7 +156,14 @@
     @onSelect={{this.handleDebugSelect}}
     @size='max'
     @label={{t 'route.settings.debug.label'}}
-  />
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.debug.label'}}
+        @text={{t 'route.settings.debug.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
 
   <hr />
 

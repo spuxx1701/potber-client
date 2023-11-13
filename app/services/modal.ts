@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { ConfirmModalOptions } from 'potber-client/components/modal/types/confirm';
 import { IconSelectModalOptions } from 'potber-client/components/modal/types/icon-select';
 import { ImageInsertModalOptions } from 'potber-client/components/modal/types/image-insert';
+import { InfoModalOptions } from 'potber-client/components/modal/types/info/types';
 import { InputModalOptions } from 'potber-client/components/modal/types/input';
 import { LinkInsertModalOptions } from 'potber-client/components/modal/types/link-insert';
 import { MemeSelectModalOptions } from 'potber-client/components/modal/types/meme-select';
@@ -19,6 +20,7 @@ interface ActiveModal {
 
 export enum ModalType {
   confirm = 'confirm',
+  info = 'info',
   input = 'input',
   iconSelect = 'icon-select',
   memeSelect = 'meme-select',
@@ -48,6 +50,14 @@ export default class ModalService extends Service {
    */
   confirm(options: ConfirmModalOptions) {
     this.show(ModalType.confirm, options);
+  }
+
+  /**
+   * Calls an info modal.
+   * @param options The confirm modal options.
+   */
+  info(options: InfoModalOptions) {
+    this.show(ModalType.info, options);
   }
 
   /**

@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import { DropdownOption } from 'potber-client/components/common/control/dropdown';
+import { DropdownOption } from 'potber-client/components/common/control/dropdown/types';
 import RendererService from 'potber-client/services/renderer';
 import MessagesService from 'potber-client/services/messages';
 import AppService from 'potber-client/services/app';
