@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.17.0',
+    type: 'minor',
+    fixed: [
+      "Nummerierte Listen ('[list=1]..[/list]') werden nun korrekt angezeigt.",
+    ],
+  },
+  {
     version: '1.16.0',
     type: 'minor',
     added: [

@@ -4,7 +4,7 @@
  * @returns The output string.
  */
 export function parseList(input: string) {
-  const LIST_REGEX = /(?:(\[list\])(?:\s|\S)*?(\s*\[\/list\]))/gi;
+  const LIST_REGEX = /(?:(\[list=?[1]?\])(?:\s|\S)*?(\s*\[\/list\]))/gi;
   if (!LIST_REGEX.test(input)) return input;
   let output = input;
   const matches = input.matchAll(new RegExp(LIST_REGEX));
@@ -12,8 +12,14 @@ export function parseList(input: string) {
     try {
       const [full, openingTag, closingTag] = match;
       let replacement = full;
-      replacement = replacement.replace(openingTag as string, '<ul><li>');
-      replacement = replacement.replace(closingTag as string, '</li></ul>');
+      console.log(openingTag);
+      if (openingTag === '[list=1]') {
+        replacement = replacement.replace(openingTag as string, '<ol><li>');
+        replacement = replacement.replace(closingTag as string, '</li></ol>');
+      } else {
+        replacement = replacement.replace(openingTag as string, '<ul><li>');
+        replacement = replacement.replace(closingTag as string, '</li></ul>');
+      }
       const LIST_ITEM_REGEX = /\s*\[\*\]\s?/g;
       const itemMatches = replacement.match(
         LIST_ITEM_REGEX,

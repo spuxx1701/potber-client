@@ -36,4 +36,8 @@ export const listTagMocks: ContentParserMock[] = [
     input: 'List with newline\n[list]\n[*] Foo\n[*] Bar\n[/list]',
     expected: 'List with newline\n<ul><li>Foo</li><li>Bar</li></ul>',
   },
+  {
+    input: `[list=1][*]Ordered[*]List[/list]`,
+    expected: `<ol><li>Ordered</li><li>List</li></ol>`,
+  },
 ];
