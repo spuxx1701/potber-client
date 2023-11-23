@@ -4,6 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
     fixed: [
       "Nummerierte Listen ('[list=1]..[/list]') werden nun korrekt angezeigt.",
+      'Diverse kleinere Fixes.',
     ],
   },
   {

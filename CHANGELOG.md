@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Ordered lists are now being parsed properly.
+- Various smaller fixes.
 
 ## [1.16.0] - 2023-11-13
 

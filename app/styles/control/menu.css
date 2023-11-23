@@ -74,4 +74,5 @@
   font-size: 1em;
   margin-left: 0;
   min-width: 1rem;
+  color: var(--color-text-subtle);
 }
