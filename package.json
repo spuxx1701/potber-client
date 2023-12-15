@@ -27,6 +27,7 @@
     "update": "npx npm-check-updates -u"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.1.0",
     "@ember/test-helpers": "^2.9.3",

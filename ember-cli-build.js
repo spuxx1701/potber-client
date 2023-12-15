@@ -7,7 +7,10 @@ module.exports = function (defaults) {
     // Add options here
     babel: {
       sourceMaps: 'inline',
-      plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()],
+      plugins: [
+        ...require('ember-cli-code-coverage').buildBabelPlugin(),
+        '@babel/plugin-proposal-export-namespace-from',
+      ],
     },
     sourcemaps: {
       enabled: true,

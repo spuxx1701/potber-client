@@ -12,6 +12,8 @@ private-messages:
         text: Möchtest Du die Nachricht wirklich löschen?
 error:
   unknown: Das hat leider nicht geklappt. Versuche es später nochmal.
+  users:
+    not-found: Diese Nutzer:in konnten wir leider nicht finden.
 misc:
   ok: OK,
   cancel: Abbrechen
@@ -70,3 +72,8 @@ route:
       user-id: User ID
       username: Username
       sign-out: Abmelden
+  post:
+    create:
+      title: Post erstellen
+    edit:
+      title: Post bearbeiten

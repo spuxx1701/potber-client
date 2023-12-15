@@ -14,6 +14,7 @@ import ModalService from 'potber-client/services/modal';
 import CustomSession from 'potber-client/services/custom-session';
 import { htmlSafe } from '@ember/template';
 import { appConfig } from 'potber-client/config/app.config';
+import ApiService from 'potber-client/services/api';
 
 interface Signature {
   Args: {
@@ -34,6 +35,7 @@ export default class PostComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare localStorage: LocalStorageService;
   @service declare modal: ModalService;
+  @service declare api: ApiService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -81,24 +83,11 @@ export default class PostComponent extends Component<Signature> {
 
   @action async showAuthorProfile() {
     try {
-      const user = await this.store.findRecord(
-        'user',
-        this.args.post.author.id,
-      );
+      const user = await this.api.findUserById(this.args.post.author.id);
       this.modal.userProfile({ user });
     } catch (error: any) {
-      if (error.errors && error.errors[0]?.status === '404') {
-        this.messages.showNotification(
-          'Dieser User existiert nicht (mehr).',
-          'error',
-        );
-      } else {
-        this.messages.logErrorAndNotify(
-          'Das hat leider nicht geklappt.',
-          error,
-          this.constructor.name,
-        );
-      }
+      // In case of an error, do not call the modal
+      return;
     }
   }
 
