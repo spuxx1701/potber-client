@@ -1,9 +1,8 @@
-{{! @glint-nocheck }}{{page-title 'Post bearbeiten'}}
-
-<Nav::Routes::Generic @title='Post bearbeiten' @enableBackNavigation={{true}} />
+{{! @glint-nocheck }}{{page-title (t 'route.post.edit.title')}}
 
 <Board::PostForm
   @post={{@model}}
   @onSubmit={{this.handleSubmit}}
   @busy={{this.busy}}
+  @navTitle={{t 'route.post.edit.title'}}
 />

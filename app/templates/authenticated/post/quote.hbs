@@ -1,15 +1,11 @@
-{{! @glint-nocheck }}{{page-title 'Post erstellen'}}
-
-<Nav::Routes::Generic
-  @title='Post erstellen'
-  @subtitle={{@model.thread.title}}
-  @enableBackNavigation={{true}}
-/>
+{{! @glint-nocheck }}{{page-title (t 'route.post.create.title')}}
 
 <Board::PostForm
   @post={{@model.post}}
   @onSubmit={{this.handleSubmit}}
   @busy={{this.busy}}
+  @navTitle={{t 'route.post.create.title'}}
+  @navSubtitle={{@model.thread.title}}
 />
 
 <Board::ThreadPage

@@ -1,4 +1,10 @@
 {{! @glint-nocheck }}
+<Nav::Routes::PostForm
+  @post={{@post}}
+  @title={{@navTitle}}
+  @subtitle={{@navSubtitle}}
+/>
+
 <form
   id='post-form'
   class='container-size-x-large'
@@ -125,20 +131,22 @@
     maxLength='15000'
     {{on 'change' this.handleMessageChange}}
   />
-  <Common::Control::Button
-    @icon='right-to-bracket'
-    @text={{this.submitLabel}}
-    @variant='primary'
-    @size='max'
-    @type='submit'
-    @busy={{@busy}}
-  />
-  <Common::Control::Button
-    @icon='eye'
-    @text='Vorschau'
-    @variant='secondary'
-    @size='max'
-    @type='button'
-    @onClick={{this.handlePreview}}
-  />
+  {{#if this.showPreviewAndSubmitButtons}}
+    <Common::Control::Button
+      @icon='check'
+      @text={{this.submitLabel}}
+      @variant='primary'
+      @size='max'
+      @type='submit'
+      @busy={{@busy}}
+    />
+    <Common::Control::Button
+      @icon='eye'
+      @text='Vorschau'
+      @variant='secondary'
+      @size='max'
+      @type='button'
+      @onClick={{this.handlePreview}}
+    />
+  {{/if}}
 </form>

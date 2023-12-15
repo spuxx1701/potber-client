@@ -3,14 +3,18 @@ import { appConfig } from 'potber-client/config/app.config';
 import MessagesService from './messages';
 import { IntlService } from 'ember-intl';
 import * as Users from './api/endpoints/users.endpoints';
+import * as Posts from './api/endpoints/posts.endpoints';
 import { ApiError } from './api/error';
+import CustomSession from './custom-session';
 
 export default class ApiService extends Service {
   @service declare messages: MessagesService;
   @service declare intl: IntlService;
+  @service declare session: CustomSession;
 
   // --- Endpoints are being defined in this section --- //
   findUserById = Users.findById;
+  createPost = Posts.create;
   // --------------------------------------------------- //
 
   /**
@@ -26,8 +30,18 @@ export default class ApiService extends Service {
         `Outgoing request: ${request?.method ?? 'GET'} ${url}`,
         { context: this.constructor.name, type: 'info' },
       );
+      const headers: Record<string, string> = {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      };
+      if (this.session.isAuthenticated) {
+        headers[
+          'Authorization'
+        ] = `Bearer ${this.session.data.authenticated.access_token}`;
+      }
       const response = await fetch(url, {
         ...request,
+        headers: { ...headers, ...request?.headers },
       });
       const data = await response.json();
       if (!response.ok) {
@@ -43,12 +57,12 @@ export default class ApiService extends Service {
         context: this.constructor.name,
         type: 'error',
       });
-      if (
-        (error instanceof ApiError &&
-          (isNaN(error.statusCode) || error.statusCode > 499)) ||
-        !(error instanceof ApiError)
-      ) {
-        this.messages.showNotification(this.intl.t('error.unknown'), 'error');
+      if (error instanceof ApiError) {
+        if (isNaN(error.statusCode) || error.statusCode > 499) {
+          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
+        } else if (error.statusCode === 401) {
+          this.session.invalidate();
+        }
       }
       throw error;
     }

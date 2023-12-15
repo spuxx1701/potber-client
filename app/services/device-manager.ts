@@ -100,4 +100,8 @@ export default class DeviceManagerService extends Service {
       'var(--bottom-nav-bottom-border-ios)',
     );
   }
+
+  get isDesktop() {
+    return this.renderer.isDesktop;
+  }
 }

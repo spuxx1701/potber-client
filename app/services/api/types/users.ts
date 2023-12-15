@@ -1,6 +1,6 @@
-export interface FindById {
+export interface Read {
   id: string;
-  name: string;
+  name?: string;
   avatarUrl?: string;
   rank?: string;
   lastLogin?: string;

@@ -14,6 +14,10 @@ error:
   unknown: Das hat leider nicht geklappt. Versuche es später nochmal.
   users:
     not-found: Diese Nutzer:in konnten wir leider nicht finden.
+  posts:
+    create:
+      forbidden: Du darfst in diesem Thread nicht posten. Möglicherweise wurde der Thread geschlossen.
+      too-many-requests: Du postest zu viel in zu kurzer Zeit. Bitte warte einen Moment.
 misc:
   ok: OK,
   cancel: Abbrechen
@@ -77,3 +81,6 @@ route:
       title: Post erstellen
     edit:
       title: Post bearbeiten
+    form:
+      submit: Absenden
+      preview: Vorschau

@@ -3,8 +3,9 @@ import { action } from '@ember/object';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import Post from 'potber-client/models/post';
 import { PostCreateRouteModel } from 'potber-client/routes/authenticated/post/create';
+import ApiService from 'potber-client/services/api';
+import { Post } from 'potber-client/services/api/types';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
 
@@ -14,6 +15,7 @@ export default class PostCreateController extends Controller {
   @service declare store: CustomStore;
   @service declare messages: MessagesService;
   @service declare router: RouterService;
+  @service declare api: ApiService;
   @tracked busy = false;
 
   queryParams = ['TID', 'page'];
@@ -21,28 +23,15 @@ export default class PostCreateController extends Controller {
   @action async handleSubmit(post: Post) {
     this.busy = true;
     try {
-      const createdPost = await post.save();
-      if (createdPost.id) {
-        this.router.transitionTo('authenticated.thread', {
-          queryParams: {
-            TID: createdPost.threadId,
-            PID: createdPost.id,
-          },
-        });
-      }
-    } catch (error: any) {
-      if (error.errors?.find((err: any) => err.status === '429')) {
-        this.messages.showNotification(
-          'Du postest zu viel. Bitte warte einen Moment.',
-          'error',
-        );
-      } else {
-        this.messages.logErrorAndNotify(
-          'Das hat leider nicht geklappt.',
-          error,
-          this.constructor.name,
-        );
-      }
+      const createdPost = await this.api.createPost(post);
+      this.router.transitionTo('authenticated.thread', {
+        queryParams: {
+          TID: createdPost.threadId,
+          PID: createdPost.id,
+        },
+      });
+    } catch (error) {
+      // Errors have already been handled, so do nothing and allow the user to try again
     }
     this.busy = false;
   }

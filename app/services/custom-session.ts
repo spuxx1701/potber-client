@@ -3,10 +3,11 @@ import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import BaseSessionService from 'ember-simple-auth/services/session';
 import CustomStore from './custom-store';
+import Session from 'potber-client/models/session';
 
 export default class CustomSession extends BaseSessionService {
   @service declare store: CustomStore;
-  @tracked sessionData: any | null = null;
+  @tracked sessionData: Session | null = null;
   declare data: any;
   declare isAuthenticated?: boolean;
   declare invalidate: () => void;
@@ -45,12 +46,12 @@ export default class CustomSession extends BaseSessionService {
     await this.update();
     // We don't want the session service to redirect to a route automatically after
     // successful login, so we override this method.
-    const attemptedTransition = this.sessionData.attemptedTransition;
+    const attemptedTransition = this.data.attemptedTransition;
     const cookies = (getOwner(this) as any).lookup('service:cookies');
     const redirectTarget = cookies.read('ember_simple_auth-redirectTarget');
     if (attemptedTransition) {
       attemptedTransition.retry();
-      this.sessionData.attemptedTransition = null;
+      this.data.attemptedTransition = null;
     } else if (redirectTarget) {
       this.transitionTo(redirectTarget);
       cookies.clear('ember_simple_auth-redirectTarget');

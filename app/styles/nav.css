@@ -59,15 +59,18 @@
 
 .nav > *,
 .nav-portal-target > *,
-.nav-element-center > * {
+.nav-element-center > *,
+.nav button {
   height: 100% !important;
 }
 
 .nav-element-left {
+  position: relative;
   left: var(--bottom-nav-left-gap);
 }
 
 .nav-element-right {
+  position: relative;
   right: var(--bottom-nav-right-gap);
 }
 

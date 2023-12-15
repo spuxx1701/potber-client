@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import Post from 'potber-client/models/post';
+import { Posts } from 'potber-client/services/api/types';
 import Session from 'potber-client/models/session';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
@@ -17,7 +17,7 @@ interface Params {
 
 export interface PostCreateRouteModel {
   thread: Thread;
-  post: Post;
+  post: Posts.Create;
 }
 
 export default class PostCreateRoute extends Route {
@@ -47,18 +47,10 @@ export default class PostCreateRoute extends Route {
           },
         },
       });
-      // Initialize the post
-      const session =
-        (await this.session.getSessionData()) as unknown as Session;
-      const post = this.store.createRecord('post', {
-        author: {
-          name: session.username,
-        },
-        avatarUrl: session.avatarUrl,
-        threadId: thread.id,
-        icon: '0',
+      const post: Posts.Create = {
         message: '',
-      });
+        threadId: thread.id,
+      };
       return {
         thread,
         post,
