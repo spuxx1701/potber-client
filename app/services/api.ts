@@ -14,7 +14,11 @@ export default class ApiService extends Service {
 
   // --- Endpoints are being defined in this section --- //
   findUserById = Users.findById;
+  findPostById = Posts.findById;
   createPost = Posts.create;
+  updatePost = Posts.update;
+  quotePost = Posts.quote;
+  reportPost = Posts.report;
   // --------------------------------------------------- //
 
   /**
@@ -58,10 +62,9 @@ export default class ApiService extends Service {
         type: 'error',
       });
       if (error instanceof ApiError) {
-        if (isNaN(error.statusCode) || error.statusCode > 499) {
-          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-        } else if (error.statusCode === 401) {
+        if (error.statusCode === 401) {
           this.session.invalidate();
+          return;
         }
       }
       throw error;

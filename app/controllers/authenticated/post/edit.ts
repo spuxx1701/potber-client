@@ -3,38 +3,42 @@ import { action } from '@ember/object';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import Post from 'potber-client/models/post';
+import { IntlService } from 'ember-intl';
 import { PostEditRouteModel } from 'potber-client/routes/authenticated/post/edit';
-import CustomStore from 'potber-client/services/custom-store';
+import ApiService from 'potber-client/services/api';
+import { Posts } from 'potber-client/services/api/types';
 import MessagesService from 'potber-client/services/messages';
 
 export default class PostCreateController extends Controller {
   declare model: PostEditRouteModel;
 
-  @service declare store: CustomStore;
   @service declare router: RouterService;
   @service declare messages: MessagesService;
+  @service declare api: ApiService;
+  @service declare intl: IntlService;
   @tracked busy = false;
 
   queryParams = ['TID', 'PID'];
+  declare TID: string;
+  declare PID: string;
 
-  @action async handleSubmit(post: Post) {
+  @action async handleSubmit(post: Posts.Write) {
     this.busy = true;
     try {
-      await post.save();
-      this.messages.showNotification('Antwort wurde bearbeitet.', 'success');
+      const { TID, PID } = this;
+      await this.api.updatePost(PID, post);
       this.router.transitionTo('authenticated.thread', {
         queryParams: {
-          TID: post.threadId,
-          PID: post.id,
+          TID,
+          PID,
         },
       });
-    } catch (error) {
-      this.messages.logErrorAndNotify(
-        'Da ist leider etwas schiefgegangen. Probiere es nochmal.',
-        error,
-        this.constructor.name,
+      this.messages.showNotification(
+        this.intl.t('route.post.edit.success'),
+        'success',
       );
+    } catch (error) {
+      // In case of an error do nothing so the user can try again
     }
     this.busy = false;
   }

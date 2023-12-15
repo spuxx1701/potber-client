@@ -15,9 +15,17 @@ error:
   users:
     not-found: Diese Nutzer:in konnten wir leider nicht finden.
   posts:
+    find-by-id:
+      forbidden: Du bist leider nicht berechtigt, auf diesen Post zuzugreifen.
+      not-found: Diesen Post konnten wir leider nicht finden.
     create:
-      forbidden: Du darfst in diesem Thread nicht posten. Möglicherweise wurde der Thread geschlossen.
+      forbidden: Du kannst in diesem Thread nicht posten. Möglicherweise wurde der Thread bereits geschlossen.
       too-many-requests: Du postest zu viel in zu kurzer Zeit. Bitte warte einen Moment.
+    update:
+      forbidden: Du kannst diesen Post nicht bearbeiten. Möglicherweise wurde der Thread bereits geschlossen.
+      too-many-requests: Du sendest zu viele Anfragen in zu kurzer Zeit. Bitte warte einen Moment.
+    report:
+      conflict: Du kannst diesen Post nicht melden, weil er bereits gemeldet worden ist.
 misc:
   ok: OK,
   cancel: Abbrechen
@@ -81,6 +89,9 @@ route:
       title: Post erstellen
     edit:
       title: Post bearbeiten
+      success: Der Post wurde bearbeitet.
     form:
       submit: Absenden
       preview: Vorschau
+  thread:
+    report-post-success: Der Post wurde gemeldet.

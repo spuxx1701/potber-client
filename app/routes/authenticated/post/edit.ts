@@ -2,9 +2,8 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import Post from 'potber-client/models/post';
-import CustomStore from 'potber-client/services/custom-store';
-import MessagesService from 'potber-client/services/messages';
+import ApiService from 'potber-client/services/api';
+import { Posts } from 'potber-client/services/api/types';
 import RendererService from 'potber-client/services/renderer';
 
 interface Params {
@@ -14,13 +13,12 @@ interface Params {
 
 export interface PostEditRouteModel {
   threadId: string;
-  post: Post;
+  post: Posts.Write;
 }
 
 export default class PostEditRoute extends Route {
   @service declare renderer: RendererService;
-  @service declare messages: MessagesService;
-  @service declare store: CustomStore;
+  @service declare api: ApiService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -34,20 +32,9 @@ export default class PostEditRoute extends Route {
 
   async model(params: Params, transition: Transition<unknown>) {
     try {
-      const post = await this.store.findRecord('post', params.PID, {
-        adapterOptions: {
-          queryParams: {
-            threadId: params.TID,
-          },
-        },
-      });
+      const post = await this.api.findPostById(params.PID, params.TID);
       return post;
     } catch (error) {
-      this.messages.logErrorAndNotify(
-        'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',
-        error,
-        this.constructor.name,
-      );
       transition.abort();
     }
   }

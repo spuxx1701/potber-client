@@ -1,7 +1,8 @@
 import Transition from '@ember/routing/transition';
 import Post from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
-import PostCreateRoute from './create';
+import PostCreateRoute, { PostCreateRouteModel } from './create';
+import { Posts } from 'potber-client/services/api/types';
 
 interface Params {
   TID: string;
@@ -32,18 +33,10 @@ export default class PostQuoteRoute extends PostCreateRoute {
     const model = await super.model(params, transition);
     try {
       // Prepare the quote
-      const postToQuote = this.store.createRecord('post', {
-        id: params.PID,
-      });
-      const quotedPost = await postToQuote?.quote(undefined);
-      postToQuote.unloadRecord();
-      if (model) model.post.message = quotedPost?.message;
+      const quotedPost = await this.api.quotePost(params.PID);
+      (model as PostCreateRouteModel).post.message = quotedPost.message;
       return model;
     } catch (error) {
-      this.messages.showNotification(
-        'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',
-        'error',
-      );
       transition.abort();
     }
   }

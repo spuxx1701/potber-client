@@ -10,7 +10,7 @@ import t from 'ember-intl/helpers/t';
 
 interface Signature {
   Args: {
-    post: Posts.Create;
+    post: Posts.Write;
     title: string;
     subtitle?: string;
   };

@@ -6,7 +6,7 @@ import CustomSession from 'potber-client/services/custom-session';
 import ModalService from 'potber-client/services/modal';
 
 export interface PostPreviewModalOptions {
-  post: Posts.Create;
+  post: Posts.Write;
 }
 
 interface Signature {

@@ -11,11 +11,15 @@ export async function findById(this: ApiService, id: string): Promise<User> {
     return await this.fetch(`users/${id}`, { method: 'GET' });
   } catch (error) {
     if (error instanceof ApiError) {
-      if (error.statusCode === 404) {
-        this.messages.showNotification(
-          this.intl.t('error.users.not-found'),
-          'error',
-        );
+      switch (error.statusCode) {
+        case 404:
+          this.messages.showNotification(
+            this.intl.t('error.users.not-found'),
+            'error',
+          );
+          break;
+        default:
+          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
       }
     }
     throw error;

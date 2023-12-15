@@ -5,9 +5,9 @@ import { service } from '@ember/service';
 import { Posts } from 'potber-client/services/api/types';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
-import MessagesService from 'potber-client/services/messages';
 import RendererService from 'potber-client/services/renderer';
 import SessionService from 'potber-client/services/session';
+import ApiService from 'potber-client/services/api';
 
 interface Params {
   TID: string;
@@ -16,14 +16,14 @@ interface Params {
 
 export interface PostCreateRouteModel {
   thread: Thread;
-  post: Posts.Create;
+  post: Posts.Write;
 }
 
 export default class PostCreateRoute extends Route {
   @service declare renderer: RendererService;
-  @service declare messages: MessagesService;
   @service declare store: CustomStore;
   @service declare session: SessionService;
+  @service declare api: ApiService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -46,7 +46,7 @@ export default class PostCreateRoute extends Route {
           },
         },
       });
-      const post: Posts.Create = {
+      const post: Posts.Write = {
         message: '',
         threadId: thread.id,
       };
@@ -55,7 +55,6 @@ export default class PostCreateRoute extends Route {
         post,
       } as PostCreateRouteModel;
     } catch (error) {
-      // Abort the transition and allow the user to try again
       transition.abort();
     }
   }

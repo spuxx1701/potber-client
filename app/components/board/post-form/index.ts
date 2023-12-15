@@ -8,10 +8,10 @@ import ModalService from 'potber-client/services/modal';
 
 interface Signature {
   Args: {
-    post: Posts.Create;
+    post: Posts.Write;
     hideTitle?: boolean;
     submitLabel: string;
-    onSubmit: (post: Posts.Create) => void;
+    onSubmit: (post: Posts.Write) => void;
     navTitle?: string;
     navSubtitle?: string;
   };

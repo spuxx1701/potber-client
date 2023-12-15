@@ -15,6 +15,7 @@ import CustomSession from 'potber-client/services/custom-session';
 import { htmlSafe } from '@ember/template';
 import { appConfig } from 'potber-client/config/app.config';
 import ApiService from 'potber-client/services/api';
+import { IntlService } from 'ember-intl';
 
 interface Signature {
   Args: {
@@ -36,6 +37,7 @@ export default class PostComponent extends Component<Signature> {
   @service declare localStorage: LocalStorageService;
   @service declare modal: ModalService;
   @service declare api: ApiService;
+  @service declare intl: IntlService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -159,34 +161,15 @@ export default class PostComponent extends Component<Signature> {
       useTextarea: true,
       onSubmit: async (cause: string) => {
         try {
-          const post = (await this.store.findRecord('post', this.args.post.id, {
-            adapterOptions: {
-              queryParams: {
-                threadId: this.args.post.threadId,
-              },
-            },
-          })) as Post;
-          await post.report({ cause });
-          this.modal.close();
-          this.messages.showNotification('Post wurde gemeldet.', 'success');
+          await this.api.reportPost(this.args.post.id, { cause });
+          this.messages.showNotification(
+            this.intl.t('route.thread.report-post-success'),
+            'success',
+          );
         } catch (error) {
-          const { errors } = await (error as Promise<{
-            errors: Array<{ status: string }>;
-          }>);
-          if (errors[0]?.status === '409') {
-            this.messages.showNotification(
-              'Dieser Post wurde bereits gemeldet.',
-              'warning',
-            );
-            this.modal.close();
-          } else {
-            this.messages.logErrorAndNotify(
-              'Das hat leider nicht geklappt. Versuche es später nochmal.',
-              error,
-              this.constructor.name,
-            );
-          }
+          // In case of an error do nothing so the user can potentially try again
         }
+        this.modal.close();
       },
     });
   }
