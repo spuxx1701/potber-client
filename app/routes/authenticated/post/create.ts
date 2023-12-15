@@ -3,7 +3,6 @@ import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import { Posts } from 'potber-client/services/api/types';
-import Session from 'potber-client/models/session';
 import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
@@ -56,11 +55,7 @@ export default class PostCreateRoute extends Route {
         post,
       } as PostCreateRouteModel;
     } catch (error) {
-      this.messages.logErrorAndNotify(
-        'Da ist etwas schiefgegangen. Bitte versuche es nochmal.',
-        error,
-        this.constructor.name,
-      );
+      // Abort the transition and allow the user to try again
       transition.abort();
     }
   }
