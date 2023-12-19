@@ -13,9 +13,7 @@ export default class CustomSession extends BaseSessionService {
   declare invalidate: () => void;
   declare authenticate: (
     authenticator: string,
-    username: string,
-    password: string,
-    lifetime: number,
+    hash: Record<string, string>,
   ) => Promise<void>;
   declare setup: () => Promise<void>;
   declare requireAuthentication: (transition: any, routeName: string) => void;

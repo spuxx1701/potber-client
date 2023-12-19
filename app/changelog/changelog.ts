@@ -2,6 +2,7 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.17.0',
     type: 'minor',
+    changed: ['Die Anwendung verwendet nun potber-auth zur Authentifizierung.'],
     fixed: [
       "Nummerierte Listen ('[list=1]..[/list]') werden nun korrekt angezeigt.",
       'Diverse kleinere Fixes.',

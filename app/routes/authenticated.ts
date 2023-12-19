@@ -11,7 +11,7 @@ export default class AuthenticatedRoute extends Route {
     try {
       this.session.requireAuthentication(transition, 'login');
     } catch (error) {
-      this.router.transitionTo('login');
+      this.router.transitionTo('auth.login');
     }
   }
 

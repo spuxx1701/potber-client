@@ -17,6 +17,7 @@ module.exports = function (environment) {
     APP: {
       HOSTNAME: 'potber.de',
       API_URL: 'https://api.potber.de',
+      AUTH_ISSUER_URL: 'https://auth.potber.de',
       MEME_HOST_URL: `https://potber.de`,
       DEBUG: false,
     },
@@ -25,6 +26,7 @@ module.exports = function (environment) {
   if (environment === 'development') {
     ENV.APP.HOSTNAME = 'localhost:4200';
     ENV.APP.API_URL = 'http://localhost:3000';
+    ENV.APP.AUTH_ISSUER_URL = 'http://localhost:5173';
     ENV.APP.DEBUG = true;
     ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
     // ENV.APP.LOG_RESOLVER = true;
@@ -37,6 +39,7 @@ module.exports = function (environment) {
   if (environment === 'development:mobile') {
     ENV.APP.HOSTNAME = 'http://schleppi.fritz.box:4200';
     ENV.APP.API_URL = 'http://schleppi.fritz.box:3000';
+    ENV.APP.AUTH_ISSUER_URL = 'http://schleppi.fritz.box:5173';
     ENV.APP.DEBUG = true;
     ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
   }

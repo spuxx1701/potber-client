@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.18.0] - TODO
 
+### Changed
+
+- The application now uses [potber-auth](https://github.com/spuxx1701/potber-auth) for authentication.
+
 ### Fixed
 
 - Ordered lists are now being parsed properly.
