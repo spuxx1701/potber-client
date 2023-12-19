@@ -4,12 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.17.1] - 2023-11
+## [1.18.0] - TODO
 
 ### Fixed
 
 - Ordered lists are now being parsed properly.
 - Various smaller fixes.
+
+### Chores
+
+- Added support for `nvm`.
 
 ## [1.16.0] - 2023-11-13
 
