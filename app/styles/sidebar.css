@@ -63,6 +63,10 @@
   justify-content: center;
 }
 
+#sidebar-nav svg {
+  margin: 0;
+}
+
 #sidebar-content {
   height: calc(var(--sidebar-height) - var(--control-default-height));
   width: var(--sidebar-expanded-width);
