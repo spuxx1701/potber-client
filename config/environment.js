@@ -62,6 +62,7 @@ module.exports = function (environment) {
   if (environment === 'staging') {
     ENV.APP.HOSTNAME = 'test.potber.de';
     ENV.APP.API_URL = 'https://test-api.potber.de';
+    ENV.APP.AUTH_ISSUER_URL = 'https://test-auth.potber.de';
     ENV.APP.MEME_HOST_URL = 'https://potber.de';
     ENV.APP.DEBUG = true;
   }
