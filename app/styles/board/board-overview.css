@@ -55,15 +55,10 @@
   flex-direction: column;
   background-color: var(--color-post-background-primary);
   padding: 0.5rem;
-  margin-top: var(--global-gap);
-  margin-bottom: var(--global-gap);
   height: unset;
   width: 100%;
   align-items: flex-start;
-}
-
-.board-category-item:not(:first-child) {
-  margin-top: var(--global-gap);
+  margin-bottom: var(--global-gap);
 }
 
 .board-category-item-title {
