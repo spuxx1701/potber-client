@@ -12,7 +12,11 @@ export default class AuthCallbackRoute extends Route {
   @service declare intl: IntlService;
   async beforeModel() {
     try {
-      const params = new URLSearchParams(window.location.hash.replace('#', ''));
+      const params = new URLSearchParams(
+        window.location.hash.startsWith('#')
+          ? window.location.hash.substring(1)
+          : window.location.hash,
+      );
       const hash: Record<string, string> = {};
       for (const entry of params.entries()) {
         const [key, value] = entry;
