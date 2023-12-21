@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Fixed an issue where direct links to a thread (without providing a post id) would cause an error.
 - Ordered lists are now being parsed properly.
 - Various smaller fixes.
 

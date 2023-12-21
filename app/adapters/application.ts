@@ -2,6 +2,7 @@ import RESTAdapter from '@ember-data/adapter/rest';
 import { Snapshot } from '@ember-data/store';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
+import { isEmpty } from '@ember/utils';
 // eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import ModelRegistry from 'ember-data/types/registries/model';
 import ENV from 'potber-client/config/environment';
@@ -49,6 +50,7 @@ export default class ApplicationAdapter extends RESTAdapter {
       const { queryParams } = snapshot.adapterOptions;
       if (queryParams && typeof queryParams === 'object') {
         for (const key in queryParams) {
+          if (isEmpty(queryParams[key as keyof typeof queryParams])) continue;
           query[key] = queryParams[key as keyof typeof queryParams] as string;
         }
       }
