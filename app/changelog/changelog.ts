@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.17.4',
+    type: 'patch',
+    fixed: [
+      'Die Vorschau- und Absenden-Buttons befinden sich nun auch in Safari in der Fußleiste.',
+    ],
+  },
+  {
     version: '1.17.3',
     type: 'patch',
     fixed: [

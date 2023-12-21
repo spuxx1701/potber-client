@@ -21,9 +21,7 @@ export default class NavPostFormComponent extends Component<Signature> {
   @service declare modal: ModalService;
 
   get showControls() {
-    return (
-      !this.deviceManager.isDesktop && this.deviceManager.browser !== 'WebKit'
-    );
+    return !this.deviceManager.isDesktop;
   }
 
   handleBack = () => {

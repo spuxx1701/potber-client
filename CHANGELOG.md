@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.17.4] - 2023-12-21
+
+### Fixed
+
+- In Safari, the preview and submit buttons of the post form have now also been moved to the footer to prevent the buttons not being visible.
+
 ## [1.17.3] - 2023-12-21
 
 ### Fixed

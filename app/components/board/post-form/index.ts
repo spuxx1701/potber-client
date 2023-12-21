@@ -35,9 +35,7 @@ export default class PostFormComponent extends Component<Signature> {
   }
 
   get showPreviewAndSubmitButtons() {
-    return (
-      this.deviceManager.isDesktop || this.deviceManager.browser === 'WebKit'
-    );
+    return this.deviceManager.isDesktop;
   }
 
   handleMessageChange = (event: InputEvent) => {
