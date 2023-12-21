@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.17.3',
+    type: 'patch',
+    fixed: [
+      'Ein Fehler wurde behoben, der dazu geführt hat, dass die Scroll-Position bei bestimmten Seitenwechseln nicht korrekt aktualisiert wurde.',
+    ],
+  },
+  {
     version: '1.17.2',
     type: 'patch',
     fixed: [

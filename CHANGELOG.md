@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.17.3] - 2023-12-21
+
+### Fixed
+
+- Fixed an issue that would prevent scroll position to update properly after certain route changes.
+
 ## [1.17.2] - 2023-12-21
 
 ### Fixed
