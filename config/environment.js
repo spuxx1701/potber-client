@@ -36,6 +36,14 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
+  if (environment === 'development_remote') {
+    ENV.APP.HOSTNAME = 'localhost:4200';
+    ENV.APP.API_URL = 'https://test-api.potber.de';
+    ENV.APP.AUTH_ISSUER_URL = 'https://test-auth.potber.de';
+    ENV.APP.MEME_HOST_URL = 'https://potber.de';
+    ENV.APP.DEBUG = true;
+  }
+
   if (environment === 'development:mobile') {
     ENV.APP.HOSTNAME = 'http://schleppi.fritz.box:4200';
     ENV.APP.API_URL = 'http://schleppi.fritz.box:3000';

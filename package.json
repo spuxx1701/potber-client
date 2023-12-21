@@ -11,6 +11,9 @@
     "test": "tests"
   },
   "scripts": {
+    "start": "ember serve",
+    "start:remote": "ember serve --environment=development:remote",
+    "start:mobile": "ember serve --environment=development:mobile",
     "build": "ember build --environment=production",
     "build:staging": "ember build --environment=staging",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
@@ -20,8 +23,6 @@
     "lint:types": "glint",
     "prettier:check": "prettier --check . --plugin prettier-plugin-ember-template-tag",
     "prettier:format": "prettier --write . --plugin prettier-plugin-ember-template-tag",
-    "start": "ember serve",
-    "start:mobile": "ember serve --environment=development:mobile",
     "test": "ember test",
     "test:coverage": "ember test",
     "update": "npx npm-check-updates -u"
