@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.18.0] - TODO
+## [1.18.0] - 2023-12-21
 
 ### Added
 
@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Fixed an issue that would cause tables not being displayed properly on Chrome.
 - Fixed an issue where direct links to a thread (without providing a post id) would cause an error.
 - Ordered lists are now being parsed properly.
 - Various smaller fixes.

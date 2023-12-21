@@ -237,4 +237,5 @@ video {
   border: none;
   padding: 0.5rem;
   min-width: max-content;
+  white-space: nowrap;
 }

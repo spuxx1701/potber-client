@@ -8,6 +8,7 @@ export const changelog: ChangelogItem[] = [
     ],
     changed: ['Die Anwendung verwendet nun potber-auth zur Authentifizierung.'],
     fixed: [
+      'Tabellen werden nun in Chrome korrekt angezeigt.',
       'Verlinkungen auf einen Thread (ohne Angabe einer Post-ID) verursachen nun nicht länger einen Fehler.',
       "Nummerierte Listen ('[list=1]..[/list]') werden nun korrekt angezeigt.",
       'Diverse kleinere Fixes.',
