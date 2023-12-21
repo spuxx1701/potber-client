@@ -12,7 +12,6 @@ export function parseList(input: string) {
     try {
       const [full, openingTag, closingTag] = match;
       let replacement = full;
-      console.log(openingTag);
       if (openingTag === '[list=1]') {
         replacement = replacement.replace(openingTag as string, '<ol><li>');
         replacement = replacement.replace(closingTag as string, '</li></ol>');

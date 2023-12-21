@@ -36,7 +36,6 @@ export async function _create(
       }),
     });
     const bookmark = new Bookmark(data, this);
-    console.log(bookmark);
     return bookmark;
   } catch (error) {
     this.messages.showNotification(this.intl.t('error.unknown'), 'error');
