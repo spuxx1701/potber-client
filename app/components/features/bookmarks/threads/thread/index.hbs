@@ -13,8 +13,13 @@
     @variant='secondary'
     @onClick={{this.handleLinkClick}}
   >
-    <p class='title bookmark-title max-lines-1'>{{@bookmark.thread.title}}</p>
-    <p class='subtitle bookmark-subtitle'>{{this.subtitle}}</p>
+    <span class='bookmark-details'>
+      <p class='title bookmark-title max-lines-1'>{{@bookmark.thread.title}}</p>
+      <p class='subtitle bookmark-subtitle'>{{this.subtitle}}</p>
+    </span>
+    {{#if this.isClosed}}
+      <FaIcon @icon='lock' class='bookmark-lock-icon' />
+    {{/if}}
   </Common::Control::Link>
   <Common::Control::Menu>
     <Common::Control::Menu::Button

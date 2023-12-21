@@ -28,6 +28,10 @@ export default class BookmarksThreadcomponent extends Component<Signature> {
     }
   }
 
+  get isClosed() {
+    return this.args.bookmark.thread.isClosed;
+  }
+
   @action async handleDelete() {
     try {
       await this.args.bookmark.destroyRecord();

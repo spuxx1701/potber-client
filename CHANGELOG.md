@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 
+- Bookmarks now indicate whether the corresponding thread has been closed.
 - Added the option to delete bookmarks via the kebap menu within the thread view.
 - The in-app changelog now includes a `chores` section.
 

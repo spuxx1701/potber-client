@@ -3,6 +3,7 @@ export const changelog: ChangelogItem[] = [
     version: '1.17.0',
     type: 'minor',
     added: [
+      'Lesezeichen zeigen im Newsfeed und in der Lesezeichenansicht zeigen nun an, ob der zugehörige Thread geschlossen wurde.',
       'Lesezeichen können (falls vorhanden) nun auch über das Kebab-Menü innerhalb von Threads gelöscht werden.',
     ],
     changed: ['Die Anwendung verwendet nun potber-auth zur Authentifizierung.'],

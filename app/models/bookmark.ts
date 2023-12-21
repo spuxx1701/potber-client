@@ -8,9 +8,6 @@ export default class Bookmark extends Model {
   declare newPostsCount: number;
 
   @attr()
-  declare threadId?: string;
-
-  @attr()
   declare thread: BookmarkThreadSummary;
 
   @attr()

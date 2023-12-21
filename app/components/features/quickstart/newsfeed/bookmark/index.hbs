@@ -13,7 +13,10 @@
     @variant='secondary'
     @onClick={{this.handleLinkClick}}
   >
-    <FaIcon @icon='bookmark' class='fg-text-subtle' />
+    <FaIcon
+      @icon={{if this.isClosed 'lock' 'bookmark'}}
+      class='fg-text-subtle'
+    />
     <div class='text-start'>
       <p class='title max-lines-2'> {{@bookmark.thread.title}}</p>
       <p class='subtitle'>{{this.subtitle}}</p>

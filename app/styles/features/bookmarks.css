@@ -4,8 +4,10 @@
   flex-direction: row;
   box-sizing: border-box;
   width: 100%;
+  height: var(--control-default-height);
   border-radius: var(--global-border-radius);
   background-color: var(--color-post-background-secondary);
+  align-items: center;
 }
 
 .bookmark:not(:first-child) {
@@ -27,11 +29,17 @@
 
 .bookmark-link {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  flex-direction: row;
   padding: 0.5rem;
-  flex-grow: 1;
-  align-items: start;
+  align-items: center;
+  padding-right: 0;
+}
+
+.bookmark-details {
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .bookmark:not(:first-child) {
@@ -49,4 +57,8 @@
   text-align: start;
   text-decoration: none !important;
   max-width: 100%;
+}
+
+.bookmark .bookmark-lock-icon {
+  margin: 0 0 0 0.5rem !important;
 }
