@@ -17,6 +17,23 @@ export async function _findAll(this: ApiService): Promise<Bookmark[]> {
   }
 }
 
+// TODO: This should get moved to the api as a relation on the thread (threads/:id/bookmark)
+/**
+ * Attempts to find and return a bookmark by the corresponding thread id.
+ * @param threadId The thread id.
+ * @returns The bookmark (if it exists).
+ */
+export async function _findByThreadId(
+  this: ApiService,
+  threadId: string,
+): Promise<Bookmark | undefined> {
+  const bookmarks = await this.findAllBookmarks();
+  const bookmark = bookmarks.find(
+    (bookmark) => bookmark.thread.id === threadId,
+  );
+  return bookmark;
+}
+
 /**
  * Creates a new bookmark.
  * @param postId The post id.
