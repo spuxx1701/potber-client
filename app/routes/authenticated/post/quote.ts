@@ -2,7 +2,6 @@ import Transition from '@ember/routing/transition';
 import Post from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
 import PostCreateRoute, { PostCreateRouteModel } from './create';
-import { Posts } from 'potber-client/services/api/types';
 
 interface Params {
   TID: string;
