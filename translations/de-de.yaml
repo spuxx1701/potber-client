@@ -97,6 +97,7 @@ route:
       submit: Absenden
       preview: Vorschau
   thread:
+    create-bookmark-success: Das Lesezeichen wurde gesetzt.
     delete-bookmark: Bookmark löschen
     delete-bookmark-success: Das Lesezeichen wurde entfernt.
     report-post-success: Der Post wurde gemeldet.

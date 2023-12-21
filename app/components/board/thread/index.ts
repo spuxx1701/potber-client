@@ -32,7 +32,7 @@ export default class ThreadComponent extends Component<Signature> {
   get bookmark() {
     if (this.store.bookmarks) {
       return this.store.bookmarks.find(
-        (bookmark) => bookmark.thread.id === this.args.thread.id,
+        (bookmark) => bookmark.thread?.id === this.args.thread.id,
       );
     }
   }

@@ -10,7 +10,7 @@ export default class CustomSession extends BaseSessionService {
   @tracked sessionData: Session | null = null;
   declare data: any;
   declare isAuthenticated?: boolean;
-  declare invalidate: () => void;
+  declare invalidate: () => Promise<void>;
   declare authenticate: (
     authenticator: string,
     hash: Record<string, string>,

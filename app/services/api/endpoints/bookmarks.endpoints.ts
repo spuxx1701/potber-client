@@ -18,6 +18,33 @@ export async function _findAll(this: ApiService): Promise<Bookmark[]> {
 }
 
 /**
+ * Creates a new bookmark.
+ * @param postId The post id.
+ * @param threadId The thread id.
+ */
+export async function _create(
+  this: ApiService,
+  postId: string,
+  threadId: string,
+): Promise<Bookmark> {
+  try {
+    const data: IBookmark = await this.fetch(`bookmarks`, {
+      method: 'POST',
+      body: JSON.stringify({
+        postId,
+        threadId,
+      }),
+    });
+    const bookmark = new Bookmark(data, this);
+    console.log(bookmark);
+    return bookmark;
+  } catch (error) {
+    this.messages.showNotification(this.intl.t('error.unknown'), 'error');
+    throw error;
+  }
+}
+
+/**
  * Deletes a bookmark.
  * @param id The bookmark id.
  */

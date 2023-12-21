@@ -24,7 +24,7 @@ export default class QuickstartNewsfeedBookmarkComponent extends Component<Signa
   }
 
   get isClosed() {
-    return this.args.bookmark.thread.isClosed;
+    return this.args.bookmark.thread?.isClosed;
   }
 
   @action handleLinkClick() {

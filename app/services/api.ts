@@ -21,6 +21,7 @@ export default class ApiService extends Service {
   quotePost = Posts.quote;
   reportPost = Posts.report;
   findAllBookmarks = Bookmarks._findAll;
+  createBookmark = Bookmarks._create;
   deleteBookmark = Bookmarks._delete;
   // --------------------------------------------------- //
 

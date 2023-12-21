@@ -8,7 +8,7 @@ export default class Bookmark extends Model {
   declare newPostsCount: number;
 
   @attr()
-  declare thread: BookmarkThreadSummary;
+  declare thread?: BookmarkThreadSummary;
 
   @attr()
   declare board: BookmarkBoardSummary;

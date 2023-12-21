@@ -4,7 +4,6 @@ import Component from '@glimmer/component';
 import ContentParserService from 'potber-client/services/content-parser';
 import MessagesService from 'potber-client/services/messages';
 import Post from 'potber-client/models/post';
-import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import Thread from 'potber-client/models/thread';
 import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
@@ -30,7 +29,6 @@ export default class PostComponent extends Component<Signature> {
   @service declare contentParser: ContentParserService;
   @service declare messages: MessagesService;
   @service declare session: CustomSession;
-  @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
   @service declare renderer: RendererService;
@@ -103,28 +101,12 @@ export default class PostComponent extends Component<Signature> {
   }
 
   @action async setBookmark() {
-    try {
-      const bookmark = this.store.createRecord('bookmark', {
-        postId: this.args.post.id,
-        threadId: this.args.post.threadId,
-      });
-      await bookmark.save();
-      this.messages.showNotification('Bookmark gespeichert', 'success');
-      this.newsfeed.refreshBookmarks();
-    } catch (error: any) {
-      if (error.errors?.find((httpError: any) => httpError.status === '400')) {
-        this.messages.showNotification(
-          'Lesezeichen ist bereits gesetzt.',
-          'error',
-        );
-      } else {
-        this.messages.logErrorAndNotify(
-          'Das hat leider nicht geklappt.',
-          error,
-          this.constructor.name,
-        );
-      }
-    }
+    await this.api.createBookmark(this.args.post.id, this.args.post.threadId);
+    this.messages.showNotification(
+      this.intl.t('route.thread.create-bookmark-success'),
+      'success',
+    );
+    this.newsfeed.refreshBookmarks();
   }
 
   @action async savePost() {
