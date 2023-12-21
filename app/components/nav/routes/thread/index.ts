@@ -7,10 +7,15 @@ import RouterService from '@ember/routing/router-service';
 import Thread from 'potber-client/models/thread';
 import CustomSession from 'potber-client/services/custom-session';
 import { appConfig } from 'potber-client/config/app.config';
+import MessagesService from 'potber-client/services/messages';
+import ApiService from 'potber-client/services/api';
+import { IntlService } from 'ember-intl';
+import { Bookmark } from 'potber-client/services/api/models/bookmark';
 
 export interface Signature {
   Args: {
     thread: Thread;
+    bookmark?: Bookmark;
   };
 }
 
@@ -19,6 +24,9 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare modal: ModalService;
   @service declare router: RouterService;
   @service declare session: CustomSession;
+  @service declare messages: MessagesService;
+  @service declare api: ApiService;
+  @service declare intl: IntlService;
   declare args: Signature['Args'];
 
   get subtitle() {
@@ -52,6 +60,20 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   get authenticated() {
     return this.session.isAuthenticated;
   }
+
+  get bookmark() {
+    if (this.args.bookmark && !this.args.bookmark.isDeleted)
+      return this.args.bookmark;
+  }
+
+  deleteBookmark = async () => {
+    if (!this.args.bookmark) return;
+    await this.args.bookmark.delete();
+    this.messages.showNotification(
+      this.intl.t('route.thread.delete-bookmark-success'),
+      'success',
+    );
+  };
 
   reload = async () => {
     this.renderer.preventNextScrollReset();

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.18.0] - TODO
 
+### Added
+
+- Added the option to delete bookmarks via the kebap menu within the thread view.
+
 ### Changed
 
 - The application now uses [potber-auth](https://github.com/spuxx1701/potber-auth) for authentication.

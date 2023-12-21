@@ -38,6 +38,13 @@
       @variant='primary-transparent'
       @icon='ellipsis'
     >
+      {{#if this.bookmark}}
+        <Common::Control::Menu::Button
+          @text={{t 'route.thread.delete-bookmark'}}
+          @icon='bookmark'
+          @onClick={{this.deleteBookmark}}
+        />
+      {{/if}}
       <Common::Control::Menu::Link
         @text='Original öffnen'
         @icon='up-right-from-square'

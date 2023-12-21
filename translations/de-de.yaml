@@ -26,6 +26,9 @@ error:
       too-many-requests: Du sendest zu viele Anfragen in zu kurzer Zeit. Bitte warte einen Moment.
     report:
       conflict: Du kannst diesen Post nicht melden, weil er bereits gemeldet worden ist.
+  bookmark:
+    find-by-id:
+      not-found: Dieses Lesezeichen konnten wir leider nicht finden.
 misc:
   ok: OK,
   cancel: Abbrechen
@@ -94,4 +97,6 @@ route:
       submit: Absenden
       preview: Vorschau
   thread:
+    delete-bookmark: Bookmark löschen
+    delete-bookmark-success: Das Lesezeichen wurde entfernt.
     report-post-success: Der Post wurde gemeldet.

@@ -1,7 +1,10 @@
 {{! @glint-nocheck }}{{#if @model.thread}}
   {{page-title this.pageTitle}}
 
-  <Nav::Routes::Thread @thread={{@model.thread}} />
+  <Nav::Routes::Thread
+    @thread={{@model.thread}}
+    @bookmark={{@model.bookmark}}
+  />
 
   <Board::ThreadPage
     @thread={{@model.thread}}
