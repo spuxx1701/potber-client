@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.17.2] - 2023-12-21
+
+### Fixed
+
+- Fixed an issue that would cause post order to be reversed after navigating from the post form view to the thread view.
+
 ## [1.17.1] - 2023-12-21
 
 ### Fixed

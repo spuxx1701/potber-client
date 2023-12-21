@@ -8,8 +8,4 @@
   @navSubtitle={{@model.thread.title}}
 />
 
-<Board::ThreadPage
-  @thread={{@model.thread}}
-  @reverseOrder={{true}}
-  @lastReadPost='*'
-/>
+<Routes::Post::RecentPosts @thread={{@model.thread}} />

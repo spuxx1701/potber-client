@@ -1,0 +1,6 @@
+{{! @glint-nocheck }}
+<div class='thread-page'>
+  {{#each this.posts as |post|}}
+    <Board::Post @post={{post}} @thread={{@thread}} @subtle={{true}} />
+  {{/each}}
+</div>

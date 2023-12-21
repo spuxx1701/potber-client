@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.17.2',
+    type: 'patch',
+    fixed: [
+      'Beim Navigieren vom Postformular zur Threadansicht werden nun nicht mehr die Posts in umgekehrter Reihenfolge angezeigt.',
+    ],
+  },
+  {
     version: '1.17.1',
     type: 'patch',
     fixed: ['Die Abwärtskompatibilität bzgl. des Logins wurde verbessert.'],

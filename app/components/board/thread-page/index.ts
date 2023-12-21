@@ -10,7 +10,6 @@ import SettingsService, { Gestures } from 'potber-client/services/settings';
 interface Signature {
   Args: {
     thread: Thread;
-    reverseOrder?: boolean;
     lastReadPost?: string;
   };
 }
@@ -24,11 +23,7 @@ export default class ThreadPageComponent extends Component<Signature> {
   }
 
   get posts() {
-    if (this.args.reverseOrder) {
-      return this.page.posts.reverse();
-    } else {
-      return this.page.posts;
-    }
+    return this.page.posts;
   }
 
   get disableOverscroll() {
