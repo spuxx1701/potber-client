@@ -5,8 +5,6 @@ import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import SlowRoute from '../slow';
-import ApiService from 'potber-client/services/api';
-import { Bookmark } from 'potber-client/services/api/models/bookmark';
 
 interface Params {
   TID: string;
@@ -19,11 +17,9 @@ interface Params {
 export interface ThreadRouteModel {
   thread: Thread;
   lastReadPost: string;
-  bookmark?: Bookmark;
 }
 
 export default class ThreadRoute extends SlowRoute {
-  @service declare api: ApiService;
   @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
 
@@ -69,15 +65,9 @@ export default class ThreadRoute extends SlowRoute {
           },
         },
       });
-      // We will also check whether the thread has been bookmarked. If it has, also load that bookmark.
-      const bookmarks = await this.api.findAllBookmarks();
-      const bookmark = bookmarks.find(
-        (bookmark) => bookmark.thread.id === thread.id,
-      );
       return {
         thread,
         lastReadPost: lastReadPost,
-        bookmark,
       } as ThreadRouteModel;
     } catch (error: any) {
       if (error.message === 'not-found') {

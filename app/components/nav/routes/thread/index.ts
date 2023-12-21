@@ -10,12 +10,11 @@ import { appConfig } from 'potber-client/config/app.config';
 import MessagesService from 'potber-client/services/messages';
 import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
-import { Bookmark } from 'potber-client/services/api/models/bookmark';
+import { trackedFunction } from 'ember-resources/util/function';
 
 export interface Signature {
   Args: {
     thread: Thread;
-    bookmark?: Bookmark;
   };
 }
 
@@ -61,14 +60,19 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
     return this.session.isAuthenticated;
   }
 
+  bookmarkResource = trackedFunction(this, () =>
+    this.api.findBookmarkByThreadId(this.args.thread.id),
+  );
+
   get bookmark() {
-    if (this.args.bookmark && !this.args.bookmark.isDeleted)
-      return this.args.bookmark;
+    return this.bookmarkResource.value && !this.bookmarkResource.value.isDeleted
+      ? this.bookmarkResource.value
+      : undefined;
   }
 
   deleteBookmark = async () => {
-    if (!this.args.bookmark) return;
-    await this.args.bookmark.delete();
+    if (!this.bookmark) return;
+    await this.bookmark.delete();
     this.messages.showNotification(
       this.intl.t('route.thread.delete-bookmark-success'),
       'success',
