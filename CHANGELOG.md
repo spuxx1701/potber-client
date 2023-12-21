@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - Added the option to delete bookmarks via the kebap menu within the thread view.
+- The in-app changelog now includes a `chores` section.
 
 ### Changed
 
@@ -23,6 +24,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Chores
 
 - Added support for `nvm`.
+- Started the migration from `ember-data` to a custom solution for data fetching and handling. The reasoning behind this change can be read [here](https://github.com/spuxx1701/potber-client/issues/213).
 
 ## [1.16.0] - 2023-11-13
 

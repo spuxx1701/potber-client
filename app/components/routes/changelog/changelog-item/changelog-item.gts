@@ -75,6 +75,14 @@ export default class ChangelogItemComponent extends Component<Signature> {
           {{/each}}
         </ul>
       {{/if}}
+      {{#if @item.chores}}
+        <p class='title'>Chores:</p>
+        <ul>
+          {{#each @item.chores as |element|}}
+            <li>{{element}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
     </div>
   </template>
 }

@@ -11,6 +11,9 @@ export const changelog: ChangelogItem[] = [
       "Nummerierte Listen ('[list=1]..[/list]') werden nun korrekt angezeigt.",
       'Diverse kleinere Fixes.',
     ],
+    chores: [
+      'Ich habe mit der Migration von ember-data auf eine eigene Lösung begonnen. Die andauernde Migration kann jetzt und in Zukunft ggf. Fehler verursachen, daher bitte ich um Nachsicht. :-)',
+    ],
   },
   {
     version: '1.16.0',
@@ -355,6 +358,7 @@ export interface ChangelogItem {
   changed?: string[];
   removed?: string[];
   fixed?: string[];
+  chores?: string[];
 }
 
 export type ChangelogItemType = 'major' | 'minor' | 'patch';
