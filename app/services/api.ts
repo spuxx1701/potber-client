@@ -6,6 +6,7 @@ import * as Users from './api/endpoints/users.endpoints';
 import * as Posts from './api/endpoints/posts.endpoints';
 import { ApiError } from './api/error';
 import CustomSession from './custom-session';
+import * as Bookmarks from './api/endpoints/bookmarks.endpoints';
 
 export default class ApiService extends Service {
   @service declare messages: MessagesService;
@@ -19,6 +20,8 @@ export default class ApiService extends Service {
   updatePost = Posts.update;
   quotePost = Posts.quote;
   reportPost = Posts.report;
+  findAllBookmarks = Bookmarks._findAll;
+  deleteBookmark = Bookmarks._delete;
   // --------------------------------------------------- //
 
   /**
@@ -26,7 +29,7 @@ export default class ApiService extends Service {
    * @param request The `RequestInit` object.
    * @returns The data.
    */
-  fetch = async (path: string, request?: RequestInit) => {
+  fetch = async (path: string, request?: RequestInit): Promise<any> => {
     if (!path.startsWith('/')) path = `/${path}`;
     const url = `${appConfig.apiUrl}${path}`;
     try {
@@ -47,6 +50,7 @@ export default class ApiService extends Service {
         ...request,
         headers: { ...headers, ...request?.headers },
       });
+      if (response.ok && response.headers.get('content-length') === '0') return;
       const data = await response.json();
       if (!response.ok) {
         throw new ApiError(
