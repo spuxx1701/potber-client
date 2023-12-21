@@ -11,6 +11,7 @@ Router.map(function () {
   this.route('about');
   this.route('applog');
   this.route('changelog');
+  this.route('login');
   this.route('auth', function () {
     this.route('login');
     this.route('callback');

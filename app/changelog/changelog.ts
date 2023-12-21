@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.17.1',
+    type: 'patch',
+    fixed: ['Die Abwärtskompatibilität bzgl. des Logins wurde verbessert.'],
+  },
+  {
     version: '1.17.0',
     type: 'minor',
     added: [

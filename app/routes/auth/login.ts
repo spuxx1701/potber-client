@@ -10,7 +10,7 @@ export default class AuthLoginRoute extends Route {
 
   beforeModel() {
     if (this.session.isAuthenticated) {
-      this.router.transitionTo('authenticated.authenticated.home');
+      this.router.transitionTo('authenticated.home');
     } else {
       const url =
         `${authConfig.issuerUrl}${authConfig.authorizeEndpoint}` +

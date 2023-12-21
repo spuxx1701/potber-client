@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.17.1] - 2023-12-21
+
+### Fixed
+
+- Improved backwards compatibility regarding login routes.
+
 ## [1.17.0] - 2023-12-21
 
 ### Added
