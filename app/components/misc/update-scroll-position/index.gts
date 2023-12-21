@@ -4,10 +4,12 @@ import { guidFor } from '@ember/object/internals';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
+import SettingsService from 'potber-client/services/settings';
 
 export default class UpdateScrollPositionComponent extends Component {
   @service declare renderer: RendererService;
   @service declare router: any;
+  @service declare settings: SettingsService;
 
   elementId = guidFor(this);
 
@@ -33,7 +35,10 @@ export default class UpdateScrollPositionComponent extends Component {
           behavior: 'smooth',
         });
       }
-    } else if (params.has('scrollToBottom')) {
+    } else if (
+      params.has('scrollToBottom') &&
+      this.settings.getSetting('goToBottomOfThreadPage')
+    ) {
       // If 'scrollToBottom' to bottom has been provided, scroll to bottom
       this.renderer.trySetScrollPosition({
         top: document.body.scrollHeight,

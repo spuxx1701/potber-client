@@ -64,8 +64,4 @@ export default class ThreadComponent extends Component<Signature> {
       `<b>${post.author.name}</b> am ${new Date(post.date).toLocaleString()}`,
     );
   }
-
-  get scrollToBottom() {
-    return this.settings.getSetting('goToBottomOfThreadPage') || undefined;
-  }
 }
