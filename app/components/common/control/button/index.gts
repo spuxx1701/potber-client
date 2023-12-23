@@ -26,7 +26,7 @@ interface Signature {
   };
 }
 
-export default class CommonButtonComponent extends Component<Signature> {
+export default class Button extends Component<Signature> {
   @service declare renderer: RendererService;
   declare args: Signature['Args'];
 

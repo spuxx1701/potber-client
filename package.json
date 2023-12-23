@@ -66,6 +66,7 @@
     "@types/ember-data__model": "^4.0.1",
     "@types/ember-data__serializer": "^4.0.1",
     "@types/ember-data__store": "^4.0.6",
+    "@types/katex": "^0.16.7",
     "@types/qunit": "^2.19.5",
     "@types/rsvp": "^4.0.4",
     "@types/semver": "^7.5.5",
@@ -110,12 +111,14 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-qunit": "^7.3.4",
+    "katex": "^0.16.9",
     "loader.js": "^4.7.0",
     "prettier": "^3.0.3",
     "prettier-plugin-ember-template-tag": "^1.1.0",
     "qunit": "^2.19.4",
     "qunit-dom": "^2.0.0",
     "semver": "^7.5.1",
+    "tinygesture": "^2.0.0",
     "typescript": "^5.1.6",
     "uuid": "^9.0.1",
     "webpack": "^5.86.0"
@@ -125,8 +128,5 @@
   },
   "ember": {
     "edition": "octane"
-  },
-  "dependencies": {
-    "tinygesture": "^2.0.0"
   }
 }

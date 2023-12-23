@@ -79,16 +79,6 @@ const simpleTags: SimpleTag[] = [
   },
   {
     open: {
-      regex: /\[tex\]/gi,
-      replacement: '<p class="tex">',
-    },
-    close: {
-      regex: /\[\/tex\]/gi,
-      replacement: '</p>',
-    },
-  },
-  {
-    open: {
       regex: /\[trigger\]/gi,
       replacement: '<p class="trigger" onclick="this.className=null;">',
     },

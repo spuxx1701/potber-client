@@ -14,6 +14,7 @@ import { parsePrivateMessageHtml } from './content-parser/private-message';
 import SettingsService from './settings';
 import { parsePrivilegedTags } from './content-parser/privileged-tags';
 import { appConfig } from 'potber-client/config/app.config';
+import { parseLatex } from './content-parser/latex';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -41,6 +42,7 @@ export default class ContentParserService extends Service {
     output = parseQuote(output, window.location);
     output = parseList(output);
     output = parseTable(output);
+    output = parseLatex(output);
     output = this.parseEmojis(output);
     output = this.format(output);
     return output;
