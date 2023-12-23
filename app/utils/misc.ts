@@ -1,3 +1,5 @@
+import { appConfig } from 'potber-client/config/app.config';
+
 /**
  * Turns the given unix timestamp into a Date object.
  * @param timestamp The unix timestamp.
@@ -33,4 +35,19 @@ export function debounce<TArgs extends unknown[], TReturn>(
       timer = setTimeout(() => resolve(callback(...args)), delay);
     });
   };
+}
+
+/**
+ * Determins whether it currently is christmas season. Used for showing christmas icons and emojis.
+ */
+export function isChristmasSeason() {
+  const { christmasSeasonStart, christmasSeasonEnd } = appConfig;
+  const now = new Date();
+  const christmasSeasonStartDate = new Date(
+    `${now.getFullYear()}-${christmasSeasonStart}`,
+  );
+  const christmasSeasonEndDate = new Date(
+    `${now.getFullYear()}-${christmasSeasonEnd}`,
+  );
+  return now > christmasSeasonStartDate && now < christmasSeasonEndDate;
 }

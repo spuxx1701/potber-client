@@ -19,11 +19,7 @@
     {{#if (eq this.icon '0')}}
       <FaIcon @icon={{this.randomEmojiIcon}} @prefix='far' />
     {{else}}
-      <Board::Icon
-        @key={{this.icon}}
-        @directory='post-icons'
-        @filename='{{this.icon}}.gif'
-      />
+      <Board::Icon @icon={{this.icon}} />
     {{/if}}
   </Common::Control::Button>
 </div>

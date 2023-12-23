@@ -74,11 +74,7 @@
     {{else}}
       {{#if (or @post.title @post.icon)}}
         <p class='title post-title'>
-          <Board::Icon
-            @key={{@post.icon}}
-            @directory='post-icons'
-            @filename='{{@post.icon}}.gif'
-          />
+          <Board::Icon @icon={{@post.icon}} />
           {{@post.title}}
         </p>
       {{/if}}

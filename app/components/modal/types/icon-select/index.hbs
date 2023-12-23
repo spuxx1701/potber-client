@@ -15,11 +15,7 @@
         {{#if (eq option.key '0')}}
           <FaIcon @icon='times' />
         {{else}}
-          <Board::Icon
-            @key={{option.key}}
-            @directory={{option.directory}}
-            @filename={{option.filename}}
-          />
+          <Board::Icon @icon={{option.key}} />
         {{/if}}
       </Common::Control::Button>
     {{/each}}

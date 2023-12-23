@@ -1,5 +1,4 @@
 import Service, { service } from '@ember/service';
-import { emojis } from 'potber-client/utils/icons';
 import MessagesService from './messages';
 import { parseVideo } from './content-parser/video';
 import { parseUrl } from './content-parser/url';
@@ -14,6 +13,8 @@ import { parsePrivateMessageHtml } from './content-parser/private-message';
 import SettingsService from './settings';
 import { parsePrivilegedTags } from './content-parser/privileged-tags';
 import { appConfig } from 'potber-client/config/app.config';
+import { emojis } from 'potber-client/config/icons.config';
+import { getEmojiFilename } from 'potber-client/utils/icons';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -56,7 +57,9 @@ export default class ContentParserService extends Service {
     for (const emoji of emojis) {
       output = output.replaceAll(
         emoji.pattern,
-        `<img class="post-emoji" src="/images/post-emojis/${emoji.filename}" alt="${emoji.key}"/>`,
+        `<img class="post-emoji" src="/images/post-emojis/${getEmojiFilename(
+          emoji.key,
+        )}" alt="${emoji.key}"/>`,
       );
     }
     return output;

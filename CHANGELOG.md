@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.17.5] - 2023-12-23
+
+### Fixed
+
+- Fixed the unbearable situation of potber not using christmas icons.
+
 ## [1.17.4] - 2023-12-21
 
 ### Fixed

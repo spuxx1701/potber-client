@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.17.5',
+    type: 'patch',
+    fixed: [
+      'Die völlig unerträgliche Situation, dass potber keine Weihnachts-Icons verwendete, wurde behoben. Schöne Feiertage! 🎅🎄',
+    ],
+  },
+  {
     version: '1.17.4',
     type: 'patch',
     fixed: [

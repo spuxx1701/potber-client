@@ -16,11 +16,7 @@
         <FaIcon @icon='bookmark' />
       {{/if}}
       {{#if this.icon}}
-        <Board::Icon
-          @key={{this.icon}}
-          @directory='post-icons'
-          @filename='{{this.icon}}.gif'
-        />
+        <Board::Icon @icon={{this.icon}} />
       {{/if}}
       <p>{{@thread.title}}</p>
     </div>
