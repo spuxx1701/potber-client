@@ -45,6 +45,7 @@ module.exports = {
         './config/**/*.js',
         './lib/*/index.js',
         './server/**/*.js',
+        './postcss.config.js',
       ],
       parserOptions: {
         sourceType: 'script',

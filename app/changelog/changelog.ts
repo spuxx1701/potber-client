@@ -8,6 +8,7 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'In der Kopfzeile eines Posts ist nun besser erkennbar, wenn der/die Verfasser:in des Posts gelöscht wurde.',
     ],
+    chores: ['Build-System wurde nach embroider migriert.'],
   },
   {
     version: '1.17.5',
