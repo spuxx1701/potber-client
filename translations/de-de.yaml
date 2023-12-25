@@ -13,7 +13,7 @@ private-messages:
 error:
   unknown: Das hat leider nicht geklappt. Versuche es später nochmal.
   users:
-    not-found: Diese Nutzer:in konnten wir leider nicht finden.
+    not-found: Diese:n Nutzer:in konnten wir leider nicht finden.
   posts:
     find-by-id:
       forbidden: Du bist leider nicht berechtigt, auf diesen Post zuzugreifen.
@@ -104,3 +104,5 @@ route:
     delete-bookmark: Bookmark löschen
     delete-bookmark-success: Das Lesezeichen wurde entfernt.
     report-post-success: Der Post wurde gemeldet.
+    post:
+      deleted-user: Gelöschte:r Nutzer:in

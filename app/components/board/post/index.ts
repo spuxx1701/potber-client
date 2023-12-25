@@ -47,6 +47,13 @@ export default class PostComponent extends Component<Signature> {
     return `post-${this.args.post.id}`;
   }
 
+  get authorName() {
+    return (
+      this.args.post.author.name ??
+      this.intl.t('route.thread.post.deleted-user')
+    );
+  }
+
   get date() {
     if (this.args.isPreview) {
       return new Date().toLocaleString();
@@ -59,6 +66,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get url() {
+    console.log(this.args.post);
     return `${appConfig.forumUrl}/thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}`;
   }
 

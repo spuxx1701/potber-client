@@ -11,9 +11,9 @@
           class='post-details-author-name'
           {{on 'click' this.showAuthorProfile}}
         >{{#unless @post.author.locked}}
-            <b>{{@post.author.name}}</b>
+            <b>{{this.authorName}}</b>
           {{else}}
-            <s><b>{{@post.author.name}}</b></s><FaIcon @icon='lock' />
+            <s><b>{{this.authorName}}</b></s><FaIcon @icon='lock' />
           {{/unless}}
         </button>
         <button

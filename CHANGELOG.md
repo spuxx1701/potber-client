@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Added an option to hide global and announcement threads.
 
+### Changed
+
+- Improved how deleted users are being displayed.
+
 ## [1.17.5] - 2023-12-23
 
 ### Fixed

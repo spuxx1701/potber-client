@@ -2,8 +2,11 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.18.0',
     type: 'minor',
-    fixed: [
+    added: [
       'Globale Threads und Ankündigungen können nun über eine Einstellung ausgeblendet werden.',
+    ],
+    changed: [
+      'In der Kopfzeile eines Posts ist nun besser erkennbar, wenn der/die Verfasser:in des Posts gelöscht wurde.',
     ],
   },
   {
