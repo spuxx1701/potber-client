@@ -54,7 +54,7 @@
   <Common::Control::Dropdown
     @options={{this.config.darkenReadPostsOptions}}
     @default={{@model.currentDarkenReadPostsOption}}
-    @onSelect={{this.handleDarkenReadPostsSelect}}
+    @onSelect={{fn this.handleSettingSelect 'darkenReadPosts'}}
     @size='max'
     @label={{t 'route.settings.darken-read-posts.label'}}
   >
@@ -66,12 +66,27 @@
     </:info>
   </Common::Control::Dropdown>
 
+  <Common::Control::Dropdown
+    @options={{this.config.hideGlobalAndAnnouncementThreadsOptions}}
+    @default={{@model.currentHideGlobalAndAnnouncementThreadsOption}}
+    @onSelect={{fn this.handleSettingSelect 'hideGlobalAndAnnouncementThreads'}}
+    @size='max'
+    @label={{t 'route.settings.hide-global-and-announcement-threads.label'}}
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.hide-global-and-announcement-threads.label'}}
+        @text={{t 'route.settings.hide-global-and-announcement-threads.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
+
   <h3>{{t 'route.settings.category.network'}}</h3>
 
   <Common::Control::Dropdown
     @options={{this.config.avatarStyleOptions}}
     @default={{@model.currentAvatarStyleOption}}
-    @onSelect={{this.handleAvatarStyleSelect}}
+    @onSelect={{fn this.handleSettingSelect 'avatarStyle'}}
     @size='max'
     @label={{t 'route.settings.avatar-style.label'}}
   >
@@ -86,7 +101,7 @@
   <Common::Control::Dropdown
     @options={{this.config.autoRefreshSidebarOptions}}
     @default={{@model.currentAutoRefreshSidebarOption}}
-    @onSelect={{this.handleAutoRefreshSidebarSelect}}
+    @onSelect={{fn this.handleSettingSelect 'autoRefreshSidebar'}}
     @size='max'
     @label={{t 'route.settings.auto-refresh-sidebar.label'}}
   >
@@ -103,7 +118,7 @@
   <Common::Control::Dropdown
     @options={{this.config.landingPageOptions}}
     @default={{@model.currentLandingPageOption}}
-    @onSelect={{this.handleLandingPageSelect}}
+    @onSelect={{fn this.handleSettingSelect 'landingPage'}}
     @size='max'
     @label={{t 'route.settings.landing-page.label'}}
   >
@@ -118,7 +133,7 @@
   <Common::Control::Dropdown
     @options={{this.config.replaceForumUrlsOptions}}
     @default={{@model.currentReplaceForumUrlsOption}}
-    @onSelect={{this.handleReplaceForumUrlsSelect}}
+    @onSelect={{fn this.handleSettingSelect 'replaceForumUrls'}}
     @size='max'
     @label={{t 'route.settings.replace-forum-urls.label'}}
   >
@@ -133,7 +148,7 @@
   <Common::Control::Dropdown
     @options={{this.config.goToBottomOfThreadPageOptions}}
     @default={{@model.currentGoToBottomOfThreadPageOption}}
-    @onSelect={{this.handleGoToBottomOfThreadPageSelect}}
+    @onSelect={{fn this.handleSettingSelect 'goToBottomOfThreadPage'}}
     @size='max'
     @label={{t 'route.settings.go-to-bottom-of-thread-page.label'}}
   >

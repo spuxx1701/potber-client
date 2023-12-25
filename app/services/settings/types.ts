@@ -5,8 +5,9 @@ export interface Settings {
   autoRefreshSidebar: boolean;
   sidebarLayout: SidebarLayout;
   fontSize: FontSize;
-  replaceForumUrls: boolean;
   darkenReadPosts: boolean;
+  hideGlobalAndAnnouncementThreads: boolean;
+  replaceForumUrls: boolean;
   goToBottomOfThreadPage: boolean;
   gestures: Gestures;
   debug: boolean;

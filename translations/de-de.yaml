@@ -56,10 +56,13 @@ route:
       info: Bestimme selbst, ob die Sidebar von der linken oder rechten Seite öffnen und in welcher Ecke der dazugehörige Button positioniert werden soll.
     font-size:
       label: Schriftgröße
-      info: Stelle die Schriftgröße ein, die potber für Texte und Icons verwenden soll.
+      info: Stelle die Schriftgröße ein, die potber für Texte und Symbole verwenden soll.
     darken-read-posts:
       label: Gelesene Posts abdunkeln
       info: Stelle ein, ob beim Aufruf eines Lesezeichens bereits gelesene Posts abgedunkelt werden sollen. Der "Neue Posts"-Trenner wird in jedem Fall eingeblendet.
+    hide-global-and-announcement-threads:
+      label: Globale Threads & Ankündigungen
+      info: Stelle ein, ob globale Threads und Ankündigungen in der Board-Ansicht angezeigt oder ausgeblendet werden sollen.
     go-to-bottom-of-thread-page:
       label: Nach Öffnen eines Threads
       info: Stelle ein, ob beim Navigieren zu einem Thread aus einem Board der Seitenanfang oder das Seitenende der letzten Threadseite gezeigt werden soll.

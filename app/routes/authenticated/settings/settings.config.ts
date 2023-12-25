@@ -86,6 +86,14 @@ export const settingsConfig: Record<
     },
   ],
 
+  hideGlobalAndAnnouncementThreadsOptions: [
+    {
+      label: 'Anzeigen',
+      data: false,
+    },
+    { label: 'Ausblenden', data: true },
+  ],
+
   goToBottomOfThreadPageOptions: [
     {
       label: 'Zum Seitenende springen',

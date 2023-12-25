@@ -20,6 +20,13 @@ export default class ThreadComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare settings: SettingsService;
 
+  get hideThread() {
+    return (
+      (this.args.thread.isAnnouncement || this.args.thread.isGlobal) &&
+      this.settings.getSetting('hideGlobalAndAnnouncementThreads')
+    );
+  }
+
   get isImportant() {
     return (
       this.args.thread.isAnnouncement ||

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.18.0] - TODO
+
+### Added
+
+- Added an option to hide global and announcement threads.
+
 ## [1.17.5] - 2023-12-23
 
 ### Fixed

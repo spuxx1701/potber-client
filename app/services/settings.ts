@@ -28,6 +28,7 @@ export default class SettingsService extends Service {
     fontSize: FontSize.medium,
     replaceForumUrls: true,
     darkenReadPosts: false,
+    hideGlobalAndAnnouncementThreads: false,
     goToBottomOfThreadPage: true,
     gestures: Gestures.none,
     debug: false,
@@ -72,6 +73,12 @@ export default class SettingsService extends Service {
       }
       if (typeof storedSettings.goToBottomOfThreadPage === 'boolean') {
         settings.goToBottomOfThreadPage = storedSettings.goToBottomOfThreadPage;
+      }
+      if (
+        typeof storedSettings.hideGlobalAndAnnouncementThreads === 'boolean'
+      ) {
+        settings.hideGlobalAndAnnouncementThreads =
+          storedSettings.hideGlobalAndAnnouncementThreads;
       }
       if (Object.values(Gestures).includes(storedSettings.gestures)) {
         settings.gestures = storedSettings.gestures;

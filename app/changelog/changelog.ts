@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.18.0',
+    type: 'minor',
+    fixed: [
+      'Globale Threads und Ankündigungen können nun über eine Einstellung ausgeblendet werden.',
+    ],
+  },
+  {
     version: '1.17.5',
     type: 'patch',
     fixed: [

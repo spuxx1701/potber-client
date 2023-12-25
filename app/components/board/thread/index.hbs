@@ -1,52 +1,54 @@
 {{! @glint-nocheck }}
-<Common::Control::Link
-  class='board-item {{if this.isImportant "board-item-important"}}'
-  @route='authenticated.thread'
-  @query={{hash
-    TID=@thread.id
-    page=@thread.pagesCount
-    scrollToBottom=true
-    PID=undefined
-    lastReadPost=undefined
-  }}
->
-  <div class='board-item-header'>
-    <div class='board-item-title'>
-      {{#if this.bookmark}}
-        <FaIcon @icon='bookmark' />
-      {{/if}}
-      {{#if this.icon}}
-        <Board::Icon @icon={{this.icon}} />
-      {{/if}}
-      <p>{{@thread.title}}</p>
+{{#unless this.hideThread}}
+  <Common::Control::Link
+    class='board-item {{if this.isImportant "board-item-important"}}'
+    @route='authenticated.thread'
+    @query={{hash
+      TID=@thread.id
+      page=@thread.pagesCount
+      scrollToBottom=true
+      PID=undefined
+      lastReadPost=undefined
+    }}
+  >
+    <div class='board-item-header'>
+      <div class='board-item-title'>
+        {{#if this.bookmark}}
+          <FaIcon @icon='bookmark' />
+        {{/if}}
+        {{#if this.icon}}
+          <Board::Icon @icon={{this.icon}} />
+        {{/if}}
+        <p>{{@thread.title}}</p>
+      </div>
+      <div class='board-item-flags'>
+        {{#if @thread.isAnnouncement}}
+          <FaIcon @icon='bullhorn' />
+        {{/if}}
+        {{#if @thread.isImportant}}
+          <FaIcon @icon='circle-exclamation' />
+        {{/if}}
+        {{#if @thread.isSticky}}
+          <FaIcon @icon='thumbtack' />
+        {{/if}}
+        {{#if @thread.isGlobal}}
+          <FaIcon @icon='globe' />
+        {{/if}}
+        {{#if @thread.isClosed}}
+          <FaIcon @icon='lock' />
+        {{/if}}
+      </div>
     </div>
-    <div class='board-item-flags'>
-      {{#if @thread.isAnnouncement}}
-        <FaIcon @icon='bullhorn' />
-      {{/if}}
-      {{#if @thread.isImportant}}
-        <FaIcon @icon='circle-exclamation' />
-      {{/if}}
-      {{#if @thread.isSticky}}
-        <FaIcon @icon='thumbtack' />
-      {{/if}}
-      {{#if @thread.isGlobal}}
-        <FaIcon @icon='globe' />
-      {{/if}}
-      {{#if @thread.isClosed}}
-        <FaIcon @icon='lock' />
-      {{/if}}
+    {{#if @thread.subtitle}}
+      <p class='subtitle no-margin'>{{@thread.subtitle}}</p>
+    {{/if}}
+    <div class='flex-row full-width justify-content-between'>
+      <p class='subtitle text-end no-margin'>
+        {{this.lastPostLabel}}
+      </p>
+      <p class='subtitle no-margin'>
+        {{this.pagesLabel}}
+      </p>
     </div>
-  </div>
-  {{#if @thread.subtitle}}
-    <p class='subtitle no-margin'>{{@thread.subtitle}}</p>
-  {{/if}}
-  <div class='flex-row full-width justify-content-between'>
-    <p class='subtitle text-end no-margin'>
-      {{this.lastPostLabel}}
-    </p>
-    <p class='subtitle no-margin'>
-      {{this.pagesLabel}}
-    </p>
-  </div>
-</Common::Control::Link>
+  </Common::Control::Link>
+{{/unless}}

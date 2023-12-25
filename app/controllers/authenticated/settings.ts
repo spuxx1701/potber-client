@@ -1,12 +1,11 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
 import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown/types';
 import RendererService from 'potber-client/services/renderer';
 import MessagesService from 'potber-client/services/messages';
 import AppService from 'potber-client/services/app';
 import ModalService from 'potber-client/services/modal';
-import SettingsService from 'potber-client/services/settings';
+import SettingsService, { Settings } from 'potber-client/services/settings';
 import DeviceManagerService from 'potber-client/services/device-manager';
 import CustomSession from 'potber-client/services/custom-session';
 import {
@@ -27,16 +26,21 @@ export default class SettingsController extends Controller {
 
   config = settingsConfig;
 
-  @action handleAvatarStyleSelect(option: DropdownOption) {
-    this.settings.setSetting('avatarStyle', option.data);
-  }
+  handleSettingSelect = (
+    settingKey: keyof Settings,
+    option: DropdownOption,
+  ) => {
+    if (this.settings.getSetting(settingKey) === undefined)
+      throw new Error(`Unknown setting key: ${settingKey}`);
+    this.settings.setSetting(settingKey, option.data);
+  };
 
-  @action handleThemeSelect(option: DropdownOption) {
+  handleThemeSelect = (option: DropdownOption) => {
     this.settings.setSetting('theme', option.data);
     this.renderer.updateTheme();
-  }
+  };
 
-  @action handleSidebarLayoutSelect(option: DropdownOption) {
+  handleSidebarLayoutSelect = (option: DropdownOption) => {
     if (this.renderer.isDesktop) {
       this.modal.confirm({
         title: 'Desktopmodus',
@@ -47,44 +51,25 @@ export default class SettingsController extends Controller {
     }
     this.settings.setSetting('sidebarLayout', option.data);
     this.renderer.updateSidebarLayout();
-  }
-
-  @action handleFontSizeSelect(option: DropdownOption) {
-    this.settings.setSetting('fontSize', option.data);
-    this.renderer.updateFontSize();
-  }
-
-  @action handleDarkenReadPostsSelect(option: DropdownOption) {
-    this.settings.setSetting('darkenReadPosts', option.data);
-  }
-
-  handleGoToBottomOfThreadPageSelect = (option: DropdownOption) => {
-    this.settings.setSetting('goToBottomOfThreadPage', option.data);
   };
 
-  @action handleLandingPageSelect(option: DropdownOption) {
-    this.settings.setSetting('landingPage', option.data);
-  }
+  handleFontSizeSelect = (option: DropdownOption) => {
+    this.settings.setSetting('fontSize', option.data);
+    this.renderer.updateFontSize();
+  };
 
-  @action handleAutoRefreshSidebarSelect(option: DropdownOption) {
-    this.settings.setSetting('autoRefreshSidebar', option.data);
-  }
-
-  @action handleReplaceForumUrlsSelect(option: DropdownOption) {
-    this.settings.setSetting('replaceForumUrls', option.data);
-  }
-  @action handleGesturesSelect(option: DropdownOption) {
+  handleGesturesSelect = (option: DropdownOption) => {
     this.settings.setSetting('gestures', option.data);
     this.deviceManager.toggleGesturesSupport();
     window.location.reload();
-  }
+  };
 
-  @action handleDebugSelect(option: DropdownOption) {
+  handleDebugSelect = (option: DropdownOption) => {
     this.settings.setSetting('debug', option.data);
     this.settings.toggleDebugMode(option.data);
-  }
+  };
 
-  @action async handleSignOut() {
+  handleSignOut = () => {
     this.session.invalidate();
-  }
+  };
 }
