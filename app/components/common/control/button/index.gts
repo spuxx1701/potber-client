@@ -1,4 +1,3 @@
-import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
@@ -58,12 +57,12 @@ export default class CommonButtonComponent extends Component<Signature> {
     return this.args.iconSize ?? 'auto';
   }
 
-  @action handleClick(event: MouseEvent) {
+  handleClick = (event: MouseEvent) => {
     this.renderer.createClickRipple(event);
     if (this.args.onClick) {
       this.args.onClick();
     }
-  }
+  };
 
   <template>
     <button
