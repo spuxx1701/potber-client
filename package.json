@@ -122,7 +122,11 @@
     "semver": "^7.5.1",
     "typescript": "^5.1.6",
     "uuid": "^9.0.1",
-    "webpack": "^5.89.0"
+    "webpack": "^5.89.0",
+    "postcss": "^8.4.32",
+    "postcss-loader": "^7.3.3",
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.2"
   },
   "engines": {
     "node": "14.* || 16.* || >= 18"

@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Chores
 
 - Migrated build system to [embroider](https://github.com/embroider-build/embroider).
+- Introduced [postcss and other modern css tools](https://discuss.emberjs.com/t/ember-modern-css/19614).
 
 ## [1.17.5] - 2023-12-23
 
