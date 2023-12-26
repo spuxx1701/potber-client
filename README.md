@@ -107,7 +107,7 @@ You will need the following things properly installed on your computer.
 ### Running / Development
 
 - Clone [potber-api](https://github.com/spuxx1701/potber-api) and start up a local instance.
-- Start up the development server with `npm start`.
+- Start up the development server with `npm start` (assuming you also have closed `potber-api` and `potber-auth`). You can also run the client using the remote staging instances of `potber-api` and `potber-auth` via `npm run start:remote`.
 - Visit the app at [http://localhost:4200](http://localhost:4200).
 
 #### Linting
