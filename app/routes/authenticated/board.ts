@@ -5,7 +5,7 @@ import Board from 'potber-client/models/board';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
 import RSVP from 'rsvp';
-import SlowRoute from '../slow';
+import SlowRoute from '../base/slow';
 
 interface Params {
   BID: string;

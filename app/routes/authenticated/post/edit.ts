@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import SlowRoute from 'potber-client/routes/slow';
+import SlowRoute from 'potber-client/routes/base/slow';
 import ApiService from 'potber-client/services/api';
 import { WritablePost } from 'potber-client/services/api/models/post';
 import RendererService from 'potber-client/services/renderer';

@@ -1,5 +1,5 @@
 import { service } from '@ember/service';
-import SlowRoute from 'potber-client/routes/slow';
+import SlowRoute from 'potber-client/routes/base/slow';
 import CustomStore from 'potber-client/services/custom-store';
 
 export default class BookmarksThreadsRoute extends SlowRoute {

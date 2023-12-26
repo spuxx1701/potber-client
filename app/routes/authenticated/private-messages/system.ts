@@ -1,6 +1,6 @@
 import { service } from '@ember/service';
 import { PrivateMessageFolder } from 'potber-client/models/private-message';
-import SlowRoute from 'potber-client/routes/slow';
+import SlowRoute from 'potber-client/routes/base/slow';
 import CustomStore from 'potber-client/services/custom-store';
 
 export default class PrivateMessagesSystemRoute extends SlowRoute {
@@ -11,9 +11,11 @@ export default class PrivateMessagesSystemRoute extends SlowRoute {
       folder: PrivateMessageFolder.system,
       reload: true,
     });
-    const filteredMessages = messages.filter(
-      (message) => message.folder === PrivateMessageFolder.system,
-    );
+    const filteredMessages = [
+      ...messages.filter(
+        (message) => message.folder === PrivateMessageFolder.outbound,
+      ),
+    ];
     return filteredMessages;
   }
 }

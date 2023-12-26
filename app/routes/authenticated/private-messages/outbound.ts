@@ -1,6 +1,6 @@
 import { service } from '@ember/service';
 import { PrivateMessageFolder } from 'potber-client/models/private-message';
-import SlowRoute from 'potber-client/routes/slow';
+import SlowRoute from 'potber-client/routes/base/slow';
 import CustomStore from 'potber-client/services/custom-store';
 
 export default class PrivateMessagesOutboundRoute extends SlowRoute {
