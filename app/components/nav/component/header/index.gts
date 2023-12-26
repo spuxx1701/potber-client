@@ -1,6 +1,5 @@
 import { TOC } from '@ember/component/template-only';
 import LazyText from 'potber-client/components/common/lazy-stuff/text';
-import or from 'ember-truth-helpers/helpers/or';
 
 const NavHeader: TOC<{
   Args: { title: string; subtitle?: string; loading?: boolean };
