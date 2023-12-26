@@ -14,39 +14,38 @@ export function parseUrl(
   // This regex needs to account for quite the variety of different kinds of syntax
   const URL_PATH_REGEX = /\[url=?\]?(?:.*=")?(.*?)(?:"|(?:\[\/url\])|(?:\]))/i;
   const URL_LABEL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/i;
-  const HOST_NAME = `${window.location.protocol}//${window.location.host}`;
   const FORUM_URL_REPLACEMENTS = [
     {
-      input: 'https://forum.mods.de/bb//thread.php',
-      output: `${HOST_NAME}/thread`,
+      input: 'forum.mods.de/bb//thread.php',
+      output: `${appConfig.hostname}/thread`,
     },
     {
-      input: 'https://forum.mods.de/bb//board.php',
-      output: `${HOST_NAME}/board`,
+      input: 'forum.mods.de/bb//board.php',
+      output: `${appConfig.hostname}/board`,
     },
     {
-      input: 'https://forum.mods.de/bb/thread.php',
-      output: `${HOST_NAME}/thread`,
+      input: 'forum.mods.de/bb/thread.php',
+      output: `${appConfig.hostname}/thread`,
     },
     {
-      input: 'https://forum.mods.de/bb/board.php',
-      output: `${HOST_NAME}/board`,
+      input: 'forum.mods.de/bb/board.php',
+      output: `${appConfig.hostname}/board`,
     },
     {
-      input: 'https://forum.mods.de/thread.php',
-      output: `${HOST_NAME}/thread`,
+      input: 'forum.mods.de/thread.php',
+      output: `${appConfig.hostname}/thread`,
     },
     {
-      input: 'https://forum.mods.de/board.php',
-      output: `${HOST_NAME}/board`,
+      input: 'forum.mods.de/board.php',
+      output: `${appConfig.hostname}/board`,
     },
     {
-      input: 'https://forum.mods.de//thread.php',
-      output: `${HOST_NAME}/thread`,
+      input: 'forum.mods.de//thread.php',
+      output: `${appConfig.hostname}/thread`,
     },
     {
-      input: 'https://forum.mods.de//board.php',
-      output: `${HOST_NAME}/board`,
+      input: 'forum.mods.de//board.php',
+      output: `${appConfig.hostname}/board`,
     },
   ];
 
@@ -73,7 +72,7 @@ export function parseUrl(
       }
 
       // Internal links should not be opened in new tabs
-      const isInternal = url.includes(HOST_NAME);
+      const isInternal = url.includes(appConfig.hostname);
 
       // Escape colons to prevent emojis from screwing up URLs
       url = url.replaceAll(':', '&#58;');
