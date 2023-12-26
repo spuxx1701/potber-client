@@ -5,12 +5,12 @@ import Button from 'potber-client/components/common/control/button';
 import { service } from '@ember/service';
 import DeviceManagerService from 'potber-client/services/device-manager';
 import ModalService from 'potber-client/services/modal';
-import { NewPost, UpdatedPost } from 'potber-client/services/api/models/post';
 import t from 'ember-intl/helpers/t';
+import { WritablePost } from 'potber-client/services/api/models/post';
 
 interface Signature {
   Args: {
-    post: NewPost | UpdatedPost;
+    post: WritablePost;
     title: string;
     subtitle?: string;
   };
