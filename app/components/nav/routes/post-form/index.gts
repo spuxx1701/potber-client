@@ -5,12 +5,12 @@ import Button from 'potber-client/components/common/control/button';
 import { service } from '@ember/service';
 import DeviceManagerService from 'potber-client/services/device-manager';
 import ModalService from 'potber-client/services/modal';
-import { Posts } from 'potber-client/services/api/types';
+import { NewPost, UpdatedPost } from 'potber-client/services/api/models/post';
 import t from 'ember-intl/helpers/t';
 
 interface Signature {
   Args: {
-    post: Posts.Write;
+    post: NewPost | UpdatedPost;
     title: string;
     subtitle?: string;
   };
@@ -62,6 +62,7 @@ export default class NavPostFormComponent extends Component<Signature> {
             @variant='primary-transparent'
             @size='square'
             @type='submit'
+            @busy={{@post.isSaving}}
             form='post-form'
           />
         </div>

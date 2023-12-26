@@ -8,6 +8,9 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'In der Kopfzeile eines Posts ist nun besser erkennbar, wenn der/die Verfasser:in des Posts gelöscht wurde.',
     ],
+    fixed: [
+      'Der Absenden-Button im Postformular zeigt nun wieder an, ob der Post gesendet wurde.',
+    ],
     chores: ['Build-System wurde nach embroider migriert.'],
   },
   {

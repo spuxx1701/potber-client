@@ -10,10 +10,23 @@ export interface IModel {
 
 export class Model {
   @service declare api: ApiService;
+  @tracked protected _isSaving = false;
   @tracked protected _isDeleted = false;
+
+  get isSaving() {
+    return this._isSaving;
+  }
 
   get isDeleted() {
     return this._isDeleted;
+  }
+
+  /**
+   * Marks the model as being in the process of sending a state to the server.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  save(...args: any[]) {
+    this._isSaving = true;
   }
 
   /**

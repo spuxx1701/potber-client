@@ -11,7 +11,7 @@ export async function findById(
   this: ApiService,
   id: string,
   threadId: string,
-): Promise<Posts.Write> {
+): Promise<Posts.Read> {
   try {
     const post = await this.fetch(`posts/${id}?threadId=${threadId}`, {
       method: 'GET',

@@ -26,7 +26,7 @@ export default class PostCreateController extends Controller {
     this.busy = true;
     try {
       const { TID, PID } = this;
-      await this.api.updatePost(PID, post);
+      await this.model.post.save({ method: 'PUT' });
       this.router.transitionTo('authenticated.thread', {
         queryParams: {
           TID,

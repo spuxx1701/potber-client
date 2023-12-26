@@ -2,12 +2,11 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import { Posts } from 'potber-client/services/api/types';
-import Thread from 'potber-client/models/thread';
-import CustomStore from 'potber-client/services/custom-store';
 import RendererService from 'potber-client/services/renderer';
 import SessionService from 'potber-client/services/session';
 import ApiService from 'potber-client/services/api';
+import { Threads } from 'potber-client/services/api/types';
+import { WritablePost } from 'potber-client/services/api/models/post';
 
 interface Params {
   TID: string;
@@ -15,13 +14,12 @@ interface Params {
 }
 
 export interface PostCreateRouteModel {
-  thread: Thread;
-  post: Posts.Write;
+  thread: Threads.Read;
+  post: WritablePost;
 }
 
 export default class PostCreateRoute extends Route {
   @service declare renderer: RendererService;
-  @service declare store: CustomStore;
   @service declare session: SessionService;
   @service declare api: ApiService;
 
@@ -38,18 +36,17 @@ export default class PostCreateRoute extends Route {
   async model(params: Params, transition: Transition<unknown>) {
     try {
       // Retrieve the thread with its last page so we can display recent posts and other information about the thread
-      const thread = await this.store.findRecord('thread', params.TID, {
-        adapterOptions: {
-          queryParams: {
-            page: params.page,
-            updateBookmark: false,
-          },
-        },
+      const thread = await this.api.findThreadById(params.TID, {
+        page: params.page,
+        updateBookmark: false,
       });
-      const post: Posts.Write = {
-        message: '',
-        threadId: thread.id,
-      };
+      const post = new WritablePost(
+        {
+          message: '',
+          threadId: thread.id,
+        },
+        this,
+      );
       return {
         thread,
         post,

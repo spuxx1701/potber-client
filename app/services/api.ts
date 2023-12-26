@@ -45,10 +45,11 @@ export default class ApiService extends Service {
   ): Promise<any> => {
     if (!path.startsWith('/')) path = `/${path}`;
     let url = `${appConfig.apiUrl}${path}`;
+    const baseUrl = url;
     if (query) {
-      Object.keys(query).forEach((key, index) => {
+      Object.keys(query).forEach((key) => {
         if (!query[key]) return;
-        if (index === 0) url += '?';
+        if (url === baseUrl) url += '?';
         else url += '&';
         url += `${key}=${query[key]}`;
       });

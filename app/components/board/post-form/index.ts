@@ -2,13 +2,14 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import ApiService from 'potber-client/services/api';
+import { WritablePost } from 'potber-client/services/api/models/post';
 import { Posts } from 'potber-client/services/api/types';
 import DeviceManagerService from 'potber-client/services/device-manager';
 import ModalService from 'potber-client/services/modal';
 
 interface Signature {
   Args: {
-    post: Posts.Write;
+    post: WritablePost;
     hideTitle?: boolean;
     submitLabel: string;
     onSubmit: (post: Posts.Write) => void;

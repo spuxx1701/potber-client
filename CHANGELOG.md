@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Made URL replacements work on localhost.
+- The post form's submit button now shows whether the post has been submitted (both in desktop and mobile view).
 
 ### Chores
 

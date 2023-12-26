@@ -1,9 +1,9 @@
 import { action } from '@ember/object';
-import Route from '@ember/routing/route';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
+import SlowRoute from 'potber-client/routes/slow';
 import ApiService from 'potber-client/services/api';
-import { Posts } from 'potber-client/services/api/types';
+import { WritablePost } from 'potber-client/services/api/models/post';
 import RendererService from 'potber-client/services/renderer';
 
 interface Params {
@@ -13,10 +13,11 @@ interface Params {
 
 export interface PostEditRouteModel {
   threadId: string;
-  post: Posts.Write;
+  postId: string;
+  post: WritablePost;
 }
 
-export default class PostEditRoute extends Route {
+export default class PostEditRoute extends SlowRoute {
   @service declare renderer: RendererService;
   @service declare api: ApiService;
 
@@ -32,8 +33,12 @@ export default class PostEditRoute extends Route {
 
   async model(params: Params, transition: Transition<unknown>) {
     try {
-      const post = await this.api.findPostById(params.PID, params.TID);
-      return post;
+      const currentPost = await this.api.findPostById(params.PID, params.TID);
+      const post = new WritablePost({ ...currentPost }, this);
+      return {
+        threadId: params.TID,
+        post,
+      } as PostEditRouteModel;
     } catch (error) {
       transition.abort();
     }

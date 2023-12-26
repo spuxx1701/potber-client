@@ -1,8 +1,7 @@
 {{! @glint-nocheck }}{{page-title (t 'route.post.edit.title')}}
 
 <Board::PostForm
-  @post={{@model}}
+  @post={{@model.post}}
   @onSubmit={{this.handleSubmit}}
-  @busy={{this.busy}}
   @navTitle={{t 'route.post.edit.title'}}
 />
