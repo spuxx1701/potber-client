@@ -1,0 +1,31 @@
+:global(.button-link) {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--control-default-height);
+  min-height: var(--control-default-height);
+  border: none;
+  border-radius: var(--global-border-radius);
+  font-size: 1em;
+  text-decoration: none !important;
+  color: var(--color-text-default);
+  padding: 0 0.5rem;
+}
+
+:global(.button-link):not(:disabled) {
+  cursor: pointer;
+}
+
+:global(.button-link):not(.control-size-square) :global(svg) {
+  margin-right: 0.5rem;
+}
+
+:global(.button-link):visited {
+  color: inherit;
+}
+
+.disabled {
+  color: var(--color-control-disabled);
+  pointer-events: none;
+}

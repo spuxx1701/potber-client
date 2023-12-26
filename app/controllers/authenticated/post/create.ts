@@ -5,7 +5,7 @@ import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { PostCreateRouteModel } from 'potber-client/routes/authenticated/post/create';
 import ApiService from 'potber-client/services/api';
-import { Post } from 'potber-client/services/api/types';
+import { Posts } from 'potber-client/services/api/types';
 import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
 
@@ -20,7 +20,7 @@ export default class PostCreateController extends Controller {
 
   queryParams = ['TID', 'page'];
 
-  @action async handleSubmit(post: Post) {
+  @action async handleSubmit(post: Posts.Read) {
     this.busy = true;
     try {
       const createdPost = await this.api.createPost(post);

@@ -2,28 +2,39 @@ import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
 import { Owner } from '@ember/test-helpers/build-owner';
 import Component from '@glimmer/component';
-import Thread, { ThreadPage } from 'potber-client/models/thread';
-import ThreadRoute from 'potber-client/routes/authenticated/thread';
+import ThreadRoute, {
+  ThreadResource,
+} from 'potber-client/routes/authenticated/thread';
+import DeviceManagerService from 'potber-client/services/device-manager';
 import RendererService from 'potber-client/services/renderer';
 import SettingsService, { Gestures } from 'potber-client/services/settings';
 
 interface Signature {
   Args: {
-    thread: Thread;
+    threadResource: ThreadResource;
     lastReadPost?: string;
   };
 }
 
-export default class ThreadPageComponent extends Component<Signature> {
+export default class ThreadPage extends Component<Signature> {
+  @service declare deviceManager: DeviceManagerService;
   @service declare settings: SettingsService;
   @service declare renderer: RendererService;
 
-  get page() {
-    return this.args.thread.page as ThreadPage;
+  get isDesktop() {
+    return this.deviceManager.isDesktop;
+  }
+
+  get isLoading() {
+    return this.args.threadResource.isLoading;
+  }
+
+  get thread() {
+    return this.args.threadResource.value;
   }
 
   get posts() {
-    return this.page.posts;
+    return this.thread?.page?.posts;
   }
 
   get disableOverscroll() {

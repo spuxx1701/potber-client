@@ -1,68 +1,86 @@
-.post {
+:global(.post) {
   display: flex;
   flex-direction: column;
   border-radius: var(--global-border-radius);
-  margin-top: var(--global-gap);
-  margin-bottom: var(--global-gap);
   scroll-margin-top: calc(var(--top-nav-height));
 }
 
-.post-subtle {
-  filter: brightness(0.6);
-}
-
-.post:not(:first-child) {
+:global(.post):not(:first-child) {
   margin-top: var(--global-gap);
 }
 
-.post-details {
+.subtle {
+  filter: brightness(0.6);
+}
+
+.header {
   background-color: var(--color-post-background-secondary);
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-top-left-radius: var(--global-border-radius);
   border-top-right-radius: var(--global-border-radius);
 }
 
-.post-details-title {
-  display: flex;
-  flex-direction: row;
+.details {
+  display: grid;
+  grid-template-areas:
+    'avatar author'
+    'avatar date';
+  align-items: center;
 }
 
-.post-details-author-name {
-  padding: 0;
-  margin: 0;
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-  justify-content: start;
-  height: auto;
-  min-height: unset;
-}
-
-.post-details-author-name svg[data-icon='lock'] {
-  margin-left: 0.5rem;
-  font-size: smaller;
-}
-
-.post-details-date {
-  margin: 0;
-  text-decoration: none;
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-  padding: unset;
-  min-height: unset;
-  height: unset;
-}
-
-.post-details-date svg {
-  margin-left: 0.25rem;
-}
-
-.post-details .avatar {
+.details :global(.avatar) {
+  grid-area: avatar;
   margin-right: 0.5rem;
 }
 
-.post-content {
+.author {
+  grid-area: author;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  backdrop-filter: none;
+  justify-content: start;
+  align-items: center;
+  height: auto;
+  min-height: unset;
+  backdrop-filter: none !important;
+}
+
+.author :global(s) {
+  color: var(--color-text-highlighted);
+}
+
+.author :global(.fa-lock) {
+  margin-left: 0.5rem;
+  color: var(--color-text-subtle);
+  font-size: smaller;
+}
+
+.date {
+  grid-area: date;
+  min-height: unset;
+  height: auto;
+  border: none;
+  background-color: transparent;
+  color: var(--color-text-subtle);
+  justify-content: start;
+  padding: 0;
+  backdrop-filter: none !important;
+}
+
+.date :global(svg) {
+  margin-left: 0.25rem;
+  font-size: smaller;
+}
+
+.header > :global(*:last-child) {
+  flex: 0;
+}
+
+.body {
   display: flex;
   flex-direction: column;
   background-color: var(--color-post-background-primary);
@@ -72,37 +90,43 @@
   border-bottom-right-radius: var(--global-border-radius);
 }
 
-.post-title {
+.title {
   display: flex;
   align-items: center;
   margin: 0 0 0.5rem 0;
+  font-weight: bold;
 }
 
-.post-title > img {
+.title :global(img) {
   margin-right: 0.25rem;
 }
 
-.post-content-footer {
-  margin: 0.5rem 0 0 0;
-}
-
-.post-content-message {
+.message {
   margin: 0;
   word-break: break-word;
 }
 
-.post-content-message p {
+.message :global(p) {
   display: contents;
   width: fit-content;
 }
 
-p.mod {
+.message :global(.mod) {
   font-size: larger;
   font-weight: bolder;
   color: var(--color-text-mod);
 }
 
-p.tex {
+.message :global(p.trigger) {
+  font-size: 0.5em;
+  cursor: pointer;
+}
+
+.message :global(a) {
+  overflow-wrap: break-word;
+}
+
+.message :global(p.tex) {
   font-size: larger;
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
@@ -111,17 +135,13 @@ p.tex {
   color: var(--color-text-subtle);
 }
 
-p.trigger {
-  font-size: 0.5em;
-  cursor: pointer;
+.message :global(.video-container) {
+  margin-left: 0;
+  width: fit-content;
 }
 
-.post-content-message a {
-  overflow-wrap: break-word;
-}
-
-.quote,
-.video-container {
+.message :global(.quote),
+.message :global(.video-container) {
   display: flex;
   flex-direction: column;
   border-radius: var(--global-border-radius);
@@ -129,8 +149,12 @@ p.trigger {
   overflow: hidden;
 }
 
-.quote-header,
-.video-container-header {
+.message :global(.video-container-header) {
+  justify-content: space-between;
+}
+
+.message :global(.quote-header),
+.message :global(.video-container-header) {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -139,19 +163,29 @@ p.trigger {
   text-decoration: none;
 }
 
-.quote-header p:first-child,
-.video-container-header p:first-child {
+.message :global(.quote-header p:first-child),
+.message :global(.video-container-header p:first-child) {
   color: var(--color-text-default);
   font-weight: normal !important;
 }
 
-blockquote {
+.message :global(video) {
+  max-width: 100%;
+}
+
+.message :global(.youtube-player) {
+  width: 640px;
+  height: 360px;
+  max-width: 100%;
+}
+
+.message :global(blockquote) {
   margin: 0;
   padding: 0.5rem;
   background-color: var(--color-block-background);
 }
 
-code {
+.message :global(code) {
   box-sizing: border-box;
   border-radius: var(--global-border-radius);
   background-color: var(--color-block-background);
@@ -165,26 +199,7 @@ code {
   overflow: auto;
 }
 
-.video-container {
-  margin-left: 0;
-  width: fit-content;
-}
-
-.video-container-header {
-  justify-content: space-between;
-}
-
-video {
-  max-width: 100%;
-}
-
-.youtube-player {
-  width: 640px;
-  height: 360px;
-  max-width: 100%;
-}
-
-.spoiler {
+.message :global(.spoiler) {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -199,32 +214,34 @@ video {
   justify-content: center;
 }
 
-.spoiler-header {
+.message :global(.spoiler-header) {
   color: var(--color-text-subtle);
 }
 
-.spoiler-input,
-.spoiler-content {
+.message :global(.spoiler-input),
+.message :global(.spoiler-content) {
   display: none;
 }
 
-.spoiler-input:checked + .spoiler-header {
+:global(.spoiler-input:checked) + :global(.spoiler-header) {
   display: none;
 }
 
-.spoiler-input:checked + .spoiler-header + .spoiler-content {
+:global(.spoiler-input:checked)
+  + :global(.spoiler-header)
+  + :global(.spoiler-content) {
   display: block;
   width: 100%;
 }
 
-.table-container {
+.message :global(.table-container) {
   display: flex;
   box-sizing: border-box;
   max-width: 100%;
   overflow: auto;
 }
 
-.post-content-message table {
+.message :global(table) {
   display: flex;
   max-width: 100%;
   overflow-x: auto;
@@ -232,10 +249,17 @@ video {
   border-spacing: 2px;
 }
 
-.post-content-message td {
+.message :global(td) {
   background-color: var(--color-block-background);
   border: none;
   padding: 0.5rem;
   min-width: max-content;
   white-space: nowrap;
+}
+
+.footer {
+  font-style: italic;
+  color: var(--color-text-subtle);
+  font-size: smaller;
+  margin: 0.5rem 0 0 0;
 }

@@ -1,10 +1,12 @@
 import { service } from '@ember/service';
 import { reject } from 'rsvp';
 import ThreadController from 'potber-client/controllers/authenticated/thread';
-import Thread from 'potber-client/models/thread';
 import CustomStore from 'potber-client/services/custom-store';
 import NewsfeedService from 'potber-client/services/newsfeed';
-import SlowRoute from '../slow';
+import ApiService from 'potber-client/services/api';
+import { State, trackedFunction } from 'ember-resources/util/function';
+import { Threads } from 'potber-client/services/api/types';
+import Route from '@ember/routing/route';
 
 interface Params {
   TID: string;
@@ -14,14 +16,18 @@ interface Params {
   scrollToBottom?: string;
 }
 
+export type ThreadResource = State<Promise<Threads.Read>>;
+
 export interface ThreadRouteModel {
-  thread: Thread;
+  threadId: string;
+  threadResource: ThreadResource;
   lastReadPost: string;
 }
 
-export default class ThreadRoute extends SlowRoute {
+export default class ThreadRoute extends Route {
   @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
+  @service declare api: ApiService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -44,7 +50,7 @@ export default class ThreadRoute extends SlowRoute {
     controller.set('scrollToBottom', '');
   }
 
-  async model(params: Params) {
+  model(params: Params) {
     try {
       // Attempt to parse the page
       let page: number | undefined;
@@ -56,17 +62,16 @@ export default class ThreadRoute extends SlowRoute {
         postId = undefined;
         lastReadPost = undefined;
       }
-      const thread = await this.store.findRecord('thread', params.TID, {
-        adapterOptions: {
-          queryParams: {
-            postId,
-            page,
-            updateBookmark: true,
-          },
-        },
-      });
+      const threadResource = trackedFunction(this, () =>
+        this.api.findThreadById(params.TID, {
+          page,
+          postId,
+          updateBookmark: true,
+        }),
+      );
       return {
-        thread,
+        threadId: params.TID,
+        threadResource,
         lastReadPost: lastReadPost,
       } as ThreadRouteModel;
     } catch (error: any) {

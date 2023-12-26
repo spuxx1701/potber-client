@@ -11,11 +11,16 @@ export default class ThreadController extends Controller {
   lastReadPost = '';
   scrollToBottom = '';
 
-  get pageTitle() {
-    return `${this.model.thread.title} [${this.model.thread.page?.number}]`;
+  get thread() {
+    return this.model.threadResource.value;
   }
 
-  get threads() {
-    return this.model.thread.page?.posts || [];
+  get pageTitle() {
+    if (this.thread)
+      return `${this.thread.title} [${this.thread.page?.number}]`;
+  }
+
+  get posts() {
+    if (this.thread) return this.thread.page?.posts || [];
   }
 }

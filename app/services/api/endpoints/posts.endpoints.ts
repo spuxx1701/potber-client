@@ -1,5 +1,5 @@
 import ApiService from 'potber-client/services/api';
-import { Post, Posts } from '../types';
+import { Posts } from '../types';
 import { ApiError } from '../error';
 
 /**
@@ -48,7 +48,7 @@ export async function findById(
 export async function create(
   this: ApiService,
   post: Posts.Write,
-): Promise<Post> {
+): Promise<Posts.Read> {
   try {
     const createdPost = await this.fetch('posts', {
       method: 'POST',
@@ -88,7 +88,7 @@ export async function update(
   this: ApiService,
   id: string,
   post: Posts.Write,
-): Promise<Post> {
+): Promise<Posts.Read> {
   try {
     const updatedPost = await this.fetch(`posts/${id}`, {
       method: 'PUT',

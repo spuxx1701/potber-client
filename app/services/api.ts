@@ -2,6 +2,7 @@ import Service, { service } from '@ember/service';
 import { appConfig } from 'potber-client/config/app.config';
 import MessagesService from './messages';
 import { IntlService } from 'ember-intl';
+import * as Threads from './api/endpoints/threads.endpoints';
 import * as Users from './api/endpoints/users.endpoints';
 import * as Posts from './api/endpoints/posts.endpoints';
 import { ApiError } from './api/error';
@@ -16,24 +17,42 @@ export default class ApiService extends Service {
   // --- Endpoints are being defined in this section --- //
   findUserById = Users.findById;
   findPostById = Posts.findById;
+
+  findThreadById = Threads.findById;
+
   createPost = Posts.create;
   updatePost = Posts.update;
   quotePost = Posts.quote;
   reportPost = Posts.report;
+
   findAllBookmarks = Bookmarks._findAll;
   findBookmarkByThreadId = Bookmarks._findByThreadId;
   createBookmark = Bookmarks._create;
   deleteBookmark = Bookmarks._delete;
+
   // --------------------------------------------------- //
 
   /**
    * Triggers a `fetch` to the API server and returns the data. Any errors will be logged automatically.
    * @param request The `RequestInit` object.
+   * @param query An optional object that will be parsed as query parameters.
    * @returns The data.
    */
-  fetch = async (path: string, request?: RequestInit): Promise<any> => {
+  fetch = async (
+    path: string,
+    request?: RequestInit,
+    query?: Record<string, string | boolean | number>,
+  ): Promise<any> => {
     if (!path.startsWith('/')) path = `/${path}`;
-    const url = `${appConfig.apiUrl}${path}`;
+    let url = `${appConfig.apiUrl}${path}`;
+    if (query) {
+      Object.keys(query).forEach((key, index) => {
+        if (!query[key]) return;
+        if (index === 0) url += '?';
+        else url += '&';
+        url += `${key}=${query[key]}`;
+      });
+    }
     try {
       this.messages.log(
         `Outgoing request: ${request?.method ?? 'GET'} ${url}`,

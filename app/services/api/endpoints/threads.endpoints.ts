@@ -1,23 +1,27 @@
 import ApiService from 'potber-client/services/api';
-import { Users } from '../types';
 import { ApiError } from '../error';
+import { Threads } from '../types';
 
-/**
- * Finds a user by their id.
- * @param post The user.
- */
 export async function findById(
   this: ApiService,
   id: string,
-): Promise<Users.Read> {
+  query?: { page?: number; updateBookmark?: boolean; postId?: string },
+): Promise<Threads.Read> {
   try {
-    return await this.fetch(`users/${id}`, { method: 'GET' });
+    const thread = await this.fetch(`threads/${id}`, { method: 'GET' }, query);
+    return thread;
   } catch (error) {
     if (error instanceof ApiError) {
       switch (error.statusCode) {
+        case 403:
+          this.messages.showNotification(
+            this.intl.t('error.posts.find-by-id.forbidden'),
+            'error',
+          );
+          break;
         case 404:
           this.messages.showNotification(
-            this.intl.t('error.users.not-found'),
+            this.intl.t('error.posts.find-by-id.not-found'),
             'error',
           );
           break;

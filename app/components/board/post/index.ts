@@ -1,6 +1,6 @@
-import { action } from '@ember/object';
-import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { service } from '@ember/service';
+import styles from './styles.css';
 import ContentParserService from 'potber-client/services/content-parser';
 import MessagesService from 'potber-client/services/messages';
 import Post from 'potber-client/models/post';
@@ -26,6 +26,8 @@ interface Signature {
 }
 
 export default class PostComponent extends Component<Signature> {
+  styles = styles;
+
   @service declare contentParser: ContentParserService;
   @service declare messages: MessagesService;
   @service declare session: CustomSession;
@@ -81,14 +83,14 @@ export default class PostComponent extends Component<Signature> {
     }
   }
 
-  get showSmallAvatar() {
+  get showAvatar() {
     return (
       this.args.post.avatarUrl &&
       this.settings.getSetting('avatarStyle') === AvatarStyle.small
     );
   }
 
-  @action async showAuthorProfile() {
+  showAuthorProfile = async () => {
     try {
       const user = await this.api.findUserById(this.args.post.author.id);
       this.modal.userProfile({ user });
@@ -96,18 +98,18 @@ export default class PostComponent extends Component<Signature> {
       // In case of an error, do not call the modal
       return;
     }
-  }
+  };
 
-  @action copyUrl() {
+  copyUrl = () => {
     if (this.args.isPreview) return;
     navigator.clipboard.writeText(this.url);
     this.messages.showNotification(
       'Link in Zwischenablage kopiert.',
       'success',
     );
-  }
+  };
 
-  @action async setBookmark() {
+  async setBookmark() {
     await this.api.createBookmark(this.args.post.id, this.args.post.threadId);
     this.messages.showNotification(
       this.intl.t('route.thread.create-bookmark-success'),
@@ -116,7 +118,7 @@ export default class PostComponent extends Component<Signature> {
     this.newsfeed.refreshBookmarks();
   }
 
-  @action async savePost() {
+  savePost = async () => {
     try {
       const savedPosts = [
         ...((await this.localStorage.getSavedPosts()) as Post[]),
@@ -138,9 +140,9 @@ export default class PostComponent extends Component<Signature> {
         this.constructor.name,
       );
     }
-  }
+  };
 
-  @action report() {
+  report = () => {
     this.modal.input({
       title: 'Post melden',
       icon: 'triangle-exclamation',
@@ -161,7 +163,7 @@ export default class PostComponent extends Component<Signature> {
         this.modal.close();
       },
     });
-  }
+  };
 
   get canEdit() {
     return this.session.sessionData?.userId === this.args.post.author.id;

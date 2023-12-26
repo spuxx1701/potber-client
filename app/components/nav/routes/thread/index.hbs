@@ -1,8 +1,9 @@
 {{! @glint-nocheck }}
 <Portal @target='top-nav'>
   <Nav::Component::Header
-    @title={{@thread.title}}
+    @title={{this.title}}
     @subtitle={{this.subtitle}}
+    @loading={{@threadResource.isLoading}}
   />
 </Portal>
 
@@ -11,7 +12,7 @@
     @title='Zum Board'
     @size='square'
     @route='authenticated.board'
-    @query={{hash BID=@thread.boardId}}
+    @query={{hash BID=this.thread.boardId}}
     class='nav-element-left'
   ><FaIcon @icon='arrow-up' /></Common::Control::Link>
 
@@ -22,7 +23,7 @@
         @size='square'
         @route='authenticated.thread'
         @query={{hash
-          TID=@thread.id
+          TID=@threadId
           page=this.previousPage
           PID=undefined
           lastReadPost=undefined
@@ -56,7 +57,7 @@
         @icon='backward-step'
         @route='authenticated.thread'
         @query={{hash
-          TID=@thread.id
+          TID=@threadId
           page='1'
           PID=undefined
           lastReadPost=undefined
@@ -73,8 +74,8 @@
         @icon='forward-step'
         @route='authenticated.thread'
         @query={{hash
-          TID=@thread.id
-          page=@thread.pagesCount
+          TID=@threadId
+          page=this.lastPage
           PID=undefined
           lastReadPost=undefined
           scrollToBottom=undefined
@@ -98,7 +99,7 @@
         @size='square'
         @route='authenticated.thread'
         @query={{hash
-          TID=@thread.id
+          TID=@threadId
           page=this.nextPage
           PID=undefined
           lastReadPost=undefined
@@ -119,10 +120,10 @@
     @title='Antworten'
     @size='square'
     @route='authenticated.post.create'
-    @query={{hash TID=@thread.id page=@thread.pagesCount}}
-    @disabled={{@thread.isClosed}}
+    @query={{hash TID=@threadId page=this.thread.pagesCount}}
+    @disabled={{this.thread.isClosed}}
     class='nav-element-right'
   ><FaIcon
-      @icon={{if @thread.isClosed 'lock' 'comment'}}
+      @icon={{if this.thread.isClosed 'lock' 'comment'}}
     /></Common::Control::Link>
 </Portal>

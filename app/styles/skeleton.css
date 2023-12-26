@@ -1,3 +1,41 @@
+:root {
+  --skeleton-gradient: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.3) 20%,
+    rgba(255, 255, 255, 0.6) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --skeleton-animation: skeleton-shimmer 2s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-element {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-text-subtle);
+  opacity: 0.3;
+}
+
+.skeleton-shimmer {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: var(--skeleton-gradient);
+  animation: var(--skeleton-animation);
+}
+
 #app-skeleton {
   position: absolute;
   height: 100svh;
@@ -35,46 +73,7 @@
   align-items: center;
 }
 
-#app-skeleton .skeleton-text {
-  position: relative;
-  width: fit-content;
-  font-size: xxx-large;
-  height: 1rem;
-  overflow: hidden;
-  background-color: rgb(215, 215, 215, 0.5);
-  border-radius: 2px;
-  opacity: 0.5;
-  z-index: 1;
-  margin: 0.15rem 0;
-}
-
-#app-skeleton .skeleton-text::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.8;
-  transform: translateX(-100%);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(255, 255, 255, 0.5) 60%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  animation: skeleton-shimmer 3s infinite;
-  z-index: 0;
-}
-
 #app-skeleton-loading-indicator {
   margin: auto;
   width: 64px;
-}
-
-@keyframes skeleton-shimmer {
-  100% {
-    transform: translateX(100%);
-  }
 }

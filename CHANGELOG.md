@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Changed
 
 - Improved how deleted users are being displayed.
+- `/threads` route data is now being loaded lazily. A skeleton thread page will be rendered during load.
 
 ### Fixed
 
@@ -22,6 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Migrated build system to [embroider](https://github.com/embroider-build/embroider).
 - Introduced [postcss and other modern css tools](https://discuss.emberjs.com/t/ember-modern-css/19614).
+- Migrated several components to `.gts` and the css module pattern.
 
 ## [1.17.5] - 2023-12-23
 

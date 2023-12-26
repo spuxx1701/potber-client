@@ -1,28 +1,29 @@
 {{! @glint-nocheck }}
-<div id={{this.elementId}} class='post {{if @subtle " post-subtle"}}'>
-  <div class='post-details'>
-    <div class='post-details-title'>
-      {{#if this.showSmallAvatar}}
-        <Common::Avatar @url={{@post.avatarUrl}} />
+<div
+  id={{this.elementId}}
+  class='post {{class-names this (if @subtle "subtle")}}'
+>
+  <div class={{class-names this 'header'}}>
+    <div class={{class-names this 'details'}}>
+      {{#if this.showAvatar}}
+        <Common::Avatar @src={{@post.avatarUrl}} />
       {{/if}}
-      <div class='flex-column justify-content-center'>
-        <button
-          type='button'
-          class='post-details-author-name'
-          {{on 'click' this.showAuthorProfile}}
-        >{{#unless @post.author.locked}}
-            <b>{{this.authorName}}</b>
-          {{else}}
-            <s><b>{{this.authorName}}</b></s><FaIcon @icon='lock' />
-          {{/unless}}
-        </button>
-        <button
-          href={{this.href}}
-          type='button'
-          class='control-variant-secondary post-details-date justify-content-start'
-          {{on 'click' this.copyUrl}}
-        >{{this.date}}<FaIcon @icon='link' /></button>
-      </div>
+      <button
+        type='button'
+        class={{class-names this 'author'}}
+        {{on 'click' this.showAuthorProfile}}
+      >{{#unless @post.author.locked}}
+          <b>{{this.authorName}}</b>
+        {{else}}
+          <s><b>{{this.authorName}}</b></s><FaIcon @icon='lock' />
+        {{/unless}}
+      </button>
+      <button
+        href={{this.href}}
+        type='button'
+        class={{class-names this 'date'}}
+        {{on 'click' this.copyUrl}}
+      >{{this.date}}<FaIcon @icon='link' /></button>
     </div>
     {{#unless @isPreview}}
       <Common::Control::Menu @position='auto'>
@@ -68,22 +69,22 @@
       </Common::Control::Menu>
     {{/unless}}
   </div>
-  <div class='post-content'>
+  <div class={{class-names this 'body'}}>
     {{#if @post.contentHidden}}
       <p class='subtitle no-margin'>⚠ Inhalt versteckt</p>
     {{else}}
       {{#if (or @post.title @post.icon)}}
-        <p class='title post-title'>
+        <p class={{class-names this 'title'}}>
           <Board::Icon @icon={{@post.icon}} />
           {{@post.title}}
         </p>
       {{/if}}
-      <p class='post-content-message'>
+      <p class={{class-names this 'message'}}>
         {{this.message}}
       </p>
     {{/if}}
     {{#if @post.lastEdit}}
-      <p class='post-content-footer subtitle'>
+      <p class={{class-names this 'footer'}}>
         {{this.editingInfo}}
       </p>
     {{/if}}

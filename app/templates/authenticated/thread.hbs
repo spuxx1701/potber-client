@@ -1,16 +1,16 @@
-{{! @glint-nocheck }}{{#if @model.thread}}
+{{! @glint-nocheck }}{{#unless @model.threadResource.isError}}
   {{page-title this.pageTitle}}
 
   <Nav::Routes::Thread
-    @thread={{@model.thread}}
-    @bookmark={{@model.bookmark}}
+    @threadId={{@model.threadId}}
+    @threadResource={{@model.threadResource}}
   />
 
-  <Board::ThreadPage
-    @thread={{@model.thread}}
+  <Routes::Thread::Page
+    @threadResource={{@model.threadResource}}
     @lastReadPost={{@model.lastReadPost}}
   />
 {{else}}
   {{page-title '404'}}
   <Misc::Error::NotFound />
-{{/if}}
+{{/unless}}

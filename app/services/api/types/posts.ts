@@ -1,4 +1,6 @@
-import { User } from '.';
+import { Users } from '.';
+
+export type Author = Users.Read;
 
 export interface Read {
   id: string;
@@ -6,7 +8,7 @@ export interface Read {
   date: Date;
   threadId: string;
   boardId: string;
-  author: User;
+  author: Users.Read;
   title?: string;
   icon?: string;
   avatarUrl?: string;
@@ -30,4 +32,12 @@ export interface Quote {
 
 export interface Report {
   cause: string;
+}
+
+export interface Preview {
+  icon?: string;
+  author: Users.Read;
+  date: string;
+  threadId: string;
+  boardId: string;
 }

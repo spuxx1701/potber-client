@@ -106,3 +106,10 @@ route:
     report-post-success: Der Post wurde gemeldet.
     post:
       deleted-user: Gelöschte:r Nutzer:in
+component:
+  misc:
+    error:
+      not-found:
+        text: Die Seite konnten wir leider nicht finden.
+        home: Startseite
+        reload: Seite neu laden
