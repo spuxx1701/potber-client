@@ -4,6 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
     added: [
       'Globale Threads und Ankündigungen können nun über eine Einstellung ausgeblendet werden.',
+      'Bestimmte Seitenwechsel (z.B. beim Öffnen eines Threads) werden nun durch eine Animation begleitet. Diese dynamischen Seitenwechsel lassen sich in den Einstellungen deaktivieren.',
     ],
     changed: [
       'In der Kopfzeile eines Posts ist nun besser erkennbar, wenn der/die Verfasser:in des Posts gelöscht wurde.',

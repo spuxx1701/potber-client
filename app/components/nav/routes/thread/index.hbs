@@ -3,7 +3,7 @@
   <Nav::Component::Header
     @title={{this.title}}
     @subtitle={{this.subtitle}}
-    @loading={{@threadResource.isLoading}}
+    @loading={{is-empty this.thread}}
   />
 </Portal>
 

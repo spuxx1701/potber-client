@@ -11,6 +11,7 @@ import {
   Settings,
   SidebarLayout,
   Theme,
+  Transitions,
 } from './settings/types';
 
 export * from './settings/types';
@@ -30,6 +31,7 @@ export default class SettingsService extends Service {
     darkenReadPosts: false,
     hideGlobalAndAnnouncementThreads: false,
     goToBottomOfThreadPage: true,
+    transitions: Transitions.dynamic,
     gestures: Gestures.none,
     debug: false,
   };
@@ -61,6 +63,9 @@ export default class SettingsService extends Service {
       }
       if (Object.values(FontSize).includes(storedSettings.fontSize)) {
         settings.fontSize = storedSettings.fontSize;
+      }
+      if (Object.values(Transitions).includes(storedSettings.transitions)) {
+        settings.transitions = storedSettings.transitions;
       }
       if (typeof storedSettings.autoRefreshSidebar === 'boolean') {
         settings.autoRefreshSidebar = storedSettings.autoRefreshSidebar;

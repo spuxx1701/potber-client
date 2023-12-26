@@ -7,6 +7,8 @@ import ApiService from 'potber-client/services/api';
 import { State, trackedFunction } from 'ember-resources/util/function';
 import { Threads } from 'potber-client/services/api/types';
 import Route from '@ember/routing/route';
+import SettingsService from 'potber-client/services/settings';
+import RendererService from 'potber-client/services/renderer';
 
 interface Params {
   TID: string;
@@ -28,6 +30,8 @@ export default class ThreadRoute extends Route {
   @service declare store: CustomStore;
   @service declare newsfeed: NewsfeedService;
   @service declare api: ApiService;
+  @service declare settings: SettingsService;
+  @service declare renderer: RendererService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -50,7 +54,7 @@ export default class ThreadRoute extends Route {
     controller.set('scrollToBottom', '');
   }
 
-  model(params: Params) {
+  async model(params: Params) {
     try {
       // Attempt to parse the page
       let page: number | undefined;
@@ -69,6 +73,17 @@ export default class ThreadRoute extends Route {
           updateBookmark: true,
         }),
       );
+      // Make sure to cache the thread on the controller so we always have access the latest state
+      threadResource.promise.then((thread) => {
+        // eslint-disable-next-line ember/no-controller-access-in-routes
+        this.controllerFor('authenticated.thread').set('cache', thread);
+      });
+      // In case the user wants transitions to be dynamic, we need to await the promise and show a loading indicator
+      if (this.settings.getSetting('transitions') === 'static') {
+        this.renderer.showLoadingIndicator();
+        await threadResource.promise;
+        this.renderer.hideLoadingIndicator();
+      }
       return {
         threadId: params.TID,
         threadResource,

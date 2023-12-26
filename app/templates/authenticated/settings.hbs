@@ -131,6 +131,21 @@
   </Common::Control::Dropdown>
 
   <Common::Control::Dropdown
+    @options={{this.config.transitionsOptions}}
+    @default={{@model.currentTransitionsOption}}
+    @onSelect={{fn this.handleSettingSelect 'transitions'}}
+    @size='max'
+    @label={{t 'route.settings.transitions.label'}}
+  >
+    <:info>
+      <Common::Control::InfoButton
+        @title={{t 'route.settings.transitions.label'}}
+        @text={{t 'route.settings.transitions.info'}}
+      />
+    </:info>
+  </Common::Control::Dropdown>
+
+  <Common::Control::Dropdown
     @options={{this.config.replaceForumUrlsOptions}}
     @default={{@model.currentReplaceForumUrlsOption}}
     @onSelect={{fn this.handleSettingSelect 'replaceForumUrls'}}

@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - Added an option to hide global and announcement threads.
+- Added dynamic transitions. They can be disabled via the 'Transitions' setting.
 
 ### Changed
 

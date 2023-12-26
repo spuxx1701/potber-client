@@ -1,6 +1,16 @@
 import { appConfig } from 'potber-client/config/app.config';
 
 /**
+ * Retrieves the value of a URL parameter.
+ * @param key - The key of the URL parameter.
+ * @returns The value of the URL parameter, or null if it doesn't exist.
+ */
+export function getUrlParameter(key: string) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(key);
+}
+
+/**
  * Turns the given unix timestamp into a Date object.
  * @param timestamp The unix timestamp.
  * @returns The Date object.
@@ -50,4 +60,13 @@ export function isChristmasSeason() {
     `${now.getFullYear()}-${christmasSeasonEnd}`,
   );
   return now > christmasSeasonStartDate && now < christmasSeasonEndDate;
+}
+
+/**
+ * Tries to parse the input as an integer.
+ * @param input - The value to parse.
+ * @returns The parsed integer value, or NaN if parsing fails.
+ */
+export function tryParseInt(input: any) {
+  return parseInt(input);
 }

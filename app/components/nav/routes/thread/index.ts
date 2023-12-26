@@ -11,11 +11,14 @@ import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
 import { trackedFunction } from 'ember-resources/util/function';
 import { ThreadResource } from 'potber-client/routes/authenticated/thread';
+import { Threads } from 'potber-client/services/api/types';
+import { getUrlParameter, tryParseInt } from 'potber-client/utils/misc';
 
 export interface Signature {
   Args: {
     threadId: string;
     threadResource: ThreadResource;
+    cache?: Threads.Read | null;
   };
 }
 
@@ -30,7 +33,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
   get thread() {
-    return this.args.threadResource.value;
+    return this.args.threadResource.value ?? this.args.cache;
   }
 
   get title() {
@@ -45,8 +48,15 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
     return this.thread && this.currentPage < this.thread.pagesCount;
   }
 
+  get suspectedPage() {
+    // We suspect the page to be the one in the URL unless we know better
+    return (
+      tryParseInt(getUrlParameter('page')) ?? this.thread?.page?.number ?? 1
+    );
+  }
+
   get currentPage() {
-    return this.thread?.page?.number ?? 1;
+    return this.args.threadResource.value?.page?.number ?? this.suspectedPage;
   }
 
   get nextPage() {
