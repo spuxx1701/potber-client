@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Improved how deleted users are being displayed.
 
+### Fixed
+
+- Made URL replacements work on localhost.
+
 ### Chores
 
 - Migrated build system to [embroider](https://github.com/embroider-build/embroider).
