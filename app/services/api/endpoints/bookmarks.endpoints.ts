@@ -1,12 +1,15 @@
-import ApiService from 'potber-client/services/api';
+import ApiService, { PublicFetchOptions } from 'potber-client/services/api';
 import { Bookmark, IBookmark } from '../models/bookmark';
 
 /**
  * Finds and returns all bookmarks for the user that is currently logged in.
  */
-export async function _findAll(this: ApiService): Promise<Bookmark[]> {
+export async function _findAll(
+  this: ApiService,
+  options?: PublicFetchOptions,
+): Promise<Bookmark[]> {
   try {
-    const data: IBookmark[] = await this.fetch(`bookmarks`);
+    const data: IBookmark[] = await this.fetch(`bookmarks`, options);
     const bookmarks: Bookmark[] = data.map(
       (record) => new Bookmark(record, this),
     );
@@ -26,8 +29,9 @@ export async function _findAll(this: ApiService): Promise<Bookmark[]> {
 export async function _findByThreadId(
   this: ApiService,
   threadId: string,
+  options?: PublicFetchOptions,
 ): Promise<Bookmark | undefined> {
-  const bookmarks = await this.findAllBookmarks();
+  const bookmarks = await this.findAllBookmarks(options);
   const bookmark = bookmarks.find(
     (bookmark) => bookmark.thread.id === threadId,
   );
@@ -43,14 +47,18 @@ export async function _create(
   this: ApiService,
   postId: string,
   threadId: string,
+  options?: PublicFetchOptions,
 ): Promise<Bookmark> {
   try {
     const data: IBookmark = await this.fetch(`bookmarks`, {
-      method: 'POST',
-      body: JSON.stringify({
-        postId,
-        threadId,
-      }),
+      ...options,
+      request: {
+        method: 'POST',
+        body: JSON.stringify({
+          postId,
+          threadId,
+        }),
+      },
     });
     const bookmark = new Bookmark(data, this);
     return bookmark;
@@ -64,10 +72,15 @@ export async function _create(
  * Deletes a bookmark.
  * @param id The bookmark id.
  */
-export async function _delete(this: ApiService, id: string): Promise<void> {
+export async function _delete(
+  this: ApiService,
+  id: string,
+  options?: PublicFetchOptions,
+): Promise<void> {
   try {
     return this.fetch(`bookmarks/${id}`, {
-      method: 'DELETE',
+      ...options,
+      request: { method: 'DELETE' },
     });
   } catch (error) {
     this.messages.showNotification(this.intl.t('error.unknown'), 'error');

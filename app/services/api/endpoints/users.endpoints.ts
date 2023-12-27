@@ -1,4 +1,4 @@
-import ApiService from 'potber-client/services/api';
+import ApiService, { PublicFetchOptions } from 'potber-client/services/api';
 import { Users } from '../types';
 import { ApiError } from '../error';
 
@@ -9,9 +9,13 @@ import { ApiError } from '../error';
 export async function findById(
   this: ApiService,
   id: string,
+  options?: PublicFetchOptions,
 ): Promise<Users.Read> {
   try {
-    return await this.fetch(`users/${id}`, { method: 'GET' });
+    return await this.fetch(`users/${id}`, {
+      ...options,
+      request: { method: 'GET' },
+    });
   } catch (error) {
     if (error instanceof ApiError) {
       switch (error.statusCode) {

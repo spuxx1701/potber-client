@@ -1,4 +1,4 @@
-import ApiService from 'potber-client/services/api';
+import ApiService, { PublicFetchOptions } from 'potber-client/services/api';
 import { Posts } from '../types';
 import { ApiError } from '../error';
 
@@ -11,10 +11,12 @@ export async function findById(
   this: ApiService,
   id: string,
   threadId: string,
+  options?: PublicFetchOptions,
 ): Promise<Posts.Read> {
   try {
     const post = await this.fetch(`posts/${id}?threadId=${threadId}`, {
-      method: 'GET',
+      ...options,
+      request: { method: 'GET' },
     });
     return post;
   } catch (error) {
@@ -48,11 +50,15 @@ export async function findById(
 export async function create(
   this: ApiService,
   post: Posts.Write,
+  options?: PublicFetchOptions,
 ): Promise<Posts.Read> {
   try {
     const createdPost = await this.fetch('posts', {
-      method: 'POST',
-      body: JSON.stringify(post),
+      request: {
+        ...options,
+        method: 'POST',
+        body: JSON.stringify(post),
+      },
     });
     return createdPost;
   } catch (error) {
@@ -88,11 +94,15 @@ export async function update(
   this: ApiService,
   id: string,
   post: Posts.Write,
+  options?: PublicFetchOptions,
 ): Promise<Posts.Read> {
   try {
     const updatedPost = await this.fetch(`posts/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(post),
+      ...options,
+      request: {
+        method: 'PUT',
+        body: JSON.stringify(post),
+      },
     });
     return updatedPost;
   } catch (error) {
@@ -126,10 +136,12 @@ export async function update(
 export async function quote(
   this: ApiService,
   id: string,
+  options?: PublicFetchOptions,
 ): Promise<Posts.Quote> {
   try {
     const quotedPost: Posts.Quote = await this.fetch(`posts/${id}/quote`, {
-      method: 'GET',
+      ...options,
+      request: { method: 'GET' },
     });
     return quotedPost;
   } catch (error) {
@@ -163,11 +175,12 @@ export async function report(
   this: ApiService,
   id: string,
   report: Posts.Report,
+  options?: PublicFetchOptions,
 ) {
   try {
     await this.fetch(`posts/${id}/report`, {
-      method: 'POST',
-      body: JSON.stringify(report),
+      ...options,
+      request: { method: 'POST', body: JSON.stringify(report) },
     });
   } catch (error) {
     if (error instanceof ApiError) {

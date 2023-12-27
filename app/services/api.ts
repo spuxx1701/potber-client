@@ -9,6 +9,24 @@ import { ApiError } from './api/error';
 import CustomSession from './custom-session';
 import * as Bookmarks from './api/endpoints/bookmarks.endpoints';
 
+export interface PublicFetchOptions {
+  /**
+   * Whether the user should be warned about the request taking a long time.
+   */
+  timeoutWarning?: boolean;
+}
+
+export interface ProtectedFetchOptions extends PublicFetchOptions {
+  /**
+   * The `RequestInit` object.
+   */
+  request?: RequestInit;
+  /**
+   * An optional object that will be parsed as query parameters.
+   */
+  query?: Record<string, string | boolean | number>;
+}
+
 export default class ApiService extends Service {
   @service declare messages: MessagesService;
   @service declare intl: IntlService;
@@ -34,15 +52,16 @@ export default class ApiService extends Service {
 
   /**
    * Triggers a `fetch` to the API server and returns the data. Any errors will be logged automatically.
-   * @param request The `RequestInit` object.
-   * @param query An optional object that will be parsed as query parameters.
    * @returns The data.
    */
   fetch = async (
     path: string,
-    request?: RequestInit,
-    query?: Record<string, string | boolean | number>,
+    options?: ProtectedFetchOptions,
   ): Promise<any> => {
+    const { request, query, timeoutWarning } = {
+      timeoutWarning: false,
+      ...options,
+    };
     if (!path.startsWith('/')) path = `/${path}`;
     let url = `${appConfig.apiUrl}${path}`;
     const baseUrl = url;
@@ -54,24 +73,34 @@ export default class ApiService extends Service {
         url += `${key}=${query[key]}`;
       });
     }
-    try {
-      this.messages.log(
-        `Outgoing request: ${request?.method ?? 'GET'} ${url}`,
-        { context: this.constructor.name, type: 'info' },
-      );
-      const headers: Record<string, string> = {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      };
-      if (this.session.isAuthenticated) {
-        headers[
-          'Authorization'
-        ] = `Bearer ${this.session.data.authenticated.access_token}`;
+    const headers: Record<string, string> = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    };
+    if (this.session.isAuthenticated) {
+      headers[
+        'Authorization'
+      ] = `Bearer ${this.session.data.authenticated.access_token}`;
+    }
+    this.messages.log(`Outgoing request: ${request?.method ?? 'GET'} ${url}`, {
+      context: this.constructor.name,
+      type: 'info',
+    });
+    // The forum can take a long time to respond. We want to warn the user if that happens.
+    const timeoutId = window.setTimeout(() => {
+      if (timeoutWarning) {
+        this.messages.showNotification(
+          this.intl.t('error.timeout.warning'),
+          'warning',
+        );
       }
+    }, appConfig.httpTimeoutWarningThreshold);
+    try {
       const response = await fetch(url, {
         ...request,
         headers: { ...headers, ...request?.headers },
       });
+      window.clearTimeout(timeoutId);
       if (response.ok && response.headers.get('content-length') === '0') return;
       const data = await response.json();
       if (!response.ok) {
@@ -83,6 +112,7 @@ export default class ApiService extends Service {
       }
       return data;
     } catch (error: unknown) {
+      window.clearTimeout(timeoutId);
       this.messages.log(JSON.stringify(error), {
         context: this.constructor.name,
         type: 'error',
