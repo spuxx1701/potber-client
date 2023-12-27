@@ -1,4 +1,3 @@
-import { action } from '@ember/object';
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
@@ -29,9 +28,9 @@ export default class ScrollObserverService extends Service {
    * property if you'd like to be notified of scroll changes.
    * @param event The scroll event.
    */
-  @action handleScroll() {
+  handleScroll = () => {
     this.scrollPosition = this.getScrollPosition();
-  }
+  };
 
   getScrollPosition(): ScrollPosition {
     return {
