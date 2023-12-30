@@ -1,7 +1,8 @@
 import Transition from '@ember/routing/transition';
 import Post from 'potber-client/models/post';
-import Thread from 'potber-client/models/thread';
 import PostCreateRoute, { PostCreateRouteModel } from './create';
+import { service } from '@ember/service';
+import ApiService from 'potber-client/services/api';
 
 interface Params {
   TID: string;
@@ -10,11 +11,14 @@ interface Params {
 }
 
 export interface PostQuoteRouteModel {
-  thread: Thread;
+  threadId: string;
+  page: number;
   post: Post;
 }
 
 export default class PostQuoteRoute extends PostCreateRoute {
+  @service declare api: ApiService;
+
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
     TID: {

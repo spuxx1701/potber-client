@@ -3,127 +3,129 @@
   <Nav::Component::Header
     @title={{this.title}}
     @subtitle={{this.subtitle}}
-    @loading={{is-empty this.thread}}
+    @loading={{this.isLoading}}
   />
 </Portal>
 
 <Portal @target='bottom-nav'>
-  <Common::Control::Link
-    @title='Zum Board'
-    @size='square'
-    @route='authenticated.board'
-    @query={{hash BID=this.thread.boardId}}
-    class='nav-element-left'
-  ><FaIcon @icon='arrow-up' /></Common::Control::Link>
+  {{#unless this.isLoading}}
+    <Common::Control::Link
+      @title='Zum Board'
+      @size='square'
+      @route='authenticated.board'
+      @query={{hash BID=this.thread.boardId}}
+      class='nav-element-left'
+    ><FaIcon @icon='arrow-up' /></Common::Control::Link>
 
-  <div class='nav-element-center'>
-    {{#if this.previousPageVisible}}
-      <Common::Control::Link
-        @title='Vorherige Seite'
-        @size='square'
-        @route='authenticated.thread'
-        @query={{hash
-          TID=@threadId
-          page=this.previousPage
-          PID=undefined
-          lastReadPost=undefined
-          scrollToBottom=undefined
-        }}
-      ><FaIcon @icon='chevron-left' /></Common::Control::Link>
-    {{else}}
-      <span class='hidden control-size-square' />
-    {{/if}}
+    <div class='nav-element-center'>
+      {{#if this.previousPageVisible}}
+        <Common::Control::Link
+          @title='Vorherige Seite'
+          @size='square'
+          @route='authenticated.thread'
+          @query={{hash
+            TID=@threadId
+            page=this.previousPage
+            PID=undefined
+            lastReadPost=undefined
+            scrollToBottom=undefined
+          }}
+        ><FaIcon @icon='chevron-left' /></Common::Control::Link>
+      {{else}}
+        <span class='hidden control-size-square' />
+      {{/if}}
 
-    <Common::Control::Menu
-      @position={{unless this.renderer.isDesktop 'top' 'bottom'}}
-      @variant='primary-transparent'
-      @icon='ellipsis'
-    >
-      {{#if this.bookmark}}
+      <Common::Control::Menu
+        @position={{unless this.renderer.isDesktop 'top' 'bottom'}}
+        @variant='primary-transparent'
+        @icon='ellipsis'
+      >
+        {{#if this.bookmark}}
+          <Common::Control::Menu::Button
+            @text={{t 'route.thread.delete-bookmark'}}
+            @icon='bookmark'
+            @onClick={{this.deleteBookmark}}
+          />
+        {{/if}}
+        <Common::Control::Menu::Link
+          @text='Original öffnen'
+          @icon='up-right-from-square'
+          @href={{this.originalUrl}}
+          target='_blank'
+        />
+        <Common::Control::Menu::LinkTo
+          @text='Zur ersten Seite'
+          @icon='backward-step'
+          @route='authenticated.thread'
+          @query={{hash
+            TID=@threadId
+            page='1'
+            PID=undefined
+            lastReadPost=undefined
+            scrollToBottom=undefined
+          }}
+        />
         <Common::Control::Menu::Button
-          @text={{t 'route.thread.delete-bookmark'}}
-          @icon='bookmark'
-          @onClick={{this.deleteBookmark}}
+          @text='Zur Seite...'
+          @icon='magnifying-glass'
+          @onClick={{this.handleGoToPage}}
+        />
+        <Common::Control::Menu::LinkTo
+          @text='Zur letzten Seite'
+          @icon='forward-step'
+          @route='authenticated.thread'
+          @query={{hash
+            TID=@threadId
+            page=this.lastPage
+            PID=undefined
+            lastReadPost=undefined
+            scrollToBottom=undefined
+          }}
+        />
+        <Common::Control::Menu::Button
+          @text='Zum Seitenanfang'
+          @icon='chevron-up'
+          @onClick={{this.handleGoToTop}}
+        />
+        <Common::Control::Menu::Button
+          @text='Zum Seitenende'
+          @icon='chevron-down'
+          @onClick={{this.handleGoToBottom}}
+        />
+      </Common::Control::Menu>
+
+      {{#if this.nextPageVisible}}
+        <Common::Control::Link
+          @title='Nächste Seite'
+          @size='square'
+          @route='authenticated.thread'
+          @query={{hash
+            TID=@threadId
+            page=this.nextPage
+            PID=undefined
+            lastReadPost=undefined
+            scrollToBottom=undefined
+          }}
+        ><FaIcon @icon='chevron-right' /></Common::Control::Link>
+      {{else}}
+        <Common::Control::Button
+          @size='square'
+          @icon='rotate-right'
+          @variant='primary-transparent'
+          @onClick={{this.reload}}
         />
       {{/if}}
-      <Common::Control::Menu::Link
-        @text='Original öffnen'
-        @icon='up-right-from-square'
-        @href={{this.originalUrl}}
-        target='_blank'
-      />
-      <Common::Control::Menu::LinkTo
-        @text='Zur ersten Seite'
-        @icon='backward-step'
-        @route='authenticated.thread'
-        @query={{hash
-          TID=@threadId
-          page='1'
-          PID=undefined
-          lastReadPost=undefined
-          scrollToBottom=undefined
-        }}
-      />
-      <Common::Control::Menu::Button
-        @text='Zur Seite...'
-        @icon='magnifying-glass'
-        @onClick={{this.handleGoToPage}}
-      />
-      <Common::Control::Menu::LinkTo
-        @text='Zur letzten Seite'
-        @icon='forward-step'
-        @route='authenticated.thread'
-        @query={{hash
-          TID=@threadId
-          page=this.lastPage
-          PID=undefined
-          lastReadPost=undefined
-          scrollToBottom=undefined
-        }}
-      />
-      <Common::Control::Menu::Button
-        @text='Zum Seitenanfang'
-        @icon='chevron-up'
-        @onClick={{this.handleGoToTop}}
-      />
-      <Common::Control::Menu::Button
-        @text='Zum Seitenende'
-        @icon='chevron-down'
-        @onClick={{this.handleGoToBottom}}
-      />
-    </Common::Control::Menu>
+    </div>
 
-    {{#if this.nextPageVisible}}
-      <Common::Control::Link
-        @title='Nächste Seite'
-        @size='square'
-        @route='authenticated.thread'
-        @query={{hash
-          TID=@threadId
-          page=this.nextPage
-          PID=undefined
-          lastReadPost=undefined
-          scrollToBottom=undefined
-        }}
-      ><FaIcon @icon='chevron-right' /></Common::Control::Link>
-    {{else}}
-      <Common::Control::Button
-        @size='square'
-        @icon='rotate-right'
-        @variant='primary-transparent'
-        @onClick={{this.reload}}
-      />
-    {{/if}}
-  </div>
-
-  <Common::Control::Link
-    @title='Antworten'
-    @size='square'
-    @route='authenticated.post.create'
-    @query={{hash TID=@threadId page=this.thread.pagesCount}}
-    @disabled={{this.thread.isClosed}}
-    class='nav-element-right'
-  ><FaIcon
-      @icon={{if this.thread.isClosed 'lock' 'comment'}}
-    /></Common::Control::Link>
+    <Common::Control::Link
+      @title='Antworten'
+      @size='square'
+      @route='authenticated.post.create'
+      @query={{hash TID=@threadId page=this.thread.pagesCount}}
+      @disabled={{this.thread.isClosed}}
+      class='nav-element-right'
+    ><FaIcon
+        @icon={{if this.thread.isClosed 'lock' 'comment'}}
+      /></Common::Control::Link>
+  {{/unless}}
 </Portal>

@@ -44,7 +44,7 @@ export const appConfig = {
   /**
    * The threshold for HTTP timeout warning in milliseconds.
    */
-  httpTimeoutWarningThreshold: 10000,
+  httpTimeoutWarningThreshold: 5000,
   /**
    * The default user group id. Other group ids define mods, admins and the like.
    */

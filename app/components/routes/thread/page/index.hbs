@@ -1,28 +1,30 @@
 {{! @glint-nocheck }}
 <div class='thread-page'>
-  {{#unless this.isLoading}}
-    <Features::Gestures::OverscrollContainer
-      @direction='up'
-      @disabled={{this.disableOverscroll}}
-      @onOverscroll={{this.handleOverscroll}}
-    >
-      {{#each this.posts as |post|}}
-        <Board::Post
-          @post={{post}}
-          @thread={{this.thread}}
-          @subtle={{is-post-subtle post @lastReadPost}}
-        />
-        {{#if (eq @lastReadPost post.id)}}
-          <Routes::Thread::Unread-Posts-Separator
+  {{#unless @loading}}
+    {{#if this.thread}}
+      <Features::Gestures::OverscrollContainer
+        @direction='up'
+        @disabled={{this.disableOverscroll}}
+        @onOverscroll={{this.handleOverscroll}}
+      >
+        {{#each this.posts as |post|}}
+          <Board::Post
             @post={{post}}
-            @posts={{this.posts}}
+            @thread={{this.thread}}
+            @subtle={{is-post-subtle post @lastReadPost}}
           />
-        {{/if}}
-        {{#if (is-final-element post this.posts)}}
-          <Misc::UpdateScrollPosition />
-        {{/if}}
-      {{/each}}
-    </Features::Gestures::OverscrollContainer>
+          {{#if (eq @lastReadPost post.id)}}
+            <Routes::Thread::Unread-Posts-Separator
+              @post={{post}}
+              @posts={{this.posts}}
+            />
+          {{/if}}
+          {{#if (is-final-element post this.posts)}}
+            <Misc::UpdateScrollPosition />
+          {{/if}}
+        {{/each}}
+      </Features::Gestures::OverscrollContainer>
+    {{/if}}
   {{else}}
     <Routes::Thread::SkeletonPost />
     <Routes::Thread::SkeletonPost />

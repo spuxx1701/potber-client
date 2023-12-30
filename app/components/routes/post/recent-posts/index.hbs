@@ -1,6 +1,19 @@
 {{! @glint-nocheck }}
-<div class='thread-page'>
-  {{#each this.posts as |post|}}
-    <Board::Post @post={{post}} @thread={{@thread}} @subtle={{true}} />
-  {{/each}}
+<div class='flex-column'>
+  {{#if this.thread}}
+    {{#each this.posts as |post|}}
+      <Board::Post
+        @post={{post}}
+        @thread={{@thread}}
+        @subtle={{true}}
+        @isPreview={{true}}
+      />
+    {{/each}}
+  {{else}}
+    <Routes::Thread::SkeletonPost />
+    <Routes::Thread::SkeletonPost />
+    <Routes::Thread::SkeletonPost />
+    <Routes::Thread::SkeletonPost />
+    <Routes::Thread::SkeletonPost />
+  {{/if}}
 </div>

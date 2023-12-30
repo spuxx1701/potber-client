@@ -1,15 +1,17 @@
-{{! @glint-nocheck }}{{#unless @model.threadResource.isError}}
+{{! @glint-nocheck }}
+{{#unless this.isError}}
   {{page-title this.pageTitle}}
 
   <Nav::Routes::Thread
     @threadId={{@model.threadId}}
-    @threadResource={{@model.threadResource}}
-    @cache={{this.cache}}
+    @thread={{this.currentOrPreviousThread}}
+    @page={{this.currentPage}}
   />
 
   <Routes::Thread::Page
-    @threadResource={{@model.threadResource}}
+    @thread={{this.currentOrPreviousThread}}
     @lastReadPost={{@model.lastReadPost}}
+    @loading={{this.showSkeletonPage}}
   />
 {{else}}
   {{page-title '404'}}

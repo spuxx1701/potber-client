@@ -12,6 +12,8 @@ private-messages:
         text: Möchtest Du die Nachricht wirklich löschen?
 error:
   unknown: Das hat leider nicht geklappt. Versuche es später nochmal.
+  timeout:
+    warning: Die Anfrage dauert länger als gewöhnlich. Bitte hab einen Moment Geduld.
   users:
     not-found: Diese:n Nutzer:in konnten wir leider nicht finden.
   posts:
@@ -103,6 +105,7 @@ route:
       submit: Absenden
       preview: Vorschau
   thread:
+    subtitle: Seite {currentPage} von {pagesCount}
     create-bookmark-success: Das Lesezeichen wurde gesetzt.
     delete-bookmark: Bookmark löschen
     delete-bookmark-success: Das Lesezeichen wurde entfernt.

@@ -109,14 +109,14 @@ export default class PostComponent extends Component<Signature> {
     );
   };
 
-  async setBookmark() {
+  setBookmark = async () => {
     await this.api.createBookmark(this.args.post.id, this.args.post.threadId);
     this.messages.showNotification(
       this.intl.t('route.thread.create-bookmark-success'),
       'success',
     );
     this.newsfeed.refreshBookmarks();
-  }
+  };
 
   savePost = async () => {
     try {

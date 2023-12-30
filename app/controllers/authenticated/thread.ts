@@ -1,11 +1,13 @@
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
+import { service } from '@ember/service';
 import { ThreadRouteModel } from 'potber-client/routes/authenticated/thread';
-import { Threads } from 'potber-client/services/api/types';
+import SettingsService from 'potber-client/services/settings';
+import ThreadStore from 'potber-client/services/stores/thread';
 
 export default class ThreadController extends Controller {
+  @service('stores/thread' as any) declare threadStore: ThreadStore;
+  @service declare settings: SettingsService;
   declare model: ThreadRouteModel;
-  @tracked cache: Threads.Read | null = null;
 
   queryParams = ['TID', 'page', 'PID', 'lastReadPost', 'scrollToBottom'];
   TID = '';
@@ -14,16 +16,29 @@ export default class ThreadController extends Controller {
   lastReadPost = '';
   scrollToBottom = '';
 
-  get thread() {
-    return this.model.threadResource.value ?? this.cache;
+  get showSkeletonPage() {
+    return (
+      this.settings.getSetting('transitions') === 'dynamic' &&
+      this.threadStore.currentThreadState?.isLoading
+    );
+  }
+
+  get currentOrPreviousThread() {
+    return this.threadStore.currentThread ?? this.threadStore.previousThread;
+  }
+
+  get currentPage() {
+    return this.model.page ?? this.currentOrPreviousThread?.page?.number;
   }
 
   get pageTitle() {
-    if (this.thread)
-      return `${this.thread.title} [${this.thread.page?.number}]`;
+    if (this.currentOrPreviousThread)
+      return `${this.currentOrPreviousThread.title} [${
+        this.currentPage ?? '..'
+      }]`;
   }
 
-  get posts() {
-    if (this.thread) return this.thread.page?.posts || [];
+  get isError() {
+    return this.threadStore.currentThreadState?.isError;
   }
 }

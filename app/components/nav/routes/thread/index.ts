@@ -10,15 +10,13 @@ import MessagesService from 'potber-client/services/messages';
 import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
 import { trackedFunction } from 'ember-resources/util/function';
-import { ThreadResource } from 'potber-client/routes/authenticated/thread';
 import { Threads } from 'potber-client/services/api/types';
-import { getUrlParameter, tryParseInt } from 'potber-client/utils/misc';
 
 export interface Signature {
   Args: {
     threadId: string;
-    threadResource: ThreadResource;
-    cache?: Threads.Read | null;
+    thread?: Threads.Read;
+    page?: number;
   };
 }
 
@@ -32,8 +30,12 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare intl: IntlService;
   declare args: Signature['Args'];
 
+  get isLoading() {
+    return !this.args.thread;
+  }
+
   get thread() {
-    return this.args.threadResource.value ?? this.args.cache;
+    return this.args.thread;
   }
 
   get title() {
@@ -41,33 +43,33 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   }
 
   get subtitle() {
-    return `Seite ${this.currentPage} von ${this.thread?.pagesCount}`;
+    return this.intl.t('route.thread.subtitle', {
+      currentPage: this.currentPage ?? '..',
+      pagesCount: this.thread?.pagesCount ?? '..',
+    });
   }
 
   get nextPageVisible() {
+    if (!this.currentPage) return false;
     return this.thread && this.currentPage < this.thread.pagesCount;
   }
 
-  get suspectedPage() {
-    // We suspect the page to be the one in the URL unless we know better
-    return (
-      tryParseInt(getUrlParameter('page')) ?? this.thread?.page?.number ?? 1
-    );
-  }
-
   get currentPage() {
-    return this.args.threadResource.value?.page?.number ?? this.suspectedPage;
+    return this.args.page ?? this.thread?.page?.number;
   }
 
   get nextPage() {
+    if (!this.currentPage) return;
     return this.currentPage + 1;
   }
 
   get previousPageVisible() {
+    if (!this.currentPage) return false;
     return this.currentPage > 1;
   }
 
   get previousPage() {
+    if (!this.currentPage) return;
     return this.currentPage - 1;
   }
 

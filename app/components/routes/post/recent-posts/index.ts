@@ -1,18 +1,19 @@
 import Component from '@glimmer/component';
-import Thread from 'potber-client/models/thread';
+import { TrackedState } from 'ember-resources';
+import { Threads } from 'potber-client/services/api/types';
 
 interface Signature {
   Args: {
-    thread: Thread;
+    threadState: TrackedState<Threads.Read>;
   };
 }
 
 export default class RecentPosts extends Component<Signature> {
-  get page() {
-    return this.args.thread.page;
+  get thread() {
+    return this.args.threadState.value;
   }
 
   get posts() {
-    return this.page?.posts.slice().reverse();
+    return this.thread?.page?.posts.reverse();
   }
 }

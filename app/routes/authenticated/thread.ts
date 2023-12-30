@@ -1,14 +1,10 @@
-import { service } from '@ember/service';
 import { reject } from 'rsvp';
 import ThreadController from 'potber-client/controllers/authenticated/thread';
-import CustomStore from 'potber-client/services/custom-store';
-import NewsfeedService from 'potber-client/services/newsfeed';
-import ApiService from 'potber-client/services/api';
-import { State, trackedFunction } from 'ember-resources/util/function';
-import { Threads } from 'potber-client/services/api/types';
-import Route from '@ember/routing/route';
+import SlowRoute from '../base/slow';
+import Transition from '@ember/routing/transition';
+import { service } from '@ember/service';
+import ThreadStore from 'potber-client/services/stores/thread';
 import SettingsService from 'potber-client/services/settings';
-import RendererService from 'potber-client/services/renderer';
 
 interface Params {
   TID: string;
@@ -18,20 +14,14 @@ interface Params {
   scrollToBottom?: string;
 }
 
-export type ThreadResource = State<Promise<Threads.Read>>;
-
 export interface ThreadRouteModel {
   threadId: string;
-  threadResource: ThreadResource;
-  lastReadPost: string;
+  page?: number;
+  lastReadPost?: string;
 }
-
-export default class ThreadRoute extends Route {
-  @service declare store: CustomStore;
-  @service declare newsfeed: NewsfeedService;
-  @service declare api: ApiService;
+export default class ThreadRoute extends SlowRoute {
+  @service('stores/thread' as any) declare threadStore: ThreadStore;
   @service declare settings: SettingsService;
-  @service declare renderer: RendererService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -54,7 +44,7 @@ export default class ThreadRoute extends Route {
     controller.set('scrollToBottom', '');
   }
 
-  async model(params: Params) {
+  async model(params: Params, transition: Transition) {
     try {
       // Attempt to parse the page
       let page: number | undefined;
@@ -66,41 +56,24 @@ export default class ThreadRoute extends Route {
         postId = undefined;
         lastReadPost = undefined;
       }
-      const threadResource = trackedFunction(this, () =>
-        this.api.findThreadById(params.TID, {
-          page,
-          postId,
-          updateBookmark: true,
-        }),
-      );
-      // Make sure to cache the thread on the controller so we always have access the latest state
-      threadResource.promise.then((thread) => {
-        // eslint-disable-next-line ember/no-controller-access-in-routes
-        this.controllerFor('authenticated.thread').set('cache', thread);
-      });
-      // In case the user wants transitions to be dynamic, we need to await the promise and show a loading indicator
+      const options = {
+        postId,
+        page,
+        keepPreviousThread: transition.from?.name === this.routeName,
+      };
       if (this.settings.getSetting('transitions') === 'static') {
-        this.renderer.showLoadingIndicator();
-        await threadResource.promise;
-        this.renderer.hideLoadingIndicator();
-      }
-      return {
-        threadId: params.TID,
-        threadResource,
-        lastReadPost: lastReadPost,
-      } as ThreadRouteModel;
-    } catch (error: any) {
-      if (error.message === 'not-found') {
-        return null;
+        await this.threadStore.loadThread(params.TID, options);
       } else {
-        return reject(error);
+        this.threadStore.loadThread(params.TID, options);
       }
+      const model: ThreadRouteModel = {
+        threadId: params.TID,
+        page,
+        lastReadPost: lastReadPost,
+      };
+      return model;
+    } catch (error: any) {
+      return reject(error);
     }
-  }
-
-  afterModel() {
-    // Refresh bookmarks after the model hook has resolved since the current transition might
-    // have impacted those.
-    this.newsfeed.refreshBookmarks();
   }
 }
