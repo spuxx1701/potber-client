@@ -113,6 +113,7 @@
           @icon='rotate-right'
           @variant='primary-transparent'
           @onClick={{this.reload}}
+          @busy={{this.threadStore.isReloading}}
         />
       {{/if}}
     </div>

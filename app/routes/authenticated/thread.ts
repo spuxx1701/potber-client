@@ -5,6 +5,7 @@ import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import ThreadStore from 'potber-client/services/stores/thread';
 import SettingsService from 'potber-client/services/settings';
+import { sleep } from 'potber-client/utils/misc';
 
 interface Params {
   TID: string;
@@ -65,6 +66,8 @@ export default class ThreadRoute extends SlowRoute {
         await this.threadStore.loadThread(params.TID, options);
       } else {
         this.threadStore.loadThread(params.TID, options);
+        // Wait for a very short amount of time so the UI has time to play the ripple animation
+        await sleep(100);
       }
       const model: ThreadRouteModel = {
         threadId: params.TID,

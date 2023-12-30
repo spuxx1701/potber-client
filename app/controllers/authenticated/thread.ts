@@ -19,7 +19,8 @@ export default class ThreadController extends Controller {
   get showSkeletonPage() {
     return (
       this.settings.getSetting('transitions') === 'dynamic' &&
-      this.threadStore.currentThreadState?.isLoading
+      this.threadStore.currentThreadState?.isLoading &&
+      !this.threadStore.isReloading
     );
   }
 

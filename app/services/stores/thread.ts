@@ -14,6 +14,10 @@ export default class ThreadStore extends Service {
    */
   @tracked previousThread?: Threads.Read;
   @tracked currentThreadState?: TrackedState<Threads.Read>;
+  /**
+   * Can be set to indicate whether the current load is a reload.
+   */
+  @tracked isReloading = false;
 
   /**
    * Loads a thread.

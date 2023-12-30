@@ -11,6 +11,8 @@ import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
 import { trackedFunction } from 'ember-resources/util/function';
 import { Threads } from 'potber-client/services/api/types';
+import ThreadStore from 'potber-client/services/stores/thread';
+import { tracked } from '@glimmer/tracking';
 
 export interface Signature {
   Args: {
@@ -28,6 +30,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare messages: MessagesService;
   @service declare api: ApiService;
   @service declare intl: IntlService;
+  @service('stores/thread' as any) declare threadStore: ThreadStore;
   declare args: Signature['Args'];
 
   get isLoading() {
@@ -105,13 +108,15 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   };
 
   reload = async () => {
-    this.renderer.preventNextScrollReset();
-    this.renderer.showLoadingIndicator();
-    (getOwner(this as unknown) as any)
-      .lookup('route:authenticated.thread')
-      .refresh()
+    this.threadStore.isReloading = true;
+    if (!this.currentPage) return;
+    this.threadStore
+      .loadThread(this.args.threadId, {
+        page: this.currentPage,
+        keepPreviousThread: true,
+      })
       .finally(() => {
-        this.renderer.hideLoadingIndicator();
+        this.threadStore.isReloading = false;
         this.renderer.waitAndScrollToBottom();
       });
   };
