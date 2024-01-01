@@ -39,7 +39,7 @@ export default class PostCreateRoute extends Route {
     try {
       // Retrieve the thread with its last page so we can display recent posts and other information about the thread.
       // We will load the data in the background so we can display it as soon as possible without making the user wait for it.
-      const threadState = trackedFunction(() =>
+      const threadState = trackedFunction(this, () =>
         this.api.findThreadById(params.TID, {
           query: { page: params.page, updateBookmark: false },
         }),
