@@ -54,8 +54,8 @@ export async function create(
 ): Promise<Posts.Read> {
   try {
     const createdPost = await this.fetch('posts', {
+      ...options,
       request: {
-        ...options,
         method: 'POST',
         body: JSON.stringify(post),
       },
