@@ -1,4 +1,4 @@
-#newsfeed-indicator {
+:global(#newsfeed-indicator) {
   position: absolute;
   height: 0.6rem;
   width: 0.6rem;
