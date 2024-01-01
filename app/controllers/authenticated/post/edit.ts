@@ -6,7 +6,6 @@ import { tracked } from '@glimmer/tracking';
 import { IntlService } from 'ember-intl';
 import { PostEditRouteModel } from 'potber-client/routes/authenticated/post/edit';
 import ApiService from 'potber-client/services/api';
-import { Posts } from 'potber-client/services/api/types';
 import MessagesService from 'potber-client/services/messages';
 
 export default class PostCreateController extends Controller {
@@ -22,7 +21,7 @@ export default class PostCreateController extends Controller {
   declare TID: string;
   declare PID: string;
 
-  @action async handleSubmit(post: Posts.Write) {
+  @action async handleSubmit() {
     this.busy = true;
     try {
       const { TID, PID } = this;

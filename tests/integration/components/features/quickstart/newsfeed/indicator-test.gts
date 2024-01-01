@@ -8,8 +8,6 @@ import SettingsService, {
 import RendererService from 'potber-client/services/renderer';
 import PrivateMessage from 'potber-client/models/private-message';
 import NewsfeedIndicatorComponent from 'potber-client/components/features/quickstart/newsfeed/indicator';
-import { Bookmark } from 'potber-client/services/api/models/bookmark';
-import BookmarkStore from 'potber-client/services/stores/bookmark';
 import styles from 'potber-client/components/features/quickstart/newsfeed/indicator/styles.css';
 import NewsfeedService from 'potber-client/services/newsfeed';
 

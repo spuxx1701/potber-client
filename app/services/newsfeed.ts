@@ -5,7 +5,6 @@ import CustomStore from './custom-store';
 import PrivateMessage, {
   PrivateMessageFolder,
 } from 'potber-client/models/private-message';
-import { Bookmark } from './api/models/bookmark';
 import ApiService from './api';
 import BookmarkStore from './stores/bookmark';
 import { appConfig } from 'potber-client/config/app.config';
