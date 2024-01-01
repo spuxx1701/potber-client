@@ -37,6 +37,11 @@ export default class ThreadRoute extends SlowRoute {
     },
   };
 
+  beforeModel(transition: Transition) {
+    if (this.settings.getSetting('transitions') === 'dynamic') return;
+    super.beforeModel(transition);
+  }
+
   resetController(controller: ThreadController) {
     // Query parameters are sticky by default, so we need to reset them
     controller.set('TID', '');
@@ -61,6 +66,7 @@ export default class ThreadRoute extends SlowRoute {
         postId,
         page,
         keepPreviousThread: transition.from?.name === this.routeName,
+        timeoutWarning: true,
       };
       if (this.settings.getSetting('transitions') === 'static') {
         await this.threadStore.loadThread(params.TID, options);
