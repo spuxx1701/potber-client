@@ -5,8 +5,8 @@
   padding: 0.25rem 0.5rem;
   margin: 0 auto;
   max-width: 100%;
-  height: calc(100dvh - var(--top-nav-height) - var(--bottom-nav-height));
-  min-height: min-content;
+  height: auto;
+  max-height: calc(100dvh - var(--top-nav-height) - var(--bottom-nav-height));
 }
 
 #post-form-toolbar,
