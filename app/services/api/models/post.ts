@@ -31,9 +31,11 @@ export class WritablePost extends Model implements IWritablePost {
     let post: Posts.Read | undefined;
     try {
       if (options.method === 'PUT' && this.id) {
-        post = await this.api.updatePost(this.id, this);
+        post = await this.api.updatePost(this.id, this, {
+          timeoutWarning: true,
+        });
       } else {
-        post = await this.api.createPost(this);
+        post = await this.api.createPost(this, { timeoutWarning: true });
       }
       this._isSaving = false;
       return post;

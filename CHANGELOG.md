@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Added an option to hide global and announcement threads.
 - Added dynamic transitions. They can be disabled via the 'Transitions' setting.
+- Added warning notifications in case certain requests take longer than expected.
 
 ### Changed
 

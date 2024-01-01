@@ -3,7 +3,26 @@ import { tracked } from '@glimmer/tracking';
 import { Threads } from '../api/types';
 import { TrackedState } from 'ember-resources';
 import { trackedFunction } from 'ember-resources/util/function';
-import ApiService from '../api';
+import ApiService, { PublicFetchOptions } from '../api';
+
+interface LoadThreadOptions extends PublicFetchOptions {
+  /**
+   * The page to load.
+   */
+  page?: number;
+  /**
+   * The post ID to retrieve (will be ignored if `page` is supplied).
+   */
+  postId?: string;
+  /**
+   * Whether or not to update the bookmark.
+   */
+  updateBookmark?: boolean;
+  /**
+   * Whether or not to keep the previous thread.
+   */
+  keepPreviousThread?: boolean;
+}
 
 export default class ThreadStore extends Service {
   @service declare api: ApiService;
@@ -21,24 +40,19 @@ export default class ThreadStore extends Service {
 
   /**
    * Loads a thread.
-   * @param threadId
-   * @param page
-   * @param options
+   * @param threadId The thread ID.
+   * @param options More options.
    */
   loadThread(
     threadId: string,
-    options?: {
-      page?: number;
-      postId?: string;
-      updateBookmark?: boolean;
-      keepPreviousThread?: boolean;
-    },
+    options?: LoadThreadOptions,
   ): Promise<Threads.Read> {
     const {
       keepPreviousThread = true,
       page,
       postId,
       updateBookmark = true,
+      timeoutWarning,
     } = { ...options };
     if (keepPreviousThread && this.currentThread) {
       this.previousThread = { ...this.currentThread };
@@ -47,6 +61,7 @@ export default class ThreadStore extends Service {
     }
     this.currentThreadState = trackedFunction(this, () =>
       this.api.findThreadById(threadId, {
+        timeoutWarning,
         query: { page: page, postId, updateBookmark },
       }),
     );
