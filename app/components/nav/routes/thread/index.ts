@@ -1,5 +1,4 @@
 import Component from '@glimmer/component';
-import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
 import RendererService from 'potber-client/services/renderer';
 import ModalService from 'potber-client/services/modal';
@@ -9,10 +8,9 @@ import { appConfig } from 'potber-client/config/app.config';
 import MessagesService from 'potber-client/services/messages';
 import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
-import { trackedFunction } from 'ember-resources/util/function';
 import { Threads } from 'potber-client/services/api/types';
 import ThreadStore from 'potber-client/services/stores/thread';
-import { tracked } from '@glimmer/tracking';
+import BookmarkStore from 'potber-client/services/stores/bookmark';
 
 export interface Signature {
   Args: {
@@ -30,7 +28,8 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare messages: MessagesService;
   @service declare api: ApiService;
   @service declare intl: IntlService;
-  @service('stores/thread' as any) declare threadStore: ThreadStore;
+  @service('stores/thread') declare threadStore: ThreadStore;
+  @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
   declare args: Signature['Args'];
 
   get isLoading() {
@@ -88,14 +87,10 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
     return this.session.isAuthenticated;
   }
 
-  bookmarkResource = trackedFunction(this, () =>
-    this.api.findBookmarkByThreadId(this.args.threadId),
-  );
-
   get bookmark() {
-    return this.bookmarkResource.value && !this.bookmarkResource.value.isDeleted
-      ? this.bookmarkResource.value
-      : undefined;
+    return this.bookmarkStore.all?.find(
+      (bookmark) => bookmark.thread.id === this.thread?.id,
+    );
   }
 
   deleteBookmark = async () => {

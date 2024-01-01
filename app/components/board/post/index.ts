@@ -4,7 +4,6 @@ import styles from './styles.css';
 import ContentParserService from 'potber-client/services/content-parser';
 import MessagesService from 'potber-client/services/messages';
 import Post from 'potber-client/models/post';
-import NewsfeedService from 'potber-client/services/newsfeed';
 import Thread from 'potber-client/models/thread';
 import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
 import RendererService from 'potber-client/services/renderer';
@@ -15,6 +14,7 @@ import { htmlSafe } from '@ember/template';
 import { appConfig } from 'potber-client/config/app.config';
 import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
+import BookmarkStore from 'potber-client/services/stores/bookmark';
 
 interface Signature {
   Args: {
@@ -31,13 +31,13 @@ export default class PostComponent extends Component<Signature> {
   @service declare contentParser: ContentParserService;
   @service declare messages: MessagesService;
   @service declare session: CustomSession;
-  @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
   @service declare renderer: RendererService;
   @service declare localStorage: LocalStorageService;
   @service declare modal: ModalService;
   @service declare api: ApiService;
   @service declare intl: IntlService;
+  @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -115,7 +115,7 @@ export default class PostComponent extends Component<Signature> {
       this.intl.t('route.thread.create-bookmark-success'),
       'success',
     );
-    this.newsfeed.refreshBookmarks();
+    this.bookmarkStore.reload();
   };
 
   savePost = async () => {

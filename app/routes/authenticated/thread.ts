@@ -6,6 +6,7 @@ import { service } from '@ember/service';
 import ThreadStore from 'potber-client/services/stores/thread';
 import SettingsService from 'potber-client/services/settings';
 import { sleep } from 'potber-client/utils/misc';
+import BookmarkStore from 'potber-client/services/stores/bookmark';
 
 interface Params {
   TID: string;
@@ -21,7 +22,8 @@ export interface ThreadRouteModel {
   lastReadPost?: string;
 }
 export default class ThreadRoute extends SlowRoute {
-  @service('stores/thread' as any) declare threadStore: ThreadStore;
+  @service('stores/thread') declare threadStore: ThreadStore;
+  @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
   @service declare settings: SettingsService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
@@ -84,5 +86,12 @@ export default class ThreadRoute extends SlowRoute {
     } catch (error: any) {
       return reject(error);
     }
+  }
+
+  afterModel() {
+    // In case the user has automatic newsfeed refreshs enabled, we need to reload bookmarks
+    // to check whether they might have changed
+    if (this.settings.getSetting('autoRefreshSidebar'))
+      this.bookmarkStore.reload();
   }
 }

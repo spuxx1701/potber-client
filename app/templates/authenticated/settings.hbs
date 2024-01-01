@@ -101,7 +101,7 @@
   <Common::Control::Dropdown
     @options={{this.config.autoRefreshSidebarOptions}}
     @default={{@model.currentAutoRefreshSidebarOption}}
-    @onSelect={{fn this.handleSettingSelect 'autoRefreshSidebar'}}
+    @onSelect={{this.handleAutoRefreshSidebarSelect}}
     @size='max'
     @label={{t 'route.settings.auto-refresh-sidebar.label'}}
   >

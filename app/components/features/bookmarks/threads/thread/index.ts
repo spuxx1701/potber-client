@@ -1,8 +1,8 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import Bookmark from 'potber-client/models/bookmark';
-import CustomStore from 'potber-client/services/custom-store';
+import { IntlService } from 'ember-intl';
+import { Bookmark } from 'potber-client/services/api/models/bookmark';
 import MessagesService from 'potber-client/services/messages';
 
 interface Signature {
@@ -11,9 +11,9 @@ interface Signature {
   };
 }
 
-export default class BookmarksThreadcomponent extends Component<Signature> {
-  @service declare store: CustomStore;
+export default class BookmarkedThread extends Component<Signature> {
   @service declare messages: MessagesService;
+  @service declare intl: IntlService;
   declare args: Signature['Args'];
 
   get hasNewPosts() {
@@ -34,14 +34,10 @@ export default class BookmarksThreadcomponent extends Component<Signature> {
 
   @action async handleDelete() {
     try {
-      await this.args.bookmark.destroyRecord();
+      await this.args.bookmark.delete();
       this.messages.showNotification('Lesezeichen wurde entfernt.', 'success');
-    } catch (error: any) {
-      this.messages.log(error, {
-        type: 'error',
-        context: this.constructor.name,
-      });
-      this.messages.showNotification('Das hat leider nicht geklappt.', 'error');
+    } catch (error) {
+      // Do nothing and let the user try again
     }
   }
 }

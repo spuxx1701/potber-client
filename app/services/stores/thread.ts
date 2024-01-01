@@ -97,3 +97,9 @@ export default class ThreadStore extends Service {
     this.clearPreviousThread();
   }
 }
+
+declare module '@ember/service' {
+  interface Registry {
+    'stores/thread': ThreadStore;
+  }
+}

@@ -5,8 +5,12 @@ import RendererService from 'potber-client/services/renderer';
 import SettingsService, {
   SidebarLayout,
 } from 'potber-client/services/settings';
+import styles from './styles.css';
+import { concat } from '@ember/helper';
+import classNames from 'potber-client/helpers/class-names';
 
 export default class NewsfeedIndicatorComponent extends Component {
+  styles = styles;
   @service declare renderer: RendererService;
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
@@ -42,8 +46,11 @@ export default class NewsfeedIndicatorComponent extends Component {
   <template>
     <span
       id='newsfeed-indicator'
-      class='newsfeed-indicator-position-{{this.position}}
-        newsfeed-indicator-{{this.status}}'
+      class='{{classNames
+          this
+          (concat "position-" this.position)
+          (concat "status-" this.status)
+        }}'
       data-test-newsfeed-indicator
     />
   </template>

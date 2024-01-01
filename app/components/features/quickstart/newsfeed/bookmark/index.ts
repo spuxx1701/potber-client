@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import Bookmark from 'potber-client/models/bookmark';
+import { Bookmark } from 'potber-client/services/api/models/bookmark';
 import RendererService from 'potber-client/services/renderer';
 
 interface Signature {

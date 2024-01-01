@@ -1,20 +1,15 @@
-import ArrayProxy from '@ember/array/proxy';
-import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import Bookmark from 'potber-client/models/bookmark';
-import CustomStore from 'potber-client/services/custom-store';
+import { Bookmark } from 'potber-client/services/api/models/bookmark';
 
 interface Signature {
   Args: {
-    bookmarks: ArrayProxy<Bookmark>;
+    bookmarks: Bookmark[];
   };
 }
 
 export default class BookmarksThreadsComponent extends Component<Signature> {
-  @service declare store: CustomStore;
-
   get bookmarks() {
-    return this.args.bookmarks;
+    return this.args.bookmarks.filter((bookmark) => !bookmark.isDeleted);
   }
 
   get status() {

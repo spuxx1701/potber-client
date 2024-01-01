@@ -1,12 +1,12 @@
 import { service } from '@ember/service';
 import SlowRoute from 'potber-client/routes/base/slow';
-import CustomStore from 'potber-client/services/custom-store';
+import BookmarkStore from 'potber-client/services/stores/bookmark';
 
 export default class BookmarksThreadsRoute extends SlowRoute {
-  @service declare store: CustomStore;
+  @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
 
   async model() {
-    const bookmarks = await this.store.getBookmarks();
+    const bookmarks = await this.bookmarkStore.getAll({ reload: true });
     return { bookmarks };
   }
 }

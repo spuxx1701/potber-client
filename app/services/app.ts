@@ -24,6 +24,7 @@ export default class AppService extends Service {
   async initialize() {
     if (this.initialized) return;
     this.settings.initialize();
+    this.newsfeed.initialize();
     this.renderer.initialize();
     this.deviceManager.initialize();
     this.setupSession();

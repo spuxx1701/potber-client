@@ -1,0 +1,45 @@
+#newsfeed-indicator {
+  position: absolute;
+  height: 0.6rem;
+  width: 0.6rem;
+  border-radius: 50%;
+  bottom: 0.9rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+}
+
+.position-left {
+  left: 0.5rem;
+}
+
+.position-right {
+  right: 0.5rem;
+}
+
+.status-none {
+  scale: 0;
+}
+
+.status-info {
+  background-color: var(--color-newsfeed-indicator-info);
+}
+
+.status-important {
+  background-color: var(--color-newsfeed-indicator-important);
+}
+
+.status-info,
+.status-important {
+  animation: newsfeed-indicator-pulse 0.5s ease-in-out;
+}
+
+@keyframes newsfeed-indicator-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -73,7 +73,7 @@ route:
       info: Stelle ein, ob in den Kopfzeilen von Posts die Bender der Autor:innen angezeigt werden sollen.
     auto-refresh-sidebar:
       label: Automatischer Newsfeed-Refresh
-      info: Stelle ein, ob Dein Newsfeed beim Aufklappen der Sidebar automatisch aktualisiert werden soll.
+      info: Stelle ein, ob potber Deinen Newsfeed beim Ausklappen der Sidebar, beim Navigieren durch Threads und in regelmäßigen Abständen aktualisieren soll. Wenn diese Einstellung deaktiviert ist, spiegelt der Newsfeed möglicherweise einen veralteten Zustand wieder.
     landing-page:
       label: Startseite
       info: Deine Startseite wird beim Neustart von potber aufgerufen. Außerdem kannst Du sie jederzeit über das 🏠-Icon in der Sidebar aufrufen.

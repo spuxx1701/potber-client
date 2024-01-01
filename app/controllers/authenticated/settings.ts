@@ -58,6 +58,11 @@ export default class SettingsController extends Controller {
     this.renderer.updateFontSize();
   };
 
+  handleAutoRefreshSidebarSelect = (option: DropdownOption) => {
+    this.settings.setSetting('autoRefreshSidebar', option.data);
+    window.location.reload();
+  };
+
   handleGesturesSelect = (option: DropdownOption) => {
     this.settings.setSetting('gestures', option.data);
     this.deviceManager.toggleGesturesSupport();

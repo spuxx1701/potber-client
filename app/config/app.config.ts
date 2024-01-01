@@ -3,6 +3,9 @@ import ENV from 'potber-client/config/environment';
 /**
  * Configuration object for the application.
  */
+/**
+ * Configuration object for the application.
+ */
 export const appConfig = {
   /**
    * The name of the application.
@@ -49,4 +52,8 @@ export const appConfig = {
    * The default user group id. Other group ids define mods, admins and the like.
    */
   standardUserGroupId: '3',
+  /**
+   * The refresh interval for the newsfeed in milliseconds.
+   */
+  newsfeedRefreshInterval: 20000,
 };

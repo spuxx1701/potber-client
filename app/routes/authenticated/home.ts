@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
-import Bookmark from 'potber-client/models/bookmark';
+import { Bookmark } from 'potber-client/services/api/models/bookmark';
 import LocalStorageService from 'potber-client/services/local-storage';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import SessionService from 'potber-client/services/session';

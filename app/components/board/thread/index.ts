@@ -3,9 +3,9 @@ import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { PostPreview } from 'potber-client/models/post';
 import Thread from 'potber-client/models/thread';
-import CustomStore from 'potber-client/services/custom-store';
 import RendererService from 'potber-client/services/renderer';
 import SettingsService from 'potber-client/services/settings';
+import BookmarkStore from 'potber-client/services/stores/bookmark';
 
 export interface Signature {
   Args: {
@@ -16,9 +16,9 @@ export interface Signature {
 export default class ThreadComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
-  @service declare store: CustomStore;
   @service declare renderer: RendererService;
   @service declare settings: SettingsService;
+  @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
 
   get hideThread() {
     return (
@@ -37,11 +37,9 @@ export default class ThreadComponent extends Component<Signature> {
   }
 
   get bookmark() {
-    if (this.store.bookmarks) {
-      return this.store.bookmarks.find(
-        (bookmark) => bookmark.thread?.id === this.args.thread.id,
-      );
-    }
+    return this.bookmarkStore.all?.find(
+      (bookmark) => bookmark.thread?.id === this.args.thread.id,
+    );
   }
 
   get icon() {
