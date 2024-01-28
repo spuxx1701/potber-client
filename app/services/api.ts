@@ -1,6 +1,6 @@
 import Service, { service } from '@ember/service';
 import { appConfig } from 'potber-client/config/app.config';
-import MessagesService from './messages';
+import MessagesService, { MessageType } from './messages';
 import { IntlService } from 'ember-intl';
 import * as Threads from './api/endpoints/threads.endpoints';
 import * as Users from './api/endpoints/users.endpoints';
@@ -9,11 +9,35 @@ import { ApiError } from './api/error';
 import CustomSession from './custom-session';
 import * as Bookmarks from './api/endpoints/bookmarks.endpoints';
 
+export interface FetchStatusNotification {
+  /**
+   * The status code that will trigger the notification. A wildcard will be used
+   * as a fallback for all unhandled status codes >= 400 and unknown errors.
+   */
+  statusCode: number | '*';
+  /**
+   * The notification message.
+   */
+  message: string;
+  /**
+   * The notification type. Defaults to 'error'.
+   */
+  type?: MessageType;
+}
+
 export interface PublicFetchOptions {
   /**
    * Whether the user should be warned about the request taking a long time.
    */
   timeoutWarning?: boolean;
+  /**
+   * Contains notifications that will be shown to the user in case of specific status codes.
+   */
+  statusNotifications?: FetchStatusNotification[];
+  /**
+   * Whether the request should be handled silently (and now show any notifications).
+   */
+  silent?: boolean;
 }
 
 export interface ProtectedFetchOptions extends PublicFetchOptions {
@@ -113,17 +137,68 @@ export default class ApiService extends Service {
       return data;
     } catch (error: unknown) {
       window.clearTimeout(timeoutId);
-      this.messages.log(JSON.stringify(error), {
-        context: this.constructor.name,
-        type: 'error',
-      });
-      if (error instanceof ApiError) {
-        if (error.statusCode === 401) {
-          this.session.invalidate();
-          return;
-        }
-      }
+      await this.handleErrors(error, options);
       throw error;
     }
   };
+
+  private async handleErrors(error: unknown, options?: ProtectedFetchOptions) {
+    const { statusNotifications, silent } = {
+      statusNotifications: [
+        {
+          statusCode: '*',
+          type: 'error',
+          message: this.intl.t('error.unknown'),
+        },
+      ] as FetchStatusNotification[],
+      silent: false,
+      ...options,
+    };
+    this.messages.log(JSON.stringify(error), {
+      context: this.constructor.name,
+      type: 'error',
+    });
+    const fallbackNotification = statusNotifications.find(
+      (notification) => notification.statusCode === '*',
+    );
+    if (error instanceof ApiError) {
+      const handledStatusCodes = [401];
+      // In case of a 401 we our session has been invalidated and we need to authenticate.
+      if (error.statusCode === 401) {
+        await this.session.invalidate();
+        return;
+      }
+      if (silent) return;
+      // In case of other status codes, we will look for notifications to display.
+      const notification = statusNotifications.find(
+        (notification) => notification.statusCode === error.statusCode,
+      );
+      if (notification) {
+        if (notification.statusCode === error.statusCode) {
+          handledStatusCodes.push(error.statusCode);
+          this.messages.showNotification(
+            notification.message,
+            notification.type ?? 'error',
+          );
+        }
+      }
+      // If we have a fallbackNotification and our status code has not been handled,
+      // we will display the fallback notification.
+      if (
+        fallbackNotification &&
+        !handledStatusCodes.includes(error.statusCode)
+      ) {
+        this.messages.showNotification(
+          fallbackNotification.message,
+          fallbackNotification.type ?? 'error',
+        );
+      }
+    } else {
+      if (!fallbackNotification || silent) return;
+      this.messages.showNotification(
+        fallbackNotification.message,
+        fallbackNotification.type ?? 'error',
+      );
+    }
+  }
 }

@@ -1,6 +1,5 @@
 import ApiService, { PublicFetchOptions } from 'potber-client/services/api';
 import { Posts } from '../types';
-import { ApiError } from '../error';
 
 /**
  * Finds and returns a post by its id and threadId.
@@ -13,33 +12,25 @@ export async function findById(
   threadId: string,
   options?: PublicFetchOptions,
 ): Promise<Posts.Read> {
-  try {
-    const post = await this.fetch(`posts/${id}?threadId=${threadId}`, {
-      ...options,
-      request: { method: 'GET' },
-    });
-    return post;
-  } catch (error) {
-    if (error instanceof ApiError) {
-      switch (error.statusCode) {
-        case 403:
-          this.messages.showNotification(
-            this.intl.t('error.posts.find-by-id.forbidden'),
-            'error',
-          );
-          break;
-        case 404:
-          this.messages.showNotification(
-            this.intl.t('error.posts.find-by-id.not-found'),
-            'error',
-          );
-          break;
-        default:
-          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-      }
-    }
-    throw error;
-  }
+  const post = await this.fetch(`posts/${id}?threadId=${threadId}`, {
+    ...options,
+    statusNotifications: [
+      {
+        statusCode: 403,
+        message: this.intl.t('error.posts.find-by-id.forbidden'),
+      },
+      {
+        statusCode: 404,
+        message: this.intl.t('error.posts.find-by-id.not-found'),
+      },
+      {
+        statusCode: '*',
+        message: this.intl.t('error.unknown'),
+      },
+    ],
+    request: { method: 'GET' },
+  });
+  return post;
 }
 
 /**
@@ -52,36 +43,28 @@ export async function create(
   post: Posts.Write,
   options?: PublicFetchOptions,
 ): Promise<Posts.Read> {
-  try {
-    const createdPost = await this.fetch('posts', {
-      ...options,
-      request: {
-        method: 'POST',
-        body: JSON.stringify(post),
+  const createdPost = await this.fetch('posts', {
+    ...options,
+    statusNotifications: [
+      {
+        statusCode: 403,
+        message: this.intl.t('error.posts.create.forbidden'),
       },
-    });
-    return createdPost;
-  } catch (error) {
-    if (error instanceof ApiError) {
-      switch (error.statusCode) {
-        case 403:
-          this.messages.showNotification(
-            this.intl.t('error.posts.create.forbidden'),
-            'error',
-          );
-          break;
-        case 429:
-          this.messages.showNotification(
-            this.intl.t('error.posts.create.too-many-requests'),
-            'error',
-          );
-          break;
-        default:
-          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-      }
-    }
-    throw error;
-  }
+      {
+        statusCode: 429,
+        message: this.intl.t('error.posts.create.too-many-requests'),
+      },
+      {
+        statusCode: '*',
+        message: this.intl.t('error.unknown'),
+      },
+    ],
+    request: {
+      method: 'POST',
+      body: JSON.stringify(post),
+    },
+  });
+  return createdPost;
 }
 
 /**
@@ -96,36 +79,28 @@ export async function update(
   post: Posts.Write,
   options?: PublicFetchOptions,
 ): Promise<Posts.Read> {
-  try {
-    const updatedPost = await this.fetch(`posts/${id}`, {
-      ...options,
-      request: {
-        method: 'PUT',
-        body: JSON.stringify(post),
+  const updatedPost = await this.fetch(`posts/${id}`, {
+    ...options,
+    statusNotifications: [
+      {
+        statusCode: 403,
+        message: this.intl.t('error.posts.update.forbidden'),
       },
-    });
-    return updatedPost;
-  } catch (error) {
-    if (error instanceof ApiError) {
-      switch (error.statusCode) {
-        case 403:
-          this.messages.showNotification(
-            this.intl.t('error.posts.update.forbidden'),
-            'error',
-          );
-          break;
-        case 429:
-          this.messages.showNotification(
-            this.intl.t('error.posts.update.too-many-requests'),
-            'error',
-          );
-          break;
-        default:
-          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-      }
-    }
-    throw error;
-  }
+      {
+        statusCode: 429,
+        message: this.intl.t('error.posts.update.too-many-requests'),
+      },
+      {
+        statusCode: '*',
+        message: this.intl.t('error.unknown'),
+      },
+    ],
+    request: {
+      method: 'PUT',
+      body: JSON.stringify(post),
+    },
+  });
+  return updatedPost;
 }
 
 /**
@@ -138,33 +113,25 @@ export async function quote(
   id: string,
   options?: PublicFetchOptions,
 ): Promise<Posts.Quote> {
-  try {
-    const quotedPost: Posts.Quote = await this.fetch(`posts/${id}/quote`, {
-      ...options,
-      request: { method: 'GET' },
-    });
-    return quotedPost;
-  } catch (error) {
-    if (error instanceof ApiError) {
-      switch (error.statusCode) {
-        case 403:
-          this.messages.showNotification(
-            this.intl.t('error.posts.find-by-id.forbidden'),
-            'error',
-          );
-          break;
-        case 404:
-          this.messages.showNotification(
-            this.intl.t('error.posts.find-by-id.not-found'),
-            'error',
-          );
-          break;
-        default:
-          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-      }
-    }
-    throw error;
-  }
+  const quotedPost: Posts.Quote = await this.fetch(`posts/${id}/quote`, {
+    ...options,
+    statusNotifications: [
+      {
+        statusCode: 403,
+        message: this.intl.t('error.posts.find-by-id.forbidden'),
+      },
+      {
+        statusCode: 404,
+        message: this.intl.t('error.posts.find-by-id.not-found'),
+      },
+      {
+        statusCode: '*',
+        message: this.intl.t('error.unknown'),
+      },
+    ],
+    request: { method: 'GET' },
+  });
+  return quotedPost;
 }
 
 /**
@@ -177,24 +144,18 @@ export async function report(
   report: Posts.Report,
   options?: PublicFetchOptions,
 ) {
-  try {
-    await this.fetch(`posts/${id}/report`, {
-      ...options,
-      request: { method: 'POST', body: JSON.stringify(report) },
-    });
-  } catch (error) {
-    if (error instanceof ApiError) {
-      switch (error.statusCode) {
-        case 409:
-          this.messages.showNotification(
-            this.intl.t('error.posts.report.conflict'),
-            'error',
-          );
-          break;
-        default:
-          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-      }
-    }
-    throw error;
-  }
+  await this.fetch(`posts/${id}/report`, {
+    ...options,
+    statusNotifications: [
+      {
+        statusCode: 409,
+        message: this.intl.t('error.posts.report.conflict'),
+      },
+      {
+        statusCode: '*',
+        message: this.intl.t('error.unknown'),
+      },
+    ],
+    request: { method: 'POST', body: JSON.stringify(report) },
+  });
 }

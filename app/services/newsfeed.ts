@@ -5,7 +5,7 @@ import CustomStore from './custom-store';
 import PrivateMessage, {
   PrivateMessageFolder,
 } from 'potber-client/models/private-message';
-import ApiService from './api';
+import ApiService, { PublicFetchOptions } from './api';
 import BookmarkStore from './stores/bookmark';
 import { appConfig } from 'potber-client/config/app.config';
 import SettingsService from './settings';
@@ -29,13 +29,13 @@ export default class NewsfeedService extends Service {
   initialize() {
     if (this.settings.getSetting('autoRefreshSidebar'))
       setInterval(() => {
-        this.refresh();
+        this.refresh({ silent: true });
       }, appConfig.newsfeedRefreshInterval);
   }
 
-  async refresh() {
+  async refresh(options?: PublicFetchOptions) {
     this.isUpdating = true;
-    await this.bookmarkStore.reload();
+    await this.bookmarkStore.reload(options);
     await this.refreshPrivateMessages();
     await sleep(MINIMUM_UPDATE_DURATION);
     this.isUpdating = false;

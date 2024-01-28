@@ -1,5 +1,4 @@
 import ApiService, { PublicFetchOptions } from 'potber-client/services/api';
-import { ApiError } from '../error';
 import { Threads } from '../types';
 
 interface FindByIdOptions extends PublicFetchOptions {
@@ -11,31 +10,23 @@ export async function findById(
   id: string,
   options?: FindByIdOptions,
 ): Promise<Threads.Read> {
-  try {
-    const thread = await this.fetch(`threads/${id}`, {
-      ...options,
-      request: { method: 'GET' },
-    });
-    return thread;
-  } catch (error) {
-    if (error instanceof ApiError) {
-      switch (error.statusCode) {
-        case 403:
-          this.messages.showNotification(
-            this.intl.t('error.posts.find-by-id.forbidden'),
-            'error',
-          );
-          break;
-        case 404:
-          this.messages.showNotification(
-            this.intl.t('error.posts.find-by-id.not-found'),
-            'error',
-          );
-          break;
-        default:
-          this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-      }
-    }
-    throw error;
-  }
+  const thread = await this.fetch(`threads/${id}`, {
+    ...options,
+    statusNotifications: [
+      {
+        statusCode: 403,
+        message: this.intl.t('error.threads.find-by-id.forbidden'),
+      },
+      {
+        statusCode: 404,
+        message: this.intl.t('error.threads.find-by-id.not-found'),
+      },
+      {
+        statusCode: '*',
+        message: this.intl.t('error.unknown'),
+      },
+    ],
+    request: { method: 'GET' },
+  });
+  return thread;
 }

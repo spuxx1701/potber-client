@@ -55,7 +55,7 @@ export default class MessagesService extends Service {
    */
   showNotification(
     message: string,
-    type: 'info' | 'success' | 'warning' | 'error',
+    type: MessageType,
     options?: { callback?: (notification: any) => void },
   ) {
     const notificationOptions = {

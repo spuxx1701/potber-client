@@ -8,16 +8,11 @@ export async function _findAll(
   this: ApiService,
   options?: PublicFetchOptions,
 ): Promise<Bookmark[]> {
-  try {
-    const data: IBookmark[] = await this.fetch(`bookmarks`, options);
-    const bookmarks: Bookmark[] = data.map(
-      (record) => new Bookmark(record, this),
-    );
-    return bookmarks;
-  } catch (error) {
-    this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-    throw error;
-  }
+  const data: IBookmark[] = await this.fetch(`bookmarks`, options);
+  const bookmarks: Bookmark[] = data.map(
+    (record) => new Bookmark(record, this),
+  );
+  return bookmarks;
 }
 
 // TODO: This should get moved to the api as a relation on the thread (threads/:id/bookmark)
@@ -49,23 +44,18 @@ export async function _create(
   threadId: string,
   options?: PublicFetchOptions,
 ): Promise<Bookmark> {
-  try {
-    const data: IBookmark = await this.fetch(`bookmarks`, {
-      ...options,
-      request: {
-        method: 'POST',
-        body: JSON.stringify({
-          postId,
-          threadId,
-        }),
-      },
-    });
-    const bookmark = new Bookmark(data, this);
-    return bookmark;
-  } catch (error) {
-    this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-    throw error;
-  }
+  const data: IBookmark = await this.fetch(`bookmarks`, {
+    ...options,
+    request: {
+      method: 'POST',
+      body: JSON.stringify({
+        postId,
+        threadId,
+      }),
+    },
+  });
+  const bookmark = new Bookmark(data, this);
+  return bookmark;
 }
 
 /**
@@ -77,13 +67,8 @@ export async function _delete(
   id: string,
   options?: PublicFetchOptions,
 ): Promise<void> {
-  try {
-    return this.fetch(`bookmarks/${id}`, {
-      ...options,
-      request: { method: 'DELETE' },
-    });
-  } catch (error) {
-    this.messages.showNotification(this.intl.t('error.unknown'), 'error');
-    throw error;
-  }
+  return this.fetch(`bookmarks/${id}`, {
+    ...options,
+    request: { method: 'DELETE' },
+  });
 }
