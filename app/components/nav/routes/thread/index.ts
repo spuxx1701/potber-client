@@ -103,6 +103,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   };
 
   reload = async () => {
+    this.renderer.showLoadingIndicator();
     this.renderer.preventNextScrollReset();
     this.threadStore.isReloading = true;
     if (!this.currentPage) return;
@@ -113,6 +114,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
       })
       .finally(() => {
         this.threadStore.isReloading = false;
+        this.renderer.hideLoadingIndicator();
         this.renderer.waitAndScrollToBottom();
       });
   };
