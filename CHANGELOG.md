@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Introduced [postcss and other modern css tools](https://discuss.emberjs.com/t/ember-modern-css/19614).
 - Migrated several components to `.gts` and the css module pattern.
 - Added /metrics route to the NGINX server.
+- Staging and production builds no longer use different build pipelines. Environment-specific values are now being injected through `injected-config.js` served by NGINX.
 
 ## [1.17.5] - 2023-12-23
 

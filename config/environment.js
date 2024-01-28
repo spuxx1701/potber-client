@@ -8,10 +8,6 @@ module.exports = function (environment) {
     locationType: 'history',
     EmberENV: {
       EXTEND_PROTOTYPES: false,
-      FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
-      },
     },
 
     APP: {
@@ -65,18 +61,6 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
-  }
-
-  if (environment === 'staging') {
-    ENV.APP.HOSTNAME = 'test.potber.de';
-    ENV.APP.API_URL = 'https://test-api.potber.de';
-    ENV.APP.AUTH_ISSUER_URL = 'https://test-auth.potber.de';
-    ENV.APP.MEME_HOST_URL = 'https://potber.de';
-    ENV.APP.DEBUG = true;
-  }
-
-  if (environment === 'production') {
-    // Production configuration is the default
   }
 
   return ENV;

@@ -15,7 +15,6 @@
     <meta name="msapplication-config" content="{{rootURL}}browserconfig.xml" />
 
     <link integrity="" rel="icon" href="{{rootURL}}favicon.png" />
-    <!-- <link integrity="" rel="stylesheet" href="{{rootURL}}assets/skeleton.css" /> -->
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css" />
     <link
       integrity=""
@@ -40,6 +39,7 @@
 
     {{content-for "body"}}
 
+    <script type="module" src="{{rootURL}}injected-config.js"></script>
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/potber-client.js"></script>
 

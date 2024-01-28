@@ -1,5 +1,5 @@
 import { helper } from '@ember/component/helper';
-import ENV from 'potber-client/config/environment';
+import { appConfig } from 'potber-client/config/app.config';
 
 export function parseMemeUrl([url]: [string]) {
   if (!url) {
@@ -12,7 +12,7 @@ export function parseMemeUrl([url]: [string]) {
     return url;
   } else {
     // If the URL is a relative one, we will output the URL that points to the live application server
-    const fullUrl = `${ENV.APP['MEME_HOST_URL']}/images/memes/${url}`;
+    const fullUrl = `${appConfig.memeHostUrl}/images/memes/${url}`;
     return fullUrl;
   }
 }

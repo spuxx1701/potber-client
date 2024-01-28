@@ -25,6 +25,16 @@ declare global {
   }
 
   type IconSize = 'auto' | 'large' | 'medium';
+
+  interface AppEnvironmentOptions {
+    HOSTNAME: string;
+    API_URL: string;
+    AUTH_ISSUER_URL: string;
+    MEME_HOST_URL: string;
+  }
+  interface Window {
+    APP?: AppEnvironmentOptions;
+  }
 }
 
 export {};

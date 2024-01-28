@@ -1,7 +1,6 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import ENV from 'potber-client/config/environment';
 import Board from 'potber-client/models/board';
 import MessagesService from './messages';
 import { clean, valid, gt } from 'semver';
@@ -9,6 +8,7 @@ import CustomStore from './custom-store';
 import { Settings } from './settings';
 import Post from 'potber-client/models/post';
 import { PersistedSavedPost } from 'potber-client/components/features/bookmarks/saved-posts/post';
+import { appConfig } from 'potber-client/config/app.config';
 
 const PREFIX = 'potber-';
 
@@ -151,13 +151,8 @@ export default class LocalStorageService extends Service {
       `${PREFIX}lastEncountedVersion`,
     );
     if (!valid(encounteredVersion)) return undefined;
-    if (
-      gt(
-        clean(ENV.APP['version'] as string) as string,
-        clean(encounteredVersion as string) as string,
-      )
-    ) {
-      return clean(ENV.APP['version'] as string) as string;
+    if (gt(appConfig.version, clean(encounteredVersion as string) as string)) {
+      return appConfig.version;
     }
     return undefined;
   }
@@ -166,7 +161,7 @@ export default class LocalStorageService extends Service {
    * Sets the last encounted app version to the current app version and stores it.
    */
   setEncounteredVersion() {
-    const version = (clean(ENV.APP['version'] as string) as string) || '';
+    const version = appConfig.version;
     localStorage.setItem(`${PREFIX}lastEncountedVersion`, version);
     this.messages.log(`${PREFIX}lastEncountedVersion set to: '${version}'.`, {
       context: this.constructor.name,

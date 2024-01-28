@@ -1,9 +1,9 @@
 import Controller from '@ember/controller';
-import ENV from 'potber-client/config/environment';
+import { appConfig } from 'potber-client/config/app.config';
 import { clean } from 'semver';
 
 export default class AboutController extends Controller {
   get version() {
-    return clean(ENV.APP['version'] as string);
+    return clean(appConfig.version);
   }
 }

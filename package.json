@@ -15,7 +15,6 @@
     "start:remote": "ember serve --environment=development:remote",
     "start:mobile": "ember serve --environment=development:mobile",
     "build": "ember build --environment=production",
-    "build:staging": "ember build --environment=staging",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
     "lint:js": "eslint . --cache",

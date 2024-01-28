@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import ENV from 'potber-client/config/environment';
 import Service, { service } from '@ember/service';
+import SettingsService, { Settings } from './settings';
 
 export type MessageType = 'info' | 'success' | 'warning' | 'error';
 
@@ -18,6 +18,7 @@ export interface LogOptions {
 
 export default class MessagesService extends Service {
   @service declare notifications: any;
+  @service declare settings: SettingsService;
 
   messages: Message[] = [];
 
@@ -33,7 +34,7 @@ export default class MessagesService extends Service {
       date: new Date(),
       context: options?.context || this.constructor.name,
     });
-    if (ENV.APP['DEBUG']) {
+    if (this.settings.getSetting('debug')) {
       const message = `[${options?.context || this.constructor.name}] [${
         options?.type || 'info'
       }] ${text}`;

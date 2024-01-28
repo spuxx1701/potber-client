@@ -1,4 +1,5 @@
-import ENV from 'potber-client/config/environment';
+import environment from 'potber-client/config/environment';
+import { clean } from 'semver';
 
 /**
  * Configuration object for the application.
@@ -12,22 +13,25 @@ export const appConfig = {
    */
   name: 'potber',
   /**
+   * The current version of the application.
+   */
+  version: clean(environment.APP?.version) ?? '0.0.0',
+  /**
    * The hostname of the application.
    */
-  hostname: (ENV.APP['HOSTNAME'] as string | undefined) ?? 'potber.de',
+  hostname: window.APP?.HOSTNAME ?? environment.APP.HOSTNAME ?? 'potber.de',
   /**
    * The API URL for the application.
    */
-  apiUrl: (ENV.APP['API_URL'] as string | undefined) ?? 'https://api.potber.de',
-  /**
-   * Flag indicating whether debug mode is enabled.
-   */
-  debug: (ENV.APP['DEBUG'] as boolean | undefined) ?? false,
+  apiUrl:
+    window.APP?.API_URL ?? environment.APP.API_URL ?? 'https://api.potber.de',
   /**
    * The URL for the meme host.
    */
   memeHostUrl:
-    (ENV.APP['MEME_HOST_URL'] as string | undefined) ?? 'https://potber.de',
+    window.APP?.MEME_HOST_URL ??
+    environment.APP.MEME_HOST_URL ??
+    'https://potber.de',
   /**
    * The URL for the forum.
    */

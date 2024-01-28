@@ -1,5 +1,5 @@
 import Application from 'potber-client/app';
-import config from 'potber-client/config/environment';
+import ENV from 'potber-client/config/environment';
 import * as QUnit from 'qunit';
 import {
   forceModulesToBeLoaded,
@@ -9,7 +9,7 @@ import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';
 import { start } from 'ember-qunit';
 
-setApplication(Application.create(config.APP));
+setApplication(Application.create(ENV.APP as any));
 
 QUnit.config.maxDepth = 12;
 QUnit.dump.maxDepth = 12;

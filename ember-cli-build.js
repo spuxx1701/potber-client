@@ -12,13 +12,11 @@ module.exports = function (defaults) {
       ],
     },
     sourcemaps: {
-      enabled: true,
+      enabled: process.env.EMBER_ENV !== 'production',
       extensions: ['js'],
     },
     fingerprint: {
-      enabled:
-        process.env.EMBER_ENV === 'production' ||
-        process.env.EMBER_ENV === 'staging',
+      enabled: process.env.EMBER_ENV === 'production',
       exclude: ['images'],
     },
   });
@@ -37,10 +35,7 @@ module.exports = function (defaults) {
           // Enable local by default
           mode: 'local',
           // class naming template
-          localIdentName:
-            process.env.EMBER_ENV !== 'production'
-              ? '[sha512:hash:base64:5]'
-              : '[path][name]__[local]',
+          localIdentName: '[local]__[sha512:hash:base64:5]',
         },
       },
     },

@@ -5,14 +5,14 @@ import { service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 // eslint-disable-next-line ember/use-ember-data-rfc-395-imports
 import ModelRegistry from 'ember-data/types/registries/model';
-import ENV from 'potber-client/config/environment';
+import { appConfig } from 'potber-client/config/app.config';
 import CustomSession from 'potber-client/services/custom-session';
 
 export default class ApplicationAdapter extends RESTAdapter {
   @service declare session: CustomSession;
   @service declare router: RouterService;
 
-  host = ENV.APP['API_URL'] as string;
+  host = appConfig.apiUrl;
   namespace = '';
 
   get headers() {
