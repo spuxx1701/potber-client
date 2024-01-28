@@ -17,6 +17,8 @@ module.exports = function (defaults) {
       enabled: !isProduction,
       extensions: ['js'],
     },
+
+    // ember-cli's fingerprinting only affects static assets
     fingerprint: {
       enabled: false,
     },
@@ -42,7 +44,6 @@ module.exports = function (defaults) {
       },
       webpackConfig: {
         module: {
-          noParse: [/injected-config/i],
           rules: [
             {
               // When webpack sees an import for a CSS files
