@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Improved how deleted users are being displayed.
 - `/threads` route data is now being loaded lazily. A skeleton thread page will be rendered during load.
 - If automatic refreshing of the newsfeed is enabled, the newsfeed will now also be refreshed when browsing and on a regular interval.
+- Avatars are now enabled by default.
 
 ### Fixed
 

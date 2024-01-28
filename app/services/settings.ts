@@ -21,7 +21,7 @@ export default class SettingsService extends Service {
 
   @tracked protected active: Settings = this.load();
   readonly default: Settings = {
-    avatarStyle: AvatarStyle.none,
+    avatarStyle: AvatarStyle.small,
     theme: Theme.default,
     landingPage: LandingPage.boardOverview,
     autoRefreshSidebar: true,

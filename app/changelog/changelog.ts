@@ -10,6 +10,7 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'In der Kopfzeile eines Posts ist nun besser erkennbar, wenn der/die Verfasser:in des Posts gelöscht wurde.',
       'Falls Du den automatischen Newsfeed-Refresh aktiviert hast, wird dieser nun nicht nur beim Öffnen der Sidebar, sondern auch während des Browsens und in regelmäßigen Abständen automatisch aktualisiert.',
+      'Avatare werden nun standardmäßig angezeigt.',
     ],
     fixed: [
       'Der Absenden-Button im Postformular zeigt nun wieder an, ob der Post gesendet wurde.',
