@@ -31,7 +31,7 @@ export default class SettingsService extends Service {
     darkenReadPosts: false,
     hideGlobalAndAnnouncementThreads: false,
     goToBottomOfThreadPage: true,
-    transitions: Transitions.dynamic,
+    transitions: Transitions.static,
     gestures: Gestures.none,
     debug: false,
   };

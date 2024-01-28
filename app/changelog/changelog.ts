@@ -4,7 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
     added: [
       'Globale Threads und Ankündigungen können nun über eine Einstellung ausgeblendet werden.',
-      'Bestimmte Seitenwechsel (z.B. beim Öffnen eines Threads) werden nun durch eine Animation begleitet. Diese dynamischen Seitenwechsel lassen sich in den Einstellungen deaktivieren.',
+      'Bestimmte Seitenwechsel (z.B. beim Öffnen eines Threads) werden nun optional durch eine Animation begleitet. Diese dynamischen Seitenwechsel lassen sich in den Einstellungen aktivieren.',
       'Du erhältst nun einen Hinweis, wenn bestimmte Anfragen (z.B. das Erstellen eines Posts) länger dauern als gewöhnlich.',
     ],
     changed: [
