@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - The post form's submit button now shows whether the post has been submitted (both in desktop and mobile view).
+- Fixed an issue that would lead to the kebap menu being cut off if the option 'Darken read posts' was enabled.
 - Fixed a couple of styling inconsistencies.
 
 ### Chores

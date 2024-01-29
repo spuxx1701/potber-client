@@ -14,6 +14,7 @@ export const changelog: ChangelogItem[] = [
     ],
     fixed: [
       'Der Absenden-Button im Postformular zeigt nun wieder an, ob der Post gesendet wurde.',
+      "Das Kebap-Menü wird nun nicht länger abgeschnitten, wenn die Option 'Gelesene Posts abdunkeln' aktiviert ist.",
       'Diverse kleinere Fixes.',
     ],
     chores: [
