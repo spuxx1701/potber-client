@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 
-:global(.button-link):not(.control-size-square) :global(svg) {
+:global(.button-link:not(.control-size-square)) :global(svg) {
   margin-right: 0.5rem;
 }
 
