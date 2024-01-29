@@ -62,6 +62,7 @@
 .control-size-square {
   width: var(--control-default-height);
   min-width: var(--control-default-height);
+  box-sizing: border-box;
 }
 
 .control-size-square > svg {
