@@ -17,11 +17,6 @@ module.exports = function (defaults) {
       enabled: !isProduction,
       extensions: ['js'],
     },
-
-    // ember-cli's fingerprinting only affects static assets
-    fingerprint: {
-      enabled: false,
-    },
   });
 
   const { Webpack } = require('@embroider/webpack');
@@ -56,7 +51,7 @@ module.exports = function (defaults) {
                   options: {
                     sourceMap: !isProduction,
                     postcssOptions: {
-                      config: './postcss.config.js',
+                      plugins: [require('autoprefixer')],
                     },
                   },
                 },

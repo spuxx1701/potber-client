@@ -1,7 +1,7 @@
-import Helper from '@ember/component/helper';
+import { helper } from '@ember/component/helper';
 
-export default class DateHelper extends Helper {
-  compute([date]: [Date]) {
-    return new Date(date).toLocaleString();
-  }
+export function formatDate([date]: [string]) {
+  return new Date(date).toLocaleString();
 }
+
+export default helper(formatDate);
