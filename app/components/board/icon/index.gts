@@ -12,7 +12,6 @@ import { isChristmasSeason } from 'potber-client/utils/misc';
 interface Signature {
   Args: {
     icon: PostIconKey | EmojiKey;
-    directory: 'post-icons' | 'post-emojis';
   };
 }
 

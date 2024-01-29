@@ -1,58 +1,61 @@
-.board-item:not(:first-child) {
-  margin-top: var(--global-gap);
-}
-
-.board-item {
+.item {
   box-sizing: border-box;
-  height: auto;
+  display: flex;
   flex-direction: column;
   background-color: var(--color-post-background-primary);
   padding: 0.5rem;
+  height: auto;
   width: 100%;
   align-items: flex-start !important;
   margin-top: var(--global-gap);
   margin-bottom: var(--global-gap);
 }
 
-.board-item-important {
+.important {
   background-color: var(--color-post-background-secondary);
 }
 
-.board-item-header {
+.item :global(.subtitle) {
+  margin: 0;
+}
+
+.header {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: minmax(0, 1fr);
   width: 100%;
+  margin-bottom: 0.25rem;
 }
 
-.board-item-title {
+.header :global(.title) {
   display: flex;
   align-items: center;
   color: var(--color-text-default);
   font-weight: bold;
 }
 
-.board-item-title > svg {
+.header :global(.title) > svg {
   color: var(--color-accent);
+  margin-right: 0.5ch !important;
 }
 
-.board-item-title img {
-  margin-right: 0.25rem;
+.header :global(.title) img {
+  margin-right: 0.5ch;
 }
 
-.board-item-title p {
+.header :global(.title) p {
   margin: 0;
 }
 
-.board-item-title,
-.board-item .subtitle {
-  margin: 0 0 0.25rem 0;
-  text-align: start;
-  text-decoration: none !important;
-}
-
-.board-item-flags svg {
+.flags svg {
   color: var(--color-text-subtle);
   font-size: smaller;
   margin: 0 !important;
+}
+
+.activity-details {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
 }

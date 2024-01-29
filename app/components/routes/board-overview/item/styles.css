@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: var(--color-post-background-primary);
   padding: 0.5rem;
-  height: unset;
+  height: auto;
   width: 100%;
   align-items: flex-start;
   margin-bottom: var(--global-gap);
