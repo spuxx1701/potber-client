@@ -3,6 +3,7 @@
   border-radius: 50%;
   overflow: hidden;
   background-color: var(--color-avatar-background);
+  padding: 0 !important;
 }
 
 :global(.avatar) > :global(img) {
@@ -29,4 +30,8 @@
 :global(.avatar) :global(.skeleton-element) {
   height: 100%;
   width: 100%;
+}
+
+.not-interactable:hover {
+  cursor: unset;
 }

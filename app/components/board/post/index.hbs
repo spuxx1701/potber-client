@@ -6,7 +6,7 @@
   <div class={{class-names this 'header'}}>
     <div class={{class-names this 'details'}}>
       {{#if this.showAvatar}}
-        <Common::Avatar @src={{@post.avatarUrl}} />
+        <Common::Avatar @src={{@post.avatarUrl}} @userId={{@post.author.id}} />
       {{/if}}
       <button
         type='button'
