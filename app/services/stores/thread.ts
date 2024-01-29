@@ -72,9 +72,16 @@ export default class ThreadStore extends Service {
    * Refreshes the currently loaded thread if there is one.
    * @param options The options to pass to `loadThread`.
    */
-  refresh(options?: LoadThreadOptions) {
-    if (!this.currentThread) return;
-    return this.loadThread(this.currentThread.id, options);
+  async reload(options?: LoadThreadOptions) {
+    if (!this.currentThread || !this.currentThread.page) return;
+    this.isReloading = true;
+    const thread = await this.loadThread(this.currentThread.id, {
+      page: this.currentThread.page.number,
+      keepPreviousThread: true,
+      ...options,
+    });
+    this.isReloading = false;
+    return thread;
   }
 
   /**

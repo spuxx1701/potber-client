@@ -105,18 +105,11 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   reload = async () => {
     this.renderer.showLoadingIndicator();
     this.renderer.preventNextScrollReset();
-    this.threadStore.isReloading = true;
-    if (!this.currentPage) return;
-    this.threadStore
-      .loadThread(this.args.threadId, {
-        page: this.currentPage,
-        keepPreviousThread: true,
-      })
-      .finally(() => {
-        this.threadStore.isReloading = false;
-        this.renderer.hideLoadingIndicator();
-        this.renderer.waitAndScrollToBottom();
-      });
+    this.threadStore.reload().finally(() => {
+      this.threadStore.isReloading = false;
+      this.renderer.hideLoadingIndicator();
+      this.renderer.waitAndScrollToBottom();
+    });
   };
 
   handleGoToPage = () => {

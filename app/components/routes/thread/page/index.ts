@@ -42,7 +42,7 @@ export default class ThreadPage extends Component<Signature> {
   handleOverscroll = () => {
     this.renderer.preventNextScrollReset();
     this.renderer.showLoadingIndicator();
-    this.threadStore.refresh()?.finally(() => {
+    this.threadStore.reload()?.finally(() => {
       this.renderer.hideLoadingIndicator();
       this.renderer.waitAndScrollToBottom();
     });
