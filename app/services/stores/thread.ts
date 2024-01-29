@@ -69,6 +69,15 @@ export default class ThreadStore extends Service {
   }
 
   /**
+   * Refreshes the currently loaded thread if there is one.
+   * @param options The options to pass to `loadThread`.
+   */
+  refresh(options?: LoadThreadOptions) {
+    if (!this.currentThread) return;
+    return this.loadThread(this.currentThread.id, options);
+  }
+
+  /**
    * The current thread that is being viewed.
    */
   get currentThread(): Threads.Read | null {

@@ -1,12 +1,10 @@
-import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
-import { Owner } from '@ember/test-helpers/build-owner';
 import Component from '@glimmer/component';
-import ThreadRoute from 'potber-client/routes/authenticated/thread';
 import { Threads } from 'potber-client/services/api/types';
 import DeviceManagerService from 'potber-client/services/device-manager';
 import RendererService from 'potber-client/services/renderer';
 import SettingsService, { Gestures } from 'potber-client/services/settings';
+import ThreadStore from 'potber-client/services/stores/thread';
 
 interface Signature {
   Args: {
@@ -20,6 +18,7 @@ export default class ThreadPage extends Component<Signature> {
   @service declare deviceManager: DeviceManagerService;
   @service declare settings: SettingsService;
   @service declare renderer: RendererService;
+  @service('stores/thread') declare threadStore: ThreadStore;
 
   get isDesktop() {
     return this.deviceManager.isDesktop;
@@ -41,12 +40,9 @@ export default class ThreadPage extends Component<Signature> {
   }
 
   handleOverscroll = () => {
-    const route = (getOwner(this) as Owner).lookup(
-      'route:authenticated.thread',
-    ) as ThreadRoute;
     this.renderer.preventNextScrollReset();
     this.renderer.showLoadingIndicator();
-    route.refresh().finally(() => {
+    this.threadStore.refresh()?.finally(() => {
       this.renderer.hideLoadingIndicator();
       this.renderer.waitAndScrollToBottom();
     });
