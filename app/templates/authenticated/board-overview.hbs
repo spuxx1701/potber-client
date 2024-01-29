@@ -3,5 +3,5 @@
 <Nav::Routes::BoardOverview />
 
 {{#each @model as |category|}}
-  <Board::BoardCategory @category={{category}} />
+  <Routes::BoardOverview::Category @category={{category}} />
 {{/each}}

@@ -1,0 +1,19 @@
+.item {
+  box-sizing: border-box;
+  flex-direction: column;
+  background-color: var(--color-post-background-primary);
+  padding: 0.5rem;
+  height: unset;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: var(--global-gap);
+}
+
+.item :global(.title) {
+  margin: 0;
+}
+
+.item :global(.subtitle) {
+  margin: 0;
+  margin-top: 0.25rem;
+}

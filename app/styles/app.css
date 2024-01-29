@@ -24,7 +24,6 @@
 @import './features/gestures.css';
 
 @import './board/board.css';
-@import './board/board-overview.css';
 @import './board/post-form.css';
 @import './board/thread.css';
 @import './board/bookmark.css';
