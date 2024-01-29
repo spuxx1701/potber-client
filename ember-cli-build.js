@@ -23,7 +23,6 @@ module.exports = function (defaults) {
 
   return require('@embroider/compat').compatBuild(app, Webpack, {
     packagerOptions: {
-      // publicAssetURL is used similarly to Ember CLI's asset fingerprint prepend option.
       publicAssetURL: '/',
       // Embroider lets us send our own options to the style-loader
       cssLoaderOptions: {
