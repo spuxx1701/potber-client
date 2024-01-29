@@ -31,3 +31,6 @@
 
 # broccoli-debug
 /DEBUG/
+
+# environments
+/public/injected-config.js
