@@ -14,6 +14,7 @@
     "start": "ember serve",
     "start:remote": "ember serve --environment=development:remote",
     "start:mobile": "ember serve --environment=development:mobile",
+    "preview": "ember serve --environment=production",
     "build": "ember build --environment=production",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
