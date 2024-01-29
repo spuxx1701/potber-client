@@ -72,6 +72,11 @@
   width: var(--sidebar-expanded-width);
   overflow-y: auto;
   overscroll-behavior-y: contain;
+  box-sizing: border-box;
+}
+
+#sidebar-content:first-child {
+  padding-top: 0.5rem;
 }
 
 #sidebar-content > * {
