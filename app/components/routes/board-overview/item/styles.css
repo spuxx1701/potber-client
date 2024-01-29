@@ -6,7 +6,7 @@
   height: auto;
   width: 100%;
   align-items: flex-start;
-  margin-bottom: var(--global-gap);
+  margin-top: var(--global-gap);
 }
 
 .item :global(.title) {

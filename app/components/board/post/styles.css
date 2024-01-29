@@ -5,7 +5,7 @@
   scroll-margin-top: calc(var(--top-nav-height));
 }
 
-:global(.post):not(:first-child) {
+:global(.post):not(:first-of-type) {
   margin-top: var(--global-gap);
 }
 

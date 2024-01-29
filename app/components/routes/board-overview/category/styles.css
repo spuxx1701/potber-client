@@ -5,7 +5,7 @@
   height: auto;
 }
 
-.category:first-child {
+.category:not(:first-child) {
   margin-top: var(--global-gap);
 }
 

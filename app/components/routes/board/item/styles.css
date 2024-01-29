@@ -7,8 +7,10 @@
   height: auto;
   width: 100%;
   align-items: flex-start !important;
+}
+
+.item:not(:first-of-type) {
   margin-top: var(--global-gap);
-  margin-bottom: var(--global-gap);
 }
 
 .important {

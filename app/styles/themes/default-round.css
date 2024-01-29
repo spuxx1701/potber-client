@@ -2,6 +2,6 @@ html[data-theme='default-round'],
 html[data-theme='default-round'] * {
   /* Layout */
   --global-padding: 0.25rem;
-  --global-gap: 2px;
+  --global-gap: 4px;
   --global-border-radius: 5px;
 }
