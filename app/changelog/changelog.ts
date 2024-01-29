@@ -14,8 +14,14 @@ export const changelog: ChangelogItem[] = [
     ],
     fixed: [
       'Der Absenden-Button im Postformular zeigt nun wieder an, ob der Post gesendet wurde.',
+      'Diverse kleinere Fixes.',
     ],
-    chores: ['Build-System wurde nach embroider migriert.'],
+    chores: [
+      'Build-System wurde nach embroider migriert.',
+      'Die Anwendung verwendet nun postcss.',
+      'Zahlreiche weitere Komponenten wurden nach Ember Polaris migriert.',
+      'Weitere API-Endpunkte & Models wurden von ember-data auf eine eigene Lösung migriert.',
+    ],
   },
   {
     version: '1.17.5',

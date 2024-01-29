@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.18.0] - 2024-01-28
+## [1.18.0] - 2024-01-29
 
 ### Added
 
@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - The post form's submit button now shows whether the post has been submitted (both in desktop and mobile view).
+- Fixed a couple of styling inconsistencies.
 
 ### Chores
 
