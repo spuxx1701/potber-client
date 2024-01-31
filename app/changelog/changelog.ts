@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.18.1',
+    type: 'patch',
+    fixed: [
+      'Der Aktualisieren-Button im Newsfeed sollte nun nicht länger visuelle Artefakte verursachen, wenn es zu einer Aktualisierung bei geschlossener Sidebar kommt.',
+    ],
+  },
+  {
     version: '1.18.0',
     type: 'minor',
     added: [

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.18.1] - 2024-01-31
+
+### Fixed
+
+- The refresh button in the sidebar should no longer cause visual artifacts while the sidebar is collapsed.
+
 ## [1.18.0] - 2024-01-29
 
 ### Added
