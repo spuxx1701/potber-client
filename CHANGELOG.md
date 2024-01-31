@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [UNRELEASED]
+
+### Fixed
+
+- Fixed an issue where copying a direct link to a post would not return the link in the proper format.
+
 ## [1.18.1] - 2024-01-31
 
 ### Fixed

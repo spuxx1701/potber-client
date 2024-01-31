@@ -68,7 +68,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get url() {
-    return `${appConfig.forumUrl}/thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}`;
+    return `${appConfig.forumUrl}thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}#reply_${this.args.post.id}`;
   }
 
   get message() {
