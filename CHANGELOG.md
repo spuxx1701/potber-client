@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Fixed an issue where copying a direct link to a post would not return the link in the proper format.
 
+### Chores
+
+- Bumped `@types/ember__service` from `4.0.2` to `4.0.9`.
+- Bumped `ember-cli-notifications` from `8.0.0` to `9.0.0`.
+
 ## [1.18.1] - 2024-01-31
 
 ### Fixed
