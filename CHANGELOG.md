@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [UNRELEASED]
 
+### Changed
+
+- Videos on autoplay are now muted by default.
+
 ### Fixed
 
 - Fixed an issue where copying a direct link to a post would not return the link in the proper format.

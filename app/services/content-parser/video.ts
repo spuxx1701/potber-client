@@ -45,9 +45,9 @@ export function parseVideo(input: string, location: Partial<Location>) {
       } else {
         // Other links can be embedded using the <video> tag
         const autoplay = full.includes('play');
-        replacement += `<video src="${url}" ${
-          autoplay ? 'autoplay ' : ''
-        }controls></video></span>`;
+        replacement += `<video src="${url}"${
+          autoplay ? ' autoplay muted' : ''
+        } controls></video></span>`;
         output = output.replace(match[0], replacement);
       }
     } catch (error) {

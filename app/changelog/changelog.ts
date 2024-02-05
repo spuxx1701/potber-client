@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.18.2',
+    type: 'patch',
+    changed: [
+      'Videos, die mit [video play] eingebettet werden, werden nun stumm abgespielt.',
+    ],
+  },
+  {
     version: '1.18.1',
     type: 'patch',
     fixed: [
