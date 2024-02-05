@@ -5,6 +5,9 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'Videos, die mit [video play] eingebettet werden, werden nun stumm abgespielt.',
     ],
+    fixed: [
+      'Beim Kopieren eines Post-Links wird der Link nun korrekt formatiert.',
+    ],
   },
   {
     version: '1.18.1',
