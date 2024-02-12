@@ -3,7 +3,7 @@ import Component from '@glimmer/component';
 import { hash } from '@ember/helper';
 import Board from 'potber-client/models/board';
 import ButtonLink from 'potber-client/components/common/button-link';
-import styles from './styles.css';
+import styles from './styles.module.css';
 import classNames from 'potber-client/helpers/class-names';
 
 export interface Signature {

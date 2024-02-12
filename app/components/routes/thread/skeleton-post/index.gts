@@ -3,8 +3,8 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import DeviceManagerService from 'potber-client/services/device-manager';
 import SettingsService, { AvatarStyle } from 'potber-client/services/settings';
-import styles from './styles.css';
-import postStyles from 'potber-client/components/board/post/styles.css';
+import styles from './styles.module.css';
+import postStyles from 'potber-client/components/board/post/styles.module.css';
 import LazyText from 'potber-client/components/common/lazy-stuff/text';
 import Avatar from 'potber-client/components/common/avatar';
 

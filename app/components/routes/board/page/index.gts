@@ -6,7 +6,7 @@ import Component from '@glimmer/component';
 import Board from 'potber-client/models/board';
 import BoardRoute from 'potber-client/routes/authenticated/board';
 import SettingsService, { Gestures } from 'potber-client/services/settings';
-import styles from './styles.css';
+import styles from './styles.module.css';
 import classNames from 'potber-client/helpers/class-names';
 import UpdateScrollPositionComponent from 'potber-client/components/misc/update-scroll-position';
 import OverscrollContainer from 'potber-client/components/features/gestures/overscroll-container';

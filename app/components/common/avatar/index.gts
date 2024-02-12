@@ -4,7 +4,7 @@ import { on } from '@ember/modifier';
 import classNames from 'potber-client/helpers/class-names';
 import ApiService from 'potber-client/services/api';
 import ModalService from 'potber-client/services/modal';
-import styles from './styles.css';
+import styles from './styles.module.css';
 
 interface Signature {
   Element: HTMLSpanElement;

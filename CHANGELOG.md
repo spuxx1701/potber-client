@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - Fixed an issue where copying a direct link to a post would not return the link in the proper format.
+- Fixed an issue that would break the styles of `ember-cli-notifications`.
 
 ### Chores
 

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import classNames from 'potber-client/helpers/class-names';
-import styles from './styles.css';
+import styles from './styles.module.css';
 
 interface Signature {
   Element: HTMLSpanElement;

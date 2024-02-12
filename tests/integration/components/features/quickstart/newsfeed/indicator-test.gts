@@ -8,7 +8,7 @@ import SettingsService, {
 import RendererService from 'potber-client/services/renderer';
 import PrivateMessage from 'potber-client/models/private-message';
 import NewsfeedIndicatorComponent from 'potber-client/components/features/quickstart/newsfeed/indicator';
-import styles from 'potber-client/components/features/quickstart/newsfeed/indicator/styles.css';
+import styles from 'potber-client/components/features/quickstart/newsfeed/indicator/styles.module.css';
 import NewsfeedService from 'potber-client/services/newsfeed';
 
 interface Context extends TestContext {

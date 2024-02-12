@@ -7,7 +7,7 @@ import BoardCategory from 'potber-client/models/board-category';
 import RendererService from 'potber-client/services/renderer';
 import BoardCategoryItem from 'potber-client/components/routes/board-overview/item';
 import classNames from 'potber-client/helpers/class-names';
-import styles from './styles.css';
+import styles from './styles.module.css';
 
 export interface Signature {
   Args: {

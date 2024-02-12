@@ -7,6 +7,7 @@ export const changelog: ChangelogItem[] = [
     ],
     fixed: [
       'Beim Kopieren eines Post-Links wird der Link nun korrekt formatiert.',
+      'Die Benachrichtigungen (z.B. nach dem Bearbeiten eines Posts) sind nun wieder sichtbar.',
     ],
   },
   {
