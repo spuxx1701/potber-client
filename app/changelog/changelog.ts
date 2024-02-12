@@ -6,6 +6,7 @@ export const changelog: ChangelogItem[] = [
       'Videos, die mit [video play] eingebettet werden, werden nun stumm abgespielt.',
     ],
     fixed: [
+      'Beim Navigieren zu einem bestimmten Post (z.B. via Lesezeichen) scrollt der Browser nun präziser zum jeweiligen Post.',
       'Beim Kopieren eines Post-Links wird der Link nun korrekt formatiert.',
       'Die Benachrichtigungen (z.B. nach dem Bearbeiten eines Posts) sind nun wieder sichtbar.',
     ],
