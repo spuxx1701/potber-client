@@ -9,7 +9,9 @@ module.exports = function (defaults) {
     babel: {
       sourceMaps: 'inline',
       plugins: [
-        ...require('ember-cli-code-coverage').buildBabelPlugin(),
+        ...require('ember-cli-code-coverage').buildBabelPlugin({
+          embroider: true,
+        }),
         '@babel/plugin-proposal-export-namespace-from',
       ],
     },
