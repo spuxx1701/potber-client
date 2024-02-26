@@ -1,5 +1,24 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.18.2',
+    type: 'patch',
+    changed: [
+      'Videos, die mit [video play] eingebettet werden, werden nun stumm abgespielt.',
+    ],
+    fixed: [
+      'Beim Navigieren zu einem bestimmten Post (z.B. via Lesezeichen) scrollt der Browser nun präziser zum jeweiligen Post.',
+      'Beim Kopieren eines Post-Links wird der Link nun korrekt formatiert.',
+      'Die Benachrichtigungen (z.B. nach dem Bearbeiten eines Posts) sind nun wieder sichtbar.',
+    ],
+  },
+  {
+    version: '1.18.1',
+    type: 'patch',
+    fixed: [
+      'Der Aktualisieren-Button im Newsfeed sollte nun nicht länger visuelle Artefakte verursachen, wenn es zu einer Aktualisierung bei geschlossener Sidebar kommt.',
+    ],
+  },
+  {
     version: '1.18.0',
     type: 'minor',
     added: [

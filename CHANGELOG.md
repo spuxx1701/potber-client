@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.18.2]
+
+### Changed
+
+- Videos on autoplay are now muted by default.
+
+### Fixed
+
+- Fixed an issue where copying a direct link to a post would not return the link in the proper format.
+- Fixed an issue that would break the styles of `ember-cli-notifications`.
+- Fixed an issue that would make scrolling to anchors after page changes very imprecise.
+
+### Chores
+
+- Bumped `@types/ember__service` from `4.0.2` to `4.0.9`.
+- Bumped `ember-cli-notifications` from `8.0.0` to `9.0.0`.
+
+## [1.18.1] - 2024-01-31
+
+### Fixed
+
+- The refresh button in the sidebar should no longer cause visual artifacts while the sidebar is collapsed.
+
 ## [1.18.0] - 2024-01-29
 
 ### Added

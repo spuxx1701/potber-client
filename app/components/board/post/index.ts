@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
-import styles from './styles.css';
+import styles from './styles.module.css';
 import ContentParserService from 'potber-client/services/content-parser';
 import MessagesService from 'potber-client/services/messages';
 import Post from 'potber-client/models/post';
@@ -68,7 +68,7 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get url() {
-    return `${appConfig.forumUrl}/thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}`;
+    return `${appConfig.forumUrl}thread.php?TID=${this.args.post.threadId}&PID=${this.args.post.id}#reply_${this.args.post.id}`;
   }
 
   get message() {

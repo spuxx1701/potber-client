@@ -5,7 +5,7 @@ import RendererService from 'potber-client/services/renderer';
 import SettingsService, {
   SidebarLayout,
 } from 'potber-client/services/settings';
-import styles from './styles.css';
+import styles from './styles.module.css';
 import { concat } from '@ember/helper';
 import classNames from 'potber-client/helpers/class-names';
 

@@ -1,7 +1,7 @@
 import { LinkTo } from '@ember/routing';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import styles from './styles.css';
+import styles from './styles.module.css';
 import RendererService from 'potber-client/services/renderer';
 import { on } from '@ember/modifier';
 import classNames from 'potber-client/helpers/class-names';

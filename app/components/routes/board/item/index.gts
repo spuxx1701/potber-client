@@ -11,7 +11,7 @@ import BookmarkStore from 'potber-client/services/stores/bookmark';
 import ButtonLink from 'potber-client/components/common/button-link';
 import BoardIcon from 'potber-client/components/board/icon';
 import classNames from 'potber-client/helpers/class-names';
-import styles from './styles.css';
+import styles from './styles.module.css';
 
 export interface Signature {
   Args: {

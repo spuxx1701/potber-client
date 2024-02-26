@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import Service, { service } from '@ember/service';
-import SettingsService, { Settings } from './settings';
+import SettingsService from './settings';
 
 export type MessageType = 'info' | 'success' | 'warning' | 'error';
 
