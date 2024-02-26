@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.18.2]
+## [1.18.2] - 2024-02-26
 
 ### Changed
 
