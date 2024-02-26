@@ -13,6 +13,7 @@ module.exports = function (defaults) {
         '@babel/plugin-proposal-export-namespace-from',
       ],
     },
+    'ember-cli-babel': { enableTypeScriptTransform: true },
     sourcemaps: {
       enabled: !isProduction,
       extensions: ['js'],
