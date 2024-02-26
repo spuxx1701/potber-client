@@ -21,7 +21,7 @@
 }
 
 .ember-cli-notifications-notification__container--bottom {
-  bottom: calc(var(--bottom-nav-height) + 1rem);
+  bottom: calc(var(--bottom-nav-height)) !important;
 }
 
 .svg-inline--fa path {
