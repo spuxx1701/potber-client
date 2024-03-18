@@ -17,8 +17,6 @@ html[data-theme='discord'] * {
   --color-thread-important-background: #1e1f22;
   --color-thread-unread-background: #444037;
 
-  --color-text-link: var(--color-accent);
-
   --color-control-inactive: #313338;
 
   --color-block-header: var(--color-nav-background);
