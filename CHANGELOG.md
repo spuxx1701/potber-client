@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Many components in the application now use their own color variables. That makes it much easier for themes to create unique distinct visuals for different components.
 
+### Fixed
+
+- Fixed various visual issues.
+
 ### Chores
 
 - Moved all styles out of ember's legacy CSS pipeline. This should prevent issues caused by cached old styles after updates.

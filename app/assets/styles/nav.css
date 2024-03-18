@@ -121,12 +121,17 @@
   padding: 0 0.25rem;
   min-width: fit-content;
   max-width: 10rem;
+  box-sizing: border-box;
 }
 
 #top-nav .nav-tabs > a.active {
   border-bottom: solid 2px var(--color-accent);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 #bottom-nav .nav-tabs > a.active {
   border-top: solid 2px var(--color-accent);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
