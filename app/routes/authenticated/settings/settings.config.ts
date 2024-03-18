@@ -58,6 +58,10 @@ export const settingsConfig: Record<
       label: 'Schneemann',
       data: Theme.snowman,
     },
+    {
+      label: 'Discord',
+      data: Theme['discord'],
+    },
   ],
 
   fontSizeOptions: [

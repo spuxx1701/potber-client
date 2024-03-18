@@ -21,7 +21,7 @@
 }
 
 .header {
-  background-color: var(--color-post-background-secondary);
+  background-color: var(--color-post-header-background);
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
@@ -90,7 +90,7 @@
 .body {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-post-background-primary);
+  background-color: var(--color-post-content-background);
   padding: 0.5rem;
   overflow: hidden;
   border-bottom-left-radius: var(--global-border-radius);

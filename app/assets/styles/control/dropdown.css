@@ -42,6 +42,10 @@
   display: none;
 }
 
+.dropdown-toggle:not(:disabled):hover {
+  filter: var(--filter-control-active);
+}
+
 .dropdown-toggle-icon {
   width: 1rem;
   margin-right: 0 !important;
@@ -94,7 +98,7 @@
 .dropdown-item:focus,
 .dropdown-item:active,
 .dropdown-item-selected {
-  backdrop-filter: var(--filter-control-active);
+  filter: var(--filter-control-active);
   color: var(--color-text-default);
 }
 
@@ -109,4 +113,14 @@
 .dropdown .info-button {
   height: var(--dropdown-height);
   background-color: var(--color-control-inactive);
+}
+
+.dropdown:has(.info-button) .info-button {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.dropdown:has(.info-button) .dropdown-toggle {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }

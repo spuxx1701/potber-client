@@ -11,7 +11,7 @@
   width: calc(100vw - 4 * var(--global-gap));
   margin: var(--global-gap);
   border-radius: var(--global-border-radius);
-  background-color: var(--color-post-background-secondary);
+  background-color: var(--color-pm-background);
 }
 
 .private-messages-list-item:not(:first-child) {
@@ -19,7 +19,7 @@
 }
 
 .private-messages-list-item-unread {
-  background-color: var(--color-post-background-primary);
+  background-color: var(--color-pm-unread-background);
 }
 
 .private-messages-list-item > * {
@@ -58,7 +58,7 @@
 
 .private-message-view {
   box-sizing: border-box;
-  background-color: var(--color-post-background-secondary);
+  background-color: var(--color-post-header-background);
   align-items: start;
   padding: 0;
   margin: var(--global-gap);
@@ -88,7 +88,7 @@
 
 .private-message-view-content {
   box-sizing: border-box;
-  background-color: var(--color-post-background-primary);
+  background-color: var(--color-post-content-background);
   width: 100%;
   padding: 1rem;
 }

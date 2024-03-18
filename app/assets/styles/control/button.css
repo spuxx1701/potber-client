@@ -16,6 +16,12 @@ button:not(:disabled),
   cursor: pointer;
 }
 
+button:not(:disabled):hover,
+.button-link:not(:disabled):hover {
+  filter: var(--filter-control-active);
+  backdrop-filter: var(--filter-control-active);
+}
+
 button:not(.control-size-square) svg,
 .button-link:not(.control-size-square) svg {
   margin-right: 0.5rem;

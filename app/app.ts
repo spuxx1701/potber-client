@@ -2,6 +2,7 @@ import Application from '@ember/application';
 import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from 'potber-client/config/environment';
+import 'potber-client/assets/styles/global.css';
 
 // import polyfills
 import './polyfills/crypto.randomuuid.polyfill';

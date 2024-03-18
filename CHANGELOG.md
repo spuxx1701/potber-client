@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.19.9] - UNRELEASED
+
+### Added
+
+- Added new 'Discord' theme.
+- Threads that contain posts from a bookmark are now highlighted.
+
+### Changed
+
+- Many components in the application now use their own color variables. That makes it much easier for themes to create unique distinct visuals for different components.
+
+### Chores
+
+- Moved all styles out of ember's legacy CSS pipeline. This should prevent issues caused by cached old styles after updates.
+
 ## [1.18.2] - 2024-02-26
 
 ### Changed

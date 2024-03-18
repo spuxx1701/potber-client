@@ -1,0 +1,65 @@
+html,
+html * {
+  /* Layout */
+  --global-padding: 0px;
+  --global-gap: 1px;
+  --global-border-radius: 0px;
+
+  /* Colors */
+  --color-application-background: #060f15;
+  --color-nav-background: #0c1c2c;
+  --color-sidebar-background: var(--color-nav-background);
+  --color-accent: #00d9ff;
+
+  --color-control-inactive: #142637;
+  --color-control-disabled: var(--color-post-content-background);
+
+  --color-post-header-background: #293746;
+  --color-post-content-background: #394e63;
+  --color-board-category-background: var(--color-post-header-background);
+  --color-board-background: var(--color-post-content-background);
+  --color-thread-important-background: var(--color-board-category-background);
+  --color-thread-unread-background: var(--color-post-header-background);
+  --color-thread-background: var(--color-post-content-background);
+  --color-pm-unread-background: var(--color-thread-unread-background);
+  --color-pm-background: var(--color-post-content-background);
+  --color-bookmark-unread-background: var(--color-thread-unread-background);
+  --color-bookmark-background: var(--color-post-content-background);
+  --color-changelog-item-background: var(--color-post-header-background);
+  --color-applog-item-background: var(--color-post-header-background);
+
+  --color-text-default: #f1f1f1;
+  --color-text-subtle: #aeaeae;
+  --color-text-link: var(--color-text-subtle);
+  --color-text-highlighted: white;
+  --color-text-mod: #ffee44;
+
+  --color-block-header: var(--color-nav-background);
+  --color-block-background: color-mix(
+    in srgb,
+    var(--color-block-header),
+    transparent
+  );
+  --color-avatar-background: #394e63;
+
+  --color-modal-background: var(--color-nav-background);
+
+  --color-info: var(--color-modal-background);
+  --color-success: #21922b;
+  --color-warning: #e08e2a;
+  --color-error: #c83232;
+
+  --color-newsfeed-indicator-info: var(--color-accent);
+  --color-newsfeed-indicator-important: var(--color-error);
+
+  --color-scrollbar: var(--color-nav-background);
+  --color-scrollbar-handle: var(--color-control-inactive);
+
+  /* Filters */
+  --filter-control-active: brightness(135%);
+  --filter-loading-indicator: contrast(85%) brightness(65%);
+  --filter-click-ripple: brightness(500%) contrast(50%);
+
+  /* Misc */
+  --global-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}

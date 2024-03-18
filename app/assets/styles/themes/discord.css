@@ -1,0 +1,33 @@
+html[data-theme='discord'],
+html[data-theme='discord'] * {
+  /* Layout */
+  --global-padding: 0.25rem;
+  --global-gap: 4px;
+  --global-border-radius: 5px;
+
+  /* Colors */
+  --color-application-background: #242629;
+  --color-nav-background: #1e1f22;
+  --color-sidebar-background: #242629;
+  --color-accent: #ffcd2e;
+
+  --color-post-content-background: #313338;
+  --color-post-header-background: var(--color-post-content-background);
+  --color-board-category-background: var(--color-nav-background);
+  --color-thread-important-background: #1e1f22;
+  --color-thread-unread-background: #444037;
+
+  --color-text-link: var(--color-accent);
+
+  --color-control-inactive: #313338;
+
+  --color-block-header: var(--color-nav-background);
+
+  --color-modal-background: var(--color-application-background);
+
+  --color-scrollbar: var(--color-application-background);
+  --color-scrollbar-handle: var(--color-nav-background);
+
+  /* Misc */
+  --global-box-shadow: 0px 0px 5px var(--color-nav-background);
+}

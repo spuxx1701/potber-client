@@ -14,7 +14,7 @@
 
 #sidebar {
   position: fixed;
-  background-color: var(--color-nav-background);
+  background-color: var(--color-sidebar-background);
   height: var(--sidebar-height);
   z-index: 15;
   transition: width var(--sidebar-transition-time) ease !important;
@@ -51,7 +51,7 @@
   grid-auto-columns: minmax(0, 1fr);
   width: var(--sidebar-expanded-width);
   height: var(--control-default-height);
-  background-color: var(--color-nav-background);
+  background-color: var(--color-sidebar-background);
   z-index: 19;
 }
 

@@ -113,6 +113,7 @@
   margin-left: var(--bottom-nav-left-gap);
   margin-right: var(--bottom-nav-right-gap);
   overflow-x: auto;
+  color: var(--color-text-default);
 }
 
 .nav-tabs > a {

@@ -48,6 +48,14 @@ export default class BoardItem extends Component<Signature> {
     );
   }
 
+  get unread() {
+    return (
+      this.bookmarkStore.unread?.find(
+        (bookmark) => bookmark.thread?.id === this.args.thread.id,
+      ) ?? false
+    );
+  }
+
   get icon() {
     return this.args.thread.firstPost?.icon || undefined;
   }
@@ -79,7 +87,12 @@ export default class BoardItem extends Component<Signature> {
   <template>
     {{#unless this.hideThread}}
       <ButtonLink
-        class={{classNames this 'item' (if this.isImportant 'important' '')}}
+        class={{classNames
+          this
+          'item'
+          (if this.isImportant 'important' '')
+          (if this.unread 'unread' '')
+        }}
         @route='authenticated.thread'
         @query={{hash
           TID=@thread.id

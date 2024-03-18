@@ -6,7 +6,7 @@
   width: 100%;
   height: var(--control-default-height);
   border-radius: var(--global-border-radius);
-  background-color: var(--color-post-background-secondary);
+  background-color: var(--color-bookmark-background);
   align-items: center;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .bookmark-unread {
-  background-color: var(--color-post-background-primary);
+  background-color: var(--color-bookmark-unread-background);
 }
 
 .bookmark > * {

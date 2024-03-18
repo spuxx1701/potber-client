@@ -23,6 +23,7 @@ export enum Theme {
   'default',
   'snowman',
   'default-round',
+  'discord',
 }
 
 export enum LandingPage {

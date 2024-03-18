@@ -2,7 +2,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-post-background-primary);
+  background-color: var(--color-thread-background);
   padding: 0.5rem;
   height: auto;
   width: 100%;
@@ -14,7 +14,11 @@
 }
 
 .important {
-  background-color: var(--color-post-background-secondary);
+  background-color: var(--color-thread-important-background);
+}
+
+.unread {
+  background-color: var(--color-thread-unread-background);
 }
 
 .item :global(.subtitle) {

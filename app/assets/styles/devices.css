@@ -9,13 +9,11 @@
   height: 0.4rem;
   width: 0.4rem;
   overflow: visible;
-  /* background: var(--color-post-background-primary); */
-  background: var(--color-nav-background);
+  background: var(--color-scrollbar);
 }
 
 ::-webkit-scrollbar-thumb {
-  /* background: var(--color-nav-background); */
-  background: var(--color-post-background-secondary);
+  background: var(--color-scrollbar-handle);
   width: 0.4rem;
   -webkit-border-radius: var(--global-border-radius);
 }

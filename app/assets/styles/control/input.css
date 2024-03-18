@@ -56,6 +56,11 @@ input:not(:placeholder-shown) + label {
   font-size: smaller;
 }
 
+input:not(:disabled):hover,
+textarea:not(:disabled):hover {
+  filter: var(--filter-control-active);
+}
+
 /* Hide input carets */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
