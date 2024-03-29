@@ -42,10 +42,6 @@
   display: none;
 }
 
-.dropdown-toggle:not(:disabled):hover {
-  filter: var(--filter-control-active);
-}
-
 .dropdown-toggle-icon {
   width: 1rem;
   margin-right: 0 !important;
