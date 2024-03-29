@@ -1,6 +1,6 @@
 import eq from 'ember-truth-helpers/helpers/eq';
 import Component from '@glimmer/component';
-import { ChangelogItem } from 'potber-client/changelog';
+import { ChangelogItem } from 'potber-client/assets/changelog';
 import { clean } from 'semver';
 import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
 
