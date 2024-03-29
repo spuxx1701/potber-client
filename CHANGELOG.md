@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- [video play] tags are now played in a loop.
 - Fixed various visual issues.
 
 ### Chores

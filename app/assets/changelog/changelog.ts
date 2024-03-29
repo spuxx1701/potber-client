@@ -11,7 +11,10 @@ export const changelog: ChangelogItem[] = [
       'Viele Komponenten verwenden nun eigene CSS-Variablen für z.B. Hintergrundfarben. Themes erhalten dadurch deutlich präziser Einfluss auf verschiedene Komponenten nehmen. Das "Discord"-Theme ist ein Beispiel für ein Theme, das von dieser Änderung profitiert.',
       'An bestehenden Themes wurden kleinere Änderungen vorgenommen, um die Konsistenz zu erhöhen.',
     ],
-    fixed: ['Verschiedene kleinere Fixes.'],
+    fixed: [
+      '[video play]-Tags werden nun in Endlosschleife abgespielt.',
+      'Verschiedene kleinere Fixes.',
+    ],
     chores: [
       'Alle styles wurden auf PostCSS migriert. Das sollte zukünftig Fehlern vorbeugen, die durch alte styles im Cache verursacht werden.',
     ],
