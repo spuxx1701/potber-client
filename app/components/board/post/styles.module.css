@@ -196,13 +196,13 @@
 .message :global(blockquote) {
   margin: 0;
   padding: 0.5rem;
-  background-color: var(--color-block-background);
+  background-color: var(--color-block-content);
 }
 
 .message :global(code) {
   box-sizing: border-box;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-block-background);
+  background-color: var(--color-block-content);
   padding: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -264,7 +264,7 @@
 }
 
 .message :global(td) {
-  background-color: var(--color-block-background);
+  background-color: var(--color-block-content);
   border: none;
   padding: 0.5rem;
   min-width: max-content;

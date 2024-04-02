@@ -29,7 +29,7 @@ html * {
   --color-text-mod: #ffee44;
 
   --color-block-header: var(--color-nav);
-  --color-block-background: color-mix(
+  --color-block-content: color-mix(
     in srgb,
     var(--color-block-header),
     transparent
