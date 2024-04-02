@@ -13,7 +13,7 @@
   padding: 0;
   margin: 0;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
   box-shadow: var(--global-box-shadow);
   max-width: 320px;
 }
@@ -56,7 +56,7 @@
 
 .menu-button menu > * {
   box-sizing: border-box;
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
   color: var(--color-text-default);
   padding: 0 1rem;
   width: max-content;

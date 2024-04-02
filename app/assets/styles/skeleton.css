@@ -42,6 +42,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  background-color: var(--color-application-background);
   z-index: 0;
 }
 
@@ -49,7 +50,7 @@
 #app-skeleton-bottom-nav {
   box-shadow: var(--global-box-shadow);
   width: 100%;
-  background-color: var(--color-nav-background);
+  background-color: var(--color-nav);
   z-index: 3;
 }
 

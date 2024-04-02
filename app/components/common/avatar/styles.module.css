@@ -4,6 +4,8 @@
   overflow: hidden;
   background-color: var(--color-avatar-background);
   padding: 0 !important;
+  filter: none !important;
+  backdrop-filter: none !important;
 }
 
 :global(.avatar) > :global(img) {

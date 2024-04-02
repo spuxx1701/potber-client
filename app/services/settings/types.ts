@@ -21,8 +21,8 @@ export enum AvatarStyle {
 
 export enum Theme {
   'default',
+  'mods',
   'snowman',
-  'default-round',
   'discord',
 }
 

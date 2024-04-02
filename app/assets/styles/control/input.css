@@ -14,7 +14,7 @@ form > * {
   width: 100%;
   box-sizing: border-box;
   min-height: var(--control-input-height);
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
   border: 0px solid transparent;
   border-radius: var(--global-border-radius);
   margin: 0;
@@ -42,7 +42,7 @@ form > * {
 input:focus,
 textarea:focus {
   outline: none;
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
   border-bottom: 2px solid var(--color-accent);
 }
 

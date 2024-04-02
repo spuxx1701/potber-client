@@ -34,7 +34,7 @@ body {
   overflow: hidden;
   padding: 0 1rem;
   z-index: 99;
-  background-color: var(--color-nav-background);
+  background-color: var(--color-nav);
 }
 
 .overscroll-container-indicator[data-direction='up'] {

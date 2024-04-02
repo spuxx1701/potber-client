@@ -34,7 +34,7 @@
   height: var(--dropdown-height);
   border-radius: var(--global-border-radius);
   padding: 0px 1rem 0px 1rem;
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
   color: var(--color-text-default);
 }
 
@@ -57,7 +57,7 @@
 .dropdown-menu {
   border-bottom-left-radius: var(--global-border-radius);
   border-bottom-right-radius: var(--global-border-radius);
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
   padding: 0px;
   border: none;
   max-height: 280px;
@@ -108,7 +108,7 @@
 
 .dropdown .info-button {
   height: var(--dropdown-height);
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
 }
 
 .dropdown:has(.info-button) .info-button {

@@ -47,12 +47,12 @@ export const settingsConfig: Record<
 
   themeOptions: [
     {
-      label: 'mods.de',
+      label: 'potber',
       data: Theme.default,
     },
     {
-      label: 'mods.de (Hobelware)',
-      data: Theme['default-round'],
+      label: 'mods.de',
+      data: Theme['mods'],
     },
     {
       label: 'Schneemann',

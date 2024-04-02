@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: space-between;
   border: none;
-  background-color: var(--color-board-category-background) !important;
+  background-color: var(--color-list-item-important) !important;
   padding: 0.5rem;
   height: unset;
   min-height: var(--control-default-height);

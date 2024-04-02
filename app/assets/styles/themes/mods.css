@@ -1,0 +1,12 @@
+html[data-theme='mods'],
+html[data-theme='mods'] * {
+  /* Layout */
+  --global-padding: 0px;
+  --global-gap: 1px;
+  --global-border-radius: 0px;
+
+  /* Colors */
+  --color-application-background: #060f15;
+  --color-content-header: #293746;
+  --color-list-item-important: var(--color-content-header);
+}

@@ -1,7 +1,7 @@
 .item {
   box-sizing: border-box;
   flex-direction: column;
-  background-color: var(--color-board-background);
+  background-color: var(--color-list-item);
   padding: 0.5rem;
   height: auto;
   width: 100%;

@@ -10,5 +10,5 @@
 }
 
 button.control-variant-primary + .accordion-content {
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
 }

@@ -21,7 +21,7 @@
 }
 
 .header {
-  background-color: var(--color-post-header-background);
+  background-color: var(--color-content-header);
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
@@ -90,9 +90,10 @@
 .body {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-post-content-background);
+  background-color: var(--color-content-body);
   padding: 0.5rem;
   overflow: hidden;
+  border-radius: var(--content-border-radius);
   border-bottom-left-radius: var(--global-border-radius);
   border-bottom-right-radius: var(--global-border-radius);
 }
@@ -142,9 +143,8 @@
   color: var(--color-text-subtle);
 }
 
-.message :global(.video-container) {
-  margin-left: 0;
-  width: fit-content;
+.message :global(img) {
+  border-radius: var(--global-border-radius);
 }
 
 .message :global(.quote),
@@ -152,8 +152,15 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--global-border-radius);
-  margin: 0.5rem 0 0.5rem 0.5rem;
   overflow: hidden;
+}
+
+.message :global(.quote) {
+  margin: 0.5rem 0 0.5rem 0.5rem;
+}
+
+.message :global(.video-container) {
+  width: fit-content;
 }
 
 .message :global(.video-container-header) {
@@ -214,7 +221,7 @@
   overflow: hidden;
   width: 100%;
   min-height: var(--control-default-height);
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-block-header);
   cursor: pointer;
   padding: 0.5rem;
   align-items: center;

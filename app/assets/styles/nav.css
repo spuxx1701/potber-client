@@ -11,7 +11,7 @@
 .nav {
   width: 100dvw;
   position: fixed;
-  background-color: var(--color-nav-background);
+  background-color: var(--color-nav);
   box-shadow: var(--global-box-shadow);
 }
 
@@ -46,7 +46,7 @@
   bottom: 0;
   z-index: 10;
   border-bottom: var(--bottom-nav-bottom-border) solid
-    var(--color-nav-background);
+    var(--color-nav);
 }
 
 #bottom-nav .nav-portal-target {

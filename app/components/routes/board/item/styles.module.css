@@ -2,7 +2,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-thread-background);
+  background-color: var(--color-list-item);
   padding: 0.5rem;
   height: auto;
   width: 100%;
@@ -14,11 +14,11 @@
 }
 
 .important {
-  background-color: var(--color-thread-important-background);
+  background-color: var(--color-list-item-important);
 }
 
 .unread {
-  background-color: var(--color-thread-unread-background);
+  background: var(--background-list-item-unread);
 }
 
 .item :global(.subtitle) {

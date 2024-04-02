@@ -34,6 +34,7 @@ button:not(.control-size-square) svg,
 }
 
 .button-link-disabled {
-  color: var(--color-control-disabled);
-  pointer-events: none;
+  cursor: default !important;
+  filter: none !important;
+  backdrop-filter: none !important;
 }

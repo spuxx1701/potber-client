@@ -18,7 +18,7 @@
 }
 
 .quickstart:not(.quickstart-sidebar) .quickstart-item {
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
 }
 
 .quickstart-item {

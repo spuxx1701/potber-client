@@ -27,7 +27,7 @@
 @import './devices.css';
 
 @import './themes/default.css';
-@import './themes/default-round.css';
+@import './themes/mods.css';
 @import './themes/snowman.css';
 @import './themes/discord.css';
 
@@ -90,7 +90,7 @@ body {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-applog-item-background);
+  background-color: var(--color-log-item);
 }
 
 .message-item p {
@@ -113,7 +113,7 @@ body {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   border-radius: var(--global-border-radius);
-  background-color: var(--color-changelog-item-background);
+  background-color: var(--color-log-item);
 }
 
 .changelog-item * {

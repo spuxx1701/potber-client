@@ -1,24 +1,28 @@
 html[data-theme='showman'],
 html[data-theme='snowman'] * {
   /* Layout */
+  --global-padding: 0px;
   --global-gap: 0px;
+  --global-border-radius: 0;
 
   /* Colors */
   --color-application-background: #f7f7f7;
-  --color-nav-background: #cecece;
-  --color-post-content-background: var(--color-application-background);
-  --color-post-header-background: var(--color-nav-background);
+  --color-nav: #cecece;
+  --color-primary: var(--color-nav);
+  --color-secondary: var(--color-application-background);
   --color-accent: #009cb8;
 
-  --color-thread-unread-background: #9ec2c7;
+  --background-list-item-unread: linear-gradient(
+    65deg,
+    var(--color-list-item) 0%,
+    color-mix(in srgb, var(--color-accent), transparent) 100%
+  );
 
   --color-text-default: #333333;
   --color-text-subtle: #3f3f3f;
   --color-text-link: var(--color-text-subtle);
   --color-text-highlighted: #131313;
   --color-text-mod: red;
-
-  --color-control-inactive: var(--color-nav-background);
 
   --color-block-header: #aaaaaa;
 

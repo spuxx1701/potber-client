@@ -1,10 +1,6 @@
 .control-variant-primary {
-  background-color: var(--color-control-inactive);
+  background-color: var(--color-primary);
   color: var(--color-text-default);
-}
-
-.control-variant-primary:disabled {
-  background-color: var(--color-control-disabled);
 }
 
 .control-variant-primary svg {
