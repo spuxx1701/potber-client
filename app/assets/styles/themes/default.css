@@ -32,12 +32,8 @@ html * {
   --color-text-highlighted: white;
   --color-text-mod: #ffee44;
 
-  --color-block-header: var(--color-nav);
-  --color-block-content: color-mix(
-    in srgb,
-    var(--color-block-header),
-    transparent
-  );
+  --color-block-header: var(--color-primary);
+  --color-block-content: color-mix(in srgb, var(--color-primary), transparent);
   --color-avatar-background: #394e63;
 
   --color-modal-background: var(--color-primary);
