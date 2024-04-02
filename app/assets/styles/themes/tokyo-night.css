@@ -10,6 +10,7 @@ html[data-theme='tokyo-night'] * {
 
   --color-content-header: var(--color-secondary);
   --color-content-body: var(--color-primary);
+  --color-block-header: var(--color-application-background);
   --color-modal-background: var(--color-secondary);
   --color-scrollbar: var(--color-application-background);
   --color-scrollbar-handle: var(--color-nav);
@@ -23,10 +24,10 @@ html[data-theme='tokyo-night'] * {
 }
 
 .control-variant-primary,
-.control-variant-primary p,
+.control-variant-primary p:not(.subtitle),
 .control-variant-primary svg,
 .control-variant-primary-transparent,
-.control-variant-primary-transparent p,
+.control-variant-primary-transparent p:not(.subtitle),
 .control-variant-primary-transparent svg {
   color: var(--color-text-highlighted);
 }

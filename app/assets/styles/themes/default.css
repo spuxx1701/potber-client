@@ -33,7 +33,11 @@ html * {
   --color-text-mod: #ffee44;
 
   --color-block-header: var(--color-primary);
-  --color-block-content: color-mix(in srgb, var(--color-primary), transparent);
+  --color-block-content: color-mix(
+    in srgb,
+    var(--color-block-header),
+    transparent
+  );
   --color-avatar-background: #394e63;
 
   --color-modal-background: var(--color-nav);
