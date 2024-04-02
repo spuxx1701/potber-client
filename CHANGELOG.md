@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Added new 'Discord' theme.
 - Threads that contain posts from a bookmark are now highlighted.
+- The `[m]` BBCode-Tag is now supported.
 
 ### Changed
 
