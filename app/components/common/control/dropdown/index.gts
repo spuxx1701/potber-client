@@ -98,7 +98,7 @@ export default class DropdownComponent extends Component<Signature> {
       <div class='dropdown-inner'>
         <button
           id='{{this.componentId}}-button'
-          class='dropdown-toggle
+          class='dropdown-toggle control-variant-primary
             {{if this.expanded "dropdown-toggle-expanded"}}'
           type='button'
           aria-label={{@label}}

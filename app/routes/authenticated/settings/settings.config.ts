@@ -66,6 +66,10 @@ export const settingsConfig: Record<
       label: 'Purple Haze',
       data: Theme['purple-haze'],
     },
+    {
+      label: 'Tokyo Night',
+      data: Theme['tokyo-night'],
+    },
   ],
 
   fontSizeOptions: [

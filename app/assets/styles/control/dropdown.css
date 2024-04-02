@@ -34,8 +34,6 @@
   height: var(--dropdown-height);
   border-radius: var(--global-border-radius);
   padding: 0px 1rem 0px 1rem;
-  background-color: var(--color-primary);
-  color: var(--color-text-default);
 }
 
 .dropdown-toggle::after {

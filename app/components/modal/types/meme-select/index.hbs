@@ -9,7 +9,7 @@
       <div class='modal-select-meme-container'>
         {{#each memeCategory.memes as |meme|}}
           <Common::Control::Button
-            @variant='secondary'
+            @variant='secondary-transparent'
             @onClick={{fn this.handleSelect meme}}
             class='modal-select-meme-element modal-select-meme-element-width-{{meme.width}}
               modal-select-meme-element-height-{{meme.height}}'
@@ -23,8 +23,8 @@
 </Modal::Component::Content>
 <Modal::Component::Footer>
   <Common::Control::Button
-    @text='Abbrechen'
-    @variant='secondary'
+    @text='Schließen'
+    @variant='secondary-transparent'
     @size='small'
     @onClick={{this.handleCancel}}
   />

@@ -1,11 +1,5 @@
 html[data-theme='discord'],
 html[data-theme='discord'] * {
-  /* Layout */
-  --global-padding: 0.25rem;
-  --global-gap: 4px;
-  --global-border-radius: 5px;
-  --content-border-radius: 0px;
-
   /* Colors */
 
   --color-accent: #ffcd2e;

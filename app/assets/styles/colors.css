@@ -3,18 +3,31 @@
   color: var(--color-text-default);
 }
 
+.control-variant-primary p,
 .control-variant-primary svg {
   color: var(--color-text-default);
 }
 
+.control-variant-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text-default);
+}
+
+.control-variant-secondary p,
+.control-variant-secondary svg {
+  color: var(--color-text-default);
+}
+
 .control-variant-primary-transparent,
+.control-variant-primary-transparent p,
 .control-variant-primary-transparent svg {
   background-color: transparent;
   color: var(--color-text-default);
 }
 
-.control-variant-secondary,
-.control-variant-secondary svg {
+.control-variant-secondary-transparent,
+.control-variant-secondary-transparent p,
+.control-variant-secondary-transparent svg {
   background-color: transparent;
   color: var(--color-text-subtle);
 }

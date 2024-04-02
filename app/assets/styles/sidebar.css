@@ -98,3 +98,8 @@
   left: calc(var(--sidebar-width) + var(--sidebar-left));
   right: calc(var(--sidebar-width) + var(--sidebar-right));
 }
+
+#sidebar .control-variant-primary,
+#sidebar .control-variant-secondary {
+  background-color: transparent;
+}

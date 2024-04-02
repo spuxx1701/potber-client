@@ -1,17 +1,11 @@
 html[data-theme='purple-haze'],
 html[data-theme='purple-haze'] * {
-  /* Layout */
-  --global-padding: 0.25rem;
-  --global-gap: 4px;
-  --global-border-radius: 5px;
-  --content-border-radius: 0px;
-
   /* Colors */
   --color-accent: #d639cc;
   --color-primary: #474c24;
   --color-secondary: #595f2f;
 
-  --color-application-background: rgb(57, 59, 31);
+  --color-application-background: #393b1f;
   --color-nav: #30321a;
   --color-sidebar: var(--color-application-background);
 

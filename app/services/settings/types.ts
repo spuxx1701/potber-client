@@ -25,6 +25,7 @@ export enum Theme {
   'snowman',
   'discord',
   'purple-haze',
+  'tokyo-night',
 }
 
 export enum LandingPage {

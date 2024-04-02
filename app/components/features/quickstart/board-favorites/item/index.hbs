@@ -4,13 +4,13 @@
     class='flex-column flex-grow align-items-start justify-content-center'
     @route='authenticated.board'
     @query={{hash BID=@board.id page=undefined}}
-    @variant='secondary'
+    @variant='primary'
     @onClick={{this.handleLinkClick}}
   >
     <p class='title max-lines-1'> {{@board.name}}</p>
     <p class='subtitle max-lines-1'> {{@board.description}}</p>
   </Common::Control::Link>
-  <Common::Control::Menu @position='bottom-left'>
+  <Common::Control::Menu @position='bottom-left' @variant='primary'>
     <Common::Control::Menu::Button
       @text='Favorit entfernen'
       @icon='trash'

@@ -36,7 +36,7 @@ html * {
   --color-block-content: color-mix(in srgb, var(--color-primary), transparent);
   --color-avatar-background: #394e63;
 
-  --color-modal-background: var(--color-primary);
+  --color-modal-background: var(--color-nav);
 
   --color-info: var(--color-modal-background);
   --color-success: #21922b;

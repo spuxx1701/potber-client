@@ -29,7 +29,7 @@ export default class InfoModal extends Component<Signature> {
     <ModalFooter>
       <Button
         @text={{t 'misc.close'}}
-        @variant='secondary'
+        @variant='secondary-transparent'
         @size='small'
         @onClick={{this.handleClose}}
       />

@@ -45,8 +45,7 @@
   height: var(--bottom-nav-height);
   bottom: 0;
   z-index: 10;
-  border-bottom: var(--bottom-nav-bottom-border) solid
-    var(--color-nav);
+  border-bottom: var(--bottom-nav-bottom-border) solid var(--color-nav);
 }
 
 #bottom-nav .nav-portal-target {

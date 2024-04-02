@@ -11,6 +11,7 @@ interface Signature {
 
 export default class InfoButtonComponent extends Component<Signature> {
   @service declare modal: ModalService;
+
   handleClick = () => {
     this.modal.info({
       title: this.args.title,

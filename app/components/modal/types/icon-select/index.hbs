@@ -8,7 +8,7 @@
   <div class='modal-select-icon-option-container'>
     {{#each this.options as |option|}}
       <Common::Control::Button
-        @variant='secondary'
+        @variant='secondary-transparent'
         @size='square'
         @onClick={{fn this.handleSelect option}}
       >
@@ -23,8 +23,8 @@
 </Modal::Component::Content>
 <Modal::Component::Footer>
   <Common::Control::Button
-    @text='Abbrechen'
-    @variant='secondary'
+    @text='Schließen'
+    @variant='secondary-transparent'
     @size='small'
     @onClick={{this.handleCancel}}
   />
