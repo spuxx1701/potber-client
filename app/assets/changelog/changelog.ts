@@ -4,11 +4,11 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
 
     added: [
-      'Die Anwendung hat ein neues Theme, das dem Design von Discord nachempfunden ist.',
+      'Neue Themes wurden hinzugefügt.',
       'Threads, die ein ungelesenes Lesezeichen enthalten, werden nun farblich hervorgehoben.',
     ],
     changed: [
-      'Viele Komponenten verwenden nun eigene CSS-Variablen für z.B. Hintergrundfarben. Themes erhalten dadurch deutlich präziser Einfluss auf verschiedene Komponenten nehmen. Das "Discord"-Theme ist ein Beispiel für ein Theme, das von dieser Änderung profitiert.',
+      'Viele Komponenten verwenden nun eigene CSS-Variablen für z.B. Hintergrundfarben. Themes erhalten dadurch deutlich präziser Einfluss auf verschiedene Komponenten nehmen.',
       'An bestehenden Themes wurden kleinere Änderungen vorgenommen, um die Konsistenz zu erhöhen.',
     ],
     fixed: [

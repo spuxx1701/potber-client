@@ -12,12 +12,6 @@ html[data-theme='snowman'] * {
   --color-secondary: var(--color-application-background);
   --color-accent: #009cb8;
 
-  --background-list-item-unread: linear-gradient(
-    65deg,
-    var(--color-list-item) 0%,
-    color-mix(in srgb, var(--color-accent), transparent) 100%
-  );
-
   --color-text-default: #333333;
   --color-text-subtle: #3f3f3f;
   --color-text-link: var(--color-text-subtle);
@@ -26,7 +20,7 @@ html[data-theme='snowman'] * {
 
   --color-block-header: #aaaaaa;
 
-  --color-modal-background: var(--color-application-background);
+  --color-modal-background: var(--color-secondary);
 
   --color-success: #70cc78;
   --color-warning: #e4a75c;

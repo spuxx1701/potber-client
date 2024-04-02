@@ -10,6 +10,7 @@
   width: 400px;
   max-width: 90vw;
   border-radius: var(--global-border-radius);
+  overflow: hidden;
   border: none;
   padding: 0;
   background-color: var(--color-modal-background);
@@ -89,8 +90,9 @@
 
 .modal-footer {
   margin-top: 0.5rem;
-  border-top: 1px solid var(--color-primary);
-  padding: 1rem;
+  border-top: 1px solid
+    color-mix(in srgb, var(--color-text-subtle), transparent);
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: end;

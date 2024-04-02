@@ -1,5 +1,5 @@
-html[data-theme='discord'],
-html[data-theme='discord'] * {
+html[data-theme='purple-haze'],
+html[data-theme='purple-haze'] * {
   /* Layout */
   --global-padding: 0.25rem;
   --global-gap: 4px;
@@ -7,21 +7,15 @@ html[data-theme='discord'] * {
   --content-border-radius: 0px;
 
   /* Colors */
+  --color-accent: #d639cc;
+  --color-primary: #474c24;
+  --color-secondary: #595f2f;
 
-  --color-accent: #ffcd2e;
-  --color-primary: #313338;
-  --color-secondary: #313338;
-
-  --color-application-background: #242629;
-  --color-nav: #1e1f22;
+  --color-application-background: rgb(57, 59, 31);
+  --color-nav: #30321a;
   --color-sidebar: var(--color-application-background);
 
-  --color-content-header: var(--color-secondary);
-
-  --background-list-item-unread: #444037;
-
-  --color-block-header: var(--color-nav);
-
+  --color-content-header: var(--color-primary);
   --color-scrollbar: var(--color-application-background);
   --color-scrollbar-handle: var(--color-nav);
   --color-avatar-background: var(--color-secondary);

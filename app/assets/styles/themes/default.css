@@ -17,7 +17,11 @@ html * {
 
   --color-list-item: var(--color-secondary);
   --color-list-item-important: var(--color-primary);
-  --background-list-item-unread: var(--color-secondary);
+  --background-list-item-unread: linear-gradient(
+    65deg,
+    var(--color-list-item) 0%,
+    color-mix(in srgb, var(--color-accent), transparent 65%) 100%
+  );
   --color-content-header: color-mix(in srgb, var(--color-primary), transparent);
   --color-content-body: var(--color-secondary);
   --color-log-item: var(--color-primary);
@@ -36,7 +40,7 @@ html * {
   );
   --color-avatar-background: #394e63;
 
-  --color-modal-background: var(--color-nav);
+  --color-modal-background: var(--color-primary);
 
   --color-info: var(--color-modal-background);
   --color-success: #21922b;

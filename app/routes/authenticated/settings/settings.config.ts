@@ -62,6 +62,10 @@ export const settingsConfig: Record<
       label: 'Discord',
       data: Theme['discord'],
     },
+    {
+      label: 'Purple Haze',
+      data: Theme['purple-haze'],
+    },
   ],
 
   fontSizeOptions: [
