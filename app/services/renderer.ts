@@ -34,7 +34,7 @@ export default class RendererService extends Service {
    * Gets a specific variable on the root style and returns its value.
    */
   getStyleVariable = (key: string) => {
-    return this.computedStyle.getPropertyValue(key);
+    return this.computedStyle.getPropertyValue(key).trim();
   };
 
   /**
@@ -57,6 +57,17 @@ export default class RendererService extends Service {
   updateTheme = () => {
     const theme = this.settings.getSetting('theme');
     document.documentElement.setAttribute('data-theme', `${Theme[theme]}`);
+    const metaThemeColor = document.querySelector("meta[name='theme-color']");
+    const metaAppleStatusBarStyle = document.querySelector(
+      "meta[name='apple-mobile-web-app-status-bar-style']",
+    );
+    const themeColor = this.getStyleVariable('--color-nav');
+    if (metaThemeColor && themeColor) {
+      metaThemeColor.setAttribute('content', themeColor);
+    }
+    if (metaAppleStatusBarStyle && themeColor) {
+      metaAppleStatusBarStyle.setAttribute('content', themeColor);
+    }
   };
 
   /**
