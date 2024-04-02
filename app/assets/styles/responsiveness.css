@@ -105,8 +105,4 @@
   .dropdown-toggle:not(:disabled):hover {
     filter: var(--filter-control-active);
   }
-
-  .not-interactable:hover {
-    cursor: unset;
-  }
 }

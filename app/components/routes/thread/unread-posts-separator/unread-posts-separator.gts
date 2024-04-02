@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import Post from 'potber-client/models/post';
+import classNames from 'potber-client/helpers/class-names';
 
 interface Signature {
   Args: {
@@ -18,7 +19,7 @@ export default class UnreadPostsSeparator extends Component<Signature> {
   }
 
   <template>
-    <span class='unread-posts-separator'>
+    <span class={{classNames this 'separator'}}>
       <hr />
       <p>{{this.text}}
       </p>
