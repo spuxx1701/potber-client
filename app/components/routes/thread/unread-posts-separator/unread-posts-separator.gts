@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import Post from 'potber-client/models/post';
+import styles from './styles.module.css';
 import classNames from 'potber-client/helpers/class-names';
 
 interface Signature {
@@ -10,6 +11,8 @@ interface Signature {
 }
 
 export default class UnreadPostsSeparator extends Component<Signature> {
+  styles = styles;
+
   get text() {
     const { post, posts } = this.args;
     const index = posts.indexOf(post);
