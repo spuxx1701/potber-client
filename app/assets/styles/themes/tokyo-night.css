@@ -12,15 +12,10 @@ html[data-theme='tokyo-night'] * {
   --color-content-body: var(--color-primary);
   --color-block-header: var(--color-application-background);
   --color-modal-background: var(--color-secondary);
-  --color-scrollbar: var(--color-application-background);
-  --color-scrollbar-handle: var(--color-nav);
-  --color-avatar-background: var(--color-secondary);
+  --color-avatar-background: var(--color-primary);
 
   --color-text-default: #dcdde0;
   --color-text-subtle: #717591;
-
-  /* Misc */
-  --global-box-shadow: 0px 0px 5px var(--color-nav);
 }
 
 .control-variant-primary,

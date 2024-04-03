@@ -17,7 +17,6 @@ html[data-theme='discord'] * {
   --color-text-subtle: #949ba4;
   --color-text-highlighted: #f2f3f5;
 
-  --color-scrollbar: var(--color-application-background);
   --color-scrollbar-handle: var(--color-nav);
   --color-avatar-background: var(--color-primary);
 

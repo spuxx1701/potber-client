@@ -50,7 +50,7 @@ html * {
   --color-newsfeed-indicator-info: var(--color-accent);
   --color-newsfeed-indicator-important: var(--color-error);
 
-  --color-scrollbar: var(--color-nav);
+  --color-scrollbar: transparent;
   --color-scrollbar-handle: var(--color-primary);
 
   /* Filters */
