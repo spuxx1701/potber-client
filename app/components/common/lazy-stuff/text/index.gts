@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import classNames from 'potber-client/helpers/class-names';
 import styles from './styles.module.css';
+import { htmlSafe } from '@ember/template';
 
 interface Signature {
   Element: HTMLSpanElement;
@@ -56,7 +57,7 @@ export default class LazyText extends Component<Signature> {
       {{#each this.lines as |line|}}
         <span
           class='skeleton-element {{classNames this "lazy-text"}}'
-          style='width: {{line.length}}rem;'
+          style={{htmlSafe 'width: {{line.length}}rem;'}}
           ...attributes
         ><span class='skeleton-shimmer' /></span>
       {{/each}}
