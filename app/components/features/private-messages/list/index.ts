@@ -1,7 +1,7 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import PrivateMessage from 'potber-client/models/private-message';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 import ScrollObserverService, {
   ScrollPosition,
 } from 'potber-client/services/scroll-observer';

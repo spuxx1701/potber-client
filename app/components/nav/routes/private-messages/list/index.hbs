@@ -1,8 +1,20 @@
 {{! @glint-nocheck }}
 <Portal @target='top-nav'>
-  <Nav::Component::Header @title='Nachrichten' @subtitle={{@folder}} />
+  <Nav::Component::Header
+    @title={{t 'route.private-messages.title'}}
+    @subtitle={{@folder}}
+  />
 </Portal>
 
 <Portal @target='bottom-nav'>
+  {{! <div class='nav-element-center'> }}
   <Nav::Component::Tabs @tabs={{this.tabs}} />
+  {{! </div> }}
+  <Common::ButtonLink
+    @route={{'authenticated.private-messages.create'}}
+    @size='square'
+    class='nav-element-right'
+  >
+    <FaIcon @icon='file-pen' />
+  </Common::ButtonLink>
 </Portal>

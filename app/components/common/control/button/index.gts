@@ -38,7 +38,7 @@ export default class CommonButtonComponent extends Component<Signature> {
   }
 
   get title() {
-    return this.args.size === 'square' ? this.args.text : undefined;
+    return this.args.text;
   }
 
   get size() {

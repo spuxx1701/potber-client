@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import PrivateMessage from 'potber-client/models/private-message';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 import ModalService from 'potber-client/services/modal';
 import RendererService from 'potber-client/services/renderer';
 

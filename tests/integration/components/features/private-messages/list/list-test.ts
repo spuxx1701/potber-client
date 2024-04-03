@@ -3,7 +3,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { setupRenderingTest } from 'potber-client/tests/helpers';
 import { module, test } from 'qunit';
 import { privateMessageMocks } from './_mock/private-messages';
-import PrivateMessage from 'potber-client/models/private-message';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 
 interface Context extends TestContext {
   element: HTMLElement;

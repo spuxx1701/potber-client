@@ -6,10 +6,10 @@ import SettingsService, {
   SidebarLayout,
 } from 'potber-client/services/settings';
 import RendererService from 'potber-client/services/renderer';
-import PrivateMessage from 'potber-client/models/private-message';
 import NewsfeedIndicatorComponent from 'potber-client/components/features/quickstart/newsfeed/indicator';
 import styles from 'potber-client/components/features/quickstart/newsfeed/indicator/styles.module.css';
 import NewsfeedService from 'potber-client/services/newsfeed';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 
 interface Context extends TestContext {
   element: HTMLElement;
@@ -56,7 +56,6 @@ module(
       }
       this.owner.register('service:newsfeed', NewsfeedStub);
       await render(<template><NewsfeedIndicatorComponent /></template>);
-      console.log(styles);
       assert
         .dom('[data-test-newsfeed-indicator]')
         .hasClass(styles['status-important'] as string);

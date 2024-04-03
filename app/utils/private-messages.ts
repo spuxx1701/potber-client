@@ -1,9 +1,8 @@
-import PrivateMessage, {
-  PrivateMessageFolder,
-} from 'potber-client/models/private-message';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
+import { PrivateMessageFolder } from 'potber-client/services/api/types/private-messages';
 
 /**
- * Dynamically creats a subtitle for the given private message.
+ * Dynamically creates a subtitle for the given private message.
  * @param privateMessage The private message.
  */
 export function createPrivateMessageSubtitle(privateMessage: PrivateMessage) {

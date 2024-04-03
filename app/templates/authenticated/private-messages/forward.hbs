@@ -1,0 +1,9 @@
+{{! @glint-nocheck }}
+{{page-title (t 'route.private-messages.forward.title')}}
+
+<Nav::Routes::PrivateMessages::Form
+  @message={{@model.message}}
+  @title={{t 'route.private-messages.forward.title'}}
+/>
+
+<Features::PrivateMessages::Form @message={{@model.message}} />

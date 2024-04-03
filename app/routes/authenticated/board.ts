@@ -2,10 +2,10 @@ import RouterService from '@ember/routing/router-service';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import Board from 'potber-client/models/board';
-import CustomStore from 'potber-client/services/custom-store';
 import MessagesService from 'potber-client/services/messages';
 import RSVP from 'rsvp';
 import SlowRoute from '../base/slow';
+import CustomStore from 'potber-client/services/custom-store';
 
 interface Params {
   BID: string;

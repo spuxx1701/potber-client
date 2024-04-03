@@ -1,8 +1,6 @@
 import environment from 'potber-client/config/environment';
 import { clean } from 'semver';
 
-console.log(environment.APP);
-
 /**
  * Configuration object for the application.
  */

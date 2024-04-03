@@ -1,0 +1,10 @@
+:global(#private-message-form) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: calc(
+    100dvh - var(--top-nav-height) - var(--bottom-nav-height) - 2 *
+      var(--global-padding)
+  );
+}

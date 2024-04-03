@@ -16,7 +16,11 @@ declare global {
     | 'large'
     | 'x-large'
     | 'max';
-  type ControlVariant = 'primary' | 'primary-transparent' | 'secondary';
+  type ControlVariant =
+    | 'primary'
+    | 'primary-transparent'
+    | 'secondary'
+    | 'secondary-transparent';
   type ModalVariant = 'default' | 'success' | 'warning' | 'error';
 
   interface ContentParserMock {

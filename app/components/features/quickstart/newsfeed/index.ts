@@ -3,6 +3,7 @@ import Component from '@glimmer/component';
 import NewsfeedService from 'potber-client/services/newsfeed';
 import RendererService from 'potber-client/services/renderer';
 import BookmarkStore from 'potber-client/services/stores/bookmark';
+import PrivateMessageStore from 'potber-client/services/stores/private-message';
 
 interface Signature {
   Args: {
@@ -13,6 +14,8 @@ export default class QuickstartNewsfeedComponent extends Component<Signature> {
   @service declare renderer: RendererService;
   @service declare newsfeed: NewsfeedService;
   @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
+  @service('stores/private-message')
+  declare privateMessageStore: PrivateMessageStore;
 
   get status() {
     if (!this.unreadBookmarks && !this.unreadPrivateMessages) {
@@ -30,7 +33,7 @@ export default class QuickstartNewsfeedComponent extends Component<Signature> {
   }
 
   get unreadPrivateMessages() {
-    return this.newsfeed.unreadPrivateMessages;
+    return this.privateMessageStore.unread;
   }
 
   get unreadBookmarks() {

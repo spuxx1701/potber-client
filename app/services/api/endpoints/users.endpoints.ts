@@ -25,3 +25,25 @@ export async function findById(
     request: { method: 'GET' },
   });
 }
+
+/**
+ * Finds and returns a list of usernames that start with the given string.
+ * @param startsWith The string to search for.
+ */
+export async function findManyUsernames(
+  this: ApiService,
+  startsWith: string,
+  options?: PublicFetchOptions,
+): Promise<string[]> {
+  if (!startsWith) return [];
+  return await this.fetch(`usernames?startsWith=${startsWith}`, {
+    ...options,
+    statusNotifications: [
+      {
+        statusCode: '*',
+        message: this.intl.t('error.unknown'),
+      },
+    ],
+    request: { method: 'GET' },
+  });
+}

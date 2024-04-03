@@ -38,13 +38,13 @@
         @icon='star'
         @onClick={{this.addToFavorites}}
       />
-      <Common::Control::Menu::Link
+      <Common::Control::Menu::LinkExternal
         @text='Original öffnen'
         @icon='up-right-from-square'
         @href={{this.originalUrl}}
         target='_blank'
       />
-      <Common::Control::Menu::LinkTo
+      <Common::Control::Menu::Link
         @text='Zur ersten Seite'
         @icon='backward-step'
         @route='authenticated.board'

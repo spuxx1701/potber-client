@@ -15,23 +15,6 @@ export default class NewsfeedIndicatorComponent extends Component {
   @service declare newsfeed: NewsfeedService;
   @service declare settings: SettingsService;
 
-  get status(): 'none' | 'info' | 'important' {
-    if (!this.renderer.leftSidebarExpanded) {
-      if (
-        this.newsfeed.unreadPrivateMessages &&
-        this.newsfeed.unreadPrivateMessages.length > 0
-      ) {
-        return 'important';
-      } else if (
-        this.newsfeed.unreadBookmarks &&
-        this.newsfeed.unreadBookmarks.length > 0
-      ) {
-        return 'info';
-      }
-    }
-    return 'none';
-  }
-
   get position(): 'left' | 'right' {
     if (
       this.settings.sidebarLayout === SidebarLayout.rightTop ||
@@ -49,7 +32,7 @@ export default class NewsfeedIndicatorComponent extends Component {
       class='{{classNames
           this
           (concat "position-" this.position)
-          (concat "status-" this.status)
+          (concat "status-" this.newsfeed.status)
         }}'
       data-test-newsfeed-indicator
     />

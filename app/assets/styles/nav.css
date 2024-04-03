@@ -54,6 +54,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding-left: var(--bottom-nav-left-gap);
+  padding-right: var(--bottom-nav-right-gap);
 }
 
 .nav > *,
@@ -65,12 +67,10 @@
 
 .nav-element-left {
   position: relative;
-  left: var(--bottom-nav-left-gap);
 }
 
 .nav-element-right {
   position: relative;
-  right: var(--bottom-nav-right-gap);
 }
 
 .nav-element-center {
@@ -104,18 +104,17 @@
 }
 
 .nav-tabs {
-  width: calc(100% - var(--bottom-nav-right-gap) - var(--bottom-nav-left-gap));
+  width: 100%;
   display: flex;
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  margin-left: var(--bottom-nav-left-gap);
-  margin-right: var(--bottom-nav-right-gap);
   overflow-x: auto;
   color: var(--color-text-default);
 }
 
 .nav-tabs > a {
+  height: calc(100% - 1px);
   flex-grow: 1;
   padding: 0 0.25rem;
   min-width: fit-content;

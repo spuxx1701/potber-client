@@ -35,7 +35,10 @@ Router.map(function () {
       this.route('inbound');
       this.route('outbound');
       this.route('system');
-      this.route('view', { path: '/view/:id' });
+      this.route('view', { path: '/:id' });
+      this.route('create');
+      this.route('reply', { path: '/:id/forward' });
+      this.route('forward', { path: '/:id/reply' });
     });
   });
   this.route('not-found', { path: '/*path' });

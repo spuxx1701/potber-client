@@ -4,12 +4,20 @@ import ApiService, { PublicFetchOptions } from '../api';
 import { Bookmark } from '../api/models/bookmark';
 import { trackedFunction } from 'ember-resources/util/function';
 import { TrackedState } from 'ember-resources';
+import { sleep } from 'potber-client/utils/misc';
 
-interface GetOptions extends PublicFetchOptions {
+interface ReloadOptions extends PublicFetchOptions {
+  /**
+   * The delay in miliseconds before the reload is executed.
+   */
+  delay?: number;
+}
+
+interface GetOptions extends ReloadOptions {
   /**
    * Whether or not to force a reload.
    */
-  reload: boolean;
+  reload?: boolean;
 }
 
 export default class BookmarkStore extends Service {
@@ -54,7 +62,10 @@ export default class BookmarkStore extends Service {
   /**
    * Forces a new reload of all bookmarks.
    */
-  reload = async (options?: PublicFetchOptions) => {
+  reload = async (options?: ReloadOptions) => {
+    if (options?.delay) {
+      await sleep(options.delay);
+    }
     this.state = trackedFunction(this, () =>
       this.api.findAllBookmarks(options),
     );

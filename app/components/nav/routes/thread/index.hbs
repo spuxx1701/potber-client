@@ -47,13 +47,13 @@
             @onClick={{this.deleteBookmark}}
           />
         {{/if}}
-        <Common::Control::Menu::Link
+        <Common::Control::Menu::LinkExternal
           @text='Original öffnen'
           @icon='up-right-from-square'
           @href={{this.originalUrl}}
           target='_blank'
         />
-        <Common::Control::Menu::LinkTo
+        <Common::Control::Menu::Link
           @text='Zur ersten Seite'
           @icon='backward-step'
           @route='authenticated.thread'
@@ -70,7 +70,7 @@
           @icon='magnifying-glass'
           @onClick={{this.handleGoToPage}}
         />
-        <Common::Control::Menu::LinkTo
+        <Common::Control::Menu::Link
           @text='Zur letzten Seite'
           @icon='forward-step'
           @route='authenticated.thread'

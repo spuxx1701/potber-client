@@ -89,9 +89,6 @@ export default class ThreadRoute extends SlowRoute {
   }
 
   afterModel() {
-    // In case the user has automatic newsfeed refreshs enabled, we need to reload bookmarks
-    // to check whether they might have changed
-    if (this.settings.getSetting('autoRefreshSidebar'))
-      this.bookmarkStore.reload();
+    this.bookmarkStore.reload({ delay: 500 });
   }
 }

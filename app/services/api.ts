@@ -8,6 +8,7 @@ import * as Posts from './api/endpoints/posts.endpoints';
 import { ApiError } from './api/error';
 import CustomSession from './custom-session';
 import * as Bookmarks from './api/endpoints/bookmarks.endpoints';
+import * as PrivateMessages from './api/endpoints/private-messages.endpoints';
 
 export interface FetchStatusNotification {
   /**
@@ -38,6 +39,10 @@ export interface PublicFetchOptions {
    * Whether the request should be handled silently (and now show any notifications).
    */
   silent?: boolean;
+  /**
+   * An optional object that will be parsed as query parameters.
+   */
+  query?: Record<string, string | boolean | number>;
 }
 
 export interface ProtectedFetchOptions extends PublicFetchOptions {
@@ -45,10 +50,6 @@ export interface ProtectedFetchOptions extends PublicFetchOptions {
    * The `RequestInit` object.
    */
   request?: RequestInit;
-  /**
-   * An optional object that will be parsed as query parameters.
-   */
-  query?: Record<string, string | boolean | number>;
 }
 
 export default class ApiService extends Service {
@@ -58,6 +59,8 @@ export default class ApiService extends Service {
 
   // --- Endpoints are being defined in this section --- //
   findUserById = Users.findById;
+  findManyUsernames = Users.findManyUsernames;
+
   findPostById = Posts.findById;
 
   findThreadById = Threads.findById;
@@ -71,6 +74,15 @@ export default class ApiService extends Service {
   findBookmarkByThreadId = Bookmarks._findByThreadId;
   createBookmark = Bookmarks._create;
   deleteBookmark = Bookmarks._delete;
+
+  findManyPrivateMessages = PrivateMessages._findMany;
+  findPrivateMessageById = PrivateMessages._findById;
+  createPrivateMessage = PrivateMessages._create;
+  deletePrivateMessage = PrivateMessages._delete;
+  movePrivateMessageToFolder = PrivateMessages._moveToFolder;
+  markPrivateMessageAsUnread = PrivateMessages._markAsUnread;
+  replyToPrivateMessage = PrivateMessages._reply;
+  forwardPrivateMessage = PrivateMessages._forward;
 
   // --------------------------------------------------- //
 

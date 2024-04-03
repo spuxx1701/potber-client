@@ -1,4 +1,4 @@
-import PrivateMessage from 'potber-client/models/private-message';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 
 export const privateMessageMocks = {
   inbound: [
@@ -34,5 +34,5 @@ export const privateMessageMocks = {
         name: 'User 1',
       },
     },
-  ] as PrivateMessage[],
+  ] as Partial<PrivateMessage>[],
 };

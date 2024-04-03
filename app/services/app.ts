@@ -8,6 +8,7 @@ import NewsfeedService from './newsfeed';
 import RendererService from './renderer';
 import CustomSession from './custom-session';
 import SettingsService from './settings';
+import ExceptionHandler from './exception-handler';
 
 export default class AppService extends Service {
   @service declare settings: SettingsService;
@@ -18,11 +19,13 @@ export default class AppService extends Service {
   @service declare localStorage: LocalStorageService;
   @service declare newsfeed: NewsfeedService;
   @service declare session: CustomSession;
+  @service declare exceptionHandler: ExceptionHandler;
   initialized = false;
   deferredInstallPrompt: any = undefined;
 
   async initialize() {
     if (this.initialized) return;
+    this.exceptionHandler.initialize();
     this.settings.initialize();
     this.newsfeed.initialize();
     this.renderer.initialize();

@@ -1,9 +1,15 @@
 import { action } from '@ember/object';
+import { on } from '@ember/modifier';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
+import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
+import { IconName } from '@fortawesome/fontawesome-common-types';
 import RendererService from 'potber-client/services/renderer';
+import classNames from 'potber-client/helpers/class-names';
+import styles from './styles.module.css';
+import { t } from 'ember-intl';
 
 export interface Signature {
   Args: {
@@ -16,18 +22,21 @@ export interface Signature {
       | 'bottom'
       | 'bottom-right';
     variant?: ControlVariant;
-    icon?: string;
+    icon?: IconName;
   };
+  Blocks: { default: [] };
 }
 
 export default class MenuComponent extends Component<Signature> {
   @service declare renderer: RendererService;
-  declare args: Signature['Args'];
+
   id = guidFor(this);
+  styles = styles;
+
   @tracked position = this.calculatePosition();
 
   get variant() {
-    return this.args.variant || 'secondary';
+    return this.args.variant || 'secondary-transparent';
   }
 
   get icon() {
@@ -76,4 +85,24 @@ export default class MenuComponent extends Component<Signature> {
     const element = document.getElementById(`${this.id}-menu`) as Element;
     element.setAttribute('data-visible', 'false');
   }
+
+  <template>
+    <button
+      id='{{this.id}}-button'
+      class='menu-button control-size-square control-variant-{{this.variant}}
+        icon-size-large'
+      title={{t 'misc.more'}}
+      {{on 'click' this.handleClick}}
+      {{on 'blur' this.handleBlur}}
+    >
+      <FaIcon @icon={{this.icon}} />
+      <menu
+        id='{{this.id}}-menu'
+        class={{classNames this this.position}}
+        data-visible='false'
+      >
+        {{yield}}
+      </menu>
+    </button>
+  </template>
 }

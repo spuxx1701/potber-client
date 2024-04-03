@@ -1,7 +1,8 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import PrivateMessage from 'potber-client/models/private-message';
-import CustomStore from 'potber-client/services/custom-store';
+import ApiService from 'potber-client/services/api';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
+import PrivateMessageStore from 'potber-client/services/stores/private-message';
 
 interface Params {
   id: string;
@@ -12,13 +13,18 @@ export interface PrivateMessagesViewRouteModel {
 }
 
 export default class PrivateMessagesViewRoute extends Route {
-  @service declare store: CustomStore;
+  @service declare api: ApiService;
+  @service('stores/private-message')
+  declare privateMessageStore: PrivateMessageStore;
 
   async model(params: Params) {
-    const message = await this.store.getPrivateMessage(params.id, {
-      reload: true,
-    });
+    const { id } = params;
+    const message = await this.api.findPrivateMessageById(id);
     message.unread = false;
     return { message };
+  }
+
+  afterModel() {
+    this.privateMessageStore.reload({ delay: 500 });
   }
 }

@@ -4,11 +4,11 @@ import { tracked } from '@glimmer/tracking';
 import Board from 'potber-client/models/board';
 import MessagesService from './messages';
 import { clean, valid, gt } from 'semver';
-import CustomStore from './custom-store';
 import { Settings } from './settings';
 import Post from 'potber-client/models/post';
 import { PersistedSavedPost } from 'potber-client/components/features/bookmarks/saved-posts/post';
 import { appConfig } from 'potber-client/config/app.config';
+import CustomStore from './custom-store';
 
 const PREFIX = 'potber-';
 

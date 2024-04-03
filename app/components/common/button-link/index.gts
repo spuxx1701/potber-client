@@ -11,7 +11,6 @@ export interface Signature {
   Args: {
     route: string;
     model?: string;
-    models?: unknown[];
     query?: Record<string, unknown>;
     size?: ControlSize;
     variant?: ControlVariant;

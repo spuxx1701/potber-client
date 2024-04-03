@@ -1,7 +1,7 @@
 import { service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
-import PrivateMessage from 'potber-client/models/private-message';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 import ContentParserService from 'potber-client/services/content-parser';
 import { getPrivateMessageFolderLabel } from 'potber-client/utils/private-messages';
 

@@ -27,7 +27,7 @@
     </div>
     {{#unless @isPreview}}
       <Common::Control::Menu @position='auto' @variant='secondary-transparent'>
-        <Common::Control::Menu::Link
+        <Common::Control::Menu::LinkExternal
           @text='Original öffnen'
           @icon='up-right-from-square'
           @href={{this.url}}
@@ -48,7 +48,7 @@
           @icon='floppy-disk'
           @onClick={{this.savePost}}
         />
-        <Common::Control::Menu::LinkTo
+        <Common::Control::Menu::Link
           @text='Zitieren'
           @icon='comment-dots'
           @route='authenticated.post.quote'
@@ -59,7 +59,7 @@
           }}
         />
         {{#if this.canEdit}}
-          <Common::Control::Menu::LinkTo
+          <Common::Control::Menu::Link
             @text='Bearbeiten'
             @icon='edit'
             @route='authenticated.post.edit'

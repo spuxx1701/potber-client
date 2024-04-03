@@ -3,6 +3,7 @@ import { guidFor } from '@ember/object/internals';
 import { action } from '@ember/object';
 
 interface Signature {
+  Element: HTMLTextAreaElement;
   Args: {
     value: string;
     id?: string;

@@ -1,21 +1,17 @@
 import { service } from '@ember/service';
-import { PrivateMessageFolder } from 'potber-client/models/private-message';
 import SlowRoute from 'potber-client/routes/base/slow';
-import CustomStore from 'potber-client/services/custom-store';
+import ApiService from 'potber-client/services/api';
+import { PrivateMessageFolder } from 'potber-client/services/api/types/private-messages';
 
 export default class PrivateMessagesInboundRoute extends SlowRoute {
-  @service declare store: CustomStore;
+  @service declare api: ApiService;
 
   async model() {
-    const messages = await this.store.getPrivateMessages({
-      folder: PrivateMessageFolder.inbound,
-      reload: true,
+    const messages = await this.api.findManyPrivateMessages({
+      query: {
+        folder: PrivateMessageFolder.inbound,
+      },
     });
-    const filteredMessages = [
-      ...messages.filter(
-        (message) => message.folder === PrivateMessageFolder.inbound,
-      ),
-    ];
-    return filteredMessages;
+    return messages;
   }
 }

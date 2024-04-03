@@ -16,6 +16,10 @@ error:
     warning: Die Anfrage dauert länger als gewöhnlich. Bitte hab einen Moment Geduld.
   users:
     not-found: Diese:n Nutzer:in konnten wir leider nicht finden.
+  threads:
+    find-by-id:
+      forbidden: Du bist leider nicht berechtigt, auf diesen Thread zuzugreifen.
+      not-found: Diesen Thread konnten wir leider nicht finden.
   posts:
     find-by-id:
       forbidden: Du bist leider nicht berechtigt, auf diesen Post zuzugreifen.
@@ -31,11 +35,18 @@ error:
   bookmark:
     find-by-id:
       not-found: Dieses Lesezeichen konnten wir leider nicht finden.
+  private-messages:
+    find-by-id:
+      not-found: Diese Nachricht konnten wir leider nicht finden.
+    create:
+      bad-request: Deine Nachricht konnte nicht gesendet werden. Möglicherweise existiert der/die Empfänger:in nicht.
 misc:
   ok: OK,
   cancel: Abbrechen
   close: Schließen
   refresh: Aktualisieren
+  back: Zurück
+  submit: Absenden
 route:
   about:
     title: Über die App
@@ -112,6 +123,23 @@ route:
     report-post-success: Der Post wurde gemeldet.
     post:
       deleted-user: Gelöschte:r Nutzer:in
+  private-messages:
+    title: Nachrichten
+    view:
+      mark-as-unread:
+        success: Die Nachricht wurde als ungelesen markiert.
+      move-to-folder:
+        success: Die Nachricht wurde verschoben.
+      delete:
+        success: Die Nachricht wurde gelöscht.
+    create:
+      title: Neue Nachricht
+    inbound:
+      title: Posteingang
+    outbound:
+      title: Postausgang
+    system:
+      title: System
 component:
   misc:
     error:
@@ -119,3 +147,14 @@ component:
         text: Die Seite konnten wir leider nicht finden.
         home: Startseite
         reload: Seite neu laden
+feature:
+  private-messages:
+    form:
+      recipient:
+        label: Empfänger:in
+      title:
+        label: Betreff
+      content:
+        placeholder: Schreibe eine Nachricht...
+      submit: Absenden
+      message-sent: Die Nachricht wurde gesendet.

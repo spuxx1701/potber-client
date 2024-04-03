@@ -1,5 +1,5 @@
-import PrivateMessage from 'potber-client/models/private-message';
 import { Bookmark } from 'potber-client/services/api/models/bookmark';
+import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 
 export const newsfeedMocks = {
   unreadBookmark: new Bookmark(
@@ -12,14 +12,19 @@ export const newsfeedMocks = {
     },
     {} as any,
   ),
-  unreadPrivateMessages: new PrivateMessage({
-    id: '123',
-    title: 'Hello World!',
-    folder: 'inbound',
-    sender: {
+  unreadPrivateMessages: new PrivateMessage(
+    {
       id: '123',
-      name: 'Username',
+      title: 'Hello World!',
+      date: '17:21 01.01.2021',
+      folder: 'inbound',
+      important: false,
+      unread: true,
+      sender: {
+        id: '123',
+        name: 'Username',
+      },
     },
-    unread: true,
-  }),
+    {} as any,
+  ),
 };
