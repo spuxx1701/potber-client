@@ -7,6 +7,7 @@ export const changelog: ChangelogItem[] = [
       'Neue Themes wurden hinzugefügt.',
       'Threads, die ein ungelesenes Lesezeichen enthalten, werden nun farblich hervorgehoben.',
       'Die Anwendung unterstützt nun den [m] Tag.',
+      'Du kannst nun private Nachrichten schreiben, auf private Nachrichten antworten und diese weiterleiten.',
     ],
     changed: [
       'Viele Komponenten verwenden nun eigene CSS-Variablen für z.B. Hintergrundfarben. Themes erhalten dadurch deutlich präziser Einfluss auf verschiedene Komponenten nehmen.',
