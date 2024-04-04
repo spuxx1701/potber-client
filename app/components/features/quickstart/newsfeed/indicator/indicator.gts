@@ -26,13 +26,21 @@ export default class NewsfeedIndicatorComponent extends Component {
     }
   }
 
+  get status() {
+    if (this.renderer.leftSidebarExpanded) {
+      return 'none';
+    } else {
+      return this.newsfeed.status;
+    }
+  }
+
   <template>
     <span
       id='newsfeed-indicator'
       class='{{classNames
           this
           (concat "position-" this.position)
-          (concat "status-" this.newsfeed.status)
+          (concat "status-" this.status)
         }}'
       data-test-newsfeed-indicator
     />

@@ -30,6 +30,14 @@ export default class NewsfeedService extends Service {
       }, appConfig.newsfeedRefreshInterval);
   }
 
+  get unreadBookmarks() {
+    return this.bookmarkStore.unread;
+  }
+
+  get unreadPrivateMessages() {
+    return this.privateMessageStore.unread;
+  }
+
   async refresh(options?: PublicFetchOptions) {
     this.isUpdating = true;
     await this.bookmarkStore.getUnread({ ...options, reload: true });
@@ -39,15 +47,9 @@ export default class NewsfeedService extends Service {
   }
 
   get status(): 'none' | 'info' | 'important' {
-    if (
-      this.privateMessageStore.unread &&
-      this.privateMessageStore.unread.length > 0
-    ) {
+    if (this.unreadPrivateMessages && this.unreadPrivateMessages.length > 0) {
       return 'important';
-    } else if (
-      this.bookmarkStore.unread &&
-      this.bookmarkStore.unread?.length > 0
-    ) {
+    } else if (this.unreadBookmarks && this.unreadBookmarks.length > 0) {
       return 'info';
     } else {
       return 'none';
