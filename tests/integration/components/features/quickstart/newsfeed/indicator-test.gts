@@ -9,7 +9,6 @@ import RendererService from 'potber-client/services/renderer';
 import NewsfeedIndicatorComponent from 'potber-client/components/features/quickstart/newsfeed/indicator';
 import styles from 'potber-client/components/features/quickstart/newsfeed/indicator/styles.module.css';
 import NewsfeedService from 'potber-client/services/newsfeed';
-import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 
 interface Context extends TestContext {
   element: HTMLElement;
@@ -50,9 +49,9 @@ module(
 
     test("should have class 'status-important' when there are unread private messages", async function (this: Context, assert) {
       class NewsfeedStub extends NewsfeedService {
-        unreadPrivateMessages: PrivateMessage[] = [
-          newsfeedMocks.unreadPrivateMessages,
-        ];
+        get unreadPrivateMessages() {
+          return [newsfeedMocks.unreadPrivateMessages];
+        }
       }
       this.owner.register('service:newsfeed', NewsfeedStub);
       await render(<template><NewsfeedIndicatorComponent /></template>);
@@ -77,9 +76,9 @@ module(
 
     test("should have class 'status-important' when there are both unread private messages and unread bookmarks", async function (this: Context, assert) {
       class NewsfeedStub extends NewsfeedService {
-        unreadPrivateMessages: PrivateMessage[] = [
-          newsfeedMocks.unreadPrivateMessages,
-        ];
+        get unreadPrivateMessages() {
+          return [newsfeedMocks.unreadPrivateMessages];
+        }
         get unreadBookmarks() {
           return [newsfeedMocks.unreadBookmark];
         }

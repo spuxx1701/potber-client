@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { Posts, Threads } from 'potber-client/services/api/types';
 import Textarea from 'potber-client/components/common/control/textarea';
 import { on } from '@ember/modifier';
-import classNames from 'potber-client/helpers/class-names';
 import styles from './styles.module.css';
 import PostFormMessageToolbar from './toolbar';
 import { t } from 'ember-intl';

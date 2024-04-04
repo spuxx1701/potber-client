@@ -20,7 +20,6 @@ export default class ExceptionHandler extends Service {
       const exception = error as Exception;
       if (!exception.catchMe) return;
       this.messages.log(exception.message, { type: 'error', context: _source });
-      debugger;
     }
   };
 }

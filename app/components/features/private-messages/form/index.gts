@@ -6,7 +6,6 @@ import { IntlService } from 'ember-intl';
 import t from 'ember-intl/helpers/t';
 import ApiService from 'potber-client/services/api';
 import MessagesService from 'potber-client/services/messages';
-import classNames from 'potber-client/helpers/class-names';
 import { NewPrivateMessage } from 'potber-client/services/api/models/private-message';
 import Input, {
   Suggestion,

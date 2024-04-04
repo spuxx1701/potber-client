@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
 import { service } from '@ember/service';
-import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
 import RouterService from '@ember/routing/router-service';
 import Portal from 'ember-stargate/components/portal';
