@@ -1,16 +1,17 @@
+import { on } from '@ember/modifier';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { service } from '@ember/service';
-import { on } from '@ember/modifier';
 import { IntlService } from 'ember-intl';
 import t from 'ember-intl/helpers/t';
-import ApiService from 'potber-client/services/api';
-import MessagesService from 'potber-client/services/messages';
-import { NewPrivateMessage } from 'potber-client/services/api/models/private-message';
 import Input, {
   Suggestion,
 } from 'potber-client/components/common/control/input';
 import Textarea from 'potber-client/components/common/control/textarea';
+import classNames from 'potber-client/helpers/class-names';
+import ApiService from 'potber-client/services/api';
+import { NewPrivateMessage } from 'potber-client/services/api/models/private-message';
+import MessagesService from 'potber-client/services/messages';
 import styles from './styles.module.css';
 
 interface Signature {
@@ -67,7 +68,11 @@ export default class PrivateMessageForm extends Component<Signature> {
   };
 
   <template>
-    <form id='private-message-form' {{on 'submit' this.handleSubmit}}>
+    <form
+      id='private-message-form'
+      class={{classNames this 'form'}}
+      {{on 'submit' this.handleSubmit}}
+    >
       <Input
         @label={{t 'feature.private-messages.form.recipient.label'}}
         @size='max'
@@ -78,7 +83,6 @@ export default class PrivateMessageForm extends Component<Signature> {
         {{on 'input' this.handleRecipientInput}}
         type='text'
         maxLength='255'
-        form='private-message-form'
       />
       <Input
         @label={{t 'feature.private-messages.form.title.label'}}
@@ -88,7 +92,6 @@ export default class PrivateMessageForm extends Component<Signature> {
         @required={{true}}
         type='text'
         maxLength='255'
-        form='private-message-form'
       />
       <Textarea
         @id='textarea-private-message-form'

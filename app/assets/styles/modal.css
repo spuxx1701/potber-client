@@ -84,6 +84,10 @@
   overflow: auto;
 }
 
+.modal-content > form > *:not(:first-child) {
+  margin-top: 0.25rem;
+}
+
 .modal-content p {
   margin: 0;
 }

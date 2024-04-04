@@ -1,4 +1,4 @@
-:global(#private-message-form) {
+.form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -7,4 +7,8 @@
     100dvh - var(--top-nav-height) - var(--bottom-nav-height) - 2 *
       var(--global-padding)
   );
+}
+
+.form > *:not(:first-child) {
+  margin-top: 0.25rem;
 }

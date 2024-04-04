@@ -2,13 +2,6 @@
   position: relative;
 }
 
-.input-container > *,
-form > * {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  box-sizing: border-box;
-}
-
 .input-container input,
 .input-container textarea {
   width: 100%;

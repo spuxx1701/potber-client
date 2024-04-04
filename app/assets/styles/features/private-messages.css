@@ -9,6 +9,7 @@
   flex-direction: row;
   box-sizing: border-box;
   width: 100%;
+  min-height: var(--control-default-height);
   border-radius: var(--global-border-radius);
   background-color: var(--color-list-item);
 }
