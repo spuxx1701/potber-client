@@ -129,7 +129,7 @@ export async function _markAsUnread(
   id: string,
   options?: PublicFetchOptions,
 ): Promise<void> {
-  await this.fetch(`privateMessages&/${id}/markAsUnread`, {
+  await this.fetch(`privateMessages/${id}/markAsUnread`, {
     ...options,
     statusNotifications: [
       {
@@ -156,7 +156,7 @@ export async function _moveToFolder(
   folder: PrivateMessageFolder,
   options?: PublicFetchOptions,
 ): Promise<void> {
-  return await this.fetch(`privateMessages&/${id}/moveToFolder`, {
+  return await this.fetch(`privateMessages/${id}/moveToFolder`, {
     ...options,
     statusNotifications: [
       {

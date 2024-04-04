@@ -8,6 +8,7 @@ import {
   RecipientOrSender,
 } from '../types/private-messages';
 import PrivateMessageStore from 'potber-client/services/stores/private-message';
+import { tracked } from '@glimmer/tracking';
 
 export class PrivateMessage extends Model implements PrivateMessages.Read {
   @service declare api: ApiService;
@@ -17,8 +18,8 @@ export class PrivateMessage extends Model implements PrivateMessages.Read {
   id!: string;
   title!: string;
   date!: string;
-  folder!: PrivateMessageFolder;
-  unread!: boolean;
+  @tracked folder!: PrivateMessageFolder;
+  @tracked unread!: boolean;
   important!: boolean;
   recipient?: RecipientOrSender;
   sender?: RecipientOrSender;

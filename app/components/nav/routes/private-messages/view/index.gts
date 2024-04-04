@@ -62,7 +62,7 @@ export default class NavRoutesPrivateMessagesViewComponent extends Component<Sig
   markAsUnread = async () => {
     await this.message.markAsUnread();
     this.messages.showNotification(
-      this.intl.t('route.private-messages.view.mark-as-unread-success'),
+      this.intl.t('route.private-messages.view.mark-as-unread.success'),
       'success',
     );
   };
@@ -70,7 +70,7 @@ export default class NavRoutesPrivateMessagesViewComponent extends Component<Sig
   moveToFolder = async (folder: PrivateMessageFolder) => {
     await this.message.moveToFolder(folder);
     this.messages.showNotification(
-      this.intl.t('route.private-messages.view.mark-as-unread-success'),
+      this.intl.t('route.private-messages.view.move-to-folder.success'),
       'success',
     );
   };
