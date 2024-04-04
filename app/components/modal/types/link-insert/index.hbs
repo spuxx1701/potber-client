@@ -1,9 +1,12 @@
 {{! @glint-nocheck }}
-<Modal::Component::Header @title='URL einfügen' @icon='link' />
+<Modal::Component::Header
+  @title={{t 'feature.post-form.message.toolbar.link.modal.title'}}
+  @icon='link'
+/>
 <Modal::Component::Content>
   <form id='link-insert-modal-form' {{on 'submit' this.handleSubmit}}>
     <Common::Control::Input
-      @label='URL'
+      @label={{t 'feature.post-form.message.toolbar.link.modal.url'}}
       @size='max'
       @value={{this.url}}
       @onChange={{this.handleUrlchange}}
@@ -12,7 +15,7 @@
       type='url'
     />
     <Common::Control::Input
-      @label='Text'
+      @label={{t 'feature.post-form.message.toolbar.link.modal.text'}}
       @size='max'
       @value={{this.text}}
       @onChange={{this.handleTextchange}}

@@ -1,0 +1,19 @@
+.form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-height: calc(
+    100dvh - var(--top-nav-height) - var(--bottom-nav-height) - 2 *
+      var(--global-padding)
+  );
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+}
+
+.button-row > button:not(first-child) {
+  margin-left: 0.5rem;
+}

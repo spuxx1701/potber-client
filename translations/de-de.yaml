@@ -16,10 +16,17 @@ error:
     warning: Die Anfrage dauert länger als gewöhnlich. Bitte hab einen Moment Geduld.
   users:
     not-found: Diese:n Nutzer:in konnten wir leider nicht finden.
+  boards:
+    find-by-id:
+      forbidden: Du bist leider nicht berechtigt, auf dieses Board zuzugreifen.
+      not-found: Dieses Board konnten wir leider nicht finden.
   threads:
     find-by-id:
       forbidden: Du bist leider nicht berechtigt, auf diesen Thread zuzugreifen.
       not-found: Diesen Thread konnten wir leider nicht finden.
+    create:
+      forbidden: Du bist leider nicht berechtigt, einen neuen Thread in diesem Board zu erstellen.
+      too-many-requests: Du erstellst zu viele Threads in zu kurzer Zeit. Bitte warte einen Moment.
   posts:
     find-by-id:
       forbidden: Du bist leider nicht berechtigt, auf diesen Post zuzugreifen.
@@ -47,6 +54,7 @@ misc:
   refresh: Aktualisieren
   back: Zurück
   submit: Absenden
+  more: Mehr...
 route:
   about:
     title: Über die App
@@ -140,6 +148,19 @@ route:
       title: Postausgang
     system:
       title: System
+  board:
+    subtitle: Seite {page}
+    add-to-favorites:
+      label: Zu Favoriten hinzufügen
+      success: Das Board wurde zu Deinen Favoriten hinzugefügt.
+    back: Zurück zur Forenübersicht
+    next-page: Nächste Seite
+    previous-page: Vorherige Seite
+    first-page: Erste Seite
+    original-url: Original öffnen
+    create-thread: Thread erstellen
+  create-thread:
+    title: Thread erstellen
 component:
   misc:
     error:
@@ -158,3 +179,48 @@ feature:
         placeholder: Schreibe eine Nachricht...
       submit: Absenden
       message-sent: Die Nachricht wurde gesendet.
+  post-form:
+    submit: Absenden
+    preview: Vorschau
+    post:
+      title: Titel
+    thread:
+      title: Titel
+      subtitle: Untertitel
+      tags: Tags (durch Leerzeichen getrennt)
+    message:
+      placeholder: Nachricht eingeben...
+      toolbar:
+        emojis: Emojis
+        memes: Memes
+        bold: Fett
+        italic: Kursiv
+        underline: Unterstrichen
+        strikethrough: Durchgestrichen
+        mono: Monospace
+        tex: LaTex
+        trigger: Trigger
+        link:
+          title: Link
+          modal:
+            title: Link
+            url: URL
+            text: Text (optional)
+        image:
+          title: Bild
+          modal:
+            title: Bild
+            src: URL
+            thumbnail: Thumbnail (optional)
+        video:
+          title: Video
+          label: URL
+        quote:
+          title: Zitat
+          label: Zitat eingeben...
+        code:
+          title: Code
+          label: Code eingeben...
+        spoiler:
+          title: Spoiler
+          label: Spoiler eingeben...

@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.container button {
+  height: var(--control-input-height);
+  font-size: var(--icon-size-large);
+}
+
+.container :global(.input-container) {
+  flex-grow: 1;
+  margin-left: 0.25rem;
+}

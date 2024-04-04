@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import classNames from 'potber-client/helpers/class-names';
 import styles from './styles.module.css';
 import { htmlSafe } from '@ember/template';
+import { SafeString } from '@ember/template/-private/handlebars';
 
 interface Signature {
   Element: HTMLSpanElement;
@@ -18,7 +19,7 @@ interface Signature {
 }
 
 interface Line {
-  length: number;
+  style: SafeString;
 }
 
 export default class LazyText extends Component<Signature> {
@@ -47,7 +48,8 @@ export default class LazyText extends Component<Signature> {
     const numberOfLines = this.generateNumberOflines();
     const lines: Line[] = [];
     for (let i = 0; i < numberOfLines; i++) {
-      lines.push({ length: this.generateLineLength() });
+      const length = this.generateLineLength();
+      lines.push({ style: htmlSafe(`width: ${length}rem;`) });
     }
     return lines;
   }
@@ -57,7 +59,7 @@ export default class LazyText extends Component<Signature> {
       {{#each this.lines as |line|}}
         <span
           class='skeleton-element {{classNames this "lazy-text"}}'
-          style={{htmlSafe 'width: {{line.length}}rem;'}}
+          style={{line.style}}
           ...attributes
         ><span class='skeleton-shimmer' /></span>
       {{/each}}

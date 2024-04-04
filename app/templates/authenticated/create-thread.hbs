@@ -1,0 +1,15 @@
+{{! @glint-nocheck }}
+{{page-title (t 'route.create-thread.title')}}
+
+<Features::PostForm
+  @id='create-thread-form'
+  @threadOrPost={{@model.thread}}
+  @navTitle='{{t "route.create-thread.title"}}'
+  @navSubtitle={{@model.board.name}}
+  @onSubmit={{this.handleSubmit}}
+>
+  <Features::PostForm::NewThread
+    @formId='create-thread-form'
+    @thread={{@model.thread}}
+  />
+</Features::PostForm>

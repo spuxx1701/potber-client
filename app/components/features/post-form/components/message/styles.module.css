@@ -1,0 +1,32 @@
+.toolbar-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: auto;
+  padding-right: calc(2 * var(--control-default-height));
+}
+
+.toolbar-overlay {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  width: calc(2 * var(--control-default-height));
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-application-background) 100%
+  );
+  z-index: 1;
+}
+
+.toolbar svg {
+  font-size: var(--icon-size-large);
+}

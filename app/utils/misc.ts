@@ -70,3 +70,12 @@ export function isChristmasSeason() {
 export function tryParseInt(input: any) {
   return parseInt(input);
 }
+
+/**
+ * Checks if the given string is null, empty or only contains whitespace.
+ * @param input The string to check.
+ * @returns Whether the string is null, empty or only contains whitespace.
+ */
+export function isNullOrWhitespace(input: string) {
+  return input === null || input.match(/^\s*$/) !== null;
+}

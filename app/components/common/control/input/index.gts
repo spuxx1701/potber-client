@@ -20,7 +20,7 @@ interface Signature {
   };
 }
 
-export default class CommonInputComponent extends Component<Signature> {
+export default class Input extends Component<Signature> {
   declare args: Signature['Args'];
   componentId = 'input-' + guidFor(this);
 

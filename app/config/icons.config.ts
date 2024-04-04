@@ -1,3 +1,5 @@
+import { IconName } from '@fortawesome/fontawesome-common-types';
+
 export interface PostIcon {
   key: string;
   filename: string | null;
@@ -231,7 +233,7 @@ export const emojis: Emoji[] = [
 
 export type EmojiKey = (typeof emojis)[number]['key'];
 
-export const fontAwesomeEmojiPaths = [
+export const fontAwesomeEmojiPaths: IconName[] = [
   'face-tired',
   'face-surprise',
   'face-smile-wink',

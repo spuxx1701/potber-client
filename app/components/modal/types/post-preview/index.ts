@@ -1,12 +1,12 @@
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { Posts } from 'potber-client/services/api/types';
+import { Posts, Threads } from 'potber-client/services/api/types';
 import CustomSession from 'potber-client/services/custom-session';
 import ModalService from 'potber-client/services/modal';
 
 export interface PostPreviewModalOptions {
-  post: Posts.Write;
+  post: Posts.Write | Threads.OpeningPost;
 }
 
 interface Signature {

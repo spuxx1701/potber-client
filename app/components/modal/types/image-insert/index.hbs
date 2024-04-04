@@ -1,9 +1,12 @@
 {{! @glint-nocheck }}
-<Modal::Component::Header @title='Bild einfügen' @icon='image' />
+<Modal::Component::Header
+  @title={{t 'feature.post-form.message.toolbar.image.modal.title'}}
+  @icon='image'
+/>
 <Modal::Component::Content>
   <form id={{this.formId}} {{on 'submit' this.handleSubmit}}>
     <Common::Control::Input
-      @label='URL'
+      @label={{t 'feature.post-form.message.toolbar.image.modal.src'}}
       @size='max'
       @onChange={{this.handleSrcChange}}
       @required={{true}}
@@ -11,7 +14,7 @@
       type='url'
     />
     <Common::Control::Input
-      @label='Thumbnail (optional)'
+      @label={{t 'feature.post-form.message.toolbar.image.modal.thumbnail'}}
       @size='max'
       @onChange={{this.handleThumbnailChange}}
       @value={{this.values.thumbnail}}

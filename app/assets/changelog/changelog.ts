@@ -2,16 +2,17 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.19.0',
     type: 'minor',
-
     added: [
       'Neue Themes wurden hinzugefügt.',
       'Threads, die ein ungelesenes Lesezeichen enthalten, werden nun farblich hervorgehoben.',
       'Die Anwendung unterstützt nun den [m] Tag.',
       'Du kannst nun private Nachrichten schreiben, auf private Nachrichten antworten und diese weiterleiten.',
+      'Du kannst nun Threads erstellen.',
     ],
     changed: [
       'Viele Komponenten verwenden nun eigene CSS-Variablen für z.B. Hintergrundfarben. Themes erhalten dadurch deutlich präziser Einfluss auf verschiedene Komponenten nehmen.',
-      'An bestehenden Themes wurden kleinere Änderungen vorgenommen, um die Konsistenz zu erhöhen.',
+      'Die bestehenden Themes wurden überarbeitet, um die Konsistenz zu erhöhen.',
+      'Das Post-Formular wurde überarbeitet und sollte nun etwas nutzer:innenfreundlicher sein.',
     ],
     fixed: [
       '[video play]-Tags werden nun in Endlosschleife abgespielt.',

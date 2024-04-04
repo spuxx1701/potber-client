@@ -11,7 +11,7 @@ interface Signature {
     size?: ControlSize;
     required?: boolean;
     selectAllOnFocus?: boolean;
-    height?: 'small' | 'medium' | 'large';
+    height?: 'small' | 'medium' | 'large' | 'x-large';
     onChange?: (value: string, event: InputEvent) => void;
   };
 }

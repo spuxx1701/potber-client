@@ -1,7 +1,11 @@
-{{! @glint-nocheck }}{{page-title (t 'route.post.edit.title')}}
+{{! @glint-nocheck }}
+{{page-title (t 'route.post.edit.title')}}
 
-<Board::PostForm
-  @post={{@model.post}}
+<Features::PostForm
+  @id='edit-post-form'
+  @threadOrPost={{@model.post}}
+  @navTitle='{{t "route.post.edit.title"}}'
   @onSubmit={{this.handleSubmit}}
-  @navTitle={{t 'route.post.edit.title'}}
-/>
+>
+  <Features::PostForm::Reply @formId='edit-post-form' @post={{@model.post}} />
+</Features::PostForm>

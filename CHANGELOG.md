@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.19.9] - UNRELEASED
+## [1.19.0] - UNRELEASED
 
 ### Added
 
@@ -12,10 +12,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Threads that contain posts from a bookmark are now highlighted.
 - The `[m]` BBCode-Tag is now supported.
 - Users can now create new private messages, forward private messages and respond to private messages.
+- Users can now create threads.
 
 ### Changed
 
 - Many components in the application now use their own color variables. That makes it much easier for themes to create unique distinct visuals for different components.
+- Existing themes received an overhaul.
+- The post form has been improved in terms of usability.
 
 ### Fixed
 

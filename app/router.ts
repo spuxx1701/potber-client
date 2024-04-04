@@ -21,6 +21,7 @@ Router.map(function () {
     this.route('board-overview');
     this.route('board');
     this.route('thread');
+    this.route('create-thread');
     this.route('settings');
     this.route('bookmarks', function () {
       this.route('threads');

@@ -37,9 +37,10 @@
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
+:global(.menu-item),
 :global(.menu-item p),
 :global(.menu-item svg) {
-  color: var(--color-text-subtle) !important;
+  color: var(--color-text-default) !important;
   text-decoration: none !important;
 }
 

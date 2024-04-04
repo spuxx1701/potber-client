@@ -15,7 +15,7 @@ export interface Read {
   repliesCount: number;
   hitsCount: number;
   pagesCount: number;
-  isCloused: boolean;
+  isClosed: boolean;
   isSticky: boolean;
   isImportant: boolean;
   isAnnouncement: boolean;
@@ -23,4 +23,20 @@ export interface Read {
   firstPost?: Posts.Preview;
   lastPost?: Posts.Preview;
   page?: Page;
+}
+
+export interface Create {
+  boardId: string;
+  title: string;
+  tags?: string[];
+  openingPost: OpeningPost;
+}
+
+export interface OpeningPost {
+  title?: string;
+  icon?: string;
+  message: string;
+  convertUrls?: boolean;
+  disableBbCode?: boolean;
+  disableEmojis?: boolean;
 }

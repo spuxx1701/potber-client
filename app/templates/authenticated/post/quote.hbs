@@ -1,11 +1,14 @@
-{{! @glint-nocheck }}{{page-title (t 'route.post.create.title')}}
+{{! @glint-nocheck }}
+{{page-title (t 'route.post.create.title')}}
 
-<Board::PostForm
-  @post={{@model.post}}
+<Features::PostForm
+  @id='create-post-form'
+  @threadOrPost={{@model.post}}
+  @navTitle='{{t "route.post.create.title"}}'
   @onSubmit={{this.handleSubmit}}
-  @busy={{this.busy}}
-  @navTitle={{t 'route.post.create.title'}}
-  @navSubtitle={{@model.thread.title}}
-/>
+>
+  {{@model.threadState}}
+  <Features::PostForm::Reply @formId='create-post-form' @post={{@model.post}} />
+</Features::PostForm>
 
 <Routes::Post::RecentPosts @threadState={{@model.threadState}} />

@@ -83,7 +83,7 @@
   font-size: smaller;
 }
 
-.header > :global(*:last-child) {
+.header > :global(.menu-button) {
   flex: 0;
 }
 

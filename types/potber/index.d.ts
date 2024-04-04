@@ -15,6 +15,7 @@ declare global {
     | 'medium'
     | 'large'
     | 'x-large'
+    | 'auto'
     | 'max';
   type ControlVariant =
     | 'primary'

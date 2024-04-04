@@ -80,3 +80,7 @@ input[type='number'] {
 .textarea-height-large {
   height: 500px;
 }
+
+.textarea-height-x-large {
+  height: 750px;
+}
