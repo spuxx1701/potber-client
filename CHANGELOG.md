@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - Added a couple of new themes.
-- Threads that contain posts from a bookmark are now highlighted.
+- Threads that contain unread posts from a bookmark are now highlighted.
 - The `[m]` BBCode-Tag is now supported.
 - Users can now create new private messages, forward private messages and respond to private messages.
 - Users can now create threads.
