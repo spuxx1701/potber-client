@@ -4,11 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [1.19.0] - UNRELEASED
+## [1.19.0] - 2024-04-05
 
 ### Added
 
-- Added new 'Discord' theme.
+- Added a couple of new themes.
 - Threads that contain posts from a bookmark are now highlighted.
 - The `[m]` BBCode-Tag is now supported.
 - Users can now create new private messages, forward private messages and respond to private messages.
