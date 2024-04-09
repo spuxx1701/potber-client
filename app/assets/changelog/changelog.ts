@@ -5,7 +5,10 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'Im Desktoplayout werden Posts nun ähnlich wie im Forum angezeigt. Der Header mit den Autoreninformationen findet sich dort nun auf der linken Seite statt oberhalb der Postinhalts.',
     ],
-    fixed: ['Diverse Fixes im Desktoplayout.'],
+    fixed: [
+      'Ein Anzeigefehler in der Ansicht für das Zitieren eines Posts wurde behoben.',
+      'Diverse Fixes im Desktoplayout.',
+    ],
   },
   {
     version: '1.19.0',

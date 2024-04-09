@@ -7,7 +7,6 @@
   @navTitle='{{t "route.post.create.title"}}'
   @onSubmit={{this.handleSubmit}}
 >
-  {{@model.threadState}}
   <Features::PostForm::Reply @formId='create-post-form' @post={{@model.post}} />
 </Features::PostForm>
 
