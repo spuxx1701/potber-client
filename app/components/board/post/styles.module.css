@@ -282,3 +282,47 @@
   font-size: smaller;
   margin: 0.5rem 0 0 0;
 }
+
+@media only screen and (min-width: 1200px) {
+  :global(.post) {
+    flex-direction: row;
+  }
+
+  .header {
+    align-items: start;
+    min-width: 16rem;
+    max-width: 16rem;
+    padding: 1rem;
+    border-top-right-radius: unset;
+    border-bottom-left-radius: var(--global-border-radius);
+  }
+
+  .header .details {
+    grid-template-areas:
+      'author'
+      'date'
+      'avatar';
+  }
+
+  .header :global(.menu-button) {
+    margin-right: -1rem;
+    margin-top: -0.25rem;
+  }
+
+  .header :global(.avatar) {
+    margin-top: 1rem;
+    height: 8rem;
+    width: 8rem;
+  }
+
+  .body {
+    flex-grow: 1;
+    border-bottom-left-radius: unset;
+    border-top-right-radius: var(--global-border-radius);
+    border-bottom-right-radius: var(--global-border-radius);
+  }
+
+  .message {
+    flex-grow: 1;
+  }
+}

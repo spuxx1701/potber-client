@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## UNRELEASED
+
+### Changed
+
+- In the desktop view, posts are now displayed similarly to how they are display in the original forum.
+
+### Fixed
+
+- Fixed an issue affecting the content padding in desktop view.
+
 ## [1.19.0] - 2024-04-05
 
 ### Added
