@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.20.0',
+    type: 'minor',
+    fixed: ['Diverse Fixes im Desktoplayout.'],
+  },
+  {
     version: '1.19.0',
     type: 'minor',
     added: [
