@@ -9,7 +9,7 @@ export const changelog: ChangelogItem[] = [
       'Ein Anzeigefehler in der Ansicht für das Zitieren eines Posts wurde behoben.',
       '[video play]-Tags werden auf iOS nicht länger automatisch im Vollbildmodus abgespielt.',
       'Das Postformular ist auf iOS nun wieder besser bedienbar.',
-      'Der [m]-Tag wird nun richtig dargestellt (danke an SBI!).'
+      'Der [m]-Tag wird nun richtig dargestellt (danke an SBI!).',
       'Diverse Fixes im Desktoplayout.',
     ],
   },
