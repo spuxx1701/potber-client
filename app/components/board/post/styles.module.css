@@ -146,6 +146,7 @@
 .message pre {
   margin: unset;
   font-size: larger;
+  display: inline;
 }
 
 .message img {
