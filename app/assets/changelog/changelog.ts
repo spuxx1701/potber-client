@@ -7,6 +7,7 @@ export const changelog: ChangelogItem[] = [
     ],
     fixed: [
       'Ein Anzeigefehler in der Ansicht für das Zitieren eines Posts wurde behoben.',
+      '[video play]-Tags werden auf iOS nicht länger automatisch im Vollbildmodus abgespielt.',
       'Diverse Fixes im Desktoplayout.',
     ],
   },

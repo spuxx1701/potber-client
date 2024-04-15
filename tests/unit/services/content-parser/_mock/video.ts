@@ -170,7 +170,7 @@ export const videoTagMocks: ContentParserMock[] = [
     input: `[video play]https://i.imgur.com/PWI3g0N.mp4[/video]`,
     expected: `${createVideoContainer(
       'https&#58;//i.imgur.com/PWI3g0N.mp4',
-      '<video src="https&#58;//i.imgur.com/PWI3g0N.mp4" autoplay muted loop controls></video>',
+      '<video src="https&#58;//i.imgur.com/PWI3g0N.mp4" autoplay playsinline muted loop controls></video>',
     )}`,
   },
 ];

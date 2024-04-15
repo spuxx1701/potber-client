@@ -14,7 +14,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Fixed a visual issue in the `post/quote` view.
 - Fixed an issue affecting the content padding in desktop view.
-- Fixed a bug that would cause layout issues on vertical desktop screens
+- Fixed a bug that would cause layout issues on vertical desktop screens.
+- Fixed an issue that would cause [video play] tags to play the video in fullscreen on iOS.
 
 ## [1.19.0] - 2024-04-05
 
