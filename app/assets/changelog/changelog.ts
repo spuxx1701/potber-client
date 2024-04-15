@@ -10,6 +10,7 @@ export const changelog: ChangelogItem[] = [
       '[video play]-Tags werden auf iOS nicht länger automatisch im Vollbildmodus abgespielt.',
       'Das Postformular ist auf iOS nun wieder besser bedienbar.',
       'Der [m]-Tag wird nun richtig dargestellt (danke an SBI!).',
+      'Lange zusammenhängende Threadtitel werden nun korrekt dargestellt.',
       'Diverse Fixes im Desktoplayout.',
     ],
   },

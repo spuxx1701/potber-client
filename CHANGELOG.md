@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Fixed an issue that would cause [video play] tags to play the video in fullscreen on iOS.
 - Fixed an issue that would render the post form almost unusable on iOS.
 - Fixed an issue with the `[m]` monospace tag. (Thanks to SBI!)
+- Fixed an issue that would long thread titles without whitespaces not to be wrapped properly.
 
 ## [1.19.0] - 2024-04-05
 
