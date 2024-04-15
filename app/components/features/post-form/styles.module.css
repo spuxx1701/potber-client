@@ -2,12 +2,18 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  /* height: auto; */
+  height: 100svh;
   max-height: calc(
-    100dvh - var(--top-nav-height) - var(--bottom-nav-height) - 2 *
+    100svh - var(--top-nav-height) - var(--bottom-nav-height) - 2 *
       var(--global-padding)
   );
   margin-bottom: 0.25rem;
+}
+
+.form :global(.input-container:has(textarea)) {
+  flex-grow: 1;
+  height: auto;
 }
 
 .form > *:not(:first-child) {

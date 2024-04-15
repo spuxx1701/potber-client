@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## UNRELEASED
+## [1.20.0] - 2024-04-15
 
 ### Changed
 
@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Fixed an issue affecting the content padding in desktop view.
 - Fixed a bug that would cause layout issues on vertical desktop screens.
 - Fixed an issue that would cause [video play] tags to play the video in fullscreen on iOS.
+- Fixed an issue that would render the post form almost unusable on iOS.
 
 ## [1.19.0] - 2024-04-05
 
