@@ -41,11 +41,11 @@ module.exports = function (environment) {
   }
 
   if (environment === 'development:mobile') {
-    ENV.APP.HOSTNAME = 'http://schleppi.fritz.box:4200';
-    ENV.APP.API_URL = 'http://schleppi.fritz.box:3000';
-    ENV.APP.AUTH_ISSUER_URL = 'http://schleppi.fritz.box:5173';
+    ENV.APP.HOSTNAME = 'schleppi.fritz.box:4200';
+    ENV.APP.API_URL = 'https://test-api.potber.de';
+    ENV.APP.AUTH_ISSUER_URL = 'https://test-auth.potber.de';
+    ENV.APP.MEME_HOST_URL = 'https://potber.de';
     ENV.APP.DEBUG = true;
-    ENV.APP.MEME_HOST_URL = 'https://test.potber.de';
   }
 
   if (environment === 'test') {
