@@ -11,10 +11,7 @@
   #page-content {
     max-width: calc(var(--max-content-width));
     transition: margin padding var(--sidebar-transition-time) ease !important;
-    padding-left: max(
-      calc(100vw - var(--max-content-width) + var(--global-padding)),
-      calc(var(--sidebar-width) + var(--global-padding))
-    );
+    padding-left: calc(var(--sidebar-width) + var(--global-padding));
     padding-bottom: 8rem;
   }
 
