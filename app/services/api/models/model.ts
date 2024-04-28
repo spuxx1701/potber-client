@@ -37,6 +37,8 @@ export class Model {
   }
 
   constructor(context: EmberObject) {
-    setOwner(this, getOwner(context));
+    const owner = getOwner(context);
+    if (!owner) throw new Error('No owner found.');
+    setOwner(this, owner);
   }
 }

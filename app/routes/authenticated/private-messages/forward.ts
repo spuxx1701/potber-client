@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import ApiService from 'potber-client/services/api';
 
-interface Params {
+interface Params extends Record<string, unknown> {
   id: string;
 }
 

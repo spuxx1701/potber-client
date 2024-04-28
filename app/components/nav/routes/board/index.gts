@@ -18,6 +18,7 @@ import MenuButton from 'potber-client/components/common/control/menu/button';
 import MenuLinkExternal from 'potber-client/components/common/control/menu/link-external';
 import MenuLink from 'potber-client/components/common/control/menu/link';
 import { IntlService, t } from 'ember-intl';
+import BoardRoute from 'potber-client/routes/authenticated/board';
 
 export interface Signature {
   Args: {
@@ -74,8 +75,9 @@ export default class NavBoardComponent extends Component<Signature> {
 
   @action async reload() {
     this.renderer.showLoadingIndicator();
-    (getOwner(this as unknown) as any)
-      .lookup('route:authenticated.board')
+    const owner = getOwner(this);
+    if (!owner) throw new Error('Owner not found');
+    (owner.lookup('route:authenticated.board') as BoardRoute)
       .refresh()
       .finally(() => {
         this.renderer.hideLoadingIndicator();

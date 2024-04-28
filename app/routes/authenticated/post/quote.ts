@@ -4,7 +4,7 @@ import PostCreateRoute, { PostCreateRouteModel } from './create';
 import { service } from '@ember/service';
 import ApiService from 'potber-client/services/api';
 
-interface Params {
+interface Params extends Record<string, unknown> {
   TID: string;
   page: number;
   PID: string;
@@ -32,7 +32,7 @@ export default class PostQuoteRoute extends PostCreateRoute {
     },
   };
 
-  async model(params: Params, transition: Transition<unknown>) {
+  async model(params: Params, transition: Transition) {
     const model = await super.model(params, transition);
     try {
       // Prepare the quote

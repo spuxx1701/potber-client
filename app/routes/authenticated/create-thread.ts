@@ -6,7 +6,7 @@ import { WritableThread } from 'potber-client/services/api/models/thread';
 import { Boards } from 'potber-client/services/api/types';
 import ApiService from 'potber-client/services/api';
 
-interface Params {
+interface Params extends Record<string, unknown> {
   BID: string;
 }
 

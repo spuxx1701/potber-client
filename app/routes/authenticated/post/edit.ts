@@ -6,7 +6,7 @@ import ApiService from 'potber-client/services/api';
 import { WritablePost } from 'potber-client/services/api/models/post';
 import RendererService from 'potber-client/services/renderer';
 
-interface Params {
+interface Params extends Record<string, unknown> {
   TID: string;
   PID: string;
 }
@@ -31,7 +31,7 @@ export default class PostEditRoute extends SlowRoute {
     },
   };
 
-  async model(params: Params, transition: Transition<unknown>) {
+  async model(params: Params, transition: Transition) {
     try {
       const currentPost = await this.api.findPostById(params.PID, params.TID);
       const post = new WritablePost({ ...currentPost }, this);

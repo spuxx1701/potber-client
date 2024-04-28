@@ -10,7 +10,7 @@ import { WritablePost } from 'potber-client/services/api/models/post';
 import { trackedFunction } from 'ember-resources/util/function';
 import { TrackedState } from 'ember-resources';
 
-interface Params {
+interface Params extends Record<string, unknown> {
   TID: string;
   page: number;
 }
@@ -35,7 +35,7 @@ export default class PostCreateRoute extends Route {
     },
   };
 
-  async model(params: Params, transition: Transition<unknown>) {
+  async model(params: Params, transition: Transition) {
     try {
       // Retrieve the thread with its last page so we can display recent posts and other information about the thread.
       // We will load the data in the background so we can display it as soon as possible without making the user wait for it.

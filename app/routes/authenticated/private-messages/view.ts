@@ -4,7 +4,7 @@ import ApiService from 'potber-client/services/api';
 import { PrivateMessage } from 'potber-client/services/api/models/private-message';
 import PrivateMessageStore from 'potber-client/services/stores/private-message';
 
-interface Params {
+interface Params extends Record<string, unknown> {
   id: string;
 }
 

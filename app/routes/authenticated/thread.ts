@@ -8,7 +8,7 @@ import SettingsService from 'potber-client/services/settings';
 import { sleep } from 'potber-client/utils/misc';
 import BookmarkStore from 'potber-client/services/stores/bookmark';
 
-interface Params {
+interface Params extends Record<string, unknown> {
   TID: string;
   PID?: string;
   page?: string;

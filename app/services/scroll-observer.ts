@@ -1,3 +1,4 @@
+import Owner from '@ember/owner';
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
@@ -17,7 +18,7 @@ export default class ScrollObserverService extends Service {
    */
   @tracked scrollPosition: ScrollPosition = this.getScrollPosition();
 
-  constructor(properties?: object | undefined) {
+  constructor(properties?: Owner | undefined) {
     super(properties);
     addEventListener('scroll', this.handleScroll);
   }

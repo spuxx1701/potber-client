@@ -7,7 +7,7 @@ import RSVP from 'rsvp';
 import SlowRoute from '../base/slow';
 import CustomStore from 'potber-client/services/custom-store';
 
-interface Params {
+interface Params extends Record<string, unknown> {
   BID: string;
   page?: string;
 }
@@ -31,7 +31,7 @@ export default class BoardRoute extends SlowRoute {
     },
   };
 
-  async model(params: Params, transition: Transition<unknown>) {
+  async model(params: Params, transition: Transition) {
     try {
       const page = parseInt(params.page || '1') || 1;
       const board: Board = await this.store.findRecord('board', params.BID, {
