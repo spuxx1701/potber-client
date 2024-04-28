@@ -11,7 +11,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "ember serve",
+    "start": "ember serve --environment=development",
     "start:remote": "ember serve --environment=development:remote",
     "start:mobile": "ember serve --environment=development:mobile",
     "preview": "ember serve --environment=production",
@@ -103,7 +103,7 @@
     "ember-resolver": "^11.0.1",
     "ember-resources": "^6.4.2",
     "ember-simple-auth": "^6.0.0",
-    "ember-source": "~5.8.0",
+    "ember-source": "~4.8.6",
     "ember-stargate": "^0.4.3",
     "ember-template-imports": "^3.4.2",
     "ember-test-selectors": "^6.0.0",
