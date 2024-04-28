@@ -2,6 +2,7 @@ import Service, { service } from '@ember/service';
 import { appConfig } from 'potber-client/config/app.config';
 import MessagesService, { MessageType } from './messages';
 import { IntlService } from 'ember-intl';
+import * as Session from './api/endpoints/session.endpoints';
 import * as Boards from './api/endpoints/boards.endpoints';
 import * as Threads from './api/endpoints/threads.endpoints';
 import * as Users from './api/endpoints/users.endpoints';
@@ -59,6 +60,8 @@ export default class ApiService extends Service {
   @service declare session: CustomSession;
 
   // --- Endpoints are being defined in this section --- //
+  getSession = Session._get;
+
   findUserById = Users.findById;
   findManyUsernames = Users.findManyUsernames;
 

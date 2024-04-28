@@ -2,11 +2,11 @@ import { getOwner } from '@ember/application';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import BaseSessionService from 'ember-simple-auth/services/session';
-import CustomStore from './custom-store';
-import Session from 'potber-client/models/session';
+import { Session } from './api/types/session';
+import ApiService from './api';
 
 export default class CustomSession extends BaseSessionService {
-  @service declare store: CustomStore;
+  @service declare api: ApiService;
   @tracked sessionData: Session | null = null;
   declare data: any;
   declare isAuthenticated?: boolean;
@@ -30,9 +30,8 @@ export default class CustomSession extends BaseSessionService {
     if (!this.isAuthenticated) {
       this.sessionData = null;
     } else {
-      this.sessionData = await this.store.queryRecord('session', {});
       try {
-        this.sessionData = await this.store.queryRecord('session', {});
+        this.sessionData = await this.api.getSession();
       } catch (error) {
         this.invalidate();
       }
