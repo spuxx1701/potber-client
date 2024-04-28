@@ -24,7 +24,7 @@ export default class PostPreviewModalComponent extends Component<Signature> {
       ...this.args.options.post,
       date: new Date(),
       author: {
-        id: this.session.sessionData?.id ?? '',
+        id: this.session.sessionData?.userId ?? '',
         name: this.session.sessionData?.username,
       },
       avatarUrl: this.session.sessionData?.avatarUrl,

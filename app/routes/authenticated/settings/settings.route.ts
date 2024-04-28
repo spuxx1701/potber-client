@@ -2,11 +2,11 @@ import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import { DropdownOption } from 'potber-client/components/common/control/dropdown/types';
-import Session from 'potber-client/models/session';
 import RendererService from 'potber-client/services/renderer';
 import SessionService from 'potber-client/services/session';
 import SettingsService, { Settings } from 'potber-client/services/settings';
 import { settingsConfig } from '../settings';
+import { Session } from 'potber-client/services/api/types/session';
 
 type CurrentOptions = Record<
   `current${Capitalize<keyof Settings>}Option`,
