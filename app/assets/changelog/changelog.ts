@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.20.1',
+    type: 'patch',
+    fixed: ['[mod]-Tags werden nun wieder korrekt dargestellt.'],
+  },
+  {
     version: '1.20.0',
     type: 'minor',
     changed: [

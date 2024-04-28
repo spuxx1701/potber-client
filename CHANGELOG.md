@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## UNRELEASED
 
+### Fixed
+
+- `[mod]` tags are now displayed properly again.
+
 ### Chores
 
 - Maintenance update.
