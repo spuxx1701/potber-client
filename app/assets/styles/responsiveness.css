@@ -102,4 +102,10 @@
   .dropdown-toggle:not(:disabled):hover {
     filter: var(--filter-control-active);
   }
+
+  /* Misc */
+  .post .avatar {
+    background: none !important;
+    border-radius: 0 !important;
+  }
 }
