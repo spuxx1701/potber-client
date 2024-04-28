@@ -2,7 +2,11 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.20.1',
     type: 'patch',
-    fixed: ['[mod]-Tags werden nun wieder korrekt dargestellt.'],
+    fixed: [
+      '[mod]-Tags werden nun wieder korrekt dargestellt.',
+      'Der Avatar der Absender:in innerhalb privater Nachrichten ist nun klickbar.',
+      'Ein paar kleinere Anzeigefehler im Desktoplayout wurden behoben.',
+    ],
   },
   {
     version: '1.20.0',

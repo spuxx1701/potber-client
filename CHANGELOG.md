@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 
 - `[mod]` tags are now displayed properly again.
+- Fixed the avatar in the private message view not being clickable.
+- A couple of smaller fixes affecting desktop mode.
 
 ### Chores
 
