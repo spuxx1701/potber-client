@@ -109,7 +109,7 @@
     "ember-test-selectors": "^6.0.0",
     "ember-truth-helpers": "^3.1.1",
     "ember-web-app": "^5.0.1",
-    "eslint": "^8.40.0",
+    "eslint": "^9.1.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-ember": "^11.8.0",
     "eslint-plugin-node": "^11.1.0",
