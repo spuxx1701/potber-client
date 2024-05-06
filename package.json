@@ -101,7 +101,7 @@
     "ember-page-title": "^8.2.3",
     "ember-qunit": "^6.2.0",
     "ember-resolver": "^11.0.1",
-    "ember-resources": "^6.4.2",
+    "ember-resources": "^7.0.1",
     "ember-simple-auth": "^6.0.0",
     "ember-source": "~4.8.6",
     "ember-stargate": "^0.4.3",
