@@ -3,7 +3,6 @@ import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import MessagesService from 'potber-client/services/messages';
 import SlowRoute from '../base/slow';
-import CustomStore from 'potber-client/services/custom-store';
 import ApiService from 'potber-client/services/api';
 import { Boards } from 'potber-client/services/api/types';
 
@@ -17,7 +16,6 @@ export interface BoardRouteModel {
 }
 
 export default class BoardRoute extends SlowRoute {
-  @service declare store: CustomStore;
   @service declare messages: MessagesService;
   @service declare router: RouterService;
   @service declare api: ApiService;
