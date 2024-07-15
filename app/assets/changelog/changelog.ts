@@ -1,6 +1,6 @@
 export const changelog: ChangelogItem[] = [
   {
-    version: '1.20.2',
+    version: '1.21.0',
     type: 'minor',
     added: [
       'Neue Schriftgröße "Sehr klein" wurde hinzugefügt. Du kannst sie in den Einstellungen auswählen.',
