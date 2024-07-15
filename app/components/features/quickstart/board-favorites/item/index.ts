@@ -3,12 +3,12 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import RendererService from 'potber-client/services/renderer';
 import LocalStorageService from 'potber-client/services/local-storage';
-import Board from 'potber-client/models/board';
 import { appConfig } from 'potber-client/config/app.config';
+import { Boards } from 'potber-client/services/api/types';
 
 export interface Signature {
   Args: {
-    board: Board;
+    board: Boards.Read;
     inSidebar: boolean;
   };
 }

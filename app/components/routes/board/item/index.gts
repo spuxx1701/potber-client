@@ -3,8 +3,6 @@ import { htmlSafe } from '@ember/template';
 import Component from '@glimmer/component';
 import { hash } from '@ember/helper';
 import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
-import { PostPreview } from 'potber-client/models/post';
-import Thread from 'potber-client/models/thread';
 import RendererService from 'potber-client/services/renderer';
 import SettingsService from 'potber-client/services/settings';
 import BookmarkStore from 'potber-client/services/stores/bookmark';
@@ -12,10 +10,11 @@ import ButtonLink from 'potber-client/components/common/button-link';
 import BoardIcon from 'potber-client/components/board/icon';
 import classNames from 'potber-client/helpers/class-names';
 import styles from './styles.module.css';
+import { Posts, Threads } from 'potber-client/services/api/types';
 
 export interface Signature {
   Args: {
-    thread: Thread;
+    thread: Threads.Read;
   };
 }
 
@@ -73,11 +72,12 @@ export default class BoardItem extends Component<Signature> {
   }
 
   get lastPostLabel() {
-    let post: PostPreview;
-    if (this.args.thread.lastPost) {
-      post = this.args.thread.lastPost;
-    } else if (this.args.thread.firstPost) {
-      post = this.args.thread.firstPost;
+    let post: Posts.Preview;
+    const { lastPost, firstPost } = this.args.thread;
+    if (lastPost) {
+      post = lastPost;
+    } else if (firstPost) {
+      post = firstPost;
     } else return undefined;
     return htmlSafe(
       `<b>${post.author.name}</b> am ${new Date(post.date).toLocaleString()}`,

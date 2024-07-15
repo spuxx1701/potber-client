@@ -1,22 +1,24 @@
 import { action } from '@ember/object';
 import Service, { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import Board from 'potber-client/models/board';
 import MessagesService from './messages';
 import { clean, valid, gt } from 'semver';
 import { Settings } from './settings';
 import Post from 'potber-client/models/post';
 import { PersistedSavedPost } from 'potber-client/components/features/bookmarks/saved-posts/post';
 import { appConfig } from 'potber-client/config/app.config';
+import { Boards } from './api/types';
+import ApiService from './api';
 import CustomStore from './custom-store';
 
 const PREFIX = 'potber-';
 
 export default class LocalStorageService extends Service {
+  @service declare api: ApiService;
   @service declare store: CustomStore;
   @service declare messages: MessagesService;
 
-  @tracked boardFavorites: Board[] | null = [];
+  @tracked boardFavorites: Boards.Read[] | null = [];
   @tracked savedPosts: Post[] | null = [];
 
   async initialize() {
@@ -55,11 +57,11 @@ export default class LocalStorageService extends Service {
   @action async getBoardFavorites() {
     const string = localStorage.getItem(`${PREFIX}boardFavorites`);
     try {
-      const boards: Board[] = [];
+      const boards: Boards.Read[] = [];
       if (string) {
         const ids = string?.split(',') || [];
         for (const id of ids) {
-          boards.push(await this.store.findRecord('board', id));
+          boards.push(await this.api.findBoardById(id));
         }
       }
       this.boardFavorites = boards;

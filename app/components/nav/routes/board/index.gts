@@ -5,7 +5,6 @@ import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import RendererService from 'potber-client/services/renderer';
 import MessagesService from 'potber-client/services/messages';
-import Board from 'potber-client/models/board';
 import { appConfig } from 'potber-client/config/app.config';
 import Button from 'potber-client/components/common/control/button';
 import Menu from 'potber-client/components/common/control/menu';
@@ -19,10 +18,11 @@ import MenuLinkExternal from 'potber-client/components/common/control/menu/link-
 import MenuLink from 'potber-client/components/common/control/menu/link';
 import { IntlService, t } from 'ember-intl';
 import BoardRoute from 'potber-client/routes/authenticated/board';
+import { Boards } from 'potber-client/services/api/types';
 
 export interface Signature {
   Args: {
-    board: Board;
+    board: Boards.Read;
   };
 }
 
