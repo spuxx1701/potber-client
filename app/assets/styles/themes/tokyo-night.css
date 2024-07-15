@@ -16,6 +16,9 @@ html[data-theme='tokyo-night'] * {
 
   --color-text-default: #dcdde0;
   --color-text-subtle: #717591;
+
+  --color-toggle-switch-background-off: var(--color-secondary);
+  --color-toggle-switch-background-on: var(--color-primary);
 }
 
 .control-variant-primary,

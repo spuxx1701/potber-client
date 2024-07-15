@@ -26,6 +26,9 @@ html[data-theme='snowman'] * {
   --color-warning: #e4a75c;
   --color-error: #ca4949;
 
+  --color-toggle-switch-background-off: var(--color-primary);
+  --color-toggle-switch-background-on: var(--color-primary);
+
   /* Filters */
   --filter-control-active: brightness(85%);
   --filter-click-ripple: brightness(50%);

@@ -53,6 +53,9 @@ html * {
   --color-scrollbar: transparent;
   --color-scrollbar-handle: var(--color-primary);
 
+  --color-toggle-switch-background-off: var(--color-primary);
+  --color-toggle-switch-background-on: var(--color-secondary);
+
   /* Filters */
   --filter-control-active: brightness(1.25);
   --filter-loading-indicator: contrast(85%) brightness(65%);

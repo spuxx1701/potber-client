@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - Added new font size `x-small` to the font size options.
+- Added `ToggleSwitch` component.
 
 ### Changed
 
