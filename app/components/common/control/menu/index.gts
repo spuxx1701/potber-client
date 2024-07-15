@@ -9,7 +9,7 @@ import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
 import RendererService from 'potber-client/services/renderer';
 import classNames from 'potber-client/helpers/class-names';
 import styles from './styles.module.css';
-import { IntlService, t } from 'ember-intl';
+import { IntlService } from 'ember-intl';
 
 export interface Signature {
   Args: {
