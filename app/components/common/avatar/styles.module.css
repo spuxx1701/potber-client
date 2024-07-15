@@ -1,8 +1,7 @@
 :global(.avatar) {
   display: flex;
-  border-radius: 50%;
   overflow: hidden;
-  background-color: var(--color-avatar-background);
+  background-color: unset;
   padding: 0 !important;
   filter: none !important;
   backdrop-filter: none !important;
