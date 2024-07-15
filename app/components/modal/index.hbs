@@ -1,5 +1,9 @@
 {{! @glint-nocheck }}
-<dialog id='modal' {{on 'cancel' this.handleModalCancel}}>
+<dialog
+  id='modal'
+  {{on 'cancel' this.handleModalCancel}}
+  data-modal='{{this.activeModal.type}}'
+>
   {{#if this.activeModal.type}}
     {{component
       (concat 'modal/types/' this.activeModal.type)

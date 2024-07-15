@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - `[m]` tags now wrap text properly.
 - Fixed an issue where attempting to view a board without the required permission would not result in an error notification being displayed.
+- Modal dialogs now have desktop-friendly widths in desktop mode.
 
 ## [1.20.1] - 2024-04-28
 

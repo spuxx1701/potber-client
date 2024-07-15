@@ -1,13 +1,12 @@
 @import 'modal/select-icon.css';
 @import 'modal/select-meme.css';
-@import 'modal/post-preview.css';
 
 #modal {
   display: block;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  width: 400px;
+  width: calc(var(--max-content-width) / 2);
   max-width: 90vw;
   border-radius: var(--global-border-radius);
   overflow: hidden;
@@ -18,6 +17,10 @@
   scale: 0;
   opacity: 0;
   z-index: 79;
+}
+
+#modal[data-modal='post-preview'] {
+  width: var(--max-content-width);
 }
 
 #modal.show {
