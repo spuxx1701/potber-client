@@ -42,6 +42,7 @@ export enum SidebarLayout {
 }
 
 export enum FontSize {
+  xSmall = 'x-small',
   small = 'small',
   medium = 'medium',
   large = 'large',

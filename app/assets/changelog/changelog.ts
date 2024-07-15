@@ -1,7 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
     version: '1.20.2',
-    type: 'patch',
+    type: 'minor',
+    added: [
+      'Neue Schriftgröße "Sehr klein" wurde hinzugefügt. Du kannst sie in den Einstellungen auswählen.',
+    ],
     fixed: [
       'Der Text innerhalb von [m]-Tags wird non korrekt umgebrochen.',
       'Beim Aufruf von Boards ohne die dafür notwendige Berechtigung wird nun eine Fehlermeldung angezeigt.',

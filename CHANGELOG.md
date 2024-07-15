@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [UNRELEASED]
 
+### Added
+
+- Added new font size `x-small` to the font size options.
+
 ### Fixed
 
 - `[m]` tags now wrap text properly.

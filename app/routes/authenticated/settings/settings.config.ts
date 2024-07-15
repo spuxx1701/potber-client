@@ -74,6 +74,10 @@ export const settingsConfig: Record<
 
   fontSizeOptions: [
     {
+      label: 'Sehr klein',
+      data: FontSize.xSmall,
+    },
+    {
       label: 'Klein',
       data: FontSize.small,
     },

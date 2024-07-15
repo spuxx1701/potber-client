@@ -77,7 +77,7 @@ route:
       info: Bestimme selbst, ob die Sidebar von der linken oder rechten Seite öffnen und in welcher Ecke der dazugehörige Button positioniert werden soll.
     font-size:
       label: Schriftgröße
-      info: Stelle die Schriftgröße ein, die potber für Texte und Symbole verwenden soll.
+      info: Stelle die Schriftgröße ein, die potber für Texte und Symbole verwenden soll. Bitte beachte, dass die Anwendung für Schriftgröße "Normal" optimiert ist. Andere Schriftgrößen können zu unerwünschten Darstellungsproblemen führen.
     darken-read-posts:
       label: Gelesene Posts abdunkeln
       info: Stelle ein, ob beim Aufruf eines Lesezeichens bereits gelesene Posts abgedunkelt werden sollen. Der "Neue Posts"-Trenner wird in jedem Fall eingeblendet.
