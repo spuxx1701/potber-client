@@ -10,6 +10,9 @@ import ModalService from 'potber-client/services/modal';
 import { Posts, Threads } from 'potber-client/services/api/types';
 import Button from 'potber-client/components/common/control/button';
 import { on } from '@ember/modifier';
+import Menu from 'potber-client/components/common/control/menu';
+import MenuCheckbox from 'potber-client/components/common/control/menu/checkbox';
+import { t } from 'ember-intl';
 
 interface Signature {
   Element: HTMLFormElement;
@@ -28,11 +31,23 @@ export default class PostForm extends Component<Signature> {
   @service declare deviceManager: DeviceManagerService;
   @service declare modal: ModalService;
 
-  get post(): Posts.Read | Threads.OpeningPost {
+  get post(): Posts.Write | Threads.OpeningPost {
     if (this.args.threadOrPost instanceof WritableThread) {
       return this.args.threadOrPost.openingPost;
     } else return this.args.threadOrPost;
   }
+
+  handleConvertUrlsChange = (value: boolean) => {
+    this.post.convertUrls = value;
+  };
+
+  handleDisableBbCodeChange = (value: boolean) => {
+    this.post.disableBbCode = value;
+  };
+
+  handleDisableEmojisChange = (value: boolean) => {
+    this.post.disableEmojis = value;
+  };
 
   handlePreview = () => {
     this.modal.postPreview({ post: this.post });
@@ -64,6 +79,28 @@ export default class PostForm extends Component<Signature> {
       {{yield}}
       {{#if this.deviceManager.isDesktop}}
         <div class={{classNames this 'button-row'}}>
+          <Menu
+            @position='top'
+            @variant='secondary-transparent'
+            @icon='ellipsis'
+            @title={{t 'route.post.form.options'}}
+          >
+            <MenuCheckbox
+              @text={{t 'route.post.form.convert-urls'}}
+              @default={{this.post.convertUrls}}
+              @onChange={{this.handleConvertUrlsChange}}
+            />
+            <MenuCheckbox
+              @text={{t 'route.post.form.disable-bbcode'}}
+              @default={{this.post.disableBbCode}}
+              @onChange={{this.handleDisableBbCodeChange}}
+            />
+            <MenuCheckbox
+              @text={{t 'route.post.form.disable-emojis'}}
+              @default={{this.post.disableEmojis}}
+              @onChange={{this.handleDisableEmojisChange}}
+            />
+          </Menu>
           <Button
             @icon='eye'
             @text='Vorschau'

@@ -4,6 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
     added: [
       'Neue Schriftgröße "Sehr klein" wurde hinzugefügt. Du kannst sie in den Einstellungen auswählen.',
+      'Das Postformular enthält nun ein Optionsmenü, in dem sich das automatische Einfügen von URLs, BBCode und Emojis deaktivieren lassen.',
     ],
     changed: ['[tex]-Tags werden nun als vollwertiges LaTeX gerendert.'],
     fixed: [

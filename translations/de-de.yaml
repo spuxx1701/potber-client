@@ -123,6 +123,10 @@ route:
     form:
       submit: Absenden
       preview: Vorschau
+      options: Optionen
+      convert-urls: "[URL]-Tags automatisch einfügen"
+      disable-bbcode: BBCode deaktivieren
+      disable-emojis: Emojis deaktivieren
   thread:
     subtitle: Seite {currentPage} von {pagesCount}
     create-bookmark-success: Das Lesezeichen wurde gesetzt.

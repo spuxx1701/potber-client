@@ -8,6 +8,8 @@ import ModalService from 'potber-client/services/modal';
 import t from 'ember-intl/helpers/t';
 import { WritablePost } from 'potber-client/services/api/models/post';
 import { WritableThread } from 'potber-client/services/api/models/thread';
+import Menu from 'potber-client/components/common/control/menu';
+import MenuCheckbox from 'potber-client/components/common/control/menu/checkbox';
 
 interface Signature {
   Args: {
@@ -33,6 +35,18 @@ export default class PostFormNav extends Component<Signature> {
 
   handlePreview = () => {
     this.modal.postPreview({ post: this.post });
+  };
+
+  handleConvertUrlsChange = (value: boolean) => {
+    this.post.convertUrls = value;
+  };
+
+  handleDisableBbCodeChange = (value: boolean) => {
+    this.post.disableBbCode = value;
+  };
+
+  handleDisableEmojisChange = (value: boolean) => {
+    this.post.disableEmojis = value;
   };
 
   get post() {
@@ -64,6 +78,24 @@ export default class PostFormNav extends Component<Signature> {
       />
       {{#if this.showControls}}
         <div class='flex-row align-items-center nav-element-right'>
+          <Menu @position='top' @variant='primary-transparent' @icon='ellipsis'>
+            <MenuCheckbox
+              @text={{t 'route.post.form.convert-urls'}}
+              @default={{this.post.convertUrls}}
+              @onChange={{this.handleConvertUrlsChange}}
+            />
+            <MenuCheckbox
+              @text={{t 'route.post.form.disable-bbcode'}}
+              @default={{this.post.disableBbCode}}
+              @onChange={{this.handleDisableBbCodeChange}}
+            />
+            <MenuCheckbox
+              @text={{t 'route.post.form.disable-emojis'}}
+              @default={{this.post.disableEmojis}}
+              @onChange={{this.handleDisableEmojisChange}}
+            />
+          </Menu>
+
           <Button
             @icon='eye'
             @text={{t 'feature.post-form.preview'}}

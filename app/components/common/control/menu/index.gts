@@ -5,11 +5,11 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
 import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
-import { IconName } from '@fortawesome/fontawesome-common-types';
+import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
 import RendererService from 'potber-client/services/renderer';
 import classNames from 'potber-client/helpers/class-names';
 import styles from './styles.module.css';
-import { t } from 'ember-intl';
+import { IntlService, t } from 'ember-intl';
 
 export interface Signature {
   Args: {
@@ -23,12 +23,15 @@ export interface Signature {
       | 'bottom-right';
     variant?: ControlVariant;
     icon?: IconName;
+    iconPrefix?: IconPrefix;
+    title?: string;
   };
   Blocks: { default: [] };
 }
 
 export default class MenuComponent extends Component<Signature> {
   @service declare renderer: RendererService;
+  @service declare intl: IntlService;
 
   id = guidFor(this);
   styles = styles;
@@ -41,6 +44,10 @@ export default class MenuComponent extends Component<Signature> {
 
   get icon() {
     return this.args.icon || 'ellipsis-vertical';
+  }
+
+  get tooltip() {
+    return this.args.title || this.intl.t('misc.more');
   }
 
   calculatePosition() {
@@ -89,13 +96,17 @@ export default class MenuComponent extends Component<Signature> {
   <template>
     <button
       id='{{this.id}}-button'
+      type='button'
       class='menu-button control-size-square control-variant-{{this.variant}}
         icon-size-large'
-      title={{t 'misc.more'}}
+      title={{this.tooltip}}
       {{on 'click' this.handleClick}}
       {{on 'blur' this.handleBlur}}
     >
-      <FaIcon @icon={{this.icon}} />
+      <FaIcon @icon={{this.icon}} @prefix={{@iconPrefix}} />
+      {{#if this.args.title}}
+        <p class={{classNames this 'title'}}>{{this.args.title}}</p>
+      {{/if}}
       <menu
         id='{{this.id}}-menu'
         class={{classNames this this.position}}

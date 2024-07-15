@@ -12,7 +12,7 @@ export class WritablePost extends Model implements IWritablePost {
   id?: string;
   title?: string;
   icon?: string;
-  convertUrls?: boolean;
+  convertUrls?: boolean = true;
   disableBbCode?: boolean;
   disableEmojis?: boolean;
 

@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Added new font size `x-small` to the font size options.
 - Added `ToggleSwitch` component.
+- Added `MenuCheckbox` component.
+- The post form now includes an options menu.
 
 ### Changed
 

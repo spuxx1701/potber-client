@@ -81,3 +81,12 @@
   top: 100%;
   left: 0;
 }
+
+:global(.menu-button):has(.title) {
+  width: auto;
+  padding: 0 1rem;
+}
+
+.title {
+  margin-left: 0.5rem;
+}
