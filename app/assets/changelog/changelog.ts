@@ -1,5 +1,11 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.20.2',
+    type: 'patch',
+    fixed: ['Der Text innerhalb von [m]-Tags wird non korrekt umgebrochen.'],
+    chores: ['Diverse Dependencies wurden aktualisiert.'],
+  },
+  {
     version: '1.20.1',
     type: 'patch',
     fixed: [

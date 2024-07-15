@@ -147,6 +147,7 @@
   margin: unset;
   font-size: larger;
   display: inline;
+  white-space: wrap;
 }
 
 .message img {
