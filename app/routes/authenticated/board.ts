@@ -1,11 +1,11 @@
 import RouterService from '@ember/routing/router-service';
 import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
-import Board from 'potber-client/models/board';
 import MessagesService from 'potber-client/services/messages';
-import RSVP from 'rsvp';
 import SlowRoute from '../base/slow';
 import CustomStore from 'potber-client/services/custom-store';
+import ApiService from 'potber-client/services/api';
+import { Boards } from 'potber-client/services/api/types';
 
 interface Params extends Record<string, unknown> {
   BID: string;
@@ -13,13 +13,14 @@ interface Params extends Record<string, unknown> {
 }
 
 export interface BoardRouteModel {
-  board: Board;
+  board: Boards.Read;
 }
 
 export default class BoardRoute extends SlowRoute {
   @service declare store: CustomStore;
   @service declare messages: MessagesService;
   @service declare router: RouterService;
+  @service declare api: ApiService;
 
   // We need to tell the route to refresh the model after the query parameters have changed
   queryParams = {
@@ -34,26 +35,16 @@ export default class BoardRoute extends SlowRoute {
   async model(params: Params, transition: Transition) {
     try {
       const page = parseInt(params.page || '1') || 1;
-      const board: Board = await this.store.findRecord('board', params.BID, {
-        adapterOptions: {
-          queryParams: {
-            page,
-          },
-        },
+      const board: Boards.Read = await this.api.findBoardById(params.BID, {
+        query: { page },
       });
-      return RSVP.hash({
-        board: board,
-      });
+      return { board };
     } catch (error: any) {
-      if (error.message === 'not-found') {
+      if (transition.from) {
+        transition.abort();
+      } else {
         return null;
-      } else if (error.message === 'no-access') {
-        this.messages.showNotification(
-          'Du hast keine Zugriffsberechtigung für dieses Board.',
-          'error',
-        );
       }
-      transition.abort();
     }
   }
 }

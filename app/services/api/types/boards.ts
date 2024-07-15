@@ -8,6 +8,7 @@ export interface Read {
   threadsCount: number;
   repliesCount: number;
   lastPost: Posts.Preview;
+  page: Page;
 }
 
 export interface Page {

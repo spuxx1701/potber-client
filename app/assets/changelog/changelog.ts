@@ -2,7 +2,10 @@ export const changelog: ChangelogItem[] = [
   {
     version: '1.20.2',
     type: 'patch',
-    fixed: ['Der Text innerhalb von [m]-Tags wird non korrekt umgebrochen.'],
+    fixed: [
+      'Der Text innerhalb von [m]-Tags wird non korrekt umgebrochen.',
+      'Beim Aufruf von Boards ohne die dafür notwendige Berechtigung wird nun eine Fehlermeldung angezeigt.',
+    ],
     chores: ['Diverse Dependencies wurden aktualisiert.'],
   },
   {
