@@ -24,10 +24,6 @@ export const simpleTagMocks: ContentParserMock[] = [
     expected: `<pre>hello world</pre>`,
   },
   {
-    input: `[tex]hello world[/tex]`,
-    expected: `<p class="tex">hello world</p>`,
-  },
-  {
     input: `[trigger]hello world[/trigger]`,
     expected: `<p class="trigger" onclick="this.className=null;">hello world</p>`,
   },

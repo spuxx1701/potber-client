@@ -15,6 +15,7 @@ import { parsePrivilegedTags } from './content-parser/privileged-tags';
 import { appConfig } from 'potber-client/config/app.config';
 import { emojis } from 'potber-client/config/icons.config';
 import { getEmojiFilename } from 'potber-client/utils/icons';
+import { parseTex } from './content-parser/tex';
 
 export default class ContentParserService extends Service {
   @service declare messages: MessagesService;
@@ -33,6 +34,7 @@ export default class ContentParserService extends Service {
     output = sanitize(output);
     output = parseCode(output);
     output = parseSimpleTags(output);
+    output = parseTex(output);
     output = parsePrivilegedTags(output, groupId);
     output = parseImg(output);
     output = parseVideo(output, window.location);

@@ -134,13 +134,8 @@
   overflow-wrap: break-word;
 }
 
-.message :global(p.tex) {
-  font-size: larger;
-  font-weight: bold;
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  background-color: rgb(0, 0, 0, 0.1);
-  color: var(--color-text-subtle);
+.message :global(.katex-html) {
+  display: none;
 }
 
 .message pre {

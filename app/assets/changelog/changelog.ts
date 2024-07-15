@@ -5,6 +5,7 @@ export const changelog: ChangelogItem[] = [
     added: [
       'Neue Schriftgröße "Sehr klein" wurde hinzugefügt. Du kannst sie in den Einstellungen auswählen.',
     ],
+    changed: ['[tex]-Tags werden nun als vollwertiges LaTeX gerendert.'],
     fixed: [
       'Der Text innerhalb von [m]-Tags wird non korrekt umgebrochen.',
       'Beim Aufruf von Boards ohne die dafür notwendige Berechtigung wird nun eine Fehlermeldung angezeigt.',

@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Added new font size `x-small` to the font size options.
 
+### Changed
+
+- `[tex]` tags are now being rendered using [katex](https://katex.org/docs/node).
+
 ### Fixed
 
 - `[m]` tags now wrap text properly.
