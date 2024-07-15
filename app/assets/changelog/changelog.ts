@@ -11,6 +11,7 @@ export const changelog: ChangelogItem[] = [
       'Der Text innerhalb von [m]-Tags wird non korrekt umgebrochen.',
       'Beim Aufruf von Boards ohne die dafür notwendige Berechtigung wird nun eine Fehlermeldung angezeigt.',
       'Dialogfenster haben im Desktop-Modus nun eine für den Desktop angemessene Größe.',
+      'Die unterhalb des Postformulars angezeigten Posts zeigen nun den korrekten Zeitstempel an.',
     ],
     chores: ['Diverse Dependencies wurden aktualisiert.'],
   },

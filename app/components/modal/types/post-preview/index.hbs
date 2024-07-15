@@ -1,7 +1,7 @@
 {{! @glint-nocheck }}
 <Modal::Component::Header @title='Vorschau' @icon='eye' />
 <Modal::Component::Content>
-  <Board::Post @post={{this.preview}} @isPreview={{true}} />
+  <Board::Post @post={{this.preview}} @disableMenu={{true}} />
 </Modal::Component::Content>
 <Modal::Component::Footer>
   <Common::Control::Button

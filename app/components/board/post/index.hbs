@@ -25,7 +25,7 @@
         {{on 'click' this.copyUrl}}
       >{{this.date}}<FaIcon @icon='link' /></button>
     </div>
-    {{#unless @isPreview}}
+    {{#unless @disableMenu}}
       <Common::Control::Menu @position='auto' @variant='secondary-transparent'>
         <Common::Control::Menu::LinkExternal
           @text='Original öffnen'

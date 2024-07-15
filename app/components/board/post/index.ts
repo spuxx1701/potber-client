@@ -21,7 +21,7 @@ interface Signature {
     post: Post;
     thread: Thread;
     subtle?: boolean;
-    isPreview?: boolean;
+    disableMenu?: boolean;
   };
 }
 
@@ -57,10 +57,9 @@ export default class PostComponent extends Component<Signature> {
   }
 
   get date() {
-    if (this.args.isPreview) {
-      return new Date().toLocaleString();
-    }
-    return new Date(this.args.post.date).toLocaleString();
+    return this.args.post.date
+      ? new Date(this.args.post.date).toLocaleString()
+      : new Date().toLocaleString();
   }
 
   get href() {
@@ -101,7 +100,7 @@ export default class PostComponent extends Component<Signature> {
   };
 
   copyUrl = () => {
-    if (this.args.isPreview) return;
+    if (this.args.disableMenu) return;
     navigator.clipboard.writeText(this.url);
     this.messages.showNotification(
       'Link in Zwischenablage kopiert.',
