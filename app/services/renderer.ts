@@ -72,7 +72,7 @@ export default class RendererService extends Service {
 
   /**
    * Updates the sidebar layout. Affects whether the sidebar is rendered on the left
-   * or ride side as well as the position of the sidebar toggle button.
+   * or right side as well as the position of the sidebar toggle button.
    */
   updateSidebarLayout = () => {
     switch (this.settings.sidebarLayout) {
@@ -148,6 +148,16 @@ export default class RendererService extends Service {
       this.settings.getSetting('autoRefreshSidebar')
     )
       this.newsfeed.refresh();
+  };
+
+  /**
+   * Drags the left sidebar according to the current touch move position.
+   * @param touchMoveX Current touch move position on x axis.
+   */
+  dragLeftSidebar = (touchMoveX: number) => {
+    this.setStyleVariable('--sidebar-width', `${touchMoveX}px`);
+    this.setStyleVariable('--sidebar-backdrop-opacity', '0.5');
+    this.setStyleVariable('--nav-controls-opacity', '0');
   };
 
   /*
