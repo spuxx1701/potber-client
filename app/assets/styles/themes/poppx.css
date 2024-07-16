@@ -1,0 +1,27 @@
+html[data-theme='poppx'],
+html[data-theme='poppx'] * {
+  /* Colors */
+  --color-avatar-background: unset;
+
+  /* Avatar */
+  .avatar {
+    border-radius: 0;
+  }
+
+  @media (max-width: 1200px) {
+    .avatar {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  /* Sidebar */
+  .quickstart {
+    gap: 2px;
+  }
+
+  .quickstart-item {
+    border-radius: unset;
+    background-color: var(--color-application-background);
+  }
+}

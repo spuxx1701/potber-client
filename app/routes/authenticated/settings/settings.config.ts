@@ -70,6 +70,10 @@ export const settingsConfig: Record<
       label: 'Tokyo Night',
       data: Theme['tokyo-night'],
     },
+    {
+      label: 'poppx',
+      data: Theme.poppx,
+    },
   ],
 
   fontSizeOptions: [
