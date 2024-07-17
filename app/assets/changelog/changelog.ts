@@ -1,5 +1,10 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.21.2',
+    type: 'patch',
+    fixed: ['Bookmarks werden nun wieder korrekt geladen.'],
+  },
+  {
     version: '1.21.1',
     type: 'patch',
     fixed: [

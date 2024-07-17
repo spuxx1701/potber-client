@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.21.2] - 2024-07-17
+
+### Fixed
+
+- Fixed bookmarks not being loaded properly.
+
 ## [1.21.1] - 2024-07-17
 
 ### Fixed
