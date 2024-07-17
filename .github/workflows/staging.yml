@@ -15,7 +15,7 @@ jobs:
 
   release_image:
     needs:
-      # - lint
+      - lint
       - test
     uses: spuxx1701/ci-cd/.github/workflows/release_image.yml@v2.0
     secrets:
