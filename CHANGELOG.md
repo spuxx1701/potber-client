@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.21.1] - 2024-07-17
+
+### Fixed
+
+- Fixed an issue that would cause recent posts to not be reversed.
+
 ## [1.21.0] - 2024-07-15
 
 ### Added

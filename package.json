@@ -1,6 +1,6 @@
 {
   "name": "potber-client",
-  "version": "1.21.0",
+  "version": "1.21.1",
   "private": true,
   "description": "An SPA client for the german board forum.mods.de built with Ember.js.",
   "repository": "https://github.com/spuxx1701/potber-client",

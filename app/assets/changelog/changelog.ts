@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.21.1',
+    type: 'patch',
+    fixed: [
+      'Die unterhalb des Postformulars angezeigten Posts werden nun wieder in der richtigen Reihenfolge dargestellt.',
+    ],
+  },
+  {
     version: '1.21.0',
     type: 'minor',
     added: [

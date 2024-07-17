@@ -14,7 +14,6 @@ export default class RecentPosts extends Component<Signature> {
   }
 
   get posts() {
-    console.log(this.thread?.page?.posts.reverse());
     return this.thread?.page?.posts.reverse();
   }
 }
