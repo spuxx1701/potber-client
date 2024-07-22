@@ -132,4 +132,11 @@ export default class SettingsService extends Service {
         : 'unset',
     );
   }
+
+  isRightSidebar(): boolean {
+    return (
+      this.sidebarLayout === SidebarLayout.rightTop ||
+      this.sidebarLayout === SidebarLayout.rightBottom
+    );
+  }
 }

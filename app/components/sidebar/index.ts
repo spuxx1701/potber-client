@@ -74,11 +74,49 @@ export default class SidebarComponent extends Component {
     this.renderer.toggleLeftSidebar(true);
   };
 
+  handlePanmoveInner = ({ gesture }: GestureEvent) => {
+    if (
+      !gesture.touchMoveX ||
+      (this.settings.isRightSidebar() && gesture.touchMoveX < 0) ||
+      (!this.settings.isRightSidebar() && gesture.touchMoveX > 0) ||
+      (gesture.touchMoveX && Math.abs(gesture.touchMoveX) > this.maxWidth)
+    ) {
+      return;
+    }
+
+    this.renderer.dragLeftSidebar(this.maxWidth - Math.abs(gesture.touchMoveX));
+
+    gesture.on('panend', () => {
+      this.renderer.toggleLeftSidebar(false);
+    });
+  };
+
+  handlePanmoveOuter = ({ gesture }: GestureEvent) => {
+    if (
+      !gesture.touchMoveX ||
+      (this.settings.isRightSidebar() && gesture.touchMoveX > 0) ||
+      (!this.settings.isRightSidebar() && gesture.touchMoveX < 0) ||
+      (gesture.touchMoveX && Math.abs(gesture.touchMoveX) > this.maxWidth)
+    ) {
+      return;
+    }
+
+    this.renderer.dragLeftSidebar(Math.abs(gesture.touchMoveX));
+
+    gesture.on('panend', () => {
+      this.renderer.toggleLeftSidebar(false);
+    });
+  };
+
   gestures: Record<string, Gesture[]> = {
     inner: [
       {
         type: 'swipeleft',
         onGesture: this.handleSwipeInner,
+      },
+      {
+        type: 'panmove',
+        onGesture: this.handlePanmoveInner,
       },
     ],
     outer: [
@@ -89,6 +127,10 @@ export default class SidebarComponent extends Component {
       {
         type: 'swipeleft',
         onGesture: this.handleSwipeOuter,
+      },
+      {
+        type: 'panmove',
+        onGesture: this.handlePanmoveOuter,
       },
     ],
   };
