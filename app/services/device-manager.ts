@@ -94,6 +94,8 @@ export default class DeviceManagerService extends Service {
    * Enables iOS compatibility mode.
    */
   enableiOSCompatibility() {
+    // Set an attribute on the document
+    document.documentElement.setAttribute('data-ios', 'true');
     // Add a bottom border to the bottom nav to make room for the home button
     document.documentElement.style.setProperty(
       '--bottom-nav-bottom-border',

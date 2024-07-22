@@ -7,6 +7,10 @@
     --sidebar-right: unset !important;
   }
 
+  html {
+    overflow-x: hidden;
+  }
+
   /* Page layout */
   #page-content {
     max-width: calc(var(--max-content-width));

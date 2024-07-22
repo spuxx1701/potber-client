@@ -1,7 +1,6 @@
 :root {
-  /* iOS compatibility */
+  /* May be overridden on iOS Safari */
   --bottom-nav-bottom-border: 0px;
-  --bottom-nav-bottom-border-ios: 1rem;
 }
 
 /* Webkit scrollbar override */
@@ -20,4 +19,15 @@
 
 ::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+html[data-ios='true'] {
+  /* Add a bottom border to the bottom nav to make room for the home button */
+  --bottom-nav-bottom-border: 1rem !important;
+
+  /* iOS Safari applies an annoying zoom if the font-size in an input is smaller than 16px */
+  input,
+  textarea {
+    font-size: 16px !important;
+  }
 }

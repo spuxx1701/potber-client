@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Gestures to control the sidebar have been improved significantly (thanks to @fre-ben!).
 
+### Fixed
+
+- iOS Safari now defaults to a font-size of `16px` on `input` and `textarea` elements to prevent the browser from zooming into these elements if the user has a smaller font-size selected in the settings.
+
 ## [1.21.2] - 2024-07-17
 
 ### Fixed

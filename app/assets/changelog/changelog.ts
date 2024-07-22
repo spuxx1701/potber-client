@@ -6,6 +6,9 @@ export const changelog: ChangelogItem[] = [
     changed: [
       'Die Gestensteuerung der Sidebar wurde deutlich verbessert (Danke an poppxapank!).',
     ],
+    fixed: [
+      'iOS Safari zoomed bei kleineren Schriftgrößen nicht länger ungewollt an Eingabefelder heran.',
+    ],
   },
   {
     version: '1.21.2',
