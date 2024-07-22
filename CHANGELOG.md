@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.22.0] - UNRELEASED
+
+### Added
+
+- Added new theme 'poppx' (thanks to @fre-ben!).
+
+### Changed
+
+- Gestures to control the sidebar have been improved significantly (thanks to @fre-ben!).
+
 ## [1.21.2] - 2024-07-17
 
 ### Fixed

@@ -1,5 +1,13 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.22.0',
+    type: 'minor',
+    added: ['Neues Theme "poppx" wurde hinzugefügt (Danke an poppxapank!).'],
+    changed: [
+      'Die Gestensteuerung der Sidebar wurde deutlich verbessert (Danke an poppxapank!).',
+    ],
+  },
+  {
     version: '1.21.2',
     type: 'patch',
     fixed: ['Bookmarks werden nun wieder korrekt geladen.'],
