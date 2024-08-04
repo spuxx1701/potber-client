@@ -39,6 +39,7 @@ export default class NewsfeedService extends Service {
   }
 
   async refresh(options?: PublicFetchOptions) {
+    if (this.isUpdating) return;
     this.isUpdating = true;
     await this.bookmarkStore.getUnread({ ...options, reload: true });
     await this.privateMessageStore.getUnread({ ...options, reload: true });

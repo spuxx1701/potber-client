@@ -1,7 +1,6 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
-import NewsfeedService from 'potber-client/services/newsfeed';
 import SettingsService, {
   Gestures,
   SidebarLayout,
@@ -14,7 +13,6 @@ import {
 export default class SidebarComponent extends Component {
   @service declare settings: SettingsService;
   @service declare renderer: RendererService;
-  @service declare newsfeed: NewsfeedService;
 
   maxWidth = parseInt(
     getComputedStyle(document.documentElement)
@@ -59,10 +57,6 @@ export default class SidebarComponent extends Component {
 
   handleSidebarBackdropClick = () => {
     this.renderer.toggleLeftSidebar(false);
-  };
-
-  refreshNewsfeed = () => {
-    this.newsfeed.refresh();
   };
 
   handleSwipeInner = ({ gesture }: GestureEvent) => {

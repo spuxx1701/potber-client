@@ -140,14 +140,16 @@ export default class RendererService extends Service {
    * if not provided.
    */
   toggleLeftSidebar = async (expanded?: boolean) => {
+    const stateHasChanged = expanded !== this.leftSidebarExpanded;
     if (typeof expanded === 'boolean') this.leftSidebarExpanded = expanded;
     else this.leftSidebarExpanded = !this.leftSidebarExpanded;
     this.updateLeftSidebar();
     if (
+      stateHasChanged &&
       this.leftSidebarExpanded &&
       this.settings.getSetting('autoRefreshSidebar')
     )
-      this.newsfeed.refresh();
+      await this.newsfeed.refresh();
   };
 
   /**
