@@ -9,37 +9,32 @@ export default class ThreadController extends Controller {
   @service declare settings: SettingsService;
   declare model: ThreadRouteModel;
 
-  queryParams = ['TID', 'page', 'PID', 'lastReadPost', 'scrollToBottom'];
+  queryParams = ['TID', 'page', 'PID', 'lastReadPost', 'position', 'feed'];
   TID = '';
   page = '';
   PID = '';
   lastReadPost = '';
   scrollToBottom = '';
+  feed = '';
 
-  get showSkeletonPage() {
-    return (
-      this.settings.getSetting('transitions') === 'dynamic' &&
-      this.threadStore.currentThreadState?.isLoading &&
-      !this.threadStore.isReloading
-    );
-  }
-
-  get currentOrPreviousThread() {
-    return this.threadStore.currentThread ?? this.threadStore.previousThread;
+  get thread() {
+    return this.threadStore.thread;
   }
 
   get currentPage() {
-    return this.model.page ?? this.currentOrPreviousThread?.page?.number;
+    return this.model.page ?? this.thread?.page?.number;
   }
 
   get pageTitle() {
-    if (this.currentOrPreviousThread)
-      return `${this.currentOrPreviousThread.title} [${
-        this.currentPage ?? '..'
-      }]`;
+    if (this.thread)
+      return `${this.thread.title} [${this.currentPage ?? '..'}]`;
   }
 
   get isError() {
-    return this.threadStore.currentThreadState?.isError;
+    return this.threadStore.state?.isError;
+  }
+
+  get isFeed() {
+    return this.feed === 'true';
   }
 }

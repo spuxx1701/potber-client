@@ -7,7 +7,6 @@ import SettingsService, {
   Settings,
   SidebarLayout,
   Theme,
-  Transitions,
 } from 'potber-client/services/settings';
 import { setupTest } from 'potber-client/tests/helpers';
 import { module, test } from 'qunit';
@@ -23,7 +22,6 @@ const mockedSettings: Settings = {
   darkenReadPosts: false,
   hideGlobalAndAnnouncementThreads: false,
   goToBottomOfThreadPage: true,
-  transitions: Transitions.static,
   gestures: Gestures.none,
   debug: false,
 };

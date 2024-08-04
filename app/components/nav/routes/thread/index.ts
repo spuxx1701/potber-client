@@ -8,19 +8,10 @@ import { appConfig } from 'potber-client/config/app.config';
 import MessagesService from 'potber-client/services/messages';
 import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
-import { Threads } from 'potber-client/services/api/types';
 import ThreadStore from 'potber-client/services/stores/thread';
 import BookmarkStore from 'potber-client/services/stores/bookmark';
 
-export interface Signature {
-  Args: {
-    threadId: string;
-    thread?: Threads.Read;
-    page?: number;
-  };
-}
-
-export default class NavRoutesThreadComponent extends Component<Signature> {
+export default class NavRoutesThreadComponent extends Component {
   @service declare renderer: RendererService;
   @service declare modal: ModalService;
   @service declare router: RouterService;
@@ -30,14 +21,13 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare intl: IntlService;
   @service('stores/thread') declare threadStore: ThreadStore;
   @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
-  declare args: Signature['Args'];
 
   get isLoading() {
-    return !this.args.thread;
+    return this.threadStore.isLoading;
   }
 
   get thread() {
-    return this.args.thread;
+    return this.threadStore.thread;
   }
 
   get title() {
@@ -57,7 +47,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   }
 
   get currentPage() {
-    return this.args.page ?? this.thread?.page?.number;
+    return this.threadStore.currentPageNumber ?? this.thread?.page?.number;
   }
 
   get nextPage() {
@@ -127,7 +117,7 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
       onSubmit: (value) => {
         this.router.transitionTo('authenticated.thread', {
           queryParams: {
-            TID: this.args.threadId,
+            TID: this.thread?.id,
             page: value,
           },
         });

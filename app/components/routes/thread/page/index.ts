@@ -9,6 +9,7 @@ import ThreadStore from 'potber-client/services/stores/thread';
 interface Signature {
   Args: {
     thread: Threads.Read | null;
+    page: Threads.Page | null;
     lastReadPost?: string;
     loading?: boolean;
   };
@@ -29,7 +30,7 @@ export default class ThreadPage extends Component<Signature> {
   }
 
   get posts() {
-    return this.thread?.page?.posts;
+    return this.args.page?.posts;
   }
 
   get disableOverscroll() {

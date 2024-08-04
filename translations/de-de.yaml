@@ -96,9 +96,6 @@ route:
     landing-page:
       label: Startseite
       info: Deine Startseite wird beim Neustart von potber aufgerufen. Außerdem kannst Du sie jederzeit über das 🏠-Icon in der Sidebar aufrufen.
-    transitions:
-      label: Seitenwechsel
-      info: Stelle ein, ob Du dynamische oder statische Seitenwechsel bevorzugst. Dynamische Seitenwechsel führen zu einem responsiveren Verhalten, während statische Seitenwechsel ruhiger verlaufen und weniger ablenkend sind.
     replace-forum-urls:
       label: forum.mods.de-Links ersetzen
       info: Ist diese Option aktiviert, werden bestimmte Links zum Forum (Posts, Threads und Boards) automatisch durch die entsprechenden potber-Links ersetzt

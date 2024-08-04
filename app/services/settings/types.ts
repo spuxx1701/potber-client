@@ -9,7 +9,6 @@ export interface Settings {
   hideGlobalAndAnnouncementThreads: boolean;
   replaceForumUrls: boolean;
   goToBottomOfThreadPage: boolean;
-  transitions: Transitions;
   gestures: Gestures;
   debug: boolean;
 }
@@ -53,10 +52,3 @@ export enum Gestures {
   onlySidebar,
   all,
 }
-
-export const Transitions = {
-  dynamic: 'dynamic',
-  static: 'static',
-} as const;
-
-export type Transitions = (typeof Transitions)[keyof typeof Transitions];

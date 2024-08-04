@@ -18,10 +18,6 @@ interface LoadThreadOptions extends PublicFetchOptions {
    * Whether or not to update the bookmark.
    */
   updateBookmark?: boolean;
-  /**
-   * Whether or not to keep the previous thread.
-   */
-  keepPreviousThread?: boolean;
 }
 
 export default class ThreadStore extends Service {
@@ -31,8 +27,9 @@ export default class ThreadStore extends Service {
    * The previous thread that was viewed. This can be used to prevent rapid changes
    * to the thread UI when changing pages or reloading.
    */
-  @tracked previousThread?: Threads.Read;
-  @tracked currentThreadState?: TrackedState<Threads.Read>;
+  @tracked state?: TrackedState<Threads.Read>;
+  @tracked pages?: Threads.Page[];
+  @tracked currentPageNumber?: number;
   /**
    * Can be set to indicate whether the current load is a reload.
    */
@@ -48,24 +45,20 @@ export default class ThreadStore extends Service {
     options?: LoadThreadOptions,
   ): Promise<Threads.Read> {
     const {
-      keepPreviousThread = true,
       page,
       postId,
       updateBookmark = true,
       timeoutWarning,
     } = { ...options };
-    if (keepPreviousThread && this.currentThread) {
-      this.previousThread = { ...this.currentThread };
-    } else {
-      this.clearPreviousThread();
-    }
-    this.currentThreadState = trackedFunction(this, () =>
-      this.api.findThreadById(threadId, {
+    this.state = trackedFunction(this, async () => {
+      const thread = await this.api.findThreadById(threadId, {
         timeoutWarning,
         query: { page: page, postId, updateBookmark },
-      }),
-    );
-    return this.currentThreadState.promise;
+      });
+      this.pages = thread.page ? [thread.page] : [];
+      return thread;
+    });
+    return this.state.promise;
   }
 
   /**
@@ -73,11 +66,10 @@ export default class ThreadStore extends Service {
    * @param options The options to pass to `loadThread`.
    */
   async reload(options?: LoadThreadOptions) {
-    if (!this.currentThread || !this.currentThread.page) return;
+    if (!this.thread || !this.thread.page) return;
     this.isReloading = true;
-    const thread = await this.loadThread(this.currentThread.id, {
-      page: this.currentThread.page.number,
-      keepPreviousThread: true,
+    const thread = await this.loadThread(this.thread.id, {
+      page: this.thread.page.number,
       ...options,
     });
     this.isReloading = false;
@@ -87,30 +79,32 @@ export default class ThreadStore extends Service {
   /**
    * The current thread that is being viewed.
    */
-  get currentThread(): Threads.Read | null {
-    return this.currentThreadState?.value ?? null;
+  get thread(): Threads.Read | null {
+    return this.state?.value ?? null;
+  }
+
+  /**
+   * The current page that is being viewed.
+   */
+  get currentPage(): Threads.Page | undefined {
+    return (
+      this.pages?.find((page) => page.number === this.currentPageNumber) ??
+      this.thread?.page
+    );
   }
 
   /**
    * Whether or not the thread is currently loading.
    */
   get isLoading() {
-    return this.currentThreadState?.isLoading;
-  }
-
-  /**
-   * Clears the previous thread.
-   */
-  clearPreviousThread() {
-    this.previousThread = undefined;
+    return this.state?.isLoading;
   }
 
   /**
    * Clears the entire state.
    */
   clear() {
-    this.currentThreadState = undefined;
-    this.clearPreviousThread();
+    this.state = undefined;
   }
 }
 

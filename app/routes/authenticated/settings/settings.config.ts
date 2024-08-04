@@ -155,17 +155,6 @@ export const settingsConfig: Record<
     },
   ],
 
-  transitionsOptions: [
-    {
-      label: 'Dynamisch',
-      data: 'dynamic',
-    },
-    {
-      label: 'Statisch',
-      data: 'static',
-    },
-  ],
-
   gesturesOptions: [
     {
       label: 'Alle',

@@ -2,16 +2,12 @@
 {{#unless this.isError}}
   {{page-title this.pageTitle}}
 
-  <Nav::Routes::Thread
-    @threadId={{@model.threadId}}
-    @thread={{this.currentOrPreviousThread}}
-    @page={{this.currentPage}}
-  />
+  <Nav::Routes::Thread />
 
   <Routes::Thread::Page
-    @thread={{this.currentOrPreviousThread}}
+    @thread={{this.thread}}
+    @page={{this.page}}
     @lastReadPost={{@model.lastReadPost}}
-    @loading={{this.showSkeletonPage}}
   />
 {{else}}
   {{page-title '404'}}

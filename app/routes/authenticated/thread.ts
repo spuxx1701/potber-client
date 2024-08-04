@@ -5,7 +5,6 @@ import Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
 import ThreadStore from 'potber-client/services/stores/thread';
 import SettingsService from 'potber-client/services/settings';
-import { sleep } from 'potber-client/utils/misc';
 import BookmarkStore from 'potber-client/services/stores/bookmark';
 
 interface Params extends Record<string, unknown> {
@@ -13,7 +12,8 @@ interface Params extends Record<string, unknown> {
   PID?: string;
   page?: string;
   lastReadPost?: string;
-  scrollToBottom?: string;
+  position?: string;
+  feed?: string;
 }
 
 export interface ThreadRouteModel {
@@ -39,20 +39,17 @@ export default class ThreadRoute extends SlowRoute {
     },
   };
 
-  beforeModel(transition: Transition) {
-    if (this.settings.getSetting('transitions') === 'dynamic') return;
-    super.beforeModel(transition);
-  }
-
   resetController(controller: ThreadController) {
     // Query parameters are sticky by default, so we need to reset them
     controller.set('TID', '');
     controller.set('page', '');
     controller.set('PID', '');
-    controller.set('scrollToBottom', '');
+    controller.set('lastReadPost', '');
+    controller.set('position', '');
+    controller.set('feed', '');
   }
 
-  async model(params: Params, transition: Transition) {
+  async model(params: Params) {
     try {
       // Attempt to parse the page
       let page: number | undefined;
@@ -67,16 +64,9 @@ export default class ThreadRoute extends SlowRoute {
       const options = {
         postId,
         page,
-        keepPreviousThread: transition.from?.name === this.routeName,
         timeoutWarning: true,
       };
-      if (this.settings.getSetting('transitions') === 'static') {
-        await this.threadStore.loadThread(params.TID, options);
-      } else {
-        this.threadStore.loadThread(params.TID, options);
-        // Wait for a very short amount of time so the UI has time to play the ripple animation
-        await sleep(100);
-      }
+      await this.threadStore.loadThread(params.TID, options);
       const model: ThreadRouteModel = {
         threadId: params.TID,
         page,

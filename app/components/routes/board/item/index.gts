@@ -97,7 +97,7 @@ export default class BoardItem extends Component<Signature> {
         @query={{hash
           TID=@thread.id
           page=@thread.pagesCount
-          scrollToBottom=true
+          position='bottom'
           PID=undefined
           lastReadPost=undefined
         }}
