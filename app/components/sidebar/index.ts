@@ -84,10 +84,15 @@ export default class SidebarComponent extends Component {
       return;
     }
 
-    this.renderer.dragLeftSidebar(this.maxWidth - Math.abs(gesture.touchMoveX));
+    this.renderer.dragLeftSidebar(
+      this.maxWidth - Math.abs(gesture.touchMoveX),
+      this.width / this.maxWidth,
+    );
 
     gesture.on('panend', () => {
-      this.renderer.toggleLeftSidebar(false);
+      // Update the sidebar depending on whether the user has dragged
+      // the sidebar 50% of the way open or not.
+      this.renderer.toggleLeftSidebar(this.width > this.maxWidth / 2);
     });
   };
 
@@ -101,10 +106,15 @@ export default class SidebarComponent extends Component {
       return;
     }
 
-    this.renderer.dragLeftSidebar(Math.abs(gesture.touchMoveX));
+    this.renderer.dragLeftSidebar(
+      Math.abs(gesture.touchMoveX),
+      this.width / this.maxWidth,
+    );
 
     gesture.on('panend', () => {
-      this.renderer.toggleLeftSidebar(false);
+      // Update the sidebar depending on whether the user has dragged
+      // the sidebar 50% of the way open or not.
+      this.renderer.toggleLeftSidebar(this.width > this.maxWidth / 2);
     });
   };
 

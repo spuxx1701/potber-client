@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.22.1',
+    type: 'patch',
+    fixed: [
+      'Einige Probleme bezüglich der veränderten Gestensteuerung der Sidebar wurden behoben.',
+    ],
+  },
+  {
     version: '1.22.0',
     type: 'minor',
     added: ['Neues Theme "poppx" wurde hinzugefügt (Danke an poppxapank!).'],

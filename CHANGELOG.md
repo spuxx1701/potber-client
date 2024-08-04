@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.22.1] - 2024-08-04
+
+### Fixed
+
+- Fixed a couple of issues that came with the changes to the sidebar gestures.
+
 ## [1.22.0] - 2024-08-04
 
 ### Added
