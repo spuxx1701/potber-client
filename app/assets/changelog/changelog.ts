@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.22.2',
+    type: 'patch',
+    fixed: [
+      'Der Newsfeed kann nun nicht länger in einen Zustand geraten, in dem ein Aktualisieren nicht mehr möglich ist.',
+    ],
+  },
+  {
     version: '1.22.1',
     type: 'patch',
     fixed: [

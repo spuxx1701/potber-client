@@ -13,6 +13,7 @@ import PrivateMessageStore from './stores/private-message';
  * update actions.
  */
 const MINIMUM_UPDATE_DURATION = 500;
+const UPDATE_RATE_LIMIT_MS = 5000;
 
 export default class NewsfeedService extends Service {
   @service declare settings: SettingsService;
@@ -22,6 +23,7 @@ export default class NewsfeedService extends Service {
   declare privateMessageStore: PrivateMessageStore;
 
   @tracked isUpdating = false;
+  lastUpdatedAt: Date | undefined = undefined;
 
   initialize() {
     if (this.settings.getSetting('autoRefreshSidebar'))
@@ -38,12 +40,27 @@ export default class NewsfeedService extends Service {
     return this.privateMessageStore.unread;
   }
 
+  checkRateLimit() {
+    const now = new Date();
+    if (this.lastUpdatedAt) {
+      const timeSinceLastUpdate = now.getTime() - this.lastUpdatedAt.getTime();
+      return timeSinceLastUpdate >= UPDATE_RATE_LIMIT_MS;
+    } else return true;
+  }
+
   async refresh(options?: PublicFetchOptions) {
-    if (this.isUpdating) return;
     this.isUpdating = true;
-    await this.bookmarkStore.getUnread({ ...options, reload: true });
-    await this.privateMessageStore.getUnread({ ...options, reload: true });
-    await sleep(MINIMUM_UPDATE_DURATION);
+    const promises: Promise<unknown>[] = [];
+    promises.push(sleep(MINIMUM_UPDATE_DURATION));
+    // Only trigger the actual fetches if we may perform an update
+    if (this.checkRateLimit()) {
+      this.lastUpdatedAt = new Date();
+      promises.push(this.bookmarkStore.getUnread({ ...options, reload: true }));
+      promises.push(
+        this.privateMessageStore.getUnread({ ...options, reload: true }),
+      );
+    }
+    await Promise.all(promises);
     this.isUpdating = false;
   }
 

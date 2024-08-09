@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.22.2] - 2024-08-09
+
+### Fixed
+
+- Prevent the newsfeed from becoming unable to update.
+
 ## [1.22.1] - 2024-08-04
 
 ### Fixed
