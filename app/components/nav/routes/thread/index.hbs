@@ -92,6 +92,13 @@
           @icon='chevron-down'
           @onClick={{this.handleGoToBottom}}
         />
+        {{#if @postId}}
+          <Common::Control::Menu::Button
+            @text='Verlinkten Post fokussieren'
+            @icon='arrows-to-dot'
+            @onClick={{this.handleFocusPost}}
+          />
+        {{/if}}
       </Common::Control::Menu>
 
       {{#if this.nextPageVisible}}

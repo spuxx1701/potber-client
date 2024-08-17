@@ -19,6 +19,7 @@ interface Params extends Record<string, unknown> {
 export interface ThreadRouteModel {
   threadId: string;
   page?: number;
+  postId?: string;
   lastReadPost?: string;
 }
 export default class ThreadRoute extends SlowRoute {
@@ -81,6 +82,7 @@ export default class ThreadRoute extends SlowRoute {
         threadId: params.TID,
         page,
         lastReadPost: lastReadPost,
+        postId,
       };
       return model;
     } catch (error: any) {

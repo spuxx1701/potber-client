@@ -11,11 +11,13 @@ import { IntlService } from 'ember-intl';
 import { Threads } from 'potber-client/services/api/types';
 import ThreadStore from 'potber-client/services/stores/thread';
 import BookmarkStore from 'potber-client/services/stores/bookmark';
+import { getAnchorId } from 'potber-client/utils/misc';
 
 export interface Signature {
   Args: {
     threadId: string;
     thread?: Threads.Read;
+    postId?: string;
     page?: number;
   };
 }
@@ -30,7 +32,6 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
   @service declare intl: IntlService;
   @service('stores/thread') declare threadStore: ThreadStore;
   @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
-  declare args: Signature['Args'];
 
   get isLoading() {
     return !this.args.thread;
@@ -142,5 +143,12 @@ export default class NavRoutesThreadComponent extends Component<Signature> {
 
   handleGoToBottom = () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
+
+  handleFocusPost = () => {
+    const { postId } = this.args;
+    if (!postId) return;
+    const anchorId = getAnchorId(postId);
+    this.renderer.scrollToElement(anchorId, { highlight: true });
   };
 }

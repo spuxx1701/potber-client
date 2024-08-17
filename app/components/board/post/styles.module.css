@@ -323,3 +323,30 @@
     flex-grow: 1;
   }
 }
+
+:global(.post[data-highlighted]) {
+  position: relative;
+}
+
+:global(.post[data-highlighted])::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: var(--global-border-radius);
+  animation: pulsate-border 750ms ease-in-out 3;
+  pointer-events: none;
+}
+
+@keyframes pulsate-border {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--color-accent);
+  }
+}

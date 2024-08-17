@@ -15,6 +15,7 @@ import { appConfig } from 'potber-client/config/app.config';
 import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
 import BookmarkStore from 'potber-client/services/stores/bookmark';
+import { getAnchorId } from 'potber-client/utils/misc';
 
 interface Signature {
   Args: {
@@ -46,7 +47,7 @@ export default class PostComponent extends Component<Signature> {
   declare args: Signature['Args'];
 
   get elementId() {
-    return `post-${this.args.post.id}`;
+    return getAnchorId(this.args.post.id);
   }
 
   get authorName() {

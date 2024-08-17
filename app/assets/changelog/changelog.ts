@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.23.0',
+    type: 'minor',
+    added: [
+      'Beim Aufruf eines Threads durch das Öffnen eines Lesezeichens oder eines Post-Direktlinks lässt sich der verlinkte Post nun auch noch nach dem Seitenaufruf über das Kebab-Menü fokussieren.',
+    ],
+  },
+  {
     version: '1.22.2',
     type: 'patch',
     fixed: [

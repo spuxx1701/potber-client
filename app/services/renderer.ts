@@ -4,6 +4,7 @@ import { sleep } from 'potber-client/utils/misc';
 import MessagesService from './messages';
 import SettingsService, { SidebarLayout, Theme } from './settings';
 import NewsfeedService from './newsfeed';
+import { next } from '@ember/runloop';
 
 const LOADING_INDICATOR_DELAY = 500;
 const DESKTOP_MIN_WIDTH = 1200;
@@ -231,6 +232,38 @@ export default class RendererService extends Service {
     await sleep(waitTime);
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   };
+
+  /**
+   * Attempts to scroll to the given element.
+   * @param element The element's id or the element itself.
+   * @param options.highlight (optional) Whether the element should be highlighted.
+   */
+  scrollToElement(
+    element: string | HTMLElement | null,
+    options?: {
+      highlight?: boolean;
+    },
+  ) {
+    const { highlight } = { highlight: false, ...options };
+
+    if (typeof element === 'string') {
+      element = document.getElementById(element);
+    }
+    if (!element) return;
+    const rect = element.getBoundingClientRect();
+    const currentScrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    const topNavHeight = (document.getElementById('top-nav') as HTMLElement)
+      .clientHeight;
+    this.trySetScrollPosition({
+      top: currentScrollTop + rect.top - topNavHeight,
+      behavior: 'smooth',
+    });
+    if (highlight) {
+      element.removeAttribute('data-highlighted');
+      next(() => element.setAttribute('data-highlighted', ''));
+    }
+  }
 
   /**
    * Looks for the `app-skeleton` node in the document and removes it.

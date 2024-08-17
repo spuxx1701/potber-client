@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [UNRELEASED]
+
+### Added
+
+- When following a direct link to a post (e.g. through a bookmark), that post can be manually (re-)focused via the kebab menu.
+
 ## [1.22.2] - 2024-08-09
 
 ### Fixed

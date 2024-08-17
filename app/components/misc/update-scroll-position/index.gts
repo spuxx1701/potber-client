@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 import RendererService from 'potber-client/services/renderer';
 import SettingsService from 'potber-client/services/settings';
 import { next } from '@ember/runloop';
+import { getAnchorId } from 'potber-client/utils/misc';
 
 export default class UpdateScrollPositionComponent extends Component {
   @service declare renderer: RendererService;
@@ -22,24 +23,10 @@ export default class UpdateScrollPositionComponent extends Component {
         params.has('PID') &&
         this.router.currentRouteName === 'authenticated.thread'
       ) {
-        // Apply a very short delay to give the page time to render
-        // await sleep(50);
         // If a PID has been provided and we're on /thread, we
         // need to scroll to the corresponding post
-        const anchorId = `post-${params.get('PID')}`;
-        const anchorElement = document.getElementById(anchorId);
-        if (anchorElement) {
-          const currentScrollTop =
-            document.documentElement.scrollTop || document.body.scrollTop;
-          const rect = anchorElement.getBoundingClientRect();
-          const topNavHeight = (
-            document.getElementById('top-nav') as HTMLElement
-          ).clientHeight;
-          this.renderer.trySetScrollPosition({
-            top: currentScrollTop + rect.top - topNavHeight,
-            behavior: 'smooth',
-          });
-        }
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        this.renderer.scrollToElement(getAnchorId(params.get('PID')!));
       } else if (
         params.has('scrollToBottom') &&
         this.settings.getSetting('goToBottomOfThreadPage')

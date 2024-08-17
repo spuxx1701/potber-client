@@ -79,3 +79,11 @@ export function tryParseInt(input: any) {
 export function isNullOrWhitespace(input: string) {
   return input === null || input.match(/^\s*$/) !== null;
 }
+
+/**
+ * Returns the ID of the corresponding HTML anchor element for the given post.
+ * @param postId The post id.
+ */
+export function getAnchorId(postId: string) {
+  return `post-${postId}`;
+}
