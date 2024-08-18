@@ -193,6 +193,18 @@
     </:info>
   </Common::Control::Dropdown>
 
+  <div class='flex-row align-items-center'>
+    <h3 class='margin-horizontal-x-small'>{{t 'feature.blocklist.title'}}</h3>
+    <Common::Control::InfoButton
+      @title={{t 'feature.blocklist.title'}}
+      @text={{t 'feature.blocklist.description'}}
+      @variant='secondary-transparent'
+      @icon='info-circle'
+    />
+  </div>
+
+  <Features::Blocklist />
+
   <h3>{{t 'route.settings.category.advanced'}}</h3>
 
   <Common::Control::Dropdown

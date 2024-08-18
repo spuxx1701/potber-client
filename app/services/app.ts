@@ -9,6 +9,7 @@ import RendererService from './renderer';
 import CustomSession from './custom-session';
 import SettingsService from './settings';
 import ExceptionHandler from './exception-handler';
+import SocialsService from './socials';
 
 export default class AppService extends Service {
   @service declare settings: SettingsService;
@@ -20,6 +21,7 @@ export default class AppService extends Service {
   @service declare newsfeed: NewsfeedService;
   @service declare session: CustomSession;
   @service declare exceptionHandler: ExceptionHandler;
+  @service declare socials: SocialsService;
   initialized = false;
   deferredInstallPrompt: any = undefined;
 
@@ -42,6 +44,7 @@ export default class AppService extends Service {
       this.session.update();
       this.localStorage.initialize();
       this.newsfeed.refresh();
+      this.socials.load();
     }
   }
 

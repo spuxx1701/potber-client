@@ -16,6 +16,8 @@ import ApiService from 'potber-client/services/api';
 import { IntlService } from 'ember-intl';
 import BookmarkStore from 'potber-client/services/stores/bookmark';
 import { getAnchorId } from 'potber-client/utils/misc';
+import SocialsService from 'potber-client/services/socials';
+import ClassNames from 'potber-client/helpers/class-names';
 
 interface Signature {
   Args: {
@@ -39,6 +41,7 @@ export default class PostComponent extends Component<Signature> {
   @service declare api: ApiService;
   @service declare intl: IntlService;
   @service('stores/bookmark') declare bookmarkStore: BookmarkStore;
+  @service declare socials: SocialsService;
 
   constructor(owner: unknown, args: Signature['Args']) {
     super(owner, args);
@@ -176,4 +179,53 @@ export default class PostComponent extends Component<Signature> {
       } am ${new Date(this.args.post.lastEdit.date).toLocaleString()}`;
     }
   }
+
+  blockUser = () => {
+    this.socials.blockUser(
+      this.args.post.author.id,
+      this.args.post.author.name,
+    );
+    this.messages.showNotification(
+      this.intl.t('feature.blocklist.blocked-user', {
+        username: this.args.post.author.name,
+      }),
+      'success',
+    );
+  };
+
+  unblockUser = () => {
+    this.socials.unblockUser(this.args.post.author.id);
+    this.messages.showNotification(
+      this.intl.t('feature.blocklist.unblocked-user', {
+        username: this.args.post.author.name,
+      }),
+      'success',
+    );
+  };
+
+  get blocked() {
+    return this.socials.isUserBlocked(this.args.post.author.id);
+  }
+
+  unblockPost = (event: MouseEvent) => {
+    (event.target as HTMLButtonElement).remove();
+  };
+
+  checkForQuotesByBlockedUsers = (element: HTMLDivElement) => {
+    const quotes = element.querySelectorAll(`span.quote`);
+    for (const quote of quotes) {
+      const body = quote.querySelector('blockquote');
+      const authorName = quote.getAttribute('data-author-name');
+      if (!authorName || !body) continue;
+      const block = this.socials.isUserBlocked(authorName);
+      if (block) {
+        const mask = document.createElement('button');
+        mask.className = new ClassNames().compute([this, 'blocked-mask']);
+        mask.addEventListener('click', () => {
+          mask.remove();
+        });
+        body.appendChild(mask);
+      }
+    }
+  };
 }

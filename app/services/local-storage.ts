@@ -10,6 +10,7 @@ import { appConfig } from 'potber-client/config/app.config';
 import { Boards } from './api/types';
 import ApiService from './api';
 import CustomStore from './custom-store';
+import { Socials } from './socials';
 
 const PREFIX = 'potber-';
 
@@ -47,6 +48,31 @@ export default class LocalStorageService extends Service {
   writeSettings(settings: Settings) {
     const jsonString = JSON.stringify(settings);
     localStorage.setItem(`${PREFIX}settings`, jsonString);
+  }
+
+  /**
+   * Reads 'socials' from localStorage.
+   * @returns The raw socials object or null.
+   */
+  readSocials(): Socials | null {
+    try {
+      const jsonString = localStorage.getItem(`${PREFIX}socials`);
+      if (!jsonString) return null;
+      const rawSocials: Socials = JSON.parse(jsonString);
+      return rawSocials;
+    } catch (error) {
+      // Return null in case of any issues during load.
+      return null;
+    }
+  }
+
+  /**
+   * Writes 'socials' to localStorage.
+   * @param socials The socials object.
+   */
+  writeSocials(socials: Socials) {
+    const jsonString = JSON.stringify(socials);
+    localStorage.setItem(`${PREFIX}socials`, jsonString);
   }
 
   /**

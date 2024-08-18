@@ -12,6 +12,10 @@ interface Signature {
 export default class InfoButtonComponent extends Component<Signature> {
   @service declare modal: ModalService;
 
+  get icon() {
+    return this.args.icon ?? 'info';
+  }
+
   handleClick = () => {
     this.modal.info({
       title: this.args.title,
@@ -21,7 +25,7 @@ export default class InfoButtonComponent extends Component<Signature> {
 
   <template>
     <Button
-      @icon='info'
+      @icon={{this.icon}}
       @size='square'
       @variant={{@variant}}
       @onClick={{this.handleClick}}

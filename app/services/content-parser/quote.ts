@@ -20,7 +20,7 @@ export function parseQuote(input: string, location: Partial<Location>) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const [_full, threadId, postId, authorName] = authorMatches;
       const url = `${location.protocol}//${location.host}/thread?TID=${threadId}&PID=${postId}`;
-      const replacement = `<span class="quote"><a class="quote-header" href="${url}"><p>${authorName}</p></a><blockquote>`;
+      const replacement = `<span class="quote" data-author-name="${authorName}"><a class="quote-header" href="${url}"><p>${authorName}</p></a><blockquote>`;
       output = output.replace(openingTag, replacement);
     } else {
       // Else, we simply replace the tag

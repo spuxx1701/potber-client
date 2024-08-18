@@ -33,6 +33,19 @@
           @href={{this.url}}
           target='_blank'
         />
+        {{#if this.blocked}}
+          <Common::Control::Menu::Button
+            @text='Nutzer:in nicht mehr blocken'
+            @icon='shield'
+            @onClick={{this.unblockUser}}
+          />
+        {{else}}
+          <Common::Control::Menu::Button
+            @text='Nutzer:in blocken'
+            @icon='shield-halved'
+            @onClick={{this.blockUser}}
+          />
+        {{/if}}
         <Common::Control::Menu::Button
           @text='Post melden'
           @icon='triangle-exclamation'
@@ -69,7 +82,10 @@
       </Common::Control::Menu>
     {{/unless}}
   </div>
-  <div class={{class-names this 'body'}}>
+  <div
+    class={{class-names this 'body'}}
+    {{did-insert this.checkForQuotesByBlockedUsers}}
+  >
     {{#if @post.contentHidden}}
       <p class='subtitle no-margin'>⚠ Inhalt versteckt</p>
     {{else}}
@@ -87,6 +103,12 @@
       <p class={{class-names this 'footer'}}>
         {{this.editingInfo}}
       </p>
+    {{/if}}
+    {{#if this.blocked}}
+      <button
+        class={{class-names this 'blocked-mask'}}
+        {{on 'click' this.unblockPost}}
+      />
     {{/if}}
   </div>
 </div>

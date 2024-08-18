@@ -68,6 +68,7 @@ route:
       appearance: Erscheinungsbild
       network: Daten & Netzwerk
       behavior: Verhalten
+      blocklist: Blockliste
       advanced: Gefahrenzone ⚠
     theme:
       label: Thema
@@ -104,8 +105,7 @@ route:
       info: Ist diese Option aktiviert, werden bestimmte Links zum Forum (Posts, Threads und Boards) automatisch durch die entsprechenden potber-Links ersetzt
     enable-gestures:
       label: Gestensteuerung
-      info: 'Aktiviere Gestensteuerung für potber. "Nur Sidebar" aktiviert lediglich das Öffnen und Schließen der Sidebar via horizontale Wischgesten. "Alle" aktiviert außerdem noch Pull-to-Refresh in Boards und Threads.
-      <br/><br/>⚠ Bitte beachte, dass die Gestensteuerung unter Umständen Konflikte mit der Gestensteuerung Deines Browsers oder Deines Geräts verursachen kann.'
+      info: 'Aktiviere Gestensteuerung für potber. "Nur Sidebar" aktiviert lediglich das Öffnen und Schließen der Sidebar via horizontale Wischgesten. "Alle" aktiviert außerdem noch Pull-to-Refresh in Boards und Threads. <br/><br/>⚠ Bitte beachte, dass die Gestensteuerung unter Umständen Konflikte mit der Gestensteuerung Deines Browsers oder Deines Geräts verursachen kann.'
     debug:
       label: Debug-Modus
       info: Wechsle in den Debug-Modus. Üblicherweise solltest Du diese Einstellung nicht aktivieren.
@@ -228,3 +228,9 @@ feature:
         spoiler:
           title: Spoiler
           label: Spoiler eingeben...
+  blocklist:
+    title: Blockliste
+    description: Hier siehst Du, welche Nutzer:innen Du geblockt hast. Posts und Zitate von geblockten Nutzer:innen sind beim Laden einer Threadseite zu Beginn nicht lesbar und müssen manuell von Dir eingeblendet werden. Du kannst Nutzer:innen über das Kebab-Menü innerhalb eines Posts blocken. ⚠ Bitte beachte, dass Zitate über den Namen und nicht über die ID der Nutzer:in zugeordnet werden. Blockierte Nutzer:innen, deren Name sich geändert hat, müssen erneut der Blockliste hinzugefügt werden, damit das Blockieren von Zitaten wieder funktioniert.
+    empty: Du hast derzeit keine Nutzer:innen geblockt.
+    blocked-user: Posts von {username} werden nun blockiert, bis Du sie selbst einblendest.
+    unblocked-user: Posts von {username} werden nicht länger blockiert.

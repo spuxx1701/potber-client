@@ -4,6 +4,7 @@ export const changelog: ChangelogItem[] = [
     type: 'minor',
     added: [
       'Beim Aufruf eines Threads durch das Öffnen eines Lesezeichens oder eines Post-Direktlinks lässt sich der verlinkte Post nun auch noch nach dem Seitenaufruf über das Kebab-Menü fokussieren.',
+      'Über das Kebab-Menü innerhalb von Posts können Nutzer:innen nun blockiert werden. Posts und Zitate von blockierten Nutzer:innen werden beim Laden einer Threadseite nicht vollständig angezeigt und müssen manuell eingeblendet werden. Die Liste der blockierten Nutzer:innen lässt sich in den Einstellungen verwalten.',
     ],
   },
   {
