@@ -1,5 +1,12 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.23.1',
+    type: 'patch',
+    fixed: [
+      'Verschiedene visuelle Effekte (z.B. das Abdunkeln oder das Blockieren von Posts) funktionieren nun auch auf iOS Safari.',
+    ],
+  },
+  {
     version: '1.23.0',
     type: 'minor',
     added: [

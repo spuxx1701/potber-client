@@ -17,6 +17,7 @@
   transform: scale(0);
   animation: click-ripple 500ms linear;
   backdrop-filter: var(--filter-click-ripple);
+  -webkit-backdrop-filter: var(--filter-click-ripple);
   opacity: 0.5;
 }
 

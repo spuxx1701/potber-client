@@ -99,6 +99,7 @@
   .button-link:not(:disabled):hover {
     filter: var(--filter-control-active);
     backdrop-filter: var(--filter-control-active);
+    -webkit-backdrop-filter: var(--filter-control-active);
   }
 
   input:not(:disabled):hover,
