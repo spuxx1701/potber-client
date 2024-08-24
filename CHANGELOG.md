@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [1.23.1] - 2024-08-24
 
+### Fixed
+
 - Fixed `backdrop-filter` styles not working on iOS Safari.
 
 ## [1.23.0] - 2024-08-20
