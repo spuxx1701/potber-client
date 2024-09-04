@@ -123,7 +123,7 @@
     "tinygesture": "^2.0.0",
     "typescript": "^5.1.6",
     "uuid": "^10.0.0",
-    "webpack": "^5.89.0"
+    "webpack": "^5.94.0"
   },
   "engines": {
     "node": "14.* || 16.* || >= 18"
