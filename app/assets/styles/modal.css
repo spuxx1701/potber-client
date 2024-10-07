@@ -1,5 +1,6 @@
 @import 'modal/select-icon.css';
 @import 'modal/select-meme.css';
+@import 'modal/list.css';
 
 #modal {
   display: block;
