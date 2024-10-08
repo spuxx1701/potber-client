@@ -11,7 +11,7 @@ export interface ListModalOptions {
 export enum ListType {
   Empty = 'empty',
   Numerical = 'numerical',
-  Alphabetical = 'alphabetical'
+  Alphabetical = 'alphabetical',
 }
 
 interface Signature {
@@ -29,19 +29,23 @@ export default class ListModelComponent extends Component<Signature> {
   @service declare modal: ModalService;
 
   @tracked hasRemoveableEntries = false;
-  @tracked entries = [""];
-  
+  @tracked entries = [''];
+
   selectedListType = ListType.Empty;
-  listTypes: ListTypeOption[] = [{
-    label: 'Leer',
-    data: ListType.Empty,
-  }, {
-    label: 'Nummeriert',
-    data: ListType.Numerical,
-  },{
-    label: 'Alphabetisch',
-    data: ListType.Alphabetical,
-  }];
+  listTypes: ListTypeOption[] = [
+    {
+      label: 'Leer',
+      data: ListType.Empty,
+    },
+    {
+      label: 'Nummeriert',
+      data: ListType.Numerical,
+    },
+    {
+      label: 'Alphabetisch',
+      data: ListType.Alphabetical,
+    },
+  ];
 
   @action handleTextChange(index: number, value: string) {
     this.entries[index] = value;
@@ -50,7 +54,7 @@ export default class ListModelComponent extends Component<Signature> {
   @action handleAdd(index: number) {
     const start = this.entries.slice(0, index + 1);
     const end = this.entries.slice(index + 1);
-    this.entries = [...start, "", ...end];
+    this.entries = [...start, '', ...end];
     this.hasRemoveableEntries = true;
   }
 
