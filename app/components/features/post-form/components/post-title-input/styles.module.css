@@ -10,6 +10,10 @@
   font-size: var(--icon-size-large);
 }
 
+.container button img {
+  max-width: initial;
+}
+
 .container :global(.input-container) {
   flex-grow: 1;
   margin-left: 0.25rem;
