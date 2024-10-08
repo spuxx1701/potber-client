@@ -7,6 +7,7 @@ import { t } from 'ember-intl';
 import PostFormMessageEmojiSelect from './controls/emoji-select';
 import PostFormMessageMemeSelect from './controls/meme-select';
 import PostFormMessageLink from './controls/link';
+import PostFormMessageList from './controls/list';
 import PostFormMessageImage from './controls/image';
 import PostFormMessageSimpleInput from './controls/simple-input';
 
@@ -80,6 +81,7 @@ export default class PostFormMessageToolbar extends Component<Signature> {
           @post={{@post}}
         />
         <PostFormMessageLink @post={{@post}} @textarea={{@textarea}} />
+        <PostFormMessageList @post={{@post}} @textarea={{@textarea}} />
         <PostFormMessageImage @post={{@post}} @textarea={{@textarea}} />
         <PostFormMessageSimpleInput
           @title={{t 'feature.post-form.message.toolbar.video.title'}}
