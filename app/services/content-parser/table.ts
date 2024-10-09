@@ -4,7 +4,7 @@
  * @returns The output string.
  */
 export function parseTable(input: string) {
-  const TABLE_REGEX = /(?:(\[table\]\s*)(?:\s|\S)*?(\s*\[\/table\]))/gi;
+  const TABLE_REGEX = /(?:(\[table[^\]]*\]\s*)(?:\s|\S)*?(\s*\[\/table\]))/gi;
   if (!TABLE_REGEX.test(input)) return input;
 
   let output = input;
