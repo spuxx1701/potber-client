@@ -10,10 +10,10 @@ export function parseUrl(
   input: string,
   options?: { replaceForumUrls?: boolean },
 ) {
-  const URL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/gi;
-  // This regex needs to account for quite the variety of different kinds of syntax
-  const URL_PATH_REGEX = /\[url=?\]?(?:.*=")?(.*?)(?:"|(?:\[\/url\])|(?:\]))/i;
-  const URL_LABEL_REGEX = /\[url.*?\]([\s|\S]*?)\[\/url\]/i;
+  const URL_TAG_REGEX =
+    /\[url(?:=(?:"|')?([^\]]+)(?:"|')?)?\]([\s\S]*?)\[\/url\]/gi;
+  const URL_REGEX = /\b([a-zA-Z]+:\/\/[^\s]+|www\.[^\s]+)\b/gi;
+
   const FORUM_URL_REPLACEMENTS = [
     {
       input: 'forum.mods.de/bb//thread.php',
@@ -51,20 +51,31 @@ export function parseUrl(
 
   const { replaceForumUrls } = { ...options };
 
-  if (!URL_REGEX.test(input)) return input;
+  if (!URL_TAG_REGEX.test(input)) return input;
   let output = input;
-  const matches = output.matchAll(new RegExp(URL_REGEX));
+  const matches = output.matchAll(new RegExp(URL_TAG_REGEX));
   for (const match of matches) {
     try {
-      const full = match[0] as string;
-      const urlMatches = full.match(URL_PATH_REGEX);
-      const contentMatches = full.match(URL_LABEL_REGEX);
-      const content = (contentMatches as RegExpMatchArray)[1];
-      let url = content;
-      if (urlMatches) {
-        url = urlMatches[1];
+      const [full, possibleUrl, content] = match;
+      let url = possibleUrl;
+
+      if (!content) continue;
+
+      // We might need to extract the URL from the content
+      if (!url) {
+        const urlMatch = content.replace('&#58;', ':').match(URL_REGEX);
+
+        // We found a valid URL in the content
+        if (urlMatch) {
+          url = urlMatch[0];
+        } else {
+          // The content is the URL
+          url = content;
+        }
       }
+
       if (!url) continue;
+
       if (replaceForumUrls && url.includes(appConfig.forumUrl)) {
         for (const replacement of FORUM_URL_REPLACEMENTS) {
           url = url.replace(replacement.input, replacement.output);
