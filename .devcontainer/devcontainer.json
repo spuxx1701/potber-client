@@ -1,0 +1,30 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+    "name": "potber",
+    "dockerComposeFile": "compose.yaml",
+    "service": "client",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    "features": {
+      "ghcr.io/devcontainers/features/github-cli:1": {},
+      "ghcr.io/devcontainers/features/git:1": {}
+    },
+  
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [
+        4200,
+        "potber-api:3000",
+        "potber-auth:5173"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "lifeart.vscode-ember-unstable",
+                "lifeart.vscode-glimmer-syntax",
+                "esbenp.prettier-vscode"
+            ]
+        }
+    }
+  }
+  

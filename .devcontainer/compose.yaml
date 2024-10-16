@@ -1,0 +1,45 @@
+name: "potber"
+
+services:
+  client:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    volumes:
+    - ../..:/workspaces:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    # Uncomment the next line to use a non-root user for all processes.
+    # user: vscode
+
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+    depends_on:
+    - potber-api
+    - potber-auth
+
+  potber-api:
+    image: spuxx/potber-api
+    restart: unless-stopped
+    environment:
+      - APP_PORT=3000
+      - APP_CLIENT_URL=http://localhost:4200
+      - APP_API_URL=http://localhost:3000
+      - SWAGGER_TEST_THREAD_ID=219289
+      - CORS_ALLOWED_ORIGINS=http://localhost:4200
+      - AUTH_JWT_SECRET=imnotarealsecret
+
+  potber-auth:
+    image: spuxx/potber-auth
+    restart: unless-stopped
+    environment:
+      - PORT=5173
+      - ORIGIN=http://localhost:5173
+      - VITE_API_URL=http://potber-api:3000
+      - VITE_API_LOGIN_ENDPOINT=/auth/login
+      - VITE_API_SESSION_ENDPOINT=/auth/session
+
+  

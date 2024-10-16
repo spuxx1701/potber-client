@@ -106,8 +106,16 @@ You will need the following things properly installed on your computer.
 
 ### Running / Development
 
+You can either run the application via a [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) or without. The advantage of using the dev container is that you do not need to setup or clone the `potber-auth` and `potber-api` repository. Similar as running the application via `npm run start:remote` except that `potber-auth` and `potber-api` are running locally via Docker.
+
+#### Dev Container
+
+You need to have Docker installed on your system and have the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) setup in VSCode. Clone [potber-api](https://github.com/spuxx1701/potber-api) and open it in VSCode. Click on `Reopen in container`. After finishing the setup, you can start the development server with `npm start` inside of the VSCode terminal. Visit the app at [http://localhost:4200](http://localhost:4200).
+
+#### Without Dev Container
+
 - Clone [potber-api](https://github.com/spuxx1701/potber-api) and start up a local instance.
-- Start up the development server with `npm start` (assuming you also have closed `potber-api` and `potber-auth`). You can also run the client using the remote staging instances of `potber-api` and `potber-auth` via `npm run start:remote`.
+- Start up the development server with `npm start` (assuming you also have cloned `potber-api` and `potber-auth`). You can also run the client using the remote staging instances of `potber-api` and `potber-auth` via `npm run start:remote`.
 - Visit the app at [http://localhost:4200](http://localhost:4200).
 
 #### Linting
@@ -133,7 +141,7 @@ The application can be deployed via [Docker](https://docker.com). The applicatio
 - [staging](Dockerfile.staging)
 - [production](Dockerfile.production)
 
-After building the Docker image, you can run it locally or on a remote host. In case you're curious about how `potber.de` is hosted: Both the [test](https://test.potber.de) and [production](https://potber.de) environments run on a [Flux](https://fluxcd.io)-controlled [MicroK8s](https://microk8s.io) cluster. The infrastructure is documented [here](https://github.com/spuxx1701/flux/tree/master/cluster/apps/potber).
+After building the Docker image, you can run it locally or on a remote host. In case you're curious about how `potber.de` is hosted: Both the [test](https://test.potber.de) and [production](https://potber.de) environments run on a [Flux](https://fluxcd.io)-controlled [MicroK8s](https://microk8s.io) cluster. The infrastructure is documented [here](https://github.com/spuxx1701/flux/tree/main/clusters/constellation/apps/potber).
 
 ## Further Reading / Useful Links
 
