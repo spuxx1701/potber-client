@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [1.24.0] - 2024-10-16
+
+### Fixed
+
+- Fixed a bug that would cause the currently selected post icon to be invisible in the post form (thanks to @herrkris!).
+- Fixed a bug that would cause tables to not render properly if one or more attributes were provided (thanks to @herrkris!).
+- Fixed a bug that would cause nested `[url][img]` tags to not behave as expected on mobile devices (thanks to @herrkris!).
+
+### Chores
+
+- Bumped node version from 16 to 20 in the build pipeline.
+- Build images now support arm64.
+
 ## [1.23.1] - 2024-08-24
 
 ### Fixed

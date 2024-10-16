@@ -1,5 +1,18 @@
 export const changelog: ChangelogItem[] = [
   {
+    version: '1.24.0',
+    type: 'minor',
+    fixed: [
+      'Ein Problem wurde behoben, bei dem das aktuell ausgewählte Post-Icon im Postformular auf iOS Safari nicht sichtbar war (Vielen Dank an Zensiert!).',
+      '[table]-Tags mit Attributen (z.B. [table border=1]) werden nun dargestellt. Die Attribute haben keinen Effekt (Vielen Dank an Zensiert!).',
+      'Verschachtelte [url][img]-Tags verhalten sich auf mobilen Geräten nun wie erwartet: Beim Antippen wird die URL des [url]-Tags und nicht die des Bildes geöffnet (Vielen Dank an Zensiert!).',
+    ],
+    chores: [
+      'Die Build-Pipelines aller potber-Komponenten produzieren nun sowohl amd64- als auch arm64-kompatible images.',
+      'Alle potber-Komponenten wurden auf neuere Server umgezogen. potber wird nun verteilt auf verschiedenen Servern gehosted, so dass die Anwendung bei Ausfall eines Servers verfügbar bleibt.',
+    ],
+  },
+  {
     version: '1.23.1',
     type: 'patch',
     fixed: [
