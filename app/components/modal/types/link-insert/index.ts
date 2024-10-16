@@ -14,7 +14,7 @@ interface Signature {
   };
 }
 
-export default class IconSelectModalComponent extends Component<Signature> {
+export default class LinkInsertModalComponent extends Component<Signature> {
   @service declare modal: ModalService;
 
   @tracked url = '';
