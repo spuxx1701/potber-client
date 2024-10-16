@@ -53,10 +53,6 @@ export const appConfig = {
    */
   httpTimeoutWarningThreshold: 5000,
   /**
-   * The default user group id. Other group ids define mods, admins and the like.
-   */
-  standardUserGroupId: '3',
-  /**
    * The refresh interval for the newsfeed in milliseconds.
    */
   newsfeedRefreshInterval: 20000,

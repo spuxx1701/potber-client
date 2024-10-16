@@ -7,6 +7,6 @@ export interface Read {
   activity?: string;
   status?: string;
   age?: string;
-  groupId?: string;
   locked?: boolean;
+  privileged: boolean;
 }

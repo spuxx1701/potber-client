@@ -1,14 +1,11 @@
-import { appConfig } from 'potber-client/config/app.config';
-
 /**
- * Parses all privileged tags. Privileged will only be parsed if the given `groupId` does not equal 3,
- * which is the value for normal users.
+ * Parses all privileged tags.
  * @param input The input string.
- * @param groupId The group id.
+ * @param privileged Whether the user is privileged.
  * @returns The output string.
  */
-export function parsePrivilegedTags(input: string, groupId: string) {
-  if (groupId === appConfig.standardUserGroupId) {
+export function parsePrivilegedTags(input: string, privileged?: boolean) {
+  if (!privileged) {
     return input;
   }
   let output = input;
