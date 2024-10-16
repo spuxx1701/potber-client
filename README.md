@@ -110,7 +110,7 @@ You can either run the application via a [Dev Container](https://code.visualstud
 
 #### Dev Container
 
-You need to have Docker installed on your system and have the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) setup in VSCode. Clone  [potber-api](https://github.com/spuxx1701/potber-api) and open it in VSCode. Click on `Reopen in container`. After finishing the setup, you can start the development server with `npm start` inside of the VSCode terminal. Visit the app at [http://localhost:4200](http://localhost:4200).
+You need to have Docker installed on your system and have the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) setup in VSCode. Clone [potber-api](https://github.com/spuxx1701/potber-api) and open it in VSCode. Click on `Reopen in container`. After finishing the setup, you can start the development server with `npm start` inside of the VSCode terminal. Visit the app at [http://localhost:4200](http://localhost:4200).
 
 #### Without Dev Container
 
