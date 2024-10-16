@@ -1,1 +1,1 @@
-FROM node:16 AS build
+FROM node:20 AS build
