@@ -23,7 +23,7 @@ export default class User extends Model {
   declare age?: string;
 
   @attr()
-  declare groupId?: string;
+  declare privileged?: boolean;
 
   @attr()
   declare locked?: boolean;

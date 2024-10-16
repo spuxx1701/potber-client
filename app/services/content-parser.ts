@@ -24,18 +24,18 @@ export default class ContentParserService extends Service {
   /**
    * Parses post content to HTML and returns the result.
    * @param input The post content containing BBCode and other things.
-   * @param options.groupId (optional) The author's group id. Will be used to decide whether specific tags should be parsed at all (e.g. `[mod]`).
-   * Defaults to '3', the value for normal users.
+   * @param options.privileged (optional) Whether the author is considered privileged.
+   * Will be used to decide whether specific tags should be parsed at all (e.g. `[mod]`).
    * @returns The HTML output.
    */
-  parsePostContent(input: string, options?: { groupId?: string }) {
-    const { groupId } = { groupId: appConfig.standardUserGroupId, ...options };
+  parsePostContent(input: string, options?: { privileged?: boolean }) {
+    const { privileged } = { ...options };
     let output = input;
     output = sanitize(output);
     output = parseCode(output);
     output = parseSimpleTags(output);
     output = parseTex(output);
-    output = parsePrivilegedTags(output, groupId);
+    output = parsePrivilegedTags(output, privileged);
     output = parseImg(output);
     output = parseVideo(output, window.location);
     output = parseUrl(output, {
