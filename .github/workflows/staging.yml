@@ -4,19 +4,19 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+    - main
 
 jobs:
   lint:
-    uses: spuxx1701/ci-cd/.github/workflows/npm_lint.yml@v2.0
+    uses: spuxx1701/ci-cd/.github/workflows/npm_lint.yml@v4.1.0
 
   test:
-    uses: spuxx1701/ci-cd/.github/workflows/npm_test-coverage.yml@v2.0
+    uses: spuxx1701/ci-cd/.github/workflows/npm_test-coverage.yml@v4.1.0
 
   release_image:
     needs:
-      - lint
-      - test
-    uses: spuxx1701/ci-cd/.github/workflows/release_image.yml@v2.0
+    - lint
+    - test
+    uses: spuxx1701/ci-cd/.github/workflows/docker_release_image.yml@v4.1.0
     secrets:
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}

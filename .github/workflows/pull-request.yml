@@ -6,7 +6,7 @@ on:
 
 jobs:
   lint:
-    uses: spuxx1701/ci-cd/.github/workflows/npm_lint.yml@v1.2
+    uses: spuxx1701/ci-cd/.github/workflows/npm_lint.yml@v4.1.0
 
   test:
-    uses: spuxx1701/ci-cd/.github/workflows/npm_test-coverage.yml@v1.2
+    uses: spuxx1701/ci-cd/.github/workflows/npm_test-coverage.yml@v4.1.0
