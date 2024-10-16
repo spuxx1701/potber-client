@@ -124,7 +124,7 @@ route:
       submit: Absenden
       preview: Vorschau
       options: Optionen
-      convert-urls: "[URL]-Tags automatisch einfügen"
+      convert-urls: '[URL]-Tags automatisch einfügen'
       disable-bbcode: BBCode deaktivieren
       disable-emojis: Emojis deaktivieren
   thread:
