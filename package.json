@@ -115,7 +115,7 @@
     "loader.js": "^4.7.0",
     "postcss": "^8.4.32",
     "postcss-loader": "^7.3.3",
-    "prettier": "^3.0.3",
+    "prettier": "^3.4.1",
     "prettier-plugin-ember-template-tag": "^1.1.0",
     "qunit": "^2.22.0",
     "qunit-dom": "^2.0.0",
