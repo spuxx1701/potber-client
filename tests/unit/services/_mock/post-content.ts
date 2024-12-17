@@ -11,13 +11,13 @@ export const postContentMocks: ContentParserMock[] = [
     The difference a year makes.`,
     expected: `${createVideoContainer(
       'https&#58;//i.imgur.com/3L4B6FD.mp4',
-      '<video src="https&#58;//i.imgur.com/3L4B6FD.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/3L4B6FD.mp4#t=0.001" controls></video>',
     )}<br/>    Funny? Impressive?<br/>    Both!<br/><br/>    ${createVideoContainer(
       'https&#58;//i.imgur.com/hryNUcS.mp4',
-      '<video src="https&#58;//i.imgur.com/hryNUcS.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/hryNUcS.mp4#t=0.001" controls></video>',
     )}<br/>    ${createVideoContainer(
       'https&#58;//i.imgur.com/MvdqRZa.mp4',
-      '<video src="https&#58;//i.imgur.com/MvdqRZa.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/MvdqRZa.mp4#t=0.001" controls></video>',
     )}<br/>    The difference a year makes.`,
   },
   {
