@@ -29,7 +29,7 @@ export const videoTagMocks: ContentParserMock[] = [
     [URL]https://www.thedailybeast.com/russian-and-ukrainian-delegates-brawl-over-ukrainian-flag-at-summit-in-turkey?utm_campaign=owned_social&utm_medium=socialflow&via=twitter_page&utm_source=twitter_owned_tdb[/URL]`,
     expected: `${createVideoContainer(
       'https&#58;//video.twimg.com/ext_tw_video/1654245265388322820/pu/vid/480x848/giPQ-V_G5ydzW01q.mp4?tag=12',
-      '<video src="https&#58;//video.twimg.com/ext_tw_video/1654245265388322820/pu/vid/480x848/giPQ-V_G5ydzW01q.mp4?tag=12" controls></video>',
+      '<video src="https&#58;//video.twimg.com/ext_tw_video/1654245265388322820/pu/vid/480x848/giPQ-V_G5ydzW01q.mp4?tag=12#t=0.001" controls></video>',
     )}
     [URL]https://twitter.com/Phil_Lewis_/status/1654245302642126851[/URL]
 
@@ -46,18 +46,18 @@ export const videoTagMocks: ContentParserMock[] = [
     The difference a year makes.`,
     expected: `${createVideoContainer(
       'https&#58;//i.imgur.com/3L4B6FD.mp4',
-      '<video src="https&#58;//i.imgur.com/3L4B6FD.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/3L4B6FD.mp4#t=0.001" controls></video>',
     )}
     Funny? Impressive?
     Both!
 
     ${createVideoContainer(
       'https&#58;//i.imgur.com/hryNUcS.mp4',
-      '<video src="https&#58;//i.imgur.com/hryNUcS.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/hryNUcS.mp4#t=0.001" controls></video>',
     )}
     ${createVideoContainer(
       'https&#58;//i.imgur.com/MvdqRZa.mp4',
-      '<video src="https&#58;//i.imgur.com/MvdqRZa.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/MvdqRZa.mp4#t=0.001" controls></video>',
     )}
     The difference a year makes.`,
   },
@@ -77,28 +77,28 @@ export const videoTagMocks: ContentParserMock[] = [
     [video]https://i.imgur.com/hiUieas.mp4[/video]`,
     expected: `${createVideoContainer(
       'https&#58;//i.imgur.com/MbpN77F.mp4',
-      '<video src="https&#58;//i.imgur.com/MbpN77F.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/MbpN77F.mp4#t=0.001" controls></video>',
     )}
 
 
 
     ${createVideoContainer(
       'https&#58;//i.imgur.com/6zzsiYM.mp4',
-      '<video src="https&#58;//i.imgur.com/6zzsiYM.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/6zzsiYM.mp4#t=0.001" controls></video>',
     )}
 
 
 
     ${createVideoContainer(
       'https&#58;//i.imgur.com/pQWWFJy.mp4',
-      '<video src="https&#58;//i.imgur.com/pQWWFJy.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/pQWWFJy.mp4#t=0.001" controls></video>',
     )}
 
 
 
     ${createVideoContainer(
       'https&#58;//i.imgur.com/hiUieas.mp4',
-      '<video src="https&#58;//i.imgur.com/hiUieas.mp4" controls></video>',
+      '<video src="https&#58;//i.imgur.com/hiUieas.mp4#t=0.001" controls></video>',
     )}`,
   },
   {
@@ -170,7 +170,7 @@ export const videoTagMocks: ContentParserMock[] = [
     input: `[video play]https://i.imgur.com/PWI3g0N.mp4[/video]`,
     expected: `${createVideoContainer(
       'https&#58;//i.imgur.com/PWI3g0N.mp4',
-      '<video src="https&#58;//i.imgur.com/PWI3g0N.mp4" autoplay playsinline muted loop controls></video>',
+      '<video src="https&#58;//i.imgur.com/PWI3g0N.mp4#t=0.001" autoplay playsinline muted loop controls></video>',
     )}`,
   },
 ];

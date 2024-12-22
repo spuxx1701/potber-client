@@ -45,7 +45,9 @@ export function parseVideo(input: string, location: Partial<Location>) {
       } else {
         // Other links can be embedded using the <video> tag
         const autoplay = full.includes('play');
-        replacement += `<video src="${url}"${
+        // Seek to 0.001 seconds to prevent the video from showing a black screen
+        // see: https://shj.rip/article/how-to-generate-video-thumbnails-correctly-in-ios-safari.html#media-fragments-uri
+        replacement += `<video src="${url}#t=0.001"${
           autoplay ? ' autoplay playsinline muted loop' : ''
         } controls></video></span>`;
         output = output.replace(match[0], replacement);
