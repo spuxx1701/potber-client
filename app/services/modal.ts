@@ -6,6 +6,7 @@ import { ImageInsertModalOptions } from 'potber-client/components/modal/types/im
 import { InfoModalOptions } from 'potber-client/components/modal/types/info/types';
 import { InputModalOptions } from 'potber-client/components/modal/types/input';
 import { LinkInsertModalOptions } from 'potber-client/components/modal/types/link-insert';
+import { ListModalOptions } from 'potber-client/components/modal/types/list';
 import { MemeSelectModalOptions } from 'potber-client/components/modal/types/meme-select';
 import { PostPreviewModalOptions } from 'potber-client/components/modal/types/post-preview';
 import { UserProfileModalOptions } from 'potber-client/components/modal/types/user-profile';
@@ -25,6 +26,7 @@ export enum ModalType {
   iconSelect = 'icon-select',
   memeSelect = 'meme-select',
   linkInsert = 'link-insert',
+  list = 'list',
   imageInsert = 'image-insert',
   postPreview = 'post-preview',
   userProfile = 'user-profile',
@@ -93,6 +95,14 @@ export default class ModalService extends Service {
    */
   linkInsert(options: LinkInsertModalOptions) {
     this.show(ModalType.linkInsert, options);
+  }
+
+  /**
+   * Calls a list modal.
+   * @param options The list modal options.
+   */
+  list(options: ListModalOptions) {
+    this.show(ModalType.list, options);
   }
 
   /**
