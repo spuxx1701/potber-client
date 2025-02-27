@@ -78,7 +78,7 @@ export default class PostComponent extends Component<Signature> {
     if (typeof this.args.post.message === 'string') {
       const content = this.contentParser.parsePostContent(
         this.args.post.message,
-        { groupId: this.args.post.author.groupId },
+        { privileged: this.args.post.author.privileged },
       );
       return htmlSafe(content);
     } else {
