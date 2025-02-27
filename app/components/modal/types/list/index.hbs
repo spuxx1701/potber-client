@@ -1,0 +1,61 @@
+{{! @glint-nocheck }}
+<Modal::Component::Header
+  @title={{t 'feature.post-form.message.toolbar.list.modal.title'}}
+  @icon='list'
+/>
+<Modal::Component::Content>
+  <form id='list-modal-form' {{on 'submit' this.handleSubmit}}>
+      <Common::Control::Dropdown
+        @options={{this.listTypes}}
+        @onSelect={{this.handleTypeSelect}}
+        @size='max'
+        @label={{t 'feature.post-form.message.toolbar.list.modal.type'}}
+      />
+    {{#each this.entries key="@index" as |text index|}}
+    <div class='list-modal-entry'>
+      <Common::Control::Input
+        @label={{t 'feature.post-form.message.toolbar.list.modal.entry'}}
+        @size='max'
+        @value={{text}}
+        @onChange={{fn this.handleTextChange index}}
+        @selectAllOnFocus={{true}}
+        @required={{true}}
+        type='text'
+      />
+      {{#if this.hasRemoveableEntries}}
+        <Common::Control::Button
+          @icon='minus'
+          @type='button'
+          @variant='primary'
+          @size='square'
+          @onClick={{fn this.handleRemove index}}
+          form='list-modal-form'
+        />  
+      {{/if}}
+      <Common::Control::Button
+      @type='button'
+      @variant='primary'
+      @icon='plus'
+      @size='square'
+      @onClick={{fn this.handleAdd index}}
+      form='list-modal-form'
+    />
+    </div>
+    {{/each}}
+  </form>
+</Modal::Component::Content>
+<Modal::Component::Footer>
+  <Common::Control::Button
+    @text='Schließen'
+    @variant='secondary-transparent'
+    @size='small'
+    @onClick={{this.handleCancel}}
+  />
+  <Common::Control::Button
+    @text='OK'
+    @type='submit'
+    @variant='primary'
+    @size='small'
+    form='list-modal-form'
+  />
+</Modal::Component::Footer>

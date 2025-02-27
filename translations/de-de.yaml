@@ -210,6 +210,12 @@ feature:
             title: Link
             url: URL
             text: Text (optional)
+        list:
+          title: Liste
+          modal:
+            title: Liste
+            entry: Eintrag
+            type: Listentyp
         image:
           title: Bild
           modal:
