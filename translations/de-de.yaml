@@ -124,7 +124,7 @@ route:
       submit: Absenden
       preview: Vorschau
       options: Optionen
-      convert-urls: '[URL]-Tags automatisch einfügen'
+      convert-urls: "[URL]-Tags automatisch einfügen"
       disable-bbcode: BBCode deaktivieren
       disable-emojis: Emojis deaktivieren
   thread:
@@ -150,6 +150,10 @@ route:
       title: Posteingang
     outbound:
       title: Postausgang
+    reply:
+      title: Antworten
+    forward:
+      title: Nachricht weiterleiten
     system:
       title: System
   board:
